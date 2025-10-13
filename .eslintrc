@@ -1,0 +1,10 @@
+{
+  "extends": "precure/auto",
+  "rules": {
+    "unicorn/prevent-abbreviations": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "jest/require-tothrow-message": "off",
+    "jest/no-empty-title": "off"
+  }
+}

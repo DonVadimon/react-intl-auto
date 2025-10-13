@@ -1,0 +1,18 @@
+{
+  "name": "swc-plugin-react-intl-auto-example",
+  "version": "1.0.0",
+  "description": "Example usage of swc-plugin-react-intl-auto",
+  "main": "index.js",
+  "scripts": {
+    "build": "swc src --out-dir dist --plugins swc-plugin-react-intl-auto",
+    "dev": "swc src --out-dir dist --plugins swc-plugin-react-intl-auto --watch"
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-intl": "^6.0.0"
+  },
+  "devDependencies": {
+    "@swc/cli": "^0.1.0",
+    "swc-plugin-react-intl-auto": "file:.."
+  }
+}

@@ -100,22 +100,19 @@ pub fn get_prefix(
         _ => base_path,
     };
     
-    // Apply filebase option
-    let prefix = if opts.filebase {
-        // Extract just the filename without path
-        if let Some(file_name) = filename.file_stem() {
-            file_name.to_string_lossy().to_string()
-        } else {
-            prefix
-        }
-    } else {
-        prefix
-    };
-    
-    // Handle relative_to option
+    // Handle relative_to option first
     let prefix = if let Some(relative_to) = &opts.relative_to {
-        if prefix.starts_with(relative_to) {
-            prefix[relative_to.len()..].trim_start_matches('/').to_string()
+        // Convert relative_to to use the same separator as the formatted path
+        let relative_to_dots = dot_path(relative_to, &opts.separator);
+        
+        if prefix.starts_with(&relative_to_dots) {
+            let remaining = &prefix[relative_to_dots.len()..];
+            // Remove leading separator if it exists
+            if remaining.starts_with(&opts.separator) {
+                remaining[opts.separator.len()..].to_string()
+            } else {
+                remaining.to_string()
+            }
         } else {
             prefix
         }
@@ -126,13 +123,31 @@ pub fn get_prefix(
             let project_root_dots = dot_path(&project_root_str, &opts.separator);
             
             if prefix.starts_with(&project_root_dots) {
-                prefix[project_root_dots.len()..].trim_start_matches(&opts.separator).to_string()
+                let remaining = &prefix[project_root_dots.len()..];
+                // Remove leading separator if it exists
+                if remaining.starts_with(&opts.separator) {
+                    remaining[opts.separator.len()..].to_string()
+                } else {
+                    remaining.to_string()
+                }
             } else {
                 prefix
             }
         } else {
             prefix
         }
+    };
+    
+    // Apply filebase option after relative_to processing
+    let prefix = if opts.filebase {
+        // Extract just the filename without path
+        if let Some(file_name) = filename.file_stem() {
+            file_name.to_string_lossy().to_string()
+        } else {
+            prefix
+        }
+    } else {
+        prefix
     };
     
     match export_name {

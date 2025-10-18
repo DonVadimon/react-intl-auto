@@ -36,15 +36,10 @@ export const App: React.FC = () => {
           values={{ name: 'World' }}
         />
       </p>
-      
+      {intl.formatMessage(messages.hello, { name: 'World' })}
       <button aria-label={label}>
         <FormattedMessage defaultMessage="Submit" />
       </button>
-      
-      <FormattedMessage 
-        defaultMessage="This is a test message"
-        key="test-message"
-      />
     </div>
   );
 };

@@ -1,8 +1,9 @@
 import React from 'react';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
+import messages from '../messages/demo';
 
 // This will be transformed to include IDs
-export const messages = defineMessages({
+export const messages1 = defineMessages({
   hello: 'Hello {name}!',
   welcome: 'Welcome to our app',
   goodbye: 'Goodbye {name}',

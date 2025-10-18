@@ -5,8 +5,6 @@ use swc_core::ecma::visit::{VisitMut, VisitMutWith};
 use std::collections::HashSet;
 
 const REACT_COMPONENTS: &[&str] = &["FormattedMessage", "FormattedHTMLMessage"];
-const DEFINE_MESSAGES: &[&str] = &["defineMessages"];
-const INTL_HOOKS: &[&str] = &["injectIntl", "useIntl"];
 
 pub struct JSXVisitor {
     pub state: PluginState,
@@ -407,7 +405,7 @@ impl CallExpressionVisitor {
         }
     }
     
-    fn process_define_messages_object(&self, obj: &mut ObjectLit, call_expr: &CallExpr) {
+    fn process_define_messages_object(&self, obj: &mut ObjectLit, _call_expr: &CallExpr) {
         // For now, we'll use a simplified approach
         // In a full implementation, we'd need to traverse the AST to find the export declaration
         let export_name = match &self.state.opts.include_export_name {

@@ -16,7 +16,7 @@
           "/Users/ryan/mine/swc-plugin-react-intl-auto/swc-plugin-react-intl-auto.wasm",
           // "swc-plugin-react-intl-auto",
           {
-            "removePrefix": "src/",
+            "removePrefix": "src/messages",
             "separator": ".",
             "filebase": false,
             "extractComments": true

@@ -1,9 +1,8 @@
-use crate::types::{PluginState, RemovePrefix, IncludeExportName};
+use crate::types::{PluginState, RemovePrefix};
 use murmur3::murmur3_32;
 use regex::Regex;
 use swc_core::ecma::ast::*;
 use std::io::Cursor;
-use std::collections::HashSet;
 
 pub fn create_hash(message: &str) -> String {
     // Use murmur3 hash with seed 0 to match babel plugin behavior
@@ -13,10 +12,6 @@ pub fn create_hash(message: &str) -> String {
 
 pub fn dot_path(str: &str, separator: &str) -> String {
     str.replace(std::path::MAIN_SEPARATOR, separator)
-}
-
-pub fn escape_regex(text: &str) -> String {
-    regex::escape(text)
 }
 
 pub fn dot_path_replace(
@@ -194,107 +189,6 @@ pub fn find_project_root(file_path: &std::path::Path) -> Option<std::path::PathB
     None
 }
 
-pub fn is_import_local_name(
-    name: Option<&str>,
-    allowed_names: &[&str],
-    _state: &PluginState,
-    imported_names: &HashSet<String>,
-) -> bool {
-    if let Some(name) = name {
-        // Check if the specific name is imported and is in the allowed names
-        imported_names.contains(name) && allowed_names.iter().any(|&allowed| allowed == name)
-    } else {
-        // Check if any of the allowed names are imported
-        allowed_names.iter().any(|&allowed| imported_names.contains(allowed))
-    }
-}
-
-pub fn get_leading_comment(_prop: &Prop) -> Option<String> {
-    // In SWC, comments are handled differently
-    // This is a placeholder implementation
-    None
-}
-
-pub fn get_export_name(
-    call_expr: &CallExpr,
-    include_export_name: &Option<IncludeExportName>,
-    program: &Program,
-) -> Option<String> {
-    match include_export_name {
-        Some(IncludeExportName::Boolean(true)) => {
-            // Look for named export
-            find_named_export_name(call_expr, program)
-        }
-        Some(IncludeExportName::All) => {
-            // Look for both named and default export
-            find_named_export_name(call_expr, program)
-                .or_else(|| find_default_export_name(call_expr, program))
-        }
-        _ => None,
-    }
-}
-
-fn find_named_export_name(call_expr: &CallExpr, program: &Program) -> Option<String> {
-    // Look for the export declaration that contains this call expression
-    match program {
-        Program::Module(module) => {
-            for item in &module.body {
-                match item {
-                    ModuleItem::ModuleDecl(ModuleDecl::ExportDecl(ExportDecl { decl, .. })) => {
-                        match decl {
-                            Decl::Var(var_decl) => {
-                                for declarator in &var_decl.decls {
-                                    if let Some(init) = &declarator.init {
-                                        if is_call_expression_in_expr(init, call_expr) {
-                                            if let Pat::Ident(ident) = &declarator.name {
-                                                return Some(ident.sym.to_string());
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            _ => {}
-                        }
-                    }
-                    _ => {}
-                }
-            }
-        }
-        _ => {}
-    }
-    None
-}
-
-fn is_call_expression_in_expr(expr: &Expr, target_call: &CallExpr) -> bool {
-    match expr {
-        Expr::Call(call) => {
-            // Compare call expressions by their structure
-            match (&call.callee, &target_call.callee) {
-                (Callee::Expr(callee_expr), Callee::Expr(target_callee_expr)) => {
-                    match (callee_expr.as_ref(), target_callee_expr.as_ref()) {
-                        (Expr::Ident(callee_ident), Expr::Ident(target_ident)) => {
-                            callee_ident.sym == target_ident.sym
-                        }
-                        _ => false,
-                    }
-                }
-                _ => false,
-            }
-        }
-        Expr::Assign(assign) => {
-            is_call_expression_in_expr(&assign.right, target_call)
-        }
-        _ => false,
-    }
-}
-
-fn find_default_export_name(_call_expr: &CallExpr, _program: &Program) -> Option<String> {
-    // This is a simplified implementation
-    // In a full implementation, you'd need to traverse the AST to find
-    // the default export declaration that contains this call expression
-    Some("default".to_string())
-}
-
 pub fn object_property(key: &str, value: Expr) -> Prop {
     Prop::KeyValue(KeyValueProp {
         key: PropName::Str(Str {
@@ -304,20 +198,4 @@ pub fn object_property(key: &str, value: Expr) -> Prop {
         }),
         value: Box::new(value),
     })
-}
-
-pub fn is_object_properties(properties: &[Prop]) -> bool {
-    properties.iter().all(|p| matches!(p, Prop::KeyValue(_)))
-}
-
-pub fn get_object_properties(expr: &Expr) -> Option<Vec<PropOrSpread>> {
-    match expr {
-        Expr::Object(obj) => Some(obj.props.clone()),
-        Expr::Ident(_ident) => {
-            // This would need to be implemented by looking up the binding
-            // in the current scope - simplified for now
-            None
-        }
-        _ => None,
-    }
 }

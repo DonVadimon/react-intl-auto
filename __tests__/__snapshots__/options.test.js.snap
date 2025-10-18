@@ -117,7 +117,7 @@ exports[`Plugin Options relative_to option should handle relative_to option 1`] 
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: ".components.App.427197390",
+        id: "components.App.427197390",
         defaultMessage: "Hello World"
     });
 }

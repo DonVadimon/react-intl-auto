@@ -73,15 +73,11 @@ pub fn get_prefix(
         let relative_to_path = if std::path::Path::new(relative_to).is_absolute() {
             std::path::PathBuf::from(relative_to)
         } else {
-            // For relative paths, try to find the project root first
-            if let Some(project_root) = find_project_root(filename) {
-                project_root.join(relative_to)
-            } else {
-                // Fallback to current directory
-                std::env::current_dir()
-                    .unwrap_or_else(|_| std::path::PathBuf::from("."))
-                    .join(relative_to)
-            }
+            // For relative paths, always use current directory as base
+            // This matches babel plugin behavior where relative_to is relative to cwd
+            std::env::current_dir()
+                .unwrap_or_else(|_| std::path::PathBuf::from("."))
+                .join(relative_to)
         };
         
         // Calculate the relative path from relative_to to filename
@@ -109,18 +105,40 @@ pub fn get_prefix(
         }
     } else {
         // Auto-detect project root if relative_to is not specified
-        if let Some(project_root) = find_project_root(filename) {
-            let project_root_str = project_root.to_string_lossy().to_string();
-            let project_root_dots = dot_path(&project_root_str, &opts.separator);
+        // Try to find project root from the filename path
+        let project_root = if std::path::Path::new(filename).is_absolute() {
+            find_project_root(filename)
+        } else {
+            // For relative paths, try to find project root from current directory
+            let cwd = std::env::current_dir().unwrap_or_else(|_| std::path::PathBuf::from("."));
+            find_project_root(&cwd)
+        };
+        
+        if let Some(project_root) = project_root {
+            // Calculate the relative path from project root to the file
+            let absolute_filename = if std::path::Path::new(filename).is_absolute() {
+                std::path::PathBuf::from(filename)
+            } else {
+                let cwd = std::env::current_dir().unwrap_or_else(|_| std::path::PathBuf::from("."));
+                cwd.join(filename)
+            };
             
-            if base_path.starts_with(&project_root_dots) {
-                let remaining = &base_path[project_root_dots.len()..];
-                // Remove leading separator if it exists
-                if remaining.starts_with(&opts.separator) {
-                    remaining[opts.separator.len()..].to_string()
+            if let Ok(relative_path) = absolute_filename.strip_prefix(&project_root) {
+                // Convert the relative path to dot-separated format
+                let relative_str = relative_path.to_string_lossy().to_string();
+                // Remove file extension if it exists
+                let relative_str = if let Some(ext_pos) = relative_str.rfind('.') {
+                    relative_str[..ext_pos].to_string()
                 } else {
-                    remaining.to_string()
-                }
+                    relative_str
+                };
+                // Remove leading separator if it exists
+                let relative_str = if relative_str.starts_with('/') || relative_str.starts_with('\\') {
+                    &relative_str[1..]
+                } else {
+                    &relative_str
+                };
+                dot_path(relative_str, &opts.separator)
             } else {
                 base_path
             }
@@ -230,4 +248,233 @@ pub fn object_property(key: &str, value: Expr) -> Prop {
         }),
         value: Box::new(value),
     })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::types::{PluginOptions, RemovePrefix};
+    use std::path::PathBuf;
+
+    fn create_test_state(filename: &str, opts: PluginOptions) -> PluginState {
+        PluginState {
+            filename: PathBuf::from(filename),
+            opts,
+        }
+    }
+
+    fn create_default_options() -> PluginOptions {
+        PluginOptions {
+            module_source_name: "react-intl".to_string(),
+            separator: ".".to_string(),
+            filebase: false,
+            remove_prefix: None,
+            include_export_name: None,
+            use_key: false,
+            extract_comments: false,
+            relative_to: None,
+        }
+    }
+
+    #[test]
+    fn test_get_prefix_basic() {
+        let opts = create_default_options();
+        let state = create_test_state("src/components/App.js", opts);
+        
+        let result = get_prefix(&state, None);
+        assert_eq!(result, "src.components.App");
+    }
+
+    #[test]
+    fn test_get_prefix_with_export_name() {
+        let opts = create_default_options();
+        let state = create_test_state("src/components/App.js", opts);
+        
+        let result = get_prefix(&state, Some("hello"));
+        assert_eq!(result, "src.components.App.hello");
+    }
+
+    #[test]
+    fn test_get_prefix_remove_prefix_true() {
+        let mut opts = create_default_options();
+        opts.remove_prefix = Some(RemovePrefix::Boolean(true));
+        let state = create_test_state("src/components/App.js", opts);
+        
+        let result = get_prefix(&state, Some("hello"));
+        assert_eq!(result, "hello");
+    }
+
+    #[test]
+    fn test_get_prefix_remove_prefix_string() {
+        let mut opts = create_default_options();
+        opts.remove_prefix = Some(RemovePrefix::String("src/".to_string()));
+        let state = create_test_state("src/components/App.js", opts);
+        
+        let result = get_prefix(&state, Some("hello"));
+        assert_eq!(result, "components.App.hello");
+    }
+
+    #[test]
+    fn test_get_prefix_remove_prefix_regex() {
+        let mut opts = create_default_options();
+        opts.remove_prefix = Some(RemovePrefix::String("src/.*/".to_string()));
+        let state = create_test_state("src/components/App.js", opts);
+        
+        let result = get_prefix(&state, Some("hello"));
+        assert_eq!(result, "App.hello");
+    }
+
+    #[test]
+    fn test_get_prefix_relative_to_relative_path() {
+        let mut opts = create_default_options();
+        opts.relative_to = Some("src".to_string());
+        // Test with relative path - should be relative to current working directory
+        // Use relative path for filename to match relative relative_to
+        let state = create_test_state("src/components/App.js", opts);
+        
+        let result = get_prefix(&state, Some("hello"));
+        assert_eq!(result, "components.App.hello");
+    }
+
+    #[test]
+    fn test_get_prefix_relative_to_absolute_path() {
+        let mut opts = create_default_options();
+        opts.relative_to = Some("/Users/ryan/project/src".to_string());
+        let state = create_test_state("/Users/ryan/project/src/components/App.js", opts);
+        
+        let result = get_prefix(&state, Some("hello"));
+        assert_eq!(result, "components.App.hello");
+    }
+
+    #[test]
+    fn test_get_prefix_relative_to_nested_relative() {
+        let mut opts = create_default_options();
+        opts.relative_to = Some("src/components".to_string());
+        let state = create_test_state("src/components/App.js", opts);
+        
+        let result = get_prefix(&state, Some("hello"));
+        assert_eq!(result, "App.hello");
+    }
+
+    #[test]
+    fn test_get_prefix_relative_to_nested_absolute() {
+        let mut opts = create_default_options();
+        opts.relative_to = Some("/Users/ryan/project/src/components".to_string());
+        let state = create_test_state("/Users/ryan/project/src/components/App.js", opts);
+        
+        let result = get_prefix(&state, Some("hello"));
+        assert_eq!(result, "App.hello");
+    }
+
+    #[test]
+    fn test_get_prefix_relative_to_with_trailing_slash() {
+        let mut opts = create_default_options();
+        opts.relative_to = Some("src/".to_string());
+        let state = create_test_state("src/components/App.js", opts);
+        
+        let result = get_prefix(&state, Some("hello"));
+        assert_eq!(result, "components.App.hello");
+    }
+
+    #[test]
+    fn test_get_prefix_relative_to_no_match() {
+        let mut opts = create_default_options();
+        opts.relative_to = Some("other".to_string());
+        let state = create_test_state("src/components/App.js", opts);
+        
+        // When relative_to doesn't match, should return original path
+        let result = get_prefix(&state, Some("hello"));
+        assert_eq!(result, "src.components.App.hello");
+    }
+
+    #[test]
+    fn test_get_prefix_relative_to_exact_match() {
+        let mut opts = create_default_options();
+        opts.relative_to = Some("/Users/ryan/project/src/components/App.js".to_string());
+        let state = create_test_state("/Users/ryan/project/src/components/App.js", opts);
+        
+        // When relative_to matches exactly, should return empty prefix
+        let result = get_prefix(&state, Some("hello"));
+        assert_eq!(result, "hello");
+    }
+
+    #[test]
+    fn test_get_prefix_filebase() {
+        let mut opts = create_default_options();
+        opts.filebase = true;
+        let state = create_test_state("src/components/App.js", opts);
+        
+        let result = get_prefix(&state, Some("hello"));
+        assert_eq!(result, "App.hello");
+    }
+
+    #[test]
+    fn test_get_prefix_custom_separator() {
+        let mut opts = create_default_options();
+        opts.separator = "_".to_string();
+        let state = create_test_state("src/components/App.js", opts);
+        
+        let result = get_prefix(&state, Some("hello"));
+        assert_eq!(result, "src_components_App_hello");
+    }
+
+    #[test]
+    fn test_get_prefix_combined_options() {
+        let mut opts = create_default_options();
+        opts.relative_to = Some("src".to_string());
+        opts.remove_prefix = Some(RemovePrefix::String("components/".to_string()));
+        opts.filebase = true;
+        let state = create_test_state("src/components/App.js", opts);
+        
+        let result = get_prefix(&state, Some("hello"));
+        assert_eq!(result, "App.hello");
+    }
+
+    #[test]
+    fn test_get_prefix_empty_export_name() {
+        let opts = create_default_options();
+        let state = create_test_state("src/components/App.js", opts);
+        
+        let result = get_prefix(&state, Some(""));
+        assert_eq!(result, "src.components.App.");
+    }
+
+    #[test]
+    fn test_get_prefix_no_export_name() {
+        let opts = create_default_options();
+        let state = create_test_state("src/components/App.js", opts);
+        
+        let result = get_prefix(&state, None);
+        assert_eq!(result, "src.components.App");
+    }
+
+    #[test]
+    fn test_get_prefix_remove_prefix_boolean_false() {
+        let mut opts = create_default_options();
+        opts.remove_prefix = Some(RemovePrefix::Boolean(false));
+        let state = create_test_state("src/components/App.js", opts);
+        
+        let result = get_prefix(&state, Some("hello"));
+        assert_eq!(result, "src.components.App.hello");
+    }
+
+    #[test]
+    fn test_get_prefix_with_different_file_extensions() {
+        let opts = create_default_options();
+        
+        // Test .tsx file
+        let state = create_test_state("src/components/App.tsx", opts.clone());
+        let result = get_prefix(&state, Some("hello"));
+        assert_eq!(result, "src.components.App.hello");
+        
+        // Test .ts file
+        let state = create_test_state("src/components/App.ts", opts.clone());
+        let result = get_prefix(&state, Some("hello"));
+        assert_eq!(result, "src.components.App.hello");
+        
+        // Test file without extension
+        let state = create_test_state("src/components/App", opts);
+        let result = get_prefix(&state, Some("hello"));
+        assert_eq!(result, "src.components.App.hello");
+    }
 }

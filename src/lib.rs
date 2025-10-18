@@ -71,4 +71,5 @@ pub fn process_transform(mut program: Program, metadata: TransformPluginProgramM
     program
 }
 
-// Note: Test cases would be added here when testing features are available
+#[cfg(test)]
+mod project_root_test;

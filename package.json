@@ -9,7 +9,8 @@
     "test:watch": "jest --watch",
     "release": "node scripts/release.js",
     "check-token": "node scripts/check-npm-token.js",
-    "create-labels": "node scripts/create-labels.js"
+    "create-labels": "node scripts/create-labels.js",
+    "test-release": "node scripts/test-release.js"
   },
   "repository": {
     "type": "git",

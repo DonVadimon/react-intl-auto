@@ -17,6 +17,9 @@ murmur3 = "0.5"
 regex = "1"
 pathdiff = "0.2"
 
+[dev-dependencies]
+tempfile = "3.23.0"
+
 # .cargo/config.toml defines few alias to build plugin.
 # cargo build-wasip1 generates wasm32-wasip1 binary
 # cargo build-wasm32 generates wasm32-unknown-unknown binary.

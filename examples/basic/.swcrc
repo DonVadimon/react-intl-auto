@@ -13,7 +13,8 @@
     "experimental": {
       "plugins": [
         [
-          "/Users/ryan/mine/babel-plugin-react-intl-auto/swc-plugin/target/wasm32-wasip1/release/swc_plugin.wasm",
+          // "/Users/ryan/mine/swc-plugin-react-intl-auto/swc-plugin-react-intl-auto.wasm",
+          "swc-plugin-react-intl-auto"
           {
             "removePrefix": "src/",
             "separator": ".",

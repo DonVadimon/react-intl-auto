@@ -1,7 +1,7 @@
 /target
 ^target/
 target
-/node_modules
+node_modules
 .swc
 .DS_Store
 .cargo
@@ -9,3 +9,4 @@ target
 .vscode
 .idea
 *.wasm
+dist

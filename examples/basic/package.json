@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "react": "^18.0.0",
-    "react-intl": "^6.0.0"
+    "react-intl": "^6.0.0",
+    "swc-plugin-react-intl-auto": "^1.0.1"
   },
   "devDependencies": {
     "@swc/cli": "^0.1.0"

@@ -120,7 +120,19 @@ pub fn get_prefix(
             prefix
         }
     } else {
-        prefix
+        // Auto-detect project root if relative_to is not specified
+        if let Some(project_root) = find_project_root(filename) {
+            let project_root_str = project_root.to_string_lossy().to_string();
+            let project_root_dots = dot_path(&project_root_str, &opts.separator);
+            
+            if prefix.starts_with(&project_root_dots) {
+                prefix[project_root_dots.len()..].trim_start_matches(&opts.separator).to_string()
+            } else {
+                prefix
+            }
+        } else {
+            prefix
+        }
     };
     
     match export_name {
@@ -135,7 +147,7 @@ pub fn get_prefix(
     }
 }
 
-fn find_project_root(file_path: &std::path::Path) -> Option<std::path::PathBuf> {
+pub fn find_project_root(file_path: &std::path::Path) -> Option<std::path::PathBuf> {
     let mut current = file_path.parent()?;
     
     // Look for common project root indicators

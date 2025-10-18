@@ -9,6 +9,8 @@ on:
 jobs:
   check-token:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     if: github.repository == 'lcl9288/swc-plugin-react-intl-auto'
     
     steps:

@@ -1,3 +1,10 @@
 /target
 ^target/
 target
+/node_modules
+.swc
+.DS_Store
+.cargo
+.env
+.vscode
+.idea

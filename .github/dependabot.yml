@@ -17,7 +17,7 @@ updates:
       include: "scope"
     labels:
       - "dependencies"
-      - "javascript"
+      - "enhancement"
       
   # Enable version updates for Cargo
   - package-ecosystem: "cargo"
@@ -36,4 +36,4 @@ updates:
       include: "scope"
     labels:
       - "dependencies"
-      - "rust"
+      - "enhancement"

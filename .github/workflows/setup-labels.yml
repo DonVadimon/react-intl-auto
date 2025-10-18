@@ -1,0 +1,67 @@
+name: Setup Repository Labels
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  setup-labels:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Create GitHub Labels
+        run: |
+          echo "Creating repository labels..."
+          
+          # Define labels with colors
+          declare -A labels=(
+            ["dependencies"]="0366d6"      # Blue
+            ["javascript"]="f1e05a"        # Yellow
+            ["rust"]="dea584"              # Orange
+            ["automated"]="7057ff"         # Purple
+            ["bug"]="d73a4a"               # Red
+            ["enhancement"]="a2eeef"       # Light blue
+            ["documentation"]="0075ca"     # Blue
+            ["good first issue"]="7057ff"  # Purple
+            ["help wanted"]="008672"       # Green
+            ["question"]="d876e3"          # Pink
+            ["wontfix"]="ffffff"           # White
+            ["duplicate"]="cfd3d7"         # Light gray
+            ["invalid"]="e4e669"           # Light yellow
+            ["ci"]="f9d0c4"                # Light orange
+            ["build"]="f9d0c4"             # Light orange
+            ["test"]="f9d0c4"              # Light orange
+            ["chore"]="f9d0c4"             # Light orange
+            ["feat"]="a2eeef"              # Light blue
+            ["fix"]="d73a4a"               # Red
+            ["refactor"]="a2eeef"          # Light blue
+            ["perf"]="a2eeef"              # Light blue
+            ["style"]="a2eeef"             # Light blue
+            ["release"]="7057ff"           # Purple
+          )
+          
+          # Create labels using GitHub CLI
+          for label in "${!labels[@]}"; do
+            color="${labels[$label]}"
+            echo "Creating label: $label (color: $color)"
+            
+            # Check if label already exists
+            if gh label list | grep -q "^$label"; then
+              echo "Label '$label' already exists, updating..."
+              gh label edit "$label" --color "$color" || true
+            else
+              echo "Creating new label '$label'..."
+              gh label create "$label" --color "$color" --description "Auto-generated label" || true
+            fi
+          done
+          
+          echo "✅ All labels created/updated successfully!"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

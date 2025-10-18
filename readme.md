@@ -220,6 +220,21 @@ NPM_TOKEN=your_token npm run check-token
 - Disable the regular `publish.yml` workflow
 - Packages will be published to `@lcl9288/swc-plugin-react-intl-auto`
 
+### Repository Setup
+
+If you encounter label errors with Dependabot, create the required labels:
+
+```bash
+# Create GitHub repository labels
+GITHUB_TOKEN=your_token npm run create-labels
+```
+
+Or manually create these labels in your GitHub repository:
+- `dependencies` (blue)
+- `enhancement` (light blue)
+- `javascript` (yellow) - optional
+- `rust` (orange) - optional
+
 ## License
 
 MIT

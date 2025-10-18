@@ -1,7 +1,7 @@
 module.exports = {
   testEnvironment: 'node',
-  snapshotSerializers: [
-    require.resolve('string-snapshot-serializer/serializer'),
-  ],
   modulePathIgnorePatterns: ['<rootDir>/lib'],
+  testMatch: ['**/__tests__/**/*.test.js'],
+  setupFilesAfterEnv: ['<rootDir>/__tests__/setup.js'],
+  testTimeout: 10000,
 }

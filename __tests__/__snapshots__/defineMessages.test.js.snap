@@ -1,0 +1,245 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`defineMessages Basic defineMessages should add id to defineMessages with object values 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = defineMessages({
+    hello: {
+        defaultMessage: 'Hello World',
+        "id": "test.hello"
+    }
+});
+"
+`;
+
+exports[`defineMessages Basic defineMessages should add id to defineMessages with string values 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = defineMessages({
+    hello: {
+        "id": "test.hello",
+        "defaultMessage": "Hello World"
+    }
+});
+"
+`;
+
+exports[`defineMessages Basic defineMessages should handle defineMessages with mixed string and object values 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = defineMessages({
+    hello: {
+        "id": "test.hello",
+        "defaultMessage": "Hello World"
+    },
+    goodbye: {
+        defaultMessage: 'Goodbye World',
+        "id": "test.goodbye"
+    }
+});
+"
+`;
+
+exports[`defineMessages Basic defineMessages should handle defineMessages with multiple keys 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = defineMessages({
+    hello: {
+        defaultMessage: 'Hello World',
+        "id": "test.hello"
+    },
+    goodbye: {
+        defaultMessage: 'Goodbye World',
+        "id": "test.goodbye"
+    }
+});
+"
+`;
+
+exports[`defineMessages Multiple defineMessages calls should handle defineMessages in different scopes 1`] = `
+"import { defineMessages } from 'react-intl';
+function createMessages() {
+    return defineMessages({
+        hello: {
+            defaultMessage: 'Hello World',
+            "id": "test.hello"
+        }
+    });
+}
+var messages = defineMessages({
+    goodbye: {
+        defaultMessage: 'Goodbye World',
+        "id": "test.goodbye"
+    }
+});
+"
+`;
+
+exports[`defineMessages Multiple defineMessages calls should handle defineMessages with numeric keys 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = defineMessages({
+    1: {
+        defaultMessage: 'Message for key 1',
+        "id": "test.1"
+    },
+    2: {
+        defaultMessage: 'Message for key 2',
+        "id": "test.2"
+    },
+    '3': {
+        defaultMessage: 'Message for key 3',
+        "id": "test.3"
+    }
+});
+"
+`;
+
+exports[`defineMessages Multiple defineMessages calls should handle multiple defineMessages in same file 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages1 = defineMessages({
+    hello: {
+        defaultMessage: 'Hello World',
+        "id": "test.hello"
+    }
+});
+var messages2 = defineMessages({
+    goodbye: {
+        defaultMessage: 'Goodbye World',
+        "id": "test.goodbye"
+    }
+});
+"
+`;
+
+exports[`defineMessages defineMessages edge cases should handle defineMessages with computed keys 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+import { defineMessages } from 'react-intl';
+var key = 'hello';
+var messages = defineMessages(_define_property({}, key, {
+    defaultMessage: 'Hello World'
+}));
+"
+`;
+
+exports[`defineMessages defineMessages edge cases should handle defineMessages with non-string values 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = defineMessages({
+    hello: {
+        defaultMessage: 123,
+        "id": "test.hello"
+    }
+});
+"
+`;
+
+exports[`defineMessages defineMessages edge cases should handle empty defineMessages 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = defineMessages({});
+"
+`;
+
+exports[`defineMessages defineMessages with additional properties should handle defineMessages with all properties 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = defineMessages({
+    hello: {
+        id: 'custom.id',
+        defaultMessage: 'Hello World',
+        description: 'A greeting message'
+    }
+});
+"
+`;
+
+exports[`defineMessages defineMessages with additional properties should handle defineMessages with description 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = defineMessages({
+    hello: {
+        defaultMessage: 'Hello World',
+        description: 'A greeting message',
+        "id": "test.hello"
+    }
+});
+"
+`;
+
+exports[`defineMessages defineMessages with additional properties should handle defineMessages with id already present 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = defineMessages({
+    hello: {
+        id: 'existing.id',
+        defaultMessage: 'Hello World'
+    }
+});
+"
+`;
+
+exports[`defineMessages defineMessages with complex keys should handle defineMessages with numeric keys 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = defineMessages({
+    0: {
+        defaultMessage: 'First message',
+        "id": "test.0"
+    },
+    1: {
+        defaultMessage: 'Second message',
+        "id": "test.1"
+    }
+});
+"
+`;
+
+exports[`defineMessages defineMessages with complex keys should handle defineMessages with string keys 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = defineMessages({
+    'hello.world': {
+        defaultMessage: 'Hello World',
+        "id": "test.hello.world"
+    },
+    'goodbye.world': {
+        defaultMessage: 'Goodbye World',
+        "id": "test.goodbye.world"
+    }
+});
+"
+`;
+
+exports[`defineMessages defineMessages with export should handle default export defineMessages 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        defaultMessage: 'Hello World',
+        "id": "test.hello"
+    }
+});
+"
+`;
+
+exports[`defineMessages defineMessages with export should handle defineMessages with includeExportName option 1`] = `
+"import { defineMessages } from 'react-intl';
+export var messages = defineMessages({
+    hello: {
+        defaultMessage: 'Hello World',
+        "id": "test.messages.hello"
+    }
+});
+"
+`;
+
+exports[`defineMessages defineMessages with export should handle exported defineMessages 1`] = `
+"import { defineMessages } from 'react-intl';
+export var messages = defineMessages({
+    hello: {
+        defaultMessage: 'Hello World',
+        "id": "test.hello"
+    }
+});
+"
+`;

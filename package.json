@@ -1,92 +1,39 @@
 {
-  "name": "babel-plugin-react-intl-auto",
-  "version": "3.3.0",
-  "main": "lib/index.js",
-  "types": "types.d.ts",
-  "description": "[DEPRECATED] i18n for the component age. Auto management react-intl ID. Use FormatJS instead.",
-  "license": "MIT",
-  "repository": "akameco/babel-plugin-react-intl-auto",
-  "author": {
-    "name": "akameco",
-    "email": "akameco.t@gmail.com",
-    "url": "https://akameco.github.io"
-  },
-  "engines": {
-    "node": ">=10"
-  },
+  "name": "swc-plugin-react-intl-auto",
+  "version": "1.0.0",
+  "description": "SWC plugin for React Intl Auto - automatically adds IDs to FormattedMessage, defineMessages, and formatMessage calls",
+  "main": "index.js",
   "scripts": {
-    "build": "babel src -d lib --ignore __tests__,__fixtures__ --extensions .ts",
-    "prepack": "yarn build",
-    "fmt": "prettier --write .",
-    "lint": "eslint src --ext ts",
-    "add:coveralls": "cat ./coverage/lcov.info | coveralls",
+    "build": "node build.js",
+    "build:wasm32": "cargo build --release --target wasm32-unknown-unknown",
+    "build:wasip1": "cargo build --release --target wasm32-wasip1",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage --ci --runInBand",
-    "test:ci": "yarn lint && yarn test:coverage"
-  },
-  "lint-staged": {
-    "*.{ts}": [
-      "prettier --write",
-      "eslint"
-    ],
-    "*.{js,json,md}": [
-      "prettier --write"
-    ]
+    "test:watch": "jest --watch"
   },
   "keywords": [
-    "react",
-    "react-components",
+    "swc",
+    "plugin",
     "react-intl",
     "i18n",
-    "react-intl-auto",
-    "babel-plugin",
-    "auto",
-    "babel",
-    "plugin",
-    "generate",
-    "defineMessages"
+    "internationalization",
+    "babel-plugin"
   ],
+  "author": "Your Name",
+  "license": "MIT",
   "files": [
-    "lib",
-    "types.d.ts"
+    "swc-plugin-react-intl-auto.wasm",
+    "index.js",
+    "README.md"
   ],
-  "dependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/traverse": "^7.9.0",
-    "@babel/types": "^7.9.0",
-    "murmurhash3js": "^3.0.1"
-  },
   "devDependencies": {
-    "@akameco/tsconfig": "0.4.0",
-    "@babel/cli": "7.14.8",
-    "@babel/preset-env": "7.14.8",
-    "@babel/preset-typescript": "7.14.5",
-    "@babel/register": "7.14.5",
-    "@types/babel__core": "7.1.15",
-    "@types/babel__traverse": "7.14.2",
-    "@types/jest": "26.0.24",
-    "@types/murmurhash3js": "3.0.2",
-    "@types/node": "14.17.5",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "10.1.0",
-    "babel-jest": "26.6.3",
-    "babel-log": "2.0.0",
-    "babel-plugin-tester": "9.2.0",
-    "coveralls": "3.1.1",
-    "eslint": "7.31.0",
-    "eslint-config-precure": "5.4.0",
-    "husky": "4.3.8",
-    "jest": "26.6.3",
-    "lint-staged": "10.5.4",
-    "prettier": "2.3.2",
-    "react-intl": "4.7.6",
-    "string-snapshot-serializer": "1.0.1",
-    "typescript": "3.9.10"
+    "@swc/core": "^1.0.0",
+    "jest": "^29.0.0",
+    "@types/jest": "^29.0.0",
+    "typescript": "^5.0.0",
+    "ts-jest": "^29.0.0",
+    "string-snapshot-serializer": "1.0.1"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+  "peerDependencies": {
+    "@swc/core": "^1.0.0"
   }
 }

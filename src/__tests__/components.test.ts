@@ -1,4 +1,4 @@
-import path from 'path'
+import * as path from 'path'
 import { cases } from '../utils/testUtils'
 
 const filename = path.resolve(__dirname, '..', '__fixtures__', 'messages.js')

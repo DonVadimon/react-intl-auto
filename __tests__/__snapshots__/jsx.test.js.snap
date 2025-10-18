@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`JSX Elements Dynamic attributes should handle FormattedMessage with computed defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    var messages = {
+        hello: 'Hello World',
+        goodbye: 'Goodbye World'
+    };
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "test.",
+        defaultMessage: messages.hello
+    });
+}
+"
+`;
+
+exports[`JSX Elements Dynamic attributes should handle FormattedMessage with dynamic defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var message = param.message;
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "test.",
+        defaultMessage: message
+    });
+}
+"
+`;
+
+exports[`JSX Elements FormattedHTMLMessage should add id to FormattedHTMLMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+        id: "test.3543894310",
+        defaultMessage: "<b>Hello World</b>"
+    });
+}
+"
+`;
+
+exports[`JSX Elements FormattedHTMLMessage should handle FormattedHTMLMessage with values 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+        id: "test.414297700",
+        defaultMessage: "<b>Hello {name}</b>",
+        values: {
+            name: 'World'
+        }
+    });
+}
+"
+`;
+
+exports[`JSX Elements FormattedMessage should add id to FormattedMessage with string defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "test.427197390",
+        defaultMessage: "Hello World"
+    });
+}
+"
+`;
+
+exports[`JSX Elements FormattedMessage should add id to FormattedMessage with template literal defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "test.",
+        defaultMessage: "Hello ".concat(name)
+    });
+}
+"
+`;
+
+exports[`JSX Elements FormattedMessage should handle FormattedMessage with all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "test.471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`JSX Elements FormattedMessage should handle FormattedMessage with description prop 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "test.427197390",
+        defaultMessage: "Hello World",
+        description: "A greeting message"
+    });
+}
+"
+`;
+
+exports[`JSX Elements FormattedMessage should handle FormattedMessage with values prop 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "test.471047910",
+        defaultMessage: "Hello {name}",
+        values: {
+            name: 'World'
+        }
+    });
+}
+"
+`;
+
+exports[`JSX Elements Nested elements should handle FormattedMessage inside conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "test.3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`JSX Elements Nested elements should handle nested FormattedMessage elements 1`] = `
+"import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsxs("div", {
+        children: [
+            /*#__PURE__*/ _jsx(FormattedMessage, {
+                id: "test.1751134271",
+                defaultMessage: "Outer message"
+            }),
+            /*#__PURE__*/ _jsx("span", {
+                children: /*#__PURE__*/ _jsx(FormattedMessage, {
+                    id: "test.636519693",
+                    defaultMessage: "Inner message"
+                })
+            })
+        ]
+    });
+}
+"
+`;
+
+exports[`JSX Elements Self-closing elements should handle self-closing FormattedMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "test.427197390",
+        defaultMessage: "Hello World"
+    });
+}
+"
+`;

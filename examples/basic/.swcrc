@@ -1,0 +1,30 @@
+{
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true,
+      "decorators": true
+    },
+    "transform": {
+      "react": {
+        "runtime": "automatic"
+      }
+    },
+    "experimental": {
+      "plugins": [
+        [
+          "/Users/ryan/mine/babel-plugin-react-intl-auto/swc-plugin/target/wasm32-wasip1/release/swc_plugin.wasm",
+          {
+            "removePrefix": "src/",
+            "separator": ".",
+            "filebase": false,
+            "extractComments": true
+          }
+        ]
+      ]
+    }
+  },
+  "module": {
+    "type": "es6"
+  }
+}

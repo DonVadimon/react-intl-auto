@@ -125,10 +125,6 @@ npm install
 
 # Build the plugin
 npm run build
-
-# Or build for specific targets
-npm run build:wasm32
-npm run build:wasip1
 ```
 
 ## Development
@@ -145,6 +141,84 @@ This plugin is written in Rust and uses the SWC plugin API. The source code is i
 ```bash
 cargo build --release --target wasm32-wasip1
 ```
+
+### Testing
+
+```bash
+# Run JavaScript tests
+npm test
+
+# Run Rust tests
+cargo test
+
+# Run tests in watch mode
+npm run test:watch
+```
+
+## CI/CD and Release Process
+
+This project uses GitHub Actions for continuous integration and automated publishing to npm.
+
+### Workflows
+
+- **CI** (`.github/workflows/ci.yml`): Runs tests on every push and pull request
+- **Test Matrix** (`.github/workflows/test-matrix.yml`): Tests compatibility across Node.js versions 16, 18, and 20
+- **Publish** (`.github/workflows/publish.yml`): Automatically publishes to npm when a version tag is pushed
+- **Dependabot** (`.github/workflows/dependabot.yml`): Automatically merges dependency updates
+
+### Releasing a New Version
+
+1. **Using the release script** (recommended):
+   ```bash
+   npm run release 1.0.1
+   git push origin main
+   git push origin v1.0.1
+   ```
+
+2. **Manual process**:
+   ```bash
+   npm version 1.0.1
+   git tag -a v1.0.1 -m "Release 1.0.1"
+   git push origin main
+   git push origin v1.0.1
+   ```
+
+The GitHub Actions workflow will automatically:
+- Build the plugin for wasm32-wasip1 target
+- Run all tests
+- Publish to npm
+- Create a GitHub release
+
+For detailed release instructions, see [`.github/RELEASE.md`](.github/RELEASE.md).
+
+### Prerequisites for Publishing
+
+- NPM_TOKEN secret must be configured in GitHub repository settings
+- Repository must have proper permissions for GitHub Actions
+- **Important**: NPM tokens expire after 90 days - see [Token Management](#token-management) below
+
+### Token Management
+
+NPM tokens expire after 90 days. Use these tools to manage token renewal:
+
+```bash
+# Check if your current token is valid and when it expires
+npm run check-token
+
+# Or check with a specific token
+NPM_TOKEN=your_token npm run check-token
+```
+
+**Token Renewal Process**:
+1. Create new token at [npmjs.com/settings/tokens](https://www.npmjs.com/settings/tokens)
+2. Update `NPM_TOKEN` secret in GitHub repository settings
+3. Test with: `npm run check-token`
+4. Set calendar reminder for next renewal (80 days)
+
+**Alternative**: Use GitHub Packages instead of npm (no token expiration):
+- Enable the `publish-github-packages.yml` workflow
+- Disable the regular `publish.yml` workflow
+- Packages will be published to `@lcl9288/swc-plugin-react-intl-auto`
 
 ## License
 

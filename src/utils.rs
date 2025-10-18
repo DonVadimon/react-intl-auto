@@ -67,9 +67,75 @@ pub fn get_prefix(
     // Convert path separators to dots
     let base_path = dot_path(&base_path, &opts.separator);
     
-    // Apply removePrefix options
+    // Handle relative_to option first (convert absolute path to relative path)
+    let prefix = if let Some(relative_to) = &opts.relative_to {
+        // Convert relative_to to absolute path if it's relative
+        let relative_to_path = if std::path::Path::new(relative_to).is_absolute() {
+            std::path::PathBuf::from(relative_to)
+        } else {
+            // For relative paths, try to find the project root first
+            if let Some(project_root) = find_project_root(filename) {
+                project_root.join(relative_to)
+            } else {
+                // Fallback to current directory
+                std::env::current_dir()
+                    .unwrap_or_else(|_| std::path::PathBuf::from("."))
+                    .join(relative_to)
+            }
+        };
+        
+        // Calculate the relative path from relative_to to filename
+        let filename_path = if std::path::Path::new(filename).is_absolute() {
+            std::path::PathBuf::from(filename)
+        } else {
+            std::env::current_dir()
+                .unwrap_or_else(|_| std::path::PathBuf::from("."))
+                .join(filename)
+        };
+        
+        if let Ok(relative_path) = filename_path.strip_prefix(&relative_to_path) {
+            // Convert the relative path to dot-separated format
+            let relative_str = relative_path.to_string_lossy().to_string();
+            // Remove file extension if it exists
+            let relative_str = if let Some(ext_pos) = relative_str.rfind('.') {
+                relative_str[..ext_pos].to_string()
+            } else {
+                relative_str
+            };
+            dot_path(&relative_str, &opts.separator)
+        } else {
+            // If we can't calculate relative path, use the original base_path
+            base_path
+        }
+    } else {
+        // Auto-detect project root if relative_to is not specified
+        if let Some(project_root) = find_project_root(filename) {
+            let project_root_str = project_root.to_string_lossy().to_string();
+            let project_root_dots = dot_path(&project_root_str, &opts.separator);
+            
+            if base_path.starts_with(&project_root_dots) {
+                let remaining = &base_path[project_root_dots.len()..];
+                // Remove leading separator if it exists
+                if remaining.starts_with(&opts.separator) {
+                    remaining[opts.separator.len()..].to_string()
+                } else {
+                    remaining.to_string()
+                }
+            } else {
+                base_path
+            }
+        } else {
+            base_path
+        }
+    };
+    
+    // Apply removePrefix options after relative_to processing
     let prefix = match &opts.remove_prefix {
-        Some(RemovePrefix::Boolean(false)) | None => base_path,
+        Some(RemovePrefix::Boolean(true)) => {
+            // Remove all prefix, return empty string
+            String::new()
+        }
+        Some(RemovePrefix::Boolean(false)) | None => prefix,
         Some(RemovePrefix::String(s)) => {
             // Check if the string contains regex patterns (like .* or .+)
             if s.contains(".*") || s.contains(".+") || s.contains("[") || s.contains("(") {
@@ -86,54 +152,20 @@ pub fn get_prefix(
                     result = result[..ext_pos].to_string();
                 }
                 
+                // If result is empty or just contains separators, return empty string
+                if result.trim().is_empty() || result.chars().all(|c| c == '/' || c == '\\') {
+                    return export_name.unwrap_or("").to_string();
+                }
+                
                 // Convert the result to dot-separated format
                 dot_path(&result, &opts.separator)
             } else {
-                dot_path_replace(&base_path, s, &opts.separator)
+                dot_path_replace(&prefix, s, &opts.separator)
             }
-        }
-        _ => base_path,
-    };
-    
-    // Handle relative_to option first
-    let prefix = if let Some(relative_to) = &opts.relative_to {
-        // Convert relative_to to use the same separator as the formatted path
-        let relative_to_dots = dot_path(relative_to, &opts.separator);
-        
-        if prefix.starts_with(&relative_to_dots) {
-            let remaining = &prefix[relative_to_dots.len()..];
-            // Remove leading separator if it exists
-            if remaining.starts_with(&opts.separator) {
-                remaining[opts.separator.len()..].to_string()
-            } else {
-                remaining.to_string()
-            }
-        } else {
-            prefix
-        }
-    } else {
-        // Auto-detect project root if relative_to is not specified
-        if let Some(project_root) = find_project_root(filename) {
-            let project_root_str = project_root.to_string_lossy().to_string();
-            let project_root_dots = dot_path(&project_root_str, &opts.separator);
-            
-            if prefix.starts_with(&project_root_dots) {
-                let remaining = &prefix[project_root_dots.len()..];
-                // Remove leading separator if it exists
-                if remaining.starts_with(&opts.separator) {
-                    remaining[opts.separator.len()..].to_string()
-                } else {
-                    remaining.to_string()
-                }
-            } else {
-                prefix
-            }
-        } else {
-            prefix
         }
     };
     
-    // Apply filebase option after relative_to processing
+    // Apply filebase option after relative_to and remove_prefix processing
     let prefix = if opts.filebase {
         // Extract just the filename without path
         if let Some(file_name) = filename.file_stem() {

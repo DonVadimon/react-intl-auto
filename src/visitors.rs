@@ -118,7 +118,10 @@ impl JSXVisitor {
                 if let Some(message_value) = self.extract_from_value(jsx_attr) {
                     create_hash(&message_value)
                 } else {
-                    String::new()
+                    // When we can't extract the message value, generate a hash based on file path and position
+                    let file_path = self.state.filename.to_string_lossy().to_string();
+                    let position_hash = create_hash(&format!("{}{}", file_path, element.span.lo.0));
+                    position_hash
                 }
             });
             

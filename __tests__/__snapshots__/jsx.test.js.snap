@@ -9,7 +9,7 @@ function App() {
         goodbye: 'Goodbye World'
     };
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test.",
+        id: "test.1753949187",
         defaultMessage: messages.hello
     });
 }
@@ -22,7 +22,7 @@ import { FormattedMessage } from 'react-intl';
 function App(param) {
     var message = param.message;
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test.",
+        id: "test.1861808495",
         defaultMessage: message
     });
 }
@@ -73,7 +73,7 @@ exports[`JSX Elements FormattedMessage should add id to FormattedMessage with te
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test.",
+        id: "test.4257694686",
         defaultMessage: "Hello ".concat(name)
     });
 }

@@ -125,7 +125,7 @@ import { FormattedMessage } from 'react-intl';
 function App() {
     var message = "Hello World";
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test.",
+        id: "test.2502809536",
         defaultMessage: message
     });
 }

@@ -5,8 +5,6 @@
   "main": "swc-plugin-react-intl-auto.wasm",
   "scripts": {
     "build": "node build.js",
-    "build:wasm32": "cargo build --release --target wasm32-unknown-unknown",
-    "build:wasip1": "cargo build --release --target wasm32-wasip1 && cp ../../target/wasm32-wasip1/release/swc_plugin_react_intl_auto.wasm .",
     "test": "jest",
     "test:watch": "jest --watch"
   },

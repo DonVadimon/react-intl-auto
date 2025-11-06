@@ -5,7 +5,7 @@ exports[`swc-plugin-react-intl-auto Edge cases should handle aliased imports 1`]
 import { FormattedMessage as FM } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FM, {
-        id: "test.427197390",
+        id: "427197390",
         defaultMessage: "Hello World"
     });
 }
@@ -17,7 +17,7 @@ exports[`swc-plugin-react-intl-auto Edge cases should handle default imports 1`]
 function App() {
     return intl.formatMessage({
         defaultMessage: 'Hello World',
-        "id": "test.427197390"
+        "id": "427197390"
     });
 }
 "
@@ -29,7 +29,7 @@ import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
 var messages = defineMessages({
     hello: {
         defaultMessage: 'Hello World',
-        "id": "test.hello"
+        "id": "hello"
     }
 });
 function App() {
@@ -37,12 +37,12 @@ function App() {
     return /*#__PURE__*/ _jsxs("div", {
         children: [
             /*#__PURE__*/ _jsx(FormattedMessage, {
-                id: "test.433090104",
+                id: "433090104",
                 defaultMessage: "JSX Message"
             }),
             intl.formatMessage({
                 defaultMessage: 'Hook Message',
-                "id": "test.2317348113"
+                "id": "2317348113"
             })
         ]
     });
@@ -55,13 +55,13 @@ exports[`swc-plugin-react-intl-auto Edge cases should handle multiple defineMess
 var messages1 = defineMessages({
     hello: {
         defaultMessage: 'Hello World',
-        "id": "test.hello"
+        "id": "hello"
     }
 });
 var messages2 = defineMessages({
     goodbye: {
         defaultMessage: 'Goodbye World',
-        "id": "test.goodbye"
+        "id": "goodbye"
     }
 });
 "
@@ -74,12 +74,12 @@ function App() {
     return /*#__PURE__*/ _jsxs("div", {
         children: [
             /*#__PURE__*/ _jsx(FormattedMessage, {
-                id: "test.427197390",
+                id: "427197390",
                 defaultMessage: "Hello World"
             }),
             /*#__PURE__*/ _jsx("span", {
                 children: /*#__PURE__*/ _jsx(FormattedMessage, {
-                    id: "test.2848041016",
+                    id: "2848041016",
                     defaultMessage: "Nested message"
                 })
             })
@@ -100,7 +100,7 @@ exports[`swc-plugin-react-intl-auto FormattedHTMLMessage JSX elements should add
 import { FormattedHTMLMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
-        id: "test.3543894310",
+        id: "3543894310",
         defaultMessage: "<b>Hello World</b>"
     });
 }
@@ -112,7 +112,7 @@ exports[`swc-plugin-react-intl-auto FormattedMessage JSX elements should add id 
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test.427197390",
+        id: "427197390",
         defaultMessage: "Hello World"
     });
 }
@@ -125,7 +125,7 @@ import { FormattedMessage } from 'react-intl';
 function App() {
     var message = "Hello World";
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test.2502809536",
+        id: "2502809536",
         defaultMessage: message
     });
 }
@@ -137,7 +137,7 @@ exports[`swc-plugin-react-intl-auto FormattedMessage JSX elements should handle 
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test.myKey",
+        id: "myKey",
         defaultMessage: "Hello World"
     }, "myKey");
 }
@@ -161,7 +161,7 @@ exports[`swc-plugin-react-intl-auto Plugin options should handle custom module s
 import { FormattedMessage } from 'my-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test.427197390",
+        id: "427197390",
         defaultMessage: "Hello World"
     });
 }
@@ -173,7 +173,7 @@ exports[`swc-plugin-react-intl-auto Plugin options should handle custom separato
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test_427197390",
+        id: "427197390",
         defaultMessage: "Hello World"
     });
 }
@@ -197,7 +197,7 @@ exports[`swc-plugin-react-intl-auto Plugin options should handle removePrefix op
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "App.427197390",
+        id: "427197390",
         defaultMessage: "Hello World"
     });
 }
@@ -209,7 +209,7 @@ exports[`swc-plugin-react-intl-auto defineMessages function calls should add id 
 var messages = defineMessages({
     hello: {
         defaultMessage: 'Hello World',
-        "id": "test.hello"
+        "id": "hello"
     }
 });
 "
@@ -220,7 +220,7 @@ exports[`swc-plugin-react-intl-auto defineMessages function calls should handle 
 export var messages = defineMessages({
     hello: {
         defaultMessage: 'Hello World',
-        "id": "test.messages.hello"
+        "id": "messages.hello"
     }
 });
 "
@@ -230,7 +230,7 @@ exports[`swc-plugin-react-intl-auto defineMessages function calls should handle 
 "import { defineMessages } from 'react-intl';
 var messages = defineMessages({
     hello: {
-        "id": "test.hello",
+        "id": "hello",
         "defaultMessage": "Hello World"
     }
 });
@@ -243,7 +243,7 @@ function MyComponent(param) {
     var intl = param.intl;
     return intl.formatMessage({
         defaultMessage: 'Hello World',
-        "id": "test.427197390"
+        "id": "427197390"
     });
 }
 export default injectIntl(MyComponent);
@@ -256,7 +256,7 @@ function MyComponent() {
     var intl = useIntl();
     return intl.formatMessage({
         defaultMessage: 'Hello World',
-        "id": "test.427197390"
+        "id": "427197390"
     });
 }
 "

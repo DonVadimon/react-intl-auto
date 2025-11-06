@@ -26,7 +26,7 @@ function MyComponent() {
     var intl = useIntl();
     return intl.formatMessage({
         defaultMessage: 123,
-        "id": "test.4263240168"
+        "id": "4263240168"
     });
 }
 "
@@ -38,7 +38,7 @@ var MyComponent = function() {
     var intl = useIntl();
     return intl.formatMessage({
         defaultMessage: 'Hello World',
-        "id": "test.427197390"
+        "id": "427197390"
     });
 };
 "
@@ -52,7 +52,7 @@ function MyComponent() {
     var handleClick = function() {
         var message = intl.formatMessage({
             defaultMessage: 'Button clicked',
-            "id": "test.221918764"
+            "id": "221918764"
         });
         console.log(message);
     };
@@ -96,7 +96,7 @@ var MyComponent = /*#__PURE__*/ function() {
             value: function render() {
                 return this.props.intl.formatMessage({
                     defaultMessage: 'Hello World',
-                    "id": "test.427197390"
+                    "id": "427197390"
                 });
             }
         }
@@ -116,7 +116,7 @@ function MyComponent() {
     };
     return intl.formatMessage({
         defaultMessage: 'Hello World',
-        "id": "test.427197390"
+        "id": "427197390"
     });
 }
 "
@@ -129,7 +129,7 @@ function MyComponent(param) {
     var intl = useIntl();
     return intl.formatMessage({
         defaultMessage: message,
-        "id": "test.2668051809"
+        "id": "2668051809"
     });
 }
 "
@@ -142,7 +142,7 @@ function MyComponent(param) {
     var intl = useIntl();
     return intl.formatMessage({
         defaultMessage: "Hello ".concat(name),
-        "id": "test.376814653"
+        "id": "376814653"
     });
 }
 "
@@ -155,7 +155,7 @@ function MyComponent() {
     return intl.formatMessage({
         key: 'myKey',
         defaultMessage: 'Hello World',
-        "id": "test.myKey"
+        "id": "myKey"
     });
 }
 "
@@ -167,7 +167,7 @@ function MyComponent(param) {
     var intl = param.intl;
     return intl.formatMessage({
         defaultMessage: 'Hello World',
-        "id": "test.427197390"
+        "id": "427197390"
     });
 }
 export default injectIntl(MyComponent);
@@ -181,7 +181,7 @@ function MyComponent(param) {
     return intl.formatMessage({
         defaultMessage: 'Hello World',
         description: 'A greeting message',
-        "id": "test.427197390"
+        "id": "427197390"
     });
 }
 export default injectIntl(MyComponent);
@@ -197,7 +197,7 @@ function MyComponent(param) {
         values: {
             name: name
         },
-        "id": "test.471047910"
+        "id": "471047910"
     });
 }
 export default injectIntl(MyComponent);
@@ -223,7 +223,7 @@ function MyComponent() {
     var intl = useIntl();
     return intl.formatMessage({
         defaultMessage: 'Hello World',
-        "id": "test.427197390"
+        "id": "427197390"
     });
 }
 "
@@ -239,7 +239,7 @@ function MyComponent(param) {
         values: {
             name: name
         },
-        "id": "test.471047910"
+        "id": "471047910"
     });
 }
 "
@@ -254,11 +254,11 @@ function MyComponent() {
         children: [
             intl.formatMessage({
                 defaultMessage: 'First message',
-                "id": "test.340787992"
+                "id": "340787992"
             }),
             intl.formatMessage({
                 defaultMessage: 'Second message',
-                "id": "test.151823759"
+                "id": "151823759"
             })
         ]
     });

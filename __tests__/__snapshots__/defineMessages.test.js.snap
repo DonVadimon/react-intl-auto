@@ -5,7 +5,7 @@ exports[`defineMessages Basic defineMessages should add id to defineMessages wit
 var messages = defineMessages({
     hello: {
         defaultMessage: 'Hello World',
-        "id": "test.hello"
+        "id": "hello"
     }
 });
 "
@@ -15,7 +15,7 @@ exports[`defineMessages Basic defineMessages should add id to defineMessages wit
 "import { defineMessages } from 'react-intl';
 var messages = defineMessages({
     hello: {
-        "id": "test.hello",
+        "id": "hello",
         "defaultMessage": "Hello World"
     }
 });
@@ -26,12 +26,12 @@ exports[`defineMessages Basic defineMessages should handle defineMessages with m
 "import { defineMessages } from 'react-intl';
 var messages = defineMessages({
     hello: {
-        "id": "test.hello",
+        "id": "hello",
         "defaultMessage": "Hello World"
     },
     goodbye: {
         defaultMessage: 'Goodbye World',
-        "id": "test.goodbye"
+        "id": "goodbye"
     }
 });
 "
@@ -42,11 +42,11 @@ exports[`defineMessages Basic defineMessages should handle defineMessages with m
 var messages = defineMessages({
     hello: {
         defaultMessage: 'Hello World',
-        "id": "test.hello"
+        "id": "hello"
     },
     goodbye: {
         defaultMessage: 'Goodbye World',
-        "id": "test.goodbye"
+        "id": "goodbye"
     }
 });
 "
@@ -58,14 +58,14 @@ function createMessages() {
     return defineMessages({
         hello: {
             defaultMessage: 'Hello World',
-            "id": "test.hello"
+            "id": "hello"
         }
     });
 }
 var messages = defineMessages({
     goodbye: {
         defaultMessage: 'Goodbye World',
-        "id": "test.goodbye"
+        "id": "goodbye"
     }
 });
 "
@@ -76,15 +76,15 @@ exports[`defineMessages Multiple defineMessages calls should handle defineMessag
 var messages = defineMessages({
     1: {
         defaultMessage: 'Message for key 1',
-        "id": "test.1"
+        "id": "1"
     },
     2: {
         defaultMessage: 'Message for key 2',
-        "id": "test.2"
+        "id": "2"
     },
     '3': {
         defaultMessage: 'Message for key 3',
-        "id": "test.3"
+        "id": "3"
     }
 });
 "
@@ -95,13 +95,13 @@ exports[`defineMessages Multiple defineMessages calls should handle multiple def
 var messages1 = defineMessages({
     hello: {
         defaultMessage: 'Hello World',
-        "id": "test.hello"
+        "id": "hello"
     }
 });
 var messages2 = defineMessages({
     goodbye: {
         defaultMessage: 'Goodbye World',
-        "id": "test.goodbye"
+        "id": "goodbye"
     }
 });
 "
@@ -134,7 +134,7 @@ exports[`defineMessages defineMessages edge cases should handle defineMessages w
 var messages = defineMessages({
     hello: {
         defaultMessage: 123,
-        "id": "test.hello"
+        "id": "hello"
     }
 });
 "
@@ -164,7 +164,7 @@ var messages = defineMessages({
     hello: {
         defaultMessage: 'Hello World',
         description: 'A greeting message',
-        "id": "test.hello"
+        "id": "hello"
     }
 });
 "
@@ -186,11 +186,11 @@ exports[`defineMessages defineMessages with complex keys should handle defineMes
 var messages = defineMessages({
     0: {
         defaultMessage: 'First message',
-        "id": "test.0"
+        "id": "0"
     },
     1: {
         defaultMessage: 'Second message',
-        "id": "test.1"
+        "id": "1"
     }
 });
 "
@@ -201,11 +201,11 @@ exports[`defineMessages defineMessages with complex keys should handle defineMes
 var messages = defineMessages({
     'hello.world': {
         defaultMessage: 'Hello World',
-        "id": "test.hello.world"
+        "id": "hello.world"
     },
     'goodbye.world': {
         defaultMessage: 'Goodbye World',
-        "id": "test.goodbye.world"
+        "id": "goodbye.world"
     }
 });
 "
@@ -216,7 +216,7 @@ exports[`defineMessages defineMessages with export should handle default export 
 export default defineMessages({
     hello: {
         defaultMessage: 'Hello World',
-        "id": "test.hello"
+        "id": "hello"
     }
 });
 "
@@ -227,7 +227,7 @@ exports[`defineMessages defineMessages with export should handle defineMessages 
 export var messages = defineMessages({
     hello: {
         defaultMessage: 'Hello World',
-        "id": "test.messages.hello"
+        "id": "messages.hello"
     }
 });
 "
@@ -238,7 +238,7 @@ exports[`defineMessages defineMessages with export should handle exported define
 export var messages = defineMessages({
     hello: {
         defaultMessage: 'Hello World',
-        "id": "test.hello"
+        "id": "hello"
     }
 });
 "

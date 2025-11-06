@@ -9,7 +9,7 @@ function App() {
         goodbye: 'Goodbye World'
     };
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test.1753949187",
+        id: "1753949187",
         defaultMessage: messages.hello
     });
 }
@@ -22,7 +22,7 @@ import { FormattedMessage } from 'react-intl';
 function App(param) {
     var message = param.message;
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test.1861808495",
+        id: "1861808495",
         defaultMessage: message
     });
 }
@@ -34,7 +34,7 @@ exports[`JSX Elements FormattedHTMLMessage should add id to FormattedHTMLMessage
 import { FormattedHTMLMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
-        id: "test.3543894310",
+        id: "3543894310",
         defaultMessage: "<b>Hello World</b>"
     });
 }
@@ -46,7 +46,7 @@ exports[`JSX Elements FormattedHTMLMessage should handle FormattedHTMLMessage wi
 import { FormattedHTMLMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
-        id: "test.414297700",
+        id: "414297700",
         defaultMessage: "<b>Hello {name}</b>",
         values: {
             name: 'World'
@@ -61,7 +61,7 @@ exports[`JSX Elements FormattedMessage should add id to FormattedMessage with st
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test.427197390",
+        id: "427197390",
         defaultMessage: "Hello World"
     });
 }
@@ -73,7 +73,7 @@ exports[`JSX Elements FormattedMessage should add id to FormattedMessage with te
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test.4257694686",
+        id: "4257694686",
         defaultMessage: "Hello ".concat(name)
     });
 }
@@ -85,7 +85,7 @@ exports[`JSX Elements FormattedMessage should handle FormattedMessage with all p
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test.471047910",
+        id: "471047910",
         defaultMessage: "Hello {name}",
         description: "A greeting message",
         values: {
@@ -102,7 +102,7 @@ exports[`JSX Elements FormattedMessage should handle FormattedMessage with descr
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test.427197390",
+        id: "427197390",
         defaultMessage: "Hello World",
         description: "A greeting message"
     });
@@ -115,7 +115,7 @@ exports[`JSX Elements FormattedMessage should handle FormattedMessage with value
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test.471047910",
+        id: "471047910",
         defaultMessage: "Hello {name}",
         values: {
             name: 'World'
@@ -132,7 +132,7 @@ function App(param) {
     var showMessage = param.showMessage;
     return /*#__PURE__*/ _jsx("div", {
         children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
-            id: "test.3541072352",
+            id: "3541072352",
             defaultMessage: "Conditional message"
         })
     });
@@ -147,12 +147,12 @@ function App() {
     return /*#__PURE__*/ _jsxs("div", {
         children: [
             /*#__PURE__*/ _jsx(FormattedMessage, {
-                id: "test.1751134271",
+                id: "1751134271",
                 defaultMessage: "Outer message"
             }),
             /*#__PURE__*/ _jsx("span", {
                 children: /*#__PURE__*/ _jsx(FormattedMessage, {
-                    id: "test.636519693",
+                    id: "636519693",
                     defaultMessage: "Inner message"
                 })
             })
@@ -167,7 +167,7 @@ exports[`JSX Elements Self-closing elements should handle self-closing Formatted
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test.427197390",
+        id: "427197390",
         defaultMessage: "Hello World"
     });
 }

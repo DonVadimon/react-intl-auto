@@ -192,7 +192,17 @@ pub fn get_prefix(
             prefix
         }
     } else {
-        prefix
+        // Keep only directory parts; drop the filename segment from the prefix
+        if prefix.is_empty() {
+            prefix
+        } else {
+            let sep = &opts.separator;
+            if let Some(pos) = prefix.rfind(sep) {
+                prefix[..pos].to_string()
+            } else {
+                String::new()
+            }
+        }
     };
     
     match export_name {

@@ -23,7 +23,7 @@ exports[`Plugin Options extract_comments option should handle extract_comments o
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test.427197390",
+        id: "427197390",
         // This is a comment
         defaultMessage: "Hello World"
     });
@@ -48,7 +48,7 @@ exports[`Plugin Options filebase option should not include filename in id when f
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "src.components.App.427197390",
+        id: "src.components.427197390",
         defaultMessage: "Hello World"
     });
 }
@@ -60,7 +60,7 @@ exports[`Plugin Options include_export_name option should handle include_export_
 export default defineMessages({
     hello: {
         defaultMessage: 'Hello World',
-        "id": "test.messages.hello"
+        "id": "messages.hello"
     }
 });
 "
@@ -71,7 +71,7 @@ exports[`Plugin Options include_export_name option should include export name in
 export var messages = defineMessages({
     hello: {
         defaultMessage: 'Hello World',
-        "id": "test.messages.hello"
+        "id": "messages.hello"
     }
 });
 "
@@ -82,7 +82,7 @@ exports[`Plugin Options include_export_name option should not include export nam
 export var messages = defineMessages({
     hello: {
         defaultMessage: 'Hello World',
-        "id": "test.hello"
+        "id": "hello"
     }
 });
 "
@@ -93,7 +93,7 @@ exports[`Plugin Options module_source_name option should work with custom module
 import { FormattedMessage } from 'my-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test.427197390",
+        id: "427197390",
         defaultMessage: "Hello World"
     });
 }
@@ -105,7 +105,7 @@ exports[`Plugin Options module_source_name option should work with react-intl by
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test.427197390",
+        id: "427197390",
         defaultMessage: "Hello World"
     });
 }
@@ -117,7 +117,7 @@ exports[`Plugin Options relative_to option should handle relative_to option 1`] 
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "components.App.427197390",
+        id: "components.427197390",
         defaultMessage: "Hello World"
     });
 }
@@ -141,7 +141,7 @@ exports[`Plugin Options remove_prefix option should remove regex prefix from fil
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "App.427197390",
+        id: "427197390",
         defaultMessage: "Hello World"
     });
 }
@@ -153,7 +153,7 @@ exports[`Plugin Options remove_prefix option should remove regex prefix from fil
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "App.427197390",
+        id: "427197390",
         defaultMessage: "Hello World"
     });
 }
@@ -165,7 +165,7 @@ exports[`Plugin Options remove_prefix option should remove string prefix from fi
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "components.App.427197390",
+        id: "components.427197390",
         defaultMessage: "Hello World"
     });
 }
@@ -177,7 +177,7 @@ exports[`Plugin Options separator option should use custom separator 1`] = `
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test_427197390",
+        id: "427197390",
         defaultMessage: "Hello World"
     });
 }
@@ -189,7 +189,7 @@ exports[`Plugin Options separator option should use dot separator by default 1`]
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test.427197390",
+        id: "427197390",
         defaultMessage: "Hello World"
     });
 }
@@ -201,7 +201,7 @@ exports[`Plugin Options use_key option should use defaultMessage hash when use_k
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test.427197390",
+        id: "427197390",
         defaultMessage: "Hello World"
     }, "myKey");
 }
@@ -213,7 +213,7 @@ exports[`Plugin Options use_key option should use key attribute when use_key is 
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "test.myKey",
+        id: "myKey",
         defaultMessage: "Hello World"
     }, "myKey");
 }
@@ -227,7 +227,7 @@ function App() {
     return intl.formatMessage({
         key: 'myKey',
         defaultMessage: 'Hello World',
-        "id": "test.myKey"
+        "id": "myKey"
     });
 }
 "

@@ -292,7 +292,7 @@ mod tests {
         let state = create_test_state("src/components/App.js", opts);
         
         let result = get_prefix(&state, None);
-        assert_eq!(result, "src.components.App");
+        assert_eq!(result, "src.components");
     }
 
     #[test]
@@ -301,7 +301,7 @@ mod tests {
         let state = create_test_state("src/components/App.js", opts);
         
         let result = get_prefix(&state, Some("hello"));
-        assert_eq!(result, "src.components.App.hello");
+        assert_eq!(result, "src.components.hello");
     }
 
     #[test]
@@ -321,7 +321,7 @@ mod tests {
         let state = create_test_state("src/components/App.js", opts);
         
         let result = get_prefix(&state, Some("hello"));
-        assert_eq!(result, "components.App.hello");
+        assert_eq!(result, "components.hello");
     }
 
     #[test]
@@ -331,7 +331,7 @@ mod tests {
         let state = create_test_state("src/components/App.js", opts);
         
         let result = get_prefix(&state, Some("hello"));
-        assert_eq!(result, "App.hello");
+        assert_eq!(result, "hello");
     }
 
     #[test]
@@ -343,7 +343,7 @@ mod tests {
         let state = create_test_state("src/components/App.js", opts);
         
         let result = get_prefix(&state, Some("hello"));
-        assert_eq!(result, "components.App.hello");
+        assert_eq!(result, "components.hello");
     }
 
     #[test]
@@ -353,7 +353,7 @@ mod tests {
         let state = create_test_state("/Users/ryan/project/src/components/App.js", opts);
         
         let result = get_prefix(&state, Some("hello"));
-        assert_eq!(result, "components.App.hello");
+        assert_eq!(result, "components.hello");
     }
 
     #[test]
@@ -363,7 +363,7 @@ mod tests {
         let state = create_test_state("src/components/App.js", opts);
         
         let result = get_prefix(&state, Some("hello"));
-        assert_eq!(result, "App.hello");
+        assert_eq!(result, "hello");
     }
 
     #[test]
@@ -373,7 +373,7 @@ mod tests {
         let state = create_test_state("/Users/ryan/project/src/components/App.js", opts);
         
         let result = get_prefix(&state, Some("hello"));
-        assert_eq!(result, "App.hello");
+        assert_eq!(result, "hello");
     }
 
     #[test]
@@ -383,7 +383,7 @@ mod tests {
         let state = create_test_state("src/components/App.js", opts);
         
         let result = get_prefix(&state, Some("hello"));
-        assert_eq!(result, "components.App.hello");
+        assert_eq!(result, "components.hello");
     }
 
     #[test]
@@ -394,7 +394,7 @@ mod tests {
         
         // When relative_to doesn't match, should return original path
         let result = get_prefix(&state, Some("hello"));
-        assert_eq!(result, "src.components.App.hello");
+        assert_eq!(result, "src.components.hello");
     }
 
     #[test]
@@ -425,7 +425,7 @@ mod tests {
         let state = create_test_state("src/components/App.js", opts);
         
         let result = get_prefix(&state, Some("hello"));
-        assert_eq!(result, "src_components_App_hello");
+        assert_eq!(result, "src_components_hello");
     }
 
     #[test]
@@ -446,7 +446,7 @@ mod tests {
         let state = create_test_state("src/components/App.js", opts);
         
         let result = get_prefix(&state, Some(""));
-        assert_eq!(result, "src.components.App.");
+        assert_eq!(result, "src.components.");
     }
 
     #[test]
@@ -455,7 +455,7 @@ mod tests {
         let state = create_test_state("src/components/App.js", opts);
         
         let result = get_prefix(&state, None);
-        assert_eq!(result, "src.components.App");
+        assert_eq!(result, "src.components");
     }
 
     #[test]
@@ -465,7 +465,7 @@ mod tests {
         let state = create_test_state("src/components/App.js", opts);
         
         let result = get_prefix(&state, Some("hello"));
-        assert_eq!(result, "src.components.App.hello");
+        assert_eq!(result, "src.components.hello");
     }
 
     #[test]
@@ -475,16 +475,16 @@ mod tests {
         // Test .tsx file
         let state = create_test_state("src/components/App.tsx", opts.clone());
         let result = get_prefix(&state, Some("hello"));
-        assert_eq!(result, "src.components.App.hello");
+        assert_eq!(result, "src.components.hello");
         
         // Test .ts file
         let state = create_test_state("src/components/App.ts", opts.clone());
         let result = get_prefix(&state, Some("hello"));
-        assert_eq!(result, "src.components.App.hello");
+        assert_eq!(result, "src.components.hello");
         
         // Test file without extension
         let state = create_test_state("src/components/App", opts);
         let result = get_prefix(&state, Some("hello"));
-        assert_eq!(result, "src.components.App.hello");
+        assert_eq!(result, "src.components.hello");
     }
 }

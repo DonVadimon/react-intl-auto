@@ -13,7 +13,7 @@
     "experimental": {
       "plugins": [
         [
-          "/Users/ryan/mine/swc-plugin-react-intl-auto/swc-plugin-react-intl-auto.wasm",
+          "/Users/admin/mine/swc-plugin-react-intl-auto/swc-plugin-react-intl-auto.wasm",
           // "swc-plugin-react-intl-auto",
           {
             "removePrefix": "src/messages",

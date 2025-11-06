@@ -66,7 +66,7 @@ pub fn get_prefix(
     
     // Convert path separators to dots
     let base_path = dot_path(&base_path, &opts.separator);
-    
+
     // Handle relative_to option first (convert absolute path to relative path)
     let prefix = if let Some(relative_to) = &opts.relative_to {
         // Convert relative_to to absolute path if it's relative

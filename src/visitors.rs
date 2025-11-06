@@ -488,6 +488,34 @@ impl CallExpressionVisitor {
                                         props: vec![PropOrSpread::Prop(Box::new(id_prop)), PropOrSpread::Prop(Box::new(default_message_prop))],
                                     }));
                                 }
+                                Expr::Tpl(template) => {
+                                    // Handle template literal defaultMessage for numeric keys
+                                    let id = if let Some(ref export_name) = export_name {
+                                        get_prefix(&self.state, Some(&format!("{}.{}", export_name, key_name)))
+                                    } else {
+                                        get_prefix(&self.state, Some(&key_name))
+                                    };
+
+                                    let id_prop = object_property("id", Expr::Lit(Lit::Str(Str {
+                                        span: swc_core::common::DUMMY_SP,
+                                        value: id.into(),
+                                        raw: None,
+                                    })));
+
+                                    // Preserve the template literal in output
+                                    let default_message_prop = object_property(
+                                        "defaultMessage",
+                                        Expr::Tpl(template.clone())
+                                    );
+
+                                    *value = Box::new(Expr::Object(ObjectLit {
+                                        span: swc_core::common::DUMMY_SP,
+                                        props: vec![
+                                            PropOrSpread::Prop(Box::new(id_prop)),
+                                            PropOrSpread::Prop(Box::new(default_message_prop)),
+                                        ],
+                                    }));
+                                }
                                 _ => {}
                             }
                         }

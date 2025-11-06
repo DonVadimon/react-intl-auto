@@ -17,7 +17,7 @@ pub struct PluginOptions {
     pub module_source_name: String,
     #[serde(default = "default_separator")]
     pub separator: String,
-    #[serde(default)]
+    #[serde(default, alias = "relativeTo")]
     pub relative_to: Option<String>,
 }
 

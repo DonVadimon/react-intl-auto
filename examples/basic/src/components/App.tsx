@@ -36,6 +36,11 @@ export const App: React.FC = () => {
           defaultMessage="Hello {name}" 
           values={{ name: 'World' }}
         />
+        {/* <FormattedMessage 
+          defaultMessage="createOrSaveAlert" 
+          values={{ id: '123' }}
+        /> */}
+        {intl.formatMessage(messages.createOrSaveAlert, { id: '123' })}
       </p>
       {intl.formatMessage(messages.hello, { name: 'World' })}
       <button aria-label={label}>

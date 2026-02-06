@@ -13,7 +13,7 @@ This plugin automatically adds `id` attributes/properties to:
 ## Installation
 
 ```bash
-npm install swc-plugin-react-intl-auto
+npm install swc-plugin-react-intl-auto-fs
 ```
 
 ## Usage
@@ -22,7 +22,7 @@ npm install swc-plugin-react-intl-auto
 
 ```javascript
 const { transform } = require('@swc/core');
-const plugin = require('swc-plugin-react-intl-auto');
+const plugin = require('swc-plugin-react-intl-auto-fs');
 
 const result = await transform(code, {
   filename: 'example.js',
@@ -36,7 +36,7 @@ const result = await transform(code, {
 
 ```javascript
 const { transform } = require('@swc/core');
-const plugin = require('swc-plugin-react-intl-auto');
+const plugin = require('swc-plugin-react-intl-auto-fs');
 
 const result = await transform(code, {
   filename: 'example.js',
@@ -218,7 +218,7 @@ NPM_TOKEN=your_token npm run check-token
 **Alternative**: Use GitHub Packages instead of npm (no token expiration):
 - Enable the `publish-github-packages.yml` workflow
 - Disable the regular `publish.yml` workflow
-- Packages will be published to `@lcl9288/swc-plugin-react-intl-auto`
+- Packages will be published to `@lcl9288/swc-plugin-react-intl-auto-fs`
 
 ### Repository Setup
 

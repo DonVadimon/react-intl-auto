@@ -1,0 +1,107 @@
+# Agent Guidelines for swc-plugin-react-intl-auto
+
+This is a hybrid Rust/JavaScript SWC plugin that automatically adds IDs to React Intl components.
+
+## Build Commands
+
+```bash
+# Full build (compiles Rust to WASM + packages for npm)
+npm run build
+
+# Rust-only builds (WASM targets)
+cargo build-wasip1      # wasm32-wasip1 target
+cargo build-wasm32      # wasm32-unknown-unknown target
+
+# Testing
+npm test                # Run all Jest tests
+npm run test:watch      # Run tests in watch mode
+jest __tests__/jsx.test.js              # Run single test file
+jest __tests__/jsx.test.js -t "should add id"  # Run specific test
+
+# Release
+npm run release         # Build and publish to npm
+npm run test-release    # Test release process locally
+```
+
+## Code Style Guidelines
+
+### Rust Code Style
+
+- **Naming**: `snake_case` for functions/variables, `PascalCase` for types/structs/enums
+- **Indentation**: 4 spaces
+- **Imports**: Group `use` statements at top; std lib first, then crates, then local modules
+- **Visibility**: Explicit `pub` for all public items; no implicit re-exports
+- **Module organization**: Use `mod types;` declarations in lib.rs, keep modules in separate files
+- **Error handling**: Use `unwrap_or()` / `unwrap_or_else()` with defaults; avoid panicking in production code
+- **Types**: Use explicit type annotations in function signatures; leverage type inference in bodies
+- **Documentation**: Add doc comments (`///`) for public APIs and complex logic
+
+Example:
+```rust
+use std::path::PathBuf;
+use serde::{Deserialize, Serialize};
+use crate::types::PluginOptions;
+
+#[derive(Debug, Clone)]
+pub struct PluginState {
+    pub filename: PathBuf,
+    pub opts: PluginOptions,
+}
+
+impl PluginState {
+    pub fn new(filename: PathBuf, opts: PluginOptions) -> Self {
+        Self { filename, opts }
+    }
+}
+```
+
+### JavaScript Test Style
+
+- **Imports**: Use CommonJS (`require`) not ES modules
+- **Indentation**: 2 spaces
+- **Test structure**: Use `describe` blocks for grouping, `it` for individual tests
+- **Naming**: Descriptive test names: "should [expected behavior] when [condition]"
+- **Snapshots**: Use `toMatchSnapshot()` for output comparison
+- **Async**: Use `async/await` for asynchronous tests
+
+Example:
+```javascript
+const { transform } = require('@swc/core');
+
+describe('feature', () => {
+  it('should add id to FormattedMessage without id', async () => {
+    const result = await transformWithPlugin(code);
+    expect(result).toMatchSnapshot();
+  });
+});
+```
+
+### Project Conventions
+
+- **Plugin options**: Use serde with `#[serde(default, alias = "camelCase")]` for JS-compatible options
+- **WASM output**: Plugin builds to `swc-plugin-react-intl-auto.wasm`
+- **Entry point**: `index.js` loads and exports the WASM binary
+- **Testing**: Unit tests inline in Rust files (`#[cfg(test)]`); integration tests in `__tests__/*.test.js`
+- **Project root detection**: Scans for `yarn.lock`, `package.json`, `.git` to find project boundaries
+- **Path handling**: Always use `PathBuf` and handle both absolute and relative paths
+
+### File Organization
+
+```
+src/
+├── lib.rs           # Main plugin entry, transform function
+├── types.rs         # PluginOptions, PluginState structs
+├── utils.rs         # Helper functions (hashing, path processing)
+├── visitors.rs      # AST visitors (JSXVisitor, CallExpressionVisitor)
+__tests__/
+├── setup.js         # Jest setup file
+├── *.test.js        # Integration tests by feature
+```
+
+## Important Notes
+
+- This is an SWC plugin - it transforms JavaScript/TypeScript AST at compile time
+- The plugin targets `@swc/core` v1.x as a peer dependency
+- Uses murmur3 hashing (seed 0) for ID generation to match babel-plugin-react-intl behavior
+- Supports both `wasm32-wasip1` and `wasm32-unknown-unknown` targets
+- Keep backwards compatibility with existing option formats from babel-plugin-react-intl

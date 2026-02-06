@@ -1,8 +1,8 @@
 {
-  "name": "swc-plugin-react-intl-auto",
+  "name": "swc-plugin-react-intl-auto-fs",
   "version": "1.0.8",
   "description": "SWC plugin for React Intl Auto - automatically adds IDs to FormattedMessage, defineMessages, and formatMessage calls",
-  "main": "swc-plugin-react-intl-auto.wasm",
+  "main": "swc-plugin-react-intl-auto-fs.wasm",
   "scripts": {
     "build": "node build.js",
     "test": "jest",
@@ -27,7 +27,7 @@
   "author": "Your Name",
   "license": "MIT",
   "files": [
-    "swc-plugin-react-intl-auto.wasm",
+    "swc-plugin-react-intl-auto-fs.wasm",
     "index.js",
     "README.md"
   ],

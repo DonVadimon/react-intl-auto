@@ -1,5 +1,5 @@
 [package]
-name = "swc-plugin-react-intl-auto"
+name = "swc-plugin-react-intl-auto-fs"
 version = "1.0.8"
 edition = "2021"
 

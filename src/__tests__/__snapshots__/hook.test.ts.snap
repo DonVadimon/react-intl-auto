@@ -1,0 +1,172 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello"
+});
+intl.formatMessage({
+    defaultMessage: "hello"
+});
+intl.formatMessage({
+    defaultMessage: "some other message"
+});
+export { };
+"
+`;
+
+exports[`default some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello"
+        })
+    });
+};
+"
+`;
+
+exports[`default with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n"
+});
+export { };
+"
+`;
+
+exports[`default with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2"
+});
+export { };
+"
+`;
+
+exports[`default with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message
+});
+export { };
+"
+`;
+
+exports[`default with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`default with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123
+});
+export { };
+"
+`;
+
+exports[`default with injectIntl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello'
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`default with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`default withKeyFlag 1`] = `
+"intl.formatMessage({
+    key: 'foobar',
+    defaultMessage: 'hello'
+});
+export { };
+"
+`;
+
+exports[`filebase = true with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`removePrefix = "src" with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`removePrefix = "src.__fixtures__" with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`removePrefix = "src/" -- with slash with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`removePrefix = /__fixtures__/ with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`removePrefix = false with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`useKey = true with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`useKey = true withKeyFlag 1`] = `
+"intl.formatMessage({
+    key: 'foobar',
+    defaultMessage: 'hello'
+});
+export { };
+"
+`;

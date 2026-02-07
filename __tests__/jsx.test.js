@@ -27,6 +27,42 @@ describe('JSX Elements', () => {
   };
 
   describe('FormattedMessage', () => {
+    describe('plain string (only defaultMessage)', () => {
+      it('should add generated id when only defaultMessage is provided', async () => {
+        const code = `
+          import { FormattedMessage } from 'react-intl';
+          
+          function App() {
+            return <FormattedMessage defaultMessage="Привет" />;
+          }
+        `;
+
+        const result = await transformWithPlugin(code);
+        // Verify id is generated (SWC transforms JSX to _jsx() calls with id property)
+        expect(result).toMatch(/id:/);
+        expect(result).toContain('Привет');
+        expect(result).toMatchSnapshot();
+      });
+    });
+
+    describe('with existing id', () => {
+      it('should preserve existing user id and not overwrite it', async () => {
+        const code = `
+          import { FormattedMessage } from 'react-intl';
+          
+          function App() {
+            return <FormattedMessage id="my-custom-id" defaultMessage="Привет" />;
+          }
+        `;
+
+        const result = await transformWithPlugin(code);
+        // Verify user id is preserved
+        expect(result).toContain('my-custom-id');
+        expect(result).toContain('Привет');
+        expect(result).toMatchSnapshot();
+      });
+    });
+
     it('should add id to FormattedMessage with string defaultMessage', async () => {
       const code = `
         import { FormattedMessage } from 'react-intl';

@@ -27,6 +27,51 @@ describe('formatMessage', () => {
   };
 
   describe('injectIntl formatMessage', () => {
+    describe('object no id', () => {
+      it('should add generated id to formatMessage object without id', async () => {
+        const code = `
+          import { injectIntl } from 'react-intl';
+          
+          function MyComponent({ intl }) {
+            return intl.formatMessage({
+              defaultMessage: 'Привет'
+            });
+          }
+          
+          export default injectIntl(MyComponent);
+        `;
+
+        const result = await transformWithPlugin(code);
+        // Verify id is generated
+        expect(result).toMatch(/["']id["']/);
+        expect(result).toContain('Привет');
+        expect(result).toMatchSnapshot();
+      });
+    });
+
+    describe('object with id', () => {
+      it('should preserve existing user id in formatMessage object', async () => {
+        const code = `
+          import { injectIntl } from 'react-intl';
+          
+          function MyComponent({ intl }) {
+            return intl.formatMessage({
+              id: 'my-id',
+              defaultMessage: 'Привет'
+            });
+          }
+          
+          export default injectIntl(MyComponent);
+        `;
+
+        const result = await transformWithPlugin(code);
+        // Verify user id is preserved
+        expect(result).toContain('my-id');
+        expect(result).toContain('Привет');
+        expect(result).toMatchSnapshot();
+      });
+    });
+
     it('should add id to formatMessage calls', async () => {
       const code = `
         import { injectIntl } from 'react-intl';

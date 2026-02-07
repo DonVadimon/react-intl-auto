@@ -56,6 +56,18 @@ function App() {
 "
 `;
 
+exports[`JSX Elements FormattedMessage plain string (only defaultMessage) should add generated id when only defaultMessage is provided 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "698543816",
+        defaultMessage: "Привет"
+    });
+}
+"
+`;
+
 exports[`JSX Elements FormattedMessage should add id to FormattedMessage with string defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
@@ -120,6 +132,18 @@ function App() {
         values: {
             name: 'World'
         }
+    });
+}
+"
+`;
+
+exports[`JSX Elements FormattedMessage with existing id should preserve existing user id and not overwrite it 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "my-custom-id",
+        defaultMessage: "Привет"
     });
 }
 "

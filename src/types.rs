@@ -19,6 +19,10 @@ pub struct PluginOptions {
     pub separator: String,
     #[serde(default, alias = "relativeTo")]
     pub relative_to: Option<String>,
+    #[serde(default)]
+    pub hash_id: bool,
+    #[serde(default = "default_hash_algorithm")]
+    pub hash_algorithm: String,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -46,6 +50,8 @@ impl Default for PluginOptions {
             module_source_name: "react-intl".to_string(),
             separator: ".".to_string(),
             relative_to: None,
+            hash_id: false,
+            hash_algorithm: "murmur3".to_string(),
         }
     }
 }
@@ -56,6 +62,10 @@ fn default_module_source_name() -> String {
 
 fn default_separator() -> String {
     ".".to_string()
+}
+
+fn default_hash_algorithm() -> String {
+    "murmur3".to_string()
 }
 
 #[derive(Debug, Clone)]

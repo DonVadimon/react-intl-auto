@@ -27,6 +27,60 @@ describe('defineMessages', () => {
   };
 
   describe('Basic defineMessages', () => {
+    describe('plain string', () => {
+      it('should transform string value to object with generated id and defaultMessage', async () => {
+        const code = `
+          import { defineMessages } from 'react-intl';
+          
+          export const messages = defineMessages({
+            hello: 'Привет',
+          });
+        `;
+
+        const result = await transformWithPlugin(code);
+        // Verify transformation: string -> {id, defaultMessage}
+        expect(result).toMatch(/["']id["']/);
+        expect(result).toContain('Привет');
+        expect(result).toMatchSnapshot();
+      });
+    });
+
+    describe('object no id', () => {
+      it('should add generated id to object without id', async () => {
+        const code = `
+          import { defineMessages } from 'react-intl';
+          
+          export const messages = defineMessages({
+            hello: {defaultMessage: 'Привет'},
+          });
+        `;
+
+        const result = await transformWithPlugin(code);
+        // Verify id is generated
+        expect(result).toMatch(/["']id["']/);
+        expect(result).toContain('Привет');
+        expect(result).toMatchSnapshot();
+      });
+    });
+
+    describe('object with id', () => {
+      it('should preserve existing user id and not overwrite it', async () => {
+        const code = `
+          import { defineMessages } from 'react-intl';
+          
+          export const messages = defineMessages({
+            hello: {id: 'my-id', defaultMessage: 'Привет'},
+          });
+        `;
+
+        const result = await transformWithPlugin(code);
+        // Verify user id is preserved
+        expect(result).toContain("my-id");
+        expect(result).toContain('Привет');
+        expect(result).toMatchSnapshot();
+      });
+    });
+
     it('should add id to defineMessages with object values', async () => {
       const code = `
         import { defineMessages } from 'react-intl';

@@ -1,5 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`defineMessages Basic defineMessages object no id should add generated id to object without id 1`] = `
+"import { defineMessages } from 'react-intl';
+export var messages = defineMessages({
+    hello: {
+        defaultMessage: 'Привет',
+        "id": "hello"
+    }
+});
+"
+`;
+
+exports[`defineMessages Basic defineMessages object with id should preserve existing user id and not overwrite it 1`] = `
+"import { defineMessages } from 'react-intl';
+export var messages = defineMessages({
+    hello: {
+        id: 'my-id',
+        defaultMessage: 'Привет'
+    }
+});
+"
+`;
+
+exports[`defineMessages Basic defineMessages plain string should transform string value to object with generated id and defaultMessage 1`] = `
+"import { defineMessages } from 'react-intl';
+export var messages = defineMessages({
+    hello: {
+        "id": "hello",
+        "defaultMessage": "Привет"
+    }
+});
+"
+`;
+
 exports[`defineMessages Basic defineMessages should add id to defineMessages with object values 1`] = `
 "import { defineMessages } from 'react-intl';
 var messages = defineMessages({

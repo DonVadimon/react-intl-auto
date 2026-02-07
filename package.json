@@ -40,6 +40,6 @@
     "typescript": "^5.0.0"
   },
   "peerDependencies": {
-    "@swc/core": "^1.0.0"
+    "@swc/core": "^1.15.0"
   }
 }

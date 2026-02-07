@@ -1,0 +1,221 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hash ID Backward compatibility should work with hash_id: false explicitly 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "427197390",
+        defaultMessage: "Hello World"
+    });
+}
+"
+`;
+
+exports[`Hash ID Backward compatibility should work without hash_id option (default false) 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "427197390",
+        defaultMessage: "Hello World"
+    });
+}
+"
+`;
+
+exports[`Hash ID Base64 hashing should handle defaultMessage with variables using base64 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "471047910",
+        defaultMessage: "Hello {name}",
+        values: {
+            name: 'World'
+        }
+    });
+}
+"
+`;
+
+exports[`Hash ID Base64 hashing should hash ID with base64 algorithm 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "427197390",
+        defaultMessage: "Hello World"
+    });
+}
+"
+`;
+
+exports[`Hash ID Combined options should work with filebase and hash_id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "App.427197390",
+        defaultMessage: "Hello World"
+    });
+}
+"
+`;
+
+exports[`Hash ID Combined options should work with includeExportName and hash_id 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = defineMessages({
+    hello: {
+        "id": "messages.hello",
+        "defaultMessage": "Hello World"
+    }
+});
+export default messages;
+"
+`;
+
+exports[`Hash ID Combined options should work with relativeTo and hash_id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "components.427197390",
+        defaultMessage: "Hello World"
+    });
+}
+"
+`;
+
+exports[`Hash ID Combined options should work with removePrefix and hash_id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "components.427197390",
+        defaultMessage: "Hello World"
+    });
+}
+"
+`;
+
+exports[`Hash ID Murmur3 hashing should handle defaultMessage with variables using murmur3 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "471047910",
+        defaultMessage: "Hello {name}",
+        values: {
+            name: 'World'
+        }
+    });
+}
+"
+`;
+
+exports[`Hash ID Murmur3 hashing should hash ID with murmur3 algorithm 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "427197390",
+        defaultMessage: "Hello World"
+    });
+}
+"
+`;
+
+exports[`Hash ID Unknown algorithm fallback should fallback to murmur3 for unknown algorithm 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "427197390",
+        defaultMessage: "Hello World"
+    });
+}
+"
+`;
+
+exports[`Hash ID defineMessages hashing should handle numeric keys with hashing 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = defineMessages({
+    0: {
+        "id": "0",
+        "defaultMessage": "First"
+    },
+    1: {
+        "id": "1",
+        "defaultMessage": "Second"
+    }
+});
+"
+`;
+
+exports[`Hash ID defineMessages hashing should handle shorthand defineMessages with hashing 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = defineMessages({
+    greeting: {
+        "id": "greeting",
+        "defaultMessage": "Привет мир"
+    }
+});
+"
+`;
+
+exports[`Hash ID defineMessages hashing should work with defineMessages and base64 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = defineMessages({
+    hello: {
+        "id": "hello",
+        "defaultMessage": "Hello World"
+    },
+    goodbye: {
+        "id": "goodbye",
+        "defaultMessage": "Goodbye World"
+    }
+});
+export default messages;
+"
+`;
+
+exports[`Hash ID defineMessages hashing should work with defineMessages and murmur3 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = defineMessages({
+    hello: {
+        defaultMessage: 'Hello World',
+        "id": "hello"
+    },
+    goodbye: {
+        defaultMessage: 'Goodbye World',
+        "id": "goodbye"
+    }
+});
+export default messages;
+"
+`;
+
+exports[`Hash ID formatMessage hashing should work with formatMessage and base64 1`] = `
+"import { useIntl } from 'react-intl';
+function App() {
+    var intl = useIntl();
+    return intl.formatMessage({
+        defaultMessage: 'Hello World',
+        "id": "427197390"
+    });
+}
+"
+`;
+
+exports[`Hash ID formatMessage hashing should work with formatMessage and murmur3 1`] = `
+"import { useIntl } from 'react-intl';
+function App() {
+    var intl = useIntl();
+    return intl.formatMessage({
+        defaultMessage: 'Hello World',
+        "id": "427197390"
+    });
+}
+"
+`;

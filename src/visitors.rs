@@ -143,13 +143,20 @@ impl JSXVisitor {
 
             let prefix = get_prefix(&self.state, Some(&suffix));
 
+            // Apply hash_id option if enabled
+            let final_id = if self.state.opts.hash_id {
+                hash_string(&prefix, &self.state.opts.hash_algorithm)
+            } else {
+                prefix
+            };
+
             // Insert id attribute before defaultMessage
             let id_attr = JSXAttrOrSpread::JSXAttr(JSXAttr {
                 span: swc_core::common::DUMMY_SP,
                 name: JSXAttrName::Ident(IdentName::new("id".into(), swc_core::common::DUMMY_SP)),
                 value: Some(JSXAttrValue::Str(Str {
                     span: swc_core::common::DUMMY_SP,
-                    value: prefix.into(),
+                    value: final_id.into(),
                     raw: None,
                 })),
             });
@@ -430,12 +437,19 @@ impl CallExpressionVisitor {
 
             let id = get_prefix(&self.state, Some(&suffix));
 
+            // Apply hash_id option if enabled
+            let final_id = if self.state.opts.hash_id {
+                hash_string(&id, &self.state.opts.hash_algorithm)
+            } else {
+                id
+            };
+
             // Add id property
             let id_prop = object_property(
                 "id",
                 Expr::Lit(Lit::Str(Str {
                     span: swc_core::common::DUMMY_SP,
-                    value: id.into(),
+                    value: final_id.into(),
                     raw: None,
                 })),
             );
@@ -502,11 +516,19 @@ impl CallExpressionVisitor {
                                         } else {
                                             get_prefix(&self.state, Some(&key_name))
                                         };
+
+                                        // Apply hash_id option if enabled
+                                        let final_id = if self.state.opts.hash_id {
+                                            hash_string(&id, &self.state.opts.hash_algorithm)
+                                        } else {
+                                            id
+                                        };
+
                                         let id_prop = object_property(
                                             "id",
                                             Expr::Lit(Lit::Str(Str {
                                                 span: swc_core::common::DUMMY_SP,
-                                                value: id.into(),
+                                                value: final_id.into(),
                                                 raw: None,
                                             })),
                                         );
@@ -528,11 +550,19 @@ impl CallExpressionVisitor {
                                     } else {
                                         get_prefix(&self.state, Some(&key_name))
                                     };
+
+                                    // Apply hash_id option if enabled
+                                    let final_id = if self.state.opts.hash_id {
+                                        hash_string(&id, &self.state.opts.hash_algorithm)
+                                    } else {
+                                        id
+                                    };
+
                                     let id_prop = object_property(
                                         "id",
                                         Expr::Lit(Lit::Str(Str {
                                             span: swc_core::common::DUMMY_SP,
-                                            value: id.into(),
+                                            value: final_id.into(),
                                             raw: None,
                                         })),
                                     );
@@ -565,11 +595,18 @@ impl CallExpressionVisitor {
                                         get_prefix(&self.state, Some(&key_name))
                                     };
 
+                                    // Apply hash_id option if enabled
+                                    let final_id = if self.state.opts.hash_id {
+                                        hash_string(&id, &self.state.opts.hash_algorithm)
+                                    } else {
+                                        id
+                                    };
+
                                     let id_prop = object_property(
                                         "id",
                                         Expr::Lit(Lit::Str(Str {
                                             span: swc_core::common::DUMMY_SP,
-                                            value: id.into(),
+                                            value: final_id.into(),
                                             raw: None,
                                         })),
                                     );
@@ -629,11 +666,19 @@ impl CallExpressionVisitor {
                                         } else {
                                             get_prefix(&self.state, Some(&key_name))
                                         };
+
+                                        // Apply hash_id option if enabled
+                                        let final_id = if self.state.opts.hash_id {
+                                            hash_string(&id, &self.state.opts.hash_algorithm)
+                                        } else {
+                                            id
+                                        };
+
                                         let id_prop = object_property(
                                             "id",
                                             Expr::Lit(Lit::Str(Str {
                                                 span: swc_core::common::DUMMY_SP,
-                                                value: id.into(),
+                                                value: final_id.into(),
                                                 raw: None,
                                             })),
                                         );
@@ -655,11 +700,19 @@ impl CallExpressionVisitor {
                                     } else {
                                         get_prefix(&self.state, Some(&key_name))
                                     };
+
+                                    // Apply hash_id option if enabled
+                                    let final_id = if self.state.opts.hash_id {
+                                        hash_string(&id, &self.state.opts.hash_algorithm)
+                                    } else {
+                                        id
+                                    };
+
                                     let id_prop = object_property(
                                         "id",
                                         Expr::Lit(Lit::Str(Str {
                                             span: swc_core::common::DUMMY_SP,
-                                            value: id.into(),
+                                            value: final_id.into(),
                                             raw: None,
                                         })),
                                     );

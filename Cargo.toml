@@ -12,7 +12,7 @@ lto = true
 [dependencies]
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-swc_core = { version = "43.0.*", features = ["ecma_plugin_transform", "ecma_ast", "ecma_visit", "ecma_utils"] }
+swc_core = { version = "47.0.*", features = ["ecma_plugin_transform", "ecma_ast", "ecma_visit", "ecma_utils"] }
 murmur3 = "0.5"
 regex = "1"
 pathdiff = "0.2"

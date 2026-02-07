@@ -34,7 +34,7 @@ function MyComponent() {
 
 exports[`formatMessage formatMessage in different contexts should handle formatMessage in arrow function 1`] = `
 "import { useIntl } from 'react-intl';
-var MyComponent = function() {
+var MyComponent = function MyComponent() {
     var intl = useIntl();
     return intl.formatMessage({
         defaultMessage: 'Hello World',
@@ -49,7 +49,7 @@ exports[`formatMessage formatMessage in different contexts should handle formatM
 import { useIntl } from 'react-intl';
 function MyComponent() {
     var intl = useIntl();
-    var handleClick = function() {
+    var handleClick = function handleClick() {
         var message = intl.formatMessage({
             defaultMessage: 'Button clicked',
             "id": "221918764"

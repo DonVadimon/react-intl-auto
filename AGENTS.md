@@ -4,21 +4,67 @@ This is a hybrid Rust/JavaScript SWC plugin that automatically adds IDs to React
 
 ## Build Commands
 
+### Complete Development Workflow
+
 ```bash
-# Full build (compiles Rust to WASM + packages for npm)
+# 1. Install dependencies (both JS and Rust)
+npm install
+
+# 2. Build the plugin (compiles Rust to WASM)
 npm run build
 
-# Rust-only builds (WASM targets)
-cargo build-wasip1      # wasm32-wasip1 target
-cargo build-wasm32      # wasm32-unknown-unknown target
+# 3. Run all tests
+cargo test              # Run Rust unit tests (25 tests)
+npm test                # Run Jest integration tests (88 tests)
 
-# Testing
-npm test                # Run all Jest tests
+# Alternative test commands
 npm run test:watch      # Run tests in watch mode
 jest __tests__/jsx.test.js              # Run single test file
 jest __tests__/jsx.test.js -t "should add id"  # Run specific test
+```
 
-# Release
+### Dependency Management
+
+**JavaScript dependencies:**
+```bash
+# Install JS dependencies
+npm install
+
+# Install specific package
+npm install <package-name>
+
+# Install dev dependency
+npm install -D <package-name>
+```
+
+**Rust dependencies:**
+```bash
+# Add Rust dependency
+cargo add <crate-name>
+
+# Add with features
+cargo add <crate-name> --features feature1,feature2
+
+# Example: Add swc_core with specific version
+cargo add 'swc_core@47.0.*' --features ecma_plugin_transform,ecma_ast,ecma_visit,ecma_utils
+```
+
+### Build Targets
+
+```bash
+# wasm32-wasip1 target (default for SWC plugins)
+cargo build-wasip1
+
+# wasm32-unknown-unknown target
+cargo build-wasm32
+
+# Release build with optimizations
+cargo build --release --target wasm32-wasip1
+```
+
+### Release Commands
+
+```bash
 npm run release         # Build and publish to npm
 npm run test-release    # Test release process locally
 ```

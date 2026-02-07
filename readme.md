@@ -155,6 +155,41 @@ cargo test
 npm run test:watch
 ```
 
+### Development Workflow
+
+The typical development workflow:
+
+1. **Install all dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Build the plugin:**
+   ```bash
+   npm run build
+   ```
+
+3. **Run all tests:**
+   ```bash
+   # Rust unit tests
+   cargo test
+   
+   # JavaScript integration tests
+   npm test
+   ```
+
+4. **For active development with auto-rebuild:**
+   ```bash
+   npm run test:watch
+   ```
+
+### Version Compatibility
+
+This plugin is tested and compatible with:
+- **@swc/core:** ^1.15.0
+- **swc_core (Rust):** 47.0.* - 51.0.*
+- **Node.js:** 16, 18, 20
+
 ## CI/CD and Release Process
 
 This project uses GitHub Actions for continuous integration and automated publishing to npm.

@@ -8,11 +8,13 @@ defineMessages({
         defaultMessage: 'id'
     },
     world: {
-        defaultMessage: 'world'
+        defaultMessage: 'world',
+        "id": "Users.username.repo.src.components.world"
     },
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
-        description: 'Message to greet the user.'
+        description: 'Message to greet the user.',
+        "id": "Users.username.repo.src.components.headerTitle"
     }
 });
 "
@@ -21,7 +23,10 @@ defineMessages({
 exports[`default default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
-    hello: 'hello'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello"
+    }
 });
 "
 `;
@@ -45,7 +50,13 @@ m({
 exports[`default leading comment 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
-    hello: 'hello',
+    // The main Hello of our app.
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
     world: {
         id: 'hello.world',
         defaultMessage: 'hello world'
@@ -57,9 +68,11 @@ export default defineMessages({
 exports[`default leading comment with description 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
+    // This comment should not be used
     world: {
         defaultMessage: 'hello world',
-        description: 'The hello world'
+        description: 'The hello world',
+        "id": "Users.username.repo.src.components.world"
     }
 });
 "
@@ -68,10 +81,16 @@ export default defineMessages({
 exports[`default multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
-    hello: 'hello world extra'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello world extra"
+    }
 });
 export default defineMessages({
-    hello: 'hello world'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello world"
+    }
 });
 "
 `;
@@ -89,7 +108,10 @@ export default m[0]({
 
 exports[`default not transform if defineMessages is not imported 1`] = `
 "export default defineMessages({
-    hello: 'hello'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello"
+    }
 });
 "
 `;
@@ -115,7 +137,10 @@ export default defineMessages(messages);
 exports[`default string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
-    'hello': 'hello world'
+    'hello': {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello world"
+    }
 });
 "
 `;
@@ -125,14 +150,22 @@ exports[`default when using the variable 1`] = `
 var messages = {
     hello: 'hello'
 };
-export default defineMessages(messages);
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello"
+    }
+});
 "
 `;
 
 exports[`default with include value 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
-    hello: "hello world ".concat(1)
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello world ".concat(1)
+    }
 });
 "
 `;
@@ -140,7 +173,10 @@ defineMessages({
 exports[`default with other func 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
-    hello: 'hello'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello"
+    }
 });
 hello({
     id: 'hoge'
@@ -151,7 +187,10 @@ hello({
 exports[`default with other specifier 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
-    hello: 'hello world'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello world"
+    }
 });
 "
 `;
@@ -159,7 +198,10 @@ export default defineMessages({
 exports[`extractComments = false default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
-    hello: 'hello'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello"
+    }
 });
 "
 `;
@@ -167,7 +209,13 @@ export default defineMessages({
 exports[`extractComments = false leading comment 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
-    hello: 'hello',
+    // The main Hello of our app.
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
     world: {
         id: 'hello.world',
         defaultMessage: 'hello world'
@@ -179,9 +227,11 @@ export default defineMessages({
 exports[`extractComments = false leading comment with description 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
+    // This comment should not be used
     world: {
         defaultMessage: 'hello world',
-        description: 'The hello world'
+        description: 'The hello world',
+        "id": "Users.username.repo.src.components.world"
     }
 });
 "
@@ -190,7 +240,10 @@ export default defineMessages({
 exports[`filebase = true default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
-    hello: 'hello'
+    hello: {
+        "id": "App.hello",
+        "defaultMessage": "hello"
+    }
 });
 "
 `;
@@ -198,7 +251,10 @@ export default defineMessages({
 exports[`includeExportName = all default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
-    hello: 'hello'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello"
+    }
 });
 "
 `;
@@ -206,10 +262,16 @@ export default defineMessages({
 exports[`includeExportName = all multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
-    hello: 'hello world extra'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello world extra"
+    }
 });
 export default defineMessages({
-    hello: 'hello world'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello world"
+    }
 });
 "
 `;
@@ -217,7 +279,10 @@ export default defineMessages({
 exports[`includeExportName = true default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
-    hello: 'hello'
+    hello: {
+        "id": "Users.username.repo.src.components.messages.hello",
+        "defaultMessage": "hello"
+    }
 });
 "
 `;
@@ -225,10 +290,16 @@ export default defineMessages({
 exports[`includeExportName = true multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
-    hello: 'hello world extra'
+    hello: {
+        "id": "Users.username.repo.src.components.messages.hello",
+        "defaultMessage": "hello world extra"
+    }
 });
 export default defineMessages({
-    hello: 'hello world'
+    hello: {
+        "id": "Users.username.repo.src.components.messages.hello",
+        "defaultMessage": "hello world"
+    }
 });
 "
 `;
@@ -236,7 +307,10 @@ export default defineMessages({
 exports[`moduleSourceNameTest default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
-    hello: 'hello'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello"
+    }
 });
 "
 `;
@@ -244,7 +318,10 @@ export default defineMessages({
 exports[`moduleSourceNameTest moduleSourceName 1`] = `
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
-    hello: 'hello'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello"
+    }
 });
 "
 `;
@@ -252,7 +329,10 @@ export default defineMessages({
 exports[`relativeTo = "" default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
-    hello: 'hello'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello"
+    }
 });
 "
 `;
@@ -260,10 +340,16 @@ export default defineMessages({
 exports[`relativeTo = "" multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
-    hello: 'hello world extra'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello world extra"
+    }
 });
 export default defineMessages({
-    hello: 'hello world'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello world"
+    }
 });
 "
 `;
@@ -271,7 +357,10 @@ export default defineMessages({
 exports[`relativeTo = "../" default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
-    hello: 'hello'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello"
+    }
 });
 "
 `;
@@ -279,10 +368,16 @@ export default defineMessages({
 exports[`relativeTo = "../" multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
-    hello: 'hello world extra'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello world extra"
+    }
 });
 export default defineMessages({
-    hello: 'hello world'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello world"
+    }
 });
 "
 `;
@@ -290,7 +385,10 @@ export default defineMessages({
 exports[`removePrefix = "src" default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
-    hello: 'hello'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello"
+    }
 });
 "
 `;
@@ -298,7 +396,10 @@ export default defineMessages({
 exports[`removePrefix = "src.__fixtures__" default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
-    hello: 'hello'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello"
+    }
 });
 "
 `;
@@ -306,7 +407,10 @@ export default defineMessages({
 exports[`removePrefix = "src.__fixtures__", includeExportName = true default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
-    hello: 'hello'
+    hello: {
+        "id": "Users.username.repo.src.components.messages.hello",
+        "defaultMessage": "hello"
+    }
 });
 "
 `;
@@ -314,10 +418,16 @@ export default defineMessages({
 exports[`removePrefix = "src.__fixtures__", includeExportName = true multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
-    hello: 'hello world extra'
+    hello: {
+        "id": "Users.username.repo.src.components.messages.hello",
+        "defaultMessage": "hello world extra"
+    }
 });
 export default defineMessages({
-    hello: 'hello world'
+    hello: {
+        "id": "Users.username.repo.src.components.messages.hello",
+        "defaultMessage": "hello world"
+    }
 });
 "
 `;
@@ -325,7 +435,10 @@ export default defineMessages({
 exports[`removePrefix = "src/" -- with slash default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
-    hello: 'hello'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello"
+    }
 });
 "
 `;
@@ -333,7 +446,10 @@ export default defineMessages({
 exports[`removePrefix = /__fixtures__/ default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
-    hello: 'hello'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello"
+    }
 });
 "
 `;
@@ -341,7 +457,10 @@ export default defineMessages({
 exports[`removePrefix = false default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
-    hello: 'hello'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello"
+    }
 });
 "
 `;
@@ -349,10 +468,16 @@ export default defineMessages({
 exports[`removePrefix = false multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
-    hello: 'hello world extra'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello world extra"
+    }
 });
 export default defineMessages({
-    hello: 'hello world'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello world"
+    }
 });
 "
 `;
@@ -360,7 +485,10 @@ export default defineMessages({
 exports[`removePrefix = true, includeExportName = all default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
-    hello: 'hello'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello"
+    }
 });
 "
 `;
@@ -368,10 +496,16 @@ export default defineMessages({
 exports[`removePrefix = true, includeExportName = all multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
-    hello: 'hello world extra'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello world extra"
+    }
 });
 export default defineMessages({
-    hello: 'hello world'
+    hello: {
+        "id": "Users.username.repo.src.components.hello",
+        "defaultMessage": "hello world"
+    }
 });
 "
 `;
@@ -379,7 +513,10 @@ export default defineMessages({
 exports[`removePrefix = true, includeExportName = true default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
-    hello: 'hello'
+    hello: {
+        "id": "messages.hello",
+        "defaultMessage": "hello"
+    }
 });
 "
 `;
@@ -387,10 +524,16 @@ export default defineMessages({
 exports[`removePrefix = true, includeExportName = true multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
-    hello: 'hello world extra'
+    hello: {
+        "id": "messages.hello",
+        "defaultMessage": "hello world extra"
+    }
 });
 export default defineMessages({
-    hello: 'hello world'
+    hello: {
+        "id": "messages.hello",
+        "defaultMessage": "hello world"
+    }
 });
 "
 `;
@@ -398,7 +541,10 @@ export default defineMessages({
 exports[`separator = "" default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
-    hello: 'hello'
+    hello: {
+        "id": "UsersusernamereposrccomponentsApphello",
+        "defaultMessage": "hello"
+    }
 });
 "
 `;
@@ -406,10 +552,16 @@ export default defineMessages({
 exports[`separator = "" multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
-    hello: 'hello world extra'
+    hello: {
+        "id": "UsersusernamereposrccomponentsApphello",
+        "defaultMessage": "hello world extra"
+    }
 });
 export default defineMessages({
-    hello: 'hello world'
+    hello: {
+        "id": "UsersusernamereposrccomponentsApphello",
+        "defaultMessage": "hello world"
+    }
 });
 "
 `;
@@ -417,7 +569,10 @@ export default defineMessages({
 exports[`separator = "_" default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
-    hello: 'hello'
+    hello: {
+        "id": "Users_username_repo_src_components_hello",
+        "defaultMessage": "hello"
+    }
 });
 "
 `;
@@ -425,10 +580,16 @@ export default defineMessages({
 exports[`separator = "_" multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
-    hello: 'hello world extra'
+    hello: {
+        "id": "Users_username_repo_src_components_hello",
+        "defaultMessage": "hello world extra"
+    }
 });
 export default defineMessages({
-    hello: 'hello world'
+    hello: {
+        "id": "Users_username_repo_src_components_hello",
+        "defaultMessage": "hello world"
+    }
 });
 "
 `;
@@ -436,7 +597,10 @@ export default defineMessages({
 exports[`separator = "foo" default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
-    hello: 'hello'
+    hello: {
+        "id": "Usersfoousernamefoorepofoosrcfoocomponentsfoohello",
+        "defaultMessage": "hello"
+    }
 });
 "
 `;
@@ -444,10 +608,16 @@ export default defineMessages({
 exports[`separator = "foo" multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
-    hello: 'hello world extra'
+    hello: {
+        "id": "Usersfoousernamefoorepofoosrcfoocomponentsfoohello",
+        "defaultMessage": "hello world extra"
+    }
 });
 export default defineMessages({
-    hello: 'hello world'
+    hello: {
+        "id": "Usersfoousernamefoorepofoosrcfoocomponentsfoohello",
+        "defaultMessage": "hello world"
+    }
 });
 "
 `;

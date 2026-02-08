@@ -4,6 +4,7 @@ exports[`default default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.613153351",
     defaultMessage: "hello"
 });
 "
@@ -13,9 +14,11 @@ exports[`default import all supported components 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "Users.username.repo.src.components.205247277",
     defaultMessage: "<span>hello</span>"
 });
 /*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.613153351",
     defaultMessage: "hello"
 });
 "
@@ -25,9 +28,11 @@ exports[`default multiple uses 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.613153351",
     defaultMessage: "hello"
 });
 /*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.1418522856",
     defaultMessage: "another"
 });
 "
@@ -37,6 +42,7 @@ exports[`default using key 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.613153351",
     defaultMessage: "hello"
 }, "foobar");
 "
@@ -46,6 +52,7 @@ exports[`default with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as T } from 'react-intl';
 /*#__PURE__*/ _jsx(T, {
+    id: "Users.username.repo.src.components.613153351",
     defaultMessage: "hello"
 });
 "
@@ -56,6 +63,7 @@ exports[`default with FormattedMessage nested in other JSX 1`] = `
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
     children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.613153351",
         defaultMessage: "hello"
     })
 });
@@ -66,6 +74,7 @@ exports[`default with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.3540954520",
     defaultMessage: "hello world 2"
 });
 "
@@ -76,6 +85,7 @@ exports[`default with a variable as the defaultMessage 1`] = `
 import { FormattedMessage } from 'react-intl';
 var message = "variable message";
 /*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.1677297219",
     defaultMessage: message
 });
 "
@@ -85,6 +95,7 @@ exports[`extractComments = false default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.613153351",
     defaultMessage: "hello"
 });
 "
@@ -94,6 +105,7 @@ exports[`filebase = true default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "App.613153351",
     defaultMessage: "hello"
 });
 "
@@ -103,6 +115,7 @@ exports[`includeExportName = all default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.613153351",
     defaultMessage: "hello"
 });
 "
@@ -112,6 +125,7 @@ exports[`includeExportName = true default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.613153351",
     defaultMessage: "hello"
 });
 "
@@ -121,6 +135,7 @@ exports[`removePrefix = "src" default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.613153351",
     defaultMessage: "hello"
 });
 "
@@ -130,6 +145,7 @@ exports[`removePrefix = "src.__fixtures__" default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.613153351",
     defaultMessage: "hello"
 });
 "
@@ -139,6 +155,7 @@ exports[`removePrefix = "src/" -- with slash default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.613153351",
     defaultMessage: "hello"
 });
 "
@@ -148,6 +165,7 @@ exports[`removePrefix = /__fixtures__/ default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.613153351",
     defaultMessage: "hello"
 });
 "
@@ -157,6 +175,7 @@ exports[`removePrefix = false default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.613153351",
     defaultMessage: "hello"
 });
 "
@@ -166,6 +185,7 @@ exports[`removePrefix = true, includeExportName = all default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.613153351",
     defaultMessage: "hello"
 });
 "
@@ -175,6 +195,7 @@ exports[`removePrefix = true, includeExportName = true default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "613153351",
     defaultMessage: "hello"
 });
 "
@@ -184,6 +205,7 @@ exports[`useKey = true default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.613153351",
     defaultMessage: "hello"
 });
 "
@@ -193,6 +215,7 @@ exports[`useKey = true using key 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.613153351",
     defaultMessage: "hello"
 }, "foobar");
 "

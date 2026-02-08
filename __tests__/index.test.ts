@@ -1,7 +1,6 @@
-import * as path from 'path';
-import { cases } from '../utils/testUtils';
+import { cases } from './testUtils';
 
-const filename = path.resolve(__dirname, '..', '__fixtures__', 'messages.js');
+const filename = 'Users/username/repo/src/components/App.tsx';
 
 const defaultTest = {
     title: 'default',

@@ -2,13 +2,16 @@
 
 exports[`default multiple uses 1`] = `
 "intl.formatMessage({
-    defaultMessage: "hello"
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.613153351"
 });
 intl.formatMessage({
-    defaultMessage: "hello"
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.613153351"
 });
 intl.formatMessage({
-    defaultMessage: "some other message"
+    defaultMessage: "some other message",
+    "id": "Users.username.repo.src.components.831373691"
 });
 export { };
 "
@@ -20,14 +23,17 @@ import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
     var intl = param.intl;
     var label = intl.formatMessage({
-        defaultMessage: "hello"
+        defaultMessage: "hello",
+        "id": "Users.username.repo.src.components.613153351"
     });
     return /*#__PURE__*/ _jsx("button", {
         "aria-label": intl.formatMessage({
-            defaultMessage: "hello"
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.613153351"
         }),
         children: intl.formatMessage({
-            defaultMessage: "hello"
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.613153351"
         })
     });
 };
@@ -37,7 +43,8 @@ injectIntl(Components2);
 
 exports[`default with FormattedMessage imported as something else 1`] = `
 "intl.formatMessage({
-    defaultMessage: "i18n"
+    defaultMessage: "i18n",
+    "id": "Users.username.repo.src.components.94348014"
 });
 export { };
 "
@@ -45,7 +52,8 @@ export { };
 
 exports[`default with Injection API HOC imported 1`] = `
 "intl.formatMessage({
-    defaultMessage: "hello"
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.613153351"
 });
 export { };
 "
@@ -53,7 +61,8 @@ export { };
 
 exports[`default with a value interpolated in the message 1`] = `
 "intl.formatMessage({
-    defaultMessage: "template string 2"
+    defaultMessage: "template string 2",
+    "id": "Users.username.repo.src.components.1045198380"
 });
 export { };
 "
@@ -62,7 +71,8 @@ export { };
 exports[`default with a variable as the defaultMessage 1`] = `
 "var message = "variable message";
 intl.formatMessage({
-    defaultMessage: message
+    defaultMessage: message,
+    "id": "Users.username.repo.src.components.581017784"
 });
 export { };
 "
@@ -77,7 +87,8 @@ intl.formatMessage(message);
 exports[`default with custom properties in formatMessage call 1`] = `
 "intl.formatMessage({
     defaultMessage: "custom prop",
-    other: 123
+    other: 123,
+    "id": "Users.username.repo.src.components.2983810267"
 });
 export { };
 "
@@ -85,7 +96,8 @@ export { };
 
 exports[`filebase = true with Injection API HOC imported 1`] = `
 "intl.formatMessage({
-    defaultMessage: "hello"
+    defaultMessage: "hello",
+    "id": "App.613153351"
 });
 export { };
 "
@@ -93,7 +105,8 @@ export { };
 
 exports[`removePrefix = "src" with Injection API HOC imported 1`] = `
 "intl.formatMessage({
-    defaultMessage: "hello"
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.613153351"
 });
 export { };
 "
@@ -101,7 +114,8 @@ export { };
 
 exports[`removePrefix = "src.__fixtures__" with Injection API HOC imported 1`] = `
 "intl.formatMessage({
-    defaultMessage: "hello"
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.613153351"
 });
 export { };
 "
@@ -109,7 +123,8 @@ export { };
 
 exports[`removePrefix = "src/" -- with slash with Injection API HOC imported 1`] = `
 "intl.formatMessage({
-    defaultMessage: "hello"
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.613153351"
 });
 export { };
 "
@@ -117,7 +132,8 @@ export { };
 
 exports[`removePrefix = /__fixtures__/ with Injection API HOC imported 1`] = `
 "intl.formatMessage({
-    defaultMessage: "hello"
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.613153351"
 });
 export { };
 "
@@ -125,7 +141,8 @@ export { };
 
 exports[`removePrefix = false with Injection API HOC imported 1`] = `
 "intl.formatMessage({
-    defaultMessage: "hello"
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.613153351"
 });
 export { };
 "

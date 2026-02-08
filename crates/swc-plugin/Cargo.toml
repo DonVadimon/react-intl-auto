@@ -1,0 +1,29 @@
+[package]
+name = "swc-plugin"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "SWC plugin for React Intl Auto - automatically adds IDs to FormattedMessage, defineMessages, and formatMessage calls"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+# Workspace dependencies
+serde = { workspace = true }
+serde_json = { workspace = true }
+murmur3 = { workspace = true }
+base64 = { workspace = true }
+regex = { workspace = true }
+pathdiff = { workspace = true }
+
+# SWC-specific dependencies
+swc_core = { workspace = true }
+
+# Shared core library
+react-intl-core = { path = "../react-intl-core" }
+
+[dev-dependencies]
+tempfile = { workspace = true }

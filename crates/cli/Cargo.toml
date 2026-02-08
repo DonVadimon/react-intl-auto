@@ -1,0 +1,25 @@
+[package]
+name = "react-intl-extract-cli"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "CLI tool for extracting React Intl messages"
+
+[[bin]]
+name = "react-intl-extract"
+path = "src/main.rs"
+
+[dependencies]
+# Workspace dependencies
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+# Shared core library
+react-intl-core = { path = "../react-intl-core" }
+
+# CLI-specific dependencies (to be added later)
+# clap = { version = "4", features = ["derive"] }
+# glob = "0.3"
+# anyhow = "1"

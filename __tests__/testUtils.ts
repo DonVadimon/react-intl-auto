@@ -1,41 +1,42 @@
-import { transform } from '@swc/core';
+import { transform, WasmPlugin } from '@swc/core';
 
-export interface TestCase {
+type TestCase = {
     title: string;
     code: string;
     error?: RegExp;
     snapshot?: boolean;
-}
+};
 
-export interface TestSuite {
+type PluginOptions = {
+    /** Remove prefix from file path */
+    removePrefix?: boolean | string | RegExp;
+    /** Include filename in ID */
+    filebase?: boolean;
+    /** Include export name in ID */
+    includeExportName?: boolean | 'all';
+    /** Extract comments as descriptions */
+    extractComments?: boolean;
+    /** Use key property instead of hash */
+    useKey?: boolean;
+    /** Module source name */
+    moduleSourceName?: string;
+    /** ID separator */
+    separator?: string;
+    /** Relative path for ID generation */
+    relativeTo?: string;
+    /** Apply hash fn to id */
+    hashId?: boolean;
+    /** Hash fn for id */
+    hashAlgorithm?: 'murmur3' | 'base64';
+};
+
+type TestSuite = {
     title: string;
     tests: TestCase[];
-    pluginOptions?: any;
-}
+    pluginOptions?: PluginOptions;
+};
 
-// Mock the SWC plugin function that implements the transformation logic
-function createPlugin(pluginOptions: any = {}) {
-    return (m: any) => {
-        // This is a mock implementation that matches the expected snapshots
-        // In a real implementation, this would call the actual SWC plugin
-
-        // For now, we'll implement the transformation logic here to match snapshots
-        // This is a simplified implementation that transforms the code to match snapshots
-
-        // Check if this is a test case that should throw an error
-        // This is a simplified check - in reality the plugin would analyze the AST
-        const code = m.toString();
-        if (code.includes('getMsg()') && code.includes('defaultMessage')) {
-            throw new Error(
-                '[React Intl Auto] defaultMessage must be statically evaluate-able for extraction',
-            );
-        }
-
-        // The mock plugin should return the module as-is for now
-        // The actual transformation will be handled by the SWC plugin when it's properly integrated
-        return m;
-    };
-}
+const plugin = require('../index.js');
 
 export async function cases(filename: string, suites: TestSuite[]) {
     for (const suite of suites) {
@@ -63,11 +64,13 @@ export async function cases(filename: string, suites: TestSuite[]) {
                                         runtime: 'automatic' as const,
                                     },
                                 },
+                                experimental: {
+                                    plugins: [[plugin, suite.pluginOptions || {}]] as WasmPlugin[],
+                                },
                             },
                             module: {
                                 type: 'es6' as const,
                             },
-                            plugin: createPlugin(suite.pluginOptions),
                         };
 
                         const result = await transform(test.code, options);

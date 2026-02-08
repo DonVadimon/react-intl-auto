@@ -47,7 +47,7 @@
 
 ## 📋 Список задач
 
-- [ ] HYBRID_EXTRACT-001: Create Cargo workspace structure with shared core library
+- [x] HYBRID_EXTRACT-001: Create Cargo workspace structure with shared core library
 - [ ] HYBRID_EXTRACT-002: Extract ID generation and path utilities to shared core crate
 - [ ] HYBRID_EXTRACT-003: Extract AST traversal logic to shared core crate
 - [ ] HYBRID_EXTRACT-004: Create CLI tool crate with message extraction
@@ -62,10 +62,10 @@
 
 ---
 
-## [ ] HYBRID_EXTRACT-001: Create Cargo workspace structure with shared core library
+## [x] HYBRID_EXTRACT-001: Create Cargo workspace structure with shared core library
 
 ### 📋 Metadata
-- **status:** `todo`
+- **status:** `ready`
 - **depends:** `-`
 - **priority:** `P0`
 - **files:** `Cargo.toml`, `crates/react-intl-core/Cargo.toml`
@@ -110,6 +110,20 @@ base64 = "0.22"
 
 ### 📊 ActionLog:
 - `2026-02-08 18:48` План задачи создан
+- `2026-02-08 19:01` Данные актуализированы: проверены файлы Cargo.toml, src/
+- `2026-02-08 19:01` Статус изменен на `in-progress`
+- `2026-02-08 19:01` План согласован с USER, начато выполнение
+- `2026-02-08 19:02` Выполнен шаг 1: Преобразован Cargo.toml в workspace manifest
+- `2026-02-08 19:02` Выполнен шаг 2: Создана структура crates/ с тремя crate
+- `2026-02-08 19:02` Выполнен шаг 3: Существующий код перемещен в crates/swc-plugin/
+- `2026-02-08 19:03` Выполнен шаг 4: Созданы placeholder модули для react-intl-core
+- `2026-02-08 19:03` Выполнен шаг 5: Обновлен build.js для новых путей
+- `2026-02-08 19:04` Выполнен шаг 6: Проверка cargo check - успешно
+- `2026-02-08 19:04` Выполнен шаг 7: Сборка WASM target - успешно
+- `2026-02-08 19:05` Выполнен шаг 8: Jest интеграционные тесты - 225 тестов пройдено
+- `2026-02-08 19:05` Выполнен шаг 9: Финальная сборка WASM - успешно
+- `2026-02-08 19:05` Определены критерии приёмки: workspace создан, сборка работает, тесты проходят
+- `2026-02-08 19:05` Готово к review
 
 ---
 

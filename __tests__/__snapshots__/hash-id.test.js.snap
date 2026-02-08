@@ -29,7 +29,7 @@ exports[`Hash ID Base64 hashing should handle defaultMessage with variables usin
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "471047910",
+        id: "NDcxMDQ3OTEw",
         defaultMessage: "Hello {name}",
         values: {
             name: 'World'
@@ -44,7 +44,7 @@ exports[`Hash ID Base64 hashing should hash ID with base64 algorithm 1`] = `
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "427197390",
+        id: "NDI3MTk3Mzkw",
         defaultMessage: "Hello World"
     });
 }
@@ -56,7 +56,7 @@ exports[`Hash ID Combined options should work with filebase and hash_id 1`] = `
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "App.427197390",
+        id: "QXBwLjQyNzE5NzM5MA==",
         defaultMessage: "Hello World"
     });
 }
@@ -67,7 +67,7 @@ exports[`Hash ID Combined options should work with includeExportName and hash_id
 "import { defineMessages } from 'react-intl';
 var messages = defineMessages({
     hello: {
-        "id": "messages.hello",
+        "id": "bWVzc2FnZXMuaGVsbG8=",
         "defaultMessage": "Hello World"
     }
 });
@@ -80,7 +80,7 @@ exports[`Hash ID Combined options should work with relativeTo and hash_id 1`] = 
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "components.427197390",
+        id: "Y29tcG9uZW50cy40MjcxOTczOTA=",
         defaultMessage: "Hello World"
     });
 }
@@ -92,7 +92,7 @@ exports[`Hash ID Combined options should work with removePrefix and hash_id 1`] 
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "components.427197390",
+        id: "Y29tcG9uZW50cy40MjcxOTczOTA=",
         defaultMessage: "Hello World"
     });
 }
@@ -104,7 +104,7 @@ exports[`Hash ID Murmur3 hashing should handle defaultMessage with variables usi
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "471047910",
+        id: "886342783",
         defaultMessage: "Hello {name}",
         values: {
             name: 'World'
@@ -119,7 +119,7 @@ exports[`Hash ID Murmur3 hashing should hash ID with murmur3 algorithm 1`] = `
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "427197390",
+        id: "3672228465",
         defaultMessage: "Hello World"
     });
 }
@@ -131,7 +131,7 @@ exports[`Hash ID Unknown algorithm fallback should fallback to murmur3 for unkno
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "427197390",
+        id: "3672228465",
         defaultMessage: "Hello World"
     });
 }
@@ -142,11 +142,11 @@ exports[`Hash ID defineMessages hashing should handle numeric keys with hashing 
 "import { defineMessages } from 'react-intl';
 var messages = defineMessages({
     0: {
-        "id": "0",
+        "id": "MA==",
         "defaultMessage": "First"
     },
     1: {
-        "id": "1",
+        "id": "MQ==",
         "defaultMessage": "Second"
     }
 });
@@ -157,7 +157,7 @@ exports[`Hash ID defineMessages hashing should handle shorthand defineMessages w
 "import { defineMessages } from 'react-intl';
 var messages = defineMessages({
     greeting: {
-        "id": "greeting",
+        "id": "Z3JlZXRpbmc=",
         "defaultMessage": "Привет мир"
     }
 });
@@ -168,11 +168,11 @@ exports[`Hash ID defineMessages hashing should work with defineMessages and base
 "import { defineMessages } from 'react-intl';
 var messages = defineMessages({
     hello: {
-        "id": "hello",
+        "id": "aGVsbG8=",
         "defaultMessage": "Hello World"
     },
     goodbye: {
-        "id": "goodbye",
+        "id": "Z29vZGJ5ZQ==",
         "defaultMessage": "Goodbye World"
     }
 });
@@ -185,11 +185,11 @@ exports[`Hash ID defineMessages hashing should work with defineMessages and murm
 var messages = defineMessages({
     hello: {
         defaultMessage: 'Hello World',
-        "id": "hello"
+        "id": "613153351"
     },
     goodbye: {
         defaultMessage: 'Goodbye World',
-        "id": "goodbye"
+        "id": "157183806"
     }
 });
 export default messages;
@@ -202,7 +202,7 @@ function App() {
     var intl = useIntl();
     return intl.formatMessage({
         defaultMessage: 'Hello World',
-        "id": "427197390"
+        "id": "NDI3MTk3Mzkw"
     });
 }
 "
@@ -214,7 +214,7 @@ function App() {
     var intl = useIntl();
     return intl.formatMessage({
         defaultMessage: 'Hello World',
-        "id": "427197390"
+        "id": "3672228465"
     });
 }
 "

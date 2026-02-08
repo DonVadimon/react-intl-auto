@@ -7,6 +7,7 @@
     "build": "node build.js",
     "test": "jest",
     "test:watch": "jest --watch",
+    "test:full": "npm run build && cargo test && npm test",
     "release": "node scripts/release.js",
     "check-token": "node scripts/check-npm-token.js",
     "create-labels": "node scripts/create-labels.js",

@@ -1,0 +1,3361 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`hooks - default does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - default does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - default multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "Users.username.repo.src.components.App.831373691"
+});
+export { };
+"
+`;
+
+exports[`hooks - default some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "Users.username.repo.src.components.App.613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - default useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - default with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "Users.username.repo.src.components.App.94348014"
+});
+export { };
+"
+`;
+
+exports[`hooks - default with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "Users.username.repo.src.components.App.1045198380"
+});
+export { };
+"
+`;
+
+exports[`hooks - default with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "Users.username.repo.src.components.App.1304763199"
+});
+export { };
+"
+`;
+
+exports[`hooks - default with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - default with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "Users.username.repo.src.components.App.2983810267"
+});
+export { };
+"
+`;
+
+exports[`hooks - default with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - extractComments = false does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - extractComments = false does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - extractComments = false multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "Users.username.repo.src.components.App.831373691"
+});
+export { };
+"
+`;
+
+exports[`hooks - extractComments = false some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "Users.username.repo.src.components.App.613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - extractComments = false useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - extractComments = false with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "Users.username.repo.src.components.App.94348014"
+});
+export { };
+"
+`;
+
+exports[`hooks - extractComments = false with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "Users.username.repo.src.components.App.1045198380"
+});
+export { };
+"
+`;
+
+exports[`hooks - extractComments = false with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "Users.username.repo.src.components.App.1304763199"
+});
+export { };
+"
+`;
+
+exports[`hooks - extractComments = false with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - extractComments = false with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "Users.username.repo.src.components.App.2983810267"
+});
+export { };
+"
+`;
+
+exports[`hooks - extractComments = false with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - extractComments = true does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - extractComments = true does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - extractComments = true multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "Users.username.repo.src.components.App.831373691"
+});
+export { };
+"
+`;
+
+exports[`hooks - extractComments = true some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "Users.username.repo.src.components.App.613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - extractComments = true useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - extractComments = true with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "Users.username.repo.src.components.App.94348014"
+});
+export { };
+"
+`;
+
+exports[`hooks - extractComments = true with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "Users.username.repo.src.components.App.1045198380"
+});
+export { };
+"
+`;
+
+exports[`hooks - extractComments = true with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "Users.username.repo.src.components.App.1304763199"
+});
+export { };
+"
+`;
+
+exports[`hooks - extractComments = true with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - extractComments = true with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "Users.username.repo.src.components.App.2983810267"
+});
+export { };
+"
+`;
+
+exports[`hooks - extractComments = true with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - filebase = true does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - filebase = true does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - filebase = true multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "App.831373691"
+});
+export { };
+"
+`;
+
+exports[`hooks - filebase = true some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "App.613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "App.613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "App.613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - filebase = true useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - filebase = true with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "App.94348014"
+});
+export { };
+"
+`;
+
+exports[`hooks - filebase = true with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "App.1045198380"
+});
+export { };
+"
+`;
+
+exports[`hooks - filebase = true with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "App.1304763199"
+});
+export { };
+"
+`;
+
+exports[`hooks - filebase = true with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - filebase = true with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "App.2983810267"
+});
+export { };
+"
+`;
+
+exports[`hooks - filebase = true with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + filebase = true does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + filebase = true does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "QXBwLjYxMzE1MzM1MQ=="
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + filebase = true multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "QXBwLjYxMzE1MzM1MQ=="
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "QXBwLjYxMzE1MzM1MQ=="
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "QXBwLjgzMTM3MzY5MQ=="
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + filebase = true some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "QXBwLjYxMzE1MzM1MQ=="
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "QXBwLjYxMzE1MzM1MQ=="
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "QXBwLjYxMzE1MzM1MQ=="
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - hash + filebase = true useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + filebase = true with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "QXBwLjk0MzQ4MDE0"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + filebase = true with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "QXBwLjEwNDUxOTgzODA="
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + filebase = true with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "QXBwLjEzMDQ3NjMxOTk="
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + filebase = true with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - hash + filebase = true with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "QXBwLjI5ODM4MTAyNjc="
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + filebase = true with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "QXBwLjYxMzE1MzM1MQ=="
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + includeExportName = true does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + includeExportName = true does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + includeExportName = true multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuODMxMzczNjkx"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + includeExportName = true some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - hash + includeExportName = true useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + includeExportName = true with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuOTQzNDgwMTQ="
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + includeExportName = true with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTA0NTE5ODM4MA=="
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + includeExportName = true with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTMwNDc2MzE5OQ=="
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + includeExportName = true with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - hash + includeExportName = true with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMjk4MzgxMDI2Nw=="
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + includeExportName = true with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + relativeTo = "src" does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + relativeTo = "src" does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + relativeTo = "src" multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuODMxMzczNjkx"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + relativeTo = "src" some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - hash + relativeTo = "src" useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + relativeTo = "src" with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuOTQzNDgwMTQ="
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + relativeTo = "src" with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTA0NTE5ODM4MA=="
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + relativeTo = "src" with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTMwNDc2MzE5OQ=="
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + relativeTo = "src" with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - hash + relativeTo = "src" with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMjk4MzgxMDI2Nw=="
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + relativeTo = "src" with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + removePrefix = "src/" does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + removePrefix = "src/" does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + removePrefix = "src/" multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuODMxMzczNjkx"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + removePrefix = "src/" some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - hash + removePrefix = "src/" useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + removePrefix = "src/" with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuOTQzNDgwMTQ="
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + removePrefix = "src/" with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTA0NTE5ODM4MA=="
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + removePrefix = "src/" with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTMwNDc2MzE5OQ=="
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + removePrefix = "src/" with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - hash + removePrefix = "src/" with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMjk4MzgxMDI2Nw=="
+});
+export { };
+"
+`;
+
+exports[`hooks - hash + removePrefix = "src/" with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash base64 does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash base64 does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash base64 multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuODMxMzczNjkx"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash base64 some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - hash base64 useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash base64 with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuOTQzNDgwMTQ="
+});
+export { };
+"
+`;
+
+exports[`hooks - hash base64 with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTA0NTE5ODM4MA=="
+});
+export { };
+"
+`;
+
+exports[`hooks - hash base64 with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTMwNDc2MzE5OQ=="
+});
+export { };
+"
+`;
+
+exports[`hooks - hash base64 with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - hash base64 with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMjk4MzgxMDI2Nw=="
+});
+export { };
+"
+`;
+
+exports[`hooks - hash base64 with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash murmur3 does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash murmur3 does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "2564566158"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash murmur3 multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "2564566158"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "2564566158"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "3278730599"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash murmur3 some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "2564566158"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "2564566158"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "2564566158"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - hash murmur3 useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash murmur3 with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "3547183140"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash murmur3 with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "4147227565"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash murmur3 with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "3570985171"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash murmur3 with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - hash murmur3 with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "1899697979"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash murmur3 with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "2564566158"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash unknown fallback to murmur3 does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash unknown fallback to murmur3 does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "2564566158"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash unknown fallback to murmur3 multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "2564566158"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "2564566158"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "3278730599"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash unknown fallback to murmur3 some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "2564566158"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "2564566158"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "2564566158"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - hash unknown fallback to murmur3 useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash unknown fallback to murmur3 with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "3547183140"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash unknown fallback to murmur3 with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "4147227565"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash unknown fallback to murmur3 with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "3570985171"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash unknown fallback to murmur3 with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - hash unknown fallback to murmur3 with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "1899697979"
+});
+export { };
+"
+`;
+
+exports[`hooks - hash unknown fallback to murmur3 with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "2564566158"
+});
+export { };
+"
+`;
+
+exports[`hooks - includeExportName = all does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - includeExportName = all does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - includeExportName = all multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "Users.username.repo.src.components.App.831373691"
+});
+export { };
+"
+`;
+
+exports[`hooks - includeExportName = all some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "Users.username.repo.src.components.App.613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - includeExportName = all useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - includeExportName = all with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "Users.username.repo.src.components.App.94348014"
+});
+export { };
+"
+`;
+
+exports[`hooks - includeExportName = all with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "Users.username.repo.src.components.App.1045198380"
+});
+export { };
+"
+`;
+
+exports[`hooks - includeExportName = all with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "Users.username.repo.src.components.App.1304763199"
+});
+export { };
+"
+`;
+
+exports[`hooks - includeExportName = all with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - includeExportName = all with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "Users.username.repo.src.components.App.2983810267"
+});
+export { };
+"
+`;
+
+exports[`hooks - includeExportName = all with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - includeExportName = true does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - includeExportName = true does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - includeExportName = true multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "Users.username.repo.src.components.App.831373691"
+});
+export { };
+"
+`;
+
+exports[`hooks - includeExportName = true some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "Users.username.repo.src.components.App.613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - includeExportName = true useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - includeExportName = true with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "Users.username.repo.src.components.App.94348014"
+});
+export { };
+"
+`;
+
+exports[`hooks - includeExportName = true with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "Users.username.repo.src.components.App.1045198380"
+});
+export { };
+"
+`;
+
+exports[`hooks - includeExportName = true with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "Users.username.repo.src.components.App.1304763199"
+});
+export { };
+"
+`;
+
+exports[`hooks - includeExportName = true with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - includeExportName = true with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "Users.username.repo.src.components.App.2983810267"
+});
+export { };
+"
+`;
+
+exports[`hooks - includeExportName = true with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - moduleSourceNameTest does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - moduleSourceNameTest does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - moduleSourceNameTest multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "Users.username.repo.src.components.App.831373691"
+});
+export { };
+"
+`;
+
+exports[`hooks - moduleSourceNameTest some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "Users.username.repo.src.components.App.613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - moduleSourceNameTest useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - moduleSourceNameTest with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "Users.username.repo.src.components.App.94348014"
+});
+export { };
+"
+`;
+
+exports[`hooks - moduleSourceNameTest with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "Users.username.repo.src.components.App.1045198380"
+});
+export { };
+"
+`;
+
+exports[`hooks - moduleSourceNameTest with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "Users.username.repo.src.components.App.1304763199"
+});
+export { };
+"
+`;
+
+exports[`hooks - moduleSourceNameTest with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - moduleSourceNameTest with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "Users.username.repo.src.components.App.2983810267"
+});
+export { };
+"
+`;
+
+exports[`hooks - moduleSourceNameTest with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - relativeTo = "" does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - relativeTo = "" does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - relativeTo = "" multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "Users.username.repo.src.components.App.831373691"
+});
+export { };
+"
+`;
+
+exports[`hooks - relativeTo = "" some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "Users.username.repo.src.components.App.613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - relativeTo = "" useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - relativeTo = "" with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "Users.username.repo.src.components.App.94348014"
+});
+export { };
+"
+`;
+
+exports[`hooks - relativeTo = "" with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "Users.username.repo.src.components.App.1045198380"
+});
+export { };
+"
+`;
+
+exports[`hooks - relativeTo = "" with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "Users.username.repo.src.components.App.1304763199"
+});
+export { };
+"
+`;
+
+exports[`hooks - relativeTo = "" with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - relativeTo = "" with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "Users.username.repo.src.components.App.2983810267"
+});
+export { };
+"
+`;
+
+exports[`hooks - relativeTo = "" with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - relativeTo = "../" does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - relativeTo = "../" does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - relativeTo = "../" multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "Users.username.repo.src.components.App.831373691"
+});
+export { };
+"
+`;
+
+exports[`hooks - relativeTo = "../" some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "Users.username.repo.src.components.App.613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - relativeTo = "../" useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - relativeTo = "../" with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "Users.username.repo.src.components.App.94348014"
+});
+export { };
+"
+`;
+
+exports[`hooks - relativeTo = "../" with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "Users.username.repo.src.components.App.1045198380"
+});
+export { };
+"
+`;
+
+exports[`hooks - relativeTo = "../" with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "Users.username.repo.src.components.App.1304763199"
+});
+export { };
+"
+`;
+
+exports[`hooks - relativeTo = "../" with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - relativeTo = "../" with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "Users.username.repo.src.components.App.2983810267"
+});
+export { };
+"
+`;
+
+exports[`hooks - relativeTo = "../" with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src" does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src" does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src" multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "Users.username.repo.src.components.App.831373691"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src" some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "Users.username.repo.src.components.App.613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - removePrefix = "src" useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src" with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "Users.username.repo.src.components.App.94348014"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src" with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "Users.username.repo.src.components.App.1045198380"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src" with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "Users.username.repo.src.components.App.1304763199"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src" with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src" with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "Users.username.repo.src.components.App.2983810267"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src" with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src.__fixtures__" does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src.__fixtures__" does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src.__fixtures__" multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "Users.username.repo.src.components.App.831373691"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src.__fixtures__" some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "Users.username.repo.src.components.App.613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - removePrefix = "src.__fixtures__" useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src.__fixtures__" with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "Users.username.repo.src.components.App.94348014"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src.__fixtures__" with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "Users.username.repo.src.components.App.1045198380"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src.__fixtures__" with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "Users.username.repo.src.components.App.1304763199"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src.__fixtures__" with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src.__fixtures__" with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "Users.username.repo.src.components.App.2983810267"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src.__fixtures__" with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src.__fixtures__", includeExportName = true does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src.__fixtures__", includeExportName = true does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src.__fixtures__", includeExportName = true multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "Users.username.repo.src.components.App.831373691"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src.__fixtures__", includeExportName = true some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "Users.username.repo.src.components.App.613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - removePrefix = "src.__fixtures__", includeExportName = true useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src.__fixtures__", includeExportName = true with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "Users.username.repo.src.components.App.94348014"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src.__fixtures__", includeExportName = true with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "Users.username.repo.src.components.App.1045198380"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src.__fixtures__", includeExportName = true with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "Users.username.repo.src.components.App.1304763199"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src.__fixtures__", includeExportName = true with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src.__fixtures__", includeExportName = true with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "Users.username.repo.src.components.App.2983810267"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src.__fixtures__", includeExportName = true with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src/" -- with slash does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src/" -- with slash does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src/" -- with slash multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "Users.username.repo.src.components.App.831373691"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src/" -- with slash some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "Users.username.repo.src.components.App.613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - removePrefix = "src/" -- with slash useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src/" -- with slash with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "Users.username.repo.src.components.App.94348014"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src/" -- with slash with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "Users.username.repo.src.components.App.1045198380"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src/" -- with slash with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "Users.username.repo.src.components.App.1304763199"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src/" -- with slash with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src/" -- with slash with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "Users.username.repo.src.components.App.2983810267"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = "src/" -- with slash with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = /__fixtures__/ does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = /__fixtures__/ does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = /__fixtures__/ multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "Users.username.repo.src.components.App.831373691"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = /__fixtures__/ some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "Users.username.repo.src.components.App.613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - removePrefix = /__fixtures__/ useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = /__fixtures__/ with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "Users.username.repo.src.components.App.94348014"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = /__fixtures__/ with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "Users.username.repo.src.components.App.1045198380"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = /__fixtures__/ with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "Users.username.repo.src.components.App.1304763199"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = /__fixtures__/ with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = /__fixtures__/ with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "Users.username.repo.src.components.App.2983810267"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = /__fixtures__/ with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = false does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = false does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = false multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "Users.username.repo.src.components.App.831373691"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = false some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "Users.username.repo.src.components.App.613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - removePrefix = false useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = false with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "Users.username.repo.src.components.App.94348014"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = false with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "Users.username.repo.src.components.App.1045198380"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = false with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "Users.username.repo.src.components.App.1304763199"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = false with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = false with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "Users.username.repo.src.components.App.2983810267"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = false with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = true, includeExportName = all does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = true, includeExportName = all does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = true, includeExportName = all multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "Users.username.repo.src.components.App.831373691"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = true, includeExportName = all some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "Users.username.repo.src.components.App.613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - removePrefix = true, includeExportName = all useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = true, includeExportName = all with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "Users.username.repo.src.components.App.94348014"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = true, includeExportName = all with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "Users.username.repo.src.components.App.1045198380"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = true, includeExportName = all with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "Users.username.repo.src.components.App.1304763199"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = true, includeExportName = all with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = true, includeExportName = all with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "Users.username.repo.src.components.App.2983810267"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = true, includeExportName = all with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = true, includeExportName = true does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = true, includeExportName = true does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = true, includeExportName = true multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "831373691"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = true, includeExportName = true some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - removePrefix = true, includeExportName = true useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = true, includeExportName = true with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "94348014"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = true, includeExportName = true with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "1045198380"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = true, includeExportName = true with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "1304763199"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = true, includeExportName = true with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = true, includeExportName = true with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "2983810267"
+});
+export { };
+"
+`;
+
+exports[`hooks - removePrefix = true, includeExportName = true with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "" does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "" does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "UsersusernamereposrccomponentsApp613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "" multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "UsersusernamereposrccomponentsApp613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "UsersusernamereposrccomponentsApp613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "UsersusernamereposrccomponentsApp831373691"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "" some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "UsersusernamereposrccomponentsApp613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "UsersusernamereposrccomponentsApp613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "UsersusernamereposrccomponentsApp613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - separator = "" useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "" with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "UsersusernamereposrccomponentsApp94348014"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "" with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "UsersusernamereposrccomponentsApp1045198380"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "" with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "UsersusernamereposrccomponentsApp1304763199"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "" with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - separator = "" with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "UsersusernamereposrccomponentsApp2983810267"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "" with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "UsersusernamereposrccomponentsApp613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "_" does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "_" does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users_username_repo_src_components_App_613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "_" multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users_username_repo_src_components_App_613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users_username_repo_src_components_App_613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "Users_username_repo_src_components_App_831373691"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "_" some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "Users_username_repo_src_components_App_613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users_username_repo_src_components_App_613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users_username_repo_src_components_App_613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - separator = "_" useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "_" with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "Users_username_repo_src_components_App_94348014"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "_" with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "Users_username_repo_src_components_App_1045198380"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "_" with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "Users_username_repo_src_components_App_1304763199"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "_" with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - separator = "_" with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "Users_username_repo_src_components_App_2983810267"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "_" with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users_username_repo_src_components_App_613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "foo" does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "foo" does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "foo" multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo831373691"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "foo" some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - separator = "foo" useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "foo" with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo94348014"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "foo" with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo1045198380"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "foo" with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo1304763199"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "foo" with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - separator = "foo" with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo2983810267"
+});
+export { };
+"
+`;
+
+exports[`hooks - separator = "foo" with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - useKey = true does nothing if id is already provided 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - useKey = true does nothing if react-intl is not imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks - useKey = true multiple uses 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "Users.username.repo.src.components.App.831373691"
+});
+export { };
+"
+`;
+
+exports[`hooks - useKey = true some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component2 = function Component2() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "Users.username.repo.src.components.App.613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`hooks - useKey = true useIntl with different module source 1`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks - useKey = true with FormattedMessage imported as something else 1`] = `
+"intl.formatMessage({
+    defaultMessage: "i18n",
+    "id": "Users.username.repo.src.components.App.94348014"
+});
+export { };
+"
+`;
+
+exports[`hooks - useKey = true with a value interpolated in the message 1`] = `
+"intl.formatMessage({
+    defaultMessage: "template string 2",
+    "id": "Users.username.repo.src.components.App.1045198380"
+});
+export { };
+"
+`;
+
+exports[`hooks - useKey = true with a variable as the defaultMessage 1`] = `
+"var message = "variable message";
+intl.formatMessage({
+    defaultMessage: message,
+    "id": "Users.username.repo.src.components.App.1304763199"
+});
+export { };
+"
+`;
+
+exports[`hooks - useKey = true with a variable as the defaultMessage 2`] = `
+"intl.formatMessage(messages);
+export { };
+"
+`;
+
+exports[`hooks - useKey = true with custom properties in formatMessage call 1`] = `
+"intl.formatMessage({
+    defaultMessage: "custom prop",
+    other: 123,
+    "id": "Users.username.repo.src.components.App.2983810267"
+});
+export { };
+"
+`;
+
+exports[`hooks - useKey = true with useIntl hook imported 1`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;

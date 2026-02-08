@@ -1,0 +1,5764 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`definition - default Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "Users.username.repo.src.components.App.world"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "Users.username.repo.src.components.App.headerTitle"
+    }
+});
+"
+`;
+
+exports[`definition - default default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - default eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - default import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - default leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - default leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "Users.username.repo.src.components.App.world"
+    }
+});
+"
+`;
+
+exports[`definition - default moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - default multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - default not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - default not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - default not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - default not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - default not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - default string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - default when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - default with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - default with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - default with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - extractComments = false Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "Users.username.repo.src.components.App.world"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "Users.username.repo.src.components.App.headerTitle"
+    }
+});
+"
+`;
+
+exports[`definition - extractComments = false default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - extractComments = false eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - extractComments = false import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - extractComments = false leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - extractComments = false leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "Users.username.repo.src.components.App.world"
+    }
+});
+"
+`;
+
+exports[`definition - extractComments = false moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - extractComments = false multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - extractComments = false not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - extractComments = false not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - extractComments = false not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - extractComments = false not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - extractComments = false not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - extractComments = false string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - extractComments = false when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - extractComments = false with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - extractComments = false with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - extractComments = false with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - extractComments = true Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "Users.username.repo.src.components.App.world"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "Users.username.repo.src.components.App.headerTitle"
+    }
+});
+"
+`;
+
+exports[`definition - extractComments = true default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - extractComments = true eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - extractComments = true import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - extractComments = true leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - extractComments = true leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "Users.username.repo.src.components.App.world"
+    }
+});
+"
+`;
+
+exports[`definition - extractComments = true moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - extractComments = true multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - extractComments = true not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - extractComments = true not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - extractComments = true not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - extractComments = true not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - extractComments = true not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - extractComments = true string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - extractComments = true when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - extractComments = true with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - extractComments = true with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - extractComments = true with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - filebase = true Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "App.world"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "App.headerTitle"
+    }
+});
+"
+`;
+
+exports[`definition - filebase = true default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - filebase = true eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - filebase = true import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - filebase = true leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "App.hello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - filebase = true leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "App.world"
+    }
+});
+"
+`;
+
+exports[`definition - filebase = true moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - filebase = true multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "App.hello",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - filebase = true not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - filebase = true not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - filebase = true not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - filebase = true not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - filebase = true not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - filebase = true string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - filebase = true when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - filebase = true with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "App.hello",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - filebase = true with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "App.hello",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - filebase = true with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - hash + filebase = true Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "QXBwLndvcmxk"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "QXBwLmhlYWRlclRpdGxl"
+    }
+});
+"
+`;
+
+exports[`definition - hash + filebase = true default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "QXBwLmhlbGxv",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash + filebase = true eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - hash + filebase = true import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - hash + filebase = true leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "QXBwLmhlbGxv",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - hash + filebase = true leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "QXBwLndvcmxk"
+    }
+});
+"
+`;
+
+exports[`definition - hash + filebase = true moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "QXBwLmhlbGxv",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash + filebase = true multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "QXBwLmhlbGxv",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "QXBwLmhlbGxv",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - hash + filebase = true not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - hash + filebase = true not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "QXBwLmhlbGxv",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash + filebase = true not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - hash + filebase = true not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - hash + filebase = true not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - hash + filebase = true string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "QXBwLmhlbGxv",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - hash + filebase = true when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "QXBwLmhlbGxv",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash + filebase = true with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "QXBwLmhlbGxv",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - hash + filebase = true with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "QXBwLmhlbGxv",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - hash + filebase = true with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "QXBwLmhlbGxv",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - hash + includeExportName = true Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAubWVzc2FnZXMud29ybGQ="
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAubWVzc2FnZXMuaGVhZGVyVGl0bGU="
+    }
+});
+"
+`;
+
+exports[`definition - hash + includeExportName = true default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAubWVzc2FnZXMuaGVsbG8=",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash + includeExportName = true eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - hash + includeExportName = true import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - hash + includeExportName = true leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAubWVzc2FnZXMuaGVsbG8=",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - hash + includeExportName = true leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAubWVzc2FnZXMud29ybGQ="
+    }
+});
+"
+`;
+
+exports[`definition - hash + includeExportName = true moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAubWVzc2FnZXMuaGVsbG8=",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash + includeExportName = true multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAubWVzc2FnZXMuaGVsbG8=",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAubWVzc2FnZXMuaGVsbG8=",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - hash + includeExportName = true not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - hash + includeExportName = true not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAubWVzc2FnZXMuaGVsbG8=",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash + includeExportName = true not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - hash + includeExportName = true not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - hash + includeExportName = true not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - hash + includeExportName = true string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAubWVzc2FnZXMuaGVsbG8=",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - hash + includeExportName = true when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAubWVzc2FnZXMuaGVsbG8=",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash + includeExportName = true with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAubWVzc2FnZXMuaGVsbG8=",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - hash + includeExportName = true with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAubWVzc2FnZXMuaGVsbG8=",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - hash + includeExportName = true with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAubWVzc2FnZXMuaGVsbG8=",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - hash + relativeTo = "src" Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAud29ybGQ="
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVhZGVyVGl0bGU="
+    }
+});
+"
+`;
+
+exports[`definition - hash + relativeTo = "src" default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash + relativeTo = "src" eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - hash + relativeTo = "src" import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - hash + relativeTo = "src" leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - hash + relativeTo = "src" leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAud29ybGQ="
+    }
+});
+"
+`;
+
+exports[`definition - hash + relativeTo = "src" moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash + relativeTo = "src" multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - hash + relativeTo = "src" not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - hash + relativeTo = "src" not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash + relativeTo = "src" not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - hash + relativeTo = "src" not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - hash + relativeTo = "src" not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - hash + relativeTo = "src" string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - hash + relativeTo = "src" when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash + relativeTo = "src" with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - hash + relativeTo = "src" with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - hash + relativeTo = "src" with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - hash + removePrefix = "src/" Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAud29ybGQ="
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVhZGVyVGl0bGU="
+    }
+});
+"
+`;
+
+exports[`definition - hash + removePrefix = "src/" default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash + removePrefix = "src/" eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - hash + removePrefix = "src/" import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - hash + removePrefix = "src/" leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - hash + removePrefix = "src/" leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAud29ybGQ="
+    }
+});
+"
+`;
+
+exports[`definition - hash + removePrefix = "src/" moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash + removePrefix = "src/" multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - hash + removePrefix = "src/" not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - hash + removePrefix = "src/" not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash + removePrefix = "src/" not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - hash + removePrefix = "src/" not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - hash + removePrefix = "src/" not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - hash + removePrefix = "src/" string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - hash + removePrefix = "src/" when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash + removePrefix = "src/" with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - hash + removePrefix = "src/" with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - hash + removePrefix = "src/" with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - hash base64 Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAud29ybGQ="
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVhZGVyVGl0bGU="
+    }
+});
+"
+`;
+
+exports[`definition - hash base64 default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash base64 eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - hash base64 import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - hash base64 leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - hash base64 leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAud29ybGQ="
+    }
+});
+"
+`;
+
+exports[`definition - hash base64 moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash base64 multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - hash base64 not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - hash base64 not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash base64 not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - hash base64 not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - hash base64 not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - hash base64 string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - hash base64 when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash base64 with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - hash base64 with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - hash base64 with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuaGVsbG8=",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - hash murmur3 Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "901062012"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "3290602982"
+    }
+});
+"
+`;
+
+exports[`definition - hash murmur3 default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "3357898059",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash murmur3 eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - hash murmur3 import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - hash murmur3 leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "3357898059",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - hash murmur3 leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "901062012"
+    }
+});
+"
+`;
+
+exports[`definition - hash murmur3 moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "3357898059",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash murmur3 multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "3357898059",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "3357898059",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - hash murmur3 not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - hash murmur3 not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "3357898059",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash murmur3 not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - hash murmur3 not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - hash murmur3 not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - hash murmur3 string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "3357898059",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - hash murmur3 when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "3357898059",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash murmur3 with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "3357898059",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - hash murmur3 with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "3357898059",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - hash murmur3 with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "3357898059",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - hash unknown fallback to murmur3 Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "901062012"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "3290602982"
+    }
+});
+"
+`;
+
+exports[`definition - hash unknown fallback to murmur3 default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "3357898059",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash unknown fallback to murmur3 eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - hash unknown fallback to murmur3 import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - hash unknown fallback to murmur3 leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "3357898059",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - hash unknown fallback to murmur3 leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "901062012"
+    }
+});
+"
+`;
+
+exports[`definition - hash unknown fallback to murmur3 moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "3357898059",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash unknown fallback to murmur3 multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "3357898059",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "3357898059",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - hash unknown fallback to murmur3 not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - hash unknown fallback to murmur3 not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "3357898059",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash unknown fallback to murmur3 not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - hash unknown fallback to murmur3 not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - hash unknown fallback to murmur3 not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - hash unknown fallback to murmur3 string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "3357898059",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - hash unknown fallback to murmur3 when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "3357898059",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - hash unknown fallback to murmur3 with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "3357898059",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - hash unknown fallback to murmur3 with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "3357898059",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - hash unknown fallback to murmur3 with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "3357898059",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - includeExportName = all Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "Users.username.repo.src.components.App.world"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "Users.username.repo.src.components.App.headerTitle"
+    }
+});
+"
+`;
+
+exports[`definition - includeExportName = all default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - includeExportName = all eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - includeExportName = all import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - includeExportName = all leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - includeExportName = all leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "Users.username.repo.src.components.App.world"
+    }
+});
+"
+`;
+
+exports[`definition - includeExportName = all moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - includeExportName = all multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - includeExportName = all not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - includeExportName = all not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - includeExportName = all not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - includeExportName = all not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - includeExportName = all not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - includeExportName = all string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - includeExportName = all when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - includeExportName = all with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - includeExportName = all with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - includeExportName = all with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - includeExportName = true Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "Users.username.repo.src.components.App.messages.world"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "Users.username.repo.src.components.App.messages.headerTitle"
+    }
+});
+"
+`;
+
+exports[`definition - includeExportName = true default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.messages.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - includeExportName = true eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - includeExportName = true import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - includeExportName = true leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "Users.username.repo.src.components.App.messages.hello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - includeExportName = true leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "Users.username.repo.src.components.App.messages.world"
+    }
+});
+"
+`;
+
+exports[`definition - includeExportName = true moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.messages.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - includeExportName = true multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.messages.hello",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.messages.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - includeExportName = true not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - includeExportName = true not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.messages.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - includeExportName = true not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - includeExportName = true not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - includeExportName = true not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - includeExportName = true string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "Users.username.repo.src.components.App.messages.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - includeExportName = true when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.messages.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - includeExportName = true with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.messages.hello",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - includeExportName = true with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.messages.hello",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - includeExportName = true with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.messages.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - moduleSourceNameTest Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "Users.username.repo.src.components.App.world"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "Users.username.repo.src.components.App.headerTitle"
+    }
+});
+"
+`;
+
+exports[`definition - moduleSourceNameTest default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - moduleSourceNameTest eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - moduleSourceNameTest import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - moduleSourceNameTest leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - moduleSourceNameTest leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "Users.username.repo.src.components.App.world"
+    }
+});
+"
+`;
+
+exports[`definition - moduleSourceNameTest moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - moduleSourceNameTest multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - moduleSourceNameTest not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - moduleSourceNameTest not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - moduleSourceNameTest not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - moduleSourceNameTest not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - moduleSourceNameTest not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - moduleSourceNameTest string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - moduleSourceNameTest when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - moduleSourceNameTest with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - moduleSourceNameTest with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - moduleSourceNameTest with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - relativeTo = "" Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "Users.username.repo.src.components.App.world"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "Users.username.repo.src.components.App.headerTitle"
+    }
+});
+"
+`;
+
+exports[`definition - relativeTo = "" default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - relativeTo = "" eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - relativeTo = "" import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - relativeTo = "" leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - relativeTo = "" leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "Users.username.repo.src.components.App.world"
+    }
+});
+"
+`;
+
+exports[`definition - relativeTo = "" moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - relativeTo = "" multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - relativeTo = "" not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - relativeTo = "" not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - relativeTo = "" not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - relativeTo = "" not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - relativeTo = "" not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - relativeTo = "" string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - relativeTo = "" when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - relativeTo = "" with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - relativeTo = "" with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - relativeTo = "" with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - relativeTo = "../" Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "Users.username.repo.src.components.App.world"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "Users.username.repo.src.components.App.headerTitle"
+    }
+});
+"
+`;
+
+exports[`definition - relativeTo = "../" default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - relativeTo = "../" eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - relativeTo = "../" import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - relativeTo = "../" leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - relativeTo = "../" leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "Users.username.repo.src.components.App.world"
+    }
+});
+"
+`;
+
+exports[`definition - relativeTo = "../" moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - relativeTo = "../" multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - relativeTo = "../" not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - relativeTo = "../" not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - relativeTo = "../" not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - relativeTo = "../" not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - relativeTo = "../" not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - relativeTo = "../" string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - relativeTo = "../" when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - relativeTo = "../" with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - relativeTo = "../" with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - relativeTo = "../" with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src" Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "Users.username.repo.src.components.App.world"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "Users.username.repo.src.components.App.headerTitle"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src" default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src" eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - removePrefix = "src" import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - removePrefix = "src" leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src" leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "Users.username.repo.src.components.App.world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src" moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src" multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src" not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - removePrefix = "src" not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src" not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - removePrefix = "src" not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - removePrefix = "src" not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - removePrefix = "src" string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src" when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src" with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src" with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - removePrefix = "src" with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__" Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "Users.username.repo.src.components.App.world"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "Users.username.repo.src.components.App.headerTitle"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__" default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__" eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__" import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__" leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__" leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "Users.username.repo.src.components.App.world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__" moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__" multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__" not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__" not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__" not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__" not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__" not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__" string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__" when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__" with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__" with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__" with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__", includeExportName = true Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "Users.username.repo.src.components.App.messages.world"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "Users.username.repo.src.components.App.messages.headerTitle"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__", includeExportName = true default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.messages.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__", includeExportName = true eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__", includeExportName = true import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__", includeExportName = true leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "Users.username.repo.src.components.App.messages.hello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__", includeExportName = true leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "Users.username.repo.src.components.App.messages.world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__", includeExportName = true moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.messages.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__", includeExportName = true multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.messages.hello",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.messages.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__", includeExportName = true not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__", includeExportName = true not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.messages.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__", includeExportName = true not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__", includeExportName = true not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__", includeExportName = true not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__", includeExportName = true string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "Users.username.repo.src.components.App.messages.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__", includeExportName = true when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.messages.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__", includeExportName = true with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.messages.hello",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__", includeExportName = true with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.messages.hello",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - removePrefix = "src.__fixtures__", includeExportName = true with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.messages.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src/" -- with slash Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "Users.username.repo.src.components.App.world"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "Users.username.repo.src.components.App.headerTitle"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src/" -- with slash default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src/" -- with slash eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - removePrefix = "src/" -- with slash import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - removePrefix = "src/" -- with slash leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src/" -- with slash leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "Users.username.repo.src.components.App.world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src/" -- with slash moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src/" -- with slash multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src/" -- with slash not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - removePrefix = "src/" -- with slash not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src/" -- with slash not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - removePrefix = "src/" -- with slash not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - removePrefix = "src/" -- with slash not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - removePrefix = "src/" -- with slash string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src/" -- with slash when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src/" -- with slash with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = "src/" -- with slash with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - removePrefix = "src/" -- with slash with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = /__fixtures__/ Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "Users.username.repo.src.components.App.world"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "Users.username.repo.src.components.App.headerTitle"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = /__fixtures__/ default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = /__fixtures__/ eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - removePrefix = /__fixtures__/ import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - removePrefix = /__fixtures__/ leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = /__fixtures__/ leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "Users.username.repo.src.components.App.world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = /__fixtures__/ moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = /__fixtures__/ multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = /__fixtures__/ not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - removePrefix = /__fixtures__/ not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = /__fixtures__/ not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - removePrefix = /__fixtures__/ not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - removePrefix = /__fixtures__/ not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - removePrefix = /__fixtures__/ string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = /__fixtures__/ when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = /__fixtures__/ with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = /__fixtures__/ with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - removePrefix = /__fixtures__/ with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = false Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "Users.username.repo.src.components.App.world"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "Users.username.repo.src.components.App.headerTitle"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = false default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = false eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - removePrefix = false import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - removePrefix = false leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = false leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "Users.username.repo.src.components.App.world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = false moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = false multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = false not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - removePrefix = false not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = false not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - removePrefix = false not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - removePrefix = false not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - removePrefix = false string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = false when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = false with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = false with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - removePrefix = false with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = all Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "Users.username.repo.src.components.App.world"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "Users.username.repo.src.components.App.headerTitle"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = all default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = all eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = all import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = all leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = all leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "Users.username.repo.src.components.App.world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = all moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = all multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = all not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = all not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = all not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = all not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = all not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = all string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = all when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = all with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = all with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = all with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = true Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "messages.world"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "messages.headerTitle"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = true default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "messages.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = true eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = true import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = true leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "messages.hello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = true leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "messages.world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = true moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "messages.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = true multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "messages.hello",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "messages.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = true not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = true not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "messages.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = true not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = true not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = true not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = true string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "messages.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = true when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "messages.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = true with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "messages.hello",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = true with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "messages.hello",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - removePrefix = true, includeExportName = true with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "messages.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "" Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "UsersusernamereposrccomponentsAppworld"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "UsersusernamereposrccomponentsAppheaderTitle"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "" default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "UsersusernamereposrccomponentsApphello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "" eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - separator = "" import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - separator = "" leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "UsersusernamereposrccomponentsApphello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - separator = "" leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "UsersusernamereposrccomponentsAppworld"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "" moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "UsersusernamereposrccomponentsApphello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "" multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "UsersusernamereposrccomponentsApphello",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "UsersusernamereposrccomponentsApphello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "" not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - separator = "" not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "UsersusernamereposrccomponentsApphello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "" not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - separator = "" not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - separator = "" not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - separator = "" string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "UsersusernamereposrccomponentsApphello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "" when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "UsersusernamereposrccomponentsApphello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "" with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "UsersusernamereposrccomponentsApphello",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - separator = "" with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "UsersusernamereposrccomponentsApphello",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - separator = "" with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "UsersusernamereposrccomponentsApphello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "_" Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "Users_username_repo_src_components_App_world"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "Users_username_repo_src_components_App_headerTitle"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "_" default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users_username_repo_src_components_App_hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "_" eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - separator = "_" import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - separator = "_" leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "Users_username_repo_src_components_App_hello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - separator = "_" leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "Users_username_repo_src_components_App_world"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "_" moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users_username_repo_src_components_App_hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "_" multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "Users_username_repo_src_components_App_hello",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "Users_username_repo_src_components_App_hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "_" not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - separator = "_" not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "Users_username_repo_src_components_App_hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "_" not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - separator = "_" not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - separator = "_" not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - separator = "_" string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "Users_username_repo_src_components_App_hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "_" when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "Users_username_repo_src_components_App_hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "_" with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users_username_repo_src_components_App_hello",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - separator = "_" with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users_username_repo_src_components_App_hello",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - separator = "_" with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users_username_repo_src_components_App_hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "foo" Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfooworld"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfooheaderTitle"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "foo" default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoohello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "foo" eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - separator = "foo" import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - separator = "foo" leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoohello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - separator = "foo" leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfooworld"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "foo" moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoohello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "foo" multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoohello",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoohello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "foo" not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - separator = "foo" not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoohello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "foo" not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - separator = "foo" not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - separator = "foo" not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - separator = "foo" string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoohello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "foo" when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoohello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - separator = "foo" with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoohello",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - separator = "foo" with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoohello",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - separator = "foo" with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoohello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - useKey = true Object 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    new: {
+        id: 'this is id',
+        defaultMessage: 'id'
+    },
+    world: {
+        defaultMessage: 'world',
+        "id": "Users.username.repo.src.components.App.world"
+    },
+    headerTitle: {
+        defaultMessage: 'Welcome to dashboard {name}!',
+        description: 'Message to greet the user.',
+        "id": "Users.username.repo.src.components.App.headerTitle"
+    }
+});
+"
+`;
+
+exports[`definition - useKey = true default 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - useKey = true eval string 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: 'hello' + 'world'
+});
+"
+`;
+
+exports[`definition - useKey = true import as 1`] = `
+"import { defineMessages as m } from 'react-intl';
+m({
+    hello: 'hello'
+});
+"
+`;
+
+exports[`definition - useKey = true leading comment 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // The main Hello of our app.
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    },
+    // Another Hello,
+    // multiline this time
+    world: {
+        id: 'hello.world',
+        defaultMessage: 'hello world'
+    }
+});
+"
+`;
+
+exports[`definition - useKey = true leading comment with description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    // This comment should not be used
+    world: {
+        defaultMessage: 'hello world',
+        description: 'The hello world',
+        "id": "Users.username.repo.src.components.App.world"
+    }
+});
+"
+`;
+
+exports[`definition - useKey = true moduleSourceName 1`] = `
+"import { defineMessages } from 'gatsby-plugin-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - useKey = true multi export 1`] = `
+"import { defineMessages } from 'react-intl';
+export var extra = defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world extra"
+    }
+});
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - useKey = true not transform if callee is not identifier 1`] = `
+"import { defineMessages } from 'react-intl';
+var m = [
+    defineMessages
+];
+export default m[0]({
+    hello: 'hello world'
+});
+"
+`;
+
+exports[`definition - useKey = true not transform if defineMessages is not imported 1`] = `
+"export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - useKey = true not transform when defineMessages argumens is empty 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages();
+"
+`;
+
+exports[`definition - useKey = true not transform when defineMessages argumens is not object 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(1);
+"
+`;
+
+exports[`definition - useKey = true not transfrom when the variable can not be found 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages(messages);
+"
+`;
+
+exports[`definition - useKey = true string literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    'hello': {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`definition - useKey = true when using the variable 1`] = `
+"import { defineMessages } from 'react-intl';
+var messages = {
+    hello: 'hello'
+};
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+"
+`;
+
+exports[`definition - useKey = true with include value 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world ".concat(1)
+    }
+});
+"
+`;
+
+exports[`definition - useKey = true with other func 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
+hello({
+    id: 'hoge'
+});
+"
+`;
+
+exports[`definition - useKey = true with other specifier 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;

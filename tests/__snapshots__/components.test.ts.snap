@@ -1,0 +1,5348 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components - default all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - default conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "Users.username.repo.src.components.App.3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - default default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - default different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - default does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - default does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - default import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "Users.username.repo.src.components.App.205247277",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - default multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1418522856",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - default user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - default using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - default with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - default with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.613153351",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - default with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.3540954520",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - default with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1677297219",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - extractComments = false all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - extractComments = false conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "Users.username.repo.src.components.App.3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - extractComments = false default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - extractComments = false different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - extractComments = false does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - extractComments = false does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - extractComments = false import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "Users.username.repo.src.components.App.205247277",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - extractComments = false multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1418522856",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - extractComments = false user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - extractComments = false using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - extractComments = false with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - extractComments = false with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.613153351",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - extractComments = false with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.3540954520",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - extractComments = false with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1677297219",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - extractComments = true all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - extractComments = true conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "Users.username.repo.src.components.App.3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - extractComments = true default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - extractComments = true different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - extractComments = true does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - extractComments = true does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - extractComments = true import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "Users.username.repo.src.components.App.205247277",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - extractComments = true multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1418522856",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - extractComments = true user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - extractComments = true using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - extractComments = true with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - extractComments = true with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.613153351",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - extractComments = true with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.3540954520",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - extractComments = true with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1677297219",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - filebase = true all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "App.471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - filebase = true conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "App.3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - filebase = true default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - filebase = true different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - filebase = true does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - filebase = true does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "App.613153351",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - filebase = true import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "App.205247277",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - filebase = true multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "App.613153351",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "App.1418522856",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - filebase = true user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - filebase = true using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "App.613153351",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - filebase = true with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - filebase = true with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "App.613153351",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - filebase = true with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "App.3540954520",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - filebase = true with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "App.1677297219",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - hash + filebase = true all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "QXBwLjQ3MTA0NzkxMA==",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - hash + filebase = true conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "QXBwLjM1NDEwNzIzNTI=",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - hash + filebase = true default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "QXBwLjYxMzE1MzM1MQ==",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash + filebase = true different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "QXBwLjYxMzE1MzM1MQ==",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash + filebase = true does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - hash + filebase = true does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "QXBwLjYxMzE1MzM1MQ==",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - hash + filebase = true import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "QXBwLjIwNTI0NzI3Nw==",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "QXBwLjYxMzE1MzM1MQ==",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash + filebase = true multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "QXBwLjYxMzE1MzM1MQ==",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "QXBwLjE0MTg1MjI4NTY=",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - hash + filebase = true user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash + filebase = true using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "QXBwLjYxMzE1MzM1MQ==",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - hash + filebase = true with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "QXBwLjYxMzE1MzM1MQ==",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash + filebase = true with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "QXBwLjYxMzE1MzM1MQ==",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - hash + filebase = true with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "QXBwLjM1NDA5NTQ1MjA=",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - hash + filebase = true with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "QXBwLjE2NzcyOTcyMTk=",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - hash + includeExportName = true all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNDcxMDQ3OTEw",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - hash + includeExportName = true conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMzU0MTA3MjM1Mg==",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - hash + includeExportName = true default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash + includeExportName = true different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash + includeExportName = true does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - hash + includeExportName = true does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - hash + includeExportName = true import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMjA1MjQ3Mjc3",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash + includeExportName = true multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTQxODUyMjg1Ng==",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - hash + includeExportName = true user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash + includeExportName = true using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - hash + includeExportName = true with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash + includeExportName = true with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - hash + includeExportName = true with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMzU0MDk1NDUyMA==",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - hash + includeExportName = true with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTY3NzI5NzIxOQ==",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - hash + relativeTo = "src" all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNDcxMDQ3OTEw",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - hash + relativeTo = "src" conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMzU0MTA3MjM1Mg==",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - hash + relativeTo = "src" default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash + relativeTo = "src" different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash + relativeTo = "src" does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - hash + relativeTo = "src" does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - hash + relativeTo = "src" import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMjA1MjQ3Mjc3",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash + relativeTo = "src" multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTQxODUyMjg1Ng==",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - hash + relativeTo = "src" user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash + relativeTo = "src" using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - hash + relativeTo = "src" with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash + relativeTo = "src" with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - hash + relativeTo = "src" with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMzU0MDk1NDUyMA==",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - hash + relativeTo = "src" with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTY3NzI5NzIxOQ==",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - hash + removePrefix = "src/" all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNDcxMDQ3OTEw",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - hash + removePrefix = "src/" conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMzU0MTA3MjM1Mg==",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - hash + removePrefix = "src/" default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash + removePrefix = "src/" different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash + removePrefix = "src/" does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - hash + removePrefix = "src/" does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - hash + removePrefix = "src/" import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMjA1MjQ3Mjc3",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash + removePrefix = "src/" multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTQxODUyMjg1Ng==",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - hash + removePrefix = "src/" user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash + removePrefix = "src/" using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - hash + removePrefix = "src/" with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash + removePrefix = "src/" with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - hash + removePrefix = "src/" with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMzU0MDk1NDUyMA==",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - hash + removePrefix = "src/" with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTY3NzI5NzIxOQ==",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - hash base64 all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNDcxMDQ3OTEw",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - hash base64 conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMzU0MTA3MjM1Mg==",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - hash base64 default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash base64 different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash base64 does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - hash base64 does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - hash base64 import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMjA1MjQ3Mjc3",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash base64 multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTQxODUyMjg1Ng==",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - hash base64 user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash base64 using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - hash base64 with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash base64 with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - hash base64 with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMzU0MDk1NDUyMA==",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - hash base64 with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTY3NzI5NzIxOQ==",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - hash murmur3 all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "3258960114",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - hash murmur3 conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "569867915",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - hash murmur3 default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "2564566158",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash murmur3 different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "2564566158",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash murmur3 does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - hash murmur3 does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "2564566158",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - hash murmur3 import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "3877881066",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "2564566158",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash murmur3 multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "2564566158",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "1064080099",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - hash murmur3 user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash murmur3 using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "2564566158",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - hash murmur3 with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "2564566158",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash murmur3 with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "2564566158",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - hash murmur3 with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "3569986009",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - hash murmur3 with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "4122467659",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - hash unknown fallback to murmur3 all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "3258960114",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - hash unknown fallback to murmur3 conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "569867915",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - hash unknown fallback to murmur3 default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "2564566158",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash unknown fallback to murmur3 different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "2564566158",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash unknown fallback to murmur3 does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - hash unknown fallback to murmur3 does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "2564566158",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - hash unknown fallback to murmur3 import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "3877881066",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "2564566158",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash unknown fallback to murmur3 multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "2564566158",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "1064080099",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - hash unknown fallback to murmur3 user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash unknown fallback to murmur3 using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "2564566158",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - hash unknown fallback to murmur3 with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "2564566158",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - hash unknown fallback to murmur3 with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "2564566158",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - hash unknown fallback to murmur3 with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "3569986009",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - hash unknown fallback to murmur3 with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "4122467659",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - includeExportName = all all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - includeExportName = all conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "Users.username.repo.src.components.App.3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - includeExportName = all default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - includeExportName = all different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - includeExportName = all does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - includeExportName = all does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - includeExportName = all import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "Users.username.repo.src.components.App.205247277",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - includeExportName = all multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1418522856",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - includeExportName = all user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - includeExportName = all using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - includeExportName = all with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - includeExportName = all with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.613153351",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - includeExportName = all with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.3540954520",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - includeExportName = all with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1677297219",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - includeExportName = true all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - includeExportName = true conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "Users.username.repo.src.components.App.3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - includeExportName = true default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - includeExportName = true different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - includeExportName = true does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - includeExportName = true does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - includeExportName = true import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "Users.username.repo.src.components.App.205247277",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - includeExportName = true multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1418522856",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - includeExportName = true user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - includeExportName = true using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - includeExportName = true with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - includeExportName = true with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.613153351",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - includeExportName = true with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.3540954520",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - includeExportName = true with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1677297219",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - moduleSourceNameTest all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - moduleSourceNameTest conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "Users.username.repo.src.components.App.3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - moduleSourceNameTest default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - moduleSourceNameTest different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - moduleSourceNameTest does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - moduleSourceNameTest does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - moduleSourceNameTest import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "Users.username.repo.src.components.App.205247277",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - moduleSourceNameTest multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1418522856",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - moduleSourceNameTest user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - moduleSourceNameTest using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - moduleSourceNameTest with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - moduleSourceNameTest with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.613153351",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - moduleSourceNameTest with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.3540954520",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - moduleSourceNameTest with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1677297219",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - relativeTo = "" all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - relativeTo = "" conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "Users.username.repo.src.components.App.3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - relativeTo = "" default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - relativeTo = "" different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - relativeTo = "" does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - relativeTo = "" does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - relativeTo = "" import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "Users.username.repo.src.components.App.205247277",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - relativeTo = "" multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1418522856",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - relativeTo = "" user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - relativeTo = "" using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - relativeTo = "" with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - relativeTo = "" with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.613153351",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - relativeTo = "" with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.3540954520",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - relativeTo = "" with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1677297219",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - relativeTo = "../" all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - relativeTo = "../" conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "Users.username.repo.src.components.App.3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - relativeTo = "../" default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - relativeTo = "../" different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - relativeTo = "../" does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - relativeTo = "../" does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - relativeTo = "../" import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "Users.username.repo.src.components.App.205247277",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - relativeTo = "../" multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1418522856",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - relativeTo = "../" user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - relativeTo = "../" using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - relativeTo = "../" with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - relativeTo = "../" with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.613153351",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - relativeTo = "../" with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.3540954520",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - relativeTo = "../" with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1677297219",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - removePrefix = "src" all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - removePrefix = "src" conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "Users.username.repo.src.components.App.3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - removePrefix = "src" default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = "src" different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = "src" does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - removePrefix = "src" does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - removePrefix = "src" import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "Users.username.repo.src.components.App.205247277",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = "src" multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1418522856",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - removePrefix = "src" user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = "src" using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - removePrefix = "src" with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = "src" with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.613153351",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - removePrefix = "src" with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.3540954520",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - removePrefix = "src" with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1677297219",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__" all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__" conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "Users.username.repo.src.components.App.3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__" default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__" different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__" does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__" does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__" import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "Users.username.repo.src.components.App.205247277",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__" multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1418522856",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__" user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__" using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__" with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__" with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.613153351",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__" with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.3540954520",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__" with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1677297219",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__", includeExportName = true all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__", includeExportName = true conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "Users.username.repo.src.components.App.3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__", includeExportName = true default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__", includeExportName = true different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__", includeExportName = true does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__", includeExportName = true does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__", includeExportName = true import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "Users.username.repo.src.components.App.205247277",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__", includeExportName = true multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1418522856",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__", includeExportName = true user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__", includeExportName = true using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__", includeExportName = true with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__", includeExportName = true with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.613153351",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__", includeExportName = true with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.3540954520",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - removePrefix = "src.__fixtures__", includeExportName = true with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1677297219",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - removePrefix = "src/" -- with slash all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - removePrefix = "src/" -- with slash conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "Users.username.repo.src.components.App.3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - removePrefix = "src/" -- with slash default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = "src/" -- with slash different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = "src/" -- with slash does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - removePrefix = "src/" -- with slash does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - removePrefix = "src/" -- with slash import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "Users.username.repo.src.components.App.205247277",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = "src/" -- with slash multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1418522856",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - removePrefix = "src/" -- with slash user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = "src/" -- with slash using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - removePrefix = "src/" -- with slash with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = "src/" -- with slash with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.613153351",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - removePrefix = "src/" -- with slash with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.3540954520",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - removePrefix = "src/" -- with slash with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1677297219",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - removePrefix = /__fixtures__/ all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - removePrefix = /__fixtures__/ conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "Users.username.repo.src.components.App.3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - removePrefix = /__fixtures__/ default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = /__fixtures__/ different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = /__fixtures__/ does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - removePrefix = /__fixtures__/ does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - removePrefix = /__fixtures__/ import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "Users.username.repo.src.components.App.205247277",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = /__fixtures__/ multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1418522856",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - removePrefix = /__fixtures__/ user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = /__fixtures__/ using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - removePrefix = /__fixtures__/ with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = /__fixtures__/ with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.613153351",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - removePrefix = /__fixtures__/ with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.3540954520",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - removePrefix = /__fixtures__/ with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1677297219",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - removePrefix = false all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - removePrefix = false conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "Users.username.repo.src.components.App.3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - removePrefix = false default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = false different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = false does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - removePrefix = false does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - removePrefix = false import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "Users.username.repo.src.components.App.205247277",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = false multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1418522856",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - removePrefix = false user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = false using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - removePrefix = false with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = false with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.613153351",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - removePrefix = false with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.3540954520",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - removePrefix = false with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1677297219",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = all all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = all conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "Users.username.repo.src.components.App.3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = all default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = all different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = all does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = all does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = all import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "Users.username.repo.src.components.App.205247277",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = all multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1418522856",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = all user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = all using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = all with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = all with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.613153351",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = all with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.3540954520",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = all with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1677297219",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = true all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = true conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = true default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = true different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = true does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = true does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "613153351",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = true import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "205247277",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = true multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "613153351",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "1418522856",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = true user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = true using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "613153351",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = true with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = true with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "613153351",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = true with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "3540954520",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - removePrefix = true, includeExportName = true with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "1677297219",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - separator = "" all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "UsersusernamereposrccomponentsApp471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - separator = "" conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "UsersusernamereposrccomponentsApp3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - separator = "" default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "UsersusernamereposrccomponentsApp613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - separator = "" different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "UsersusernamereposrccomponentsApp613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - separator = "" does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - separator = "" does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "UsersusernamereposrccomponentsApp613153351",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - separator = "" import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "UsersusernamereposrccomponentsApp205247277",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "UsersusernamereposrccomponentsApp613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - separator = "" multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "UsersusernamereposrccomponentsApp613153351",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "UsersusernamereposrccomponentsApp1418522856",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - separator = "" user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - separator = "" using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "UsersusernamereposrccomponentsApp613153351",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - separator = "" with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "UsersusernamereposrccomponentsApp613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - separator = "" with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "UsersusernamereposrccomponentsApp613153351",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - separator = "" with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "UsersusernamereposrccomponentsApp3540954520",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - separator = "" with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "UsersusernamereposrccomponentsApp1677297219",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - separator = "_" all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users_username_repo_src_components_App_471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - separator = "_" conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "Users_username_repo_src_components_App_3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - separator = "_" default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users_username_repo_src_components_App_613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - separator = "_" different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users_username_repo_src_components_App_613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - separator = "_" does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - separator = "_" does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users_username_repo_src_components_App_613153351",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - separator = "_" import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "Users_username_repo_src_components_App_205247277",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users_username_repo_src_components_App_613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - separator = "_" multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users_username_repo_src_components_App_613153351",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users_username_repo_src_components_App_1418522856",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - separator = "_" user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - separator = "_" using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users_username_repo_src_components_App_613153351",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - separator = "_" with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "Users_username_repo_src_components_App_613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - separator = "_" with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users_username_repo_src_components_App_613153351",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - separator = "_" with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users_username_repo_src_components_App_3540954520",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - separator = "_" with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users_username_repo_src_components_App_1677297219",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - separator = "foo" all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - separator = "foo" conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - separator = "foo" default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - separator = "foo" different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - separator = "foo" does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - separator = "foo" does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - separator = "foo" import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo205247277",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - separator = "foo" multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo1418522856",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - separator = "foo" user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - separator = "foo" using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - separator = "foo" with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - separator = "foo" with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - separator = "foo" with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo3540954520",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - separator = "foo" with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo1677297219",
+    defaultMessage: message
+});
+"
+`;
+
+exports[`components - useKey = true all props 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components - useKey = true conditional rendering 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "Users.username.repo.src.components.App.3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components - useKey = true default 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - useKey = true different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - useKey = true does nothing if component props are spread 1`] = `
+"function _define_property(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _object_spread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _define_property(target, key, source[key]);
+        });
+    }
+    return target;
+}
+import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var props = {
+    defaultMessage: 'hello'
+};
+/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
+"
+`;
+
+exports[`components - useKey = true does nothing if components not imported from react-intl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`components - useKey = true import all supported components 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
+    id: "Users.username.repo.src.components.App.205247277",
+    defaultMessage: "<span>hello</span>"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - useKey = true multiple uses 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1418522856",
+    defaultMessage: "another"
+});
+"
+`;
+
+exports[`components - useKey = true user id 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "foobar",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - useKey = true using key 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.foobar",
+    defaultMessage: "hello"
+}, "foobar");
+"
+`;
+
+exports[`components - useKey = true with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage as T } from 'react-intl';
+/*#__PURE__*/ _jsx(T, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components - useKey = true with FormattedMessage nested in other JSX 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx("div", {
+    children: /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.613153351",
+        defaultMessage: "hello"
+    })
+});
+"
+`;
+
+exports[`components - useKey = true with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.3540954520",
+    defaultMessage: "hello world 2"
+});
+"
+`;
+
+exports[`components - useKey = true with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+var message = "variable message";
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.1677297219",
+    defaultMessage: message
+});
+"
+`;

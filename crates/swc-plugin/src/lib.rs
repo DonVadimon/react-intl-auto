@@ -2,16 +2,16 @@ mod types;
 mod utils;
 mod visitors;
 
+use std::path::PathBuf;
+use std::collections::HashSet;
 use swc_core::ecma::{
     ast::Program,
     visit::{VisitMut, VisitMutWith},
 };
 use swc_core::plugin::{plugin_transform, proxies::TransformPluginProgramMetadata};
-use std::path::PathBuf;
 
-use types::{PluginOptions, PluginState};
-use visitors::{CallExpressionVisitor, JSXVisitor, ImportVisitor};
-use std::collections::HashSet;
+use crate::types::{PluginOptions, PluginState};
+use crate::visitors::{CallExpressionVisitor, ImportVisitor, JSXVisitor};
 
 pub struct TransformVisitor {
     state: PluginState,
@@ -32,7 +32,7 @@ impl VisitMut for TransformVisitor {
             alias_map: std::collections::HashMap::new(),
         };
         program.visit_mut_with(&mut import_visitor);
-        
+
         // Second pass: transform with knowledge of imports and aliases
         let mut jsx_visitor = JSXVisitor {
             state: self.state.clone(),
@@ -44,7 +44,7 @@ impl VisitMut for TransformVisitor {
             imported_names: import_visitor.imported_names,
             variable_declarations: std::collections::HashMap::new(),
         };
-        
+
         program.visit_mut_with(&mut jsx_visitor);
         program.visit_mut_with(&mut call_visitor);
     }
@@ -52,7 +52,10 @@ impl VisitMut for TransformVisitor {
 
 /// Main plugin function that processes the AST
 #[plugin_transform]
-pub fn process_transform(mut program: Program, metadata: TransformPluginProgramMetadata) -> Program {
+pub fn process_transform(
+    mut program: Program,
+    metadata: TransformPluginProgramMetadata,
+) -> Program {
     // Parse plugin options from metadata
     let raw_config = metadata
         .get_transform_plugin_config()
@@ -63,13 +66,10 @@ pub fn process_transform(mut program: Program, metadata: TransformPluginProgramM
     let filename = metadata
         .get_context(&swc_core::plugin::metadata::TransformPluginMetadataContextKind::Filename)
         .unwrap_or_else(|| "unknown.js".to_string());
-    
+
     let state = PluginState::new(PathBuf::from(filename), opts);
     let mut visitor = TransformVisitor::new(state);
 
     program.visit_mut_with(&mut visitor);
     program
 }
-
-#[cfg(test)]
-mod project_root_test;

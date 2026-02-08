@@ -48,7 +48,7 @@
 ## 📋 Список задач
 
 - [x] HYBRID_EXTRACT-001: Create Cargo workspace structure with shared core library
-- [ ] HYBRID_EXTRACT-002: Extract ID generation and path utilities to shared core crate
+- [x] HYBRID_EXTRACT-002: Extract ID generation and path utilities to shared core crate
 - [ ] HYBRID_EXTRACT-003: Extract AST traversal logic to shared core crate
 - [ ] HYBRID_EXTRACT-004: Create CLI tool crate with message extraction
 - [ ] HYBRID_EXTRACT-005: Implement CLI argument parsing and file globbing
@@ -127,10 +127,10 @@ base64 = "0.22"
 
 ---
 
-## [ ] HYBRID_EXTRACT-002: Extract ID generation and path utilities to shared core crate
+## [x] HYBRID_EXTRACT-002: Extract ID generation and path utilities to shared core crate
 
 ### 📋 Metadata
-- **status:** `todo`
+- **status:** `ready`
 - **depends:** `HYBRID_EXTRACT-001`
 - **priority:** `P0`
 - **files:** `crates/react-intl-core/src/lib.rs`, `crates/react-intl-core/src/id_generator.rs`, `crates/react-intl-core/src/path_utils.rs`, `src/utils.rs`
@@ -174,6 +174,23 @@ base64 = "0.22"
 
 ### 📊 ActionLog:
 - `2026-02-08 18:48` План задачи создан
+- `2026-02-08 20:11` Данные актуализированы: проверены utils.rs (497 строк), react-intl-core placeholder'ы
+- `2026-02-08 20:11` Статус изменен на `in-progress`
+- `2026-02-08 20:11` План согласован с USER, начато выполнение
+- `2026-02-08 20:12` Выполнен шаг 1: Перенесены ID generation функции в react-intl-core (create_hash, hash_string)
+- `2026-02-08 20:13` Выполнен шаг 2: Перенесены path utilities в react-intl-core (get_prefix, find_project_root, dot_path)
+- `2026-02-08 20:13` Выполнен шаг 3: Обновлены типы в react-intl-core (CoreOptions, CoreState + aliases)
+- `2026-02-08 20:14` Выполнен шаг 4: Обновлен swc-plugin для использования shared core
+- `2026-02-08 20:15` Выполнен шаг 5: Перенесены тесты (9 тестов в react-intl-core + doc tests)
+- `2026-02-08 20:16` Выполнен шаг 6: Проверка компиляции - успешно
+- `2026-02-08 20:17` Выполнен шаг 7: Тесты react-intl-core - 9 тестов + 5 doc tests пройдено
+- `2026-02-08 20:17` Выполнен шаг 8: Тесты swc-plugin - 6 тестов пройдено
+- `2026-02-08 20:18` Выполнен шаг 9: Jest интеграционные тесты - 225 тестов пройдено
+- `2026-02-08 20:19` Выполнен шаг 10: Сборка WASM target - успешно
+- `2026-02-08 20:19` Определены критерии приёмки: все выполнены
+- `2026-02-08 20:19` Готово к review
+- `2026-02-08 20:20` Review: USER одобрил ✓
+- `2026-02-08 20:20` Задача завершена, статус изменен на `ready`
 
 ---
 

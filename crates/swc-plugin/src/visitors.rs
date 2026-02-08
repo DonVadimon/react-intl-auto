@@ -1,8 +1,12 @@
-use crate::types::{IncludeExportName, PluginState};
-use crate::utils::*;
 use std::collections::HashSet;
 use swc_core::ecma::ast::*;
 use swc_core::ecma::visit::{VisitMut, VisitMutWith};
+
+use react_intl_core::{IncludeExportName};
+use react_intl_core::{get_prefix, hash_string, murmur32_hash};
+
+use crate::utils::*;
+use crate::types::{PluginState};
 
 const REACT_COMPONENTS: &[&str] = &["FormattedMessage", "FormattedHTMLMessage"];
 
@@ -132,11 +136,12 @@ impl JSXVisitor {
 
             let suffix = suffix.unwrap_or_else(|| {
                 if let Some(message_value) = self.extract_from_value(jsx_attr) {
-                    create_hash(&message_value)
+                    murmur32_hash(&message_value)
                 } else {
                     // When we can't extract the message value, generate a hash based on file path and position
                     let file_path = self.state.filename.to_string_lossy().to_string();
-                    let position_hash = create_hash(&format!("{}{}", file_path, element.span.lo.0));
+                    let position_hash =
+                        murmur32_hash(&format!("{}{}", file_path, element.span.lo.0));
                     position_hash
                 }
             });
@@ -430,9 +435,9 @@ impl CallExpressionVisitor {
 
         if let Some(default_message) = default_message_value {
             let suffix = if self.state.opts.use_key {
-                key_value.unwrap_or_else(|| create_hash(&default_message))
+                key_value.unwrap_or_else(|| murmur32_hash(&default_message))
             } else {
-                create_hash(&default_message)
+                murmur32_hash(&default_message)
             };
 
             let id = get_prefix(&self.state, Some(&suffix));

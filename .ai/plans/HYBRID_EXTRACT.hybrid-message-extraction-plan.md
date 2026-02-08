@@ -133,7 +133,7 @@ base64 = "0.22"
 - **status:** `ready`
 - **depends:** `HYBRID_EXTRACT-001`
 - **priority:** `P0`
-- **files:** `crates/react-intl-core/src/lib.rs`, `crates/react-intl-core/src/id_generator.rs`, `crates/react-intl-core/src/path_utils.rs`, `src/utils.rs`
+- **files:** `crates/react-intl-core/src/lib.rs`, `crates/react-intl-core/src/id_generator.rs`, `crates/react-intl-core/src/path_utils.rs`, `crates/swc-plugin/src/utils.rs`
 
 ### 📝 Details
 
@@ -165,7 +165,7 @@ base64 = "0.22"
    pub fn dot_path(path: &str, separator: &str) -> String
    ```
 
-3. Обновить `src/utils.rs` - импортировать из shared core
+3. Обновить `crates/swc-plugin/src/utils.rs` - импортировать из shared core
 
 **Влияние:**
 - Общий crate используется plugin и CLI
@@ -709,59 +709,49 @@ base64 = "0.22"
 - Тестирование разных платформ
 
 **Изменения:**
-1. Создать `__tests__/consistency.test.js`:
-   ```javascript
-   const { transform } = require('@swc/core');
-   const { execSync } = require('child_process');
-   const { extractMessages } = require('../index.js');
+1. Создать `tests/consistency.test.ts` используя `createConfigurationSuites`:
+    ```typescript
+    import { cases, createConfigurationSuites } from './testUtils';
+    import { execSync } from 'child_process';
 
-   describe('ID Consistency between Plugin and CLI', () => {
-     const testCode = `
-       import { defineMessages } from 'react-intl';
-       const messages = defineMessages({
-         hello: 'Hello World'
-       });
-     `;
+    const consistencyTest = {
+        title: 'plugin and CLI generate same ID',
+        code: `
+import { defineMessages } from 'react-intl';
+export default defineMessages({
+  hello: 'Hello World'
+});
+`,
+    };
 
-     it('should generate identical IDs with murmur3 hash', async () => {
-       // Transform with plugin
-       const pluginResult = await transform(testCode, {
-         filename: 'test.tsx',
-         plugins: [['./swc-plugin-react-intl-auto-fs.wasm', {
-           hashId: true,
-           hashAlgorithm: 'murmur3'
-         }]]
-       });
-       const pluginId = extractIdFromCode(pluginResult.code);
+    describe('ID Consistency between Plugin and CLI', () => {
+        createConfigurationSuites([consistencyTest], {
+            title: (title) => `${title}`,
+            // Custom test runner that compares plugin and CLI output
+        });
+    });
+    ```
 
-       // Extract with CLI
-       const cliResult = execSync(
-         './bin/react-intl-extract test.tsx --hash-id --hash-algorithm murmur3 --output -',
-         { input: testCode, encoding: 'utf8' }
-       );
-       const cliId = JSON.parse(cliResult)[0].id;
+2. Создать `tests/cli.test.ts` для тестирования CLI:
+    ```typescript
+    import { cases, createConfigurationSuites } from './testUtils';
 
-       expect(pluginId).toBe(cliId);
-     });
+    const cliTest = {
+        title: 'extract messages to JSON',
+        code: `
+import { defineMessages } from 'react-intl';
+export default defineMessages({
+  hello: 'Hello World'
+});
+`,
+    };
 
-     it('should generate identical IDs with base64 hash', async () => {
-       // Similar test for base64...
-     });
-   });
-   ```
-
-2. Создать `__tests__/cli.test.js` для тестирования CLI:
-   ```javascript
-   describe('CLI Tool', () => {
-     it('should extract messages to JSON file', () => {
-       // Test CLI output format
-     });
-
-     it('should support --extract-source-location', () => {
-       // Test source location inclusion
-     });
-   });
-   ```
+    describe('CLI Tool', () => {
+        createConfigurationSuites([cliTest], {
+            title: (title) => `${title}`,
+        });
+    });
+    ```
 
 **Влияние:**
 - Гарантия консистентности между компонентами
@@ -910,8 +900,9 @@ base64 = "0.22"
 
 ## ✅ Критерии готовности EPIC
 
-- [ ] Workspace структура Cargo создана и работает
-- [ ] Shared Core Library содержит всю общую логику
+- [x] Workspace структура Cargo создана и работает
+- [x] Shared Core Library содержит ID generation и path utilities
+- [ ] Shared Core Library содержит AST traversal logic
 - [ ] CLI Tool компилируется и проходит тесты
 - [ ] JS API работает и имеет TypeScript definitions
 - [ ] ID consistency тесты проходят (плагин и CLI генерируют одинаковые ID)
@@ -920,14 +911,50 @@ base64 = "0.22"
 - [ ] CI/CD пайплайн обновлен для новых компонентов
 - [ ] Пакет публикуется в npm без ошибок
 
+## 📝 Важные замечания по тестированию
+
+### Новый формат тестов
+Тесты теперь используют `createConfigurationSuites` из `testUtils.ts` для тестирования различных конфигураций:
+
+```typescript
+import { cases, createConfigurationSuites } from './testUtils';
+
+const testCase = {
+    title: 'default',
+    code: `
+import { defineMessages } from 'react-intl'
+export default defineMessages({
+  hello: 'hello',
+})
+`,
+};
+
+describe('defineMessages', () => {
+    createConfigurationSuites([testCase], {
+        title: (title) => `${title}`,
+    });
+});
+```
+
+### Запуск тестов
+```bash
+# Полный цикл (рекомендуется)
+npm run test:full       # build + Rust tests + Jest tests
+
+# Отдельные команды
+cargo test              # Rust unit tests
+npm test                # Jest integration tests
+npm run test:watch      # Jest в watch mode
+```
+
 ---
 
 ## 📊 Сводка по задачам
 
 | Task ID | Название | Приоритет | Зависимости | Статус |
 |---------|----------|-----------|-------------|--------|
-| HYBRID_EXTRACT-001 | Create Cargo workspace structure | P0 | - | ⏳ |
-| HYBRID_EXTRACT-002 | Extract ID generation to shared core | P0 | 001 | ⏳ |
+| HYBRID_EXTRACT-001 | Create Cargo workspace structure | P0 | - | ✅ |
+| HYBRID_EXTRACT-002 | Extract ID generation to shared core | P0 | 001 | ✅ |
 | HYBRID_EXTRACT-003 | Extract AST traversal to shared core | P0 | 002 | ⏳ |
 | HYBRID_EXTRACT-004 | Create CLI tool crate | P0 | 003 | ⏳ |
 | HYBRID_EXTRACT-005 | CLI argument parsing and globbing | P1 | 004 | ⏳ |

@@ -14,13 +14,14 @@ npm install
 npm run build
 
 # 3. Run all tests
-cargo test              # Run Rust unit tests (25 tests)
-npm test                # Run Jest integration tests (88 tests)
+npm run test:full       # Full cycle: build + Rust tests + Jest tests
+cargo test              # Run Rust unit tests
+npm test                # Run Jest integration tests
 
 # Alternative test commands
 npm run test:watch      # Run tests in watch mode
-jest __tests__/jsx.test.js              # Run single test file
-jest __tests__/jsx.test.js -t "should add id"  # Run specific test
+jest tests/components.test.ts              # Run single test file
+jest tests/definition.test.ts -t "default"  # Run specific test
 ```
 
 ### Dependency Management
@@ -103,23 +104,39 @@ impl PluginState {
 
 ### JavaScript Test Style
 
-- **Imports**: Use CommonJS (`require`) not ES modules
+- **Imports**: Use ES modules (`import`) for test files
 - **Indentation**: 2 spaces
 - **Test structure**: Use `describe` blocks for grouping, `it` for individual tests
 - **Naming**: Descriptive test names: "should [expected behavior] when [condition]"
 - **Snapshots**: Use `toMatchSnapshot()` for output comparison
 - **Async**: Use `async/await` for asynchronous tests
+- **Configuration Testing**: Use `createConfigurationSuites` from `testUtils.ts` to test multiple option combinations
 
 Example:
-```javascript
-const { transform } = require('@swc/core');
+```typescript
+import { cases, createConfigurationSuites } from './testUtils';
 
-describe('feature', () => {
-  it('should add id to FormattedMessage without id', async () => {
-    const result = await transformWithPlugin(code);
-    expect(result).toMatchSnapshot();
-  });
-});
+const defaultTest = {
+    title: 'default',
+    code: `
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello',
+})
+`,
+};
+
+// snapshot tests for multiple configuration options
+createConfigurationSuites('title', [defaultTest]);
+
+// specific non snapshot tests
+describe('title', () => {
+    it('should add id to FormattedMessage without id', async () => {
+      const result = await transformWithPlugin(code);
+      expect(result).toContain('"id": "123123"');
+    });
+})
 ```
 
 ### Project Conventions
@@ -134,14 +151,27 @@ describe('feature', () => {
 ### File Organization
 
 ```
-src/
-├── lib.rs           # Main plugin entry, transform function
-├── types.rs         # PluginOptions, PluginState structs
-├── utils.rs         # Helper functions (hashing, path processing)
-├── visitors.rs      # AST visitors (JSXVisitor, CallExpressionVisitor)
-__tests__/
-├── setup.js         # Jest setup file
-├── *.test.js        # Integration tests by feature
+crates/
+├── react-intl-core/    # Shared Rust library
+│   └── src/
+│       ├── lib.rs           # Library exports
+│       ├── types.rs         # CoreOptions, CoreState structs
+│       ├── id_generator.rs  # Hash functions (murmur3, base64)
+│       ├── path_utils.rs    # Path processing utilities
+│       └── message_extractor.rs  # Message extraction logic
+├── swc-plugin/         # SWC Plugin (WASM)
+│   └── src/
+│       ├── lib.rs           # Plugin entry point
+│       ├── types.rs         # Re-exports from react-intl-core
+│       ├── utils.rs         # SWC-specific utilities
+│       └── visitors.rs      # AST visitors
+├── cli/                # CLI tool (future)
+│   └── src/
+│       └── main.rs          # CLI entry point
+tests/                 # Jest integration tests
+├── testUtils.ts       # Test utilities (createConfigurationSuites)
+├── *.test.ts          # Test suites by feature
+└── __snapshots__/     # Jest snapshots
 ```
 
 ## Important Notes

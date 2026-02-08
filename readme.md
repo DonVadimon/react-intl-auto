@@ -67,6 +67,8 @@ const result = await transform(code, {
 | `moduleSourceName` | `string` | `'react-intl'` | Module name to detect imports |
 | `separator` | `string` | `'.'` | Separator for ID parts |
 | `relativeTo` | `string` | `undefined` | Base path for relative file paths |
+| `hashId` | `boolean` | `undefined` | Apply hash fn to id |
+| `hashAlgorithm` | `murmur3 / base64` | `murmur3` | Hash fn for id |
 
 ## Examples
 
@@ -129,30 +131,44 @@ npm run build
 
 ## Development
 
-This plugin is written in Rust and uses the SWC plugin API. The source code is in the `src/` directory.
+This plugin is written in Rust and uses the SWC plugin API. The project uses a Cargo workspace structure with multiple crates.
+
+### Project Structure
+
+```
+crates/
+├── react-intl-core/    # Shared Rust library (ID generation, path utils)
+├── swc-plugin/         # SWC Plugin (WASM target)
+└── cli/                # CLI tool (coming soon)
+tests/                  # Jest integration tests
+```
 
 ### Prerequisites
 
 - Rust toolchain
 - `wasm32-wasip1` target: `rustup target add wasm32-wasip1`
+- Node.js 16+
 
 ### Building
 
 ```bash
+# Build the plugin (compiles Rust to WASM)
+npm run build
+
+# Or build with cargo directly
 cargo build --release --target wasm32-wasip1
 ```
 
 ### Testing
 
 ```bash
-# Run JavaScript tests
-npm test
+# Full test cycle (recommended)
+npm run test:full       # build + Rust tests + Jest tests
 
-# Run Rust tests
-cargo test
-
-# Run tests in watch mode
-npm run test:watch
+# Individual test commands
+cargo test              # Rust unit tests
+npm test                # Jest integration tests
+npm run test:watch      # Jest in watch mode
 ```
 
 ### Development Workflow
@@ -171,11 +187,7 @@ The typical development workflow:
 
 3. **Run all tests:**
    ```bash
-   # Rust unit tests
-   cargo test
-   
-   # JavaScript integration tests
-   npm test
+   npm run test:full
    ```
 
 4. **For active development with auto-rebuild:**

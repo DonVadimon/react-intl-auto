@@ -45,7 +45,7 @@
 - [x] PLUGIN_MOD-001: Переименование пакета в swc-plugin-react-intl-auto-fs
 - [x] PLUGIN_MOD-002: Обновление зависимостей для совместимости с @swc/core ^1.15.0
 - [x] PLUGIN_MOD-003: Добавление опционального хэширования ID сообщений
-- [ ] PLUGIN_MOD-004: Добавление функционала записи сообщений в JSON файл
+- [-] PLUGIN_MOD-004: Добавление функционала записи сообщений в JSON файл (в работе, требует JS обертки)
 
 ---
 
@@ -269,13 +269,13 @@ export default defineMessages({
 
 ---
 
-## [ ] PLUGIN_MOD-004: Добавление функционала записи сообщений в файл
+## [-] PLUGIN_MOD-004: Добавление функционала записи сообщений в файл
 
 ### 📋 Metadata
-- **status:** `todo`
+- **status:** `in-progress` (требует доработки - см. блокирующие проблемы ниже)
 - **depends:** `PLUGIN_MOD-003`
 - **priority:** `P1`
-- **files:** `src/types.rs`, `src/lib.rs`, `src/utils.rs` (новый модуль extract.rs)
+- **files:** `src/types.rs`, `src/lib.rs`, `src/utils.rs`, `src/visitors.rs`, `index.js`, `package.json`
 
 ### 📝 Details
 
@@ -284,11 +284,32 @@ export default defineMessages({
 **Требования:**
 - Добавить опцию `extract_to_file` в `PluginOptions` (boolean)
 - Добавить опцию `extract_output_dir` в `PluginOptions` (String, путь к директории)
-- Добавить опцию `extract_filename` в `PluginOptions` (String, имя файла, default: "messages.json")
-- Собирать все сообщения во время трансформации (id, defaultMessage, file)
+- Добавить опцию `extract_output_filename` в `PluginOptions` (String, имя файла, default: "messages.json")
+- Добавить опцию `extract_source_location` в `PluginOptions` (boolean, default: false)
+  - Когда `true`, в JSON добавляется ключ `file` с относительным путём к исходному файлу
+  - Путь должен быть относительным (относительно корня проекта или cwd)
+- Собирать все сообщения во время трансформации (id, defaultMessage, file при extract_source_location: true)
 - Записывать собранные сообщения в JSON файл после обработки всех файлов
-- Формат JSON: массив объектов `[{"id": "...", "defaultMessage": "...", "file": "..."}]`
+- Формат JSON: массив объектов `[{"id": "...", "defaultMessage": "...", "file": "..."}]` (file опционально)
 - Обеспечить потокобезопасность при параллельной сборке
+
+**Критический UX требование:**
+Плагин должен работать "из коробки" через стандартную конфигурацию `.swcrc`:
+```json
+{
+  "jsc": {
+    "experimental": {
+      "plugins": [
+        ["swc-plugin-react-intl-auto-fs", {
+          "extractToFile": true,
+          "extractOutputDir": ".react-intl"
+        }]
+      ]
+    }
+  }
+}
+```
+Пользователь НЕ должен вручную перехватывать stdout или писать дополнительный код.
 
 **Проблемные места:**
 - `src/types.rs:5-22`: Нужно добавить поля для конфигурации экстракта
@@ -297,26 +318,114 @@ export default defineMessages({
 - `src/visitors.rs`: Нужно собирать информацию о сообщениях во время обхода AST
 - Новый модуль: нужно создать `src/extract.rs` для управления записью файлов
 
+**🚫 БЛОКИРУЮЩИЕ ПРОБЛЕМЫ (текущее состояние):**
+
+1. **WASM ограничения**: WASM плагины SWC не имеют доступа к файловой системе хоста. Попытка использовать `std::fs::write` в WASM вызывает ошибку.
+
+2. **Отсутствие JS обертки**: Текущая реализация требует от пользователя ручного перехвата stdout через `child_process`, что не соответствует требованию "работает из коробки через .swcrc".
+
+3. **Агрегация сообщений из множества файлов**: SWC вызывает плагин для каждого файла отдельно. Состояние не сохраняется между вызовами (даже глобальное состояние через `lazy_static` сбрасывается). Для каждого файла нужно создавать отдельный JSON.
+
+4. **Архитектура плагина**: Согласно документации SWC, плагины состоят из:
+   - WASM части (Rust) - выполняет трансформацию
+   - JS части (index.js) - загружает WASM и предоставляет API
+   
+   Но JS часть не имеет доступа к данным из WASM кроме как через stdout или возвращаемое значение.
+
+**💡 ВАРИАНТЫ РЕШЕНИЯ:**
+
+### Вариант 1: JS обертка с stdout capture (РЕКОМЕНДУЕТСЯ)
+
+Создать JS wrapper в `index.js` который будет:
+1. Перехватывать stdout при вызове transform
+2. Парсить сообщения из маркеров `__REACT_INTL_MESSAGES_START__` / `__REACT_INTL_MESSAGES_END__`
+3. Сохранять сообщения в файлы (по одному JSON на исходный файл)
+4. Экспортировать `transform` функцию, которую пользователь будет использовать вместо `@swc/core`
+
+**Плюсы:**
+- Соответствует архитектуре SWC плагинов
+- Позволяет записывать файлы
+- Можно использовать с любым инструментом (webpack, rollup, etc.)
+
+**Минусы:**
+- Пользователю нужно использовать наш `transform` вместо стандартного `@swc/core`
+- Требует изменения API плагина
+
+**Пример использования:**
+```javascript
+// build.js или webpack.config.js
+const { transform } = require('swc-plugin-react-intl-auto-fs');
+
+// Вместо @swc/core
+const result = await transform(code, {
+  filename: 'App.tsx',
+  jsc: {
+    experimental: {
+      plugins: [
+        ['swc-plugin-react-intl-auto-fs', {
+          extractToFile: true,
+          extractOutputDir: '.react-intl'
+        }]
+      ]
+    }
+  }
+});
+// Автоматически создает .react-intl/App.json
+```
+
+### Вариант 2: CLI на Rust (альтернатива)
+
+Создать отдельный CLI инструмент на Rust, который:
+1. Принимает путь к файлам/директории
+2. Обрабатывает все файлы с помощью той же логики
+3. Сохраняет сообщения в JSON
+
+**Плюсы:**
+- Полный контроль над файловой системой
+- Не зависит от WASM ограничений
+- Можно использовать как standalone инструмент
+
+**Минусы:**
+- Не интегрируется с SWC напрямую
+- Пользователю нужно запускать отдельную команду
+- Не работает "из коробки" через .swcrc
+
+**Пример использования:**
+```bash
+npx swc-plugin-react-intl-auto-fs extract src/ --output .react-intl
+```
+
+### Вариант 3: Комбинированный подход
+
+Объединить оба варианта:
+- Плагин для SWC (без записи файлов, только трансформация)
+- CLI для извлечения сообщений (с записью файлов)
+
+**Рекомендация:** Реализовать **Вариант 1** как основное решение, так как он соответствует архитектуре SWC плагинов и требованиям пользователя.
+
 **Изменения:**
 1. Обновить `src/types.rs`:
    ```rust
-   #[derive(Debug, Clone, Serialize, Deserialize)]
-   pub struct PluginOptions {
-       // ... существующие поля ...
-       #[serde(default)]
-       pub extract_to_file: bool,
-       #[serde(default)]
-       pub extract_output_dir: Option<String>,
-       #[serde(default = "default_extract_filename")]
-       pub extract_filename: String,
-   }
+    #[derive(Debug, Clone, Serialize, Deserialize)]
+    pub struct PluginOptions {
+        // ... существующие поля ...
+        #[serde(default)]
+        pub extract_to_file: bool,
+        #[serde(default)]
+        pub extract_output_dir: Option<String>,
+        #[serde(default = "default_extract_output_filename")]
+        pub extract_output_filename: String,
+        #[serde(default)]
+        pub extract_source_location: bool,
+    }
 
-   #[derive(Debug, Clone, Serialize)]
-   pub struct ExtractedMessage {
-       pub id: String,
-       pub default_message: String,
-       pub file: String,
-   }
+    #[derive(Debug, Clone, Serialize)]
+    pub struct ExtractedMessage {
+        pub id: String,
+        pub default_message: String,
+        #[serde(skip_serializing_if = "Option::is_none")]
+        pub file: Option<String>,
+    }
    ```
 
 2. Создать `src/extract.rs`:
@@ -330,24 +439,24 @@ export default defineMessages({
            Mutex::new(HashMap::new());
    }
 
-   pub fn add_message(file: &str, message: ExtractedMessage) {
-       let mut messages = EXTRACTED_MESSAGES.lock().unwrap();
-       messages.entry(file.to_string())
-           .or_insert_with(Vec::new)
-           .push(message);
-   }
+    pub fn add_message(message: ExtractedMessage) {
+        let mut messages = EXTRACTED_MESSAGES.lock().unwrap();
+        messages.push(message);
+    }
 
-   pub fn write_to_file(output_dir: &str, filename: &str) -> Result<(), Box<dyn std::error::Error>> {
-       let messages = EXTRACTED_MESSAGES.lock().unwrap();
-       let all_messages: Vec<&ExtractedMessage> = messages.values()
-           .flatten()
-           .collect();
-       
-       let json = serde_json::to_string_pretty(&all_messages)?;
-       let output_path = std::path::Path::new(output_dir).join(filename);
-       std::fs::write(output_path, json)?;
-       Ok(())
-   }
+    pub fn write_to_file(output_dir: &str, filename: &str) -> Result<(), Box<dyn std::error::Error>> {
+        let messages = EXTRACTED_MESSAGES.lock().unwrap();
+        
+        let json = serde_json::to_string_pretty(&*messages)?;
+        let output_path = std::path::Path::new(output_dir).join(filename);
+        std::fs::write(output_path, json)?;
+        Ok(())
+    }
+
+    pub fn clear_messages() {
+        let mut messages = EXTRACTED_MESSAGES.lock().unwrap();
+        messages.clear();
+    }
    ```
 
 3. Обновить `src/lib.rs`:
@@ -367,7 +476,8 @@ const messages = defineMessages({
 ```
 
 ```json
-// Результат (extract_output_dir: "./i18n", extract_filename: "messages.json")
+// Результат с extract_source_location: true
+// (extract_output_dir: "./i18n", extract_output_filename: "messages.json")
 [
   {
     "id": "o9zTCA==",
@@ -375,7 +485,26 @@ const messages = defineMessages({
     "file": "components/Hello/Hello.tsx"
   }
 ]
+
+// Результат с extract_source_location: false (по умолчанию)
+// Ключ file отсутствует в JSON
+[
+  {
+    "id": "o9zTCA==",
+    "defaultMessage": "Привет мир"
+  }
+]
 ```
+
+**Примечание о пути `file`:**
+Путь к файлу должен быть относительным, вычисленным относительно:
+- Корня проекта (если найден по маркерам: yarn.lock, package.json, .git и т.д.)
+- Текущей рабочей директории (cwd), если корень проекта не определён
+
+Примеры путей:
+- `/Users/project/src/components/App.tsx` → `src/components/App.tsx` (относительно корня)
+- `/Users/project/components/App.tsx` → `components/App.tsx` (относительно корня)
+- `../components/App.tsx` → `components/App.tsx` (относительно cwd)
 
 **Влияние:**
 - Позволяет извлекать все сообщения для последующей обработки (переводы, анализ)
@@ -387,16 +516,60 @@ const messages = defineMessages({
   - Тесты функций `add_message()` и `write_to_file()` в `src/extract.rs`
   - Тесты потокобезопасности при параллельном доступе
   - Тесты корректности сериализации в JSON
+  - Тесты функции `clear_messages()` для сброса состояния между тестами
 - Jest интеграционные тесты (обязательно):
   - Тесты с опцией `extract_to_file: true`
-  - Тесты проверки создания файла `messages.json` в указанной директории
-  - Тесты проверки содержимого JSON (наличие id, defaultMessage, file)
+  - Тесты проверки создания файла `extract_output_filename` в `extract_output_dir`
+  - Тесты с `extract_source_location: false` - проверка отсутствия ключа `file`
+  - Тесты с `extract_source_location: true` - проверка наличия относительного пути в `file`
+  - Тесты проверки содержимого JSON (наличие id, defaultMessage)
   - Тесты с несколькими файлами - проверка агрегации сообщений
   - Тесты с `defineMessages()`, `formatMessage()`, `<FormattedMessage>`
+  - Тесты корректности относительных путей (относительно корня проекта/cwd)
   - Snapshot-тесты для структуры JSON
 
 ### 📊 ActionLog:
 - `2026-02-07 01:58` План задачи создан
+- `2026-02-08 01:22` Данные актуализированы: проверены файлы src/types.rs, src/lib.rs, src/utils.rs, src/visitors.rs
+- `2026-02-08 01:22` Статус изменен на `in-progress`
+- `2026-02-08 01:22` Составлен план выполнения: 1) Обновить PluginOptions в types.rs, 2) Создать extract.rs, 3) Обновить lib.rs, 4) Обновить visitors.rs, 5) Написать тесты, 6) Сборка и проверка
+- `2026-02-08 01:22` План согласован с USER
+- `2026-02-08 01:22` Выполнен шаг 1: обновлен PluginOptions в types.rs (добавлены extract_to_file, extract_output_dir, extract_output_filename, extract_source_location)
+- `2026-02-08 01:22` Выполнен шаг 2: создан модуль extract.rs с глобальным хранилищем сообщений, функциями add_message, get_all_messages, write_to_file
+- `2026-02-08 01:22` Выполнен шаг 3: обновлен lib.rs - добавлена интеграция записи в файл после трансформации
+- `2026-02-08 01:22` Выполнен шаг 4: обновлен visitors.rs - добавлена интеграция сбора сообщений в generate_id, process_format_message_object, process_define_messages_object
+- `2026-02-08 01:22` Выполнен шаг 5: созданы тесты __tests__/extract.test.js с 13 тестами
+- `2026-02-08 01:22` Выполнен шаг 6: сборка прошла успешно, все тесты проходят
+- `2026-02-08 01:22` Результаты тестирования: ✅ cargo test: 32 passed, ✅ npm test: 239 passed (включая 13 новых тестов экстракции)
+- `2026-02-08 01:22` Определены критерии приёмки: ✅ Компиляция без ошибок, ✅ Все тесты проходят (239 tests), ✅ Добавлены опции extractToFile, extractOutputDir, extractOutputFilename, extractSourceLocation, ✅ Создан extract.rs модуль с логикой сбора и записи сообщений, ✅ Работает совместно с hash_id опцией
+- `2026-02-08 01:22` Готово к review
+- `2026-02-08 01:22` Review: одобрено USER
+- `2026-02-08 01:22` Задача завершена, статус изменен на `ready`
+- `2026-02-08 04:12` 🔄 Исправлены проблемы после review USER:
+  - Изменена архитектура: WASM плагин теперь выводит сообщения в stdout вместо прямой записи в файловую систему
+  - Создан MessageCollector для локального сбора сообщений на файл (вместо глобального состояния)
+  - Добавлены маркеры __REACT_INTL_MESSAGES_START__ и __REACT_INTL_MESSAGES_END__ для парсинга stdout
+  - Добавлен __SOURCE_FILE__ для отслеживания источника сообщений
+  - Обновлен extract.rs: удалено глобальное состояние, добавлен MessageCollector
+  - Обновлен lib.rs: использование Rc<RefCell<MessageCollector>> для разделения между visitors
+  - Обновлен visitors.rs: добавлено поле collector, заменены вызовы extract::add_message на collector.add_message
+  - Обновлен types.rs: добавлены alias для hashId и hashAlgorithm
+  - Создан test_extractions.js для ручного тестирования экстракции
+  - Создан test_multi_files.js для тестирования множественных файлов
+  - Обновлены Jest тесты: теперь проверяют содержимое сообщений через stdout capture
+  - Добавлен serial_test для предотвращения гонок в cargo тестах
+  - Исправлена проблема с hashId: добавлен alias в serde для camelCase
+  - Обновлены снапшоты (15 штук) в hash-id.test.js
+- `2026-02-08 04:12` Результаты тестирования: ✅ cargo test: 33 passed, ✅ npm test: 235 passed
+- `2026-02-08 04:12` Проверка множественных файлов: ✅ Каждый файл сохраняется отдельно, нет перезаписи
+- `2026-02-08 04:12` Проверка hash_id: ✅ Работает корректно с murmur3 и base64
+- `2026-02-08 04:12` Проверка extractSourceLocation: ✅ Корректно добавляет путь к файлу
+- `2026-02-08 04:15` 🚨 ОБНАРУЖЕНЫ БЛОКИРУЮЩИЕ ПРОБЛЕМЫ:
+  - **Проблема 1**: WASM плагины не имеют доступа к файловой системе. Прямая запись в файл через `std::fs::write` невозможна.
+  - **Проблема 2**: Текущая реализация (stdout capture) требует ручного перехвата из `child_process`, что не соответствует UX требованию "работает из коробки через .swcrc".
+  - **Проблема 3**: Для использования через `.swcrc` необходима JS обертка, которая будет перехватывать stdout и записывать файлы.
+- `2026-02-08 04:15` Статус изменен на `in-progress` - требуется доработка
+- `2026-02-08 04:15` Требуется реализация Варианта 1 (JS обертка с stdout capture) или Варианта 2 (CLI на Rust)
 
 ---
 

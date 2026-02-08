@@ -19,9 +19,9 @@ pub struct PluginOptions {
     pub separator: String,
     #[serde(default, alias = "relativeTo")]
     pub relative_to: Option<String>,
-    #[serde(default)]
+    #[serde(default, alias = "hashId")]
     pub hash_id: bool,
-    #[serde(default = "default_hash_algorithm")]
+    #[serde(default = "default_hash_algorithm", alias = "hashAlgorithm")]
     pub hash_algorithm: String,
 }
 

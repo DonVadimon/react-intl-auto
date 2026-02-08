@@ -5,32 +5,30 @@ const path = require('path');
 const plugin = require('../index.js');
 
 describe('swc-plugin-react-intl-auto', () => {
-  const transformWithPlugin = async (code, options = {}) => {
-    const result = await transform(code, {
-      filename: options.filename || 'test.js',
-      jsc: {
-        parser: {
-          syntax: 'ecmascript',
-          jsx: true,
-        },
-        transform: {
-          react: {
-            runtime: 'automatic',
-          },
-        },
-        experimental: {
-          plugins: [
-            [plugin, options.pluginOptions || {}]
-          ]
-        }
-      }
-    });
-    return result.code;
-  };
+    const transformWithPlugin = async (code, options = {}) => {
+        const result = await transform(code, {
+            filename: options.filename || 'test.js',
+            jsc: {
+                parser: {
+                    syntax: 'ecmascript',
+                    jsx: true,
+                },
+                transform: {
+                    react: {
+                        runtime: 'automatic',
+                    },
+                },
+                experimental: {
+                    plugins: [[plugin, options.pluginOptions || {}]],
+                },
+            },
+        });
+        return result.code;
+    };
 
-  describe('FormattedMessage JSX elements', () => {
-    it('should add id to FormattedMessage without id', async () => {
-      const code = `
+    describe('FormattedMessage JSX elements', () => {
+        it('should add id to FormattedMessage without id', async () => {
+            const code = `
         import { FormattedMessage } from 'react-intl';
         
         function App() {
@@ -40,12 +38,12 @@ describe('swc-plugin-react-intl-auto', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should not add id to FormattedMessage that already has id', async () => {
-      const code = `
+        it('should not add id to FormattedMessage that already has id', async () => {
+            const code = `
         import { FormattedMessage } from 'react-intl';
         
         function App() {
@@ -55,12 +53,12 @@ describe('swc-plugin-react-intl-auto', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle FormattedMessage with key attribute when useKey is true', async () => {
-      const code = `
+        it('should handle FormattedMessage with key attribute when useKey is true', async () => {
+            const code = `
         import { FormattedMessage } from 'react-intl';
         
         function App() {
@@ -70,14 +68,14 @@ describe('swc-plugin-react-intl-auto', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code, {
-        pluginOptions: { use_key: true }
-      });
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code, {
+                pluginOptions: { use_key: true },
+            });
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle FormattedMessage with dynamic defaultMessage', async () => {
-      const code = `
+        it('should handle FormattedMessage with dynamic defaultMessage', async () => {
+            const code = `
         import { FormattedMessage } from 'react-intl';
         
         function App() {
@@ -88,14 +86,14 @@ describe('swc-plugin-react-intl-auto', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
     });
-  });
 
-  describe('FormattedHTMLMessage JSX elements', () => {
-    it('should add id to FormattedHTMLMessage without id', async () => {
-      const code = `
+    describe('FormattedHTMLMessage JSX elements', () => {
+        it('should add id to FormattedHTMLMessage without id', async () => {
+            const code = `
         import { FormattedHTMLMessage } from 'react-intl';
         
         function App() {
@@ -105,14 +103,14 @@ describe('swc-plugin-react-intl-auto', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
     });
-  });
 
-  describe('defineMessages function calls', () => {
-    it('should add id to defineMessages object', async () => {
-      const code = `
+    describe('defineMessages function calls', () => {
+        it('should add id to defineMessages object', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         const messages = defineMessages({
@@ -122,12 +120,12 @@ describe('swc-plugin-react-intl-auto', () => {
         });
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle defineMessages with string values', async () => {
-      const code = `
+        it('should handle defineMessages with string values', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         const messages = defineMessages({
@@ -135,12 +133,12 @@ describe('swc-plugin-react-intl-auto', () => {
         });
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle defineMessages with includeExportName', async () => {
-      const code = `
+        it('should handle defineMessages with includeExportName', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         export const messages = defineMessages({
@@ -150,16 +148,16 @@ describe('swc-plugin-react-intl-auto', () => {
         });
       `;
 
-      const result = await transformWithPlugin(code, {
-        pluginOptions: { include_export_name: true }
-      });
-      expect(result).toMatchSnapshot();
+            const result = await transformWithPlugin(code, {
+                pluginOptions: { include_export_name: true },
+            });
+            expect(result).toMatchSnapshot();
+        });
     });
-  });
 
-  describe('formatMessage function calls', () => {
-    it('should add id to formatMessage calls', async () => {
-      const code = `
+    describe('formatMessage function calls', () => {
+        it('should add id to formatMessage calls', async () => {
+            const code = `
         import { injectIntl } from 'react-intl';
         
         function MyComponent({ intl }) {
@@ -171,12 +169,12 @@ describe('swc-plugin-react-intl-auto', () => {
         export default injectIntl(MyComponent);
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should add id to useIntl formatMessage calls', async () => {
-      const code = `
+        it('should add id to useIntl formatMessage calls', async () => {
+            const code = `
         import { useIntl } from 'react-intl';
         
         function MyComponent() {
@@ -187,12 +185,12 @@ describe('swc-plugin-react-intl-auto', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should not add id to formatMessage calls that already have id', async () => {
-      const code = `
+        it('should not add id to formatMessage calls that already have id', async () => {
+            const code = `
         import { useIntl } from 'react-intl';
         
         function MyComponent() {
@@ -204,14 +202,14 @@ describe('swc-plugin-react-intl-auto', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
     });
-  });
 
-  describe('Plugin options', () => {
-    it('should handle custom module source name', async () => {
-      const code = `
+    describe('Plugin options', () => {
+        it('should handle custom module source name', async () => {
+            const code = `
         import { FormattedMessage } from 'my-intl';
         
         function App() {
@@ -221,14 +219,14 @@ describe('swc-plugin-react-intl-auto', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code, {
-        pluginOptions: { module_source_name: 'my-intl' }
-      });
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code, {
+                pluginOptions: { module_source_name: 'my-intl' },
+            });
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle custom separator', async () => {
-      const code = `
+        it('should handle custom separator', async () => {
+            const code = `
         import { FormattedMessage } from 'react-intl';
         
         function App() {
@@ -238,14 +236,14 @@ describe('swc-plugin-react-intl-auto', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code, {
-        pluginOptions: { separator: '_' }
-      });
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code, {
+                pluginOptions: { separator: '_' },
+            });
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle filebase option', async () => {
-      const code = `
+        it('should handle filebase option', async () => {
+            const code = `
         import { FormattedMessage } from 'react-intl';
         
         function App() {
@@ -255,15 +253,15 @@ describe('swc-plugin-react-intl-auto', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code, {
-        filename: 'src/components/App.js',
-        pluginOptions: { filebase: true }
-      });
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code, {
+                filename: 'src/components/App.js',
+                pluginOptions: { filebase: true },
+            });
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle removePrefix option', async () => {
-      const code = `
+        it('should handle removePrefix option', async () => {
+            const code = `
         import { FormattedMessage } from 'react-intl';
         
         function App() {
@@ -273,17 +271,17 @@ describe('swc-plugin-react-intl-auto', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code, {
-        filename: 'src/components/App.js',
-        pluginOptions: { remove_prefix: 'src/components/' }
-      });
-      expect(result).toMatchSnapshot();
+            const result = await transformWithPlugin(code, {
+                filename: 'src/components/App.js',
+                pluginOptions: { remove_prefix: 'src/components/' },
+            });
+            expect(result).toMatchSnapshot();
+        });
     });
-  });
 
-  describe('Edge cases', () => {
-    it('should handle nested JSX elements', async () => {
-      const code = `
+    describe('Edge cases', () => {
+        it('should handle nested JSX elements', async () => {
+            const code = `
         import { FormattedMessage } from 'react-intl';
         
         function App() {
@@ -298,12 +296,12 @@ describe('swc-plugin-react-intl-auto', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle multiple defineMessages calls', async () => {
-      const code = `
+        it('should handle multiple defineMessages calls', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         const messages1 = defineMessages({
@@ -319,12 +317,12 @@ describe('swc-plugin-react-intl-auto', () => {
         });
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle mixed imports', async () => {
-      const code = `
+        it('should handle mixed imports', async () => {
+            const code = `
         import { FormattedMessage, defineMessages, useIntl } from 'react-intl';
         
         const messages = defineMessages({
@@ -344,12 +342,12 @@ describe('swc-plugin-react-intl-auto', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle aliased imports', async () => {
-      const code = `
+        it('should handle aliased imports', async () => {
+            const code = `
         import { FormattedMessage as FM } from 'react-intl';
         
         function App() {
@@ -359,12 +357,12 @@ describe('swc-plugin-react-intl-auto', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle default imports', async () => {
-      const code = `
+        it('should handle default imports', async () => {
+            const code = `
         import intl from 'react-intl';
         
         function App() {
@@ -374,14 +372,14 @@ describe('swc-plugin-react-intl-auto', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
     });
-  });
 
-  describe('Error handling', () => {
-    it('should handle malformed JSX', async () => {
-      const code = `
+    describe('Error handling', () => {
+        it('should handle malformed JSX', async () => {
+            const code = `
         import { FormattedMessage } from 'react-intl';
         
         function App() {
@@ -391,20 +389,20 @@ describe('swc-plugin-react-intl-auto', () => {
         }
       `;
 
-      // This should not crash the plugin
-      const result = await transformWithPlugin(code);
-      expect(result).toBeDefined();
-    });
+            // This should not crash the plugin
+            const result = await transformWithPlugin(code);
+            expect(result).toBeDefined();
+        });
 
-    it('should handle empty defineMessages', async () => {
-      const code = `
+        it('should handle empty defineMessages', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         const messages = defineMessages({});
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
     });
-  });
 });

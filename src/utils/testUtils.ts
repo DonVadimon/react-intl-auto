@@ -1,4 +1,4 @@
-import { transform } from "@swc/core";
+import { transform } from '@swc/core';
 
 export interface TestCase {
     title: string;
@@ -25,9 +25,9 @@ function createPlugin(pluginOptions: any = {}) {
         // Check if this is a test case that should throw an error
         // This is a simplified check - in reality the plugin would analyze the AST
         const code = m.toString();
-        if (code.includes("getMsg()") && code.includes("defaultMessage")) {
+        if (code.includes('getMsg()') && code.includes('defaultMessage')) {
             throw new Error(
-                "[React Intl Auto] defaultMessage must be statically evaluate-able for extraction",
+                '[React Intl Auto] defaultMessage must be statically evaluate-able for extraction',
             );
         }
 
@@ -44,9 +44,9 @@ export async function cases(filename: string, suites: TestSuite[]) {
                 it(test.title, async () => {
                     try {
                         // Check if this test case should throw an error
-                        if (test.error && test.code.includes("getMsg()")) {
+                        if (test.error && test.code.includes('getMsg()')) {
                             throw new Error(
-                                "[React Intl Auto] defaultMessage must be statically evaluate-able for extraction",
+                                '[React Intl Auto] defaultMessage must be statically evaluate-able for extraction',
                             );
                         }
 
@@ -54,18 +54,18 @@ export async function cases(filename: string, suites: TestSuite[]) {
                             filename,
                             jsc: {
                                 parser: {
-                                    syntax: "typescript" as const,
+                                    syntax: 'typescript' as const,
                                     tsx: true,
                                     decorators: true,
                                 },
                                 transform: {
                                     react: {
-                                        runtime: "automatic" as const,
+                                        runtime: 'automatic' as const,
                                     },
                                 },
                             },
                             module: {
-                                type: "es6" as const,
+                                type: 'es6' as const,
                             },
                             plugin: createPlugin(suite.pluginOptions),
                         };
@@ -75,7 +75,7 @@ export async function cases(filename: string, suites: TestSuite[]) {
                         if (test.error) {
                             expect(() => {
                                 throw new Error(
-                                    "Expected error but transformation succeeded",
+                                    'Expected error but transformation succeeded',
                                 );
                             }).toThrow(test.error);
                         } else if (test.snapshot !== false) {

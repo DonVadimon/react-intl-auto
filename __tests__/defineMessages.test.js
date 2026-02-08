@@ -3,33 +3,31 @@ const { transform } = require('@swc/core');
 const plugin = require('../index.js');
 
 describe('defineMessages', () => {
-  const transformWithPlugin = async (code, options = {}) => {
-    const result = await transform(code, {
-      filename: options.filename || 'test.js',
-      jsc: {
-        parser: {
-          syntax: 'ecmascript',
-          jsx: true,
-        },
-        transform: {
-          react: {
-            runtime: 'automatic',
-          },
-        },
-        experimental: {
-          plugins: [
-            [plugin, options.pluginOptions || {}]
-          ]
-        }
-      }
-    });
-    return result.code;
-  };
+    const transformWithPlugin = async (code, options = {}) => {
+        const result = await transform(code, {
+            filename: options.filename || 'test.js',
+            jsc: {
+                parser: {
+                    syntax: 'ecmascript',
+                    jsx: true,
+                },
+                transform: {
+                    react: {
+                        runtime: 'automatic',
+                    },
+                },
+                experimental: {
+                    plugins: [[plugin, options.pluginOptions || {}]],
+                },
+            },
+        });
+        return result.code;
+    };
 
-  describe('Basic defineMessages', () => {
-    describe('plain string', () => {
-      it('should transform string value to object with generated id and defaultMessage', async () => {
-        const code = `
+    describe('Basic defineMessages', () => {
+        describe('plain string', () => {
+            it('should transform string value to object with generated id and defaultMessage', async () => {
+                const code = `
           import { defineMessages } from 'react-intl';
           
           export const messages = defineMessages({
@@ -37,17 +35,17 @@ describe('defineMessages', () => {
           });
         `;
 
-        const result = await transformWithPlugin(code);
-        // Verify transformation: string -> {id, defaultMessage}
-        expect(result).toMatch(/["']id["']/);
-        expect(result).toContain('Привет');
-        expect(result).toMatchSnapshot();
-      });
-    });
+                const result = await transformWithPlugin(code);
+                // Verify transformation: string -> {id, defaultMessage}
+                expect(result).toMatch(/["']id["']/);
+                expect(result).toContain('Привет');
+                expect(result).toMatchSnapshot();
+            });
+        });
 
-    describe('object no id', () => {
-      it('should add generated id to object without id', async () => {
-        const code = `
+        describe('object no id', () => {
+            it('should add generated id to object without id', async () => {
+                const code = `
           import { defineMessages } from 'react-intl';
           
           export const messages = defineMessages({
@@ -55,17 +53,17 @@ describe('defineMessages', () => {
           });
         `;
 
-        const result = await transformWithPlugin(code);
-        // Verify id is generated
-        expect(result).toMatch(/["']id["']/);
-        expect(result).toContain('Привет');
-        expect(result).toMatchSnapshot();
-      });
-    });
+                const result = await transformWithPlugin(code);
+                // Verify id is generated
+                expect(result).toMatch(/["']id["']/);
+                expect(result).toContain('Привет');
+                expect(result).toMatchSnapshot();
+            });
+        });
 
-    describe('object with id', () => {
-      it('should preserve existing user id and not overwrite it', async () => {
-        const code = `
+        describe('object with id', () => {
+            it('should preserve existing user id and not overwrite it', async () => {
+                const code = `
           import { defineMessages } from 'react-intl';
           
           export const messages = defineMessages({
@@ -73,16 +71,16 @@ describe('defineMessages', () => {
           });
         `;
 
-        const result = await transformWithPlugin(code);
-        // Verify user id is preserved
-        expect(result).toContain("my-id");
-        expect(result).toContain('Привет');
-        expect(result).toMatchSnapshot();
-      });
-    });
+                const result = await transformWithPlugin(code);
+                // Verify user id is preserved
+                expect(result).toContain('my-id');
+                expect(result).toContain('Привет');
+                expect(result).toMatchSnapshot();
+            });
+        });
 
-    it('should add id to defineMessages with object values', async () => {
-      const code = `
+        it('should add id to defineMessages with object values', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         const messages = defineMessages({
@@ -92,12 +90,12 @@ describe('defineMessages', () => {
         });
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should add id to defineMessages with string values', async () => {
-      const code = `
+        it('should add id to defineMessages with string values', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         const messages = defineMessages({
@@ -105,12 +103,12 @@ describe('defineMessages', () => {
         });
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle defineMessages with multiple keys', async () => {
-      const code = `
+        it('should handle defineMessages with multiple keys', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         const messages = defineMessages({
@@ -123,12 +121,12 @@ describe('defineMessages', () => {
         });
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle defineMessages with mixed string and object values', async () => {
-      const code = `
+        it('should handle defineMessages with mixed string and object values', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         const messages = defineMessages({
@@ -139,14 +137,14 @@ describe('defineMessages', () => {
         });
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
     });
-  });
 
-  describe('defineMessages with additional properties', () => {
-    it('should handle defineMessages with description', async () => {
-      const code = `
+    describe('defineMessages with additional properties', () => {
+        it('should handle defineMessages with description', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         const messages = defineMessages({
@@ -157,12 +155,12 @@ describe('defineMessages', () => {
         });
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle defineMessages with id already present', async () => {
-      const code = `
+        it('should handle defineMessages with id already present', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         const messages = defineMessages({
@@ -173,12 +171,12 @@ describe('defineMessages', () => {
         });
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle defineMessages with all properties', async () => {
-      const code = `
+        it('should handle defineMessages with all properties', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         const messages = defineMessages({
@@ -190,14 +188,14 @@ describe('defineMessages', () => {
         });
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
     });
-  });
 
-  describe('defineMessages with export', () => {
-    it('should handle exported defineMessages', async () => {
-      const code = `
+    describe('defineMessages with export', () => {
+        it('should handle exported defineMessages', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         export const messages = defineMessages({
@@ -207,12 +205,12 @@ describe('defineMessages', () => {
         });
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle default export defineMessages', async () => {
-      const code = `
+        it('should handle default export defineMessages', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         export default defineMessages({
@@ -222,12 +220,12 @@ describe('defineMessages', () => {
         });
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle defineMessages with includeExportName option', async () => {
-      const code = `
+        it('should handle defineMessages with includeExportName option', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         export const messages = defineMessages({
@@ -237,16 +235,16 @@ describe('defineMessages', () => {
         });
       `;
 
-      const result = await transformWithPlugin(code, {
-        pluginOptions: { include_export_name: true }
-      });
-      expect(result).toMatchSnapshot();
+            const result = await transformWithPlugin(code, {
+                pluginOptions: { include_export_name: true },
+            });
+            expect(result).toMatchSnapshot();
+        });
     });
-  });
 
-  describe('defineMessages with complex keys', () => {
-    it('should handle defineMessages with string keys', async () => {
-      const code = `
+    describe('defineMessages with complex keys', () => {
+        it('should handle defineMessages with string keys', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         const messages = defineMessages({
@@ -259,12 +257,12 @@ describe('defineMessages', () => {
         });
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle defineMessages with numeric keys', async () => {
-      const code = `
+        it('should handle defineMessages with numeric keys', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         const messages = defineMessages({
@@ -277,25 +275,25 @@ describe('defineMessages', () => {
         });
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
     });
-  });
 
-  describe('defineMessages edge cases', () => {
-    it('should handle empty defineMessages', async () => {
-      const code = `
+    describe('defineMessages edge cases', () => {
+        it('should handle empty defineMessages', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         const messages = defineMessages({});
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle defineMessages with non-string values', async () => {
-      const code = `
+        it('should handle defineMessages with non-string values', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         const messages = defineMessages({
@@ -305,12 +303,12 @@ describe('defineMessages', () => {
         });
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle defineMessages with computed keys', async () => {
-      const code = `
+        it('should handle defineMessages with computed keys', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         const key = 'hello';
@@ -321,14 +319,14 @@ describe('defineMessages', () => {
         });
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
     });
-  });
 
-  describe('Multiple defineMessages calls', () => {
-    it('should handle multiple defineMessages in same file', async () => {
-      const code = `
+    describe('Multiple defineMessages calls', () => {
+        it('should handle multiple defineMessages in same file', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         const messages1 = defineMessages({
@@ -344,12 +342,12 @@ describe('defineMessages', () => {
         });
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle defineMessages in different scopes', async () => {
-      const code = `
+        it('should handle defineMessages in different scopes', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         function createMessages() {
@@ -367,12 +365,12 @@ describe('defineMessages', () => {
         });
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle defineMessages with numeric keys', async () => {
-      const code = `
+        it('should handle defineMessages with numeric keys', async () => {
+            const code = `
         import { defineMessages } from 'react-intl';
         
         const messages = defineMessages({
@@ -388,8 +386,8 @@ describe('defineMessages', () => {
         });
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
     });
-  });
 });

@@ -3,33 +3,31 @@ const { transform } = require('@swc/core');
 const plugin = require('../index.js');
 
 describe('formatMessage', () => {
-  const transformWithPlugin = async (code, options = {}) => {
-    const result = await transform(code, {
-      filename: options.filename || 'test.js',
-      jsc: {
-        parser: {
-          syntax: 'ecmascript',
-          jsx: true,
-        },
-        transform: {
-          react: {
-            runtime: 'automatic',
-          },
-        },
-        experimental: {
-          plugins: [
-            [plugin, options.pluginOptions || {}]
-          ]
-        }
-      }
-    });
-    return result.code;
-  };
+    const transformWithPlugin = async (code, options = {}) => {
+        const result = await transform(code, {
+            filename: options.filename || 'test.js',
+            jsc: {
+                parser: {
+                    syntax: 'ecmascript',
+                    jsx: true,
+                },
+                transform: {
+                    react: {
+                        runtime: 'automatic',
+                    },
+                },
+                experimental: {
+                    plugins: [[plugin, options.pluginOptions || {}]],
+                },
+            },
+        });
+        return result.code;
+    };
 
-  describe('injectIntl formatMessage', () => {
-    describe('object no id', () => {
-      it('should add generated id to formatMessage object without id', async () => {
-        const code = `
+    describe('injectIntl formatMessage', () => {
+        describe('object no id', () => {
+            it('should add generated id to formatMessage object without id', async () => {
+                const code = `
           import { injectIntl } from 'react-intl';
           
           function MyComponent({ intl }) {
@@ -41,17 +39,17 @@ describe('formatMessage', () => {
           export default injectIntl(MyComponent);
         `;
 
-        const result = await transformWithPlugin(code);
-        // Verify id is generated
-        expect(result).toMatch(/["']id["']/);
-        expect(result).toContain('Привет');
-        expect(result).toMatchSnapshot();
-      });
-    });
+                const result = await transformWithPlugin(code);
+                // Verify id is generated
+                expect(result).toMatch(/["']id["']/);
+                expect(result).toContain('Привет');
+                expect(result).toMatchSnapshot();
+            });
+        });
 
-    describe('object with id', () => {
-      it('should preserve existing user id in formatMessage object', async () => {
-        const code = `
+        describe('object with id', () => {
+            it('should preserve existing user id in formatMessage object', async () => {
+                const code = `
           import { injectIntl } from 'react-intl';
           
           function MyComponent({ intl }) {
@@ -64,16 +62,16 @@ describe('formatMessage', () => {
           export default injectIntl(MyComponent);
         `;
 
-        const result = await transformWithPlugin(code);
-        // Verify user id is preserved
-        expect(result).toContain('my-id');
-        expect(result).toContain('Привет');
-        expect(result).toMatchSnapshot();
-      });
-    });
+                const result = await transformWithPlugin(code);
+                // Verify user id is preserved
+                expect(result).toContain('my-id');
+                expect(result).toContain('Привет');
+                expect(result).toMatchSnapshot();
+            });
+        });
 
-    it('should add id to formatMessage calls', async () => {
-      const code = `
+        it('should add id to formatMessage calls', async () => {
+            const code = `
         import { injectIntl } from 'react-intl';
         
         function MyComponent({ intl }) {
@@ -85,12 +83,12 @@ describe('formatMessage', () => {
         export default injectIntl(MyComponent);
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should add id to formatMessage calls with values', async () => {
-      const code = `
+        it('should add id to formatMessage calls with values', async () => {
+            const code = `
         import { injectIntl } from 'react-intl';
         
         function MyComponent({ intl, name }) {
@@ -103,12 +101,12 @@ describe('formatMessage', () => {
         export default injectIntl(MyComponent);
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should add id to formatMessage calls with description', async () => {
-      const code = `
+        it('should add id to formatMessage calls with description', async () => {
+            const code = `
         import { injectIntl } from 'react-intl';
         
         function MyComponent({ intl }) {
@@ -121,12 +119,12 @@ describe('formatMessage', () => {
         export default injectIntl(MyComponent);
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should not add id to formatMessage calls that already have id', async () => {
-      const code = `
+        it('should not add id to formatMessage calls that already have id', async () => {
+            const code = `
         import { injectIntl } from 'react-intl';
         
         function MyComponent({ intl }) {
@@ -139,14 +137,14 @@ describe('formatMessage', () => {
         export default injectIntl(MyComponent);
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
     });
-  });
 
-  describe('useIntl formatMessage', () => {
-    it('should add id to useIntl formatMessage calls', async () => {
-      const code = `
+    describe('useIntl formatMessage', () => {
+        it('should add id to useIntl formatMessage calls', async () => {
+            const code = `
         import { useIntl } from 'react-intl';
         
         function MyComponent() {
@@ -157,12 +155,12 @@ describe('formatMessage', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should add id to useIntl formatMessage calls with values', async () => {
-      const code = `
+        it('should add id to useIntl formatMessage calls with values', async () => {
+            const code = `
         import { useIntl } from 'react-intl';
         
         function MyComponent({ name }) {
@@ -174,12 +172,12 @@ describe('formatMessage', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle multiple useIntl formatMessage calls', async () => {
-      const code = `
+        it('should handle multiple useIntl formatMessage calls', async () => {
+            const code = `
         import { useIntl } from 'react-intl';
         
         function MyComponent() {
@@ -193,14 +191,14 @@ describe('formatMessage', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
     });
-  });
 
-  describe('formatMessage with different patterns', () => {
-    it('should handle formatMessage with template literals', async () => {
-      const code = `
+    describe('formatMessage with different patterns', () => {
+        it('should handle formatMessage with template literals', async () => {
+            const code = `
         import { useIntl } from 'react-intl';
         
         function MyComponent({ name }) {
@@ -211,12 +209,12 @@ describe('formatMessage', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle formatMessage with dynamic defaultMessage', async () => {
-      const code = `
+        it('should handle formatMessage with dynamic defaultMessage', async () => {
+            const code = `
         import { useIntl } from 'react-intl';
         
         function MyComponent({ message }) {
@@ -227,12 +225,12 @@ describe('formatMessage', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle formatMessage with computed properties', async () => {
-      const code = `
+        it('should handle formatMessage with computed properties', async () => {
+            const code = `
         import { useIntl } from 'react-intl';
         
         function MyComponent() {
@@ -244,14 +242,14 @@ describe('formatMessage', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
     });
-  });
 
-  describe('formatMessage edge cases', () => {
-    it('should handle formatMessage with empty object', async () => {
-      const code = `
+    describe('formatMessage edge cases', () => {
+        it('should handle formatMessage with empty object', async () => {
+            const code = `
         import { useIntl } from 'react-intl';
         
         function MyComponent() {
@@ -260,12 +258,12 @@ describe('formatMessage', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle formatMessage with non-string defaultMessage', async () => {
-      const code = `
+        it('should handle formatMessage with non-string defaultMessage', async () => {
+            const code = `
         import { useIntl } from 'react-intl';
         
         function MyComponent() {
@@ -276,12 +274,12 @@ describe('formatMessage', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle formatMessage with missing defaultMessage', async () => {
-      const code = `
+        it('should handle formatMessage with missing defaultMessage', async () => {
+            const code = `
         import { useIntl } from 'react-intl';
         
         function MyComponent() {
@@ -292,14 +290,14 @@ describe('formatMessage', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
     });
-  });
 
-  describe('formatMessage with useKey option', () => {
-    it('should handle formatMessage with key when useKey is true', async () => {
-      const code = `
+    describe('formatMessage with useKey option', () => {
+        it('should handle formatMessage with key when useKey is true', async () => {
+            const code = `
         import { useIntl } from 'react-intl';
         
         function MyComponent() {
@@ -311,16 +309,16 @@ describe('formatMessage', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code, {
-        pluginOptions: { use_key: true }
-      });
-      expect(result).toMatchSnapshot();
+            const result = await transformWithPlugin(code, {
+                pluginOptions: { use_key: true },
+            });
+            expect(result).toMatchSnapshot();
+        });
     });
-  });
 
-  describe('formatMessage in different contexts', () => {
-    it('should handle formatMessage in arrow function', async () => {
-      const code = `
+    describe('formatMessage in different contexts', () => {
+        it('should handle formatMessage in arrow function', async () => {
+            const code = `
         import { useIntl } from 'react-intl';
         
         const MyComponent = () => {
@@ -331,12 +329,12 @@ describe('formatMessage', () => {
         };
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle formatMessage in class method', async () => {
-      const code = `
+        it('should handle formatMessage in class method', async () => {
+            const code = `
         import { injectIntl } from 'react-intl';
         
         class MyComponent {
@@ -350,12 +348,12 @@ describe('formatMessage', () => {
         export default injectIntl(MyComponent);
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
-    });
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
 
-    it('should handle formatMessage in callback', async () => {
-      const code = `
+        it('should handle formatMessage in callback', async () => {
+            const code = `
         import { useIntl } from 'react-intl';
         
         function MyComponent() {
@@ -372,8 +370,8 @@ describe('formatMessage', () => {
         }
       `;
 
-      const result = await transformWithPlugin(code);
-      expect(result).toMatchSnapshot();
+            const result = await transformWithPlugin(code);
+            expect(result).toMatchSnapshot();
+        });
     });
-  });
 });

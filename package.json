@@ -10,7 +10,8 @@
     "release": "node scripts/release.js",
     "check-token": "node scripts/check-npm-token.js",
     "create-labels": "node scripts/create-labels.js",
-    "test-release": "node scripts/test-release.js"
+    "test-release": "node scripts/test-release.js",
+    "format": "prettier --write \"{src,__tests__,examples,scripts}/**/*.{ts,tsx,js,jsx}\""
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
     "@swc/core": "^1.15.11",
     "@types/jest": "^29.0.0",
     "jest": "^29.0.0",
+    "prettier": "^3.8.1",
     "string-snapshot-serializer": "1.0.1",
     "ts-jest": "^29.0.0",
     "typescript": "^5.0.0"

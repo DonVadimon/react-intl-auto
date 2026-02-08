@@ -13,33 +13,33 @@ const { transform } = require('@swc/core');
  * @param {string} [options.relativeTo] - Relative path for ID generation
  */
 function swcPluginReactIntlAuto(options = {}) {
-  return {
-    name: 'swc-plugin-react-intl-auto',
-    config: () => {
-      return {
-        jsc: {
-          parser: {
-            syntax: 'typescript',
-            tsx: true,
-            decorators: true,
-          },
-          transform: {
-            react: {
-              runtime: 'automatic',
-            },
-          },
-          experimental: {
-            plugins: [
-              [
-                require.resolve('../../target/wasm32-wasip1/release/swc-plugin-react-intl-auto.wasm'),
-                options
-              ]
-            ]
-          }
-        }
-      };
-    }
-  };
+    return {
+        name: 'swc-plugin-react-intl-auto',
+        config: () => {
+            return {
+                jsc: {
+                    parser: {
+                        syntax: 'typescript',
+                        tsx: true,
+                        decorators: true,
+                    },
+                    transform: {
+                        react: {
+                            runtime: 'automatic',
+                        },
+                    },
+                    experimental: {
+                        plugins: [
+                            [
+                                require.resolve('../../target/wasm32-wasip1/release/swc-plugin-react-intl-auto.wasm'),
+                                options,
+                            ],
+                        ],
+                    },
+                },
+            };
+        },
+    };
 }
 
 module.exports = swcPluginReactIntlAuto;

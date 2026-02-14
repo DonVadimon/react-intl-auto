@@ -76,7 +76,7 @@ pub fn analyze_jsx_element(
     }
 
     // Check if defaultMessage attribute exists at all (even if value is not a static string)
-    let has_default_message_attr = element.opening.attrs.iter().any(|attr| {
+    let _has_default_message_attr = element.opening.attrs.iter().any(|attr| {
         if let JSXAttrOrSpread::JSXAttr(jsx_attr) = attr {
             if let JSXAttrName::Ident(name) = &jsx_attr.name {
                 return name.sym.as_ref() == "defaultMessage";
@@ -302,7 +302,7 @@ fn analyze_message_object_with_span(
     obj_lit: &ObjectLit,
     key_name: Option<&str>,
     state: &CoreState,
-    span_lo: u32,
+    _span_lo: u32,
     force_use_key: bool,
 ) -> Option<(MessageData, TransformedMessageData)> {
     let mut id = None;

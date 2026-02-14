@@ -2,11 +2,11 @@ use std::collections::HashSet;
 use swc_core::ecma::ast::*;
 use swc_core::ecma::visit::{VisitMut, VisitMutWith};
 
-use react_intl_core::IncludeExportName;
-use react_intl_core::{analyze_jsx_element, get_prefix, hash_string, murmur32_hash};
+use react_intl_core::{IncludeExportName};
+use react_intl_core::{get_prefix, hash_string, murmur32_hash};
 
-use crate::types::PluginState;
 use crate::utils::*;
+use crate::types::{PluginState};
 
 const REACT_COMPONENTS: &[&str] = &["FormattedMessage", "FormattedHTMLMessage"];
 
@@ -34,94 +34,38 @@ impl VisitMut for JSXVisitor {
 
 impl JSXVisitor {
     fn process_jsx_element(&self, element: &mut JSXElement, _imported_names: &HashSet<String>) {
-        // Try to analyze the JSX element using shared core function
-        if let Some((_, transformed)) = analyze_jsx_element(element, &self.state) {
-            // Found a transformable message - find defaultMessage index and insert ID
-            if let Some(default_message_idx) =
-                self.find_attribute_index(&element.opening, "defaultMessage")
-            {
-                self.insert_id_attribute(element, default_message_idx, &transformed.id);
+        let (id_attr, default_message_attr, key_attr) =
+            self.get_element_attributes(&element.opening);
+
+        if id_attr.is_none() && default_message_attr.is_some() {
+            if let Some(default_message) = default_message_attr {
+                self.generate_id(element, default_message, key_attr);
             }
-        } else {
-            // analyze_jsx_element returned None - could be existing ID or variable defaultMessage
-            // Check if we need fallback for variable defaultMessage
-            self.handle_jsx_fallback(element);
         }
     }
 
-    fn find_attribute_index(&self, opening: &JSXOpeningElement, name: &str) -> Option<usize> {
-        opening.attrs.iter().position(|attr| {
-            if let JSXAttrOrSpread::JSXAttr(jsx_attr) = attr {
-                if let JSXAttrName::Ident(ident) = &jsx_attr.name {
-                    return ident.sym.as_ref() == name;
-                }
-            }
-            false
-        })
-    }
-
-    fn insert_id_attribute(&self, element: &mut JSXElement, default_message_idx: usize, id: &str) {
-        let id_attr = JSXAttrOrSpread::JSXAttr(JSXAttr {
-            span: swc_core::common::DUMMY_SP,
-            name: JSXAttrName::Ident(IdentName::new("id".into(), swc_core::common::DUMMY_SP)),
-            value: Some(JSXAttrValue::Str(Str {
-                span: swc_core::common::DUMMY_SP,
-                value: id.into(),
-                raw: None,
-            })),
-        });
-
-        element.opening.attrs.insert(default_message_idx, id_attr);
-    }
-
-    fn handle_jsx_fallback(&self, element: &mut JSXElement) {
-        // Check if there's no ID but there's a defaultMessage attribute (variable case)
-        let has_id = self.find_attribute_index(&element.opening, "id").is_some();
-        let default_message_idx = self.find_attribute_index(&element.opening, "defaultMessage");
-
-        if !has_id && default_message_idx.is_some() {
-            // This is a variable defaultMessage case - generate position-based ID
-            let default_message_idx = default_message_idx.unwrap();
-            let key_idx = self.find_attribute_index(&element.opening, "key");
-            self.generate_fallback_id(element, default_message_idx, key_idx);
-        }
-    }
-
-    fn generate_fallback_id(
+    fn get_element_attributes(
         &self,
-        element: &mut JSXElement,
-        default_message_idx: usize,
-        key_idx: Option<usize>,
-    ) {
-        // Extract key if use_key is enabled
-        let suffix = if self.state.opts.use_key {
-            key_idx.and_then(|idx| {
-                if let JSXAttrOrSpread::JSXAttr(attr) = &element.opening.attrs[idx] {
-                    self.extract_from_value(attr)
-                } else {
-                    None
+        opening: &JSXOpeningElement,
+    ) -> (Option<usize>, Option<usize>, Option<usize>) {
+        let mut id_idx = None;
+        let mut default_message_idx = None;
+        let mut key_idx = None;
+
+        for (i, attr) in opening.attrs.iter().enumerate() {
+            if let JSXAttrOrSpread::JSXAttr(jsx_attr) = attr {
+                if let JSXAttrName::Ident(name) = &jsx_attr.name {
+                    match name.sym.as_ref() {
+                        "id" => id_idx = Some(i),
+                        "defaultMessage" => default_message_idx = Some(i),
+                        "key" => key_idx = Some(i),
+                        _ => {}
+                    }
                 }
-            })
-        } else {
-            None
-        };
+            }
+        }
 
-        // Generate suffix based on position hash for variables
-        let suffix = suffix.unwrap_or_else(|| {
-            let file_path = self.state.filename.to_string_lossy().to_string();
-            murmur32_hash(&format!("{}{}", file_path, element.span.lo.0))
-        });
-
-        let prefix = get_prefix(&self.state, Some(&suffix));
-
-        // Apply hash_id option if enabled
-        let final_id = if self.state.opts.hash_id {
-            hash_string(&prefix, &self.state.opts.hash_algorithm)
-        } else {
-            prefix
-        };
-
-        self.insert_id_attribute(element, default_message_idx, &final_id);
+        (id_idx, default_message_idx, key_idx)
     }
 
     fn extract_from_value(&self, jsx_attr: &JSXAttr) -> Option<String> {
@@ -164,6 +108,65 @@ impl JSXVisitor {
                 }
             }
             _ => None,
+        }
+    }
+
+    fn generate_id(
+        &self,
+        element: &mut JSXElement,
+        default_message_idx: usize,
+        key_idx: Option<usize>,
+    ) {
+        let default_message_attr = &element.opening.attrs[default_message_idx];
+        if let JSXAttrOrSpread::JSXAttr(jsx_attr) = default_message_attr {
+            let suffix = if self.state.opts.use_key {
+                if let Some(key_idx) = key_idx {
+                    let key_attr = &element.opening.attrs[key_idx];
+                    if let JSXAttrOrSpread::JSXAttr(key_jsx_attr) = key_attr {
+                        self.extract_from_value(key_jsx_attr)
+                    } else {
+                        None
+                    }
+                } else {
+                    None
+                }
+            } else {
+                None
+            };
+
+            let suffix = suffix.unwrap_or_else(|| {
+                if let Some(message_value) = self.extract_from_value(jsx_attr) {
+                    murmur32_hash(&message_value)
+                } else {
+                    // When we can't extract the message value, generate a hash based on file path and position
+                    let file_path = self.state.filename.to_string_lossy().to_string();
+                    let position_hash =
+                        murmur32_hash(&format!("{}{}", file_path, element.span.lo.0));
+                    position_hash
+                }
+            });
+
+            let prefix = get_prefix(&self.state, Some(&suffix));
+
+            // Apply hash_id option if enabled
+            let final_id = if self.state.opts.hash_id {
+                hash_string(&prefix, &self.state.opts.hash_algorithm)
+            } else {
+                prefix
+            };
+
+            // Insert id attribute before defaultMessage
+            let id_attr = JSXAttrOrSpread::JSXAttr(JSXAttr {
+                span: swc_core::common::DUMMY_SP,
+                name: JSXAttrName::Ident(IdentName::new("id".into(), swc_core::common::DUMMY_SP)),
+                value: Some(JSXAttrValue::Str(Str {
+                    span: swc_core::common::DUMMY_SP,
+                    value: final_id.into(),
+                    raw: None,
+                })),
+            });
+
+            element.opening.attrs.insert(default_message_idx, id_attr);
         }
     }
 }

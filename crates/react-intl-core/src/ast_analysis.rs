@@ -62,21 +62,17 @@ pub fn generate_message_id(
 /// * `state` - The core state containing filename and options
 ///
 /// # Returns
-/// Some((MessageData, TransformedMessageData)) if the element contains a translatable message
-/// that needs transformation, None otherwise
+/// Some((MessageData, TransformedMessageData, bool)) if the element contains a translatable message.
+/// The bool indicates whether the ID needs to be inserted (false = ID already exists, true = needs insertion).
+/// Returns None if the element doesn't have defaultMessage attribute.
 pub fn analyze_jsx_element(
     element: &JSXElement,
     state: &CoreState,
-) -> Option<(MessageData, TransformedMessageData)> {
+) -> Option<(MessageData, TransformedMessageData, bool)> {
     let (id_attr, default_message_attr, description_attr) = extract_jsx_attributes(element);
 
-    // If there's already an ID, don't transform (preserve user-defined IDs)
-    if id_attr.is_some() {
-        return None;
-    }
-
     // Check if defaultMessage attribute exists at all (even if value is not a static string)
-    let _has_default_message_attr = element.opening.attrs.iter().any(|attr| {
+    let has_default_message_attr = element.opening.attrs.iter().any(|attr| {
         if let JSXAttrOrSpread::JSXAttr(jsx_attr) = attr {
             if let JSXAttrName::Ident(name) = &jsx_attr.name {
                 return name.sym.as_ref() == "defaultMessage";
@@ -85,19 +81,45 @@ pub fn analyze_jsx_element(
         false
     });
 
-    // If defaultMessage is not a static string, return None
-    // The caller (visitors.rs) will handle this case with position-based fallback
-    let default_message = default_message_attr?;
+    // If there's no defaultMessage attribute at all, this is not a translatable message
+    if !has_default_message_attr {
+        return None;
+    }
 
-    // Extract key attribute for use_key option
+    // If there's already an ID, return it as-is without transformation
+    if let Some(existing_id) = id_attr {
+        let message_data = MessageData {
+            id: Some(existing_id.clone()),
+            default_message: default_message_attr.clone(),
+            description: description_attr.clone(),
+        };
+
+        let transformed = TransformedMessageData {
+            id: existing_id,
+            default_message: default_message_attr.unwrap_or_default(),
+            description: description_attr,
+        };
+
+        // false = ID already exists, no need to insert
+        return Some((message_data, transformed, false));
+    }
+
+    // Extract key attribute for use_key option and fallback ID generation
     let key = extract_jsx_key(element);
 
-    // Generate ID based on defaultMessage
-    let id = generate_message_id(&default_message, key.as_deref(), state, false);
+    // If defaultMessage is a static string, generate ID based on it
+    let (id, default_message, message_default_message) = if let Some(msg) = default_message_attr {
+        let generated_id = generate_message_id(&msg, key.as_deref(), state, false);
+        (generated_id, msg.clone(), Some(msg))
+    } else {
+        // defaultMessage is a variable/expression - generate fallback ID based on position
+        let fallback_id = generate_fallback_jsx_id(element, key.as_deref(), state);
+        (fallback_id, String::new(), None)
+    };
 
     let message_data = MessageData {
         id: None,
-        default_message: Some(default_message.clone()),
+        default_message: message_default_message,
         description: description_attr.clone(),
     };
 
@@ -107,7 +129,34 @@ pub fn analyze_jsx_element(
         description: description_attr,
     };
 
-    Some((message_data, transformed))
+    // true = ID needs to be inserted
+    Some((message_data, transformed, true))
+}
+
+/// Generates a fallback ID for JSX element when defaultMessage is a variable/expression
+/// Uses position-based hash for consistency
+fn generate_fallback_jsx_id(element: &JSXElement, key: Option<&str>, state: &CoreState) -> String {
+    // Use key if available and use_key option is enabled
+    let suffix = if state.opts.use_key {
+        key.map(|k| k.to_string())
+    } else {
+        None
+    };
+
+    // Generate suffix based on position hash
+    let suffix = suffix.unwrap_or_else(|| {
+        let file_path = state.filename.to_string_lossy().to_string();
+        murmur32_hash(&format!("{}{}", file_path, element.span.lo.0))
+    });
+
+    let prefix = get_prefix(state, Some(&suffix));
+
+    // Apply hash_id option if enabled
+    if state.opts.hash_id {
+        hash_string(&prefix, &state.opts.hash_algorithm)
+    } else {
+        prefix
+    }
 }
 
 /// Extracts key attribute from a JSX element
@@ -505,7 +554,7 @@ mod tests {
         let result = analyze_jsx_element(&element, &state);
 
         assert!(result.is_some());
-        let (message_data, transformed) = result.unwrap();
+        let (message_data, transformed, needs_insertion) = result.unwrap();
         assert_eq!(
             message_data.default_message,
             Some("Hello World".to_string())
@@ -513,6 +562,7 @@ mod tests {
         assert!(message_data.id.is_none());
         assert!(!transformed.id.is_empty());
         assert_eq!(transformed.default_message, "Hello World");
+        assert!(needs_insertion); // ID needs to be inserted
     }
 
     #[test]
@@ -523,8 +573,12 @@ mod tests {
 
         let result = analyze_jsx_element(&element, &state);
 
-        // Should return None because ID already exists
-        assert!(result.is_none());
+        // Should return result with existing ID and needs_insertion=false
+        assert!(result.is_some());
+        let (message_data, transformed, needs_insertion) = result.unwrap();
+        assert_eq!(message_data.id, Some("my-id".to_string()));
+        assert_eq!(transformed.id, "my-id");
+        assert!(!needs_insertion); // ID already exists, no need to insert
     }
 
     #[test]
@@ -535,9 +589,12 @@ mod tests {
 
         let result = analyze_jsx_element(&element, &state);
 
-        // Should return None for variable defaultMessage
-        // The caller (visitors.rs) will handle this with position-based fallback
-        assert!(result.is_none());
+        // Should return result with fallback ID generated from position
+        assert!(result.is_some());
+        let (message_data, transformed, needs_insertion) = result.unwrap();
+        assert!(message_data.default_message.is_none()); // Variable has no static default_message
+        assert!(!transformed.id.is_empty()); // Fallback ID generated
+        assert!(needs_insertion); // ID needs to be inserted
     }
 
     #[test]

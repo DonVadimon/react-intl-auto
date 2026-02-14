@@ -214,7 +214,8 @@ impl Visit for MessageExtractorVisitor {
             let component_name = self.alias_map.get(&name_str).unwrap_or(&name_str);
 
             if ["FormattedMessage", "FormattedHTMLMessage"].contains(&component_name.as_str()) {
-                if let Some((message_data, transformed)) = analyze_jsx_element(element, &self.state)
+                if let Some((message_data, transformed, _needs_insertion)) =
+                    analyze_jsx_element(element, &self.state)
                 {
                     let line = element.span.lo.0; // Approximate line number
                     self.add_message(message_data, transformed, Some(line as usize));

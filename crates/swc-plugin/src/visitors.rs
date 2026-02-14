@@ -36,19 +36,19 @@ impl VisitMut for JSXVisitor {
 
 impl JSXVisitor {
     fn process_jsx_element(&self, element: &mut JSXElement, _imported_names: &HashSet<String>) {
-        // Try to analyze the JSX element using shared core function
-        if let Some((_, transformed)) = analyze_jsx_element(element, &self.state) {
-            // Found a transformable message - find defaultMessage index and insert ID
-            if let Some(default_message_idx) =
-                self.find_attribute_index(&element.opening, "defaultMessage")
-            {
-                self.insert_id_attribute(element, default_message_idx, &transformed.id);
+        // Analyze the JSX element using shared core function
+        if let Some((_, transformed, needs_insertion)) = analyze_jsx_element(element, &self.state) {
+            if needs_insertion {
+                // ID needs to be inserted - find defaultMessage index and insert ID
+                if let Some(default_message_idx) =
+                    self.find_attribute_index(&element.opening, "defaultMessage")
+                {
+                    self.insert_id_attribute(element, default_message_idx, &transformed.id);
+                }
             }
-        } else {
-            // analyze_jsx_element returned None - could be existing ID or variable defaultMessage
-            // Check if we need fallback for variable defaultMessage
-            self.handle_jsx_fallback(element);
+            // If needs_insertion is false, ID already exists - do nothing
         }
+        // If analyze_jsx_element returns None, this is not a translatable message - do nothing
     }
 
     fn find_attribute_index(&self, opening: &JSXOpeningElement, name: &str) -> Option<usize> {
@@ -74,99 +74,6 @@ impl JSXVisitor {
         });
 
         element.opening.attrs.insert(default_message_idx, id_attr);
-    }
-
-    fn handle_jsx_fallback(&self, element: &mut JSXElement) {
-        // Check if there's no ID but there's a defaultMessage attribute (variable case)
-        let has_id = self.find_attribute_index(&element.opening, "id").is_some();
-        let default_message_idx = self.find_attribute_index(&element.opening, "defaultMessage");
-
-        if !has_id && default_message_idx.is_some() {
-            // This is a variable defaultMessage case - generate position-based ID
-            let default_message_idx = default_message_idx.unwrap();
-            let key_idx = self.find_attribute_index(&element.opening, "key");
-            self.generate_fallback_id(element, default_message_idx, key_idx);
-        }
-    }
-
-    fn generate_fallback_id(
-        &self,
-        element: &mut JSXElement,
-        default_message_idx: usize,
-        key_idx: Option<usize>,
-    ) {
-        // Extract key if use_key is enabled
-        let suffix = if self.state.opts.use_key {
-            key_idx.and_then(|idx| {
-                if let JSXAttrOrSpread::JSXAttr(attr) = &element.opening.attrs[idx] {
-                    self.extract_from_value(attr)
-                } else {
-                    None
-                }
-            })
-        } else {
-            None
-        };
-
-        // Generate suffix based on position hash for variables
-        let suffix = suffix.unwrap_or_else(|| {
-            let file_path = self.state.filename.to_string_lossy().to_string();
-            murmur32_hash(&format!("{}{}", file_path, element.span.lo.0))
-        });
-
-        let prefix = get_prefix(&self.state, Some(&suffix));
-
-        // Apply hash_id option if enabled
-        let final_id = if self.state.opts.hash_id {
-            hash_string(&prefix, &self.state.opts.hash_algorithm)
-        } else {
-            prefix
-        };
-
-        self.insert_id_attribute(element, default_message_idx, &final_id);
-    }
-
-    fn extract_from_value(&self, jsx_attr: &JSXAttr) -> Option<String> {
-        match &jsx_attr.value {
-            Some(JSXAttrValue::Str(str_lit)) => Some(str_lit.value.to_string_lossy().to_string()),
-            Some(JSXAttrValue::JSXExprContainer(JSXExprContainer { expr, .. })) => {
-                match expr {
-                    JSXExpr::Expr(expr) => {
-                        // Try to evaluate the expression statically
-                        match expr.as_ref() {
-                            Expr::Lit(Lit::Str(str_lit)) => {
-                                Some(str_lit.value.to_string_lossy().to_string())
-                            }
-                            Expr::Tpl(template) => {
-                                // Handle template literals
-                                if template.exprs.is_empty() {
-                                    // Simple template literal without expressions
-                                    Some(
-                                        template
-                                            .quasis
-                                            .iter()
-                                            .map(|q| q.raw.to_string())
-                                            .collect::<String>(),
-                                    )
-                                } else {
-                                    // Template literal with expressions - skip for now
-                                    None
-                                }
-                            }
-                            _ => {
-                                // For non-analyzable expressions, return None to skip processing
-                                None
-                            }
-                        }
-                    }
-                    _ => {
-                        // For non-analyzable expressions, return None to skip processing
-                        None
-                    }
-                }
-            }
-            _ => None,
-        }
     }
 }
 

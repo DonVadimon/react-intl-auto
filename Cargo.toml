@@ -18,8 +18,8 @@ base64 = "0.22"
 regex = "1"
 pathdiff = "0.2"
 
-# SWC dependencies (plugin only)
-swc_core = { version = "47.0.*", features = ["ecma_plugin_transform", "ecma_ast", "ecma_visit", "ecma_utils"] }
+# SWC dependencies (shared)
+swc_core = { version = "47.0.*", features = ["ecma_ast", "ecma_visit", "ecma_utils", "ecma_parser"] }
 
 # Dev dependencies
 tempfile = "3.23.0"

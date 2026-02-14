@@ -85,7 +85,3 @@ impl CoreState {
         Self { filename, opts }
     }
 }
-
-// Type aliases for backward compatibility
-pub type PluginOptions = CoreOptions;
-pub type PluginState = CoreState;

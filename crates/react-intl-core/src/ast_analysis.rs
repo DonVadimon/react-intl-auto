@@ -190,13 +190,15 @@ fn extract_expr_string(expr: &Expr) -> Option<String> {
 /// # Arguments
 /// * `call` - The CallExpr for defineMessages
 /// * `state` - The core state containing filename and options
+/// * `export_name` - Optional export name to include in ID (e.g., "messages" for `export default defineMessages({...})`)
 ///
 /// # Returns
-/// Vector of (MessageData, TransformedMessageData) for each message that needs transformation
+/// Vector of (key_name, MessageData, TransformedMessageData) for each message that needs transformation
 pub fn analyze_define_messages(
     call: &CallExpr,
     state: &CoreState,
-) -> Vec<(MessageData, TransformedMessageData)> {
+    export_name: Option<&str>,
+) -> Vec<(String, MessageData, TransformedMessageData)> {
     let mut messages = Vec::new();
 
     // Get the first argument (the object literal)
@@ -204,9 +206,10 @@ pub fn analyze_define_messages(
         if let Expr::Object(obj_lit) = first_arg.expr.as_ref() {
             for prop in &obj_lit.props {
                 if let PropOrSpread::Prop(prop) = prop {
-                    if let Some((message_data, transformed)) = analyze_object_property(prop, state)
+                    if let Some((key_name, message_data, transformed)) =
+                        analyze_object_property_with_key(prop, state, export_name)
                     {
-                        messages.push((message_data, transformed));
+                        messages.push((key_name, message_data, transformed));
                     }
                 }
             }
@@ -216,19 +219,20 @@ pub fn analyze_define_messages(
     messages
 }
 
-/// Analyzes an object property and extracts message data
-fn analyze_object_property(
+/// Analyzes an object property and extracts message data with key
+fn analyze_object_property_with_key(
     prop: &Prop,
     state: &CoreState,
-) -> Option<(MessageData, TransformedMessageData)> {
+    export_name: Option<&str>,
+) -> Option<(String, MessageData, TransformedMessageData)> {
     match prop {
         Prop::KeyValue(KeyValueProp { key, value }) => {
             let key_name = extract_prop_name(key)?;
 
-            // Skip properties with key "id" - these are not messages
-            if key_name == "id" {
-                return None;
-            }
+            // Build the full key with export_name prefix if provided
+            let full_key = export_name
+                .map(|exp| format!("{}.{}", exp, key_name))
+                .unwrap_or_else(|| key_name.clone());
 
             match value.as_ref() {
                 // String value: hello: 'Hello World'
@@ -242,16 +246,17 @@ fn analyze_object_property(
                     };
 
                     let transformed = TransformedMessageData {
-                        id: generate_message_id(&default_message, Some(&key_name), state, true),
+                        id: generate_message_id(&default_message, Some(&full_key), state, true),
                         default_message,
                         description: None,
                     };
 
-                    Some((message_data, transformed))
+                    Some((key_name, message_data, transformed))
                 }
                 // Object value: hello: { defaultMessage: 'Hello', description: '...' }
                 Expr::Object(obj_lit) => {
-                    analyze_message_object(obj_lit, Some(&key_name), state, true)
+                    analyze_message_object(obj_lit, Some(&full_key), state, true)
+                        .map(|(md, td)| (key_name, md, td))
                 }
                 // Template literal value: hello: `Hello ${name}`
                 Expr::Tpl(_) => {
@@ -265,12 +270,12 @@ fn analyze_object_property(
                     };
 
                     let transformed = TransformedMessageData {
-                        id: generate_message_id("", Some(&key_name), state, true),
+                        id: generate_message_id("", Some(&full_key), state, true),
                         default_message: String::new(),
                         description: None,
                     };
 
-                    Some((message_data, transformed))
+                    Some((key_name, message_data, transformed))
                 }
                 _ => None,
             }
@@ -544,15 +549,17 @@ mod tests {
         let call = parse_call_expr(code);
         let state = create_test_state();
 
-        let result = analyze_define_messages(&call, &state);
+        let result = analyze_define_messages(&call, &state, None);
 
         assert_eq!(result.len(), 2);
-        assert_eq!(result[0].0.default_message, Some("Hello World".to_string()));
-        assert_eq!(result[1].0.default_message, Some("Goodbye".to_string()));
-        println!("ID 0: {}", result[0].1.id);
-        println!("ID 1: {}", result[1].1.id);
-        assert!(!result[0].1.id.is_empty());
-        assert!(!result[1].1.id.is_empty());
+        assert_eq!(result[0].0, "hello");
+        assert_eq!(result[1].0, "goodbye");
+        assert_eq!(result[0].1.default_message, Some("Hello World".to_string()));
+        assert_eq!(result[1].1.default_message, Some("Goodbye".to_string()));
+        println!("ID 0: {}", result[0].2.id);
+        println!("ID 1: {}", result[1].2.id);
+        assert!(!result[0].2.id.is_empty());
+        assert!(!result[1].2.id.is_empty());
     }
 
     #[test]
@@ -563,13 +570,14 @@ mod tests {
         let call = parse_call_expr(code);
         let state = create_test_state();
 
-        let result = analyze_define_messages(&call, &state);
+        let result = analyze_define_messages(&call, &state, None);
 
         assert_eq!(result.len(), 1);
-        assert_eq!(result[0].0.default_message, Some("Hello World".to_string()));
-        assert_eq!(result[0].0.description, Some("A greeting".to_string()));
-        assert_eq!(result[0].1.default_message, "Hello World");
+        assert_eq!(result[0].0, "hello");
+        assert_eq!(result[0].1.default_message, Some("Hello World".to_string()));
         assert_eq!(result[0].1.description, Some("A greeting".to_string()));
+        assert_eq!(result[0].2.default_message, "Hello World");
+        assert_eq!(result[0].2.description, Some("A greeting".to_string()));
     }
 
     #[test]
@@ -580,15 +588,16 @@ mod tests {
         let call = parse_call_expr(code);
         let state = create_test_state();
 
-        let result = analyze_define_messages(&call, &state);
+        let result = analyze_define_messages(&call, &state, None);
 
         assert_eq!(result.len(), 1);
-        assert!(result[0].0.default_message.is_none()); // Template literal has no static default_message
-        assert!(result[0].1.default_message.is_empty());
+        assert_eq!(result[0].0, "hello");
+        assert!(result[0].1.default_message.is_none()); // Template literal has no static default_message
+        assert!(result[0].2.default_message.is_empty());
         // ID should include the path prefix and key
-        println!("Generated ID: {}", result[0].1.id);
-        assert!(result[0].1.id.contains("hello"));
-        assert!(result[0].1.id.contains("test")); // Should contain path
+        println!("Generated ID: {}", result[0].2.id);
+        assert!(result[0].2.id.contains("hello"));
+        assert!(result[0].2.id.contains("test")); // Should contain path
     }
 
     #[test]

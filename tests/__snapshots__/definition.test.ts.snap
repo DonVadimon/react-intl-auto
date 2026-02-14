@@ -2839,7 +2839,12 @@ exports[`definition - moduleSourceNameTest when using the variable 1`] = `
 var messages = {
     hello: 'hello'
 };
-export default defineMessages(messages);
+export default defineMessages({
+    hello: {
+        "id": "Users.username.repo.src.components.App.hello",
+        "defaultMessage": "hello"
+    }
+});
 "
 `;
 

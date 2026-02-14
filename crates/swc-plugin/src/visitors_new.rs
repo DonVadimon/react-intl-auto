@@ -340,79 +340,41 @@ impl CallExpressionVisitor {
             return;
         }
 
-        // Get export name for ID generation
-        let export_name = match &self.state.opts.include_export_name {
-            Some(IncludeExportName::Boolean(true)) | Some(IncludeExportName::All) => {
-                Some("messages".to_string()) // Default export name
-            }
-            _ => None,
-        };
-
         let first_arg = &mut call_expr.args[0];
         let ExprOrSpread { expr, .. } = first_arg;
-        match expr.as_mut() {
-            Expr::Object(obj) => {
-                // Check if object has "id" property at the top level (indicates already processed)
-                let has_id_at_top_level = obj.props.iter().any(|prop| {
-                    if let PropOrSpread::Prop(prop) = prop {
-                        if let Prop::KeyValue(KeyValueProp { key, .. }) = prop.as_ref() {
-                            match key {
-                                PropName::Ident(ident) => return ident.sym == "id",
-                                PropName::Str(str_lit) => return str_lit.value == "id",
-                                _ => {}
-                            }
+        if let Expr::Object(obj) = expr.as_mut() {
+            // Check if object has "id" property at the top level (indicates already processed)
+            let has_id_at_top_level = obj.props.iter().any(|prop| {
+                if let PropOrSpread::Prop(prop) = prop {
+                    if let Prop::KeyValue(KeyValueProp { key, .. }) = prop.as_ref() {
+                        match key {
+                            PropName::Ident(ident) => return ident.sym == "id",
+                            PropName::Str(str_lit) => return str_lit.value == "id",
+                            _ => {}
                         }
                     }
-                    false
-                });
-
-                if has_id_at_top_level {
-                    // Already processed, skip
-                    return;
                 }
+                false
+            });
 
-                // Pass the actual call_expr to analyze_define_messages
-                let call_expr_for_analysis = CallExpr {
-                    span: call_expr.span,
-                    callee: call_expr.callee.clone(),
-                    args: vec![ExprOrSpread {
-                        expr: Box::new(Expr::Object(obj.clone())),
-                        spread: None,
-                    }],
-                    type_args: call_expr.type_args.clone(),
-                    ctxt: call_expr.ctxt,
-                };
-                self.process_define_messages_object_with_analysis(
-                    obj,
-                    &call_expr_for_analysis,
-                    export_name.as_deref(),
-                );
+            if has_id_at_top_level {
+                // Already processed, skip
+                return;
             }
-            Expr::Ident(ident) => {
-                // Handle variable reference
-                let var_name = ident.sym.to_string();
-                if let Some(obj_lit) = self.variable_declarations.get(&var_name).cloned() {
-                    let mut obj = obj_lit;
-                    // Pass the actual call_expr to analyze_define_messages
-                    let call_expr_for_analysis = CallExpr {
-                        span: call_expr.span,
-                        callee: call_expr.callee.clone(),
-                        args: vec![ExprOrSpread {
-                            expr: Box::new(Expr::Object(obj.clone())),
-                            spread: None,
-                        }],
-                        type_args: call_expr.type_args.clone(),
-                        ctxt: call_expr.ctxt,
-                    };
-                    self.process_define_messages_object_with_analysis(
-                        &mut obj,
-                        &call_expr_for_analysis,
-                        export_name.as_deref(),
-                    );
-                    *expr = Box::new(Expr::Object(obj));
-                }
-            }
-            _ => {}
+
+            // Pass the actual call_expr to analyze_define_messages
+            // We need to reconstruct it since we have mutable references
+            let call_expr_for_analysis = CallExpr {
+                span: call_expr.span,
+                callee: call_expr.callee.clone(),
+                args: vec![ExprOrSpread {
+                    expr: Box::new(Expr::Object(obj.clone())),
+                    spread: None,
+                }],
+                type_args: call_expr.type_args.clone(),
+                ctxt: call_expr.ctxt,
+            };
+            self.process_define_messages_object_with_analysis(obj, &call_expr_for_analysis);
         }
     }
 
@@ -528,23 +490,24 @@ impl CallExpressionVisitor {
         &self,
         obj: &mut ObjectLit,
         call_expr: &CallExpr,
-        export_name: Option<&str>,
     ) {
         // Use the shared core function to analyze defineMessages
-        // This returns (key_name, MessageData, TransformedMessageData) for each message
-        let messages = analyze_define_messages(call_expr, &self.state, export_name);
+        let messages = analyze_define_messages(call_expr, &self.state);
 
         if messages.is_empty() {
             return;
         }
 
-        // Build a map from key name to the transformed ID
-        // This uses the ID generated by the shared core crate
-        let message_id_map: std::collections::HashMap<String, String> = messages
-            .into_iter()
-            .map(|(key_name, _message_data, transformed)| (key_name, transformed.id))
-            .collect();
+        // Get export name for ID generation
+        let export_name = match &self.state.opts.include_export_name {
+            Some(IncludeExportName::Boolean(true)) | Some(IncludeExportName::All) => {
+                Some("messages".to_string()) // Default export name
+            }
+            _ => None,
+        };
 
+        // Note: analyze_define_messages is used to validate that there are messages to process
+        // We generate IDs locally for each property to ensure consistency
         // Update object properties based on analysis
         for prop in &mut obj.props {
             if let PropOrSpread::Prop(prop) = prop {
@@ -557,9 +520,27 @@ impl CallExpressionVisitor {
                         _ => continue,
                     };
 
-                    // Get the pre-generated ID from the shared core analysis
-                    let Some(final_id) = message_id_map.get(&key_name) else {
+                    // Skip if this is the "id" property
+                    if key_name == "id" {
                         continue;
+                    }
+
+                    // Generate the ID for this property using the same logic as analyze_define_messages
+                    let final_id = if let Some(ref export_name) = export_name {
+                        let prefix =
+                            get_prefix(&self.state, Some(&format!("{}.{}", export_name, key_name)));
+                        if self.state.opts.hash_id {
+                            hash_string(&prefix, &self.state.opts.hash_algorithm)
+                        } else {
+                            prefix
+                        }
+                    } else {
+                        let prefix = get_prefix(&self.state, Some(&key_name));
+                        if self.state.opts.hash_id {
+                            hash_string(&prefix, &self.state.opts.hash_algorithm)
+                        } else {
+                            prefix
+                        }
                     };
 
                     match value.as_ref() {
@@ -588,7 +569,7 @@ impl CallExpressionVisitor {
                                     "id",
                                     Expr::Lit(Lit::Str(Str {
                                         span: swc_core::common::DUMMY_SP,
-                                        value: final_id.clone().into(),
+                                        value: final_id.into(),
                                         raw: None,
                                     })),
                                 );
@@ -604,7 +585,7 @@ impl CallExpressionVisitor {
                                 "id",
                                 Expr::Lit(Lit::Str(Str {
                                     span: swc_core::common::DUMMY_SP,
-                                    value: final_id.clone().into(),
+                                    value: final_id.into(),
                                     raw: None,
                                 })),
                             );
@@ -632,7 +613,7 @@ impl CallExpressionVisitor {
                                 "id",
                                 Expr::Lit(Lit::Str(Str {
                                     span: swc_core::common::DUMMY_SP,
-                                    value: final_id.clone().into(),
+                                    value: final_id.into(),
                                     raw: None,
                                 })),
                             );

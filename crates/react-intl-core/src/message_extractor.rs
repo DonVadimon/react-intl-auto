@@ -231,8 +231,8 @@ impl Visit for MessageExtractorVisitor {
                 let fn_name = ident.sym.as_str();
 
                 if fn_name == "defineMessages" && self.imported_names.contains("defineMessages") {
-                    let results = analyze_define_messages(call, &self.state);
-                    for (message_data, transformed) in results {
+                    let results = analyze_define_messages(call, &self.state, None);
+                    for (_key_name, message_data, transformed) in results {
                         let line = call.span.lo.0;
                         self.add_message(message_data, transformed, Some(line as usize));
                     }

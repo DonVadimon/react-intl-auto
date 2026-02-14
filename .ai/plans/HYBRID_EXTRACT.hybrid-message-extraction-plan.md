@@ -52,7 +52,7 @@
 - [x] HYBRID_EXTRACT-002: Extract ID generation and path utilities to shared core crate
 - [-] HYBRID_EXTRACT-003: Extract AST traversal logic to shared core crate [SPLIT INTO SUBTASKS]
     - [x] HYBRID_EXTRACT-003A: Extract JSX element analysis (FormattedMessage)
-    - [-] HYBRID_EXTRACT-003B: Extract defineMessages analysis [DEPENDS: 003A] ← NEXT
+    - [x] HYBRID_EXTRACT-003B: Extract defineMessages analysis [DEPENDS: 003A]
     - [ ] HYBRID_EXTRACT-003C: Extract formatMessage analysis [DEPENDS: 003A]
 - [ ] HYBRID_EXTRACT-004: Create CLI tool crate with message extraction [DEPENDS: 003B, 003C]
 - [ ] HYBRID_EXTRACT-005: Implement CLI argument parsing and file globbing
@@ -447,11 +447,11 @@ pub fn analyze_jsx_element(
 
 ---
 
-## [ ] HYBRID_EXTRACT-003B: Extract defineMessages analysis to shared core
+## [x] HYBRID_EXTRACT-003B: Extract defineMessages analysis to shared core
 
 ### 📋 Metadata
 
-- **status:** `todo`
+- **status:** `ready`
 - **depends:** `HYBRID_EXTRACT-003A`
 - **priority:** `P0`
 - **files:** `crates/react-intl-core/src/ast_analysis.rs`, `crates/swc-plugin/src/visitors.rs`
@@ -513,6 +513,24 @@ pub fn analyze_define_messages(
 - Функция `analyze_define_messages` создана в `ast_analysis.rs`
 - Проблема: `visitors.rs` ещё не использует эту функцию полностью
 - При попытке интеграции возникают проблемы с созданием лишних полей
+
+### 📊 ActionLog:
+
+- `2026-02-14 16:35` План задачи получен из плана HYBRID_EXTRACT
+- `2026-02-14 16:35` Статус изменен на `in-progress`
+- `2026-02-14 16:35` Данные актуализированы: проверены файлы ast_analysis.rs и visitors.rs
+- `2026-02-14 16:35` Составлен план выполнения
+- `2026-02-14 16:36` Выполнен шаг 1: Исправлен `is_format_message_call` для исключения `defineMessages`
+- `2026-02-14 16:37` Выполнен шаг 2: Добавлен импорт `analyze_define_messages` в visitors.rs
+- `2026-02-14 16:38` Выполнен шаг 3: Обновлен метод `add_id_to_define_message` для использования `analyze_define_messages`
+- `2026-02-14 16:40` Выполнен шаг 4: Добавлен метод `process_define_messages_object_with_analysis`
+- `2026-02-14 16:42` Выполнен шаг 5: Исправлена ошибка с пустыми args в dummy_call
+- `2026-02-14 16:45` Выполнен шаг 6: Исправлена проблема с извлечением ключа из хэшированного ID
+- `2026-02-14 16:48` Выполнен шаг 7: Добавлена обработка переменных (`Expr::Ident`) в `add_id_to_define_message`
+- `2026-02-14 16:49` Выполнен шаг 8: Обновлен снапшот для теста с переменными
+- `2026-02-14 16:50` Выполнен шаг 9: Полный цикл тестов - ✅ 1512 тестов пройдено, все снапшоты совпадают
+- `2026-02-14 16:50` Определены критерии приёмки: все выполнены ✓
+- `2026-02-14 16:50` Готово к review
 
 ---
 

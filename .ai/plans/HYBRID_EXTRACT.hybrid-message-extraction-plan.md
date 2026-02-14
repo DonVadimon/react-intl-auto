@@ -50,10 +50,10 @@
 
 - [x] HYBRID_EXTRACT-001: Create Cargo workspace structure with shared core library
 - [x] HYBRID_EXTRACT-002: Extract ID generation and path utilities to shared core crate
-- [-] HYBRID_EXTRACT-003: Extract AST traversal logic to shared core crate [SPLIT INTO SUBTASKS]
+- [x] HYBRID_EXTRACT-003: Extract AST traversal logic to shared core crate [ALL SUBTASKS COMPLETED]
     - [x] HYBRID_EXTRACT-003A: Extract JSX element analysis (FormattedMessage)
     - [x] HYBRID_EXTRACT-003B: Extract defineMessages analysis [DEPENDS: 003A]
-    - [ ] HYBRID_EXTRACT-003C: Extract formatMessage analysis [DEPENDS: 003A]
+    - [x] HYBRID_EXTRACT-003C: Extract formatMessage analysis [DEPENDS: 003A]
 - [ ] HYBRID_EXTRACT-004: Create CLI tool crate with message extraction [DEPENDS: 003B, 003C]
 - [ ] HYBRID_EXTRACT-005: Implement CLI argument parsing and file globbing
 - [ ] HYBRID_EXTRACT-006: Implement JSON output format (aggregated and per-file)
@@ -213,11 +213,11 @@ base64 = "0.22"
 
 ---
 
-## [-] HYBRID_EXTRACT-003: Extract AST traversal logic to shared core crate
+## [x] HYBRID_EXTRACT-003: Extract AST traversal logic to shared core crate
 
 ### 📋 Metadata
 
-- **status:** `in-progress`
+- **status:** `ready`
 - **depends:** `HYBRID_EXTRACT-002`
 - **priority:** `P0`
 - **files:** `crates/react-intl-core/src/ast_analysis.rs`, `crates/react-intl-core/src/message_extractor.rs`, `crates/swc-plugin/src/visitors.rs`
@@ -352,6 +352,9 @@ pub fn analyze_format_message(
 - `2026-02-14 16:05` Выполнен шаг 8: Полный цикл тестов - ✅ WASM сборка, ✅ 25 Rust тестов, ✅ 1512 Jest тестов, ✅ все снапшоты проходят
 - `2026-02-14 16:05` Определены критерии приёмки: все выполнены ✓
 - `2026-02-14 16:05` Готово к review
+- `2026-02-15 01:36` Все подзадачи 003A, 003B, 003C выполнены
+- `2026-02-15 01:36` Вся логика анализа AST (JSX, defineMessages, formatMessage) перенесена в core crate
+- `2026-02-15 01:36` Задача завершена, статус изменен на `ready`
 
 ### 📋 Current Status & Known Issues
 
@@ -541,11 +544,11 @@ pub fn analyze_define_messages(
 
 ---
 
-## [ ] HYBRID_EXTRACT-003C: Extract formatMessage analysis to shared core
+## [x] HYBRID_EXTRACT-003C: Extract formatMessage analysis to shared core
 
 ### 📋 Metadata
 
-- **status:** `todo`
+- **status:** `ready`
 - **depends:** `HYBRID_EXTRACT-003A`
 - **priority:** `P0`
 - **files:** `crates/react-intl-core/src/ast_analysis.rs`, `crates/swc-plugin/src/visitors.rs`
@@ -596,6 +599,21 @@ pub fn analyze_format_message(
 - Функция `analyze_format_message` создана в `ast_analysis.rs`
 - Использует `analyze_message_object_with_span` внутри
 - Для переменных используется debug representation
+
+### 📊 ActionLog:
+
+- `2026-02-15 01:30` План задачи получен из плана HYBRID_EXTRACT
+- `2026-02-15 01:30` Статус изменен на `in-progress`
+- `2026-02-15 01:30` Данные актуализированы: проверены файлы ast_analysis.rs и visitors.rs
+- `2026-02-15 01:31` Выполнен шаг 1: Добавлен импорт `analyze_format_message` в visitors.rs
+- `2026-02-15 01:32` Выполнен шаг 2: Обновлен метод `add_id_to_format_message` для использования `analyze_format_message`
+- `2026-02-15 01:33` Выполнен шаг 3: Заменен метод `process_format_message_object` на `process_format_message_object_with_analysis`
+- `2026-02-15 01:34` Выполнен шаг 4: Удалены неиспользуемые импорты (`get_prefix`, `hash_string`, `murmur32_hash`)
+- `2026-02-15 01:35` Выполнен шаг 5: Сборка WASM - успешно
+- `2026-02-15 01:36` Выполнен шаг 6: Jest тесты - ✅ 1512 тестов пройдено
+- `2026-02-15 01:36` Выполнен шаг 7: Rust тесты - ✅ 25 unit tests + 7 doc tests пройдено
+- `2026-02-15 01:36` Определены критерии приёмки: все выполнены ✓
+- `2026-02-15 01:36` Готово к review
 
 ---
 

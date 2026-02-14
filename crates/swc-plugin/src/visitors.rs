@@ -3,9 +3,7 @@ use swc_core::ecma::ast::*;
 use swc_core::ecma::visit::{VisitMut, VisitMutWith};
 
 use react_intl_core::IncludeExportName;
-use react_intl_core::{
-    analyze_define_messages, analyze_jsx_element, get_prefix, hash_string, murmur32_hash,
-};
+use react_intl_core::{analyze_define_messages, analyze_format_message, analyze_jsx_element};
 
 use crate::types::PluginState;
 use crate::utils::*;
@@ -223,14 +221,39 @@ impl CallExpressionVisitor {
 
         match expr.as_mut() {
             Expr::Object(obj) => {
-                self.process_format_message_object(obj);
+                // Create a call_expr for analysis
+                let call_expr_for_analysis = CallExpr {
+                    span: call_expr.span,
+                    callee: call_expr.callee.clone(),
+                    args: vec![ExprOrSpread {
+                        expr: Box::new(Expr::Object(obj.clone())),
+                        spread: None,
+                    }],
+                    type_args: call_expr.type_args.clone(),
+                    ctxt: call_expr.ctxt,
+                };
+                self.process_format_message_object_with_analysis(obj, &call_expr_for_analysis);
             }
             Expr::Ident(ident) => {
                 // Handle variable reference
                 let var_name = ident.sym.to_string();
                 if let Some(obj_lit) = self.variable_declarations.get(&var_name).cloned() {
                     let mut obj = obj_lit;
-                    self.process_format_message_object(&mut obj);
+                    // Create a call_expr for analysis
+                    let call_expr_for_analysis = CallExpr {
+                        span: call_expr.span,
+                        callee: call_expr.callee.clone(),
+                        args: vec![ExprOrSpread {
+                            expr: Box::new(Expr::Object(obj.clone())),
+                            spread: None,
+                        }],
+                        type_args: call_expr.type_args.clone(),
+                        ctxt: call_expr.ctxt,
+                    };
+                    self.process_format_message_object_with_analysis(
+                        &mut obj,
+                        &call_expr_for_analysis,
+                    );
                     *expr = Box::new(Expr::Object(obj));
                 }
             }
@@ -323,111 +346,43 @@ impl CallExpressionVisitor {
         }
     }
 
-    fn process_format_message_object(&self, obj: &mut ObjectLit) {
-        // Check if id already exists
-        let has_id = obj.props.iter().any(|prop| {
-            if let PropOrSpread::Prop(prop) = prop {
-                if let Prop::KeyValue(KeyValueProp { key, .. }) = prop.as_ref() {
-                    match key {
-                        PropName::Ident(ident) => return ident.sym == "id",
-                        PropName::Str(str_lit) => return str_lit.value == "id",
-                        _ => {}
-                    }
-                }
-            }
-            false
-        });
-
-        if has_id {
-            return;
-        }
-
-        // Find defaultMessage property
-        let mut default_message_value = None;
-        let mut key_value = None;
-
-        for prop in &obj.props {
-            if let PropOrSpread::Prop(prop) = prop {
-                if let Prop::KeyValue(KeyValueProp { key, value }) = prop.as_ref() {
-                    let key_name: Option<String> = match key {
-                        PropName::Ident(ident) => Some(ident.sym.to_string()),
-                        PropName::Str(str_lit) => Some(str_lit.value.to_string_lossy().to_string()),
-                        _ => None,
-                    };
-
-                    if let Some(key_str) = key_name {
-                        match key_str.as_str() {
-                            "defaultMessage" => {
-                                match value.as_ref() {
-                                    Expr::Lit(Lit::Str(str_val)) => {
-                                        default_message_value =
-                                            Some(str_val.value.to_string_lossy().to_string());
-                                    }
-                                    Expr::Tpl(template) => {
-                                        // Handle template literals
-                                        if template.exprs.is_empty() {
-                                            // Simple template literal without expressions
-                                            let message = template
-                                                .quasis
-                                                .iter()
-                                                .map(|q| q.raw.to_string())
-                                                .collect::<String>();
-                                            default_message_value = Some(message);
-                                        } else {
-                                            // Template literal with expressions - convert to string for ID generation
-                                            let message = template
-                                                .quasis
-                                                .iter()
-                                                .map(|q| q.raw.to_string())
-                                                .collect::<String>();
-                                            default_message_value = Some(message);
-                                        }
-                                    }
-                                    _ => {
-                                        // For non-string defaultMessage, convert to string for ID generation
-                                        default_message_value = Some(format!("{:?}", value));
-                                    }
-                                }
-                            }
-                            "key" => {
-                                if let Expr::Lit(Lit::Str(str_val)) = value.as_ref() {
-                                    key_value = Some(str_val.value.to_string_lossy().to_string());
-                                }
-                            }
-                            _ => {}
+    fn process_format_message_object_with_analysis(
+        &self,
+        obj: &mut ObjectLit,
+        call_expr: &CallExpr,
+    ) {
+        // Use the shared core function to analyze formatMessage
+        if let Some((_, transformed)) = analyze_format_message(call_expr, &self.state) {
+            // Check if id already exists
+            let has_id = obj.props.iter().any(|prop| {
+                if let PropOrSpread::Prop(prop) = prop {
+                    if let Prop::KeyValue(KeyValueProp { key, .. }) = prop.as_ref() {
+                        match key {
+                            PropName::Ident(ident) => ident.sym == "id",
+                            PropName::Str(str_lit) => str_lit.value == "id",
+                            _ => false,
                         }
+                    } else {
+                        false
                     }
+                } else {
+                    false
                 }
+            });
+
+            if !has_id {
+                // Add id property using the ID generated by core crate
+                let id_prop = object_property(
+                    "id",
+                    Expr::Lit(Lit::Str(Str {
+                        span: swc_core::common::DUMMY_SP,
+                        value: transformed.id.into(),
+                        raw: None,
+                    })),
+                );
+
+                obj.props.push(PropOrSpread::Prop(Box::new(id_prop)));
             }
-        }
-
-        if let Some(default_message) = default_message_value {
-            let suffix = if self.state.opts.use_key {
-                key_value.unwrap_or_else(|| murmur32_hash(&default_message))
-            } else {
-                murmur32_hash(&default_message)
-            };
-
-            let id = get_prefix(&self.state, Some(&suffix));
-
-            // Apply hash_id option if enabled
-            let final_id = if self.state.opts.hash_id {
-                hash_string(&id, &self.state.opts.hash_algorithm)
-            } else {
-                id
-            };
-
-            // Add id property
-            let id_prop = object_property(
-                "id",
-                Expr::Lit(Lit::Str(Str {
-                    span: swc_core::common::DUMMY_SP,
-                    value: final_id.into(),
-                    raw: None,
-                })),
-            );
-
-            obj.props.push(PropOrSpread::Prop(Box::new(id_prop)));
         }
     }
 

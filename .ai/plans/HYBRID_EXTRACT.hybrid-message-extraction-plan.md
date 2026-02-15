@@ -50,10 +50,10 @@
 
 - [x] HYBRID_EXTRACT-001: Create Cargo workspace structure with shared core library
 - [x] HYBRID_EXTRACT-002: Extract ID generation and path utilities to shared core crate
-- [x] HYBRID_EXTRACT-003: Extract AST traversal logic to shared core crate [ALL SUBTASKS COMPLETED]
+- [x] HYBRID_EXTRACT-003: Extract AST traversal logic to shared core crate **[COMPLETED]**
     - [x] HYBRID_EXTRACT-003A: Extract JSX element analysis (FormattedMessage)
-    - [x] HYBRID_EXTRACT-003B: Extract defineMessages analysis [DEPENDS: 003A]
-    - [x] HYBRID_EXTRACT-003C: Extract formatMessage analysis [DEPENDS: 003A]
+    - [x] HYBRID_EXTRACT-003B: Extract defineMessages analysis
+    - [x] HYBRID_EXTRACT-003C: Extract formatMessage analysis
 - [ ] HYBRID_EXTRACT-004: Create CLI tool crate with message extraction [DEPENDS: 003B, 003C]
 - [ ] HYBRID_EXTRACT-005: Implement CLI argument parsing and file globbing
 - [ ] HYBRID_EXTRACT-006: Implement JSON output format (aggregated and per-file)
@@ -1418,10 +1418,10 @@ npm run test:watch      # Jest в watch mode
 | ------------------- | --------------------------------------- | --------- | ----------- | ------ |
 | HYBRID_EXTRACT-001  | Create Cargo workspace structure        | P0        | -           | ✅     |
 | HYBRID_EXTRACT-002  | Extract ID generation to shared core    | P0        | 001         | ✅     |
-| HYBRID_EXTRACT-003  | Extract AST traversal to shared core    | P0        | 002         | ⏳     |
-| HYBRID_EXTRACT-003A | Extract JSX element analysis            | P0        | 003         | ⏳     |
-| HYBRID_EXTRACT-003B | Extract defineMessages analysis         | P0        | 003A        | ⏳     |
-| HYBRID_EXTRACT-003C | Extract formatMessage analysis          | P0        | 003A        | ⏳     |
+| HYBRID_EXTRACT-003  | Extract AST traversal to shared core    | P0        | 002         | ✅     |
+| HYBRID_EXTRACT-003A | Extract JSX element analysis            | P0        | 003         | ✅     |
+| HYBRID_EXTRACT-003B | Extract defineMessages analysis         | P0        | 003A        | ✅     |
+| HYBRID_EXTRACT-003C | Extract formatMessage analysis          | P0        | 003A        | ✅     |
 | HYBRID_EXTRACT-004  | Create CLI tool crate                   | P0        | 003B, 003C  | ⏳     |
 | HYBRID_EXTRACT-005  | CLI argument parsing and globbing       | P1        | 004         | ⏳     |
 | HYBRID_EXTRACT-006  | JSON output format                      | P1        | 005         | ⏳     |

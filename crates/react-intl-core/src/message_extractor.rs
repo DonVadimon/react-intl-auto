@@ -55,7 +55,6 @@ fn to_extracted_message(
 /// * `code` - The source code to analyze
 /// * `filename` - The filename (used for ID generation)
 /// * `options` - Core options for extraction
-/// * `include_source_location` - Whether to include file path and line number
 ///
 /// # Returns
 /// Vector of extracted messages
@@ -72,13 +71,12 @@ fn to_extracted_message(
 /// "#;
 ///
 /// let options = CoreOptions::default();
-/// let messages = extract_messages(code, "test.js", &options, false);
+/// let messages = extract_messages(code, "test.js", &options);
 /// ```
 pub fn extract_messages(
     code: &str,
     filename: &str,
     options: &CoreOptions,
-    include_source_location: bool,
 ) -> Vec<ExtractedMessage> {
     // Determine syntax based on file extension
     let is_ts = filename.ends_with(".ts") || filename.ends_with(".tsx");
@@ -112,11 +110,7 @@ pub fn extract_messages(
     };
 
     // Create visitor and extract messages
-    let mut visitor = MessageExtractorVisitor::new(
-        PathBuf::from(filename),
-        options.clone(),
-        include_source_location,
-    );
+    let mut visitor = MessageExtractorVisitor::new(PathBuf::from(filename), options.clone());
     module.visit_with(&mut visitor);
 
     visitor.into_messages()
@@ -128,20 +122,18 @@ pub fn extract_messages(
 pub struct MessageExtractorVisitor {
     messages: Vec<ExtractedMessage>,
     filename: PathBuf,
-    include_source_location: bool,
     imported_names: std::collections::HashSet<String>,
     alias_map: std::collections::HashMap<String, String>,
     state: CoreState,
 }
 
 impl MessageExtractorVisitor {
-    pub fn new(filename: PathBuf, options: CoreOptions, include_source_location: bool) -> Self {
+    pub fn new(filename: PathBuf, options: CoreOptions) -> Self {
         let state = CoreState::new(filename.clone(), options);
 
         Self {
             messages: Vec::new(),
             filename,
-            include_source_location,
             imported_names: std::collections::HashSet::new(),
             alias_map: std::collections::HashMap::new(),
             state,
@@ -162,7 +154,7 @@ impl MessageExtractorVisitor {
             message_data,
             transformed,
             &self.filename,
-            self.include_source_location,
+            self.state.opts.extract_source_location,
             line,
         );
         self.messages.push(extracted);

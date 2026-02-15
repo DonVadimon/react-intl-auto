@@ -8,24 +8,37 @@ use std::path::PathBuf;
 /// Options for the plugin/core
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CoreOptions {
+    /// Remove prefix from file path
     #[serde(default, alias = "removePrefix")]
     pub remove_prefix: Option<RemovePrefix>,
+    /// Include filename in ID
     #[serde(default)]
     pub filebase: bool,
+    /// Include export name in ID
     #[serde(default, alias = "includeExportName")]
     pub include_export_name: Option<IncludeExportName>,
+    /// Use key property instead of hash
     #[serde(default, alias = "useKey")]
     pub use_key: bool,
+    /// react-intl module source name
     #[serde(default = "default_module_source_name", alias = "moduleSourceName")]
     pub module_source_name: String,
+    /// ID separator
     #[serde(default = "default_separator")]
     pub separator: String,
+    /// Relative path for ID generation
     #[serde(default, alias = "relativeTo")]
     pub relative_to: Option<String>,
+    /// Apply hash fn to id
     #[serde(default, alias = "hashId")]
     pub hash_id: bool,
+    /// Hash fn for id
     #[serde(default = "default_hash_algorithm", alias = "hashAlgorithm")]
     pub hash_algorithm: String,
+    /// ### CLI only option
+    /// Add "file" field to extracted messages data
+    #[serde(default, alias = "extractSourceLocation")]
+    pub extract_source_location: bool,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -54,6 +67,7 @@ impl Default for CoreOptions {
             relative_to: None,
             hash_id: false,
             hash_algorithm: "murmur3".to_string(),
+            extract_source_location: false,
         }
     }
 }

@@ -116,6 +116,7 @@ impl Args {
             relative_to: self.relative_to.clone(),
             hash_id: self.hash_id,
             hash_algorithm: self.hash_algorithm.clone(),
+            extract_source_location: self.extract_source_location,
         }
     }
 }
@@ -217,17 +218,11 @@ fn find_base_dir(pattern: &str) -> PathBuf {
 fn extract_from_file(
     file_path: &Path,
     options: &CoreOptions,
-    include_source_location: bool,
 ) -> Result<Vec<react_intl_core::ExtractedMessage>> {
     let content = fs::read_to_string(file_path)
         .with_context(|| format!("Failed to read file: {}", file_path.display()))?;
 
-    let messages = extract_messages(
-        &content,
-        file_path.to_string_lossy().as_ref(),
-        options,
-        include_source_location,
-    );
+    let messages = extract_messages(&content, file_path.to_string_lossy().as_ref(), options);
 
     Ok(messages)
 }
@@ -373,11 +368,10 @@ fn main() -> Result<()> {
 
     // Extract messages from all files
     let core_options = args.to_core_options();
-    let include_source_location = args.extract_source_location;
     let mut all_messages: Vec<(PathBuf, Vec<react_intl_core::ExtractedMessage>)> = Vec::new();
 
     for file in files {
-        match extract_from_file(&file, &core_options, include_source_location) {
+        match extract_from_file(&file, &core_options) {
             Ok(messages) => {
                 if !messages.is_empty() {
                     println!("  {} - {} messages", file.display(), messages.len());

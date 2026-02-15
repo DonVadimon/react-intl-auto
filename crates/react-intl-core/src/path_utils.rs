@@ -315,6 +315,7 @@ mod tests {
             relative_to: None,
             hash_id: false,
             hash_algorithm: "murmur3".to_string(),
+            extract_source_location: false,
         }
     }
 

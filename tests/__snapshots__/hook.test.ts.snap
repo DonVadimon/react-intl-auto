@@ -1,36 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`hooks | default | does nothing if id is already provided 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | default | does nothing if react-intl is not imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.not-imported.613153351"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | default | multiple uses 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "Users.username.repo.src.components.App.831373691"
-});
+"import { jsxs as _jsxs } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsxs("div", {
+        children: [
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'some other message',
+                "id": "tests.__fixtures__.hook.multiple-uses.831373691"
+            })
+        ]
+    });
+};
 export { };
 "
 `;
@@ -38,20 +55,20 @@ export { };
 exports[`hooks | default | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var Component2 = function Component2() {
+var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "Users.username.repo.src.components.App.613153351"
+        defaultMessage: 'hello',
+        "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
     });
-    return /*#__PURE__*/ _jsx("button", {
+    return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
         }),
         children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
         })
     });
 };
@@ -59,98 +76,155 @@ var Component2 = function Component2() {
 `;
 
 exports[`hooks | default | useIntl with different module source 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | default | with FormattedMessage imported as something else 1`] = `
-"intl.formatMessage({
-    defaultMessage: "i18n",
-    "id": "Users.username.repo.src.components.App.94348014"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "tests.__fixtures__.hook.import-as.94348014"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | default | with a value interpolated in the message 1`] = `
-"intl.formatMessage({
-    defaultMessage: "template string 2",
-    "id": "Users.username.repo.src.components.App.1045198380"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "template string ".concat(1 + 1),
+            "id": "tests.__fixtures__.hook.with-value-in-message.557684220"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | default | with a variable as the defaultMessage 1`] = `
-"var message = "variable message";
-intl.formatMessage({
-    defaultMessage: message,
-    "id": "Users.username.repo.src.components.App.1304763199"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var message = 'variable message';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: message,
+            "id": "tests.__fixtures__.hook.with-variable-message.1307324102"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | default | with a variable as the defaultMessage 2`] = `
-"intl.formatMessage(messages);
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage(messages)
+    });
+};
 "
 `;
 
 exports[`hooks | default | with custom properties in formatMessage call 1`] = `
-"intl.formatMessage({
-    defaultMessage: "custom prop",
-    other: 123,
-    "id": "Users.username.repo.src.components.App.2983810267"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'custom prop',
+            other: 123,
+            "id": "tests.__fixtures__.hook.with-custom-properties.2983810267"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | default | with useIntl hook imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.default.613153351"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | filebase = true | does nothing if id is already provided 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | filebase = true | does nothing if react-intl is not imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "App.613153351"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "not-imported.613153351"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | filebase = true | multiple uses 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "App.831373691"
-});
+"import { jsxs as _jsxs } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsxs("div", {
+        children: [
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'some other message',
+                "id": "multiple-uses.831373691"
+            })
+        ]
+    });
+};
 export { };
 "
 `;
@@ -158,20 +232,20 @@ export { };
 exports[`hooks | filebase = true | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var Component2 = function Component2() {
+var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "App.613153351"
+        defaultMessage: 'hello',
+        "id": "some-supported-use-cases.613153351"
     });
-    return /*#__PURE__*/ _jsx("button", {
+    return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "App.613153351"
+            defaultMessage: 'hello',
+            "id": "some-supported-use-cases.613153351"
         }),
         children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "App.613153351"
+            defaultMessage: 'hello',
+            "id": "some-supported-use-cases.613153351"
         })
     });
 };
@@ -179,98 +253,155 @@ var Component2 = function Component2() {
 `;
 
 exports[`hooks | filebase = true | useIntl with different module source 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | filebase = true | with FormattedMessage imported as something else 1`] = `
-"intl.formatMessage({
-    defaultMessage: "i18n",
-    "id": "App.94348014"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "import-as.94348014"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | filebase = true | with a value interpolated in the message 1`] = `
-"intl.formatMessage({
-    defaultMessage: "template string 2",
-    "id": "App.1045198380"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "template string ".concat(1 + 1),
+            "id": "with-value-in-message.557684220"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | filebase = true | with a variable as the defaultMessage 1`] = `
-"var message = "variable message";
-intl.formatMessage({
-    defaultMessage: message,
-    "id": "App.1304763199"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var message = 'variable message';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: message,
+            "id": "with-variable-message.1307324102"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | filebase = true | with a variable as the defaultMessage 2`] = `
-"intl.formatMessage(messages);
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage(messages)
+    });
+};
 "
 `;
 
 exports[`hooks | filebase = true | with custom properties in formatMessage call 1`] = `
-"intl.formatMessage({
-    defaultMessage: "custom prop",
-    other: 123,
-    "id": "App.2983810267"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'custom prop',
+            other: 123,
+            "id": "with-custom-properties.2983810267"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | filebase = true | with useIntl hook imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "App.613153351"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "default.613153351"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash + filebase = true | does nothing if id is already provided 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash + filebase = true | does nothing if react-intl is not imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "QXBwLjYxMzE1MzM1MQ=="
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "bm90LWltcG9ydGVkLjYxMzE1MzM1MQ=="
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash + filebase = true | multiple uses 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "QXBwLjYxMzE1MzM1MQ=="
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "QXBwLjYxMzE1MzM1MQ=="
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "QXBwLjgzMTM3MzY5MQ=="
-});
+"import { jsxs as _jsxs } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsxs("div", {
+        children: [
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "bXVsdGlwbGUtdXNlcy42MTMxNTMzNTE="
+            }),
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "bXVsdGlwbGUtdXNlcy42MTMxNTMzNTE="
+            }),
+            intl.formatMessage({
+                defaultMessage: 'some other message',
+                "id": "bXVsdGlwbGUtdXNlcy44MzEzNzM2OTE="
+            })
+        ]
+    });
+};
 export { };
 "
 `;
@@ -278,20 +409,20 @@ export { };
 exports[`hooks | hash + filebase = true | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var Component2 = function Component2() {
+var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "QXBwLjYxMzE1MzM1MQ=="
+        defaultMessage: 'hello',
+        "id": "c29tZS1zdXBwb3J0ZWQtdXNlLWNhc2VzLjYxMzE1MzM1MQ=="
     });
-    return /*#__PURE__*/ _jsx("button", {
+    return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "QXBwLjYxMzE1MzM1MQ=="
+            defaultMessage: 'hello',
+            "id": "c29tZS1zdXBwb3J0ZWQtdXNlLWNhc2VzLjYxMzE1MzM1MQ=="
         }),
         children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "QXBwLjYxMzE1MzM1MQ=="
+            defaultMessage: 'hello',
+            "id": "c29tZS1zdXBwb3J0ZWQtdXNlLWNhc2VzLjYxMzE1MzM1MQ=="
         })
     });
 };
@@ -299,98 +430,155 @@ var Component2 = function Component2() {
 `;
 
 exports[`hooks | hash + filebase = true | useIntl with different module source 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash + filebase = true | with FormattedMessage imported as something else 1`] = `
-"intl.formatMessage({
-    defaultMessage: "i18n",
-    "id": "QXBwLjk0MzQ4MDE0"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "aW1wb3J0LWFzLjk0MzQ4MDE0"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash + filebase = true | with a value interpolated in the message 1`] = `
-"intl.formatMessage({
-    defaultMessage: "template string 2",
-    "id": "QXBwLjEwNDUxOTgzODA="
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "template string ".concat(1 + 1),
+            "id": "d2l0aC12YWx1ZS1pbi1tZXNzYWdlLjU1NzY4NDIyMA=="
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash + filebase = true | with a variable as the defaultMessage 1`] = `
-"var message = "variable message";
-intl.formatMessage({
-    defaultMessage: message,
-    "id": "QXBwLjEzMDQ3NjMxOTk="
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var message = 'variable message';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: message,
+            "id": "d2l0aC12YXJpYWJsZS1tZXNzYWdlLjEzMDczMjQxMDI="
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash + filebase = true | with a variable as the defaultMessage 2`] = `
-"intl.formatMessage(messages);
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage(messages)
+    });
+};
 "
 `;
 
 exports[`hooks | hash + filebase = true | with custom properties in formatMessage call 1`] = `
-"intl.formatMessage({
-    defaultMessage: "custom prop",
-    other: 123,
-    "id": "QXBwLjI5ODM4MTAyNjc="
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'custom prop',
+            other: 123,
+            "id": "d2l0aC1jdXN0b20tcHJvcGVydGllcy4yOTgzODEwMjY3"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash + filebase = true | with useIntl hook imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "QXBwLjYxMzE1MzM1MQ=="
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "ZGVmYXVsdC42MTMxNTMzNTE="
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash + relativeTo = "src" | does nothing if id is already provided 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash + relativeTo = "src" | does nothing if react-intl is not imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2subm90LWltcG9ydGVkLjYxMzE1MzM1MQ=="
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash + relativeTo = "src" | multiple uses 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuODMxMzczNjkx"
-});
+"import { jsxs as _jsxs } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsxs("div", {
+        children: [
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2subXVsdGlwbGUtdXNlcy42MTMxNTMzNTE="
+            }),
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2subXVsdGlwbGUtdXNlcy42MTMxNTMzNTE="
+            }),
+            intl.formatMessage({
+                defaultMessage: 'some other message',
+                "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2subXVsdGlwbGUtdXNlcy44MzEzNzM2OTE="
+            })
+        ]
+    });
+};
 export { };
 "
 `;
@@ -398,20 +586,20 @@ export { };
 exports[`hooks | hash + relativeTo = "src" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var Component2 = function Component2() {
+var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+        defaultMessage: 'hello',
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2suc29tZS1zdXBwb3J0ZWQtdXNlLWNhc2VzLjYxMzE1MzM1MQ=="
     });
-    return /*#__PURE__*/ _jsx("button", {
+    return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+            defaultMessage: 'hello',
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2suc29tZS1zdXBwb3J0ZWQtdXNlLWNhc2VzLjYxMzE1MzM1MQ=="
         }),
         children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+            defaultMessage: 'hello',
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2suc29tZS1zdXBwb3J0ZWQtdXNlLWNhc2VzLjYxMzE1MzM1MQ=="
         })
     });
 };
@@ -419,98 +607,155 @@ var Component2 = function Component2() {
 `;
 
 exports[`hooks | hash + relativeTo = "src" | useIntl with different module source 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash + relativeTo = "src" | with FormattedMessage imported as something else 1`] = `
-"intl.formatMessage({
-    defaultMessage: "i18n",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuOTQzNDgwMTQ="
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2suaW1wb3J0LWFzLjk0MzQ4MDE0"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash + relativeTo = "src" | with a value interpolated in the message 1`] = `
-"intl.formatMessage({
-    defaultMessage: "template string 2",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTA0NTE5ODM4MA=="
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "template string ".concat(1 + 1),
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2sud2l0aC12YWx1ZS1pbi1tZXNzYWdlLjU1NzY4NDIyMA=="
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash + relativeTo = "src" | with a variable as the defaultMessage 1`] = `
-"var message = "variable message";
-intl.formatMessage({
-    defaultMessage: message,
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTMwNDc2MzE5OQ=="
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var message = 'variable message';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: message,
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2sud2l0aC12YXJpYWJsZS1tZXNzYWdlLjEzMDczMjQxMDI="
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash + relativeTo = "src" | with a variable as the defaultMessage 2`] = `
-"intl.formatMessage(messages);
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage(messages)
+    });
+};
 "
 `;
 
 exports[`hooks | hash + relativeTo = "src" | with custom properties in formatMessage call 1`] = `
-"intl.formatMessage({
-    defaultMessage: "custom prop",
-    other: 123,
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMjk4MzgxMDI2Nw=="
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'custom prop',
+            other: 123,
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2sud2l0aC1jdXN0b20tcHJvcGVydGllcy4yOTgzODEwMjY3"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash + relativeTo = "src" | with useIntl hook imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2suZGVmYXVsdC42MTMxNTMzNTE="
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash + removePrefix = "src/" | does nothing if id is already provided 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash + removePrefix = "src/" | does nothing if react-intl is not imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2subm90LWltcG9ydGVkLjYxMzE1MzM1MQ=="
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash + removePrefix = "src/" | multiple uses 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuODMxMzczNjkx"
-});
+"import { jsxs as _jsxs } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsxs("div", {
+        children: [
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2subXVsdGlwbGUtdXNlcy42MTMxNTMzNTE="
+            }),
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2subXVsdGlwbGUtdXNlcy42MTMxNTMzNTE="
+            }),
+            intl.formatMessage({
+                defaultMessage: 'some other message',
+                "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2subXVsdGlwbGUtdXNlcy44MzEzNzM2OTE="
+            })
+        ]
+    });
+};
 export { };
 "
 `;
@@ -518,20 +763,20 @@ export { };
 exports[`hooks | hash + removePrefix = "src/" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var Component2 = function Component2() {
+var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+        defaultMessage: 'hello',
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2suc29tZS1zdXBwb3J0ZWQtdXNlLWNhc2VzLjYxMzE1MzM1MQ=="
     });
-    return /*#__PURE__*/ _jsx("button", {
+    return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+            defaultMessage: 'hello',
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2suc29tZS1zdXBwb3J0ZWQtdXNlLWNhc2VzLjYxMzE1MzM1MQ=="
         }),
         children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+            defaultMessage: 'hello',
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2suc29tZS1zdXBwb3J0ZWQtdXNlLWNhc2VzLjYxMzE1MzM1MQ=="
         })
     });
 };
@@ -539,98 +784,155 @@ var Component2 = function Component2() {
 `;
 
 exports[`hooks | hash + removePrefix = "src/" | useIntl with different module source 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash + removePrefix = "src/" | with FormattedMessage imported as something else 1`] = `
-"intl.formatMessage({
-    defaultMessage: "i18n",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuOTQzNDgwMTQ="
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2suaW1wb3J0LWFzLjk0MzQ4MDE0"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash + removePrefix = "src/" | with a value interpolated in the message 1`] = `
-"intl.formatMessage({
-    defaultMessage: "template string 2",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTA0NTE5ODM4MA=="
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "template string ".concat(1 + 1),
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2sud2l0aC12YWx1ZS1pbi1tZXNzYWdlLjU1NzY4NDIyMA=="
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash + removePrefix = "src/" | with a variable as the defaultMessage 1`] = `
-"var message = "variable message";
-intl.formatMessage({
-    defaultMessage: message,
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTMwNDc2MzE5OQ=="
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var message = 'variable message';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: message,
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2sud2l0aC12YXJpYWJsZS1tZXNzYWdlLjEzMDczMjQxMDI="
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash + removePrefix = "src/" | with a variable as the defaultMessage 2`] = `
-"intl.formatMessage(messages);
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage(messages)
+    });
+};
 "
 `;
 
 exports[`hooks | hash + removePrefix = "src/" | with custom properties in formatMessage call 1`] = `
-"intl.formatMessage({
-    defaultMessage: "custom prop",
-    other: 123,
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMjk4MzgxMDI2Nw=="
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'custom prop',
+            other: 123,
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2sud2l0aC1jdXN0b20tcHJvcGVydGllcy4yOTgzODEwMjY3"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash + removePrefix = "src/" | with useIntl hook imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2suZGVmYXVsdC42MTMxNTMzNTE="
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash base64 | does nothing if id is already provided 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash base64 | does nothing if react-intl is not imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2subm90LWltcG9ydGVkLjYxMzE1MzM1MQ=="
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash base64 | multiple uses 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuODMxMzczNjkx"
-});
+"import { jsxs as _jsxs } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsxs("div", {
+        children: [
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2subXVsdGlwbGUtdXNlcy42MTMxNTMzNTE="
+            }),
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2subXVsdGlwbGUtdXNlcy42MTMxNTMzNTE="
+            }),
+            intl.formatMessage({
+                defaultMessage: 'some other message',
+                "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2subXVsdGlwbGUtdXNlcy44MzEzNzM2OTE="
+            })
+        ]
+    });
+};
 export { };
 "
 `;
@@ -638,20 +940,20 @@ export { };
 exports[`hooks | hash base64 | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var Component2 = function Component2() {
+var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+        defaultMessage: 'hello',
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2suc29tZS1zdXBwb3J0ZWQtdXNlLWNhc2VzLjYxMzE1MzM1MQ=="
     });
-    return /*#__PURE__*/ _jsx("button", {
+    return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+            defaultMessage: 'hello',
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2suc29tZS1zdXBwb3J0ZWQtdXNlLWNhc2VzLjYxMzE1MzM1MQ=="
         }),
         children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
+            defaultMessage: 'hello',
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2suc29tZS1zdXBwb3J0ZWQtdXNlLWNhc2VzLjYxMzE1MzM1MQ=="
         })
     });
 };
@@ -659,98 +961,155 @@ var Component2 = function Component2() {
 `;
 
 exports[`hooks | hash base64 | useIntl with different module source 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash base64 | with FormattedMessage imported as something else 1`] = `
-"intl.formatMessage({
-    defaultMessage: "i18n",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuOTQzNDgwMTQ="
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2suaW1wb3J0LWFzLjk0MzQ4MDE0"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash base64 | with a value interpolated in the message 1`] = `
-"intl.formatMessage({
-    defaultMessage: "template string 2",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTA0NTE5ODM4MA=="
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "template string ".concat(1 + 1),
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2sud2l0aC12YWx1ZS1pbi1tZXNzYWdlLjU1NzY4NDIyMA=="
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash base64 | with a variable as the defaultMessage 1`] = `
-"var message = "variable message";
-intl.formatMessage({
-    defaultMessage: message,
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTMwNDc2MzE5OQ=="
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var message = 'variable message';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: message,
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2sud2l0aC12YXJpYWJsZS1tZXNzYWdlLjEzMDczMjQxMDI="
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash base64 | with a variable as the defaultMessage 2`] = `
-"intl.formatMessage(messages);
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage(messages)
+    });
+};
 "
 `;
 
 exports[`hooks | hash base64 | with custom properties in formatMessage call 1`] = `
-"intl.formatMessage({
-    defaultMessage: "custom prop",
-    other: 123,
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMjk4MzgxMDI2Nw=="
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'custom prop',
+            other: 123,
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2sud2l0aC1jdXN0b20tcHJvcGVydGllcy4yOTgzODEwMjY3"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash base64 | with useIntl hook imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2suZGVmYXVsdC42MTMxNTMzNTE="
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash murmur3 | does nothing if id is already provided 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash murmur3 | does nothing if react-intl is not imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "2564566158"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "1381552078"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash murmur3 | multiple uses 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "2564566158"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "2564566158"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "3278730599"
-});
+"import { jsxs as _jsxs } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsxs("div", {
+        children: [
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "2692672905"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "2692672905"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'some other message',
+                "id": "2727763289"
+            })
+        ]
+    });
+};
 export { };
 "
 `;
@@ -758,20 +1117,20 @@ export { };
 exports[`hooks | hash murmur3 | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var Component2 = function Component2() {
+var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "2564566158"
+        defaultMessage: 'hello',
+        "id": "1582044257"
     });
-    return /*#__PURE__*/ _jsx("button", {
+    return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "2564566158"
+            defaultMessage: 'hello',
+            "id": "1582044257"
         }),
         children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "2564566158"
+            defaultMessage: 'hello',
+            "id": "1582044257"
         })
     });
 };
@@ -779,98 +1138,155 @@ var Component2 = function Component2() {
 `;
 
 exports[`hooks | hash murmur3 | useIntl with different module source 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash murmur3 | with FormattedMessage imported as something else 1`] = `
-"intl.formatMessage({
-    defaultMessage: "i18n",
-    "id": "3547183140"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "1318926594"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash murmur3 | with a value interpolated in the message 1`] = `
-"intl.formatMessage({
-    defaultMessage: "template string 2",
-    "id": "4147227565"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "template string ".concat(1 + 1),
+            "id": "2128469604"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash murmur3 | with a variable as the defaultMessage 1`] = `
-"var message = "variable message";
-intl.formatMessage({
-    defaultMessage: message,
-    "id": "3570985171"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var message = 'variable message';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: message,
+            "id": "3957501365"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash murmur3 | with a variable as the defaultMessage 2`] = `
-"intl.formatMessage(messages);
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage(messages)
+    });
+};
 "
 `;
 
 exports[`hooks | hash murmur3 | with custom properties in formatMessage call 1`] = `
-"intl.formatMessage({
-    defaultMessage: "custom prop",
-    other: 123,
-    "id": "1899697979"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'custom prop',
+            other: 123,
+            "id": "3886431347"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash murmur3 | with useIntl hook imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "2564566158"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "2567587270"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash unknown fallback to murmur3 | does nothing if id is already provided 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash unknown fallback to murmur3 | does nothing if react-intl is not imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "2564566158"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "1381552078"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash unknown fallback to murmur3 | multiple uses 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "2564566158"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "2564566158"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "3278730599"
-});
+"import { jsxs as _jsxs } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsxs("div", {
+        children: [
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "2692672905"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "2692672905"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'some other message',
+                "id": "2727763289"
+            })
+        ]
+    });
+};
 export { };
 "
 `;
@@ -878,20 +1294,20 @@ export { };
 exports[`hooks | hash unknown fallback to murmur3 | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var Component2 = function Component2() {
+var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "2564566158"
+        defaultMessage: 'hello',
+        "id": "1582044257"
     });
-    return /*#__PURE__*/ _jsx("button", {
+    return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "2564566158"
+            defaultMessage: 'hello',
+            "id": "1582044257"
         }),
         children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "2564566158"
+            defaultMessage: 'hello',
+            "id": "1582044257"
         })
     });
 };
@@ -899,98 +1315,155 @@ var Component2 = function Component2() {
 `;
 
 exports[`hooks | hash unknown fallback to murmur3 | useIntl with different module source 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash unknown fallback to murmur3 | with FormattedMessage imported as something else 1`] = `
-"intl.formatMessage({
-    defaultMessage: "i18n",
-    "id": "3547183140"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "1318926594"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | hash unknown fallback to murmur3 | with a value interpolated in the message 1`] = `
-"intl.formatMessage({
-    defaultMessage: "template string 2",
-    "id": "4147227565"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "template string ".concat(1 + 1),
+            "id": "2128469604"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash unknown fallback to murmur3 | with a variable as the defaultMessage 1`] = `
-"var message = "variable message";
-intl.formatMessage({
-    defaultMessage: message,
-    "id": "3570985171"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var message = 'variable message';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: message,
+            "id": "3957501365"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash unknown fallback to murmur3 | with a variable as the defaultMessage 2`] = `
-"intl.formatMessage(messages);
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage(messages)
+    });
+};
 "
 `;
 
 exports[`hooks | hash unknown fallback to murmur3 | with custom properties in formatMessage call 1`] = `
-"intl.formatMessage({
-    defaultMessage: "custom prop",
-    other: 123,
-    "id": "1899697979"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'custom prop',
+            other: 123,
+            "id": "3886431347"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | hash unknown fallback to murmur3 | with useIntl hook imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "2564566158"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "2567587270"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | moduleSourceNameTest | does nothing if id is already provided 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | moduleSourceNameTest | does nothing if react-intl is not imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.not-imported.613153351"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | moduleSourceNameTest | multiple uses 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "Users.username.repo.src.components.App.831373691"
-});
+"import { jsxs as _jsxs } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsxs("div", {
+        children: [
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'some other message',
+                "id": "tests.__fixtures__.hook.multiple-uses.831373691"
+            })
+        ]
+    });
+};
 export { };
 "
 `;
@@ -998,20 +1471,20 @@ export { };
 exports[`hooks | moduleSourceNameTest | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var Component2 = function Component2() {
+var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "Users.username.repo.src.components.App.613153351"
+        defaultMessage: 'hello',
+        "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
     });
-    return /*#__PURE__*/ _jsx("button", {
+    return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
         }),
         children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
         })
     });
 };
@@ -1019,98 +1492,155 @@ var Component2 = function Component2() {
 `;
 
 exports[`hooks | moduleSourceNameTest | useIntl with different module source 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | moduleSourceNameTest | with FormattedMessage imported as something else 1`] = `
-"intl.formatMessage({
-    defaultMessage: "i18n",
-    "id": "Users.username.repo.src.components.App.94348014"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "tests.__fixtures__.hook.import-as.94348014"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | moduleSourceNameTest | with a value interpolated in the message 1`] = `
-"intl.formatMessage({
-    defaultMessage: "template string 2",
-    "id": "Users.username.repo.src.components.App.1045198380"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "template string ".concat(1 + 1),
+            "id": "tests.__fixtures__.hook.with-value-in-message.557684220"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | moduleSourceNameTest | with a variable as the defaultMessage 1`] = `
-"var message = "variable message";
-intl.formatMessage({
-    defaultMessage: message,
-    "id": "Users.username.repo.src.components.App.1304763199"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var message = 'variable message';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: message,
+            "id": "tests.__fixtures__.hook.with-variable-message.1307324102"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | moduleSourceNameTest | with a variable as the defaultMessage 2`] = `
-"intl.formatMessage(messages);
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage(messages)
+    });
+};
 "
 `;
 
 exports[`hooks | moduleSourceNameTest | with custom properties in formatMessage call 1`] = `
-"intl.formatMessage({
-    defaultMessage: "custom prop",
-    other: 123,
-    "id": "Users.username.repo.src.components.App.2983810267"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'custom prop',
+            other: 123,
+            "id": "tests.__fixtures__.hook.with-custom-properties.2983810267"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | moduleSourceNameTest | with useIntl hook imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.default.613153351"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | relativeTo = "" | does nothing if id is already provided 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | relativeTo = "" | does nothing if react-intl is not imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.not-imported.613153351"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | relativeTo = "" | multiple uses 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "Users.username.repo.src.components.App.831373691"
-});
+"import { jsxs as _jsxs } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsxs("div", {
+        children: [
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'some other message',
+                "id": "tests.__fixtures__.hook.multiple-uses.831373691"
+            })
+        ]
+    });
+};
 export { };
 "
 `;
@@ -1118,20 +1648,20 @@ export { };
 exports[`hooks | relativeTo = "" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var Component2 = function Component2() {
+var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "Users.username.repo.src.components.App.613153351"
+        defaultMessage: 'hello',
+        "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
     });
-    return /*#__PURE__*/ _jsx("button", {
+    return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
         }),
         children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
         })
     });
 };
@@ -1139,98 +1669,155 @@ var Component2 = function Component2() {
 `;
 
 exports[`hooks | relativeTo = "" | useIntl with different module source 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | relativeTo = "" | with FormattedMessage imported as something else 1`] = `
-"intl.formatMessage({
-    defaultMessage: "i18n",
-    "id": "Users.username.repo.src.components.App.94348014"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "tests.__fixtures__.hook.import-as.94348014"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | relativeTo = "" | with a value interpolated in the message 1`] = `
-"intl.formatMessage({
-    defaultMessage: "template string 2",
-    "id": "Users.username.repo.src.components.App.1045198380"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "template string ".concat(1 + 1),
+            "id": "tests.__fixtures__.hook.with-value-in-message.557684220"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | relativeTo = "" | with a variable as the defaultMessage 1`] = `
-"var message = "variable message";
-intl.formatMessage({
-    defaultMessage: message,
-    "id": "Users.username.repo.src.components.App.1304763199"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var message = 'variable message';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: message,
+            "id": "tests.__fixtures__.hook.with-variable-message.1307324102"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | relativeTo = "" | with a variable as the defaultMessage 2`] = `
-"intl.formatMessage(messages);
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage(messages)
+    });
+};
 "
 `;
 
 exports[`hooks | relativeTo = "" | with custom properties in formatMessage call 1`] = `
-"intl.formatMessage({
-    defaultMessage: "custom prop",
-    other: 123,
-    "id": "Users.username.repo.src.components.App.2983810267"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'custom prop',
+            other: 123,
+            "id": "tests.__fixtures__.hook.with-custom-properties.2983810267"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | relativeTo = "" | with useIntl hook imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.default.613153351"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | relativeTo = "../" | does nothing if id is already provided 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | relativeTo = "../" | does nothing if react-intl is not imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.not-imported.613153351"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | relativeTo = "../" | multiple uses 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "Users.username.repo.src.components.App.831373691"
-});
+"import { jsxs as _jsxs } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsxs("div", {
+        children: [
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'some other message',
+                "id": "tests.__fixtures__.hook.multiple-uses.831373691"
+            })
+        ]
+    });
+};
 export { };
 "
 `;
@@ -1238,20 +1825,20 @@ export { };
 exports[`hooks | relativeTo = "../" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var Component2 = function Component2() {
+var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "Users.username.repo.src.components.App.613153351"
+        defaultMessage: 'hello',
+        "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
     });
-    return /*#__PURE__*/ _jsx("button", {
+    return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
         }),
         children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
         })
     });
 };
@@ -1259,98 +1846,155 @@ var Component2 = function Component2() {
 `;
 
 exports[`hooks | relativeTo = "../" | useIntl with different module source 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | relativeTo = "../" | with FormattedMessage imported as something else 1`] = `
-"intl.formatMessage({
-    defaultMessage: "i18n",
-    "id": "Users.username.repo.src.components.App.94348014"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "tests.__fixtures__.hook.import-as.94348014"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | relativeTo = "../" | with a value interpolated in the message 1`] = `
-"intl.formatMessage({
-    defaultMessage: "template string 2",
-    "id": "Users.username.repo.src.components.App.1045198380"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "template string ".concat(1 + 1),
+            "id": "tests.__fixtures__.hook.with-value-in-message.557684220"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | relativeTo = "../" | with a variable as the defaultMessage 1`] = `
-"var message = "variable message";
-intl.formatMessage({
-    defaultMessage: message,
-    "id": "Users.username.repo.src.components.App.1304763199"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var message = 'variable message';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: message,
+            "id": "tests.__fixtures__.hook.with-variable-message.1307324102"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | relativeTo = "../" | with a variable as the defaultMessage 2`] = `
-"intl.formatMessage(messages);
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage(messages)
+    });
+};
 "
 `;
 
 exports[`hooks | relativeTo = "../" | with custom properties in formatMessage call 1`] = `
-"intl.formatMessage({
-    defaultMessage: "custom prop",
-    other: 123,
-    "id": "Users.username.repo.src.components.App.2983810267"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'custom prop',
+            other: 123,
+            "id": "tests.__fixtures__.hook.with-custom-properties.2983810267"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | relativeTo = "../" | with useIntl hook imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.default.613153351"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = "src" | does nothing if id is already provided 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = "src" | does nothing if react-intl is not imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.not-imported.613153351"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = "src" | multiple uses 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "Users.username.repo.src.components.App.831373691"
-});
+"import { jsxs as _jsxs } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsxs("div", {
+        children: [
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'some other message',
+                "id": "tests.__fixtures__.hook.multiple-uses.831373691"
+            })
+        ]
+    });
+};
 export { };
 "
 `;
@@ -1358,20 +2002,20 @@ export { };
 exports[`hooks | removePrefix = "src" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var Component2 = function Component2() {
+var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "Users.username.repo.src.components.App.613153351"
+        defaultMessage: 'hello',
+        "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
     });
-    return /*#__PURE__*/ _jsx("button", {
+    return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
         }),
         children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
         })
     });
 };
@@ -1379,133 +2023,207 @@ var Component2 = function Component2() {
 `;
 
 exports[`hooks | removePrefix = "src" | useIntl with different module source 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = "src" | with FormattedMessage imported as something else 1`] = `
-"intl.formatMessage({
-    defaultMessage: "i18n",
-    "id": "Users.username.repo.src.components.App.94348014"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "tests.__fixtures__.hook.import-as.94348014"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = "src" | with a value interpolated in the message 1`] = `
-"intl.formatMessage({
-    defaultMessage: "template string 2",
-    "id": "Users.username.repo.src.components.App.1045198380"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "template string ".concat(1 + 1),
+            "id": "tests.__fixtures__.hook.with-value-in-message.557684220"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = "src" | with a variable as the defaultMessage 1`] = `
-"var message = "variable message";
-intl.formatMessage({
-    defaultMessage: message,
-    "id": "Users.username.repo.src.components.App.1304763199"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var message = 'variable message';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: message,
+            "id": "tests.__fixtures__.hook.with-variable-message.1307324102"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = "src" | with a variable as the defaultMessage 2`] = `
-"intl.formatMessage(messages);
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage(messages)
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = "src" | with custom properties in formatMessage call 1`] = `
-"intl.formatMessage({
-    defaultMessage: "custom prop",
-    other: 123,
-    "id": "Users.username.repo.src.components.App.2983810267"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'custom prop',
+            other: 123,
+            "id": "tests.__fixtures__.hook.with-custom-properties.2983810267"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = "src" | with useIntl hook imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.default.613153351"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = "src.__fixtures__" | does nothing if id is already provided 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = "src.__fixtures__" | does nothing if id is already provided 2`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = "src.__fixtures__" | does nothing if react-intl is not imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.not-imported.613153351"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = "src.__fixtures__" | does nothing if react-intl is not imported 2`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.not-imported.613153351"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = "src.__fixtures__" | multiple uses 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "Users.username.repo.src.components.App.831373691"
-});
+"import { jsxs as _jsxs } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsxs("div", {
+        children: [
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'some other message',
+                "id": "tests.__fixtures__.hook.multiple-uses.831373691"
+            })
+        ]
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = "src.__fixtures__" | multiple uses 2`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "Users.username.repo.src.components.App.831373691"
-});
+"import { jsxs as _jsxs } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsxs("div", {
+        children: [
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'some other message',
+                "id": "tests.__fixtures__.hook.multiple-uses.831373691"
+            })
+        ]
+    });
+};
 export { };
 "
 `;
@@ -1513,20 +2231,20 @@ export { };
 exports[`hooks | removePrefix = "src.__fixtures__" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var Component2 = function Component2() {
+var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "Users.username.repo.src.components.App.613153351"
+        defaultMessage: 'hello',
+        "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
     });
-    return /*#__PURE__*/ _jsx("button", {
+    return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
         }),
         children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
         })
     });
 };
@@ -1536,20 +2254,20 @@ var Component2 = function Component2() {
 exports[`hooks | removePrefix = "src.__fixtures__" | some supported use cases 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var Component2 = function Component2() {
+var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "Users.username.repo.src.components.App.613153351"
+        defaultMessage: 'hello',
+        "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
     });
-    return /*#__PURE__*/ _jsx("button", {
+    return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
         }),
         children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
         })
     });
 };
@@ -1557,160 +2275,257 @@ var Component2 = function Component2() {
 `;
 
 exports[`hooks | removePrefix = "src.__fixtures__" | useIntl with different module source 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = "src.__fixtures__" | useIntl with different module source 2`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = "src.__fixtures__" | with FormattedMessage imported as something else 1`] = `
-"intl.formatMessage({
-    defaultMessage: "i18n",
-    "id": "Users.username.repo.src.components.App.94348014"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "tests.__fixtures__.hook.import-as.94348014"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = "src.__fixtures__" | with FormattedMessage imported as something else 2`] = `
-"intl.formatMessage({
-    defaultMessage: "i18n",
-    "id": "Users.username.repo.src.components.App.94348014"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "tests.__fixtures__.hook.import-as.94348014"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = "src.__fixtures__" | with a value interpolated in the message 1`] = `
-"intl.formatMessage({
-    defaultMessage: "template string 2",
-    "id": "Users.username.repo.src.components.App.1045198380"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "template string ".concat(1 + 1),
+            "id": "tests.__fixtures__.hook.with-value-in-message.557684220"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = "src.__fixtures__" | with a value interpolated in the message 2`] = `
-"intl.formatMessage({
-    defaultMessage: "template string 2",
-    "id": "Users.username.repo.src.components.App.1045198380"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "template string ".concat(1 + 1),
+            "id": "tests.__fixtures__.hook.with-value-in-message.557684220"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 1`] = `
-"var message = "variable message";
-intl.formatMessage({
-    defaultMessage: message,
-    "id": "Users.username.repo.src.components.App.1304763199"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var message = 'variable message';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: message,
+            "id": "tests.__fixtures__.hook.with-variable-message.1307324102"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 2`] = `
-"intl.formatMessage(messages);
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage(messages)
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 3`] = `
-"var message = "variable message";
-intl.formatMessage({
-    defaultMessage: message,
-    "id": "Users.username.repo.src.components.App.1304763199"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var message = 'variable message';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: message,
+            "id": "tests.__fixtures__.hook.with-variable-message.1307324102"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 4`] = `
-"intl.formatMessage(messages);
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage(messages)
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = "src.__fixtures__" | with custom properties in formatMessage call 1`] = `
-"intl.formatMessage({
-    defaultMessage: "custom prop",
-    other: 123,
-    "id": "Users.username.repo.src.components.App.2983810267"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'custom prop',
+            other: 123,
+            "id": "tests.__fixtures__.hook.with-custom-properties.2983810267"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = "src.__fixtures__" | with custom properties in formatMessage call 2`] = `
-"intl.formatMessage({
-    defaultMessage: "custom prop",
-    other: 123,
-    "id": "Users.username.repo.src.components.App.2983810267"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'custom prop',
+            other: 123,
+            "id": "tests.__fixtures__.hook.with-custom-properties.2983810267"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = "src.__fixtures__" | with useIntl hook imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.default.613153351"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = "src.__fixtures__" | with useIntl hook imported 2`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.default.613153351"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = "src/" -- with slash | does nothing if id is already provided 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = "src/" -- with slash | does nothing if react-intl is not imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.not-imported.613153351"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = "src/" -- with slash | multiple uses 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "Users.username.repo.src.components.App.831373691"
-});
+"import { jsxs as _jsxs } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsxs("div", {
+        children: [
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'some other message',
+                "id": "tests.__fixtures__.hook.multiple-uses.831373691"
+            })
+        ]
+    });
+};
 export { };
 "
 `;
@@ -1718,20 +2533,20 @@ export { };
 exports[`hooks | removePrefix = "src/" -- with slash | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var Component2 = function Component2() {
+var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "Users.username.repo.src.components.App.613153351"
+        defaultMessage: 'hello',
+        "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
     });
-    return /*#__PURE__*/ _jsx("button", {
+    return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
         }),
         children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
         })
     });
 };
@@ -1739,98 +2554,155 @@ var Component2 = function Component2() {
 `;
 
 exports[`hooks | removePrefix = "src/" -- with slash | useIntl with different module source 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = "src/" -- with slash | with FormattedMessage imported as something else 1`] = `
-"intl.formatMessage({
-    defaultMessage: "i18n",
-    "id": "Users.username.repo.src.components.App.94348014"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "tests.__fixtures__.hook.import-as.94348014"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = "src/" -- with slash | with a value interpolated in the message 1`] = `
-"intl.formatMessage({
-    defaultMessage: "template string 2",
-    "id": "Users.username.repo.src.components.App.1045198380"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "template string ".concat(1 + 1),
+            "id": "tests.__fixtures__.hook.with-value-in-message.557684220"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = "src/" -- with slash | with a variable as the defaultMessage 1`] = `
-"var message = "variable message";
-intl.formatMessage({
-    defaultMessage: message,
-    "id": "Users.username.repo.src.components.App.1304763199"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var message = 'variable message';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: message,
+            "id": "tests.__fixtures__.hook.with-variable-message.1307324102"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = "src/" -- with slash | with a variable as the defaultMessage 2`] = `
-"intl.formatMessage(messages);
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage(messages)
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = "src/" -- with slash | with custom properties in formatMessage call 1`] = `
-"intl.formatMessage({
-    defaultMessage: "custom prop",
-    other: 123,
-    "id": "Users.username.repo.src.components.App.2983810267"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'custom prop',
+            other: 123,
+            "id": "tests.__fixtures__.hook.with-custom-properties.2983810267"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = "src/" -- with slash | with useIntl hook imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.default.613153351"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = /__fixtures__/ | does nothing if id is already provided 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = /__fixtures__/ | does nothing if react-intl is not imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.not-imported.613153351"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = /__fixtures__/ | multiple uses 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "Users.username.repo.src.components.App.831373691"
-});
+"import { jsxs as _jsxs } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsxs("div", {
+        children: [
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'some other message',
+                "id": "tests.__fixtures__.hook.multiple-uses.831373691"
+            })
+        ]
+    });
+};
 export { };
 "
 `;
@@ -1838,20 +2710,20 @@ export { };
 exports[`hooks | removePrefix = /__fixtures__/ | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var Component2 = function Component2() {
+var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "Users.username.repo.src.components.App.613153351"
+        defaultMessage: 'hello',
+        "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
     });
-    return /*#__PURE__*/ _jsx("button", {
+    return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
         }),
         children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
         })
     });
 };
@@ -1859,98 +2731,155 @@ var Component2 = function Component2() {
 `;
 
 exports[`hooks | removePrefix = /__fixtures__/ | useIntl with different module source 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = /__fixtures__/ | with FormattedMessage imported as something else 1`] = `
-"intl.formatMessage({
-    defaultMessage: "i18n",
-    "id": "Users.username.repo.src.components.App.94348014"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "tests.__fixtures__.hook.import-as.94348014"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = /__fixtures__/ | with a value interpolated in the message 1`] = `
-"intl.formatMessage({
-    defaultMessage: "template string 2",
-    "id": "Users.username.repo.src.components.App.1045198380"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "template string ".concat(1 + 1),
+            "id": "tests.__fixtures__.hook.with-value-in-message.557684220"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = /__fixtures__/ | with a variable as the defaultMessage 1`] = `
-"var message = "variable message";
-intl.formatMessage({
-    defaultMessage: message,
-    "id": "Users.username.repo.src.components.App.1304763199"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var message = 'variable message';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: message,
+            "id": "tests.__fixtures__.hook.with-variable-message.1307324102"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = /__fixtures__/ | with a variable as the defaultMessage 2`] = `
-"intl.formatMessage(messages);
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage(messages)
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = /__fixtures__/ | with custom properties in formatMessage call 1`] = `
-"intl.formatMessage({
-    defaultMessage: "custom prop",
-    other: 123,
-    "id": "Users.username.repo.src.components.App.2983810267"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'custom prop',
+            other: 123,
+            "id": "tests.__fixtures__.hook.with-custom-properties.2983810267"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = /__fixtures__/ | with useIntl hook imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.default.613153351"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = true | does nothing if id is already provided 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = true | does nothing if react-intl is not imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "613153351"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "613153351"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = true | multiple uses 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "613153351"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "613153351"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "831373691"
-});
+"import { jsxs as _jsxs } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsxs("div", {
+        children: [
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'some other message',
+                "id": "831373691"
+            })
+        ]
+    });
+};
 export { };
 "
 `;
@@ -1958,19 +2887,19 @@ export { };
 exports[`hooks | removePrefix = true | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var Component2 = function Component2() {
+var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
-        defaultMessage: "hello",
+        defaultMessage: 'hello',
         "id": "613153351"
     });
-    return /*#__PURE__*/ _jsx("button", {
+    return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
+            defaultMessage: 'hello',
             "id": "613153351"
         }),
         children: intl.formatMessage({
-            defaultMessage: "hello",
+            defaultMessage: 'hello',
             "id": "613153351"
         })
     });
@@ -1979,98 +2908,155 @@ var Component2 = function Component2() {
 `;
 
 exports[`hooks | removePrefix = true | useIntl with different module source 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = true | with FormattedMessage imported as something else 1`] = `
-"intl.formatMessage({
-    defaultMessage: "i18n",
-    "id": "94348014"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "94348014"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | removePrefix = true | with a value interpolated in the message 1`] = `
-"intl.formatMessage({
-    defaultMessage: "template string 2",
-    "id": "1045198380"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "template string ".concat(1 + 1),
+            "id": "557684220"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = true | with a variable as the defaultMessage 1`] = `
-"var message = "variable message";
-intl.formatMessage({
-    defaultMessage: message,
-    "id": "1304763199"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var message = 'variable message';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: message,
+            "id": "1307324102"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = true | with a variable as the defaultMessage 2`] = `
-"intl.formatMessage(messages);
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage(messages)
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = true | with custom properties in formatMessage call 1`] = `
-"intl.formatMessage({
-    defaultMessage: "custom prop",
-    other: 123,
-    "id": "2983810267"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'custom prop',
+            other: 123,
+            "id": "2983810267"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | removePrefix = true | with useIntl hook imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "613153351"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "613153351"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | separator = "_" | does nothing if id is already provided 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | separator = "_" | does nothing if react-intl is not imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users_username_repo_src_components_App_613153351"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "tests___fixtures___hook_not-imported_613153351"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | separator = "_" | multiple uses 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users_username_repo_src_components_App_613153351"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users_username_repo_src_components_App_613153351"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "Users_username_repo_src_components_App_831373691"
-});
+"import { jsxs as _jsxs } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsxs("div", {
+        children: [
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "tests___fixtures___hook_multiple-uses_613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "tests___fixtures___hook_multiple-uses_613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'some other message',
+                "id": "tests___fixtures___hook_multiple-uses_831373691"
+            })
+        ]
+    });
+};
 export { };
 "
 `;
@@ -2078,20 +3064,20 @@ export { };
 exports[`hooks | separator = "_" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var Component2 = function Component2() {
+var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "Users_username_repo_src_components_App_613153351"
+        defaultMessage: 'hello',
+        "id": "tests___fixtures___hook_some-supported-use-cases_613153351"
     });
-    return /*#__PURE__*/ _jsx("button", {
+    return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users_username_repo_src_components_App_613153351"
+            defaultMessage: 'hello',
+            "id": "tests___fixtures___hook_some-supported-use-cases_613153351"
         }),
         children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users_username_repo_src_components_App_613153351"
+            defaultMessage: 'hello',
+            "id": "tests___fixtures___hook_some-supported-use-cases_613153351"
         })
     });
 };
@@ -2099,98 +3085,155 @@ var Component2 = function Component2() {
 `;
 
 exports[`hooks | separator = "_" | useIntl with different module source 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | separator = "_" | with FormattedMessage imported as something else 1`] = `
-"intl.formatMessage({
-    defaultMessage: "i18n",
-    "id": "Users_username_repo_src_components_App_94348014"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "tests___fixtures___hook_import-as_94348014"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | separator = "_" | with a value interpolated in the message 1`] = `
-"intl.formatMessage({
-    defaultMessage: "template string 2",
-    "id": "Users_username_repo_src_components_App_1045198380"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "template string ".concat(1 + 1),
+            "id": "tests___fixtures___hook_with-value-in-message_557684220"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | separator = "_" | with a variable as the defaultMessage 1`] = `
-"var message = "variable message";
-intl.formatMessage({
-    defaultMessage: message,
-    "id": "Users_username_repo_src_components_App_1304763199"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var message = 'variable message';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: message,
+            "id": "tests___fixtures___hook_with-variable-message_1307324102"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | separator = "_" | with a variable as the defaultMessage 2`] = `
-"intl.formatMessage(messages);
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage(messages)
+    });
+};
 "
 `;
 
 exports[`hooks | separator = "_" | with custom properties in formatMessage call 1`] = `
-"intl.formatMessage({
-    defaultMessage: "custom prop",
-    other: 123,
-    "id": "Users_username_repo_src_components_App_2983810267"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'custom prop',
+            other: 123,
+            "id": "tests___fixtures___hook_with-custom-properties_2983810267"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | separator = "_" | with useIntl hook imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users_username_repo_src_components_App_613153351"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "tests___fixtures___hook_default_613153351"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | useKey = true | does nothing if id is already provided 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | useKey = true | does nothing if react-intl is not imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.not-imported.613153351"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | useKey = true | multiple uses 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "Users.username.repo.src.components.App.831373691"
-});
+"import { jsxs as _jsxs } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsxs("div", {
+        children: [
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'some other message',
+                "id": "tests.__fixtures__.hook.multiple-uses.831373691"
+            })
+        ]
+    });
+};
 export { };
 "
 `;
@@ -2198,20 +3241,20 @@ export { };
 exports[`hooks | useKey = true | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var Component2 = function Component2() {
+var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "Users.username.repo.src.components.App.613153351"
+        defaultMessage: 'hello',
+        "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
     });
-    return /*#__PURE__*/ _jsx("button", {
+    return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
         }),
         children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
         })
     });
 };
@@ -2219,63 +3262,103 @@ var Component2 = function Component2() {
 `;
 
 exports[`hooks | useKey = true | useIntl with different module source 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | useKey = true | with FormattedMessage imported as something else 1`] = `
-"intl.formatMessage({
-    defaultMessage: "i18n",
-    "id": "Users.username.repo.src.components.App.94348014"
-});
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "tests.__fixtures__.hook.import-as.94348014"
+        })
+    });
+};
 export { };
 "
 `;
 
 exports[`hooks | useKey = true | with a value interpolated in the message 1`] = `
-"intl.formatMessage({
-    defaultMessage: "template string 2",
-    "id": "Users.username.repo.src.components.App.1045198380"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "template string ".concat(1 + 1),
+            "id": "tests.__fixtures__.hook.with-value-in-message.557684220"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | useKey = true | with a variable as the defaultMessage 1`] = `
-"var message = "variable message";
-intl.formatMessage({
-    defaultMessage: message,
-    "id": "Users.username.repo.src.components.App.1304763199"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var message = 'variable message';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: message,
+            "id": "tests.__fixtures__.hook.with-variable-message.1307324102"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | useKey = true | with a variable as the defaultMessage 2`] = `
-"intl.formatMessage(messages);
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage(messages)
+    });
+};
 "
 `;
 
 exports[`hooks | useKey = true | with custom properties in formatMessage call 1`] = `
-"intl.formatMessage({
-    defaultMessage: "custom prop",
-    other: 123,
-    "id": "Users.username.repo.src.components.App.2983810267"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'custom prop',
+            other: 123,
+            "id": "tests.__fixtures__.hook.with-custom-properties.2983810267"
+        })
+    });
+};
 "
 `;
 
 exports[`hooks | useKey = true | with useIntl hook imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-export { };
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "tests.__fixtures__.hook.default.613153351"
+        })
+    });
+};
 "
 `;

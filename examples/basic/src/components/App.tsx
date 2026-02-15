@@ -1,6 +1,6 @@
 import React from 'react';
 import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
-import {messagesOne, messagesTwo} from '../messages/demo';
+import { messagesOne, messagesTwo } from '../messages/demo';
 
 // This will be transformed to include IDs
 export const messages1 = defineMessages({
@@ -40,7 +40,9 @@ export const App: React.FC = () => {
                     defaultMessage="commentedMessage"
                     values={{ id: '123' }}
                 /> */}
-                {intl.formatMessage(messagesOne.createOrSaveAlert, { id: '123' })}
+                {intl.formatMessage(messagesOne.createOrSaveAlert, {
+                    id: '123',
+                })}
             </p>
             {intl.formatMessage(messagesTwo.hello, { name: 'World' })}
             <button aria-label={label}>

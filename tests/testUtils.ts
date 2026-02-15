@@ -1,8 +1,11 @@
 import { transform, WasmPlugin } from '@swc/core';
+import * as fs from 'fs';
+import * as path from 'path';
 
 type TestCase = {
     title: string;
-    code: string;
+    /** Path to fixture file relative to __fixtures__ directory (e.g., 'definition/default.js') */
+    fixture: string;
     error?: RegExp;
     snapshot?: boolean;
 };
@@ -33,15 +36,26 @@ type TestSuite = {
 };
 
 const plugin = require('../index.js');
-const filename = 'Users/username/repo/src/components/App.tsx';
 
 export async function cases(suites: TestSuite[]) {
     for (const suite of suites) {
         describe(suite.title, () => {
             for (const test of suite.tests) {
                 it(test.title, async () => {
+                    // Load fixture content and determine full path
+                    const fixtureFullPath = path.resolve(
+                        __dirname,
+                        '__fixtures__',
+                        test.fixture,
+                    );
+                    const fixtureRelativePath = path.relative(
+                        process.cwd(),
+                        fixtureFullPath,
+                    );
+                    const code = fs.readFileSync(fixtureFullPath, 'utf-8');
+
                     const options = {
-                        filename,
+                        filename: fixtureRelativePath,
                         jsc: {
                             parser: {
                                 syntax: 'typescript' as const,
@@ -64,7 +78,7 @@ export async function cases(suites: TestSuite[]) {
                         },
                     };
 
-                    const promise = transform(test.code, options);
+                    const promise = transform(code, options);
 
                     // если ждем ошибку - проверяем ошибку
                     if (test.error) {

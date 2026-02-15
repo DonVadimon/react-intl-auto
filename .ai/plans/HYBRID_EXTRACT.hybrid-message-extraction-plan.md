@@ -60,9 +60,11 @@
 - [x] HYBRID_EXTRACT-006: Implement JSON output format (aggregated and per-file)
 - [x] HYBRID_EXTRACT-006B: Fix include_export_name - use AST span position
 - [x] HYBRID_EXTRACT-007: Add source location extraction option
+- [x] HYBRID_EXTRACT-007B: Migrate Jest tests to use fixture files
+- [ ] HYBRID_EXTRACT-007C: Create CLI and Plugin ID consistency tests
 - [ ] HYBRID_EXTRACT-008: Create JS API with napi-rs bindings
 - [ ] HYBRID_EXTRACT-009: Update package.json with CLI bin entry and JS API exports
-- [ ] HYBRID_EXTRACT-010: Create integration tests for ID consistency between plugin and CLI
+- [ ] HYBRID_EXTRACT-010: Create additional integration tests and examples
 - [ ] HYBRID_EXTRACT-011: Create example projects (webpack, CLI-only, JS API)
 - [ ] HYBRID_EXTRACT-012: Update documentation and README
 
@@ -1158,6 +1160,258 @@ const messages2 = defineMessages({ farewell: 'Goodbye' }); // поз. 120
 
 ---
 
+## [x] HYBRID_EXTRACT-007B: Migrate Jest tests to use fixture files
+
+### 📋 Metadata
+
+- **status:** `ready`
+- **depends:** `HYBRID_EXTRACT-007`
+- **priority:** `P1`
+- **files:** `tests/__fixtures__/`, `tests/components.test.ts`, `tests/definition.test.ts`, `tests/hook.test.ts`, `tests/injection.test.ts`
+
+### 📝 Details
+
+Перенести код из строк в тестовых файлах в отдельные fixture-файлы. Это подготовительный шаг для создания тестов консистентности CLI и плагина.
+
+**Важно:** ID сообщений содержат позицию вызова функции в коде. При переносе кода из строки в файлы может поменяться позиция вызова, что изменит ID. После выполнения этой задачи снапшоты Jest потребуют перегенерации (это ожидаемо и будет сделано отдельно).
+
+**Структура фикстур:**
+
+Поддиректории должны совпадать с текущими файлами тестов:
+
+```
+tests/__fixtures__/
+├── components/          # Тесты для FormattedMessage, FormattedHTMLMessage
+│   ├── default.tsx
+│   ├── with-existing-id.tsx
+│   ├── with-description.tsx
+│   └── ...
+├── definition/          # Тесты для defineMessages
+│   ├── default.js
+│   ├── multi-export.js
+│   ├── with-description.js
+│   └── ...
+├── hook/                # Тесты для useIntl + formatMessage
+│   ├── default.js
+│   └── ...
+└── injection/           # Тесты для injectIntl + formatMessage
+    ├── default.js
+    └── ...
+```
+
+**Что нужно сделать:**
+
+1. **Создать структуру директорий:**
+    - `tests/__fixtures__/components/`
+    - `tests/__fixtures__/definition/`
+    - `tests/__fixtures__/hook/`
+    - `tests/__fixtures__/injection/`
+
+2. **Создать fixture-файлы:**
+    - Для каждого тест-кейса из существующих `.test.ts` файлов создать отдельный файл
+    - Имена файлов должны соответствовать названию теста (kebab-case)
+    - Сохранить оригинальное форматирование кода
+
+3. **Обновить тестовые файлы:**
+    - Заменить строки с кодом на чтение файлов через `fs.readFileSync()`
+    - Сохранить все существующие тест-кейсы и их структуру
+    - Обновить `createConfigurationSuites` для работы с файлами
+
+**Пример изменения:**
+
+Было (в `definition.test.ts`):
+
+```typescript
+const defaultTest = {
+    title: 'default',
+    code: `
+import { defineMessages } from 'react-intl'
+
+export default defineMessages({
+  hello: 'hello',
+})
+`,
+};
+```
+
+Стало (в `tests/__fixtures__/definition/default.js`):
+
+```javascript
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+    hello: 'hello',
+});
+```
+
+И в тесте:
+
+```typescript
+const defaultTest = {
+    title: 'default',
+    code: fs.readFileSync('tests/__fixtures__/definition/default.js', 'utf-8'),
+};
+```
+
+**Критерии приёмки:**
+
+- ✅ Создана структура `tests/__fixtures__/` с поддиректориями components, definition, hook, injection
+- ✅ Все тест-кейсы из существующих `.test.ts` файлов перенесены в fixture-файлы
+- ✅ Тестовые файлы обновлены для чтения кода из файлов
+- ✅ Все существующие тесты проходят (перед перегенерацией снапшотов)
+- ✅ Каждый fixture-файл содержит валидный JavaScript/TypeScript код
+
+**Влияние:**
+
+- Единый источник тестовых данных для плагина и будущих CLI-тестов
+- Подготовка к HYBRID_EXTRACT-007C (тесты консистентности)
+
+### 📊 ActionLog:
+
+- `2026-02-16 01:43` План задачи создан
+- `2026-02-16 02:19` Данные актуализированы: проверены файлы tests/\*.test.ts (components, definition, hook, injection)
+- `2026-02-16 02:19` Статус изменен на `in-progress`
+- `2026-02-16 02:19` Составлен план выполнения
+- `2026-02-16 02:19` Выполнен шаг 1: Созданы директории tests/**fixtures**/{components,definition,hook,injection}/
+- `2026-02-16 02:20` Выполнен шаг 2: Созданы 18 fixture-файлов для definition.test.ts
+- `2026-02-16 02:21` Выполнен шаг 3: Созданы 14 fixture-файлов для components.test.ts
+- `2026-02-16 02:21` Выполнен шаг 4: Созданы 11 fixture-файлов для hook.test.ts
+- `2026-02-16 02:22` Выполнен шаг 5: Созданы 12 fixture-файлов для injection.test.ts
+- `2026-02-16 02:22` Выполнен шаг 6: Обновлен tests/testUtils.ts - добавлена функция loadFixture()
+- `2026-02-16 02:22` Выполнен шаг 7: Обновлен definition.test.ts - использует loadFixture()
+- `2026-02-16 02:22` Выполнен шаг 8: Обновлен components.test.ts - использует loadFixture()
+- `2026-02-16 02:22` Выполнен шаг 9: Обновлен hook.test.ts - использует loadFixture()
+- `2026-02-16 02:22` Выполнен шаг 10: Обновлен injection.test.ts - использует loadFixture()
+- `2026-02-16 02:23` Выполнен шаг 11: Тесты запущены - все тесты выполняются, ожидаемо есть расхождения снапшотов из-за изменения позиций
+- `2026-02-16 02:23` Определены критерии приёмки:
+    - ✅ Создана структура tests/**fixtures**/ с 55 файлами
+    - ✅ Все тест-кейсы перенесены в fixture-файлы
+    - ✅ Тестовые файлы обновлены для чтения из файлов
+    - ✅ Все существующие тесты запускаются
+    - ✅ Функция loadFixture() корректно читает .js и .tsx файлы
+- `2026-02-16 02:23` Готово к review
+- `2026-02-16 02:23` Review: одобрено USER
+- `2026-02-16 02:23` Задача завершена, статус изменен на `ready`
+
+---
+
+## [ ] HYBRID_EXTRACT-007C: Create CLI and Plugin ID consistency tests
+
+### 📋 Metadata
+
+- **status:** `todo`
+- **depends:** `HYBRID_EXTRACT-007B`
+- **priority:** `P1`
+- **files:** `tests/cli-consistency.test.ts`
+
+### 📝 Details
+
+Создать интеграционные тесты, которые подтверждают, что CLI и SWC плагин генерируют **идентичные ID** для одного и того же исходного кода.
+
+**Методика проверки:**
+
+1. Запустить CLI на fixture-файлах с опцией `--extract-source-location`
+2. CLI пишет результат в файл (не stdout) - прочитать выходной файл
+3. Запустить transform с плагином на том же fixture-файле
+4. Проверить, что:
+    - Для каждого сообщения из CLI есть вхождение его ID в transformed code
+    - Количество сообщений от CLI совпадает с количеством сообщений в коде
+
+**Пример теста:**
+
+```typescript
+import { spawn } from 'child_process';
+import { readFileSync, unlinkSync } from 'fs';
+import { transform } from '@swc/core';
+
+const CLI_PATH = './target/debug/react-intl-extract';
+const OUTPUT_FILE = 'test-output.json';
+
+describe('CLI vs Plugin ID consistency', () => {
+    afterEach(() => {
+        // Cleanup output file
+        try {
+            unlinkSync(OUTPUT_FILE);
+        } catch {}
+    });
+
+    it('should generate same IDs for defineMessages fixtures', async () => {
+        const fixturePath = 'tests/__fixtures__/definition/default.js';
+
+        // Step 1: Run CLI
+        await new Promise((resolve, reject) => {
+            const proc = spawn(CLI_PATH, [
+                fixturePath,
+                '--output',
+                OUTPUT_FILE,
+                '--extract-source-location',
+            ]);
+            proc.on('close', (code) => {
+                if (code === 0) resolve(null);
+                else reject(new Error(`CLI exited with code ${code}`));
+            });
+        });
+
+        // Step 2: Read CLI output from file
+        const cliMessages = JSON.parse(readFileSync(OUTPUT_FILE, 'utf-8'));
+
+        // Step 3: Transform with plugin
+        const code = readFileSync(fixturePath, 'utf-8');
+        const result = await transform(code, {
+            filename: fixturePath,
+            jsc: {
+                /* ... plugin options ... */
+            },
+        });
+
+        // Step 4: Verify consistency
+        // Check that each CLI message ID exists in transformed code
+        cliMessages.forEach((message) => {
+            expect(result.code).toContain(message.id);
+        });
+
+        // Check that counts match
+        const pluginMatches = (result.code.match(/"id":\s*"/g) || []).length;
+        expect(pluginMatches).toBe(cliMessages.length);
+    });
+});
+```
+
+**Тестируемые опции:**
+
+Тесты должны проверять консистентность для всех комбинаций опций:
+
+- `removePrefix` (true, false, string)
+- `filebase` (true, false)
+- `useKey` (true, false)
+- `hashId` + `hashAlgorithm` (murmur3, base64)
+- `separator` ('.', '\_')
+- `relativeTo` (разные пути)
+
+**Критерии приёмки:**
+
+- ✅ Создан файл `tests/cli-consistency.test.ts`
+- ✅ Тесты запускают CLI бинарник через `spawn`
+- ✅ CLI пишет в файл, тесты читают из файла (не stdout)
+- ✅ Для каждого сообщения от CLI проверяется наличие ID в transformed code
+- ✅ Проверяется совпадение количества сообщений
+- ✅ Тесты покрывают все опции: removePrefix, filebase, useKey, hashId, separator, relativeTo
+- ✅ Тесты запускаются для всех fixture-файлов из `tests/__fixtures__/`
+
+**Влияние:**
+
+- Гарантия консистентности ID между плагином и CLI
+- Обнаружение расхождений в логике генерации ID
+- Уверенность в корректности работы обоих инструментов
+- Упрощение добавления новых тестовых случаев
+- Возможность тестирования CLI без дублирования кода
+
+### 📊 ActionLog:
+
+- `2026-02-16 01:43` План задачи создан
+
+---
+
 ## [ ] HYBRID_EXTRACT-008: Create JS API with napi-rs bindings
 
 ### 📋 Metadata
@@ -1661,6 +1915,8 @@ npm run test:watch      # Jest в watch mode
 | HYBRID_EXTRACT-005  | CLI argument parsing and globbing       | P1        | 004         | ⏳     |
 | HYBRID_EXTRACT-006  | JSON output format                      | P1        | 005         | ⏳     |
 | HYBRID_EXTRACT-007  | Source location extraction              | P1        | 006         | ✅     |
+| HYBRID_EXTRACT-007B | Migrate Jest tests to fixture files     | P1        | 007         | ✅     |
+| HYBRID_EXTRACT-007C | CLI and Plugin ID consistency tests     | P1        | 007B        | ⏳     |
 | HYBRID_EXTRACT-008  | Create JS API with napi-rs              | P1        | 003         | ⏳     |
 | HYBRID_EXTRACT-009  | Update package.json with CLI and JS API | P1        | 004, 008    | ⏳     |
 | HYBRID_EXTRACT-010  | Integration tests for ID consistency    | P2        | 007, 009    | ⏳     |

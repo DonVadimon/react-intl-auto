@@ -9,12 +9,12 @@ defineMessages({
     },
     world: {
         defaultMessage: 'world',
-        "id": "Users.username.repo.src.components.App.47.world"
+        "id": "tests.__fixtures__.definition.object-arg.47.world"
     },
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "Users.username.repo.src.components.App.47.headerTitle"
+        "id": "tests.__fixtures__.definition.object-arg.47.headerTitle"
     }
 });
 "
@@ -24,7 +24,7 @@ exports[`definition | default | default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.62.hello",
+        "id": "tests.__fixtures__.definition.default.62.hello",
         "defaultMessage": "hello"
     }
 });
@@ -52,7 +52,7 @@ exports[`definition | default | leading comment 1`] = `
 export default defineMessages({
     // The main Hello of our app.
     hello: {
-        "id": "Users.username.repo.src.components.App.62.hello",
+        "id": "tests.__fixtures__.definition.leading-comment.62.hello",
         "defaultMessage": "hello"
     },
     // Another Hello,
@@ -72,7 +72,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "Users.username.repo.src.components.App.62.world"
+        "id": "tests.__fixtures__.definition.leading-comment-with-description.62.world"
     }
 });
 "
@@ -82,7 +82,7 @@ exports[`definition | default | moduleSourceName 1`] = `
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.70.hello",
+        "id": "tests.__fixtures__.definition.module-source-name.70.hello",
         "defaultMessage": "hello"
     }
 });
@@ -93,13 +93,13 @@ exports[`definition | default | multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.68.hello",
+        "id": "tests.__fixtures__.definition.multi-export.68.hello",
         "defaultMessage": "hello world extra"
     }
 });
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.133.hello",
+        "id": "tests.__fixtures__.definition.multi-export.137.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -120,7 +120,7 @@ export default m[0]({
 exports[`definition | default | not transform if defineMessages is not imported 1`] = `
 "export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.not-imported.47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -148,8 +148,8 @@ export default defineMessages(messages);
 exports[`definition | default | string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
-    'hello': {
-        "id": "Users.username.repo.src.components.App.47.hello",
+    hello: {
+        "id": "tests.__fixtures__.definition.string-literal.47.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -163,7 +163,7 @@ var messages = {
 };
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.97.hello",
+        "id": "tests.__fixtures__.definition.use-variable.100.hello",
         "defaultMessage": "hello"
     }
 });
@@ -174,7 +174,7 @@ exports[`definition | default | with include value 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.with-template-literal.47.hello",
         "defaultMessage": "hello world ".concat(1)
     }
 });
@@ -185,7 +185,7 @@ exports[`definition | default | with other func 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.with-other-func.47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -199,7 +199,7 @@ exports[`definition | default | with other specifier 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.80.hello",
+        "id": "tests.__fixtures__.definition.with-other-specifier.80.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -215,12 +215,12 @@ defineMessages({
     },
     world: {
         defaultMessage: 'world',
-        "id": "App.47.world"
+        "id": "object-arg.47.world"
     },
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "App.47.headerTitle"
+        "id": "object-arg.47.headerTitle"
     }
 });
 "
@@ -230,7 +230,7 @@ exports[`definition | filebase = true | default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "App.62.hello",
+        "id": "default.62.hello",
         "defaultMessage": "hello"
     }
 });
@@ -258,7 +258,7 @@ exports[`definition | filebase = true | leading comment 1`] = `
 export default defineMessages({
     // The main Hello of our app.
     hello: {
-        "id": "App.62.hello",
+        "id": "leading-comment.62.hello",
         "defaultMessage": "hello"
     },
     // Another Hello,
@@ -278,7 +278,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "App.62.world"
+        "id": "leading-comment-with-description.62.world"
     }
 });
 "
@@ -288,7 +288,7 @@ exports[`definition | filebase = true | moduleSourceName 1`] = `
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
     hello: {
-        "id": "App.70.hello",
+        "id": "module-source-name.70.hello",
         "defaultMessage": "hello"
     }
 });
@@ -299,13 +299,13 @@ exports[`definition | filebase = true | multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
-        "id": "App.68.hello",
+        "id": "multi-export.68.hello",
         "defaultMessage": "hello world extra"
     }
 });
 export default defineMessages({
     hello: {
-        "id": "App.133.hello",
+        "id": "multi-export.137.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -326,7 +326,7 @@ export default m[0]({
 exports[`definition | filebase = true | not transform if defineMessages is not imported 1`] = `
 "export default defineMessages({
     hello: {
-        "id": "App.47.hello",
+        "id": "not-imported.47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -354,8 +354,8 @@ export default defineMessages(messages);
 exports[`definition | filebase = true | string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
-    'hello': {
-        "id": "App.47.hello",
+    hello: {
+        "id": "string-literal.47.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -369,7 +369,7 @@ var messages = {
 };
 export default defineMessages({
     hello: {
-        "id": "App.97.hello",
+        "id": "use-variable.100.hello",
         "defaultMessage": "hello"
     }
 });
@@ -380,7 +380,7 @@ exports[`definition | filebase = true | with include value 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "App.47.hello",
+        "id": "with-template-literal.47.hello",
         "defaultMessage": "hello world ".concat(1)
     }
 });
@@ -391,7 +391,7 @@ exports[`definition | filebase = true | with other func 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "App.47.hello",
+        "id": "with-other-func.47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -405,7 +405,7 @@ exports[`definition | filebase = true | with other specifier 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "App.80.hello",
+        "id": "with-other-specifier.80.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -421,12 +421,12 @@ defineMessages({
     },
     world: {
         defaultMessage: 'world',
-        "id": "QXBwLjQ3Lndvcmxk"
+        "id": "b2JqZWN0LWFyZy40Ny53b3JsZA=="
     },
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "QXBwLjQ3LmhlYWRlclRpdGxl"
+        "id": "b2JqZWN0LWFyZy40Ny5oZWFkZXJUaXRsZQ=="
     }
 });
 "
@@ -436,7 +436,7 @@ exports[`definition | hash + filebase = true | default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "QXBwLjYyLmhlbGxv",
+        "id": "ZGVmYXVsdC42Mi5oZWxsbw==",
         "defaultMessage": "hello"
     }
 });
@@ -464,7 +464,7 @@ exports[`definition | hash + filebase = true | leading comment 1`] = `
 export default defineMessages({
     // The main Hello of our app.
     hello: {
-        "id": "QXBwLjYyLmhlbGxv",
+        "id": "bGVhZGluZy1jb21tZW50LjYyLmhlbGxv",
         "defaultMessage": "hello"
     },
     // Another Hello,
@@ -484,7 +484,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "QXBwLjYyLndvcmxk"
+        "id": "bGVhZGluZy1jb21tZW50LXdpdGgtZGVzY3JpcHRpb24uNjIud29ybGQ="
     }
 });
 "
@@ -494,7 +494,7 @@ exports[`definition | hash + filebase = true | moduleSourceName 1`] = `
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
     hello: {
-        "id": "QXBwLjcwLmhlbGxv",
+        "id": "bW9kdWxlLXNvdXJjZS1uYW1lLjcwLmhlbGxv",
         "defaultMessage": "hello"
     }
 });
@@ -505,13 +505,13 @@ exports[`definition | hash + filebase = true | multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
-        "id": "QXBwLjY4LmhlbGxv",
+        "id": "bXVsdGktZXhwb3J0LjY4LmhlbGxv",
         "defaultMessage": "hello world extra"
     }
 });
 export default defineMessages({
     hello: {
-        "id": "QXBwLjEzMy5oZWxsbw==",
+        "id": "bXVsdGktZXhwb3J0LjEzNy5oZWxsbw==",
         "defaultMessage": "hello world"
     }
 });
@@ -532,7 +532,7 @@ export default m[0]({
 exports[`definition | hash + filebase = true | not transform if defineMessages is not imported 1`] = `
 "export default defineMessages({
     hello: {
-        "id": "QXBwLjQ3LmhlbGxv",
+        "id": "bm90LWltcG9ydGVkLjQ3LmhlbGxv",
         "defaultMessage": "hello"
     }
 });
@@ -560,8 +560,8 @@ export default defineMessages(messages);
 exports[`definition | hash + filebase = true | string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
-    'hello': {
-        "id": "QXBwLjQ3LmhlbGxv",
+    hello: {
+        "id": "c3RyaW5nLWxpdGVyYWwuNDcuaGVsbG8=",
         "defaultMessage": "hello world"
     }
 });
@@ -575,7 +575,7 @@ var messages = {
 };
 export default defineMessages({
     hello: {
-        "id": "QXBwLjk3LmhlbGxv",
+        "id": "dXNlLXZhcmlhYmxlLjEwMC5oZWxsbw==",
         "defaultMessage": "hello"
     }
 });
@@ -586,7 +586,7 @@ exports[`definition | hash + filebase = true | with include value 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "QXBwLjQ3LmhlbGxv",
+        "id": "d2l0aC10ZW1wbGF0ZS1saXRlcmFsLjQ3LmhlbGxv",
         "defaultMessage": "hello world ".concat(1)
     }
 });
@@ -597,7 +597,7 @@ exports[`definition | hash + filebase = true | with other func 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "QXBwLjQ3LmhlbGxv",
+        "id": "d2l0aC1vdGhlci1mdW5jLjQ3LmhlbGxv",
         "defaultMessage": "hello"
     }
 });
@@ -611,7 +611,7 @@ exports[`definition | hash + filebase = true | with other specifier 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "QXBwLjgwLmhlbGxv",
+        "id": "d2l0aC1vdGhlci1zcGVjaWZpZXIuODAuaGVsbG8=",
         "defaultMessage": "hello world"
     }
 });
@@ -627,12 +627,12 @@ defineMessages({
     },
     world: {
         defaultMessage: 'world',
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNDcud29ybGQ="
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ub2JqZWN0LWFyZy40Ny53b3JsZA=="
     },
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNDcuaGVhZGVyVGl0bGU="
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ub2JqZWN0LWFyZy40Ny5oZWFkZXJUaXRsZQ=="
     }
 });
 "
@@ -642,7 +642,7 @@ exports[`definition | hash + relativeTo = "src" | default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjIuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24uZGVmYXVsdC42Mi5oZWxsbw==",
         "defaultMessage": "hello"
     }
 });
@@ -670,7 +670,7 @@ exports[`definition | hash + relativeTo = "src" | leading comment 1`] = `
 export default defineMessages({
     // The main Hello of our app.
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjIuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubGVhZGluZy1jb21tZW50LjYyLmhlbGxv",
         "defaultMessage": "hello"
     },
     // Another Hello,
@@ -690,7 +690,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjIud29ybGQ="
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubGVhZGluZy1jb21tZW50LXdpdGgtZGVzY3JpcHRpb24uNjIud29ybGQ="
     }
 });
 "
@@ -700,7 +700,7 @@ exports[`definition | hash + relativeTo = "src" | moduleSourceName 1`] = `
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNzAuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubW9kdWxlLXNvdXJjZS1uYW1lLjcwLmhlbGxv",
         "defaultMessage": "hello"
     }
 });
@@ -711,13 +711,13 @@ exports[`definition | hash + relativeTo = "src" | multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjguaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubXVsdGktZXhwb3J0LjY4LmhlbGxv",
         "defaultMessage": "hello world extra"
     }
 });
 export default defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTMzLmhlbGxv",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubXVsdGktZXhwb3J0LjEzNy5oZWxsbw==",
         "defaultMessage": "hello world"
     }
 });
@@ -738,7 +738,7 @@ export default m[0]({
 exports[`definition | hash + relativeTo = "src" | not transform if defineMessages is not imported 1`] = `
 "export default defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNDcuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubm90LWltcG9ydGVkLjQ3LmhlbGxv",
         "defaultMessage": "hello"
     }
 });
@@ -766,8 +766,8 @@ export default defineMessages(messages);
 exports[`definition | hash + relativeTo = "src" | string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
-    'hello': {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNDcuaGVsbG8=",
+    hello: {
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24uc3RyaW5nLWxpdGVyYWwuNDcuaGVsbG8=",
         "defaultMessage": "hello world"
     }
 });
@@ -781,7 +781,7 @@ var messages = {
 };
 export default defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuOTcuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24udXNlLXZhcmlhYmxlLjEwMC5oZWxsbw==",
         "defaultMessage": "hello"
     }
 });
@@ -792,7 +792,7 @@ exports[`definition | hash + relativeTo = "src" | with include value 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNDcuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ud2l0aC10ZW1wbGF0ZS1saXRlcmFsLjQ3LmhlbGxv",
         "defaultMessage": "hello world ".concat(1)
     }
 });
@@ -803,7 +803,7 @@ exports[`definition | hash + relativeTo = "src" | with other func 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNDcuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ud2l0aC1vdGhlci1mdW5jLjQ3LmhlbGxv",
         "defaultMessage": "hello"
     }
 });
@@ -817,7 +817,7 @@ exports[`definition | hash + relativeTo = "src" | with other specifier 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuODAuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ud2l0aC1vdGhlci1zcGVjaWZpZXIuODAuaGVsbG8=",
         "defaultMessage": "hello world"
     }
 });
@@ -833,12 +833,12 @@ defineMessages({
     },
     world: {
         defaultMessage: 'world',
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNDcud29ybGQ="
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ub2JqZWN0LWFyZy40Ny53b3JsZA=="
     },
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNDcuaGVhZGVyVGl0bGU="
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ub2JqZWN0LWFyZy40Ny5oZWFkZXJUaXRsZQ=="
     }
 });
 "
@@ -848,7 +848,7 @@ exports[`definition | hash + removePrefix = "src/" | default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjIuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24uZGVmYXVsdC42Mi5oZWxsbw==",
         "defaultMessage": "hello"
     }
 });
@@ -876,7 +876,7 @@ exports[`definition | hash + removePrefix = "src/" | leading comment 1`] = `
 export default defineMessages({
     // The main Hello of our app.
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjIuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubGVhZGluZy1jb21tZW50LjYyLmhlbGxv",
         "defaultMessage": "hello"
     },
     // Another Hello,
@@ -896,7 +896,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjIud29ybGQ="
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubGVhZGluZy1jb21tZW50LXdpdGgtZGVzY3JpcHRpb24uNjIud29ybGQ="
     }
 });
 "
@@ -906,7 +906,7 @@ exports[`definition | hash + removePrefix = "src/" | moduleSourceName 1`] = `
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNzAuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubW9kdWxlLXNvdXJjZS1uYW1lLjcwLmhlbGxv",
         "defaultMessage": "hello"
     }
 });
@@ -917,13 +917,13 @@ exports[`definition | hash + removePrefix = "src/" | multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjguaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubXVsdGktZXhwb3J0LjY4LmhlbGxv",
         "defaultMessage": "hello world extra"
     }
 });
 export default defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTMzLmhlbGxv",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubXVsdGktZXhwb3J0LjEzNy5oZWxsbw==",
         "defaultMessage": "hello world"
     }
 });
@@ -944,7 +944,7 @@ export default m[0]({
 exports[`definition | hash + removePrefix = "src/" | not transform if defineMessages is not imported 1`] = `
 "export default defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNDcuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubm90LWltcG9ydGVkLjQ3LmhlbGxv",
         "defaultMessage": "hello"
     }
 });
@@ -972,8 +972,8 @@ export default defineMessages(messages);
 exports[`definition | hash + removePrefix = "src/" | string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
-    'hello': {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNDcuaGVsbG8=",
+    hello: {
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24uc3RyaW5nLWxpdGVyYWwuNDcuaGVsbG8=",
         "defaultMessage": "hello world"
     }
 });
@@ -987,7 +987,7 @@ var messages = {
 };
 export default defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuOTcuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24udXNlLXZhcmlhYmxlLjEwMC5oZWxsbw==",
         "defaultMessage": "hello"
     }
 });
@@ -998,7 +998,7 @@ exports[`definition | hash + removePrefix = "src/" | with include value 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNDcuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ud2l0aC10ZW1wbGF0ZS1saXRlcmFsLjQ3LmhlbGxv",
         "defaultMessage": "hello world ".concat(1)
     }
 });
@@ -1009,7 +1009,7 @@ exports[`definition | hash + removePrefix = "src/" | with other func 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNDcuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ud2l0aC1vdGhlci1mdW5jLjQ3LmhlbGxv",
         "defaultMessage": "hello"
     }
 });
@@ -1023,7 +1023,7 @@ exports[`definition | hash + removePrefix = "src/" | with other specifier 1`] = 
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuODAuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ud2l0aC1vdGhlci1zcGVjaWZpZXIuODAuaGVsbG8=",
         "defaultMessage": "hello world"
     }
 });
@@ -1039,12 +1039,12 @@ defineMessages({
     },
     world: {
         defaultMessage: 'world',
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNDcud29ybGQ="
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ub2JqZWN0LWFyZy40Ny53b3JsZA=="
     },
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNDcuaGVhZGVyVGl0bGU="
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ub2JqZWN0LWFyZy40Ny5oZWFkZXJUaXRsZQ=="
     }
 });
 "
@@ -1054,7 +1054,7 @@ exports[`definition | hash base64 | default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjIuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24uZGVmYXVsdC42Mi5oZWxsbw==",
         "defaultMessage": "hello"
     }
 });
@@ -1082,7 +1082,7 @@ exports[`definition | hash base64 | leading comment 1`] = `
 export default defineMessages({
     // The main Hello of our app.
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjIuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubGVhZGluZy1jb21tZW50LjYyLmhlbGxv",
         "defaultMessage": "hello"
     },
     // Another Hello,
@@ -1102,7 +1102,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjIud29ybGQ="
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubGVhZGluZy1jb21tZW50LXdpdGgtZGVzY3JpcHRpb24uNjIud29ybGQ="
     }
 });
 "
@@ -1112,7 +1112,7 @@ exports[`definition | hash base64 | moduleSourceName 1`] = `
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNzAuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubW9kdWxlLXNvdXJjZS1uYW1lLjcwLmhlbGxv",
         "defaultMessage": "hello"
     }
 });
@@ -1123,13 +1123,13 @@ exports[`definition | hash base64 | multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjguaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubXVsdGktZXhwb3J0LjY4LmhlbGxv",
         "defaultMessage": "hello world extra"
     }
 });
 export default defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTMzLmhlbGxv",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubXVsdGktZXhwb3J0LjEzNy5oZWxsbw==",
         "defaultMessage": "hello world"
     }
 });
@@ -1150,7 +1150,7 @@ export default m[0]({
 exports[`definition | hash base64 | not transform if defineMessages is not imported 1`] = `
 "export default defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNDcuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubm90LWltcG9ydGVkLjQ3LmhlbGxv",
         "defaultMessage": "hello"
     }
 });
@@ -1178,8 +1178,8 @@ export default defineMessages(messages);
 exports[`definition | hash base64 | string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
-    'hello': {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNDcuaGVsbG8=",
+    hello: {
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24uc3RyaW5nLWxpdGVyYWwuNDcuaGVsbG8=",
         "defaultMessage": "hello world"
     }
 });
@@ -1193,7 +1193,7 @@ var messages = {
 };
 export default defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuOTcuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24udXNlLXZhcmlhYmxlLjEwMC5oZWxsbw==",
         "defaultMessage": "hello"
     }
 });
@@ -1204,7 +1204,7 @@ exports[`definition | hash base64 | with include value 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNDcuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ud2l0aC10ZW1wbGF0ZS1saXRlcmFsLjQ3LmhlbGxv",
         "defaultMessage": "hello world ".concat(1)
     }
 });
@@ -1215,7 +1215,7 @@ exports[`definition | hash base64 | with other func 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNDcuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ud2l0aC1vdGhlci1mdW5jLjQ3LmhlbGxv",
         "defaultMessage": "hello"
     }
 });
@@ -1229,7 +1229,7 @@ exports[`definition | hash base64 | with other specifier 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuODAuaGVsbG8=",
+        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ud2l0aC1vdGhlci1zcGVjaWZpZXIuODAuaGVsbG8=",
         "defaultMessage": "hello world"
     }
 });
@@ -1245,12 +1245,12 @@ defineMessages({
     },
     world: {
         defaultMessage: 'world',
-        "id": "1845346121"
+        "id": "522871809"
     },
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "3015806550"
+        "id": "3772596017"
     }
 });
 "
@@ -1260,7 +1260,7 @@ exports[`definition | hash murmur3 | default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "1993234495",
+        "id": "3544263691",
         "defaultMessage": "hello"
     }
 });
@@ -1288,7 +1288,7 @@ exports[`definition | hash murmur3 | leading comment 1`] = `
 export default defineMessages({
     // The main Hello of our app.
     hello: {
-        "id": "1993234495",
+        "id": "3802191033",
         "defaultMessage": "hello"
     },
     // Another Hello,
@@ -1308,7 +1308,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "1520619057"
+        "id": "2137590656"
     }
 });
 "
@@ -1318,7 +1318,7 @@ exports[`definition | hash murmur3 | moduleSourceName 1`] = `
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
     hello: {
-        "id": "1842910035",
+        "id": "2351470709",
         "defaultMessage": "hello"
     }
 });
@@ -1329,13 +1329,13 @@ exports[`definition | hash murmur3 | multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
-        "id": "3305752262",
+        "id": "3197969802",
         "defaultMessage": "hello world extra"
     }
 });
 export default defineMessages({
     hello: {
-        "id": "455761338",
+        "id": "2363779229",
         "defaultMessage": "hello world"
     }
 });
@@ -1356,7 +1356,7 @@ export default m[0]({
 exports[`definition | hash murmur3 | not transform if defineMessages is not imported 1`] = `
 "export default defineMessages({
     hello: {
-        "id": "68896883",
+        "id": "3553120333",
         "defaultMessage": "hello"
     }
 });
@@ -1384,8 +1384,8 @@ export default defineMessages(messages);
 exports[`definition | hash murmur3 | string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
-    'hello': {
-        "id": "68896883",
+    hello: {
+        "id": "3287395220",
         "defaultMessage": "hello world"
     }
 });
@@ -1399,7 +1399,7 @@ var messages = {
 };
 export default defineMessages({
     hello: {
-        "id": "780660787",
+        "id": "2649391460",
         "defaultMessage": "hello"
     }
 });
@@ -1410,7 +1410,7 @@ exports[`definition | hash murmur3 | with include value 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "68896883",
+        "id": "2651965547",
         "defaultMessage": "hello world ".concat(1)
     }
 });
@@ -1421,7 +1421,7 @@ exports[`definition | hash murmur3 | with other func 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "68896883",
+        "id": "1817048988",
         "defaultMessage": "hello"
     }
 });
@@ -1435,7 +1435,7 @@ exports[`definition | hash murmur3 | with other specifier 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "2233284889",
+        "id": "208012643",
         "defaultMessage": "hello world"
     }
 });
@@ -1451,12 +1451,12 @@ defineMessages({
     },
     world: {
         defaultMessage: 'world',
-        "id": "1845346121"
+        "id": "522871809"
     },
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "3015806550"
+        "id": "3772596017"
     }
 });
 "
@@ -1466,7 +1466,7 @@ exports[`definition | hash unknown fallback to murmur3 | default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "1993234495",
+        "id": "3544263691",
         "defaultMessage": "hello"
     }
 });
@@ -1494,7 +1494,7 @@ exports[`definition | hash unknown fallback to murmur3 | leading comment 1`] = `
 export default defineMessages({
     // The main Hello of our app.
     hello: {
-        "id": "1993234495",
+        "id": "3802191033",
         "defaultMessage": "hello"
     },
     // Another Hello,
@@ -1514,7 +1514,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "1520619057"
+        "id": "2137590656"
     }
 });
 "
@@ -1524,7 +1524,7 @@ exports[`definition | hash unknown fallback to murmur3 | moduleSourceName 1`] = 
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
     hello: {
-        "id": "1842910035",
+        "id": "2351470709",
         "defaultMessage": "hello"
     }
 });
@@ -1535,13 +1535,13 @@ exports[`definition | hash unknown fallback to murmur3 | multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
-        "id": "3305752262",
+        "id": "3197969802",
         "defaultMessage": "hello world extra"
     }
 });
 export default defineMessages({
     hello: {
-        "id": "455761338",
+        "id": "2363779229",
         "defaultMessage": "hello world"
     }
 });
@@ -1562,7 +1562,7 @@ export default m[0]({
 exports[`definition | hash unknown fallback to murmur3 | not transform if defineMessages is not imported 1`] = `
 "export default defineMessages({
     hello: {
-        "id": "68896883",
+        "id": "3553120333",
         "defaultMessage": "hello"
     }
 });
@@ -1590,8 +1590,8 @@ export default defineMessages(messages);
 exports[`definition | hash unknown fallback to murmur3 | string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
-    'hello': {
-        "id": "68896883",
+    hello: {
+        "id": "3287395220",
         "defaultMessage": "hello world"
     }
 });
@@ -1605,7 +1605,7 @@ var messages = {
 };
 export default defineMessages({
     hello: {
-        "id": "780660787",
+        "id": "2649391460",
         "defaultMessage": "hello"
     }
 });
@@ -1616,7 +1616,7 @@ exports[`definition | hash unknown fallback to murmur3 | with include value 1`] 
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "68896883",
+        "id": "2651965547",
         "defaultMessage": "hello world ".concat(1)
     }
 });
@@ -1627,7 +1627,7 @@ exports[`definition | hash unknown fallback to murmur3 | with other func 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "68896883",
+        "id": "1817048988",
         "defaultMessage": "hello"
     }
 });
@@ -1641,7 +1641,7 @@ exports[`definition | hash unknown fallback to murmur3 | with other specifier 1`
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "2233284889",
+        "id": "208012643",
         "defaultMessage": "hello world"
     }
 });
@@ -1657,12 +1657,12 @@ defineMessages({
     },
     world: {
         defaultMessage: 'world',
-        "id": "Users.username.repo.src.components.App.47.world"
+        "id": "tests.__fixtures__.definition.object-arg.47.world"
     },
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "Users.username.repo.src.components.App.47.headerTitle"
+        "id": "tests.__fixtures__.definition.object-arg.47.headerTitle"
     }
 });
 "
@@ -1672,7 +1672,7 @@ exports[`definition | moduleSourceNameTest | default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.62.hello",
+        "id": "tests.__fixtures__.definition.default.62.hello",
         "defaultMessage": "hello"
     }
 });
@@ -1700,7 +1700,7 @@ exports[`definition | moduleSourceNameTest | leading comment 1`] = `
 export default defineMessages({
     // The main Hello of our app.
     hello: {
-        "id": "Users.username.repo.src.components.App.62.hello",
+        "id": "tests.__fixtures__.definition.leading-comment.62.hello",
         "defaultMessage": "hello"
     },
     // Another Hello,
@@ -1720,7 +1720,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "Users.username.repo.src.components.App.62.world"
+        "id": "tests.__fixtures__.definition.leading-comment-with-description.62.world"
     }
 });
 "
@@ -1730,7 +1730,7 @@ exports[`definition | moduleSourceNameTest | moduleSourceName 1`] = `
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.70.hello",
+        "id": "tests.__fixtures__.definition.module-source-name.70.hello",
         "defaultMessage": "hello"
     }
 });
@@ -1741,13 +1741,13 @@ exports[`definition | moduleSourceNameTest | multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.68.hello",
+        "id": "tests.__fixtures__.definition.multi-export.68.hello",
         "defaultMessage": "hello world extra"
     }
 });
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.133.hello",
+        "id": "tests.__fixtures__.definition.multi-export.137.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -1768,7 +1768,7 @@ export default m[0]({
 exports[`definition | moduleSourceNameTest | not transform if defineMessages is not imported 1`] = `
 "export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.not-imported.47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -1796,8 +1796,8 @@ export default defineMessages(messages);
 exports[`definition | moduleSourceNameTest | string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
-    'hello': {
-        "id": "Users.username.repo.src.components.App.47.hello",
+    hello: {
+        "id": "tests.__fixtures__.definition.string-literal.47.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -1811,7 +1811,7 @@ var messages = {
 };
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.97.hello",
+        "id": "tests.__fixtures__.definition.use-variable.100.hello",
         "defaultMessage": "hello"
     }
 });
@@ -1822,7 +1822,7 @@ exports[`definition | moduleSourceNameTest | with include value 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.with-template-literal.47.hello",
         "defaultMessage": "hello world ".concat(1)
     }
 });
@@ -1833,7 +1833,7 @@ exports[`definition | moduleSourceNameTest | with other func 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.with-other-func.47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -1847,7 +1847,7 @@ exports[`definition | moduleSourceNameTest | with other specifier 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.80.hello",
+        "id": "tests.__fixtures__.definition.with-other-specifier.80.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -1863,12 +1863,12 @@ defineMessages({
     },
     world: {
         defaultMessage: 'world',
-        "id": "Users.username.repo.src.components.App.47.world"
+        "id": "tests.__fixtures__.definition.object-arg.47.world"
     },
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "Users.username.repo.src.components.App.47.headerTitle"
+        "id": "tests.__fixtures__.definition.object-arg.47.headerTitle"
     }
 });
 "
@@ -1878,7 +1878,7 @@ exports[`definition | relativeTo = "" | default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.62.hello",
+        "id": "tests.__fixtures__.definition.default.62.hello",
         "defaultMessage": "hello"
     }
 });
@@ -1906,7 +1906,7 @@ exports[`definition | relativeTo = "" | leading comment 1`] = `
 export default defineMessages({
     // The main Hello of our app.
     hello: {
-        "id": "Users.username.repo.src.components.App.62.hello",
+        "id": "tests.__fixtures__.definition.leading-comment.62.hello",
         "defaultMessage": "hello"
     },
     // Another Hello,
@@ -1926,7 +1926,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "Users.username.repo.src.components.App.62.world"
+        "id": "tests.__fixtures__.definition.leading-comment-with-description.62.world"
     }
 });
 "
@@ -1936,7 +1936,7 @@ exports[`definition | relativeTo = "" | moduleSourceName 1`] = `
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.70.hello",
+        "id": "tests.__fixtures__.definition.module-source-name.70.hello",
         "defaultMessage": "hello"
     }
 });
@@ -1947,13 +1947,13 @@ exports[`definition | relativeTo = "" | multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.68.hello",
+        "id": "tests.__fixtures__.definition.multi-export.68.hello",
         "defaultMessage": "hello world extra"
     }
 });
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.133.hello",
+        "id": "tests.__fixtures__.definition.multi-export.137.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -1974,7 +1974,7 @@ export default m[0]({
 exports[`definition | relativeTo = "" | not transform if defineMessages is not imported 1`] = `
 "export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.not-imported.47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2002,8 +2002,8 @@ export default defineMessages(messages);
 exports[`definition | relativeTo = "" | string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
-    'hello': {
-        "id": "Users.username.repo.src.components.App.47.hello",
+    hello: {
+        "id": "tests.__fixtures__.definition.string-literal.47.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -2017,7 +2017,7 @@ var messages = {
 };
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.97.hello",
+        "id": "tests.__fixtures__.definition.use-variable.100.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2028,7 +2028,7 @@ exports[`definition | relativeTo = "" | with include value 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.with-template-literal.47.hello",
         "defaultMessage": "hello world ".concat(1)
     }
 });
@@ -2039,7 +2039,7 @@ exports[`definition | relativeTo = "" | with other func 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.with-other-func.47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2053,7 +2053,7 @@ exports[`definition | relativeTo = "" | with other specifier 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.80.hello",
+        "id": "tests.__fixtures__.definition.with-other-specifier.80.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -2069,12 +2069,12 @@ defineMessages({
     },
     world: {
         defaultMessage: 'world',
-        "id": "Users.username.repo.src.components.App.47.world"
+        "id": "tests.__fixtures__.definition.object-arg.47.world"
     },
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "Users.username.repo.src.components.App.47.headerTitle"
+        "id": "tests.__fixtures__.definition.object-arg.47.headerTitle"
     }
 });
 "
@@ -2084,7 +2084,7 @@ exports[`definition | relativeTo = "../" | default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.62.hello",
+        "id": "tests.__fixtures__.definition.default.62.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2112,7 +2112,7 @@ exports[`definition | relativeTo = "../" | leading comment 1`] = `
 export default defineMessages({
     // The main Hello of our app.
     hello: {
-        "id": "Users.username.repo.src.components.App.62.hello",
+        "id": "tests.__fixtures__.definition.leading-comment.62.hello",
         "defaultMessage": "hello"
     },
     // Another Hello,
@@ -2132,7 +2132,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "Users.username.repo.src.components.App.62.world"
+        "id": "tests.__fixtures__.definition.leading-comment-with-description.62.world"
     }
 });
 "
@@ -2142,7 +2142,7 @@ exports[`definition | relativeTo = "../" | moduleSourceName 1`] = `
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.70.hello",
+        "id": "tests.__fixtures__.definition.module-source-name.70.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2153,13 +2153,13 @@ exports[`definition | relativeTo = "../" | multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.68.hello",
+        "id": "tests.__fixtures__.definition.multi-export.68.hello",
         "defaultMessage": "hello world extra"
     }
 });
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.133.hello",
+        "id": "tests.__fixtures__.definition.multi-export.137.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -2180,7 +2180,7 @@ export default m[0]({
 exports[`definition | relativeTo = "../" | not transform if defineMessages is not imported 1`] = `
 "export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.not-imported.47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2208,8 +2208,8 @@ export default defineMessages(messages);
 exports[`definition | relativeTo = "../" | string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
-    'hello': {
-        "id": "Users.username.repo.src.components.App.47.hello",
+    hello: {
+        "id": "tests.__fixtures__.definition.string-literal.47.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -2223,7 +2223,7 @@ var messages = {
 };
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.97.hello",
+        "id": "tests.__fixtures__.definition.use-variable.100.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2234,7 +2234,7 @@ exports[`definition | relativeTo = "../" | with include value 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.with-template-literal.47.hello",
         "defaultMessage": "hello world ".concat(1)
     }
 });
@@ -2245,7 +2245,7 @@ exports[`definition | relativeTo = "../" | with other func 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.with-other-func.47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2259,7 +2259,7 @@ exports[`definition | relativeTo = "../" | with other specifier 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.80.hello",
+        "id": "tests.__fixtures__.definition.with-other-specifier.80.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -2275,12 +2275,12 @@ defineMessages({
     },
     world: {
         defaultMessage: 'world',
-        "id": "Users.username.repo.src.components.App.47.world"
+        "id": "tests.__fixtures__.definition.object-arg.47.world"
     },
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "Users.username.repo.src.components.App.47.headerTitle"
+        "id": "tests.__fixtures__.definition.object-arg.47.headerTitle"
     }
 });
 "
@@ -2290,7 +2290,7 @@ exports[`definition | removePrefix = "src" | default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.62.hello",
+        "id": "tests.__fixtures__.definition.default.62.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2318,7 +2318,7 @@ exports[`definition | removePrefix = "src" | leading comment 1`] = `
 export default defineMessages({
     // The main Hello of our app.
     hello: {
-        "id": "Users.username.repo.src.components.App.62.hello",
+        "id": "tests.__fixtures__.definition.leading-comment.62.hello",
         "defaultMessage": "hello"
     },
     // Another Hello,
@@ -2338,7 +2338,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "Users.username.repo.src.components.App.62.world"
+        "id": "tests.__fixtures__.definition.leading-comment-with-description.62.world"
     }
 });
 "
@@ -2348,7 +2348,7 @@ exports[`definition | removePrefix = "src" | moduleSourceName 1`] = `
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.70.hello",
+        "id": "tests.__fixtures__.definition.module-source-name.70.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2359,13 +2359,13 @@ exports[`definition | removePrefix = "src" | multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.68.hello",
+        "id": "tests.__fixtures__.definition.multi-export.68.hello",
         "defaultMessage": "hello world extra"
     }
 });
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.133.hello",
+        "id": "tests.__fixtures__.definition.multi-export.137.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -2386,7 +2386,7 @@ export default m[0]({
 exports[`definition | removePrefix = "src" | not transform if defineMessages is not imported 1`] = `
 "export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.not-imported.47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2414,8 +2414,8 @@ export default defineMessages(messages);
 exports[`definition | removePrefix = "src" | string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
-    'hello': {
-        "id": "Users.username.repo.src.components.App.47.hello",
+    hello: {
+        "id": "tests.__fixtures__.definition.string-literal.47.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -2429,7 +2429,7 @@ var messages = {
 };
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.97.hello",
+        "id": "tests.__fixtures__.definition.use-variable.100.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2440,7 +2440,7 @@ exports[`definition | removePrefix = "src" | with include value 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.with-template-literal.47.hello",
         "defaultMessage": "hello world ".concat(1)
     }
 });
@@ -2451,7 +2451,7 @@ exports[`definition | removePrefix = "src" | with other func 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.with-other-func.47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2465,7 +2465,7 @@ exports[`definition | removePrefix = "src" | with other specifier 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.80.hello",
+        "id": "tests.__fixtures__.definition.with-other-specifier.80.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -2481,12 +2481,12 @@ defineMessages({
     },
     world: {
         defaultMessage: 'world',
-        "id": "Users.username.repo.src.components.App.47.world"
+        "id": "tests.__fixtures__.definition.object-arg.47.world"
     },
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "Users.username.repo.src.components.App.47.headerTitle"
+        "id": "tests.__fixtures__.definition.object-arg.47.headerTitle"
     }
 });
 "
@@ -2501,12 +2501,12 @@ defineMessages({
     },
     world: {
         defaultMessage: 'world',
-        "id": "Users.username.repo.src.components.App.47.world"
+        "id": "tests.__fixtures__.definition.object-arg.47.world"
     },
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "Users.username.repo.src.components.App.47.headerTitle"
+        "id": "tests.__fixtures__.definition.object-arg.47.headerTitle"
     }
 });
 "
@@ -2516,7 +2516,7 @@ exports[`definition | removePrefix = "src.__fixtures__" | default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.62.hello",
+        "id": "tests.__fixtures__.definition.default.62.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2527,7 +2527,7 @@ exports[`definition | removePrefix = "src.__fixtures__" | default 2`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.62.hello",
+        "id": "tests.__fixtures__.definition.default.62.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2571,7 +2571,7 @@ exports[`definition | removePrefix = "src.__fixtures__" | leading comment 1`] = 
 export default defineMessages({
     // The main Hello of our app.
     hello: {
-        "id": "Users.username.repo.src.components.App.62.hello",
+        "id": "tests.__fixtures__.definition.leading-comment.62.hello",
         "defaultMessage": "hello"
     },
     // Another Hello,
@@ -2589,7 +2589,7 @@ exports[`definition | removePrefix = "src.__fixtures__" | leading comment 2`] = 
 export default defineMessages({
     // The main Hello of our app.
     hello: {
-        "id": "Users.username.repo.src.components.App.62.hello",
+        "id": "tests.__fixtures__.definition.leading-comment.62.hello",
         "defaultMessage": "hello"
     },
     // Another Hello,
@@ -2609,7 +2609,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "Users.username.repo.src.components.App.62.world"
+        "id": "tests.__fixtures__.definition.leading-comment-with-description.62.world"
     }
 });
 "
@@ -2622,7 +2622,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "Users.username.repo.src.components.App.62.world"
+        "id": "tests.__fixtures__.definition.leading-comment-with-description.62.world"
     }
 });
 "
@@ -2632,7 +2632,7 @@ exports[`definition | removePrefix = "src.__fixtures__" | moduleSourceName 1`] =
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.70.hello",
+        "id": "tests.__fixtures__.definition.module-source-name.70.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2643,7 +2643,7 @@ exports[`definition | removePrefix = "src.__fixtures__" | moduleSourceName 2`] =
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.70.hello",
+        "id": "tests.__fixtures__.definition.module-source-name.70.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2654,13 +2654,13 @@ exports[`definition | removePrefix = "src.__fixtures__" | multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.68.hello",
+        "id": "tests.__fixtures__.definition.multi-export.68.hello",
         "defaultMessage": "hello world extra"
     }
 });
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.133.hello",
+        "id": "tests.__fixtures__.definition.multi-export.137.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -2671,13 +2671,13 @@ exports[`definition | removePrefix = "src.__fixtures__" | multi export 2`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.68.hello",
+        "id": "tests.__fixtures__.definition.multi-export.68.hello",
         "defaultMessage": "hello world extra"
     }
 });
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.133.hello",
+        "id": "tests.__fixtures__.definition.multi-export.137.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -2709,7 +2709,7 @@ export default m[0]({
 exports[`definition | removePrefix = "src.__fixtures__" | not transform if defineMessages is not imported 1`] = `
 "export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.not-imported.47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2719,7 +2719,7 @@ exports[`definition | removePrefix = "src.__fixtures__" | not transform if defin
 exports[`definition | removePrefix = "src.__fixtures__" | not transform if defineMessages is not imported 2`] = `
 "export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.not-imported.47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2765,8 +2765,8 @@ export default defineMessages(messages);
 exports[`definition | removePrefix = "src.__fixtures__" | string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
-    'hello': {
-        "id": "Users.username.repo.src.components.App.47.hello",
+    hello: {
+        "id": "tests.__fixtures__.definition.string-literal.47.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -2776,8 +2776,8 @@ defineMessages({
 exports[`definition | removePrefix = "src.__fixtures__" | string literal 2`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
-    'hello': {
-        "id": "Users.username.repo.src.components.App.47.hello",
+    hello: {
+        "id": "tests.__fixtures__.definition.string-literal.47.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -2791,7 +2791,7 @@ var messages = {
 };
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.97.hello",
+        "id": "tests.__fixtures__.definition.use-variable.100.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2805,7 +2805,7 @@ var messages = {
 };
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.97.hello",
+        "id": "tests.__fixtures__.definition.use-variable.100.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2816,7 +2816,7 @@ exports[`definition | removePrefix = "src.__fixtures__" | with include value 1`]
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.with-template-literal.47.hello",
         "defaultMessage": "hello world ".concat(1)
     }
 });
@@ -2827,7 +2827,7 @@ exports[`definition | removePrefix = "src.__fixtures__" | with include value 2`]
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.with-template-literal.47.hello",
         "defaultMessage": "hello world ".concat(1)
     }
 });
@@ -2838,7 +2838,7 @@ exports[`definition | removePrefix = "src.__fixtures__" | with other func 1`] = 
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.with-other-func.47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2852,7 +2852,7 @@ exports[`definition | removePrefix = "src.__fixtures__" | with other func 2`] = 
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.with-other-func.47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2866,7 +2866,7 @@ exports[`definition | removePrefix = "src.__fixtures__" | with other specifier 1
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.80.hello",
+        "id": "tests.__fixtures__.definition.with-other-specifier.80.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -2877,7 +2877,7 @@ exports[`definition | removePrefix = "src.__fixtures__" | with other specifier 2
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.80.hello",
+        "id": "tests.__fixtures__.definition.with-other-specifier.80.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -2893,12 +2893,12 @@ defineMessages({
     },
     world: {
         defaultMessage: 'world',
-        "id": "Users.username.repo.src.components.App.47.world"
+        "id": "tests.__fixtures__.definition.object-arg.47.world"
     },
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "Users.username.repo.src.components.App.47.headerTitle"
+        "id": "tests.__fixtures__.definition.object-arg.47.headerTitle"
     }
 });
 "
@@ -2908,7 +2908,7 @@ exports[`definition | removePrefix = "src/" -- with slash | default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.62.hello",
+        "id": "tests.__fixtures__.definition.default.62.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2936,7 +2936,7 @@ exports[`definition | removePrefix = "src/" -- with slash | leading comment 1`] 
 export default defineMessages({
     // The main Hello of our app.
     hello: {
-        "id": "Users.username.repo.src.components.App.62.hello",
+        "id": "tests.__fixtures__.definition.leading-comment.62.hello",
         "defaultMessage": "hello"
     },
     // Another Hello,
@@ -2956,7 +2956,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "Users.username.repo.src.components.App.62.world"
+        "id": "tests.__fixtures__.definition.leading-comment-with-description.62.world"
     }
 });
 "
@@ -2966,7 +2966,7 @@ exports[`definition | removePrefix = "src/" -- with slash | moduleSourceName 1`]
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.70.hello",
+        "id": "tests.__fixtures__.definition.module-source-name.70.hello",
         "defaultMessage": "hello"
     }
 });
@@ -2977,13 +2977,13 @@ exports[`definition | removePrefix = "src/" -- with slash | multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.68.hello",
+        "id": "tests.__fixtures__.definition.multi-export.68.hello",
         "defaultMessage": "hello world extra"
     }
 });
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.133.hello",
+        "id": "tests.__fixtures__.definition.multi-export.137.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -3004,7 +3004,7 @@ export default m[0]({
 exports[`definition | removePrefix = "src/" -- with slash | not transform if defineMessages is not imported 1`] = `
 "export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.not-imported.47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -3032,8 +3032,8 @@ export default defineMessages(messages);
 exports[`definition | removePrefix = "src/" -- with slash | string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
-    'hello': {
-        "id": "Users.username.repo.src.components.App.47.hello",
+    hello: {
+        "id": "tests.__fixtures__.definition.string-literal.47.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -3047,7 +3047,7 @@ var messages = {
 };
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.97.hello",
+        "id": "tests.__fixtures__.definition.use-variable.100.hello",
         "defaultMessage": "hello"
     }
 });
@@ -3058,7 +3058,7 @@ exports[`definition | removePrefix = "src/" -- with slash | with include value 1
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.with-template-literal.47.hello",
         "defaultMessage": "hello world ".concat(1)
     }
 });
@@ -3069,7 +3069,7 @@ exports[`definition | removePrefix = "src/" -- with slash | with other func 1`] 
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.with-other-func.47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -3083,7 +3083,7 @@ exports[`definition | removePrefix = "src/" -- with slash | with other specifier
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.80.hello",
+        "id": "tests.__fixtures__.definition.with-other-specifier.80.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -3099,12 +3099,12 @@ defineMessages({
     },
     world: {
         defaultMessage: 'world',
-        "id": "Users.username.repo.src.components.App.47.world"
+        "id": "tests.__fixtures__.definition.object-arg.47.world"
     },
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "Users.username.repo.src.components.App.47.headerTitle"
+        "id": "tests.__fixtures__.definition.object-arg.47.headerTitle"
     }
 });
 "
@@ -3114,7 +3114,7 @@ exports[`definition | removePrefix = /__fixtures__/ | default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.62.hello",
+        "id": "tests.__fixtures__.definition.default.62.hello",
         "defaultMessage": "hello"
     }
 });
@@ -3142,7 +3142,7 @@ exports[`definition | removePrefix = /__fixtures__/ | leading comment 1`] = `
 export default defineMessages({
     // The main Hello of our app.
     hello: {
-        "id": "Users.username.repo.src.components.App.62.hello",
+        "id": "tests.__fixtures__.definition.leading-comment.62.hello",
         "defaultMessage": "hello"
     },
     // Another Hello,
@@ -3162,7 +3162,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "Users.username.repo.src.components.App.62.world"
+        "id": "tests.__fixtures__.definition.leading-comment-with-description.62.world"
     }
 });
 "
@@ -3172,7 +3172,7 @@ exports[`definition | removePrefix = /__fixtures__/ | moduleSourceName 1`] = `
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.70.hello",
+        "id": "tests.__fixtures__.definition.module-source-name.70.hello",
         "defaultMessage": "hello"
     }
 });
@@ -3183,13 +3183,13 @@ exports[`definition | removePrefix = /__fixtures__/ | multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.68.hello",
+        "id": "tests.__fixtures__.definition.multi-export.68.hello",
         "defaultMessage": "hello world extra"
     }
 });
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.133.hello",
+        "id": "tests.__fixtures__.definition.multi-export.137.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -3210,7 +3210,7 @@ export default m[0]({
 exports[`definition | removePrefix = /__fixtures__/ | not transform if defineMessages is not imported 1`] = `
 "export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.not-imported.47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -3238,8 +3238,8 @@ export default defineMessages(messages);
 exports[`definition | removePrefix = /__fixtures__/ | string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
-    'hello': {
-        "id": "Users.username.repo.src.components.App.47.hello",
+    hello: {
+        "id": "tests.__fixtures__.definition.string-literal.47.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -3253,7 +3253,7 @@ var messages = {
 };
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.97.hello",
+        "id": "tests.__fixtures__.definition.use-variable.100.hello",
         "defaultMessage": "hello"
     }
 });
@@ -3264,7 +3264,7 @@ exports[`definition | removePrefix = /__fixtures__/ | with include value 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.with-template-literal.47.hello",
         "defaultMessage": "hello world ".concat(1)
     }
 });
@@ -3275,7 +3275,7 @@ exports[`definition | removePrefix = /__fixtures__/ | with other func 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.with-other-func.47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -3289,7 +3289,7 @@ exports[`definition | removePrefix = /__fixtures__/ | with other specifier 1`] =
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.80.hello",
+        "id": "tests.__fixtures__.definition.with-other-specifier.80.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -3395,7 +3395,7 @@ export var extra = defineMessages({
 });
 export default defineMessages({
     hello: {
-        "id": "133.hello",
+        "id": "137.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -3444,7 +3444,7 @@ export default defineMessages(messages);
 exports[`definition | removePrefix = true | string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
-    'hello': {
+    hello: {
         "id": "47.hello",
         "defaultMessage": "hello world"
     }
@@ -3459,7 +3459,7 @@ var messages = {
 };
 export default defineMessages({
     hello: {
-        "id": "97.hello",
+        "id": "100.hello",
         "defaultMessage": "hello"
     }
 });
@@ -3511,12 +3511,12 @@ defineMessages({
     },
     world: {
         defaultMessage: 'world',
-        "id": "Users_username_repo_src_components_App_47.world"
+        "id": "tests___fixtures___definition_object-arg_47.world"
     },
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "Users_username_repo_src_components_App_47.headerTitle"
+        "id": "tests___fixtures___definition_object-arg_47.headerTitle"
     }
 });
 "
@@ -3526,7 +3526,7 @@ exports[`definition | separator = "_" | default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "Users_username_repo_src_components_App_62.hello",
+        "id": "tests___fixtures___definition_default_62.hello",
         "defaultMessage": "hello"
     }
 });
@@ -3554,7 +3554,7 @@ exports[`definition | separator = "_" | leading comment 1`] = `
 export default defineMessages({
     // The main Hello of our app.
     hello: {
-        "id": "Users_username_repo_src_components_App_62.hello",
+        "id": "tests___fixtures___definition_leading-comment_62.hello",
         "defaultMessage": "hello"
     },
     // Another Hello,
@@ -3574,7 +3574,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "Users_username_repo_src_components_App_62.world"
+        "id": "tests___fixtures___definition_leading-comment-with-description_62.world"
     }
 });
 "
@@ -3584,7 +3584,7 @@ exports[`definition | separator = "_" | moduleSourceName 1`] = `
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
     hello: {
-        "id": "Users_username_repo_src_components_App_70.hello",
+        "id": "tests___fixtures___definition_module-source-name_70.hello",
         "defaultMessage": "hello"
     }
 });
@@ -3595,13 +3595,13 @@ exports[`definition | separator = "_" | multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
-        "id": "Users_username_repo_src_components_App_68.hello",
+        "id": "tests___fixtures___definition_multi-export_68.hello",
         "defaultMessage": "hello world extra"
     }
 });
 export default defineMessages({
     hello: {
-        "id": "Users_username_repo_src_components_App_133.hello",
+        "id": "tests___fixtures___definition_multi-export_137.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -3622,7 +3622,7 @@ export default m[0]({
 exports[`definition | separator = "_" | not transform if defineMessages is not imported 1`] = `
 "export default defineMessages({
     hello: {
-        "id": "Users_username_repo_src_components_App_47.hello",
+        "id": "tests___fixtures___definition_not-imported_47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -3650,8 +3650,8 @@ export default defineMessages(messages);
 exports[`definition | separator = "_" | string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
-    'hello': {
-        "id": "Users_username_repo_src_components_App_47.hello",
+    hello: {
+        "id": "tests___fixtures___definition_string-literal_47.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -3665,7 +3665,7 @@ var messages = {
 };
 export default defineMessages({
     hello: {
-        "id": "Users_username_repo_src_components_App_97.hello",
+        "id": "tests___fixtures___definition_use-variable_100.hello",
         "defaultMessage": "hello"
     }
 });
@@ -3676,7 +3676,7 @@ exports[`definition | separator = "_" | with include value 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "Users_username_repo_src_components_App_47.hello",
+        "id": "tests___fixtures___definition_with-template-literal_47.hello",
         "defaultMessage": "hello world ".concat(1)
     }
 });
@@ -3687,7 +3687,7 @@ exports[`definition | separator = "_" | with other func 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "Users_username_repo_src_components_App_47.hello",
+        "id": "tests___fixtures___definition_with-other-func_47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -3701,7 +3701,7 @@ exports[`definition | separator = "_" | with other specifier 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "Users_username_repo_src_components_App_80.hello",
+        "id": "tests___fixtures___definition_with-other-specifier_80.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -3717,12 +3717,12 @@ defineMessages({
     },
     world: {
         defaultMessage: 'world',
-        "id": "Users.username.repo.src.components.App.47.world"
+        "id": "tests.__fixtures__.definition.object-arg.47.world"
     },
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "Users.username.repo.src.components.App.47.headerTitle"
+        "id": "tests.__fixtures__.definition.object-arg.47.headerTitle"
     }
 });
 "
@@ -3732,7 +3732,7 @@ exports[`definition | useKey = true | default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.62.hello",
+        "id": "tests.__fixtures__.definition.default.62.hello",
         "defaultMessage": "hello"
     }
 });
@@ -3760,7 +3760,7 @@ exports[`definition | useKey = true | leading comment 1`] = `
 export default defineMessages({
     // The main Hello of our app.
     hello: {
-        "id": "Users.username.repo.src.components.App.62.hello",
+        "id": "tests.__fixtures__.definition.leading-comment.62.hello",
         "defaultMessage": "hello"
     },
     // Another Hello,
@@ -3780,7 +3780,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "Users.username.repo.src.components.App.62.world"
+        "id": "tests.__fixtures__.definition.leading-comment-with-description.62.world"
     }
 });
 "
@@ -3790,7 +3790,7 @@ exports[`definition | useKey = true | moduleSourceName 1`] = `
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.70.hello",
+        "id": "tests.__fixtures__.definition.module-source-name.70.hello",
         "defaultMessage": "hello"
     }
 });
@@ -3801,13 +3801,13 @@ exports[`definition | useKey = true | multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.68.hello",
+        "id": "tests.__fixtures__.definition.multi-export.68.hello",
         "defaultMessage": "hello world extra"
     }
 });
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.133.hello",
+        "id": "tests.__fixtures__.definition.multi-export.137.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -3828,7 +3828,7 @@ export default m[0]({
 exports[`definition | useKey = true | not transform if defineMessages is not imported 1`] = `
 "export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.not-imported.47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -3856,8 +3856,8 @@ export default defineMessages(messages);
 exports[`definition | useKey = true | string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
-    'hello': {
-        "id": "Users.username.repo.src.components.App.47.hello",
+    hello: {
+        "id": "tests.__fixtures__.definition.string-literal.47.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -3871,7 +3871,7 @@ var messages = {
 };
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.97.hello",
+        "id": "tests.__fixtures__.definition.use-variable.100.hello",
         "defaultMessage": "hello"
     }
 });
@@ -3882,7 +3882,7 @@ exports[`definition | useKey = true | with include value 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.with-template-literal.47.hello",
         "defaultMessage": "hello world ".concat(1)
     }
 });
@@ -3893,7 +3893,7 @@ exports[`definition | useKey = true | with other func 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.47.hello",
+        "id": "tests.__fixtures__.definition.with-other-func.47.hello",
         "defaultMessage": "hello"
     }
 });
@@ -3907,7 +3907,7 @@ exports[`definition | useKey = true | with other specifier 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "Users.username.repo.src.components.App.80.hello",
+        "id": "tests.__fixtures__.definition.with-other-specifier.80.hello",
         "defaultMessage": "hello world"
     }
 });

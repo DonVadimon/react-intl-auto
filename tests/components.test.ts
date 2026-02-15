@@ -2,148 +2,72 @@ import { cases, createConfigurationSuites } from './testUtils';
 
 const normal = {
     title: 'default',
-    code: `
-import { FormattedMessage } from 'react-intl';
-
-<FormattedMessage defaultMessage="hello" />;
-`,
+    fixture: 'components/default.tsx',
 };
 
 const multiUse = {
     title: 'multiple uses',
-    code: `
-import { FormattedMessage } from 'react-intl';
-
-<FormattedMessage defaultMessage="hello" />;
-<FormattedMessage defaultMessage="another" />;
-`,
+    fixture: 'components/multiple-uses.tsx',
 };
 
 const conditionalRendering = {
     title: 'conditional rendering',
-    code: `
- import { FormattedMessage } from 'react-intl';
-        
-function App({ showMessage }) {
-    return (
-    <div>
-        {showMessage && <FormattedMessage defaultMessage="Conditional message" />}
-    </div>
-    );
-}`,
+    fixture: 'components/conditional-rendering.tsx',
 };
 
 const allProps = {
     title: 'all props',
-    code: `
-import { FormattedMessage } from 'react-intl';
-        
-function App() {
-    return (
-    <FormattedMessage 
-        defaultMessage="Hello {name}"
-        description="A greeting message"
-        values={{ name: 'World' }}
-        tagName="span"
-    />
-    );
-}`,
+    fixture: 'components/all-props.tsx',
 };
 
 const allSupportedComponents = {
     title: 'import all supported components',
-    code: `
-import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
-
-<FormattedHTMLMessage defaultMessage="<span>hello</span>" />;
-<FormattedMessage defaultMessage="hello" />;
-`,
+    fixture: 'components/all-supported-components.tsx',
 };
 
 const withValueInMessage = {
     title: 'with a value interpolated in the message',
-    code: `
-import { FormattedMessage } from 'react-intl';
-
-<FormattedMessage defaultMessage={\`hello world ${1 + 1}\`} />;
-`,
+    fixture: 'components/with-value-in-message.tsx',
 };
 
 const withVariableMessage = {
     title: 'with a variable as the defaultMessage',
-    code: `
-import { FormattedMessage } from 'react-intl';
-
-const message = "variable message";
-
-<FormattedMessage defaultMessage={message} />;
-`,
+    fixture: 'components/with-variable-message.tsx',
 };
 
 const importAsTest = {
     title: 'with FormattedMessage imported as something else',
-    code: `
-import { FormattedMessage as T } from 'react-intl';
-
-<T defaultMessage="hello" />;
-`,
+    fixture: 'components/import-as.tsx',
 };
 
 const nestedJSXTest = {
     title: 'with FormattedMessage nested in other JSX',
-    code: `
-import { FormattedMessage } from 'react-intl';
-
-<div>
-  <FormattedMessage defaultMessage="hello" />
-</div>
-`,
+    fixture: 'components/nested-jsx.tsx',
 };
 
 const notTransformIfNotImported = {
     title: 'does nothing if components not imported from react-intl',
-    code: `
-import any from 'any-module';
-<FormattedMessage defaultMessage="hello" />;
-`,
+    fixture: 'components/not-imported.tsx',
 };
 
 const notTransformIfSpreadAttribute = {
-    title: 'does nothing if component props are spread',    
-    code: `
-import { FormattedMessage } from 'react-intl';
-const props = {
-  defaultMessage: 'hello'
-};
-<FormattedMessage {...props} />;
-`,
+    title: 'does nothing if component props are spread',
+    fixture: 'components/spread-attribute.tsx',
 };
 
 const keyProp = {
     title: 'using key',
-    code: `
-import { FormattedMessage } from 'react-intl';
-
-<FormattedMessage key="foobar" defaultMessage="hello" />;
-`,
+    fixture: 'components/using-key.tsx',
 };
 
 const userId = {
     title: 'user id',
-    code: `
-import { FormattedMessage } from 'react-intl';
-
-<FormattedMessage id="foobar" defaultMessage="hello" />;
-`,
+    fixture: 'components/user-id.tsx',
 };
 
 const differentModuleSource = {
     title: 'different module source',
-    code: `
-import { FormattedMessage } from 'gatsby-plugin-intl';
-
-<FormattedMessage defaultMessage="hello" />;
-`,
+    fixture: 'components/different-module-source.tsx',
 };
 
 const tests = [

@@ -2,228 +2,92 @@ import { cases, createConfigurationSuites } from './testUtils';
 
 const defaultTest = {
     title: 'default',
-    code: `
-import { defineMessages } from 'react-intl'
-
-export default defineMessages({
-  hello: 'hello',
-})
-`,
+    fixture: 'definition/default.js',
 };
 
 const multiExport = {
     title: 'multi export',
-    code: `
-import { defineMessages } from 'react-intl'
-
-export const extra = defineMessages({
-  hello: 'hello world extra'
-})
-
-export default defineMessages({
-  hello: 'hello world',
-})
-`,
+    fixture: 'definition/multi-export.js',
 };
 
 const leadingCommentTest = {
     title: 'leading comment',
-    code: `
-import { defineMessages } from 'react-intl'
-
-export default defineMessages({
-  // The main Hello of our app.
-  hello: 'hello',
-
-  // Another Hello,
-  // multiline this time
-  world: {
-    id: 'hello.world',
-    defaultMessage: 'hello world',
-  }
-})
-`,
+    fixture: 'definition/leading-comment.js',
 };
 
 const leadingCommentWithDescriptionTest = {
     title: 'leading comment with description',
-    code: `
-import { defineMessages } from 'react-intl'
-
-export default defineMessages({
-
-  // This comment should not be used
-  world: {
-    defaultMessage: 'hello world',
-    description: 'The hello world',
-  }
-})
-`,
+    fixture: 'definition/leading-comment-with-description.js',
 };
 
 const templateString = {
     title: 'with include value',
-    code: `
-import { defineMessages } from 'react-intl'
-
-defineMessages({
-hello: \`hello world \${1}\`,
-})
-  `,
+    fixture: 'definition/with-template-literal.js',
 };
 
 const stringKey = {
     title: 'string literal',
-    code: `
-import { defineMessages } from 'react-intl'
-
-defineMessages({
-  'hello': 'hello world'
-})
-      `,
+    fixture: 'definition/string-literal.js',
 };
 
 const objectArg = {
     title: 'Object',
-    code: `
-import { defineMessages } from 'react-intl'
-
-defineMessages({
-new: {
-id: 'this is id',
-defaultMessage: 'id',
-},
-world: {
-defaultMessage: 'world',
-},
-headerTitle: {
-defaultMessage: 'Welcome to dashboard {name}!',
-description: 'Message to greet the user.',
-},
-})
-  `,
+    fixture: 'definition/object-arg.js',
 };
 
 const importAs = {
     title: 'import as',
-    code: `
-import { defineMessages as m } from 'react-intl'
-
-m({
-hello: 'hello'
-})
-
-`,
+    fixture: 'definition/import-as.js',
 };
 
 const withOtherFn = {
     title: 'with other func',
-    code: `
-import { defineMessages } from 'react-intl'
-
-defineMessages({
-hello: 'hello',
-})
-
-hello({
-id: 'hoge',
-})
-`,
+    fixture: 'definition/with-other-func.js',
 };
 
 const notImported = {
     title: 'not transform if defineMessages is not imported',
-    code: `
-import any from 'any-module'
-
-export default defineMessages({
-  hello: 'hello'
-})
-    `,
+    fixture: 'definition/not-imported.js',
 };
 
 const argsNonObject = {
     title: 'not transform when defineMessages argumens is not object',
-    code: `
-import { defineMessages } from 'react-intl'
-
-export default defineMessages(1)
-    `,
+    fixture: 'definition/args-non-object.js',
 };
 
 const useVariable = {
     title: 'when using the variable',
-    code: `
-import { defineMessages } from 'react-intl'
-
-const messages = {hello: 'hello'}
-
-export default defineMessages(messages)
-    `,
+    fixture: 'definition/use-variable.js',
 };
 
 const argsNotFound = {
     title: 'not transfrom when the variable can not be found',
-    code: `
-import { defineMessages } from 'react-intl'
-
-export default defineMessages(messages)
-    `,
+    fixture: 'definition/args-not-found.js',
 };
 
 const emptyArgs = {
     title: 'not transform when defineMessages argumens is empty',
-    code: `
-import { defineMessages } from 'react-intl'
-
-export default defineMessages()
-    `,
+    fixture: 'definition/empty-args.js',
 };
 
 const calleeNotIdentifier = {
     title: 'not transform if callee is not identifier',
-    code: `
-import { defineMessages } from 'react-intl'
-
-const m = [defineMessages]
-
-export default m[0]({
-  hello: 'hello world'
-})
-    `,
+    fixture: 'definition/callee-not-identifier.js',
 };
 
 const withOtherSpecifier = {
     title: 'with other specifier',
-    code: `
-import { defineMessages, FormattedMessage } from 'react-intl'
-
-export default defineMessages({
-hello: 'hello world',
-})
-`,
+    fixture: 'definition/with-other-specifier.js',
 };
 
 const evalString = {
     title: 'eval string',
-    code: `
-import { defineMessages } from 'react-intl'
-
-export default defineMessages({
-hello: 'hello' + 'world',
-})
-`,
+    fixture: 'definition/eval-string.js',
 };
 
 const differentModuleSource = {
     title: 'moduleSourceName',
-    code: `
-import { defineMessages } from 'gatsby-plugin-intl'
-
-export default defineMessages({
-  hello: 'hello',
-})
-  `,
+    fixture: 'definition/module-source-name.js',
 };
 
 const tests = [

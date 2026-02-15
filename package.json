@@ -12,7 +12,7 @@
     "check-token": "node scripts/check-npm-token.js",
     "create-labels": "node scripts/create-labels.js",
     "test-release": "node scripts/test-release.js",
-    "format": "prettier --write \"{src,__tests__,examples,scripts}/**/*.{ts,tsx,js,jsx}\""
+    "format": "prettier --write \"{src,tests,examples,scripts}/**/*.{ts,tsx,js,jsx}\""
   },
   "repository": {
     "type": "git",

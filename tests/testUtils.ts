@@ -12,8 +12,6 @@ type PluginOptions = {
     removePrefix?: boolean | string | RegExp;
     /** Include filename in ID */
     filebase?: boolean;
-    /** Include export name in ID */
-    includeExportName?: boolean;
     /** Use key property instead of hash */
     useKey?: boolean;
     /** Module source name */
@@ -86,7 +84,7 @@ export async function cases(suites: TestSuite[]) {
 }
 
 export const createConfigurationSuites = (title: string, tests: TestCase[]) => {
-    const withPrefix = (t: string) => `${title} - ${t}`;
+    const withPrefix = (t: string) => `${title} | ${t} |`;
 
     const suites: TestSuite[] = [
         { title: 'default', tests },
@@ -106,12 +104,6 @@ export const createConfigurationSuites = (title: string, tests: TestCase[]) => {
             title: 'filebase = true',
             tests,
             pluginOptions: { filebase: true },
-        },
-
-        {
-            title: 'includeExportName = false',
-            tests,
-            pluginOptions: { includeExportName: false },
         },
 
         {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`components - default all props 1`] = `
+exports[`components | default | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App() {
@@ -17,7 +17,7 @@ function App() {
 "
 `;
 
-exports[`components - default conditional rendering 1`] = `
+exports[`components | default | conditional rendering 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App(param) {
@@ -32,7 +32,7 @@ function App(param) {
 "
 `;
 
-exports[`components - default default 1`] = `
+exports[`components | default | default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -42,7 +42,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - default different module source 1`] = `
+exports[`components | default | different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'gatsby-plugin-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -52,7 +52,7 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 "
 `;
 
-exports[`components - default does nothing if component props are spread 1`] = `
+exports[`components | default | does nothing if component props are spread 1`] = `
 "function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -90,7 +90,7 @@ var props = {
 "
 `;
 
-exports[`components - default does nothing if components not imported from react-intl 1`] = `
+exports[`components | default | does nothing if components not imported from react-intl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "Users.username.repo.src.components.App.613153351",
@@ -100,7 +100,7 @@ export { };
 "
 `;
 
-exports[`components - default import all supported components 1`] = `
+exports[`components | default | import all supported components 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
@@ -114,7 +114,7 @@ import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - default multiple uses 1`] = `
+exports[`components | default | multiple uses 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -128,7 +128,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - default user id 1`] = `
+exports[`components | default | user id 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -138,7 +138,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - default using key 1`] = `
+exports[`components | default | using key 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -148,7 +148,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - default with FormattedMessage imported as something else 1`] = `
+exports[`components | default | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as T } from 'react-intl';
 /*#__PURE__*/ _jsx(T, {
@@ -158,7 +158,7 @@ import { FormattedMessage as T } from 'react-intl';
 "
 `;
 
-exports[`components - default with FormattedMessage nested in other JSX 1`] = `
+exports[`components | default | with FormattedMessage nested in other JSX 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
@@ -170,7 +170,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - default with a value interpolated in the message 1`] = `
+exports[`components | default | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -180,7 +180,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - default with a variable as the defaultMessage 1`] = `
+exports[`components | default | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 var message = "variable message";
@@ -191,7 +191,7 @@ var message = "variable message";
 "
 `;
 
-exports[`components - filebase = true all props 1`] = `
+exports[`components | filebase = true | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App() {
@@ -208,7 +208,7 @@ function App() {
 "
 `;
 
-exports[`components - filebase = true conditional rendering 1`] = `
+exports[`components | filebase = true | conditional rendering 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App(param) {
@@ -223,7 +223,7 @@ function App(param) {
 "
 `;
 
-exports[`components - filebase = true default 1`] = `
+exports[`components | filebase = true | default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -233,7 +233,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - filebase = true different module source 1`] = `
+exports[`components | filebase = true | different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'gatsby-plugin-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -243,7 +243,7 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 "
 `;
 
-exports[`components - filebase = true does nothing if component props are spread 1`] = `
+exports[`components | filebase = true | does nothing if component props are spread 1`] = `
 "function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -281,7 +281,7 @@ var props = {
 "
 `;
 
-exports[`components - filebase = true does nothing if components not imported from react-intl 1`] = `
+exports[`components | filebase = true | does nothing if components not imported from react-intl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "App.613153351",
@@ -291,7 +291,7 @@ export { };
 "
 `;
 
-exports[`components - filebase = true import all supported components 1`] = `
+exports[`components | filebase = true | import all supported components 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
@@ -305,7 +305,7 @@ import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - filebase = true multiple uses 1`] = `
+exports[`components | filebase = true | multiple uses 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -319,7 +319,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - filebase = true user id 1`] = `
+exports[`components | filebase = true | user id 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -329,7 +329,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - filebase = true using key 1`] = `
+exports[`components | filebase = true | using key 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -339,7 +339,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - filebase = true with FormattedMessage imported as something else 1`] = `
+exports[`components | filebase = true | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as T } from 'react-intl';
 /*#__PURE__*/ _jsx(T, {
@@ -349,7 +349,7 @@ import { FormattedMessage as T } from 'react-intl';
 "
 `;
 
-exports[`components - filebase = true with FormattedMessage nested in other JSX 1`] = `
+exports[`components | filebase = true | with FormattedMessage nested in other JSX 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
@@ -361,7 +361,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - filebase = true with a value interpolated in the message 1`] = `
+exports[`components | filebase = true | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -371,7 +371,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - filebase = true with a variable as the defaultMessage 1`] = `
+exports[`components | filebase = true | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 var message = "variable message";
@@ -382,7 +382,7 @@ var message = "variable message";
 "
 `;
 
-exports[`components - hash + filebase = true all props 1`] = `
+exports[`components | hash + filebase = true | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App() {
@@ -399,7 +399,7 @@ function App() {
 "
 `;
 
-exports[`components - hash + filebase = true conditional rendering 1`] = `
+exports[`components | hash + filebase = true | conditional rendering 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App(param) {
@@ -414,7 +414,7 @@ function App(param) {
 "
 `;
 
-exports[`components - hash + filebase = true default 1`] = `
+exports[`components | hash + filebase = true | default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -424,7 +424,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash + filebase = true different module source 1`] = `
+exports[`components | hash + filebase = true | different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'gatsby-plugin-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -434,7 +434,7 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 "
 `;
 
-exports[`components - hash + filebase = true does nothing if component props are spread 1`] = `
+exports[`components | hash + filebase = true | does nothing if component props are spread 1`] = `
 "function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -472,7 +472,7 @@ var props = {
 "
 `;
 
-exports[`components - hash + filebase = true does nothing if components not imported from react-intl 1`] = `
+exports[`components | hash + filebase = true | does nothing if components not imported from react-intl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "QXBwLjYxMzE1MzM1MQ==",
@@ -482,7 +482,7 @@ export { };
 "
 `;
 
-exports[`components - hash + filebase = true import all supported components 1`] = `
+exports[`components | hash + filebase = true | import all supported components 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
@@ -496,7 +496,7 @@ import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash + filebase = true multiple uses 1`] = `
+exports[`components | hash + filebase = true | multiple uses 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -510,7 +510,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash + filebase = true user id 1`] = `
+exports[`components | hash + filebase = true | user id 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -520,7 +520,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash + filebase = true using key 1`] = `
+exports[`components | hash + filebase = true | using key 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -530,7 +530,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash + filebase = true with FormattedMessage imported as something else 1`] = `
+exports[`components | hash + filebase = true | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as T } from 'react-intl';
 /*#__PURE__*/ _jsx(T, {
@@ -540,7 +540,7 @@ import { FormattedMessage as T } from 'react-intl';
 "
 `;
 
-exports[`components - hash + filebase = true with FormattedMessage nested in other JSX 1`] = `
+exports[`components | hash + filebase = true | with FormattedMessage nested in other JSX 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
@@ -552,7 +552,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash + filebase = true with a value interpolated in the message 1`] = `
+exports[`components | hash + filebase = true | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -562,7 +562,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash + filebase = true with a variable as the defaultMessage 1`] = `
+exports[`components | hash + filebase = true | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 var message = "variable message";
@@ -573,7 +573,7 @@ var message = "variable message";
 "
 `;
 
-exports[`components - hash + relativeTo = "src" all props 1`] = `
+exports[`components | hash + relativeTo = "src" | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App() {
@@ -590,7 +590,7 @@ function App() {
 "
 `;
 
-exports[`components - hash + relativeTo = "src" conditional rendering 1`] = `
+exports[`components | hash + relativeTo = "src" | conditional rendering 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App(param) {
@@ -605,7 +605,7 @@ function App(param) {
 "
 `;
 
-exports[`components - hash + relativeTo = "src" default 1`] = `
+exports[`components | hash + relativeTo = "src" | default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -615,7 +615,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash + relativeTo = "src" different module source 1`] = `
+exports[`components | hash + relativeTo = "src" | different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'gatsby-plugin-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -625,7 +625,7 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 "
 `;
 
-exports[`components - hash + relativeTo = "src" does nothing if component props are spread 1`] = `
+exports[`components | hash + relativeTo = "src" | does nothing if component props are spread 1`] = `
 "function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -663,7 +663,7 @@ var props = {
 "
 `;
 
-exports[`components - hash + relativeTo = "src" does nothing if components not imported from react-intl 1`] = `
+exports[`components | hash + relativeTo = "src" | does nothing if components not imported from react-intl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
@@ -673,7 +673,7 @@ export { };
 "
 `;
 
-exports[`components - hash + relativeTo = "src" import all supported components 1`] = `
+exports[`components | hash + relativeTo = "src" | import all supported components 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
@@ -687,7 +687,7 @@ import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash + relativeTo = "src" multiple uses 1`] = `
+exports[`components | hash + relativeTo = "src" | multiple uses 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -701,7 +701,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash + relativeTo = "src" user id 1`] = `
+exports[`components | hash + relativeTo = "src" | user id 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -711,7 +711,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash + relativeTo = "src" using key 1`] = `
+exports[`components | hash + relativeTo = "src" | using key 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -721,7 +721,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash + relativeTo = "src" with FormattedMessage imported as something else 1`] = `
+exports[`components | hash + relativeTo = "src" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as T } from 'react-intl';
 /*#__PURE__*/ _jsx(T, {
@@ -731,7 +731,7 @@ import { FormattedMessage as T } from 'react-intl';
 "
 `;
 
-exports[`components - hash + relativeTo = "src" with FormattedMessage nested in other JSX 1`] = `
+exports[`components | hash + relativeTo = "src" | with FormattedMessage nested in other JSX 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
@@ -743,7 +743,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash + relativeTo = "src" with a value interpolated in the message 1`] = `
+exports[`components | hash + relativeTo = "src" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -753,7 +753,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash + relativeTo = "src" with a variable as the defaultMessage 1`] = `
+exports[`components | hash + relativeTo = "src" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 var message = "variable message";
@@ -764,7 +764,7 @@ var message = "variable message";
 "
 `;
 
-exports[`components - hash + removePrefix = "src/" all props 1`] = `
+exports[`components | hash + removePrefix = "src/" | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App() {
@@ -781,7 +781,7 @@ function App() {
 "
 `;
 
-exports[`components - hash + removePrefix = "src/" conditional rendering 1`] = `
+exports[`components | hash + removePrefix = "src/" | conditional rendering 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App(param) {
@@ -796,7 +796,7 @@ function App(param) {
 "
 `;
 
-exports[`components - hash + removePrefix = "src/" default 1`] = `
+exports[`components | hash + removePrefix = "src/" | default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -806,7 +806,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash + removePrefix = "src/" different module source 1`] = `
+exports[`components | hash + removePrefix = "src/" | different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'gatsby-plugin-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -816,7 +816,7 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 "
 `;
 
-exports[`components - hash + removePrefix = "src/" does nothing if component props are spread 1`] = `
+exports[`components | hash + removePrefix = "src/" | does nothing if component props are spread 1`] = `
 "function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -854,7 +854,7 @@ var props = {
 "
 `;
 
-exports[`components - hash + removePrefix = "src/" does nothing if components not imported from react-intl 1`] = `
+exports[`components | hash + removePrefix = "src/" | does nothing if components not imported from react-intl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
@@ -864,7 +864,7 @@ export { };
 "
 `;
 
-exports[`components - hash + removePrefix = "src/" import all supported components 1`] = `
+exports[`components | hash + removePrefix = "src/" | import all supported components 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
@@ -878,7 +878,7 @@ import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash + removePrefix = "src/" multiple uses 1`] = `
+exports[`components | hash + removePrefix = "src/" | multiple uses 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -892,7 +892,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash + removePrefix = "src/" user id 1`] = `
+exports[`components | hash + removePrefix = "src/" | user id 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -902,7 +902,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash + removePrefix = "src/" using key 1`] = `
+exports[`components | hash + removePrefix = "src/" | using key 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -912,7 +912,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash + removePrefix = "src/" with FormattedMessage imported as something else 1`] = `
+exports[`components | hash + removePrefix = "src/" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as T } from 'react-intl';
 /*#__PURE__*/ _jsx(T, {
@@ -922,7 +922,7 @@ import { FormattedMessage as T } from 'react-intl';
 "
 `;
 
-exports[`components - hash + removePrefix = "src/" with FormattedMessage nested in other JSX 1`] = `
+exports[`components | hash + removePrefix = "src/" | with FormattedMessage nested in other JSX 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
@@ -934,7 +934,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash + removePrefix = "src/" with a value interpolated in the message 1`] = `
+exports[`components | hash + removePrefix = "src/" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -944,7 +944,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash + removePrefix = "src/" with a variable as the defaultMessage 1`] = `
+exports[`components | hash + removePrefix = "src/" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 var message = "variable message";
@@ -955,7 +955,7 @@ var message = "variable message";
 "
 `;
 
-exports[`components - hash base64 all props 1`] = `
+exports[`components | hash base64 | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App() {
@@ -972,7 +972,7 @@ function App() {
 "
 `;
 
-exports[`components - hash base64 conditional rendering 1`] = `
+exports[`components | hash base64 | conditional rendering 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App(param) {
@@ -987,7 +987,7 @@ function App(param) {
 "
 `;
 
-exports[`components - hash base64 default 1`] = `
+exports[`components | hash base64 | default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -997,7 +997,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash base64 different module source 1`] = `
+exports[`components | hash base64 | different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'gatsby-plugin-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1007,7 +1007,7 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 "
 `;
 
-exports[`components - hash base64 does nothing if component props are spread 1`] = `
+exports[`components | hash base64 | does nothing if component props are spread 1`] = `
 "function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -1045,7 +1045,7 @@ var props = {
 "
 `;
 
-exports[`components - hash base64 does nothing if components not imported from react-intl 1`] = `
+exports[`components | hash base64 | does nothing if components not imported from react-intl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx",
@@ -1055,7 +1055,7 @@ export { };
 "
 `;
 
-exports[`components - hash base64 import all supported components 1`] = `
+exports[`components | hash base64 | import all supported components 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
@@ -1069,7 +1069,7 @@ import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash base64 multiple uses 1`] = `
+exports[`components | hash base64 | multiple uses 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1083,7 +1083,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash base64 user id 1`] = `
+exports[`components | hash base64 | user id 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1093,7 +1093,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash base64 using key 1`] = `
+exports[`components | hash base64 | using key 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1103,7 +1103,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash base64 with FormattedMessage imported as something else 1`] = `
+exports[`components | hash base64 | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as T } from 'react-intl';
 /*#__PURE__*/ _jsx(T, {
@@ -1113,7 +1113,7 @@ import { FormattedMessage as T } from 'react-intl';
 "
 `;
 
-exports[`components - hash base64 with FormattedMessage nested in other JSX 1`] = `
+exports[`components | hash base64 | with FormattedMessage nested in other JSX 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
@@ -1125,7 +1125,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash base64 with a value interpolated in the message 1`] = `
+exports[`components | hash base64 | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1135,7 +1135,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash base64 with a variable as the defaultMessage 1`] = `
+exports[`components | hash base64 | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 var message = "variable message";
@@ -1146,7 +1146,7 @@ var message = "variable message";
 "
 `;
 
-exports[`components - hash murmur3 all props 1`] = `
+exports[`components | hash murmur3 | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App() {
@@ -1163,7 +1163,7 @@ function App() {
 "
 `;
 
-exports[`components - hash murmur3 conditional rendering 1`] = `
+exports[`components | hash murmur3 | conditional rendering 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App(param) {
@@ -1178,7 +1178,7 @@ function App(param) {
 "
 `;
 
-exports[`components - hash murmur3 default 1`] = `
+exports[`components | hash murmur3 | default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1188,7 +1188,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash murmur3 different module source 1`] = `
+exports[`components | hash murmur3 | different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'gatsby-plugin-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1198,7 +1198,7 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 "
 `;
 
-exports[`components - hash murmur3 does nothing if component props are spread 1`] = `
+exports[`components | hash murmur3 | does nothing if component props are spread 1`] = `
 "function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -1236,7 +1236,7 @@ var props = {
 "
 `;
 
-exports[`components - hash murmur3 does nothing if components not imported from react-intl 1`] = `
+exports[`components | hash murmur3 | does nothing if components not imported from react-intl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "2564566158",
@@ -1246,7 +1246,7 @@ export { };
 "
 `;
 
-exports[`components - hash murmur3 import all supported components 1`] = `
+exports[`components | hash murmur3 | import all supported components 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
@@ -1260,7 +1260,7 @@ import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash murmur3 multiple uses 1`] = `
+exports[`components | hash murmur3 | multiple uses 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1274,7 +1274,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash murmur3 user id 1`] = `
+exports[`components | hash murmur3 | user id 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1284,7 +1284,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash murmur3 using key 1`] = `
+exports[`components | hash murmur3 | using key 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1294,7 +1294,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash murmur3 with FormattedMessage imported as something else 1`] = `
+exports[`components | hash murmur3 | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as T } from 'react-intl';
 /*#__PURE__*/ _jsx(T, {
@@ -1304,7 +1304,7 @@ import { FormattedMessage as T } from 'react-intl';
 "
 `;
 
-exports[`components - hash murmur3 with FormattedMessage nested in other JSX 1`] = `
+exports[`components | hash murmur3 | with FormattedMessage nested in other JSX 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
@@ -1316,7 +1316,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash murmur3 with a value interpolated in the message 1`] = `
+exports[`components | hash murmur3 | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1326,7 +1326,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash murmur3 with a variable as the defaultMessage 1`] = `
+exports[`components | hash murmur3 | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 var message = "variable message";
@@ -1337,7 +1337,7 @@ var message = "variable message";
 "
 `;
 
-exports[`components - hash unknown fallback to murmur3 all props 1`] = `
+exports[`components | hash unknown fallback to murmur3 | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App() {
@@ -1354,7 +1354,7 @@ function App() {
 "
 `;
 
-exports[`components - hash unknown fallback to murmur3 conditional rendering 1`] = `
+exports[`components | hash unknown fallback to murmur3 | conditional rendering 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App(param) {
@@ -1369,7 +1369,7 @@ function App(param) {
 "
 `;
 
-exports[`components - hash unknown fallback to murmur3 default 1`] = `
+exports[`components | hash unknown fallback to murmur3 | default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1379,7 +1379,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash unknown fallback to murmur3 different module source 1`] = `
+exports[`components | hash unknown fallback to murmur3 | different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'gatsby-plugin-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1389,7 +1389,7 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 "
 `;
 
-exports[`components - hash unknown fallback to murmur3 does nothing if component props are spread 1`] = `
+exports[`components | hash unknown fallback to murmur3 | does nothing if component props are spread 1`] = `
 "function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -1427,7 +1427,7 @@ var props = {
 "
 `;
 
-exports[`components - hash unknown fallback to murmur3 does nothing if components not imported from react-intl 1`] = `
+exports[`components | hash unknown fallback to murmur3 | does nothing if components not imported from react-intl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "2564566158",
@@ -1437,7 +1437,7 @@ export { };
 "
 `;
 
-exports[`components - hash unknown fallback to murmur3 import all supported components 1`] = `
+exports[`components | hash unknown fallback to murmur3 | import all supported components 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
@@ -1451,7 +1451,7 @@ import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash unknown fallback to murmur3 multiple uses 1`] = `
+exports[`components | hash unknown fallback to murmur3 | multiple uses 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1465,7 +1465,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash unknown fallback to murmur3 user id 1`] = `
+exports[`components | hash unknown fallback to murmur3 | user id 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1475,7 +1475,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash unknown fallback to murmur3 using key 1`] = `
+exports[`components | hash unknown fallback to murmur3 | using key 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1485,7 +1485,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash unknown fallback to murmur3 with FormattedMessage imported as something else 1`] = `
+exports[`components | hash unknown fallback to murmur3 | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as T } from 'react-intl';
 /*#__PURE__*/ _jsx(T, {
@@ -1495,7 +1495,7 @@ import { FormattedMessage as T } from 'react-intl';
 "
 `;
 
-exports[`components - hash unknown fallback to murmur3 with FormattedMessage nested in other JSX 1`] = `
+exports[`components | hash unknown fallback to murmur3 | with FormattedMessage nested in other JSX 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
@@ -1507,7 +1507,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash unknown fallback to murmur3 with a value interpolated in the message 1`] = `
+exports[`components | hash unknown fallback to murmur3 | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1517,7 +1517,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - hash unknown fallback to murmur3 with a variable as the defaultMessage 1`] = `
+exports[`components | hash unknown fallback to murmur3 | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 var message = "variable message";
@@ -1528,7 +1528,7 @@ var message = "variable message";
 "
 `;
 
-exports[`components - includeExportName = false all props 1`] = `
+exports[`components | moduleSourceNameTest | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App() {
@@ -1545,7 +1545,7 @@ function App() {
 "
 `;
 
-exports[`components - includeExportName = false conditional rendering 1`] = `
+exports[`components | moduleSourceNameTest | conditional rendering 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App(param) {
@@ -1560,7 +1560,7 @@ function App(param) {
 "
 `;
 
-exports[`components - includeExportName = false default 1`] = `
+exports[`components | moduleSourceNameTest | default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1570,7 +1570,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - includeExportName = false different module source 1`] = `
+exports[`components | moduleSourceNameTest | different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'gatsby-plugin-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1580,7 +1580,7 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 "
 `;
 
-exports[`components - includeExportName = false does nothing if component props are spread 1`] = `
+exports[`components | moduleSourceNameTest | does nothing if component props are spread 1`] = `
 "function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -1618,7 +1618,7 @@ var props = {
 "
 `;
 
-exports[`components - includeExportName = false does nothing if components not imported from react-intl 1`] = `
+exports[`components | moduleSourceNameTest | does nothing if components not imported from react-intl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "Users.username.repo.src.components.App.613153351",
@@ -1628,7 +1628,7 @@ export { };
 "
 `;
 
-exports[`components - includeExportName = false import all supported components 1`] = `
+exports[`components | moduleSourceNameTest | import all supported components 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
@@ -1642,7 +1642,7 @@ import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - includeExportName = false multiple uses 1`] = `
+exports[`components | moduleSourceNameTest | multiple uses 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1656,7 +1656,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - includeExportName = false user id 1`] = `
+exports[`components | moduleSourceNameTest | user id 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1666,7 +1666,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - includeExportName = false using key 1`] = `
+exports[`components | moduleSourceNameTest | using key 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1676,17 +1676,16 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - includeExportName = false with FormattedMessage imported as something else 1`] = `
+exports[`components | moduleSourceNameTest | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as T } from 'react-intl';
 /*#__PURE__*/ _jsx(T, {
-    id: "Users.username.repo.src.components.App.613153351",
     defaultMessage: "hello"
 });
 "
 `;
 
-exports[`components - includeExportName = false with FormattedMessage nested in other JSX 1`] = `
+exports[`components | moduleSourceNameTest | with FormattedMessage nested in other JSX 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
@@ -1698,7 +1697,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - includeExportName = false with a value interpolated in the message 1`] = `
+exports[`components | moduleSourceNameTest | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1708,7 +1707,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - includeExportName = false with a variable as the defaultMessage 1`] = `
+exports[`components | moduleSourceNameTest | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 var message = "variable message";
@@ -1719,7 +1718,7 @@ var message = "variable message";
 "
 `;
 
-exports[`components - moduleSourceNameTest all props 1`] = `
+exports[`components | relativeTo = "" | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App() {
@@ -1736,7 +1735,7 @@ function App() {
 "
 `;
 
-exports[`components - moduleSourceNameTest conditional rendering 1`] = `
+exports[`components | relativeTo = "" | conditional rendering 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App(param) {
@@ -1751,7 +1750,7 @@ function App(param) {
 "
 `;
 
-exports[`components - moduleSourceNameTest default 1`] = `
+exports[`components | relativeTo = "" | default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1761,7 +1760,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - moduleSourceNameTest different module source 1`] = `
+exports[`components | relativeTo = "" | different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'gatsby-plugin-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1771,7 +1770,7 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 "
 `;
 
-exports[`components - moduleSourceNameTest does nothing if component props are spread 1`] = `
+exports[`components | relativeTo = "" | does nothing if component props are spread 1`] = `
 "function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -1809,7 +1808,7 @@ var props = {
 "
 `;
 
-exports[`components - moduleSourceNameTest does nothing if components not imported from react-intl 1`] = `
+exports[`components | relativeTo = "" | does nothing if components not imported from react-intl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "Users.username.repo.src.components.App.613153351",
@@ -1819,7 +1818,7 @@ export { };
 "
 `;
 
-exports[`components - moduleSourceNameTest import all supported components 1`] = `
+exports[`components | relativeTo = "" | import all supported components 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
@@ -1833,7 +1832,7 @@ import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - moduleSourceNameTest multiple uses 1`] = `
+exports[`components | relativeTo = "" | multiple uses 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1847,7 +1846,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - moduleSourceNameTest user id 1`] = `
+exports[`components | relativeTo = "" | user id 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1857,7 +1856,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - moduleSourceNameTest using key 1`] = `
+exports[`components | relativeTo = "" | using key 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1867,16 +1866,17 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - moduleSourceNameTest with FormattedMessage imported as something else 1`] = `
+exports[`components | relativeTo = "" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as T } from 'react-intl';
 /*#__PURE__*/ _jsx(T, {
+    id: "Users.username.repo.src.components.App.613153351",
     defaultMessage: "hello"
 });
 "
 `;
 
-exports[`components - moduleSourceNameTest with FormattedMessage nested in other JSX 1`] = `
+exports[`components | relativeTo = "" | with FormattedMessage nested in other JSX 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
@@ -1888,7 +1888,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - moduleSourceNameTest with a value interpolated in the message 1`] = `
+exports[`components | relativeTo = "" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1898,7 +1898,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - moduleSourceNameTest with a variable as the defaultMessage 1`] = `
+exports[`components | relativeTo = "" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 var message = "variable message";
@@ -1909,7 +1909,7 @@ var message = "variable message";
 "
 `;
 
-exports[`components - relativeTo = "" all props 1`] = `
+exports[`components | relativeTo = "../" | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App() {
@@ -1926,7 +1926,7 @@ function App() {
 "
 `;
 
-exports[`components - relativeTo = "" conditional rendering 1`] = `
+exports[`components | relativeTo = "../" | conditional rendering 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App(param) {
@@ -1941,7 +1941,7 @@ function App(param) {
 "
 `;
 
-exports[`components - relativeTo = "" default 1`] = `
+exports[`components | relativeTo = "../" | default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1951,7 +1951,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - relativeTo = "" different module source 1`] = `
+exports[`components | relativeTo = "../" | different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'gatsby-plugin-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -1961,7 +1961,7 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 "
 `;
 
-exports[`components - relativeTo = "" does nothing if component props are spread 1`] = `
+exports[`components | relativeTo = "../" | does nothing if component props are spread 1`] = `
 "function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -1999,7 +1999,7 @@ var props = {
 "
 `;
 
-exports[`components - relativeTo = "" does nothing if components not imported from react-intl 1`] = `
+exports[`components | relativeTo = "../" | does nothing if components not imported from react-intl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "Users.username.repo.src.components.App.613153351",
@@ -2009,7 +2009,7 @@ export { };
 "
 `;
 
-exports[`components - relativeTo = "" import all supported components 1`] = `
+exports[`components | relativeTo = "../" | import all supported components 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
@@ -2023,7 +2023,7 @@ import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - relativeTo = "" multiple uses 1`] = `
+exports[`components | relativeTo = "../" | multiple uses 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2037,7 +2037,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - relativeTo = "" user id 1`] = `
+exports[`components | relativeTo = "../" | user id 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2047,7 +2047,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - relativeTo = "" using key 1`] = `
+exports[`components | relativeTo = "../" | using key 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2057,7 +2057,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - relativeTo = "" with FormattedMessage imported as something else 1`] = `
+exports[`components | relativeTo = "../" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as T } from 'react-intl';
 /*#__PURE__*/ _jsx(T, {
@@ -2067,7 +2067,7 @@ import { FormattedMessage as T } from 'react-intl';
 "
 `;
 
-exports[`components - relativeTo = "" with FormattedMessage nested in other JSX 1`] = `
+exports[`components | relativeTo = "../" | with FormattedMessage nested in other JSX 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
@@ -2079,7 +2079,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - relativeTo = "" with a value interpolated in the message 1`] = `
+exports[`components | relativeTo = "../" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2089,7 +2089,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - relativeTo = "" with a variable as the defaultMessage 1`] = `
+exports[`components | relativeTo = "../" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 var message = "variable message";
@@ -2100,7 +2100,7 @@ var message = "variable message";
 "
 `;
 
-exports[`components - relativeTo = "../" all props 1`] = `
+exports[`components | removePrefix = "src" | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App() {
@@ -2117,7 +2117,7 @@ function App() {
 "
 `;
 
-exports[`components - relativeTo = "../" conditional rendering 1`] = `
+exports[`components | removePrefix = "src" | conditional rendering 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App(param) {
@@ -2132,7 +2132,7 @@ function App(param) {
 "
 `;
 
-exports[`components - relativeTo = "../" default 1`] = `
+exports[`components | removePrefix = "src" | default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2142,7 +2142,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - relativeTo = "../" different module source 1`] = `
+exports[`components | removePrefix = "src" | different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'gatsby-plugin-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2152,7 +2152,7 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 "
 `;
 
-exports[`components - relativeTo = "../" does nothing if component props are spread 1`] = `
+exports[`components | removePrefix = "src" | does nothing if component props are spread 1`] = `
 "function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -2190,7 +2190,7 @@ var props = {
 "
 `;
 
-exports[`components - relativeTo = "../" does nothing if components not imported from react-intl 1`] = `
+exports[`components | removePrefix = "src" | does nothing if components not imported from react-intl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "Users.username.repo.src.components.App.613153351",
@@ -2200,7 +2200,7 @@ export { };
 "
 `;
 
-exports[`components - relativeTo = "../" import all supported components 1`] = `
+exports[`components | removePrefix = "src" | import all supported components 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
@@ -2214,7 +2214,7 @@ import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - relativeTo = "../" multiple uses 1`] = `
+exports[`components | removePrefix = "src" | multiple uses 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2228,7 +2228,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - relativeTo = "../" user id 1`] = `
+exports[`components | removePrefix = "src" | user id 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2238,7 +2238,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - relativeTo = "../" using key 1`] = `
+exports[`components | removePrefix = "src" | using key 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2248,7 +2248,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - relativeTo = "../" with FormattedMessage imported as something else 1`] = `
+exports[`components | removePrefix = "src" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as T } from 'react-intl';
 /*#__PURE__*/ _jsx(T, {
@@ -2258,7 +2258,7 @@ import { FormattedMessage as T } from 'react-intl';
 "
 `;
 
-exports[`components - relativeTo = "../" with FormattedMessage nested in other JSX 1`] = `
+exports[`components | removePrefix = "src" | with FormattedMessage nested in other JSX 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
@@ -2270,7 +2270,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - relativeTo = "../" with a value interpolated in the message 1`] = `
+exports[`components | removePrefix = "src" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2280,7 +2280,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - relativeTo = "../" with a variable as the defaultMessage 1`] = `
+exports[`components | removePrefix = "src" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 var message = "variable message";
@@ -2291,7 +2291,7 @@ var message = "variable message";
 "
 `;
 
-exports[`components - removePrefix = "src" all props 1`] = `
+exports[`components | removePrefix = "src.__fixtures__" | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App() {
@@ -2308,7 +2308,24 @@ function App() {
 "
 `;
 
-exports[`components - removePrefix = "src" conditional rendering 1`] = `
+exports[`components | removePrefix = "src.__fixtures__" | all props 2`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App() {
+    return /*#__PURE__*/ _jsx(FormattedMessage, {
+        id: "Users.username.repo.src.components.App.471047910",
+        defaultMessage: "Hello {name}",
+        description: "A greeting message",
+        values: {
+            name: 'World'
+        },
+        tagName: "span"
+    });
+}
+"
+`;
+
+exports[`components | removePrefix = "src.__fixtures__" | conditional rendering 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App(param) {
@@ -2323,7 +2340,22 @@ function App(param) {
 "
 `;
 
-exports[`components - removePrefix = "src" default 1`] = `
+exports[`components | removePrefix = "src.__fixtures__" | conditional rendering 2`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+function App(param) {
+    var showMessage = param.showMessage;
+    return /*#__PURE__*/ _jsx("div", {
+        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
+            id: "Users.username.repo.src.components.App.3541072352",
+            defaultMessage: "Conditional message"
+        })
+    });
+}
+"
+`;
+
+exports[`components | removePrefix = "src.__fixtures__" | default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2333,7 +2365,17 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src" different module source 1`] = `
+exports[`components | removePrefix = "src.__fixtures__" | default 2`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components | removePrefix = "src.__fixtures__" | different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'gatsby-plugin-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2343,7 +2385,17 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 "
 `;
 
-exports[`components - removePrefix = "src" does nothing if component props are spread 1`] = `
+exports[`components | removePrefix = "src.__fixtures__" | different module source 2`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'gatsby-plugin-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Users.username.repo.src.components.App.613153351",
+    defaultMessage: "hello"
+});
+"
+`;
+
+exports[`components | removePrefix = "src.__fixtures__" | does nothing if component props are spread 1`] = `
 "function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -2381,212 +2433,7 @@ var props = {
 "
 `;
 
-exports[`components - removePrefix = "src" does nothing if components not imported from react-intl 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "Users.username.repo.src.components.App.613153351",
-    defaultMessage: "hello"
-});
-export { };
-"
-`;
-
-exports[`components - removePrefix = "src" import all supported components 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
-    id: "Users.username.repo.src.components.App.205247277",
-    defaultMessage: "<span>hello</span>"
-});
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "Users.username.repo.src.components.App.613153351",
-    defaultMessage: "hello"
-});
-"
-`;
-
-exports[`components - removePrefix = "src" multiple uses 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "Users.username.repo.src.components.App.613153351",
-    defaultMessage: "hello"
-});
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "Users.username.repo.src.components.App.1418522856",
-    defaultMessage: "another"
-});
-"
-`;
-
-exports[`components - removePrefix = "src" user id 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "foobar",
-    defaultMessage: "hello"
-});
-"
-`;
-
-exports[`components - removePrefix = "src" using key 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "Users.username.repo.src.components.App.613153351",
-    defaultMessage: "hello"
-}, "foobar");
-"
-`;
-
-exports[`components - removePrefix = "src" with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage as T } from 'react-intl';
-/*#__PURE__*/ _jsx(T, {
-    id: "Users.username.repo.src.components.App.613153351",
-    defaultMessage: "hello"
-});
-"
-`;
-
-exports[`components - removePrefix = "src" with FormattedMessage nested in other JSX 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx("div", {
-    children: /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "Users.username.repo.src.components.App.613153351",
-        defaultMessage: "hello"
-    })
-});
-"
-`;
-
-exports[`components - removePrefix = "src" with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "Users.username.repo.src.components.App.3540954520",
-    defaultMessage: "hello world 2"
-});
-"
-`;
-
-exports[`components - removePrefix = "src" with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-var message = "variable message";
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "Users.username.repo.src.components.App.1677297219",
-    defaultMessage: message
-});
-"
-`;
-
-exports[`components - removePrefix = "src.__fixtures__" all props 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-function App() {
-    return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "Users.username.repo.src.components.App.471047910",
-        defaultMessage: "Hello {name}",
-        description: "A greeting message",
-        values: {
-            name: 'World'
-        },
-        tagName: "span"
-    });
-}
-"
-`;
-
-exports[`components - removePrefix = "src.__fixtures__" all props 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-function App() {
-    return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "Users.username.repo.src.components.App.471047910",
-        defaultMessage: "Hello {name}",
-        description: "A greeting message",
-        values: {
-            name: 'World'
-        },
-        tagName: "span"
-    });
-}
-"
-`;
-
-exports[`components - removePrefix = "src.__fixtures__" conditional rendering 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-function App(param) {
-    var showMessage = param.showMessage;
-    return /*#__PURE__*/ _jsx("div", {
-        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
-            id: "Users.username.repo.src.components.App.3541072352",
-            defaultMessage: "Conditional message"
-        })
-    });
-}
-"
-`;
-
-exports[`components - removePrefix = "src.__fixtures__" conditional rendering 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-function App(param) {
-    var showMessage = param.showMessage;
-    return /*#__PURE__*/ _jsx("div", {
-        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
-            id: "Users.username.repo.src.components.App.3541072352",
-            defaultMessage: "Conditional message"
-        })
-    });
-}
-"
-`;
-
-exports[`components - removePrefix = "src.__fixtures__" default 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "Users.username.repo.src.components.App.613153351",
-    defaultMessage: "hello"
-});
-"
-`;
-
-exports[`components - removePrefix = "src.__fixtures__" default 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "Users.username.repo.src.components.App.613153351",
-    defaultMessage: "hello"
-});
-"
-`;
-
-exports[`components - removePrefix = "src.__fixtures__" different module source 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'gatsby-plugin-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "Users.username.repo.src.components.App.613153351",
-    defaultMessage: "hello"
-});
-"
-`;
-
-exports[`components - removePrefix = "src.__fixtures__" different module source 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'gatsby-plugin-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "Users.username.repo.src.components.App.613153351",
-    defaultMessage: "hello"
-});
-"
-`;
-
-exports[`components - removePrefix = "src.__fixtures__" does nothing if component props are spread 1`] = `
+exports[`components | removePrefix = "src.__fixtures__" | does nothing if component props are spread 2`] = `
 "function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -2624,45 +2471,7 @@ var props = {
 "
 `;
 
-exports[`components - removePrefix = "src.__fixtures__" does nothing if component props are spread 2`] = `
-"function _define_property(obj, key, value) {
-    if (key in obj) {
-        Object.defineProperty(obj, key, {
-            value: value,
-            enumerable: true,
-            configurable: true,
-            writable: true
-        });
-    } else {
-        obj[key] = value;
-    }
-    return obj;
-}
-function _object_spread(target) {
-    for(var i = 1; i < arguments.length; i++){
-        var source = arguments[i] != null ? arguments[i] : {};
-        var ownKeys = Object.keys(source);
-        if (typeof Object.getOwnPropertySymbols === "function") {
-            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-            }));
-        }
-        ownKeys.forEach(function(key) {
-            _define_property(target, key, source[key]);
-        });
-    }
-    return target;
-}
-import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-var props = {
-    defaultMessage: 'hello'
-};
-/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
-"
-`;
-
-exports[`components - removePrefix = "src.__fixtures__" does nothing if components not imported from react-intl 1`] = `
+exports[`components | removePrefix = "src.__fixtures__" | does nothing if components not imported from react-intl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "Users.username.repo.src.components.App.613153351",
@@ -2672,7 +2481,7 @@ export { };
 "
 `;
 
-exports[`components - removePrefix = "src.__fixtures__" does nothing if components not imported from react-intl 2`] = `
+exports[`components | removePrefix = "src.__fixtures__" | does nothing if components not imported from react-intl 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "Users.username.repo.src.components.App.613153351",
@@ -2682,7 +2491,7 @@ export { };
 "
 `;
 
-exports[`components - removePrefix = "src.__fixtures__" import all supported components 1`] = `
+exports[`components | removePrefix = "src.__fixtures__" | import all supported components 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
@@ -2696,7 +2505,7 @@ import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src.__fixtures__" import all supported components 2`] = `
+exports[`components | removePrefix = "src.__fixtures__" | import all supported components 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
@@ -2710,7 +2519,7 @@ import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src.__fixtures__" multiple uses 1`] = `
+exports[`components | removePrefix = "src.__fixtures__" | multiple uses 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2724,7 +2533,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src.__fixtures__" multiple uses 2`] = `
+exports[`components | removePrefix = "src.__fixtures__" | multiple uses 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2738,7 +2547,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src.__fixtures__" user id 1`] = `
+exports[`components | removePrefix = "src.__fixtures__" | user id 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2748,7 +2557,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src.__fixtures__" user id 2`] = `
+exports[`components | removePrefix = "src.__fixtures__" | user id 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2758,7 +2567,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src.__fixtures__" using key 1`] = `
+exports[`components | removePrefix = "src.__fixtures__" | using key 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2768,7 +2577,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src.__fixtures__" using key 2`] = `
+exports[`components | removePrefix = "src.__fixtures__" | using key 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2778,7 +2587,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src.__fixtures__" with FormattedMessage imported as something else 1`] = `
+exports[`components | removePrefix = "src.__fixtures__" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as T } from 'react-intl';
 /*#__PURE__*/ _jsx(T, {
@@ -2788,7 +2597,7 @@ import { FormattedMessage as T } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src.__fixtures__" with FormattedMessage imported as something else 2`] = `
+exports[`components | removePrefix = "src.__fixtures__" | with FormattedMessage imported as something else 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as T } from 'react-intl';
 /*#__PURE__*/ _jsx(T, {
@@ -2798,7 +2607,7 @@ import { FormattedMessage as T } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src.__fixtures__" with FormattedMessage nested in other JSX 1`] = `
+exports[`components | removePrefix = "src.__fixtures__" | with FormattedMessage nested in other JSX 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
@@ -2810,7 +2619,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src.__fixtures__" with FormattedMessage nested in other JSX 2`] = `
+exports[`components | removePrefix = "src.__fixtures__" | with FormattedMessage nested in other JSX 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
@@ -2822,7 +2631,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src.__fixtures__" with a value interpolated in the message 1`] = `
+exports[`components | removePrefix = "src.__fixtures__" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2832,7 +2641,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src.__fixtures__" with a value interpolated in the message 2`] = `
+exports[`components | removePrefix = "src.__fixtures__" | with a value interpolated in the message 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2842,7 +2651,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src.__fixtures__" with a variable as the defaultMessage 1`] = `
+exports[`components | removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 var message = "variable message";
@@ -2853,7 +2662,7 @@ var message = "variable message";
 "
 `;
 
-exports[`components - removePrefix = "src.__fixtures__" with a variable as the defaultMessage 2`] = `
+exports[`components | removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 var message = "variable message";
@@ -2864,7 +2673,7 @@ var message = "variable message";
 "
 `;
 
-exports[`components - removePrefix = "src/" -- with slash all props 1`] = `
+exports[`components | removePrefix = "src/" -- with slash | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App() {
@@ -2881,7 +2690,7 @@ function App() {
 "
 `;
 
-exports[`components - removePrefix = "src/" -- with slash conditional rendering 1`] = `
+exports[`components | removePrefix = "src/" -- with slash | conditional rendering 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App(param) {
@@ -2896,7 +2705,7 @@ function App(param) {
 "
 `;
 
-exports[`components - removePrefix = "src/" -- with slash default 1`] = `
+exports[`components | removePrefix = "src/" -- with slash | default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2906,7 +2715,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src/" -- with slash different module source 1`] = `
+exports[`components | removePrefix = "src/" -- with slash | different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'gatsby-plugin-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2916,7 +2725,7 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 "
 `;
 
-exports[`components - removePrefix = "src/" -- with slash does nothing if component props are spread 1`] = `
+exports[`components | removePrefix = "src/" -- with slash | does nothing if component props are spread 1`] = `
 "function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -2954,7 +2763,7 @@ var props = {
 "
 `;
 
-exports[`components - removePrefix = "src/" -- with slash does nothing if components not imported from react-intl 1`] = `
+exports[`components | removePrefix = "src/" -- with slash | does nothing if components not imported from react-intl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "Users.username.repo.src.components.App.613153351",
@@ -2964,7 +2773,7 @@ export { };
 "
 `;
 
-exports[`components - removePrefix = "src/" -- with slash import all supported components 1`] = `
+exports[`components | removePrefix = "src/" -- with slash | import all supported components 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
@@ -2978,7 +2787,7 @@ import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src/" -- with slash multiple uses 1`] = `
+exports[`components | removePrefix = "src/" -- with slash | multiple uses 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -2992,7 +2801,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src/" -- with slash user id 1`] = `
+exports[`components | removePrefix = "src/" -- with slash | user id 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3002,7 +2811,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src/" -- with slash using key 1`] = `
+exports[`components | removePrefix = "src/" -- with slash | using key 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3012,7 +2821,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src/" -- with slash with FormattedMessage imported as something else 1`] = `
+exports[`components | removePrefix = "src/" -- with slash | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as T } from 'react-intl';
 /*#__PURE__*/ _jsx(T, {
@@ -3022,7 +2831,7 @@ import { FormattedMessage as T } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src/" -- with slash with FormattedMessage nested in other JSX 1`] = `
+exports[`components | removePrefix = "src/" -- with slash | with FormattedMessage nested in other JSX 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
@@ -3034,7 +2843,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src/" -- with slash with a value interpolated in the message 1`] = `
+exports[`components | removePrefix = "src/" -- with slash | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3044,7 +2853,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = "src/" -- with slash with a variable as the defaultMessage 1`] = `
+exports[`components | removePrefix = "src/" -- with slash | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 var message = "variable message";
@@ -3055,7 +2864,7 @@ var message = "variable message";
 "
 `;
 
-exports[`components - removePrefix = /__fixtures__/ all props 1`] = `
+exports[`components | removePrefix = /__fixtures__/ | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App() {
@@ -3072,7 +2881,7 @@ function App() {
 "
 `;
 
-exports[`components - removePrefix = /__fixtures__/ conditional rendering 1`] = `
+exports[`components | removePrefix = /__fixtures__/ | conditional rendering 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App(param) {
@@ -3087,7 +2896,7 @@ function App(param) {
 "
 `;
 
-exports[`components - removePrefix = /__fixtures__/ default 1`] = `
+exports[`components | removePrefix = /__fixtures__/ | default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3097,7 +2906,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = /__fixtures__/ different module source 1`] = `
+exports[`components | removePrefix = /__fixtures__/ | different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'gatsby-plugin-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3107,7 +2916,7 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 "
 `;
 
-exports[`components - removePrefix = /__fixtures__/ does nothing if component props are spread 1`] = `
+exports[`components | removePrefix = /__fixtures__/ | does nothing if component props are spread 1`] = `
 "function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -3145,7 +2954,7 @@ var props = {
 "
 `;
 
-exports[`components - removePrefix = /__fixtures__/ does nothing if components not imported from react-intl 1`] = `
+exports[`components | removePrefix = /__fixtures__/ | does nothing if components not imported from react-intl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "Users.username.repo.src.components.App.613153351",
@@ -3155,7 +2964,7 @@ export { };
 "
 `;
 
-exports[`components - removePrefix = /__fixtures__/ import all supported components 1`] = `
+exports[`components | removePrefix = /__fixtures__/ | import all supported components 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
@@ -3169,7 +2978,7 @@ import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = /__fixtures__/ multiple uses 1`] = `
+exports[`components | removePrefix = /__fixtures__/ | multiple uses 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3183,7 +2992,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = /__fixtures__/ user id 1`] = `
+exports[`components | removePrefix = /__fixtures__/ | user id 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3193,7 +3002,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = /__fixtures__/ using key 1`] = `
+exports[`components | removePrefix = /__fixtures__/ | using key 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3203,7 +3012,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = /__fixtures__/ with FormattedMessage imported as something else 1`] = `
+exports[`components | removePrefix = /__fixtures__/ | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as T } from 'react-intl';
 /*#__PURE__*/ _jsx(T, {
@@ -3213,7 +3022,7 @@ import { FormattedMessage as T } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = /__fixtures__/ with FormattedMessage nested in other JSX 1`] = `
+exports[`components | removePrefix = /__fixtures__/ | with FormattedMessage nested in other JSX 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
@@ -3225,7 +3034,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = /__fixtures__/ with a value interpolated in the message 1`] = `
+exports[`components | removePrefix = /__fixtures__/ | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3235,7 +3044,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = /__fixtures__/ with a variable as the defaultMessage 1`] = `
+exports[`components | removePrefix = /__fixtures__/ | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 var message = "variable message";
@@ -3246,7 +3055,7 @@ var message = "variable message";
 "
 `;
 
-exports[`components - removePrefix = true all props 1`] = `
+exports[`components | removePrefix = true | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App() {
@@ -3263,7 +3072,7 @@ function App() {
 "
 `;
 
-exports[`components - removePrefix = true conditional rendering 1`] = `
+exports[`components | removePrefix = true | conditional rendering 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App(param) {
@@ -3278,7 +3087,7 @@ function App(param) {
 "
 `;
 
-exports[`components - removePrefix = true default 1`] = `
+exports[`components | removePrefix = true | default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3288,7 +3097,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = true different module source 1`] = `
+exports[`components | removePrefix = true | different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'gatsby-plugin-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3298,7 +3107,7 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 "
 `;
 
-exports[`components - removePrefix = true does nothing if component props are spread 1`] = `
+exports[`components | removePrefix = true | does nothing if component props are spread 1`] = `
 "function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -3336,7 +3145,7 @@ var props = {
 "
 `;
 
-exports[`components - removePrefix = true does nothing if components not imported from react-intl 1`] = `
+exports[`components | removePrefix = true | does nothing if components not imported from react-intl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "613153351",
@@ -3346,7 +3155,7 @@ export { };
 "
 `;
 
-exports[`components - removePrefix = true import all supported components 1`] = `
+exports[`components | removePrefix = true | import all supported components 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
@@ -3360,7 +3169,7 @@ import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = true multiple uses 1`] = `
+exports[`components | removePrefix = true | multiple uses 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3374,7 +3183,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = true user id 1`] = `
+exports[`components | removePrefix = true | user id 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3384,7 +3193,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = true using key 1`] = `
+exports[`components | removePrefix = true | using key 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3394,7 +3203,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = true with FormattedMessage imported as something else 1`] = `
+exports[`components | removePrefix = true | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as T } from 'react-intl';
 /*#__PURE__*/ _jsx(T, {
@@ -3404,7 +3213,7 @@ import { FormattedMessage as T } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = true with FormattedMessage nested in other JSX 1`] = `
+exports[`components | removePrefix = true | with FormattedMessage nested in other JSX 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
@@ -3416,7 +3225,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = true with a value interpolated in the message 1`] = `
+exports[`components | removePrefix = true | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3426,7 +3235,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - removePrefix = true with a variable as the defaultMessage 1`] = `
+exports[`components | removePrefix = true | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 var message = "variable message";
@@ -3437,7 +3246,7 @@ var message = "variable message";
 "
 `;
 
-exports[`components - separator = "_" all props 1`] = `
+exports[`components | separator = "_" | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App() {
@@ -3454,7 +3263,7 @@ function App() {
 "
 `;
 
-exports[`components - separator = "_" conditional rendering 1`] = `
+exports[`components | separator = "_" | conditional rendering 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App(param) {
@@ -3469,7 +3278,7 @@ function App(param) {
 "
 `;
 
-exports[`components - separator = "_" default 1`] = `
+exports[`components | separator = "_" | default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3479,7 +3288,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - separator = "_" different module source 1`] = `
+exports[`components | separator = "_" | different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'gatsby-plugin-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3489,7 +3298,7 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 "
 `;
 
-exports[`components - separator = "_" does nothing if component props are spread 1`] = `
+exports[`components | separator = "_" | does nothing if component props are spread 1`] = `
 "function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -3527,7 +3336,7 @@ var props = {
 "
 `;
 
-exports[`components - separator = "_" does nothing if components not imported from react-intl 1`] = `
+exports[`components | separator = "_" | does nothing if components not imported from react-intl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "Users_username_repo_src_components_App_613153351",
@@ -3537,7 +3346,7 @@ export { };
 "
 `;
 
-exports[`components - separator = "_" import all supported components 1`] = `
+exports[`components | separator = "_" | import all supported components 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
@@ -3551,7 +3360,7 @@ import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - separator = "_" multiple uses 1`] = `
+exports[`components | separator = "_" | multiple uses 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3565,7 +3374,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - separator = "_" user id 1`] = `
+exports[`components | separator = "_" | user id 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3575,7 +3384,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - separator = "_" using key 1`] = `
+exports[`components | separator = "_" | using key 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3585,7 +3394,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - separator = "_" with FormattedMessage imported as something else 1`] = `
+exports[`components | separator = "_" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as T } from 'react-intl';
 /*#__PURE__*/ _jsx(T, {
@@ -3595,7 +3404,7 @@ import { FormattedMessage as T } from 'react-intl';
 "
 `;
 
-exports[`components - separator = "_" with FormattedMessage nested in other JSX 1`] = `
+exports[`components | separator = "_" | with FormattedMessage nested in other JSX 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
@@ -3607,7 +3416,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - separator = "_" with a value interpolated in the message 1`] = `
+exports[`components | separator = "_" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3617,7 +3426,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - separator = "_" with a variable as the defaultMessage 1`] = `
+exports[`components | separator = "_" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 var message = "variable message";
@@ -3628,7 +3437,7 @@ var message = "variable message";
 "
 `;
 
-exports[`components - useKey = true all props 1`] = `
+exports[`components | useKey = true | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App() {
@@ -3645,7 +3454,7 @@ function App() {
 "
 `;
 
-exports[`components - useKey = true conditional rendering 1`] = `
+exports[`components | useKey = true | conditional rendering 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App(param) {
@@ -3660,7 +3469,7 @@ function App(param) {
 "
 `;
 
-exports[`components - useKey = true default 1`] = `
+exports[`components | useKey = true | default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3670,7 +3479,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - useKey = true different module source 1`] = `
+exports[`components | useKey = true | different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'gatsby-plugin-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3680,7 +3489,7 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 "
 `;
 
-exports[`components - useKey = true does nothing if component props are spread 1`] = `
+exports[`components | useKey = true | does nothing if component props are spread 1`] = `
 "function _define_property(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -3718,7 +3527,7 @@ var props = {
 "
 `;
 
-exports[`components - useKey = true does nothing if components not imported from react-intl 1`] = `
+exports[`components | useKey = true | does nothing if components not imported from react-intl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "Users.username.repo.src.components.App.613153351",
@@ -3728,7 +3537,7 @@ export { };
 "
 `;
 
-exports[`components - useKey = true import all supported components 1`] = `
+exports[`components | useKey = true | import all supported components 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
@@ -3742,7 +3551,7 @@ import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - useKey = true multiple uses 1`] = `
+exports[`components | useKey = true | multiple uses 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3756,7 +3565,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - useKey = true user id 1`] = `
+exports[`components | useKey = true | user id 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3766,7 +3575,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - useKey = true using key 1`] = `
+exports[`components | useKey = true | using key 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3776,7 +3585,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - useKey = true with FormattedMessage imported as something else 1`] = `
+exports[`components | useKey = true | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as T } from 'react-intl';
 /*#__PURE__*/ _jsx(T, {
@@ -3786,7 +3595,7 @@ import { FormattedMessage as T } from 'react-intl';
 "
 `;
 
-exports[`components - useKey = true with FormattedMessage nested in other JSX 1`] = `
+exports[`components | useKey = true | with FormattedMessage nested in other JSX 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
@@ -3798,7 +3607,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - useKey = true with a value interpolated in the message 1`] = `
+exports[`components | useKey = true | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
@@ -3808,7 +3617,7 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`components - useKey = true with a variable as the defaultMessage 1`] = `
+exports[`components | useKey = true | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 var message = "variable message";

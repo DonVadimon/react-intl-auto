@@ -14,9 +14,6 @@ pub struct CoreOptions {
     /// Include filename in ID
     #[serde(default)]
     pub filebase: bool,
-    /// Include export name in ID
-    #[serde(default, alias = "includeExportName")]
-    pub include_export_name: bool,
     /// Use key property instead of hash
     #[serde(default, alias = "useKey")]
     pub use_key: bool,
@@ -73,7 +70,6 @@ impl Default for CoreOptions {
         Self {
             remove_prefix: None,
             filebase: false,
-            include_export_name: true,
             use_key: false,
             module_source_name: "react-intl".to_string(),
             separator: ".".to_string(),

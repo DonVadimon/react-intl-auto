@@ -49,10 +49,6 @@ struct Args {
     #[arg(long, help = "Use file basename for ID generation")]
     filebase: bool,
 
-    /// Include export name in ID
-    #[arg(long, help = "Include export name in ID")]
-    include_export_name: Option<bool>,
-
     /// Use object key for ID generation in defineMessages
     #[arg(long, help = "Use object key for ID generation in defineMessages")]
     use_key: bool,
@@ -109,15 +105,9 @@ impl Args {
             _ => OutputMode::Aggregated,
         };
 
-        let include_export_name = match self.include_export_name {
-            Some(val) => val,
-            None => true,
-        };
-
         CoreOptions {
             remove_prefix,
             filebase: self.filebase,
-            include_export_name: include_export_name,
             use_key: self.use_key,
             module_source_name: self.module_source_name.clone(),
             separator: self.separator.clone(),

@@ -44,7 +44,6 @@ const result = await transform(code, {
     [plugin.getPluginPath(), {
       removePrefix: false,
       filebase: false,
-      includeExportName: false,
       useKey: false,
       moduleSourceName: 'react-intl',
       separator: '.',
@@ -60,7 +59,6 @@ const result = await transform(code, {
 |--------|------|---------|-------------|
 | `removePrefix` | `boolean \| string \| RegExp` | `false` | Remove prefix from generated IDs |
 | `filebase` | `boolean` | `false` | Use file basename instead of directory path |
-| `includeExportName` | `boolean \| 'all'` | `true` | Include export name in ID |
 | `useKey` | `boolean` | `false` | Use key attribute instead of message hash |
 | `moduleSourceName` | `string` | `'react-intl'` | Module name to detect imports |
 | `separator` | `string` | `'.'` | Separator for ID parts |

@@ -248,11 +248,7 @@ pub fn analyze_define_messages(
     state: &CoreState,
 ) -> Vec<(String, MessageData, TransformedMessageData)> {
     let mut messages = Vec::new();
-    let call_pos = if state.opts.include_export_name {
-        Some(&call.span.lo.0.to_string())
-    } else {
-        None
-    };
+    let call_pos = &call.span.lo.0.to_string();
 
     // Get the first argument (the object literal)
     if let Some(first_arg) = call.args.first() {
@@ -276,16 +272,14 @@ pub fn analyze_define_messages(
 fn analyze_object_property_with_key(
     prop: &Prop,
     state: &CoreState,
-    call_pos: Option<&String>,
+    call_pos: &String,
 ) -> Option<(String, MessageData, TransformedMessageData)> {
     match prop {
         Prop::KeyValue(KeyValueProp { key, value }) => {
             let key_name = extract_prop_name(key)?;
 
-            // Build the full key with export_name prefix if provided
-            let full_key = call_pos
-                .map(|exp| format!("{}.{}", exp, key_name))
-                .unwrap_or_else(|| key_name.clone());
+            // Build the full key with call_pos prefix
+            let full_key = format!("{}.{}", call_pos, key_name);
 
             match value.as_ref() {
                 // String value: hello: 'Hello World'

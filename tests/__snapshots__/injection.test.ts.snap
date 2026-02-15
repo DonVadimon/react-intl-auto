@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`injection - default does nothing if id is already provided 1`] = `
+exports[`injection | default | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { injectIntl } from 'gatsby-plugin-intl';
@@ -17,7 +17,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - default does nothing if react-intl is not imported 1`] = `
+exports[`injection | default | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -32,7 +32,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - default multiple uses 1`] = `
+exports[`injection | default | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -70,7 +70,7 @@ intl.formatMessage({
 "
 `;
 
-exports[`injection - default some supported use cases 1`] = `
+exports[`injection | default | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -94,7 +94,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection - default with FormattedMessage imported as something else 1`] = `
+exports[`injection | default | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -110,7 +110,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection - default with Injection API HOC imported 1`] = `
+exports[`injection | default | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -126,7 +126,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - default with a value interpolated in the message 1`] = `
+exports[`injection | default | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -142,7 +142,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - default with a variable as the defaultMessage 1`] = `
+exports[`injection | default | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = "variable message";
@@ -159,7 +159,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - default with a variable as the defaultMessage 2`] = `
+exports[`injection | default | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -173,7 +173,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - default with custom properties in formatMessage call 1`] = `
+exports[`injection | default | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -190,7 +190,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - default with injectIntl 1`] = `
+exports[`injection | default | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -206,7 +206,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - filebase = true does nothing if id is already provided 1`] = `
+exports[`injection | filebase = true | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { injectIntl } from 'gatsby-plugin-intl';
@@ -223,7 +223,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - filebase = true does nothing if react-intl is not imported 1`] = `
+exports[`injection | filebase = true | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -238,7 +238,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - filebase = true multiple uses 1`] = `
+exports[`injection | filebase = true | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -276,7 +276,7 @@ intl.formatMessage({
 "
 `;
 
-exports[`injection - filebase = true some supported use cases 1`] = `
+exports[`injection | filebase = true | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -300,7 +300,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection - filebase = true with FormattedMessage imported as something else 1`] = `
+exports[`injection | filebase = true | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -316,7 +316,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection - filebase = true with Injection API HOC imported 1`] = `
+exports[`injection | filebase = true | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -332,7 +332,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - filebase = true with a value interpolated in the message 1`] = `
+exports[`injection | filebase = true | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -348,7 +348,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - filebase = true with a variable as the defaultMessage 1`] = `
+exports[`injection | filebase = true | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = "variable message";
@@ -365,7 +365,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - filebase = true with a variable as the defaultMessage 2`] = `
+exports[`injection | filebase = true | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -379,7 +379,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - filebase = true with custom properties in formatMessage call 1`] = `
+exports[`injection | filebase = true | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -396,7 +396,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - filebase = true with injectIntl 1`] = `
+exports[`injection | filebase = true | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -412,7 +412,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + filebase = true does nothing if id is already provided 1`] = `
+exports[`injection | hash + filebase = true | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { injectIntl } from 'gatsby-plugin-intl';
@@ -429,7 +429,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + filebase = true does nothing if react-intl is not imported 1`] = `
+exports[`injection | hash + filebase = true | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -444,7 +444,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + filebase = true multiple uses 1`] = `
+exports[`injection | hash + filebase = true | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -482,7 +482,7 @@ intl.formatMessage({
 "
 `;
 
-exports[`injection - hash + filebase = true some supported use cases 1`] = `
+exports[`injection | hash + filebase = true | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -506,7 +506,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection - hash + filebase = true with FormattedMessage imported as something else 1`] = `
+exports[`injection | hash + filebase = true | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -522,7 +522,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection - hash + filebase = true with Injection API HOC imported 1`] = `
+exports[`injection | hash + filebase = true | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -538,7 +538,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + filebase = true with a value interpolated in the message 1`] = `
+exports[`injection | hash + filebase = true | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -554,7 +554,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + filebase = true with a variable as the defaultMessage 1`] = `
+exports[`injection | hash + filebase = true | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = "variable message";
@@ -571,7 +571,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + filebase = true with a variable as the defaultMessage 2`] = `
+exports[`injection | hash + filebase = true | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -585,7 +585,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + filebase = true with custom properties in formatMessage call 1`] = `
+exports[`injection | hash + filebase = true | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -602,7 +602,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + filebase = true with injectIntl 1`] = `
+exports[`injection | hash + filebase = true | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -618,7 +618,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + relativeTo = "src" does nothing if id is already provided 1`] = `
+exports[`injection | hash + relativeTo = "src" | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { injectIntl } from 'gatsby-plugin-intl';
@@ -635,7 +635,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + relativeTo = "src" does nothing if react-intl is not imported 1`] = `
+exports[`injection | hash + relativeTo = "src" | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -650,7 +650,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + relativeTo = "src" multiple uses 1`] = `
+exports[`injection | hash + relativeTo = "src" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -688,7 +688,7 @@ intl.formatMessage({
 "
 `;
 
-exports[`injection - hash + relativeTo = "src" some supported use cases 1`] = `
+exports[`injection | hash + relativeTo = "src" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -712,7 +712,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection - hash + relativeTo = "src" with FormattedMessage imported as something else 1`] = `
+exports[`injection | hash + relativeTo = "src" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -728,7 +728,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection - hash + relativeTo = "src" with Injection API HOC imported 1`] = `
+exports[`injection | hash + relativeTo = "src" | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -744,7 +744,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + relativeTo = "src" with a value interpolated in the message 1`] = `
+exports[`injection | hash + relativeTo = "src" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -760,7 +760,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + relativeTo = "src" with a variable as the defaultMessage 1`] = `
+exports[`injection | hash + relativeTo = "src" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = "variable message";
@@ -777,7 +777,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + relativeTo = "src" with a variable as the defaultMessage 2`] = `
+exports[`injection | hash + relativeTo = "src" | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -791,7 +791,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + relativeTo = "src" with custom properties in formatMessage call 1`] = `
+exports[`injection | hash + relativeTo = "src" | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -808,7 +808,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + relativeTo = "src" with injectIntl 1`] = `
+exports[`injection | hash + relativeTo = "src" | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -824,7 +824,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + removePrefix = "src/" does nothing if id is already provided 1`] = `
+exports[`injection | hash + removePrefix = "src/" | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { injectIntl } from 'gatsby-plugin-intl';
@@ -841,7 +841,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + removePrefix = "src/" does nothing if react-intl is not imported 1`] = `
+exports[`injection | hash + removePrefix = "src/" | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -856,7 +856,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + removePrefix = "src/" multiple uses 1`] = `
+exports[`injection | hash + removePrefix = "src/" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -894,7 +894,7 @@ intl.formatMessage({
 "
 `;
 
-exports[`injection - hash + removePrefix = "src/" some supported use cases 1`] = `
+exports[`injection | hash + removePrefix = "src/" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -918,7 +918,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection - hash + removePrefix = "src/" with FormattedMessage imported as something else 1`] = `
+exports[`injection | hash + removePrefix = "src/" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -934,7 +934,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection - hash + removePrefix = "src/" with Injection API HOC imported 1`] = `
+exports[`injection | hash + removePrefix = "src/" | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -950,7 +950,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + removePrefix = "src/" with a value interpolated in the message 1`] = `
+exports[`injection | hash + removePrefix = "src/" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -966,7 +966,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + removePrefix = "src/" with a variable as the defaultMessage 1`] = `
+exports[`injection | hash + removePrefix = "src/" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = "variable message";
@@ -983,7 +983,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + removePrefix = "src/" with a variable as the defaultMessage 2`] = `
+exports[`injection | hash + removePrefix = "src/" | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -997,7 +997,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + removePrefix = "src/" with custom properties in formatMessage call 1`] = `
+exports[`injection | hash + removePrefix = "src/" | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1014,7 +1014,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + removePrefix = "src/" with injectIntl 1`] = `
+exports[`injection | hash + removePrefix = "src/" | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1030,7 +1030,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash base64 does nothing if id is already provided 1`] = `
+exports[`injection | hash base64 | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { injectIntl } from 'gatsby-plugin-intl';
@@ -1047,7 +1047,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash base64 does nothing if react-intl is not imported 1`] = `
+exports[`injection | hash base64 | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -1062,7 +1062,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash base64 multiple uses 1`] = `
+exports[`injection | hash base64 | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1100,7 +1100,7 @@ intl.formatMessage({
 "
 `;
 
-exports[`injection - hash base64 some supported use cases 1`] = `
+exports[`injection | hash base64 | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -1124,7 +1124,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection - hash base64 with FormattedMessage imported as something else 1`] = `
+exports[`injection | hash base64 | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -1140,7 +1140,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection - hash base64 with Injection API HOC imported 1`] = `
+exports[`injection | hash base64 | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1156,7 +1156,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash base64 with a value interpolated in the message 1`] = `
+exports[`injection | hash base64 | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1172,7 +1172,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash base64 with a variable as the defaultMessage 1`] = `
+exports[`injection | hash base64 | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = "variable message";
@@ -1189,7 +1189,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash base64 with a variable as the defaultMessage 2`] = `
+exports[`injection | hash base64 | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -1203,7 +1203,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash base64 with custom properties in formatMessage call 1`] = `
+exports[`injection | hash base64 | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1220,7 +1220,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash base64 with injectIntl 1`] = `
+exports[`injection | hash base64 | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1236,7 +1236,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash murmur3 does nothing if id is already provided 1`] = `
+exports[`injection | hash murmur3 | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { injectIntl } from 'gatsby-plugin-intl';
@@ -1253,7 +1253,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash murmur3 does nothing if react-intl is not imported 1`] = `
+exports[`injection | hash murmur3 | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -1268,7 +1268,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash murmur3 multiple uses 1`] = `
+exports[`injection | hash murmur3 | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1306,7 +1306,7 @@ intl.formatMessage({
 "
 `;
 
-exports[`injection - hash murmur3 some supported use cases 1`] = `
+exports[`injection | hash murmur3 | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -1330,7 +1330,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection - hash murmur3 with FormattedMessage imported as something else 1`] = `
+exports[`injection | hash murmur3 | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -1346,7 +1346,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection - hash murmur3 with Injection API HOC imported 1`] = `
+exports[`injection | hash murmur3 | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1362,7 +1362,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash murmur3 with a value interpolated in the message 1`] = `
+exports[`injection | hash murmur3 | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1378,7 +1378,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash murmur3 with a variable as the defaultMessage 1`] = `
+exports[`injection | hash murmur3 | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = "variable message";
@@ -1395,7 +1395,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash murmur3 with a variable as the defaultMessage 2`] = `
+exports[`injection | hash murmur3 | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -1409,7 +1409,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash murmur3 with custom properties in formatMessage call 1`] = `
+exports[`injection | hash murmur3 | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1426,7 +1426,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash murmur3 with injectIntl 1`] = `
+exports[`injection | hash murmur3 | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1442,7 +1442,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash unknown fallback to murmur3 does nothing if id is already provided 1`] = `
+exports[`injection | hash unknown fallback to murmur3 | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { injectIntl } from 'gatsby-plugin-intl';
@@ -1459,7 +1459,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash unknown fallback to murmur3 does nothing if react-intl is not imported 1`] = `
+exports[`injection | hash unknown fallback to murmur3 | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -1474,7 +1474,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash unknown fallback to murmur3 multiple uses 1`] = `
+exports[`injection | hash unknown fallback to murmur3 | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1512,7 +1512,7 @@ intl.formatMessage({
 "
 `;
 
-exports[`injection - hash unknown fallback to murmur3 some supported use cases 1`] = `
+exports[`injection | hash unknown fallback to murmur3 | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -1536,7 +1536,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection - hash unknown fallback to murmur3 with FormattedMessage imported as something else 1`] = `
+exports[`injection | hash unknown fallback to murmur3 | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -1552,7 +1552,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection - hash unknown fallback to murmur3 with Injection API HOC imported 1`] = `
+exports[`injection | hash unknown fallback to murmur3 | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1568,7 +1568,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash unknown fallback to murmur3 with a value interpolated in the message 1`] = `
+exports[`injection | hash unknown fallback to murmur3 | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1584,7 +1584,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash unknown fallback to murmur3 with a variable as the defaultMessage 1`] = `
+exports[`injection | hash unknown fallback to murmur3 | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = "variable message";
@@ -1601,7 +1601,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash unknown fallback to murmur3 with a variable as the defaultMessage 2`] = `
+exports[`injection | hash unknown fallback to murmur3 | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -1615,7 +1615,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash unknown fallback to murmur3 with custom properties in formatMessage call 1`] = `
+exports[`injection | hash unknown fallback to murmur3 | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1632,7 +1632,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash unknown fallback to murmur3 with injectIntl 1`] = `
+exports[`injection | hash unknown fallback to murmur3 | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1648,7 +1648,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - includeExportName = false does nothing if id is already provided 1`] = `
+exports[`injection | moduleSourceNameTest | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { injectIntl } from 'gatsby-plugin-intl';
@@ -1665,7 +1665,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - includeExportName = false does nothing if react-intl is not imported 1`] = `
+exports[`injection | moduleSourceNameTest | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -1680,7 +1680,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - includeExportName = false multiple uses 1`] = `
+exports[`injection | moduleSourceNameTest | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1718,7 +1718,7 @@ intl.formatMessage({
 "
 `;
 
-exports[`injection - includeExportName = false some supported use cases 1`] = `
+exports[`injection | moduleSourceNameTest | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -1742,7 +1742,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection - includeExportName = false with FormattedMessage imported as something else 1`] = `
+exports[`injection | moduleSourceNameTest | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -1758,7 +1758,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection - includeExportName = false with Injection API HOC imported 1`] = `
+exports[`injection | moduleSourceNameTest | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1774,7 +1774,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - includeExportName = false with a value interpolated in the message 1`] = `
+exports[`injection | moduleSourceNameTest | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1790,7 +1790,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - includeExportName = false with a variable as the defaultMessage 1`] = `
+exports[`injection | moduleSourceNameTest | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = "variable message";
@@ -1807,7 +1807,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - includeExportName = false with a variable as the defaultMessage 2`] = `
+exports[`injection | moduleSourceNameTest | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -1821,7 +1821,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - includeExportName = false with custom properties in formatMessage call 1`] = `
+exports[`injection | moduleSourceNameTest | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1838,7 +1838,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - includeExportName = false with injectIntl 1`] = `
+exports[`injection | moduleSourceNameTest | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1854,7 +1854,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - moduleSourceNameTest does nothing if id is already provided 1`] = `
+exports[`injection | relativeTo = "" | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { injectIntl } from 'gatsby-plugin-intl';
@@ -1871,7 +1871,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - moduleSourceNameTest does nothing if react-intl is not imported 1`] = `
+exports[`injection | relativeTo = "" | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -1886,7 +1886,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - moduleSourceNameTest multiple uses 1`] = `
+exports[`injection | relativeTo = "" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1924,7 +1924,7 @@ intl.formatMessage({
 "
 `;
 
-exports[`injection - moduleSourceNameTest some supported use cases 1`] = `
+exports[`injection | relativeTo = "" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -1948,7 +1948,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection - moduleSourceNameTest with FormattedMessage imported as something else 1`] = `
+exports[`injection | relativeTo = "" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -1964,7 +1964,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection - moduleSourceNameTest with Injection API HOC imported 1`] = `
+exports[`injection | relativeTo = "" | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1980,7 +1980,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - moduleSourceNameTest with a value interpolated in the message 1`] = `
+exports[`injection | relativeTo = "" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1996,7 +1996,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - moduleSourceNameTest with a variable as the defaultMessage 1`] = `
+exports[`injection | relativeTo = "" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = "variable message";
@@ -2013,7 +2013,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - moduleSourceNameTest with a variable as the defaultMessage 2`] = `
+exports[`injection | relativeTo = "" | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -2027,7 +2027,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - moduleSourceNameTest with custom properties in formatMessage call 1`] = `
+exports[`injection | relativeTo = "" | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2044,7 +2044,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - moduleSourceNameTest with injectIntl 1`] = `
+exports[`injection | relativeTo = "" | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2060,7 +2060,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - relativeTo = "" does nothing if id is already provided 1`] = `
+exports[`injection | relativeTo = "../" | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { injectIntl } from 'gatsby-plugin-intl';
@@ -2077,7 +2077,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - relativeTo = "" does nothing if react-intl is not imported 1`] = `
+exports[`injection | relativeTo = "../" | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -2092,7 +2092,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - relativeTo = "" multiple uses 1`] = `
+exports[`injection | relativeTo = "../" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2130,7 +2130,7 @@ intl.formatMessage({
 "
 `;
 
-exports[`injection - relativeTo = "" some supported use cases 1`] = `
+exports[`injection | relativeTo = "../" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -2154,7 +2154,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection - relativeTo = "" with FormattedMessage imported as something else 1`] = `
+exports[`injection | relativeTo = "../" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -2170,7 +2170,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection - relativeTo = "" with Injection API HOC imported 1`] = `
+exports[`injection | relativeTo = "../" | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2186,7 +2186,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - relativeTo = "" with a value interpolated in the message 1`] = `
+exports[`injection | relativeTo = "../" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2202,7 +2202,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - relativeTo = "" with a variable as the defaultMessage 1`] = `
+exports[`injection | relativeTo = "../" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = "variable message";
@@ -2219,7 +2219,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - relativeTo = "" with a variable as the defaultMessage 2`] = `
+exports[`injection | relativeTo = "../" | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -2233,7 +2233,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - relativeTo = "" with custom properties in formatMessage call 1`] = `
+exports[`injection | relativeTo = "../" | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2250,7 +2250,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - relativeTo = "" with injectIntl 1`] = `
+exports[`injection | relativeTo = "../" | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2266,7 +2266,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - relativeTo = "../" does nothing if id is already provided 1`] = `
+exports[`injection | removePrefix = "src" | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { injectIntl } from 'gatsby-plugin-intl';
@@ -2283,7 +2283,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - relativeTo = "../" does nothing if react-intl is not imported 1`] = `
+exports[`injection | removePrefix = "src" | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -2298,7 +2298,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - relativeTo = "../" multiple uses 1`] = `
+exports[`injection | removePrefix = "src" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2336,7 +2336,7 @@ intl.formatMessage({
 "
 `;
 
-exports[`injection - relativeTo = "../" some supported use cases 1`] = `
+exports[`injection | removePrefix = "src" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -2360,7 +2360,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection - relativeTo = "../" with FormattedMessage imported as something else 1`] = `
+exports[`injection | removePrefix = "src" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -2376,7 +2376,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection - relativeTo = "../" with Injection API HOC imported 1`] = `
+exports[`injection | removePrefix = "src" | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2392,7 +2392,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - relativeTo = "../" with a value interpolated in the message 1`] = `
+exports[`injection | removePrefix = "src" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2408,7 +2408,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - relativeTo = "../" with a variable as the defaultMessage 1`] = `
+exports[`injection | removePrefix = "src" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = "variable message";
@@ -2425,7 +2425,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - relativeTo = "../" with a variable as the defaultMessage 2`] = `
+exports[`injection | removePrefix = "src" | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -2439,7 +2439,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - relativeTo = "../" with custom properties in formatMessage call 1`] = `
+exports[`injection | removePrefix = "src" | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2456,7 +2456,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - relativeTo = "../" with injectIntl 1`] = `
+exports[`injection | removePrefix = "src" | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2472,7 +2472,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = "src" does nothing if id is already provided 1`] = `
+exports[`injection | removePrefix = "src.__fixtures__" | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { injectIntl } from 'gatsby-plugin-intl';
@@ -2489,7 +2489,24 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = "src" does nothing if react-intl is not imported 1`] = `
+exports[`injection | removePrefix = "src.__fixtures__" | does nothing if id is already provided 2`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+import { injectIntl } from 'gatsby-plugin-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: "my.custom.id",
+            defaultMessage: "hello"
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`injection | removePrefix = "src.__fixtures__" | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -2504,7 +2521,22 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = "src" multiple uses 1`] = `
+exports[`injection | removePrefix = "src.__fixtures__" | does nothing if react-intl is not imported 2`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`injection | removePrefix = "src.__fixtures__" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2542,207 +2574,7 @@ intl.formatMessage({
 "
 `;
 
-exports[`injection - removePrefix = "src" some supported use cases 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-var Component2 = function Component2(param) {
-    var intl = param.intl;
-    var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "Users.username.repo.src.components.App.613153351"
-    });
-    return /*#__PURE__*/ _jsx("button", {
-        "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
-        }),
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
-        })
-    });
-};
-injectIntl(Components2);
-"
-`;
-
-exports[`injection - removePrefix = "src" with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl as i18n } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "i18n",
-            "id": "Users.username.repo.src.components.App.94348014"
-        })
-    });
-}
-export default i18n(App);
-"
-`;
-
-exports[`injection - removePrefix = "src" with Injection API HOC imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src" with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string 2",
-            "id": "Users.username.repo.src.components.App.1045198380"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src" with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-var message = "variable message";
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message,
-            "id": "Users.username.repo.src.components.App.370814869"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src" with a variable as the defaultMessage 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-import { message } from './messages';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage(message)
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src" with custom properties in formatMessage call 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "custom prop",
-            other: 123,
-            "id": "Users.username.repo.src.components.App.2983810267"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src" with injectIntl 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "Users.username.repo.src.components.App.613153351"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src.__fixtures__" does nothing if id is already provided 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-import { injectIntl } from 'gatsby-plugin-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            id: "my.custom.id",
-            defaultMessage: "hello"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src.__fixtures__" does nothing if id is already provided 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-import { injectIntl } from 'gatsby-plugin-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            id: "my.custom.id",
-            defaultMessage: "hello"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src.__fixtures__" does nothing if react-intl is not imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src.__fixtures__" does nothing if react-intl is not imported 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src.__fixtures__" multiple uses 1`] = `
+exports[`injection | removePrefix = "src.__fixtures__" | multiple uses 2`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2780,7 +2612,311 @@ intl.formatMessage({
 "
 `;
 
-exports[`injection - removePrefix = "src.__fixtures__" multiple uses 2`] = `
+exports[`injection | removePrefix = "src.__fixtures__" | some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+var Component2 = function Component2(param) {
+    var intl = param.intl;
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "Users.username.repo.src.components.App.613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+};
+injectIntl(Components2);
+"
+`;
+
+exports[`injection | removePrefix = "src.__fixtures__" | some supported use cases 2`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+var Component2 = function Component2(param) {
+    var intl = param.intl;
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "Users.username.repo.src.components.App.613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+};
+injectIntl(Components2);
+"
+`;
+
+exports[`injection | removePrefix = "src.__fixtures__" | with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl as i18n } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "i18n",
+            "id": "Users.username.repo.src.components.App.94348014"
+        })
+    });
+}
+export default i18n(App);
+"
+`;
+
+exports[`injection | removePrefix = "src.__fixtures__" | with FormattedMessage imported as something else 2`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl as i18n } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "i18n",
+            "id": "Users.username.repo.src.components.App.94348014"
+        })
+    });
+}
+export default i18n(App);
+"
+`;
+
+exports[`injection | removePrefix = "src.__fixtures__" | with Injection API HOC imported 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`injection | removePrefix = "src.__fixtures__" | with Injection API HOC imported 2`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`injection | removePrefix = "src.__fixtures__" | with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "template string 2",
+            "id": "Users.username.repo.src.components.App.1045198380"
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`injection | removePrefix = "src.__fixtures__" | with a value interpolated in the message 2`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "template string 2",
+            "id": "Users.username.repo.src.components.App.1045198380"
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`injection | removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+var message = "variable message";
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: message,
+            "id": "Users.username.repo.src.components.App.370814869"
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`injection | removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 2`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+import { message } from './messages';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage(message)
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`injection | removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 3`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+var message = "variable message";
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: message,
+            "id": "Users.username.repo.src.components.App.370814869"
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`injection | removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 4`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+import { message } from './messages';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage(message)
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`injection | removePrefix = "src.__fixtures__" | with custom properties in formatMessage call 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "custom prop",
+            other: 123,
+            "id": "Users.username.repo.src.components.App.2983810267"
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`injection | removePrefix = "src.__fixtures__" | with custom properties in formatMessage call 2`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "custom prop",
+            other: 123,
+            "id": "Users.username.repo.src.components.App.2983810267"
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`injection | removePrefix = "src.__fixtures__" | with injectIntl 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`injection | removePrefix = "src.__fixtures__" | with injectIntl 2`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`injection | removePrefix = "src/" -- with slash | does nothing if id is already provided 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+import { injectIntl } from 'gatsby-plugin-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: "my.custom.id",
+            defaultMessage: "hello"
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`injection | removePrefix = "src/" -- with slash | does nothing if react-intl is not imported 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`injection | removePrefix = "src/" -- with slash | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2818,7 +2954,7 @@ intl.formatMessage({
 "
 `;
 
-exports[`injection - removePrefix = "src.__fixtures__" some supported use cases 1`] = `
+exports[`injection | removePrefix = "src/" -- with slash | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -2842,31 +2978,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection - removePrefix = "src.__fixtures__" some supported use cases 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-var Component2 = function Component2(param) {
-    var intl = param.intl;
-    var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "Users.username.repo.src.components.App.613153351"
-    });
-    return /*#__PURE__*/ _jsx("button", {
-        "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
-        }),
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
-        })
-    });
-};
-injectIntl(Components2);
-"
-`;
-
-exports[`injection - removePrefix = "src.__fixtures__" with FormattedMessage imported as something else 1`] = `
+exports[`injection | removePrefix = "src/" -- with slash | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -2882,23 +2994,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection - removePrefix = "src.__fixtures__" with FormattedMessage imported as something else 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl as i18n } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "i18n",
-            "id": "Users.username.repo.src.components.App.94348014"
-        })
-    });
-}
-export default i18n(App);
-"
-`;
-
-exports[`injection - removePrefix = "src.__fixtures__" with Injection API HOC imported 1`] = `
+exports[`injection | removePrefix = "src/" -- with slash | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2914,23 +3010,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = "src.__fixtures__" with Injection API HOC imported 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src.__fixtures__" with a value interpolated in the message 1`] = `
+exports[`injection | removePrefix = "src/" -- with slash | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2946,23 +3026,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = "src.__fixtures__" with a value interpolated in the message 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string 2",
-            "id": "Users.username.repo.src.components.App.1045198380"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src.__fixtures__" with a variable as the defaultMessage 1`] = `
+exports[`injection | removePrefix = "src/" -- with slash | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = "variable message";
@@ -2979,7 +3043,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = "src.__fixtures__" with a variable as the defaultMessage 2`] = `
+exports[`injection | removePrefix = "src/" -- with slash | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -2993,38 +3057,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = "src.__fixtures__" with a variable as the defaultMessage 3`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-var message = "variable message";
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message,
-            "id": "Users.username.repo.src.components.App.370814869"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src.__fixtures__" with a variable as the defaultMessage 4`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-import { message } from './messages';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage(message)
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src.__fixtures__" with custom properties in formatMessage call 1`] = `
+exports[`injection | removePrefix = "src/" -- with slash | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -3041,24 +3074,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = "src.__fixtures__" with custom properties in formatMessage call 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "custom prop",
-            other: 123,
-            "id": "Users.username.repo.src.components.App.2983810267"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src.__fixtures__" with injectIntl 1`] = `
+exports[`injection | removePrefix = "src/" -- with slash | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -3074,23 +3090,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = "src.__fixtures__" with injectIntl 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "Users.username.repo.src.components.App.613153351"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src/" -- with slash does nothing if id is already provided 1`] = `
+exports[`injection | removePrefix = /__fixtures__/ | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { injectIntl } from 'gatsby-plugin-intl';
@@ -3107,7 +3107,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = "src/" -- with slash does nothing if react-intl is not imported 1`] = `
+exports[`injection | removePrefix = /__fixtures__/ | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -3122,7 +3122,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = "src/" -- with slash multiple uses 1`] = `
+exports[`injection | removePrefix = /__fixtures__/ | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -3160,7 +3160,7 @@ intl.formatMessage({
 "
 `;
 
-exports[`injection - removePrefix = "src/" -- with slash some supported use cases 1`] = `
+exports[`injection | removePrefix = /__fixtures__/ | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -3184,7 +3184,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection - removePrefix = "src/" -- with slash with FormattedMessage imported as something else 1`] = `
+exports[`injection | removePrefix = /__fixtures__/ | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -3200,7 +3200,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection - removePrefix = "src/" -- with slash with Injection API HOC imported 1`] = `
+exports[`injection | removePrefix = /__fixtures__/ | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -3216,7 +3216,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = "src/" -- with slash with a value interpolated in the message 1`] = `
+exports[`injection | removePrefix = /__fixtures__/ | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -3232,7 +3232,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = "src/" -- with slash with a variable as the defaultMessage 1`] = `
+exports[`injection | removePrefix = /__fixtures__/ | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = "variable message";
@@ -3249,7 +3249,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = "src/" -- with slash with a variable as the defaultMessage 2`] = `
+exports[`injection | removePrefix = /__fixtures__/ | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -3263,7 +3263,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = "src/" -- with slash with custom properties in formatMessage call 1`] = `
+exports[`injection | removePrefix = /__fixtures__/ | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -3280,7 +3280,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = "src/" -- with slash with injectIntl 1`] = `
+exports[`injection | removePrefix = /__fixtures__/ | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -3296,7 +3296,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = /__fixtures__/ does nothing if id is already provided 1`] = `
+exports[`injection | removePrefix = true | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { injectIntl } from 'gatsby-plugin-intl';
@@ -3313,213 +3313,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = /__fixtures__/ does nothing if react-intl is not imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = /__fixtures__/ multiple uses 1`] = `
-"import { jsxs as _jsxs } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var _$intl = param.intl;
-    return /*#__PURE__*/ _jsxs("div", {
-        children: [
-            _$intl.formatMessage({
-                defaultMessage: "hello",
-                "id": "Users.username.repo.src.components.App.613153351"
-            }),
-            _$intl.formatMessage({
-                defaultMessage: "hello",
-                "id": "Users.username.repo.src.components.App.613153351"
-            }),
-            _$intl.formatMessage({
-                defaultMessage: "some other message",
-                "id": "Users.username.repo.src.components.App.831373691"
-            })
-        ]
-    });
-}
-export default injectIntl(App);
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "Users.username.repo.src.components.App.831373691"
-});
-"
-`;
-
-exports[`injection - removePrefix = /__fixtures__/ some supported use cases 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-var Component2 = function Component2(param) {
-    var intl = param.intl;
-    var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "Users.username.repo.src.components.App.613153351"
-    });
-    return /*#__PURE__*/ _jsx("button", {
-        "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
-        }),
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
-        })
-    });
-};
-injectIntl(Components2);
-"
-`;
-
-exports[`injection - removePrefix = /__fixtures__/ with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl as i18n } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "i18n",
-            "id": "Users.username.repo.src.components.App.94348014"
-        })
-    });
-}
-export default i18n(App);
-"
-`;
-
-exports[`injection - removePrefix = /__fixtures__/ with Injection API HOC imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = /__fixtures__/ with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string 2",
-            "id": "Users.username.repo.src.components.App.1045198380"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = /__fixtures__/ with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-var message = "variable message";
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message,
-            "id": "Users.username.repo.src.components.App.370814869"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = /__fixtures__/ with a variable as the defaultMessage 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-import { message } from './messages';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage(message)
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = /__fixtures__/ with custom properties in formatMessage call 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "custom prop",
-            other: 123,
-            "id": "Users.username.repo.src.components.App.2983810267"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = /__fixtures__/ with injectIntl 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "Users.username.repo.src.components.App.613153351"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = true does nothing if id is already provided 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-import { injectIntl } from 'gatsby-plugin-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            id: "my.custom.id",
-            defaultMessage: "hello"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = true does nothing if react-intl is not imported 1`] = `
+exports[`injection | removePrefix = true | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -3534,7 +3328,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = true multiple uses 1`] = `
+exports[`injection | removePrefix = true | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -3572,7 +3366,7 @@ intl.formatMessage({
 "
 `;
 
-exports[`injection - removePrefix = true some supported use cases 1`] = `
+exports[`injection | removePrefix = true | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -3596,7 +3390,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection - removePrefix = true with FormattedMessage imported as something else 1`] = `
+exports[`injection | removePrefix = true | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -3612,7 +3406,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection - removePrefix = true with Injection API HOC imported 1`] = `
+exports[`injection | removePrefix = true | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -3628,7 +3422,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = true with a value interpolated in the message 1`] = `
+exports[`injection | removePrefix = true | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -3644,7 +3438,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = true with a variable as the defaultMessage 1`] = `
+exports[`injection | removePrefix = true | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = "variable message";
@@ -3661,7 +3455,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = true with a variable as the defaultMessage 2`] = `
+exports[`injection | removePrefix = true | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -3675,7 +3469,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = true with custom properties in formatMessage call 1`] = `
+exports[`injection | removePrefix = true | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -3692,7 +3486,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = true with injectIntl 1`] = `
+exports[`injection | removePrefix = true | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -3708,7 +3502,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - separator = "_" does nothing if id is already provided 1`] = `
+exports[`injection | separator = "_" | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { injectIntl } from 'gatsby-plugin-intl';
@@ -3725,7 +3519,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - separator = "_" does nothing if react-intl is not imported 1`] = `
+exports[`injection | separator = "_" | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -3740,7 +3534,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - separator = "_" multiple uses 1`] = `
+exports[`injection | separator = "_" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -3778,7 +3572,7 @@ intl.formatMessage({
 "
 `;
 
-exports[`injection - separator = "_" some supported use cases 1`] = `
+exports[`injection | separator = "_" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -3802,7 +3596,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection - separator = "_" with FormattedMessage imported as something else 1`] = `
+exports[`injection | separator = "_" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -3818,7 +3612,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection - separator = "_" with Injection API HOC imported 1`] = `
+exports[`injection | separator = "_" | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -3834,7 +3628,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - separator = "_" with a value interpolated in the message 1`] = `
+exports[`injection | separator = "_" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -3850,7 +3644,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - separator = "_" with a variable as the defaultMessage 1`] = `
+exports[`injection | separator = "_" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = "variable message";
@@ -3867,7 +3661,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - separator = "_" with a variable as the defaultMessage 2`] = `
+exports[`injection | separator = "_" | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -3881,7 +3675,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - separator = "_" with custom properties in formatMessage call 1`] = `
+exports[`injection | separator = "_" | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -3898,7 +3692,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - separator = "_" with injectIntl 1`] = `
+exports[`injection | separator = "_" | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -3914,7 +3708,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - useKey = true does nothing if id is already provided 1`] = `
+exports[`injection | useKey = true | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { injectIntl } from 'gatsby-plugin-intl';
@@ -3931,7 +3725,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - useKey = true does nothing if react-intl is not imported 1`] = `
+exports[`injection | useKey = true | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -3946,7 +3740,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - useKey = true multiple uses 1`] = `
+exports[`injection | useKey = true | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -3984,7 +3778,7 @@ intl.formatMessage({
 "
 `;
 
-exports[`injection - useKey = true some supported use cases 1`] = `
+exports[`injection | useKey = true | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -4008,7 +3802,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection - useKey = true with FormattedMessage imported as something else 1`] = `
+exports[`injection | useKey = true | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -4024,7 +3818,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection - useKey = true with Injection API HOC imported 1`] = `
+exports[`injection | useKey = true | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -4040,7 +3834,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - useKey = true with a value interpolated in the message 1`] = `
+exports[`injection | useKey = true | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -4056,7 +3850,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - useKey = true with a variable as the defaultMessage 1`] = `
+exports[`injection | useKey = true | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = "variable message";
@@ -4073,7 +3867,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - useKey = true with a variable as the defaultMessage 2`] = `
+exports[`injection | useKey = true | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -4087,7 +3881,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - useKey = true with custom properties in formatMessage call 1`] = `
+exports[`injection | useKey = true | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -4104,7 +3898,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - useKey = true with injectIntl 1`] = `
+exports[`injection | useKey = true | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`hooks - default does nothing if id is already provided 1`] = `
+exports[`hooks | default | does nothing if id is already provided 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -9,7 +9,7 @@ export { };
 "
 `;
 
-exports[`hooks - default does nothing if react-intl is not imported 1`] = `
+exports[`hooks | default | does nothing if react-intl is not imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -18,7 +18,7 @@ export { };
 "
 `;
 
-exports[`hooks - default multiple uses 1`] = `
+exports[`hooks | default | multiple uses 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -35,7 +35,7 @@ export { };
 "
 `;
 
-exports[`hooks - default some supported use cases 1`] = `
+exports[`hooks | default | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component2 = function Component2() {
@@ -58,7 +58,7 @@ var Component2 = function Component2() {
 "
 `;
 
-exports[`hooks - default useIntl with different module source 1`] = `
+exports[`hooks | default | useIntl with different module source 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -67,7 +67,7 @@ export { };
 "
 `;
 
-exports[`hooks - default with FormattedMessage imported as something else 1`] = `
+exports[`hooks | default | with FormattedMessage imported as something else 1`] = `
 "intl.formatMessage({
     defaultMessage: "i18n",
     "id": "Users.username.repo.src.components.App.94348014"
@@ -76,7 +76,7 @@ export { };
 "
 `;
 
-exports[`hooks - default with a value interpolated in the message 1`] = `
+exports[`hooks | default | with a value interpolated in the message 1`] = `
 "intl.formatMessage({
     defaultMessage: "template string 2",
     "id": "Users.username.repo.src.components.App.1045198380"
@@ -85,7 +85,7 @@ export { };
 "
 `;
 
-exports[`hooks - default with a variable as the defaultMessage 1`] = `
+exports[`hooks | default | with a variable as the defaultMessage 1`] = `
 "var message = "variable message";
 intl.formatMessage({
     defaultMessage: message,
@@ -95,13 +95,13 @@ export { };
 "
 `;
 
-exports[`hooks - default with a variable as the defaultMessage 2`] = `
+exports[`hooks | default | with a variable as the defaultMessage 2`] = `
 "intl.formatMessage(messages);
 export { };
 "
 `;
 
-exports[`hooks - default with custom properties in formatMessage call 1`] = `
+exports[`hooks | default | with custom properties in formatMessage call 1`] = `
 "intl.formatMessage({
     defaultMessage: "custom prop",
     other: 123,
@@ -111,7 +111,7 @@ export { };
 "
 `;
 
-exports[`hooks - default with useIntl hook imported 1`] = `
+exports[`hooks | default | with useIntl hook imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -120,7 +120,7 @@ export { };
 "
 `;
 
-exports[`hooks - filebase = true does nothing if id is already provided 1`] = `
+exports[`hooks | filebase = true | does nothing if id is already provided 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -129,7 +129,7 @@ export { };
 "
 `;
 
-exports[`hooks - filebase = true does nothing if react-intl is not imported 1`] = `
+exports[`hooks | filebase = true | does nothing if react-intl is not imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "App.613153351"
@@ -138,7 +138,7 @@ export { };
 "
 `;
 
-exports[`hooks - filebase = true multiple uses 1`] = `
+exports[`hooks | filebase = true | multiple uses 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "App.613153351"
@@ -155,7 +155,7 @@ export { };
 "
 `;
 
-exports[`hooks - filebase = true some supported use cases 1`] = `
+exports[`hooks | filebase = true | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component2 = function Component2() {
@@ -178,7 +178,7 @@ var Component2 = function Component2() {
 "
 `;
 
-exports[`hooks - filebase = true useIntl with different module source 1`] = `
+exports[`hooks | filebase = true | useIntl with different module source 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -187,7 +187,7 @@ export { };
 "
 `;
 
-exports[`hooks - filebase = true with FormattedMessage imported as something else 1`] = `
+exports[`hooks | filebase = true | with FormattedMessage imported as something else 1`] = `
 "intl.formatMessage({
     defaultMessage: "i18n",
     "id": "App.94348014"
@@ -196,7 +196,7 @@ export { };
 "
 `;
 
-exports[`hooks - filebase = true with a value interpolated in the message 1`] = `
+exports[`hooks | filebase = true | with a value interpolated in the message 1`] = `
 "intl.formatMessage({
     defaultMessage: "template string 2",
     "id": "App.1045198380"
@@ -205,7 +205,7 @@ export { };
 "
 `;
 
-exports[`hooks - filebase = true with a variable as the defaultMessage 1`] = `
+exports[`hooks | filebase = true | with a variable as the defaultMessage 1`] = `
 "var message = "variable message";
 intl.formatMessage({
     defaultMessage: message,
@@ -215,13 +215,13 @@ export { };
 "
 `;
 
-exports[`hooks - filebase = true with a variable as the defaultMessage 2`] = `
+exports[`hooks | filebase = true | with a variable as the defaultMessage 2`] = `
 "intl.formatMessage(messages);
 export { };
 "
 `;
 
-exports[`hooks - filebase = true with custom properties in formatMessage call 1`] = `
+exports[`hooks | filebase = true | with custom properties in formatMessage call 1`] = `
 "intl.formatMessage({
     defaultMessage: "custom prop",
     other: 123,
@@ -231,7 +231,7 @@ export { };
 "
 `;
 
-exports[`hooks - filebase = true with useIntl hook imported 1`] = `
+exports[`hooks | filebase = true | with useIntl hook imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "App.613153351"
@@ -240,7 +240,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + filebase = true does nothing if id is already provided 1`] = `
+exports[`hooks | hash + filebase = true | does nothing if id is already provided 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -249,7 +249,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + filebase = true does nothing if react-intl is not imported 1`] = `
+exports[`hooks | hash + filebase = true | does nothing if react-intl is not imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "QXBwLjYxMzE1MzM1MQ=="
@@ -258,7 +258,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + filebase = true multiple uses 1`] = `
+exports[`hooks | hash + filebase = true | multiple uses 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "QXBwLjYxMzE1MzM1MQ=="
@@ -275,7 +275,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + filebase = true some supported use cases 1`] = `
+exports[`hooks | hash + filebase = true | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component2 = function Component2() {
@@ -298,7 +298,7 @@ var Component2 = function Component2() {
 "
 `;
 
-exports[`hooks - hash + filebase = true useIntl with different module source 1`] = `
+exports[`hooks | hash + filebase = true | useIntl with different module source 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -307,7 +307,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + filebase = true with FormattedMessage imported as something else 1`] = `
+exports[`hooks | hash + filebase = true | with FormattedMessage imported as something else 1`] = `
 "intl.formatMessage({
     defaultMessage: "i18n",
     "id": "QXBwLjk0MzQ4MDE0"
@@ -316,7 +316,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + filebase = true with a value interpolated in the message 1`] = `
+exports[`hooks | hash + filebase = true | with a value interpolated in the message 1`] = `
 "intl.formatMessage({
     defaultMessage: "template string 2",
     "id": "QXBwLjEwNDUxOTgzODA="
@@ -325,7 +325,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + filebase = true with a variable as the defaultMessage 1`] = `
+exports[`hooks | hash + filebase = true | with a variable as the defaultMessage 1`] = `
 "var message = "variable message";
 intl.formatMessage({
     defaultMessage: message,
@@ -335,13 +335,13 @@ export { };
 "
 `;
 
-exports[`hooks - hash + filebase = true with a variable as the defaultMessage 2`] = `
+exports[`hooks | hash + filebase = true | with a variable as the defaultMessage 2`] = `
 "intl.formatMessage(messages);
 export { };
 "
 `;
 
-exports[`hooks - hash + filebase = true with custom properties in formatMessage call 1`] = `
+exports[`hooks | hash + filebase = true | with custom properties in formatMessage call 1`] = `
 "intl.formatMessage({
     defaultMessage: "custom prop",
     other: 123,
@@ -351,7 +351,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + filebase = true with useIntl hook imported 1`] = `
+exports[`hooks | hash + filebase = true | with useIntl hook imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "QXBwLjYxMzE1MzM1MQ=="
@@ -360,7 +360,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + relativeTo = "src" does nothing if id is already provided 1`] = `
+exports[`hooks | hash + relativeTo = "src" | does nothing if id is already provided 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -369,7 +369,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + relativeTo = "src" does nothing if react-intl is not imported 1`] = `
+exports[`hooks | hash + relativeTo = "src" | does nothing if react-intl is not imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
@@ -378,7 +378,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + relativeTo = "src" multiple uses 1`] = `
+exports[`hooks | hash + relativeTo = "src" | multiple uses 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
@@ -395,7 +395,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + relativeTo = "src" some supported use cases 1`] = `
+exports[`hooks | hash + relativeTo = "src" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component2 = function Component2() {
@@ -418,7 +418,7 @@ var Component2 = function Component2() {
 "
 `;
 
-exports[`hooks - hash + relativeTo = "src" useIntl with different module source 1`] = `
+exports[`hooks | hash + relativeTo = "src" | useIntl with different module source 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -427,7 +427,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + relativeTo = "src" with FormattedMessage imported as something else 1`] = `
+exports[`hooks | hash + relativeTo = "src" | with FormattedMessage imported as something else 1`] = `
 "intl.formatMessage({
     defaultMessage: "i18n",
     "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuOTQzNDgwMTQ="
@@ -436,7 +436,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + relativeTo = "src" with a value interpolated in the message 1`] = `
+exports[`hooks | hash + relativeTo = "src" | with a value interpolated in the message 1`] = `
 "intl.formatMessage({
     defaultMessage: "template string 2",
     "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTA0NTE5ODM4MA=="
@@ -445,7 +445,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + relativeTo = "src" with a variable as the defaultMessage 1`] = `
+exports[`hooks | hash + relativeTo = "src" | with a variable as the defaultMessage 1`] = `
 "var message = "variable message";
 intl.formatMessage({
     defaultMessage: message,
@@ -455,13 +455,13 @@ export { };
 "
 `;
 
-exports[`hooks - hash + relativeTo = "src" with a variable as the defaultMessage 2`] = `
+exports[`hooks | hash + relativeTo = "src" | with a variable as the defaultMessage 2`] = `
 "intl.formatMessage(messages);
 export { };
 "
 `;
 
-exports[`hooks - hash + relativeTo = "src" with custom properties in formatMessage call 1`] = `
+exports[`hooks | hash + relativeTo = "src" | with custom properties in formatMessage call 1`] = `
 "intl.formatMessage({
     defaultMessage: "custom prop",
     other: 123,
@@ -471,7 +471,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + relativeTo = "src" with useIntl hook imported 1`] = `
+exports[`hooks | hash + relativeTo = "src" | with useIntl hook imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
@@ -480,7 +480,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + removePrefix = "src/" does nothing if id is already provided 1`] = `
+exports[`hooks | hash + removePrefix = "src/" | does nothing if id is already provided 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -489,7 +489,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + removePrefix = "src/" does nothing if react-intl is not imported 1`] = `
+exports[`hooks | hash + removePrefix = "src/" | does nothing if react-intl is not imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
@@ -498,7 +498,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + removePrefix = "src/" multiple uses 1`] = `
+exports[`hooks | hash + removePrefix = "src/" | multiple uses 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
@@ -515,7 +515,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + removePrefix = "src/" some supported use cases 1`] = `
+exports[`hooks | hash + removePrefix = "src/" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component2 = function Component2() {
@@ -538,7 +538,7 @@ var Component2 = function Component2() {
 "
 `;
 
-exports[`hooks - hash + removePrefix = "src/" useIntl with different module source 1`] = `
+exports[`hooks | hash + removePrefix = "src/" | useIntl with different module source 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -547,7 +547,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + removePrefix = "src/" with FormattedMessage imported as something else 1`] = `
+exports[`hooks | hash + removePrefix = "src/" | with FormattedMessage imported as something else 1`] = `
 "intl.formatMessage({
     defaultMessage: "i18n",
     "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuOTQzNDgwMTQ="
@@ -556,7 +556,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + removePrefix = "src/" with a value interpolated in the message 1`] = `
+exports[`hooks | hash + removePrefix = "src/" | with a value interpolated in the message 1`] = `
 "intl.formatMessage({
     defaultMessage: "template string 2",
     "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTA0NTE5ODM4MA=="
@@ -565,7 +565,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + removePrefix = "src/" with a variable as the defaultMessage 1`] = `
+exports[`hooks | hash + removePrefix = "src/" | with a variable as the defaultMessage 1`] = `
 "var message = "variable message";
 intl.formatMessage({
     defaultMessage: message,
@@ -575,13 +575,13 @@ export { };
 "
 `;
 
-exports[`hooks - hash + removePrefix = "src/" with a variable as the defaultMessage 2`] = `
+exports[`hooks | hash + removePrefix = "src/" | with a variable as the defaultMessage 2`] = `
 "intl.formatMessage(messages);
 export { };
 "
 `;
 
-exports[`hooks - hash + removePrefix = "src/" with custom properties in formatMessage call 1`] = `
+exports[`hooks | hash + removePrefix = "src/" | with custom properties in formatMessage call 1`] = `
 "intl.formatMessage({
     defaultMessage: "custom prop",
     other: 123,
@@ -591,7 +591,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash + removePrefix = "src/" with useIntl hook imported 1`] = `
+exports[`hooks | hash + removePrefix = "src/" | with useIntl hook imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
@@ -600,7 +600,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash base64 does nothing if id is already provided 1`] = `
+exports[`hooks | hash base64 | does nothing if id is already provided 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -609,7 +609,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash base64 does nothing if react-intl is not imported 1`] = `
+exports[`hooks | hash base64 | does nothing if react-intl is not imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
@@ -618,7 +618,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash base64 multiple uses 1`] = `
+exports[`hooks | hash base64 | multiple uses 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
@@ -635,7 +635,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash base64 some supported use cases 1`] = `
+exports[`hooks | hash base64 | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component2 = function Component2() {
@@ -658,7 +658,7 @@ var Component2 = function Component2() {
 "
 `;
 
-exports[`hooks - hash base64 useIntl with different module source 1`] = `
+exports[`hooks | hash base64 | useIntl with different module source 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -667,7 +667,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash base64 with FormattedMessage imported as something else 1`] = `
+exports[`hooks | hash base64 | with FormattedMessage imported as something else 1`] = `
 "intl.formatMessage({
     defaultMessage: "i18n",
     "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuOTQzNDgwMTQ="
@@ -676,7 +676,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash base64 with a value interpolated in the message 1`] = `
+exports[`hooks | hash base64 | with a value interpolated in the message 1`] = `
 "intl.formatMessage({
     defaultMessage: "template string 2",
     "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTA0NTE5ODM4MA=="
@@ -685,7 +685,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash base64 with a variable as the defaultMessage 1`] = `
+exports[`hooks | hash base64 | with a variable as the defaultMessage 1`] = `
 "var message = "variable message";
 intl.formatMessage({
     defaultMessage: message,
@@ -695,13 +695,13 @@ export { };
 "
 `;
 
-exports[`hooks - hash base64 with a variable as the defaultMessage 2`] = `
+exports[`hooks | hash base64 | with a variable as the defaultMessage 2`] = `
 "intl.formatMessage(messages);
 export { };
 "
 `;
 
-exports[`hooks - hash base64 with custom properties in formatMessage call 1`] = `
+exports[`hooks | hash base64 | with custom properties in formatMessage call 1`] = `
 "intl.formatMessage({
     defaultMessage: "custom prop",
     other: 123,
@@ -711,7 +711,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash base64 with useIntl hook imported 1`] = `
+exports[`hooks | hash base64 | with useIntl hook imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
@@ -720,7 +720,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash murmur3 does nothing if id is already provided 1`] = `
+exports[`hooks | hash murmur3 | does nothing if id is already provided 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -729,7 +729,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash murmur3 does nothing if react-intl is not imported 1`] = `
+exports[`hooks | hash murmur3 | does nothing if react-intl is not imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "2564566158"
@@ -738,7 +738,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash murmur3 multiple uses 1`] = `
+exports[`hooks | hash murmur3 | multiple uses 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "2564566158"
@@ -755,7 +755,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash murmur3 some supported use cases 1`] = `
+exports[`hooks | hash murmur3 | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component2 = function Component2() {
@@ -778,7 +778,7 @@ var Component2 = function Component2() {
 "
 `;
 
-exports[`hooks - hash murmur3 useIntl with different module source 1`] = `
+exports[`hooks | hash murmur3 | useIntl with different module source 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -787,7 +787,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash murmur3 with FormattedMessage imported as something else 1`] = `
+exports[`hooks | hash murmur3 | with FormattedMessage imported as something else 1`] = `
 "intl.formatMessage({
     defaultMessage: "i18n",
     "id": "3547183140"
@@ -796,7 +796,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash murmur3 with a value interpolated in the message 1`] = `
+exports[`hooks | hash murmur3 | with a value interpolated in the message 1`] = `
 "intl.formatMessage({
     defaultMessage: "template string 2",
     "id": "4147227565"
@@ -805,7 +805,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash murmur3 with a variable as the defaultMessage 1`] = `
+exports[`hooks | hash murmur3 | with a variable as the defaultMessage 1`] = `
 "var message = "variable message";
 intl.formatMessage({
     defaultMessage: message,
@@ -815,13 +815,13 @@ export { };
 "
 `;
 
-exports[`hooks - hash murmur3 with a variable as the defaultMessage 2`] = `
+exports[`hooks | hash murmur3 | with a variable as the defaultMessage 2`] = `
 "intl.formatMessage(messages);
 export { };
 "
 `;
 
-exports[`hooks - hash murmur3 with custom properties in formatMessage call 1`] = `
+exports[`hooks | hash murmur3 | with custom properties in formatMessage call 1`] = `
 "intl.formatMessage({
     defaultMessage: "custom prop",
     other: 123,
@@ -831,7 +831,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash murmur3 with useIntl hook imported 1`] = `
+exports[`hooks | hash murmur3 | with useIntl hook imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "2564566158"
@@ -840,7 +840,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash unknown fallback to murmur3 does nothing if id is already provided 1`] = `
+exports[`hooks | hash unknown fallback to murmur3 | does nothing if id is already provided 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -849,7 +849,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash unknown fallback to murmur3 does nothing if react-intl is not imported 1`] = `
+exports[`hooks | hash unknown fallback to murmur3 | does nothing if react-intl is not imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "2564566158"
@@ -858,7 +858,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash unknown fallback to murmur3 multiple uses 1`] = `
+exports[`hooks | hash unknown fallback to murmur3 | multiple uses 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "2564566158"
@@ -875,7 +875,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash unknown fallback to murmur3 some supported use cases 1`] = `
+exports[`hooks | hash unknown fallback to murmur3 | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component2 = function Component2() {
@@ -898,7 +898,7 @@ var Component2 = function Component2() {
 "
 `;
 
-exports[`hooks - hash unknown fallback to murmur3 useIntl with different module source 1`] = `
+exports[`hooks | hash unknown fallback to murmur3 | useIntl with different module source 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -907,7 +907,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash unknown fallback to murmur3 with FormattedMessage imported as something else 1`] = `
+exports[`hooks | hash unknown fallback to murmur3 | with FormattedMessage imported as something else 1`] = `
 "intl.formatMessage({
     defaultMessage: "i18n",
     "id": "3547183140"
@@ -916,7 +916,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash unknown fallback to murmur3 with a value interpolated in the message 1`] = `
+exports[`hooks | hash unknown fallback to murmur3 | with a value interpolated in the message 1`] = `
 "intl.formatMessage({
     defaultMessage: "template string 2",
     "id": "4147227565"
@@ -925,7 +925,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash unknown fallback to murmur3 with a variable as the defaultMessage 1`] = `
+exports[`hooks | hash unknown fallback to murmur3 | with a variable as the defaultMessage 1`] = `
 "var message = "variable message";
 intl.formatMessage({
     defaultMessage: message,
@@ -935,13 +935,13 @@ export { };
 "
 `;
 
-exports[`hooks - hash unknown fallback to murmur3 with a variable as the defaultMessage 2`] = `
+exports[`hooks | hash unknown fallback to murmur3 | with a variable as the defaultMessage 2`] = `
 "intl.formatMessage(messages);
 export { };
 "
 `;
 
-exports[`hooks - hash unknown fallback to murmur3 with custom properties in formatMessage call 1`] = `
+exports[`hooks | hash unknown fallback to murmur3 | with custom properties in formatMessage call 1`] = `
 "intl.formatMessage({
     defaultMessage: "custom prop",
     other: 123,
@@ -951,7 +951,7 @@ export { };
 "
 `;
 
-exports[`hooks - hash unknown fallback to murmur3 with useIntl hook imported 1`] = `
+exports[`hooks | hash unknown fallback to murmur3 | with useIntl hook imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "2564566158"
@@ -960,7 +960,7 @@ export { };
 "
 `;
 
-exports[`hooks - includeExportName = false does nothing if id is already provided 1`] = `
+exports[`hooks | moduleSourceNameTest | does nothing if id is already provided 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -969,7 +969,7 @@ export { };
 "
 `;
 
-exports[`hooks - includeExportName = false does nothing if react-intl is not imported 1`] = `
+exports[`hooks | moduleSourceNameTest | does nothing if react-intl is not imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -978,7 +978,7 @@ export { };
 "
 `;
 
-exports[`hooks - includeExportName = false multiple uses 1`] = `
+exports[`hooks | moduleSourceNameTest | multiple uses 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -995,7 +995,7 @@ export { };
 "
 `;
 
-exports[`hooks - includeExportName = false some supported use cases 1`] = `
+exports[`hooks | moduleSourceNameTest | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component2 = function Component2() {
@@ -1018,7 +1018,7 @@ var Component2 = function Component2() {
 "
 `;
 
-exports[`hooks - includeExportName = false useIntl with different module source 1`] = `
+exports[`hooks | moduleSourceNameTest | useIntl with different module source 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -1027,7 +1027,7 @@ export { };
 "
 `;
 
-exports[`hooks - includeExportName = false with FormattedMessage imported as something else 1`] = `
+exports[`hooks | moduleSourceNameTest | with FormattedMessage imported as something else 1`] = `
 "intl.formatMessage({
     defaultMessage: "i18n",
     "id": "Users.username.repo.src.components.App.94348014"
@@ -1036,7 +1036,7 @@ export { };
 "
 `;
 
-exports[`hooks - includeExportName = false with a value interpolated in the message 1`] = `
+exports[`hooks | moduleSourceNameTest | with a value interpolated in the message 1`] = `
 "intl.formatMessage({
     defaultMessage: "template string 2",
     "id": "Users.username.repo.src.components.App.1045198380"
@@ -1045,7 +1045,7 @@ export { };
 "
 `;
 
-exports[`hooks - includeExportName = false with a variable as the defaultMessage 1`] = `
+exports[`hooks | moduleSourceNameTest | with a variable as the defaultMessage 1`] = `
 "var message = "variable message";
 intl.formatMessage({
     defaultMessage: message,
@@ -1055,13 +1055,13 @@ export { };
 "
 `;
 
-exports[`hooks - includeExportName = false with a variable as the defaultMessage 2`] = `
+exports[`hooks | moduleSourceNameTest | with a variable as the defaultMessage 2`] = `
 "intl.formatMessage(messages);
 export { };
 "
 `;
 
-exports[`hooks - includeExportName = false with custom properties in formatMessage call 1`] = `
+exports[`hooks | moduleSourceNameTest | with custom properties in formatMessage call 1`] = `
 "intl.formatMessage({
     defaultMessage: "custom prop",
     other: 123,
@@ -1071,7 +1071,7 @@ export { };
 "
 `;
 
-exports[`hooks - includeExportName = false with useIntl hook imported 1`] = `
+exports[`hooks | moduleSourceNameTest | with useIntl hook imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -1080,7 +1080,7 @@ export { };
 "
 `;
 
-exports[`hooks - moduleSourceNameTest does nothing if id is already provided 1`] = `
+exports[`hooks | relativeTo = "" | does nothing if id is already provided 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -1089,7 +1089,7 @@ export { };
 "
 `;
 
-exports[`hooks - moduleSourceNameTest does nothing if react-intl is not imported 1`] = `
+exports[`hooks | relativeTo = "" | does nothing if react-intl is not imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -1098,7 +1098,7 @@ export { };
 "
 `;
 
-exports[`hooks - moduleSourceNameTest multiple uses 1`] = `
+exports[`hooks | relativeTo = "" | multiple uses 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -1115,7 +1115,7 @@ export { };
 "
 `;
 
-exports[`hooks - moduleSourceNameTest some supported use cases 1`] = `
+exports[`hooks | relativeTo = "" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component2 = function Component2() {
@@ -1138,7 +1138,7 @@ var Component2 = function Component2() {
 "
 `;
 
-exports[`hooks - moduleSourceNameTest useIntl with different module source 1`] = `
+exports[`hooks | relativeTo = "" | useIntl with different module source 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -1147,7 +1147,7 @@ export { };
 "
 `;
 
-exports[`hooks - moduleSourceNameTest with FormattedMessage imported as something else 1`] = `
+exports[`hooks | relativeTo = "" | with FormattedMessage imported as something else 1`] = `
 "intl.formatMessage({
     defaultMessage: "i18n",
     "id": "Users.username.repo.src.components.App.94348014"
@@ -1156,7 +1156,7 @@ export { };
 "
 `;
 
-exports[`hooks - moduleSourceNameTest with a value interpolated in the message 1`] = `
+exports[`hooks | relativeTo = "" | with a value interpolated in the message 1`] = `
 "intl.formatMessage({
     defaultMessage: "template string 2",
     "id": "Users.username.repo.src.components.App.1045198380"
@@ -1165,7 +1165,7 @@ export { };
 "
 `;
 
-exports[`hooks - moduleSourceNameTest with a variable as the defaultMessage 1`] = `
+exports[`hooks | relativeTo = "" | with a variable as the defaultMessage 1`] = `
 "var message = "variable message";
 intl.formatMessage({
     defaultMessage: message,
@@ -1175,13 +1175,13 @@ export { };
 "
 `;
 
-exports[`hooks - moduleSourceNameTest with a variable as the defaultMessage 2`] = `
+exports[`hooks | relativeTo = "" | with a variable as the defaultMessage 2`] = `
 "intl.formatMessage(messages);
 export { };
 "
 `;
 
-exports[`hooks - moduleSourceNameTest with custom properties in formatMessage call 1`] = `
+exports[`hooks | relativeTo = "" | with custom properties in formatMessage call 1`] = `
 "intl.formatMessage({
     defaultMessage: "custom prop",
     other: 123,
@@ -1191,7 +1191,7 @@ export { };
 "
 `;
 
-exports[`hooks - moduleSourceNameTest with useIntl hook imported 1`] = `
+exports[`hooks | relativeTo = "" | with useIntl hook imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -1200,7 +1200,7 @@ export { };
 "
 `;
 
-exports[`hooks - relativeTo = "" does nothing if id is already provided 1`] = `
+exports[`hooks | relativeTo = "../" | does nothing if id is already provided 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -1209,7 +1209,7 @@ export { };
 "
 `;
 
-exports[`hooks - relativeTo = "" does nothing if react-intl is not imported 1`] = `
+exports[`hooks | relativeTo = "../" | does nothing if react-intl is not imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -1218,7 +1218,7 @@ export { };
 "
 `;
 
-exports[`hooks - relativeTo = "" multiple uses 1`] = `
+exports[`hooks | relativeTo = "../" | multiple uses 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -1235,7 +1235,7 @@ export { };
 "
 `;
 
-exports[`hooks - relativeTo = "" some supported use cases 1`] = `
+exports[`hooks | relativeTo = "../" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component2 = function Component2() {
@@ -1258,7 +1258,7 @@ var Component2 = function Component2() {
 "
 `;
 
-exports[`hooks - relativeTo = "" useIntl with different module source 1`] = `
+exports[`hooks | relativeTo = "../" | useIntl with different module source 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -1267,7 +1267,7 @@ export { };
 "
 `;
 
-exports[`hooks - relativeTo = "" with FormattedMessage imported as something else 1`] = `
+exports[`hooks | relativeTo = "../" | with FormattedMessage imported as something else 1`] = `
 "intl.formatMessage({
     defaultMessage: "i18n",
     "id": "Users.username.repo.src.components.App.94348014"
@@ -1276,7 +1276,7 @@ export { };
 "
 `;
 
-exports[`hooks - relativeTo = "" with a value interpolated in the message 1`] = `
+exports[`hooks | relativeTo = "../" | with a value interpolated in the message 1`] = `
 "intl.formatMessage({
     defaultMessage: "template string 2",
     "id": "Users.username.repo.src.components.App.1045198380"
@@ -1285,7 +1285,7 @@ export { };
 "
 `;
 
-exports[`hooks - relativeTo = "" with a variable as the defaultMessage 1`] = `
+exports[`hooks | relativeTo = "../" | with a variable as the defaultMessage 1`] = `
 "var message = "variable message";
 intl.formatMessage({
     defaultMessage: message,
@@ -1295,13 +1295,13 @@ export { };
 "
 `;
 
-exports[`hooks - relativeTo = "" with a variable as the defaultMessage 2`] = `
+exports[`hooks | relativeTo = "../" | with a variable as the defaultMessage 2`] = `
 "intl.formatMessage(messages);
 export { };
 "
 `;
 
-exports[`hooks - relativeTo = "" with custom properties in formatMessage call 1`] = `
+exports[`hooks | relativeTo = "../" | with custom properties in formatMessage call 1`] = `
 "intl.formatMessage({
     defaultMessage: "custom prop",
     other: 123,
@@ -1311,7 +1311,7 @@ export { };
 "
 `;
 
-exports[`hooks - relativeTo = "" with useIntl hook imported 1`] = `
+exports[`hooks | relativeTo = "../" | with useIntl hook imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -1320,7 +1320,7 @@ export { };
 "
 `;
 
-exports[`hooks - relativeTo = "../" does nothing if id is already provided 1`] = `
+exports[`hooks | removePrefix = "src" | does nothing if id is already provided 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -1329,7 +1329,7 @@ export { };
 "
 `;
 
-exports[`hooks - relativeTo = "../" does nothing if react-intl is not imported 1`] = `
+exports[`hooks | removePrefix = "src" | does nothing if react-intl is not imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -1338,7 +1338,7 @@ export { };
 "
 `;
 
-exports[`hooks - relativeTo = "../" multiple uses 1`] = `
+exports[`hooks | removePrefix = "src" | multiple uses 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -1355,7 +1355,7 @@ export { };
 "
 `;
 
-exports[`hooks - relativeTo = "../" some supported use cases 1`] = `
+exports[`hooks | removePrefix = "src" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component2 = function Component2() {
@@ -1378,7 +1378,7 @@ var Component2 = function Component2() {
 "
 `;
 
-exports[`hooks - relativeTo = "../" useIntl with different module source 1`] = `
+exports[`hooks | removePrefix = "src" | useIntl with different module source 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -1387,7 +1387,7 @@ export { };
 "
 `;
 
-exports[`hooks - relativeTo = "../" with FormattedMessage imported as something else 1`] = `
+exports[`hooks | removePrefix = "src" | with FormattedMessage imported as something else 1`] = `
 "intl.formatMessage({
     defaultMessage: "i18n",
     "id": "Users.username.repo.src.components.App.94348014"
@@ -1396,7 +1396,7 @@ export { };
 "
 `;
 
-exports[`hooks - relativeTo = "../" with a value interpolated in the message 1`] = `
+exports[`hooks | removePrefix = "src" | with a value interpolated in the message 1`] = `
 "intl.formatMessage({
     defaultMessage: "template string 2",
     "id": "Users.username.repo.src.components.App.1045198380"
@@ -1405,7 +1405,7 @@ export { };
 "
 `;
 
-exports[`hooks - relativeTo = "../" with a variable as the defaultMessage 1`] = `
+exports[`hooks | removePrefix = "src" | with a variable as the defaultMessage 1`] = `
 "var message = "variable message";
 intl.formatMessage({
     defaultMessage: message,
@@ -1415,13 +1415,13 @@ export { };
 "
 `;
 
-exports[`hooks - relativeTo = "../" with a variable as the defaultMessage 2`] = `
+exports[`hooks | removePrefix = "src" | with a variable as the defaultMessage 2`] = `
 "intl.formatMessage(messages);
 export { };
 "
 `;
 
-exports[`hooks - relativeTo = "../" with custom properties in formatMessage call 1`] = `
+exports[`hooks | removePrefix = "src" | with custom properties in formatMessage call 1`] = `
 "intl.formatMessage({
     defaultMessage: "custom prop",
     other: 123,
@@ -1431,7 +1431,7 @@ export { };
 "
 `;
 
-exports[`hooks - relativeTo = "../" with useIntl hook imported 1`] = `
+exports[`hooks | removePrefix = "src" | with useIntl hook imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -1440,7 +1440,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src" does nothing if id is already provided 1`] = `
+exports[`hooks | removePrefix = "src.__fixtures__" | does nothing if id is already provided 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -1449,7 +1449,16 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src" does nothing if react-intl is not imported 1`] = `
+exports[`hooks | removePrefix = "src.__fixtures__" | does nothing if id is already provided 2`] = `
+"intl.formatMessage({
+    id: "my.custom.id",
+    defaultMessage: "hello"
+});
+export { };
+"
+`;
+
+exports[`hooks | removePrefix = "src.__fixtures__" | does nothing if react-intl is not imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -1458,7 +1467,16 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src" multiple uses 1`] = `
+exports[`hooks | removePrefix = "src.__fixtures__" | does nothing if react-intl is not imported 2`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+export { };
+"
+`;
+
+exports[`hooks | removePrefix = "src.__fixtures__" | multiple uses 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -1475,7 +1493,24 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src" some supported use cases 1`] = `
+exports[`hooks | removePrefix = "src.__fixtures__" | multiple uses 2`] = `
+"intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "Users.username.repo.src.components.App.831373691"
+});
+export { };
+"
+`;
+
+exports[`hooks | removePrefix = "src.__fixtures__" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component2 = function Component2() {
@@ -1498,139 +1533,7 @@ var Component2 = function Component2() {
 "
 `;
 
-exports[`hooks - removePrefix = "src" useIntl with different module source 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
-export { };
-"
-`;
-
-exports[`hooks - removePrefix = "src" with FormattedMessage imported as something else 1`] = `
-"intl.formatMessage({
-    defaultMessage: "i18n",
-    "id": "Users.username.repo.src.components.App.94348014"
-});
-export { };
-"
-`;
-
-exports[`hooks - removePrefix = "src" with a value interpolated in the message 1`] = `
-"intl.formatMessage({
-    defaultMessage: "template string 2",
-    "id": "Users.username.repo.src.components.App.1045198380"
-});
-export { };
-"
-`;
-
-exports[`hooks - removePrefix = "src" with a variable as the defaultMessage 1`] = `
-"var message = "variable message";
-intl.formatMessage({
-    defaultMessage: message,
-    "id": "Users.username.repo.src.components.App.1304763199"
-});
-export { };
-"
-`;
-
-exports[`hooks - removePrefix = "src" with a variable as the defaultMessage 2`] = `
-"intl.formatMessage(messages);
-export { };
-"
-`;
-
-exports[`hooks - removePrefix = "src" with custom properties in formatMessage call 1`] = `
-"intl.formatMessage({
-    defaultMessage: "custom prop",
-    other: 123,
-    "id": "Users.username.repo.src.components.App.2983810267"
-});
-export { };
-"
-`;
-
-exports[`hooks - removePrefix = "src" with useIntl hook imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-export { };
-"
-`;
-
-exports[`hooks - removePrefix = "src.__fixtures__" does nothing if id is already provided 1`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
-export { };
-"
-`;
-
-exports[`hooks - removePrefix = "src.__fixtures__" does nothing if id is already provided 2`] = `
-"intl.formatMessage({
-    id: "my.custom.id",
-    defaultMessage: "hello"
-});
-export { };
-"
-`;
-
-exports[`hooks - removePrefix = "src.__fixtures__" does nothing if react-intl is not imported 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-export { };
-"
-`;
-
-exports[`hooks - removePrefix = "src.__fixtures__" does nothing if react-intl is not imported 2`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-export { };
-"
-`;
-
-exports[`hooks - removePrefix = "src.__fixtures__" multiple uses 1`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "Users.username.repo.src.components.App.831373691"
-});
-export { };
-"
-`;
-
-exports[`hooks - removePrefix = "src.__fixtures__" multiple uses 2`] = `
-"intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "Users.username.repo.src.components.App.831373691"
-});
-export { };
-"
-`;
-
-exports[`hooks - removePrefix = "src.__fixtures__" some supported use cases 1`] = `
+exports[`hooks | removePrefix = "src.__fixtures__" | some supported use cases 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component2 = function Component2() {
@@ -1653,30 +1556,7 @@ var Component2 = function Component2() {
 "
 `;
 
-exports[`hooks - removePrefix = "src.__fixtures__" some supported use cases 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component2 = function Component2() {
-    var intl = useIntl();
-    var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "Users.username.repo.src.components.App.613153351"
-    });
-    return /*#__PURE__*/ _jsx("button", {
-        "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
-        }),
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
-        })
-    });
-};
-"
-`;
-
-exports[`hooks - removePrefix = "src.__fixtures__" useIntl with different module source 1`] = `
+exports[`hooks | removePrefix = "src.__fixtures__" | useIntl with different module source 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -1685,7 +1565,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src.__fixtures__" useIntl with different module source 2`] = `
+exports[`hooks | removePrefix = "src.__fixtures__" | useIntl with different module source 2`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -1694,7 +1574,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src.__fixtures__" with FormattedMessage imported as something else 1`] = `
+exports[`hooks | removePrefix = "src.__fixtures__" | with FormattedMessage imported as something else 1`] = `
 "intl.formatMessage({
     defaultMessage: "i18n",
     "id": "Users.username.repo.src.components.App.94348014"
@@ -1703,7 +1583,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src.__fixtures__" with FormattedMessage imported as something else 2`] = `
+exports[`hooks | removePrefix = "src.__fixtures__" | with FormattedMessage imported as something else 2`] = `
 "intl.formatMessage({
     defaultMessage: "i18n",
     "id": "Users.username.repo.src.components.App.94348014"
@@ -1712,7 +1592,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src.__fixtures__" with a value interpolated in the message 1`] = `
+exports[`hooks | removePrefix = "src.__fixtures__" | with a value interpolated in the message 1`] = `
 "intl.formatMessage({
     defaultMessage: "template string 2",
     "id": "Users.username.repo.src.components.App.1045198380"
@@ -1721,7 +1601,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src.__fixtures__" with a value interpolated in the message 2`] = `
+exports[`hooks | removePrefix = "src.__fixtures__" | with a value interpolated in the message 2`] = `
 "intl.formatMessage({
     defaultMessage: "template string 2",
     "id": "Users.username.repo.src.components.App.1045198380"
@@ -1730,7 +1610,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src.__fixtures__" with a variable as the defaultMessage 1`] = `
+exports[`hooks | removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 1`] = `
 "var message = "variable message";
 intl.formatMessage({
     defaultMessage: message,
@@ -1740,13 +1620,13 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src.__fixtures__" with a variable as the defaultMessage 2`] = `
+exports[`hooks | removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 2`] = `
 "intl.formatMessage(messages);
 export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src.__fixtures__" with a variable as the defaultMessage 3`] = `
+exports[`hooks | removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 3`] = `
 "var message = "variable message";
 intl.formatMessage({
     defaultMessage: message,
@@ -1756,13 +1636,13 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src.__fixtures__" with a variable as the defaultMessage 4`] = `
+exports[`hooks | removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 4`] = `
 "intl.formatMessage(messages);
 export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src.__fixtures__" with custom properties in formatMessage call 1`] = `
+exports[`hooks | removePrefix = "src.__fixtures__" | with custom properties in formatMessage call 1`] = `
 "intl.formatMessage({
     defaultMessage: "custom prop",
     other: 123,
@@ -1772,7 +1652,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src.__fixtures__" with custom properties in formatMessage call 2`] = `
+exports[`hooks | removePrefix = "src.__fixtures__" | with custom properties in formatMessage call 2`] = `
 "intl.formatMessage({
     defaultMessage: "custom prop",
     other: 123,
@@ -1782,7 +1662,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src.__fixtures__" with useIntl hook imported 1`] = `
+exports[`hooks | removePrefix = "src.__fixtures__" | with useIntl hook imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -1791,7 +1671,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src.__fixtures__" with useIntl hook imported 2`] = `
+exports[`hooks | removePrefix = "src.__fixtures__" | with useIntl hook imported 2`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -1800,7 +1680,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src/" -- with slash does nothing if id is already provided 1`] = `
+exports[`hooks | removePrefix = "src/" -- with slash | does nothing if id is already provided 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -1809,7 +1689,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src/" -- with slash does nothing if react-intl is not imported 1`] = `
+exports[`hooks | removePrefix = "src/" -- with slash | does nothing if react-intl is not imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -1818,7 +1698,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src/" -- with slash multiple uses 1`] = `
+exports[`hooks | removePrefix = "src/" -- with slash | multiple uses 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -1835,7 +1715,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src/" -- with slash some supported use cases 1`] = `
+exports[`hooks | removePrefix = "src/" -- with slash | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component2 = function Component2() {
@@ -1858,7 +1738,7 @@ var Component2 = function Component2() {
 "
 `;
 
-exports[`hooks - removePrefix = "src/" -- with slash useIntl with different module source 1`] = `
+exports[`hooks | removePrefix = "src/" -- with slash | useIntl with different module source 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -1867,7 +1747,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src/" -- with slash with FormattedMessage imported as something else 1`] = `
+exports[`hooks | removePrefix = "src/" -- with slash | with FormattedMessage imported as something else 1`] = `
 "intl.formatMessage({
     defaultMessage: "i18n",
     "id": "Users.username.repo.src.components.App.94348014"
@@ -1876,7 +1756,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src/" -- with slash with a value interpolated in the message 1`] = `
+exports[`hooks | removePrefix = "src/" -- with slash | with a value interpolated in the message 1`] = `
 "intl.formatMessage({
     defaultMessage: "template string 2",
     "id": "Users.username.repo.src.components.App.1045198380"
@@ -1885,7 +1765,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src/" -- with slash with a variable as the defaultMessage 1`] = `
+exports[`hooks | removePrefix = "src/" -- with slash | with a variable as the defaultMessage 1`] = `
 "var message = "variable message";
 intl.formatMessage({
     defaultMessage: message,
@@ -1895,13 +1775,13 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src/" -- with slash with a variable as the defaultMessage 2`] = `
+exports[`hooks | removePrefix = "src/" -- with slash | with a variable as the defaultMessage 2`] = `
 "intl.formatMessage(messages);
 export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src/" -- with slash with custom properties in formatMessage call 1`] = `
+exports[`hooks | removePrefix = "src/" -- with slash | with custom properties in formatMessage call 1`] = `
 "intl.formatMessage({
     defaultMessage: "custom prop",
     other: 123,
@@ -1911,7 +1791,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = "src/" -- with slash with useIntl hook imported 1`] = `
+exports[`hooks | removePrefix = "src/" -- with slash | with useIntl hook imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -1920,7 +1800,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = /__fixtures__/ does nothing if id is already provided 1`] = `
+exports[`hooks | removePrefix = /__fixtures__/ | does nothing if id is already provided 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -1929,7 +1809,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = /__fixtures__/ does nothing if react-intl is not imported 1`] = `
+exports[`hooks | removePrefix = /__fixtures__/ | does nothing if react-intl is not imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -1938,7 +1818,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = /__fixtures__/ multiple uses 1`] = `
+exports[`hooks | removePrefix = /__fixtures__/ | multiple uses 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -1955,7 +1835,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = /__fixtures__/ some supported use cases 1`] = `
+exports[`hooks | removePrefix = /__fixtures__/ | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component2 = function Component2() {
@@ -1978,7 +1858,7 @@ var Component2 = function Component2() {
 "
 `;
 
-exports[`hooks - removePrefix = /__fixtures__/ useIntl with different module source 1`] = `
+exports[`hooks | removePrefix = /__fixtures__/ | useIntl with different module source 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -1987,7 +1867,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = /__fixtures__/ with FormattedMessage imported as something else 1`] = `
+exports[`hooks | removePrefix = /__fixtures__/ | with FormattedMessage imported as something else 1`] = `
 "intl.formatMessage({
     defaultMessage: "i18n",
     "id": "Users.username.repo.src.components.App.94348014"
@@ -1996,7 +1876,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = /__fixtures__/ with a value interpolated in the message 1`] = `
+exports[`hooks | removePrefix = /__fixtures__/ | with a value interpolated in the message 1`] = `
 "intl.formatMessage({
     defaultMessage: "template string 2",
     "id": "Users.username.repo.src.components.App.1045198380"
@@ -2005,7 +1885,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = /__fixtures__/ with a variable as the defaultMessage 1`] = `
+exports[`hooks | removePrefix = /__fixtures__/ | with a variable as the defaultMessage 1`] = `
 "var message = "variable message";
 intl.formatMessage({
     defaultMessage: message,
@@ -2015,13 +1895,13 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = /__fixtures__/ with a variable as the defaultMessage 2`] = `
+exports[`hooks | removePrefix = /__fixtures__/ | with a variable as the defaultMessage 2`] = `
 "intl.formatMessage(messages);
 export { };
 "
 `;
 
-exports[`hooks - removePrefix = /__fixtures__/ with custom properties in formatMessage call 1`] = `
+exports[`hooks | removePrefix = /__fixtures__/ | with custom properties in formatMessage call 1`] = `
 "intl.formatMessage({
     defaultMessage: "custom prop",
     other: 123,
@@ -2031,7 +1911,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = /__fixtures__/ with useIntl hook imported 1`] = `
+exports[`hooks | removePrefix = /__fixtures__/ | with useIntl hook imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -2040,7 +1920,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = true does nothing if id is already provided 1`] = `
+exports[`hooks | removePrefix = true | does nothing if id is already provided 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -2049,7 +1929,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = true does nothing if react-intl is not imported 1`] = `
+exports[`hooks | removePrefix = true | does nothing if react-intl is not imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "613153351"
@@ -2058,7 +1938,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = true multiple uses 1`] = `
+exports[`hooks | removePrefix = true | multiple uses 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "613153351"
@@ -2075,7 +1955,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = true some supported use cases 1`] = `
+exports[`hooks | removePrefix = true | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component2 = function Component2() {
@@ -2098,7 +1978,7 @@ var Component2 = function Component2() {
 "
 `;
 
-exports[`hooks - removePrefix = true useIntl with different module source 1`] = `
+exports[`hooks | removePrefix = true | useIntl with different module source 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -2107,7 +1987,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = true with FormattedMessage imported as something else 1`] = `
+exports[`hooks | removePrefix = true | with FormattedMessage imported as something else 1`] = `
 "intl.formatMessage({
     defaultMessage: "i18n",
     "id": "94348014"
@@ -2116,7 +1996,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = true with a value interpolated in the message 1`] = `
+exports[`hooks | removePrefix = true | with a value interpolated in the message 1`] = `
 "intl.formatMessage({
     defaultMessage: "template string 2",
     "id": "1045198380"
@@ -2125,7 +2005,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = true with a variable as the defaultMessage 1`] = `
+exports[`hooks | removePrefix = true | with a variable as the defaultMessage 1`] = `
 "var message = "variable message";
 intl.formatMessage({
     defaultMessage: message,
@@ -2135,13 +2015,13 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = true with a variable as the defaultMessage 2`] = `
+exports[`hooks | removePrefix = true | with a variable as the defaultMessage 2`] = `
 "intl.formatMessage(messages);
 export { };
 "
 `;
 
-exports[`hooks - removePrefix = true with custom properties in formatMessage call 1`] = `
+exports[`hooks | removePrefix = true | with custom properties in formatMessage call 1`] = `
 "intl.formatMessage({
     defaultMessage: "custom prop",
     other: 123,
@@ -2151,7 +2031,7 @@ export { };
 "
 `;
 
-exports[`hooks - removePrefix = true with useIntl hook imported 1`] = `
+exports[`hooks | removePrefix = true | with useIntl hook imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "613153351"
@@ -2160,7 +2040,7 @@ export { };
 "
 `;
 
-exports[`hooks - separator = "_" does nothing if id is already provided 1`] = `
+exports[`hooks | separator = "_" | does nothing if id is already provided 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -2169,7 +2049,7 @@ export { };
 "
 `;
 
-exports[`hooks - separator = "_" does nothing if react-intl is not imported 1`] = `
+exports[`hooks | separator = "_" | does nothing if react-intl is not imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users_username_repo_src_components_App_613153351"
@@ -2178,7 +2058,7 @@ export { };
 "
 `;
 
-exports[`hooks - separator = "_" multiple uses 1`] = `
+exports[`hooks | separator = "_" | multiple uses 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users_username_repo_src_components_App_613153351"
@@ -2195,7 +2075,7 @@ export { };
 "
 `;
 
-exports[`hooks - separator = "_" some supported use cases 1`] = `
+exports[`hooks | separator = "_" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component2 = function Component2() {
@@ -2218,7 +2098,7 @@ var Component2 = function Component2() {
 "
 `;
 
-exports[`hooks - separator = "_" useIntl with different module source 1`] = `
+exports[`hooks | separator = "_" | useIntl with different module source 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -2227,7 +2107,7 @@ export { };
 "
 `;
 
-exports[`hooks - separator = "_" with FormattedMessage imported as something else 1`] = `
+exports[`hooks | separator = "_" | with FormattedMessage imported as something else 1`] = `
 "intl.formatMessage({
     defaultMessage: "i18n",
     "id": "Users_username_repo_src_components_App_94348014"
@@ -2236,7 +2116,7 @@ export { };
 "
 `;
 
-exports[`hooks - separator = "_" with a value interpolated in the message 1`] = `
+exports[`hooks | separator = "_" | with a value interpolated in the message 1`] = `
 "intl.formatMessage({
     defaultMessage: "template string 2",
     "id": "Users_username_repo_src_components_App_1045198380"
@@ -2245,7 +2125,7 @@ export { };
 "
 `;
 
-exports[`hooks - separator = "_" with a variable as the defaultMessage 1`] = `
+exports[`hooks | separator = "_" | with a variable as the defaultMessage 1`] = `
 "var message = "variable message";
 intl.formatMessage({
     defaultMessage: message,
@@ -2255,13 +2135,13 @@ export { };
 "
 `;
 
-exports[`hooks - separator = "_" with a variable as the defaultMessage 2`] = `
+exports[`hooks | separator = "_" | with a variable as the defaultMessage 2`] = `
 "intl.formatMessage(messages);
 export { };
 "
 `;
 
-exports[`hooks - separator = "_" with custom properties in formatMessage call 1`] = `
+exports[`hooks | separator = "_" | with custom properties in formatMessage call 1`] = `
 "intl.formatMessage({
     defaultMessage: "custom prop",
     other: 123,
@@ -2271,7 +2151,7 @@ export { };
 "
 `;
 
-exports[`hooks - separator = "_" with useIntl hook imported 1`] = `
+exports[`hooks | separator = "_" | with useIntl hook imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users_username_repo_src_components_App_613153351"
@@ -2280,7 +2160,7 @@ export { };
 "
 `;
 
-exports[`hooks - useKey = true does nothing if id is already provided 1`] = `
+exports[`hooks | useKey = true | does nothing if id is already provided 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -2289,7 +2169,7 @@ export { };
 "
 `;
 
-exports[`hooks - useKey = true does nothing if react-intl is not imported 1`] = `
+exports[`hooks | useKey = true | does nothing if react-intl is not imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -2298,7 +2178,7 @@ export { };
 "
 `;
 
-exports[`hooks - useKey = true multiple uses 1`] = `
+exports[`hooks | useKey = true | multiple uses 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"
@@ -2315,7 +2195,7 @@ export { };
 "
 `;
 
-exports[`hooks - useKey = true some supported use cases 1`] = `
+exports[`hooks | useKey = true | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component2 = function Component2() {
@@ -2338,7 +2218,7 @@ var Component2 = function Component2() {
 "
 `;
 
-exports[`hooks - useKey = true useIntl with different module source 1`] = `
+exports[`hooks | useKey = true | useIntl with different module source 1`] = `
 "intl.formatMessage({
     id: "my.custom.id",
     defaultMessage: "hello"
@@ -2347,7 +2227,7 @@ export { };
 "
 `;
 
-exports[`hooks - useKey = true with FormattedMessage imported as something else 1`] = `
+exports[`hooks | useKey = true | with FormattedMessage imported as something else 1`] = `
 "intl.formatMessage({
     defaultMessage: "i18n",
     "id": "Users.username.repo.src.components.App.94348014"
@@ -2356,7 +2236,7 @@ export { };
 "
 `;
 
-exports[`hooks - useKey = true with a value interpolated in the message 1`] = `
+exports[`hooks | useKey = true | with a value interpolated in the message 1`] = `
 "intl.formatMessage({
     defaultMessage: "template string 2",
     "id": "Users.username.repo.src.components.App.1045198380"
@@ -2365,7 +2245,7 @@ export { };
 "
 `;
 
-exports[`hooks - useKey = true with a variable as the defaultMessage 1`] = `
+exports[`hooks | useKey = true | with a variable as the defaultMessage 1`] = `
 "var message = "variable message";
 intl.formatMessage({
     defaultMessage: message,
@@ -2375,13 +2255,13 @@ export { };
 "
 `;
 
-exports[`hooks - useKey = true with a variable as the defaultMessage 2`] = `
+exports[`hooks | useKey = true | with a variable as the defaultMessage 2`] = `
 "intl.formatMessage(messages);
 export { };
 "
 `;
 
-exports[`hooks - useKey = true with custom properties in formatMessage call 1`] = `
+exports[`hooks | useKey = true | with custom properties in formatMessage call 1`] = `
 "intl.formatMessage({
     defaultMessage: "custom prop",
     other: 123,
@@ -2391,7 +2271,7 @@ export { };
 "
 `;
 
-exports[`hooks - useKey = true with useIntl hook imported 1`] = `
+exports[`hooks | useKey = true | with useIntl hook imported 1`] = `
 "intl.formatMessage({
     defaultMessage: "hello",
     "id": "Users.username.repo.src.components.App.613153351"

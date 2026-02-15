@@ -16,7 +16,7 @@ pub struct CoreOptions {
     pub filebase: bool,
     /// Include export name in ID
     #[serde(default, alias = "includeExportName")]
-    pub include_export_name: Option<IncludeExportName>,
+    pub include_export_name: bool,
     /// Use key property instead of hash
     #[serde(default, alias = "useKey")]
     pub use_key: bool,
@@ -39,6 +39,10 @@ pub struct CoreOptions {
     /// Add "file" field to extracted messages data
     #[serde(default, alias = "extractSourceLocation")]
     pub extract_source_location: bool,
+    /// ### CLI only option
+    /// Output mode: "aggregated" (single file) or "perfile" (separate files per source)
+    #[serde(default, alias = "outputMode")]
+    pub output_mode: OutputMode,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -48,11 +52,20 @@ pub enum RemovePrefix {
     String(String),
 }
 
+/// Output mode for CLI extraction
 #[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum IncludeExportName {
-    Boolean(bool),
-    All,
+#[serde(rename_all = "lowercase")]
+pub enum OutputMode {
+    /// Single aggregated JSON file
+    Aggregated,
+    /// Separate JSON files per source file
+    PerFile,
+}
+
+impl Default for OutputMode {
+    fn default() -> Self {
+        OutputMode::Aggregated
+    }
 }
 
 impl Default for CoreOptions {
@@ -60,7 +73,7 @@ impl Default for CoreOptions {
         Self {
             remove_prefix: None,
             filebase: false,
-            include_export_name: None,
+            include_export_name: false,
             use_key: false,
             module_source_name: "react-intl".to_string(),
             separator: ".".to_string(),
@@ -68,6 +81,7 @@ impl Default for CoreOptions {
             hash_id: false,
             hash_algorithm: "murmur3".to_string(),
             extract_source_location: false,
+            output_mode: OutputMode::Aggregated,
         }
     }
 }

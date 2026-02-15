@@ -2,7 +2,6 @@ use std::collections::HashSet;
 use swc_core::ecma::ast::*;
 use swc_core::ecma::visit::{VisitMut, VisitMutWith};
 
-use react_intl_core::IncludeExportName;
 use react_intl_core::{
     analyze_define_messages, analyze_format_message, analyze_jsx_element, REACT_COMPONENTS,
 };
@@ -271,11 +270,10 @@ impl CallExpressionVisitor {
         }
 
         // Get export name for ID generation
-        let export_name = match &self.state.opts.include_export_name {
-            Some(IncludeExportName::Boolean(true)) | Some(IncludeExportName::All) => {
-                Some("messages".to_string()) // Default export name
-            }
-            _ => None,
+        let export_name = if self.state.opts.include_export_name {
+            Some("messages".to_string()) // Default export name
+        } else {
+            None
         };
 
         let first_arg = &mut call_expr.args[0];

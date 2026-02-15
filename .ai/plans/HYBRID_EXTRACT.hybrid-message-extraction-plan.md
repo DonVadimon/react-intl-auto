@@ -57,7 +57,7 @@
 - [x] HYBRID_EXTRACT-004: Create CLI tool crate with message extraction [DEPENDS: 003B, 003C]
 - [x] HYBRID_EXTRACT-005: Implement CLI argument parsing and file globbing
 - [x] HYBRID_EXTRACT-005B: Unify options - use CoreOptions in message_extractor
-- [ ] HYBRID_EXTRACT-006: Implement JSON output format (aggregated and per-file)
+- [x] HYBRID_EXTRACT-006: Implement JSON output format (aggregated and per-file)
 - [ ] HYBRID_EXTRACT-007: Add source location extraction option
 - [ ] HYBRID_EXTRACT-008: Create JS API with napi-rs bindings
 - [ ] HYBRID_EXTRACT-009: Update package.json with CLI bin entry and JS API exports
@@ -889,14 +889,14 @@ let state = CoreState::new(filename, options.to_core_options()); // Потеря
 
 ---
 
-## [ ] HYBRID_EXTRACT-006: Implement JSON output format (aggregated and per-file)
+## [x] HYBRID_EXTRACT-006: Implement JSON output format (aggregated and per-file)
 
 ### 📋 Metadata
 
-- **status:** `todo`
+- **status:** `ready`
 - **depends:** `HYBRID_EXTRACT-005`
 - **priority:** `P1`
-- **files:** `crates/cli/src/output.rs`, `crates/cli/src/main.rs`
+- **files:** `crates/react-intl-core/src/types.rs`, `crates/cli/src/main.rs`
 
 ### 📝 Details
 
@@ -965,6 +965,20 @@ let state = CoreState::new(filename, options.to_core_options()); // Потеря
 ### 📊 ActionLog:
 
 - `2026-02-08 18:48` План задачи создан
+- `2026-02-15 21:30` Данные актуализированы: проверены файлы types.rs и main.rs
+- `2026-02-15 21:30` Статус изменен на `in-progress`
+- `2026-02-15 21:31` Выполнен шаг 1: Добавлен enum `OutputMode` в `types.rs`
+- `2026-02-15 21:32` Выполнен шаг 2: Добавлено поле `output_mode` в `CoreOptions`
+- `2026-02-15 21:33` Выполнен шаг 3: Добавлен CLI аргумент `--output-mode`
+- `2026-02-15 21:34` Выполнен шаг 4: Реализована streaming запись для perfile режима
+- `2026-02-15 21:35` Определены критерии приёмки:
+    - `OutputMode` добавлен в `CoreOptions` ✓
+    - Aggregated режим работает (запись в один файл) ✓
+    - PerFile режим работает (streaming запись, без накопления в памяти) ✓
+    - Все тесты проходят (24 + 7 + 7 + 1404) ✓
+- `2026-02-15 21:35` Готово к review
+- `2026-02-15 21:35` Review: одобрено USER
+- `2026-02-15 21:35` Задача завершена, статус изменен на `ready`
 
 ---
 

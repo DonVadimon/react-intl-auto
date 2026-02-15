@@ -4,7 +4,7 @@ use walkdir::WalkDir;
 
 use anyhow::{Context, Result};
 use clap::Parser;
-use react_intl_core::{extract_messages, CoreOptions, IncludeExportName, RemovePrefix};
+use react_intl_core::{extract_messages, CoreOptions, OutputMode, RemovePrefix};
 use std::collections::HashSet;
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -49,9 +49,9 @@ struct Args {
     #[arg(long, help = "Use file basename for ID generation")]
     filebase: bool,
 
-    /// Include export name in ID (can be 'true', 'false', or 'all')
-    #[arg(long, help = "Include export name in ID (true, false, or all)")]
-    include_export_name: Option<String>,
+    /// Include export name in ID
+    #[arg(long, help = "Include export name in ID")]
+    include_export_name: bool,
 
     /// Use object key for ID generation in defineMessages
     #[arg(long, help = "Use object key for ID generation in defineMessages")]
@@ -84,6 +84,14 @@ struct Args {
         help = "Hash algorithm (murmur3 or base64)"
     )]
     hash_algorithm: String,
+
+    /// Output mode: aggregated (single file) or perfile (separate files)
+    #[arg(
+        long,
+        default_value = "aggregated",
+        help = "Output mode: aggregated or perfile"
+    )]
+    output_mode: String,
 }
 
 impl Args {
@@ -96,20 +104,15 @@ impl Args {
             _ => Some(RemovePrefix::String(s.clone())),
         });
 
-        let include_export_name =
-            self.include_export_name
-                .as_ref()
-                .and_then(|s| match s.as_str() {
-                    "true" => Some(IncludeExportName::Boolean(true)),
-                    "false" => Some(IncludeExportName::Boolean(false)),
-                    "all" => Some(IncludeExportName::All),
-                    _ => None,
-                });
+        let output_mode = match self.output_mode.as_str() {
+            "perfile" => OutputMode::PerFile,
+            _ => OutputMode::Aggregated,
+        };
 
         CoreOptions {
             remove_prefix,
             filebase: self.filebase,
-            include_export_name,
+            include_export_name: self.include_export_name,
             use_key: self.use_key,
             module_source_name: self.module_source_name.clone(),
             separator: self.separator.clone(),
@@ -117,6 +120,7 @@ impl Args {
             hash_id: self.hash_id,
             hash_algorithm: self.hash_algorithm.clone(),
             extract_source_location: self.extract_source_location,
+            output_mode,
         }
     }
 }
@@ -227,112 +231,36 @@ fn extract_from_file(
     Ok(messages)
 }
 
-/// Determine output mode based on output path
-#[derive(Debug)]
-enum OutputMode {
-    /// Single aggregated JSON file
-    Aggregated(PathBuf),
-    /// Directory with per-file JSON files
-    PerFile(PathBuf),
-}
-
-/// Get output mode from output path
-fn get_output_mode(output: Option<&str>) -> OutputMode {
-    match output {
-        None => OutputMode::Aggregated(PathBuf::from("messages.json")),
-        Some(path) => {
-            let path = PathBuf::from(path);
-            // If path ends with / or exists as directory, treat as per-file mode
-            if path.to_string_lossy().ends_with('/') || (path.exists() && path.is_dir()) {
-                OutputMode::PerFile(path)
-            } else {
-                OutputMode::Aggregated(path)
-            }
-        }
-    }
-}
-
-/// Write messages to output
-fn write_output(
-    all_messages: Vec<(PathBuf, Vec<react_intl_core::ExtractedMessage>)>,
-    mode: OutputMode,
+/// Write messages for a single file (streaming mode for perfile)
+fn write_per_file_messages(
+    file_path: &Path,
+    messages: &[react_intl_core::ExtractedMessage],
+    output_dir: &Path,
 ) -> Result<()> {
-    match mode {
-        OutputMode::Aggregated(output_path) => {
-            // Flatten all messages into single array
-            let messages: Vec<_> = all_messages
-                .into_iter()
-                .flat_map(|(_, msgs)| msgs)
-                .collect();
-
-            // Ensure parent directory exists
-            if let Some(parent) = output_path.parent() {
-                fs::create_dir_all(parent)?;
-            }
-
-            let json = serde_json::to_string_pretty(&messages)
-                .context("Failed to serialize messages to JSON")?;
-
-            fs::write(&output_path, json)
-                .with_context(|| format!("Failed to write to {}", output_path.display()))?;
-
-            println!(
-                "Extracted {} messages to {}",
-                messages.len(),
-                output_path.display()
-            );
-        }
-        OutputMode::PerFile(output_dir) => {
-            fs::create_dir_all(&output_dir)?;
-
-            let mut total_messages = 0;
-
-            for (file_path, messages) in &all_messages {
-                if messages.is_empty() {
-                    continue;
-                }
-
-                // Calculate relative path for output file
-                let relative_path = file_path
-                    .file_stem()
-                    .and_then(|s| s.to_str())
-                    .unwrap_or("unknown");
-
-                let output_file = output_dir.join(format!("{}.json", relative_path));
-
-                // Ensure parent directory exists
-                if let Some(parent) = output_file.parent() {
-                    fs::create_dir_all(parent)?;
-                }
-
-                let json = serde_json::to_string_pretty(&messages)
-                    .context("Failed to serialize messages to JSON")?;
-
-                fs::write(&output_file, json)
-                    .with_context(|| format!("Failed to write to {}", output_file.display()))?;
-
-                total_messages += messages.len();
-            }
-
-            // Also write aggregated file
-            let all_msgs: Vec<_> = all_messages
-                .iter()
-                .flat_map(|(_, msgs)| msgs.clone())
-                .collect::<Vec<_>>();
-
-            let aggregated_path = output_dir.join("messages.json");
-            let json = serde_json::to_string_pretty(&all_msgs)
-                .context("Failed to serialize aggregated messages")?;
-            fs::write(&aggregated_path, json)
-                .with_context(|| format!("Failed to write to {}", aggregated_path.display()))?;
-
-            println!(
-                "Extracted {} messages to {} (directory mode)",
-                total_messages,
-                output_dir.display()
-            );
-        }
+    if messages.is_empty() {
+        return Ok(());
     }
+
+    // Get the relative path from current directory to preserve directory structure
+    let current_dir = std::env::current_dir()?;
+    let relative_file_path = file_path.strip_prefix(&current_dir).unwrap_or(file_path);
+
+    // Replace extension with .json
+    let output_relative_path = relative_file_path.with_extension("json");
+
+    // Create full output path
+    let output_file = output_dir.join(&output_relative_path);
+
+    // Ensure parent directory exists
+    if let Some(parent) = output_file.parent() {
+        fs::create_dir_all(parent)?;
+    }
+
+    let json =
+        serde_json::to_string_pretty(&messages).context("Failed to serialize messages to JSON")?;
+
+    fs::write(&output_file, json)
+        .with_context(|| format!("Failed to write to {}", output_file.display()))?;
 
     Ok(())
 }
@@ -368,25 +296,82 @@ fn main() -> Result<()> {
 
     // Extract messages from all files
     let core_options = args.to_core_options();
-    let mut all_messages: Vec<(PathBuf, Vec<react_intl_core::ExtractedMessage>)> = Vec::new();
+    let output_path = args.output.map(PathBuf::from);
 
-    for file in files {
-        match extract_from_file(&file, &core_options) {
-            Ok(messages) => {
-                if !messages.is_empty() {
-                    println!("  {} - {} messages", file.display(), messages.len());
-                    all_messages.push((file, messages));
+    match core_options.output_mode {
+        OutputMode::PerFile => {
+            // Streaming mode: write each file immediately
+            let output_dir = output_path.unwrap_or_else(|| PathBuf::from("messages"));
+            fs::create_dir_all(&output_dir)?;
+
+            let mut total_messages = 0;
+
+            for file in files {
+                match extract_from_file(&file, &core_options) {
+                    Ok(messages) => {
+                        if !messages.is_empty() {
+                            println!("  {} - {} messages", file.display(), messages.len());
+                            write_per_file_messages(&file, &messages, &output_dir)?;
+                            total_messages += 1;
+                        }
+                    }
+                    Err(e) => {
+                        eprintln!("  Warning: Failed to process {}: {}", file.display(), e);
+                    }
                 }
             }
-            Err(e) => {
-                eprintln!("  Warning: Failed to process {}: {}", file.display(), e);
+
+            println!(
+                "Extracted {} messages to {} (directory mode)",
+                total_messages,
+                output_dir.display()
+            );
+        }
+        OutputMode::Aggregated => {
+            // Batch mode: collect all messages then write
+            let mut all_messages: Vec<(PathBuf, Vec<react_intl_core::ExtractedMessage>)> =
+                Vec::new();
+
+            for file in files {
+                match extract_from_file(&file, &core_options) {
+                    Ok(messages) => {
+                        if !messages.is_empty() {
+                            println!("  {} - {} messages", file.display(), messages.len());
+                            all_messages.push((file, messages));
+                        }
+                    }
+                    Err(e) => {
+                        eprintln!("  Warning: Failed to process {}: {}", file.display(), e);
+                    }
+                }
             }
+
+            // Write aggregated output
+            let output_file = output_path.unwrap_or_else(|| PathBuf::from("messages.json"));
+
+            // Ensure parent directory exists
+            if let Some(parent) = output_file.parent() {
+                fs::create_dir_all(parent)?;
+            }
+
+            let messages: Vec<_> = all_messages
+                .into_iter()
+                .flat_map(|(_, msgs)| msgs)
+                .collect();
+
+            let json = serde_json::to_string_pretty(&messages)
+                .context("Failed to serialize messages to JSON")?;
+
+            fs::write(&output_file, json)
+                .with_context(|| format!("Failed to write to {}", output_file.display()))?;
+
+            println!(
+                "Extracted {} messages to {}",
+                messages.len(),
+                output_file.display()
+            );
         }
     }
-
-    // Determine output mode and write
-    let output_mode = get_output_mode(args.output.as_deref());
-    write_output(all_messages, output_mode)?;
 
     println!("Done!");
     Ok(())

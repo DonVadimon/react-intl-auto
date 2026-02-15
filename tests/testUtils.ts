@@ -13,7 +13,7 @@ type PluginOptions = {
     /** Include filename in ID */
     filebase?: boolean;
     /** Include export name in ID */
-    includeExportName?: boolean | 'all';
+    includeExportName?: boolean;
     /** Use key property instead of hash */
     useKey?: boolean;
     /** Module source name */
@@ -115,27 +115,15 @@ export const createConfigurationSuites = (title: string, tests: TestCase[]) => {
         },
 
         {
-            title: 'includeExportName = all',
+            title: 'removePrefix = true',
             tests,
-            pluginOptions: { includeExportName: 'all' },
+            pluginOptions: { removePrefix: true },
         },
 
         {
             title: 'removePrefix = true, includeExportName = true',
             tests,
             pluginOptions: { removePrefix: true, includeExportName: true },
-        },
-
-        {
-            title: 'removePrefix = false',
-            tests,
-            pluginOptions: { removePrefix: false },
-        },
-
-        {
-            title: 'removePrefix = true, includeExportName = all',
-            tests,
-            pluginOptions: { removePrefix: true, includeExportName: 'all' },
         },
 
         {

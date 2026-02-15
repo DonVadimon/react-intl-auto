@@ -17,6 +17,7 @@ use crate::types::{CoreOptions, CoreState, REACT_COMPONENTS};
 
 /// Extracted message structure
 #[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
 pub struct ExtractedMessage {
     pub id: String,
     pub default_message: String,

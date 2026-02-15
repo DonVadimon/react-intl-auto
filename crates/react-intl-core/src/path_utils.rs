@@ -305,17 +305,19 @@ mod tests {
     }
 
     fn create_default_options() -> CoreOptions {
+        use crate::types::OutputMode;
         CoreOptions {
             module_source_name: "react-intl".to_string(),
             separator: ".".to_string(),
             filebase: false,
             remove_prefix: None,
-            include_export_name: None,
+            include_export_name: false,
             use_key: false,
             relative_to: None,
             hash_id: false,
             hash_algorithm: "murmur3".to_string(),
             extract_source_location: false,
+            output_mode: OutputMode::Aggregated,
         }
     }
 

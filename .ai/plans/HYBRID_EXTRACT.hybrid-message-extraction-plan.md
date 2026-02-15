@@ -59,7 +59,7 @@
 - [x] HYBRID_EXTRACT-005B: Unify options - use CoreOptions in message_extractor
 - [x] HYBRID_EXTRACT-006: Implement JSON output format (aggregated and per-file)
 - [x] HYBRID_EXTRACT-006B: Fix include_export_name - use AST span position
-- [ ] HYBRID_EXTRACT-007: Add source location extraction option
+- [x] HYBRID_EXTRACT-007: Add source location extraction option
 - [ ] HYBRID_EXTRACT-008: Create JS API with napi-rs bindings
 - [ ] HYBRID_EXTRACT-009: Update package.json with CLI bin entry and JS API exports
 - [ ] HYBRID_EXTRACT-010: Create integration tests for ID consistency between plugin and CLI
@@ -1076,11 +1076,11 @@ const messages2 = defineMessages({ farewell: 'Goodbye' }); // поз. 120
 
 ---
 
-## [ ] HYBRID_EXTRACT-007: Add source location extraction option
+## [x] HYBRID_EXTRACT-007: Add source location extraction option
 
 ### 📋 Metadata
 
-- **status:** `todo`
+- **status:** `ready`
 - **depends:** `HYBRID_EXTRACT-006`
 - **priority:** `P1`
 - **files:** `crates/react-intl-core/src/message_extractor.rs`, `crates/cli/src/main.rs`
@@ -1094,11 +1094,12 @@ const messages2 = defineMessages({ farewell: 'Goodbye' }); // поз. 120
 - Опция `--extract-source-location` включает добавление поля `file`
 - Путь должен быть относительным (относительно project root или `relative_to`)
 - Должна быть опция отключения для минимизации размера JSON
+- ~~Поле `line` не добавляется~~
 
 **Проблемные места:**
 
 - Вычисление относительного пути для каждого сообщения
-- Сохранение информации о строке (line number) из AST
+- ~~Сохранение информации о строке (line number) из AST~~
 - Консистентность путей между Windows и Unix
 
 **Изменения:**
@@ -1112,8 +1113,6 @@ const messages2 = defineMessages({ farewell: 'Goodbye' }); // поз. 120
         pub description: Option<String>,
         #[serde(skip_serializing_if = "Option::is_none")]
         pub file: Option<String>,
-        #[serde(skip_serializing_if = "Option::is_none")]
-        pub line: Option<usize>,
     }
     ```
 
@@ -1130,8 +1129,7 @@ const messages2 = defineMessages({ farewell: 'Goodbye' }); // поз. 120
         {
             "id": "hello",
             "defaultMessage": "Hello",
-            "file": "src/components/App.tsx",
-            "line": 42
+            "file": "src/components/App.tsx"
         }
     ]
     ```
@@ -1144,6 +1142,19 @@ const messages2 = defineMessages({ farewell: 'Goodbye' }); // поз. 120
 ### 📊 ActionLog:
 
 - `2026-02-08 18:48` План задачи создан
+- `2026-02-16 01:43` Данные актуализированы: задача уже выполнена, но нужно удалить поле `line`
+- `2026-02-16 01:43` Статус изменен на `in-progress`
+- `2026-02-16 01:43` Удалено поле `line` из структуры `ExtractedMessage`
+- `2026-02-16 01:43` Удален параметр `line` из функции `to_extracted_message`
+- `2026-02-16 01:43` Удален параметр `line` из метода `add_message`
+- `2026-02-16 01:43` Удалено вычисление line number из JSX visitor
+- `2026-02-16 01:43` Удалено вычисление line number из call expression visitor
+- `2026-02-16 01:43` Обновлены тесты (удалены проверки line)
+- `2026-02-16 01:43` Обновлен help text в CLI
+- `2026-02-16 01:43` Сборка и тесты прошли успешно (24 Rust теста + 7 CLI тестов + 7 doc-тестов)
+- `2026-02-16 01:43` Готово к review
+- `2026-02-16 01:43` Review: одобрено USER
+- `2026-02-16 01:43` Задача завершена, статус изменен на `ready`
 
 ---
 
@@ -1649,7 +1660,7 @@ npm run test:watch      # Jest в watch mode
 | HYBRID_EXTRACT-004  | Create CLI tool crate                   | P0        | 003B, 003C  | ⏳     |
 | HYBRID_EXTRACT-005  | CLI argument parsing and globbing       | P1        | 004         | ⏳     |
 | HYBRID_EXTRACT-006  | JSON output format                      | P1        | 005         | ⏳     |
-| HYBRID_EXTRACT-007  | Source location extraction              | P1        | 006         | ⏳     |
+| HYBRID_EXTRACT-007  | Source location extraction              | P1        | 006         | ✅     |
 | HYBRID_EXTRACT-008  | Create JS API with napi-rs              | P1        | 003         | ⏳     |
 | HYBRID_EXTRACT-009  | Update package.json with CLI and JS API | P1        | 004, 008    | ⏳     |
 | HYBRID_EXTRACT-010  | Integration tests for ID consistency    | P2        | 007, 009    | ⏳     |

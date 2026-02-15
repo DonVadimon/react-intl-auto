@@ -25,8 +25,6 @@ pub struct ExtractedMessage {
     pub description: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub file: Option<String>,
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub line: Option<usize>,
 }
 
 /// Converts (MessageData, TransformedMessageData) to ExtractedMessage
@@ -35,7 +33,6 @@ fn to_extracted_message(
     transformed: TransformedMessageData,
     filename: &PathBuf,
     include_source_location: bool,
-    line: Option<usize>,
 ) -> ExtractedMessage {
     ExtractedMessage {
         id: transformed.id,
@@ -46,7 +43,6 @@ fn to_extracted_message(
         } else {
             None
         },
-        line: if include_source_location { line } else { None },
     }
 }
 
@@ -151,18 +147,12 @@ impl MessageExtractorVisitor {
         self.messages
     }
 
-    fn add_message(
-        &mut self,
-        message_data: MessageData,
-        transformed: TransformedMessageData,
-        line: Option<usize>,
-    ) {
+    fn add_message(&mut self, message_data: MessageData, transformed: TransformedMessageData) {
         let extracted = to_extracted_message(
             message_data,
             transformed,
             &self.filename,
             self.state.opts.extract_source_location,
-            line,
         );
         self.messages.push(extracted);
     }
@@ -213,8 +203,7 @@ impl Visit for MessageExtractorVisitor {
                 if let Some((message_data, transformed, _needs_insertion)) =
                     analyze_jsx_element(element, &self.state)
                 {
-                    let line = element.span.lo.0; // Approximate line number
-                    self.add_message(message_data, transformed, Some(line as usize));
+                    self.add_message(message_data, transformed);
                 }
             }
         }
@@ -230,15 +219,13 @@ impl Visit for MessageExtractorVisitor {
                 if fn_name == "defineMessages" && self.imported_names.contains("defineMessages") {
                     let results = analyze_define_messages(call, &self.state);
                     for (_key_name, message_data, transformed) in results {
-                        let line = call.span.lo.0;
-                        self.add_message(message_data, transformed, Some(line as usize));
+                        self.add_message(message_data, transformed);
                     }
                 } else if fn_name == "formatMessage" {
                     if let Some((message_data, transformed)) =
                         analyze_format_message(call, &self.state)
                     {
-                        let line = call.span.lo.0;
-                        self.add_message(message_data, transformed, Some(line as usize));
+                        self.add_message(message_data, transformed);
                     }
                 }
             }
@@ -264,12 +251,11 @@ mod tests {
         };
         let filename = PathBuf::from("test.js");
 
-        let extracted = to_extracted_message(message_data, transformed, &filename, false, Some(42));
+        let extracted = to_extracted_message(message_data, transformed, &filename, false);
 
         assert_eq!(extracted.id, "test.hello");
         assert_eq!(extracted.default_message, "Hello World");
         assert_eq!(extracted.description, Some("A greeting".to_string()));
-        assert!(extracted.line.is_none()); // Not included by default
         assert!(extracted.file.is_none()); // Not included by default
     }
 
@@ -287,9 +273,8 @@ mod tests {
         };
         let filename = PathBuf::from("test.js");
 
-        let extracted = to_extracted_message(message_data, transformed, &filename, true, Some(42));
+        let extracted = to_extracted_message(message_data, transformed, &filename, true);
 
-        assert_eq!(extracted.line, Some(42));
         assert!(extracted.file.is_some());
     }
 }

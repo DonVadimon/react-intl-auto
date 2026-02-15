@@ -33,8 +33,8 @@ struct Args {
     #[arg(short, long, help = "Output file or directory")]
     output: Option<String>,
 
-    /// Include source file location (file path and line number)
-    #[arg(long, help = "Include source file location")]
+    /// Include source file path
+    #[arg(long, help = "Include source file path")]
     extract_source_location: bool,
 
     // CoreOptions as CLI arguments

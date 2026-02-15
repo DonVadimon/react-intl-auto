@@ -7,6 +7,7 @@ use clap::Parser;
 use react_intl_core::{
     extract_messages, CoreOptions, ExtractionOptions, IncludeExportName, RemovePrefix,
 };
+use std::collections::HashSet;
 use std::fs;
 use std::path::{Path, PathBuf};
 
@@ -21,6 +22,14 @@ struct Args {
     /// File glob patterns to extract from (e.g., 'src/**/*.{ts,tsx}')
     #[arg(help = "Glob patterns for source files (e.g., 'src/**/*.{ts,tsx}')")]
     patterns: Vec<PathBuf>,
+
+    /// Glob patterns to ignore (e.g., 'node_modules/**', '.git/**')
+    #[arg(
+        long,
+        help = "Glob patterns to ignore (can be specified multiple times)",
+        default_values = &["**/node_modules/**", "**/.git/**"]
+    )]
+    ignore: Vec<PathBuf>,
 
     /// Output file or directory
     #[arg(short, long, help = "Output file or directory")]
@@ -142,24 +151,34 @@ fn is_supported_file(path: &Path) -> bool {
     }
 }
 
-/// Find files matching the glob pattern
-fn find_files(globs: &[PathBuf]) -> Result<Vec<PathBuf>> {
-    let mut files = Vec::new();
+/// Find files matching the glob patterns, excluding ignored patterns
+fn find_files(include_patterns: &[PathBuf], ignore_patterns: &[PathBuf]) -> Result<HashSet<PathBuf>> {
+    let mut files = HashSet::new();
 
-    let mut builder = GlobSetBuilder::new();
+    // Build glob matcher for include patterns
+    let mut include_builder = GlobSetBuilder::new();
     let mut base_dirs = Vec::new();
 
-    for glob_path in globs {
+    for glob_path in include_patterns {
         let glob_str = glob_path
             .to_str()
             .context("Invalid UTF-8 in glob pattern")?;
 
-        builder.add(Glob::new(glob_str)?);
-
+        include_builder.add(Glob::new(glob_str)?);
         base_dirs.push(find_base_dir(glob_str));
     }
 
-    let glob_matcher = builder.build()?;
+    let include_matcher = include_builder.build()?;
+
+    // Build glob matcher for exclude patterns
+    let mut exclude_builder = GlobSetBuilder::new();
+    for ignore_path in ignore_patterns {
+        let ignore_str = ignore_path
+            .to_str()
+            .context("Invalid UTF-8 in ignore pattern")?;
+        exclude_builder.add(Glob::new(ignore_str)?);
+    }
+    let exclude_matcher = exclude_builder.build()?;
 
     for base_dir in base_dirs {
         // Walk the directory and match files
@@ -168,17 +187,17 @@ fn find_files(globs: &[PathBuf]) -> Result<Vec<PathBuf>> {
             .filter_map(|e| e.ok())
             .for_each(|entry| {
                 let path = entry.path();
-                if path.is_file() && glob_matcher.is_match(path) {
+                if path.is_file()
+                    && include_matcher.is_match(path)
+                    && !exclude_matcher.is_match(path)
+                {
                     // Only process supported file types
                     if is_supported_file(path) {
-                        files.push(path.to_path_buf());
+                        files.insert(path.to_path_buf());
                     }
                 }
             });
     }
-
-    // Remove duplicates
-    files.dedup();
 
     Ok(files)
 }
@@ -342,12 +361,19 @@ fn main() -> Result<()> {
         println!("  - {}", pattern.to_str().unwrap_or("invalid glob"));
     }
 
+    if !args.ignore.is_empty() {
+        println!("Ignore patterns:");
+        for ignore in &args.ignore {
+            println!("  - {}", ignore.to_str().unwrap_or("invalid glob"));
+        }
+    }
+
     if let Some(ref output) = args.output {
         println!("Output: {}", output);
     }
 
     // Find files
-    let files = find_files(&args.patterns)?;
+    let files = find_files(&args.patterns, &args.ignore)?;
     println!("Found {} files", files.len());
 
     if files.is_empty() {

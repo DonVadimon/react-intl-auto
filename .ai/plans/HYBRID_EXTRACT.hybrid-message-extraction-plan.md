@@ -55,7 +55,7 @@
     - [x] HYBRID_EXTRACT-003B: Extract defineMessages analysis
     - [x] HYBRID_EXTRACT-003C: Extract formatMessage analysis
 - [x] HYBRID_EXTRACT-004: Create CLI tool crate with message extraction [DEPENDS: 003B, 003C]
-- [ ] HYBRID_EXTRACT-005: Implement CLI argument parsing and file globbing
+- [x] HYBRID_EXTRACT-005: Implement CLI argument parsing and file globbing
 - [ ] HYBRID_EXTRACT-006: Implement JSON output format (aggregated and per-file)
 - [ ] HYBRID_EXTRACT-007: Add source location extraction option
 - [ ] HYBRID_EXTRACT-008: Create JS API with napi-rs bindings
@@ -726,11 +726,11 @@ pub fn analyze_format_message(
 
 ---
 
-## [ ] HYBRID_EXTRACT-005: Implement CLI argument parsing and file globbing
+## [x] HYBRID_EXTRACT-005: Implement CLI argument parsing and file globbing
 
 ### 📋 Metadata
 
-- **status:** `todo`
+- **status:** `ready`
 - **depends:** `HYBRID_EXTRACT-004`
 - **priority:** `P1`
 - **files:** `crates/cli/src/main.rs`, `crates/cli/src/glob.rs`
@@ -785,6 +785,28 @@ pub fn analyze_format_message(
 ### 📊 ActionLog:
 
 - `2026-02-08 18:48` План задачи создан
+- `2026-02-15 14:39` Данные актуализированы: проверены файлы crates/cli/src/main.rs
+- `2026-02-15 14:39` Статус изменен на `in-progress`
+- `2026-02-15 14:39` Составлен план выполнения:
+    - Шаг 1: Добавить CLI аргумент `ignore: Vec<PathBuf>` для игнорирования путей
+    - Шаг 2: Обновить функцию `find_files` для фильтрации игнорируемых путей
+    - Шаг 3: Добавить дефолтные игнорируемые пути: node_modules, .git
+    - Шаг 4: Протестировать работу ignore паттернов
+    - Шаг 5: Обновить документацию/хелп
+- `2026-02-15 14:39` План согласован с USER
+- `2026-02-15 14:40` Выполнен шаг 1: Добавлен CLI аргумент `ignore: Vec<PathBuf>` с дефолтами
+- `2026-02-15 14:41` Выполнен шаг 2: Обновлена функция `find_files` для фильтрации через GlobSet
+- `2026-02-15 14:42` Выполнен шаг 3: Добавлены дефолтные игнорируемые пути: node_modules/**, .git/**
+- `2026-02-15 14:43` Выполнен шаг 4: Протестирована работа ignore паттернов - работает корректно
+- `2026-02-15 14:44` Выполнен шаг 5: Обновлен вывод CLI для отображения ignore паттернов
+- `2026-02-15 14:45` Определены критерии приёмки:
+    - CLI аргумент `ignore` добавлен ✓
+    - Дефолтные паттерны (node_modules/**, .git/**) работают ✓
+    - Кастомные ignore паттерны работают ✓
+    - Все тесты проходят (7 CLI + 25 Rust + 7 doc + 1404 Jest) ✓
+- `2026-02-15 14:45` Готово к review
+- `2026-02-15 14:45` Review: одобрено USER
+- `2026-02-15 14:45` Задача завершена, статус изменен на `ready`
 
 ---
 

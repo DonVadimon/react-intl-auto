@@ -80,8 +80,11 @@ pub fn extract_messages(
     options: &CoreOptions,
 ) -> Vec<ExtractedMessage> {
     // Determine syntax based on file extension
-    let is_ts = filename.ends_with(".ts") || filename.ends_with(".tsx");
+    let is_ts = [".ts", ".mts", ".tsx"]
+        .iter()
+        .any(|ext| filename.ends_with(ext));
     let is_tsx = filename.ends_with(".tsx");
+    let is_jsx = filename.ends_with(".jsx");
 
     let syntax = if is_ts {
         Syntax::Typescript(swc_core::ecma::parser::TsSyntax {
@@ -89,7 +92,10 @@ pub fn extract_messages(
             ..Default::default()
         })
     } else {
-        Syntax::Es(Default::default())
+        Syntax::Es(swc_core::ecma::parser::EsSyntax {
+            jsx: is_jsx,
+            ..Default::default()
+        })
     };
 
     // Create lexer and parser

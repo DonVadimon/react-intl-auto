@@ -73,7 +73,7 @@ impl Default for CoreOptions {
         Self {
             remove_prefix: None,
             filebase: false,
-            include_export_name: false,
+            include_export_name: true,
             use_key: false,
             module_source_name: "react-intl".to_string(),
             separator: ".".to_string(),

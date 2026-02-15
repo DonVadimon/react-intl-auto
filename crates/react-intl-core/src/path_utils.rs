@@ -311,7 +311,7 @@ mod tests {
             separator: ".".to_string(),
             filebase: false,
             remove_prefix: None,
-            include_export_name: false,
+            include_export_name: true,
             use_key: false,
             relative_to: None,
             hash_id: false,

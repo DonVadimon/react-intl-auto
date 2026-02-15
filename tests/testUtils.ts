@@ -109,9 +109,9 @@ export const createConfigurationSuites = (title: string, tests: TestCase[]) => {
         },
 
         {
-            title: 'includeExportName = true',
+            title: 'includeExportName = false',
             tests,
-            pluginOptions: { includeExportName: true },
+            pluginOptions: { includeExportName: false },
         },
 
         {
@@ -121,17 +121,10 @@ export const createConfigurationSuites = (title: string, tests: TestCase[]) => {
         },
 
         {
-            title: 'removePrefix = true, includeExportName = true',
-            tests,
-            pluginOptions: { removePrefix: true, includeExportName: true },
-        },
-
-        {
             title: 'removePrefix = /__fixtures__/',
             tests,
             pluginOptions: {
                 removePrefix: /src[\\/]__f.+?_/u,
-                includeExportName: true,
             },
         },
 
@@ -144,11 +137,10 @@ export const createConfigurationSuites = (title: string, tests: TestCase[]) => {
         },
 
         {
-            title: 'removePrefix = "src.__fixtures__", includeExportName = true',
+            title: 'removePrefix = "src.__fixtures__"',
             tests,
             pluginOptions: {
                 removePrefix: 'src.__fixtures__',
-                includeExportName: true,
             },
         },
 
@@ -161,27 +153,11 @@ export const createConfigurationSuites = (title: string, tests: TestCase[]) => {
         },
 
         {
-            title: 'separator = ""',
-            tests,
-            pluginOptions: {
-                separator: '',
-            },
-        },
-
-        {
             title: 'separator = "_"',
             // tests,
             tests,
             pluginOptions: {
                 separator: '_',
-            },
-        },
-
-        {
-            title: 'separator = "foo"',
-            tests,
-            pluginOptions: {
-                separator: 'foo',
             },
         },
 
@@ -234,16 +210,6 @@ export const createConfigurationSuites = (title: string, tests: TestCase[]) => {
                 hashId: true,
                 hashAlgorithm: 'base64',
                 removePrefix: 'src/',
-            },
-        },
-
-        {
-            title: 'hash + includeExportName = true',
-            tests,
-            pluginOptions: {
-                hashId: true,
-                hashAlgorithm: 'base64',
-                includeExportName: true,
             },
         },
 

@@ -51,7 +51,7 @@ struct Args {
 
     /// Include export name in ID
     #[arg(long, help = "Include export name in ID")]
-    include_export_name: bool,
+    include_export_name: Option<bool>,
 
     /// Use object key for ID generation in defineMessages
     #[arg(long, help = "Use object key for ID generation in defineMessages")]
@@ -109,10 +109,15 @@ impl Args {
             _ => OutputMode::Aggregated,
         };
 
+        let include_export_name = match self.include_export_name {
+            Some(val) => val,
+            None => true,
+        };
+
         CoreOptions {
             remove_prefix,
             filebase: self.filebase,
-            include_export_name: self.include_export_name,
+            include_export_name: include_export_name,
             use_key: self.use_key,
             module_source_name: self.module_source_name.clone(),
             separator: self.separator.clone(),
@@ -130,7 +135,7 @@ fn is_supported_file(path: &Path) -> bool {
     if let Some(ext) = path.extension() {
         matches!(
             ext.to_string_lossy().as_ref(),
-            "ts" | "tsx" | "js" | "jsx" | "mjs" | "cjs"
+            "ts" | "tsx" | "mts" | "js" | "jsx" | "mjs" | "cjs"
         )
     } else {
         false

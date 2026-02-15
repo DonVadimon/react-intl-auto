@@ -618,212 +618,6 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - hash + includeExportName = true does nothing if id is already provided 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-import { injectIntl } from 'gatsby-plugin-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            id: "my.custom.id",
-            defaultMessage: "hello"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - hash + includeExportName = true does nothing if react-intl is not imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - hash + includeExportName = true multiple uses 1`] = `
-"import { jsxs as _jsxs } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var _$intl = param.intl;
-    return /*#__PURE__*/ _jsxs("div", {
-        children: [
-            _$intl.formatMessage({
-                defaultMessage: "hello",
-                "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
-            }),
-            _$intl.formatMessage({
-                defaultMessage: "hello",
-                "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
-            }),
-            _$intl.formatMessage({
-                defaultMessage: "some other message",
-                "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuODMxMzczNjkx"
-            })
-        ]
-    });
-}
-export default injectIntl(App);
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuODMxMzczNjkx"
-});
-"
-`;
-
-exports[`injection - hash + includeExportName = true some supported use cases 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-var Component2 = function Component2(param) {
-    var intl = param.intl;
-    var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
-    });
-    return /*#__PURE__*/ _jsx("button", {
-        "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
-        }),
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
-        })
-    });
-};
-injectIntl(Components2);
-"
-`;
-
-exports[`injection - hash + includeExportName = true with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl as i18n } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "i18n",
-            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuOTQzNDgwMTQ="
-        })
-    });
-}
-export default i18n(App);
-"
-`;
-
-exports[`injection - hash + includeExportName = true with Injection API HOC imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - hash + includeExportName = true with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string 2",
-            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMTA0NTE5ODM4MA=="
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - hash + includeExportName = true with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-var message = "variable message";
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message,
-            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMzcwODE0ODY5"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - hash + includeExportName = true with a variable as the defaultMessage 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-import { message } from './messages';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage(message)
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - hash + includeExportName = true with custom properties in formatMessage call 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "custom prop",
-            other: 123,
-            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuMjk4MzgxMDI2Nw=="
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - hash + includeExportName = true with injectIntl 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "VXNlcnMudXNlcm5hbWUucmVwby5zcmMuY29tcG9uZW50cy5BcHAuNjEzMTUzMzUx"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
 exports[`injection - hash + relativeTo = "src" does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
@@ -1854,7 +1648,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - includeExportName = true does nothing if id is already provided 1`] = `
+exports[`injection - includeExportName = false does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { injectIntl } from 'gatsby-plugin-intl';
@@ -1871,7 +1665,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - includeExportName = true does nothing if react-intl is not imported 1`] = `
+exports[`injection - includeExportName = false does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -1886,7 +1680,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - includeExportName = true multiple uses 1`] = `
+exports[`injection - includeExportName = false multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1924,7 +1718,7 @@ intl.formatMessage({
 "
 `;
 
-exports[`injection - includeExportName = true some supported use cases 1`] = `
+exports[`injection - includeExportName = false some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -1948,7 +1742,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection - includeExportName = true with FormattedMessage imported as something else 1`] = `
+exports[`injection - includeExportName = false with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -1964,7 +1758,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection - includeExportName = true with Injection API HOC imported 1`] = `
+exports[`injection - includeExportName = false with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1980,7 +1774,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - includeExportName = true with a value interpolated in the message 1`] = `
+exports[`injection - includeExportName = false with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1996,7 +1790,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - includeExportName = true with a variable as the defaultMessage 1`] = `
+exports[`injection - includeExportName = false with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = "variable message";
@@ -2013,7 +1807,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - includeExportName = true with a variable as the defaultMessage 2`] = `
+exports[`injection - includeExportName = false with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -2027,7 +1821,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - includeExportName = true with custom properties in formatMessage call 1`] = `
+exports[`injection - includeExportName = false with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2044,7 +1838,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - includeExportName = true with injectIntl 1`] = `
+exports[`injection - includeExportName = false with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2901,6 +2695,23 @@ export default injectIntl(App);
 "
 `;
 
+exports[`injection - removePrefix = "src.__fixtures__" does nothing if id is already provided 2`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+import { injectIntl } from 'gatsby-plugin-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: "my.custom.id",
+            defaultMessage: "hello"
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
 exports[`injection - removePrefix = "src.__fixtures__" does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
@@ -2916,7 +2727,60 @@ export default injectIntl(App);
 "
 `;
 
+exports[`injection - removePrefix = "src.__fixtures__" does nothing if react-intl is not imported 2`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
 exports[`injection - removePrefix = "src.__fixtures__" multiple uses 1`] = `
+"import { jsxs as _jsxs } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var _$intl = param.intl;
+    return /*#__PURE__*/ _jsxs("div", {
+        children: [
+            _$intl.formatMessage({
+                defaultMessage: "hello",
+                "id": "Users.username.repo.src.components.App.613153351"
+            }),
+            _$intl.formatMessage({
+                defaultMessage: "hello",
+                "id": "Users.username.repo.src.components.App.613153351"
+            }),
+            _$intl.formatMessage({
+                defaultMessage: "some other message",
+                "id": "Users.username.repo.src.components.App.831373691"
+            })
+        ]
+    });
+}
+export default injectIntl(App);
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "hello",
+    "id": "Users.username.repo.src.components.App.613153351"
+});
+intl.formatMessage({
+    defaultMessage: "some other message",
+    "id": "Users.username.repo.src.components.App.831373691"
+});
+"
+`;
+
+exports[`injection - removePrefix = "src.__fixtures__" multiple uses 2`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2978,7 +2842,47 @@ injectIntl(Components2);
 "
 `;
 
+exports[`injection - removePrefix = "src.__fixtures__" some supported use cases 2`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+var Component2 = function Component2(param) {
+    var intl = param.intl;
+    var label = intl.formatMessage({
+        defaultMessage: "hello",
+        "id": "Users.username.repo.src.components.App.613153351"
+    });
+    return /*#__PURE__*/ _jsx("button", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+};
+injectIntl(Components2);
+"
+`;
+
 exports[`injection - removePrefix = "src.__fixtures__" with FormattedMessage imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl as i18n } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "i18n",
+            "id": "Users.username.repo.src.components.App.94348014"
+        })
+    });
+}
+export default i18n(App);
+"
+`;
+
+exports[`injection - removePrefix = "src.__fixtures__" with FormattedMessage imported as something else 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -3010,7 +2914,39 @@ export default injectIntl(App);
 "
 `;
 
+exports[`injection - removePrefix = "src.__fixtures__" with Injection API HOC imported 2`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "hello",
+            "id": "Users.username.repo.src.components.App.613153351"
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
 exports[`injection - removePrefix = "src.__fixtures__" with a value interpolated in the message 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "template string 2",
+            "id": "Users.username.repo.src.components.App.1045198380"
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`injection - removePrefix = "src.__fixtures__" with a value interpolated in the message 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -3057,7 +2993,55 @@ export default injectIntl(App);
 "
 `;
 
+exports[`injection - removePrefix = "src.__fixtures__" with a variable as the defaultMessage 3`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+var message = "variable message";
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: message,
+            "id": "Users.username.repo.src.components.App.370814869"
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`injection - removePrefix = "src.__fixtures__" with a variable as the defaultMessage 4`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+import { message } from './messages';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage(message)
+    });
+}
+export default injectIntl(App);
+"
+`;
+
 exports[`injection - removePrefix = "src.__fixtures__" with custom properties in formatMessage call 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "custom prop",
+            other: 123,
+            "id": "Users.username.repo.src.components.App.2983810267"
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`injection - removePrefix = "src.__fixtures__" with custom properties in formatMessage call 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -3090,197 +3074,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = "src.__fixtures__", includeExportName = true does nothing if id is already provided 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-import { injectIntl } from 'gatsby-plugin-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            id: "my.custom.id",
-            defaultMessage: "hello"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src.__fixtures__", includeExportName = true does nothing if react-intl is not imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src.__fixtures__", includeExportName = true multiple uses 1`] = `
-"import { jsxs as _jsxs } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var _$intl = param.intl;
-    return /*#__PURE__*/ _jsxs("div", {
-        children: [
-            _$intl.formatMessage({
-                defaultMessage: "hello",
-                "id": "Users.username.repo.src.components.App.613153351"
-            }),
-            _$intl.formatMessage({
-                defaultMessage: "hello",
-                "id": "Users.username.repo.src.components.App.613153351"
-            }),
-            _$intl.formatMessage({
-                defaultMessage: "some other message",
-                "id": "Users.username.repo.src.components.App.831373691"
-            })
-        ]
-    });
-}
-export default injectIntl(App);
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "Users.username.repo.src.components.App.613153351"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "Users.username.repo.src.components.App.831373691"
-});
-"
-`;
-
-exports[`injection - removePrefix = "src.__fixtures__", includeExportName = true some supported use cases 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-var Component2 = function Component2(param) {
-    var intl = param.intl;
-    var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "Users.username.repo.src.components.App.613153351"
-    });
-    return /*#__PURE__*/ _jsx("button", {
-        "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
-        }),
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
-        })
-    });
-};
-injectIntl(Components2);
-"
-`;
-
-exports[`injection - removePrefix = "src.__fixtures__", includeExportName = true with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl as i18n } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "i18n",
-            "id": "Users.username.repo.src.components.App.94348014"
-        })
-    });
-}
-export default i18n(App);
-"
-`;
-
-exports[`injection - removePrefix = "src.__fixtures__", includeExportName = true with Injection API HOC imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "Users.username.repo.src.components.App.613153351"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src.__fixtures__", includeExportName = true with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string 2",
-            "id": "Users.username.repo.src.components.App.1045198380"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src.__fixtures__", includeExportName = true with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-var message = "variable message";
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message,
-            "id": "Users.username.repo.src.components.App.370814869"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src.__fixtures__", includeExportName = true with a variable as the defaultMessage 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-import { message } from './messages';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage(message)
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src.__fixtures__", includeExportName = true with custom properties in formatMessage call 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "custom prop",
-            other: 123,
-            "id": "Users.username.repo.src.components.App.2983810267"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = "src.__fixtures__", includeExportName = true with injectIntl 1`] = `
+exports[`injection - removePrefix = "src.__fixtures__" with injectIntl 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -3914,418 +3708,6 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection - removePrefix = true, includeExportName = true does nothing if id is already provided 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-import { injectIntl } from 'gatsby-plugin-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            id: "my.custom.id",
-            defaultMessage: "hello"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = true, includeExportName = true does nothing if react-intl is not imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "613153351"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = true, includeExportName = true multiple uses 1`] = `
-"import { jsxs as _jsxs } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var _$intl = param.intl;
-    return /*#__PURE__*/ _jsxs("div", {
-        children: [
-            _$intl.formatMessage({
-                defaultMessage: "hello",
-                "id": "613153351"
-            }),
-            _$intl.formatMessage({
-                defaultMessage: "hello",
-                "id": "613153351"
-            }),
-            _$intl.formatMessage({
-                defaultMessage: "some other message",
-                "id": "831373691"
-            })
-        ]
-    });
-}
-export default injectIntl(App);
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "613153351"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "613153351"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "831373691"
-});
-"
-`;
-
-exports[`injection - removePrefix = true, includeExportName = true some supported use cases 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-var Component2 = function Component2(param) {
-    var intl = param.intl;
-    var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "613153351"
-    });
-    return /*#__PURE__*/ _jsx("button", {
-        "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "613153351"
-        }),
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "613153351"
-        })
-    });
-};
-injectIntl(Components2);
-"
-`;
-
-exports[`injection - removePrefix = true, includeExportName = true with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl as i18n } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "i18n",
-            "id": "94348014"
-        })
-    });
-}
-export default i18n(App);
-"
-`;
-
-exports[`injection - removePrefix = true, includeExportName = true with Injection API HOC imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "613153351"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = true, includeExportName = true with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string 2",
-            "id": "1045198380"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = true, includeExportName = true with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-var message = "variable message";
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message,
-            "id": "370814869"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = true, includeExportName = true with a variable as the defaultMessage 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-import { message } from './messages';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage(message)
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = true, includeExportName = true with custom properties in formatMessage call 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "custom prop",
-            other: 123,
-            "id": "2983810267"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - removePrefix = true, includeExportName = true with injectIntl 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "613153351"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - separator = "" does nothing if id is already provided 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-import { injectIntl } from 'gatsby-plugin-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            id: "my.custom.id",
-            defaultMessage: "hello"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - separator = "" does nothing if react-intl is not imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "UsersusernamereposrccomponentsApp613153351"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - separator = "" multiple uses 1`] = `
-"import { jsxs as _jsxs } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var _$intl = param.intl;
-    return /*#__PURE__*/ _jsxs("div", {
-        children: [
-            _$intl.formatMessage({
-                defaultMessage: "hello",
-                "id": "UsersusernamereposrccomponentsApp613153351"
-            }),
-            _$intl.formatMessage({
-                defaultMessage: "hello",
-                "id": "UsersusernamereposrccomponentsApp613153351"
-            }),
-            _$intl.formatMessage({
-                defaultMessage: "some other message",
-                "id": "UsersusernamereposrccomponentsApp831373691"
-            })
-        ]
-    });
-}
-export default injectIntl(App);
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "UsersusernamereposrccomponentsApp613153351"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "UsersusernamereposrccomponentsApp613153351"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "UsersusernamereposrccomponentsApp831373691"
-});
-"
-`;
-
-exports[`injection - separator = "" some supported use cases 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-var Component2 = function Component2(param) {
-    var intl = param.intl;
-    var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "UsersusernamereposrccomponentsApp613153351"
-    });
-    return /*#__PURE__*/ _jsx("button", {
-        "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "UsersusernamereposrccomponentsApp613153351"
-        }),
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "UsersusernamereposrccomponentsApp613153351"
-        })
-    });
-};
-injectIntl(Components2);
-"
-`;
-
-exports[`injection - separator = "" with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl as i18n } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "i18n",
-            "id": "UsersusernamereposrccomponentsApp94348014"
-        })
-    });
-}
-export default i18n(App);
-"
-`;
-
-exports[`injection - separator = "" with Injection API HOC imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "UsersusernamereposrccomponentsApp613153351"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - separator = "" with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string 2",
-            "id": "UsersusernamereposrccomponentsApp1045198380"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - separator = "" with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-var message = "variable message";
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message,
-            "id": "UsersusernamereposrccomponentsApp370814869"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - separator = "" with a variable as the defaultMessage 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-import { message } from './messages';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage(message)
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - separator = "" with custom properties in formatMessage call 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "custom prop",
-            other: 123,
-            "id": "UsersusernamereposrccomponentsApp2983810267"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - separator = "" with injectIntl 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "UsersusernamereposrccomponentsApp613153351"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
 exports[`injection - separator = "_" does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
@@ -4525,212 +3907,6 @@ function App(param) {
         children: intl.formatMessage({
             defaultMessage: 'hello',
             "id": "Users_username_repo_src_components_App_613153351"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - separator = "foo" does nothing if id is already provided 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-import { injectIntl } from 'gatsby-plugin-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            id: "my.custom.id",
-            defaultMessage: "hello"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - separator = "foo" does nothing if react-intl is not imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - separator = "foo" multiple uses 1`] = `
-"import { jsxs as _jsxs } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var _$intl = param.intl;
-    return /*#__PURE__*/ _jsxs("div", {
-        children: [
-            _$intl.formatMessage({
-                defaultMessage: "hello",
-                "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351"
-            }),
-            _$intl.formatMessage({
-                defaultMessage: "hello",
-                "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351"
-            }),
-            _$intl.formatMessage({
-                defaultMessage: "some other message",
-                "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo831373691"
-            })
-        ]
-    });
-}
-export default injectIntl(App);
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351"
-});
-intl.formatMessage({
-    defaultMessage: "hello",
-    "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351"
-});
-intl.formatMessage({
-    defaultMessage: "some other message",
-    "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo831373691"
-});
-"
-`;
-
-exports[`injection - separator = "foo" some supported use cases 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-var Component2 = function Component2(param) {
-    var intl = param.intl;
-    var label = intl.formatMessage({
-        defaultMessage: "hello",
-        "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351"
-    });
-    return /*#__PURE__*/ _jsx("button", {
-        "aria-label": intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351"
-        }),
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351"
-        })
-    });
-};
-injectIntl(Components2);
-"
-`;
-
-exports[`injection - separator = "foo" with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl as i18n } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "i18n",
-            "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo94348014"
-        })
-    });
-}
-export default i18n(App);
-"
-`;
-
-exports[`injection - separator = "foo" with Injection API HOC imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "hello",
-            "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - separator = "foo" with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string 2",
-            "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo1045198380"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - separator = "foo" with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-var message = "variable message";
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message,
-            "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo370814869"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - separator = "foo" with a variable as the defaultMessage 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-import { message } from './messages';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage(message)
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - separator = "foo" with custom properties in formatMessage call 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "custom prop",
-            other: 123,
-            "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo2983810267"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`injection - separator = "foo" with injectIntl 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "UsersfoousernamefoorepofoosrcfoocomponentsfooAppfoo613153351"
         })
     });
 }

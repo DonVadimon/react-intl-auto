@@ -58,6 +58,7 @@
 - [x] HYBRID_EXTRACT-005: Implement CLI argument parsing and file globbing
 - [x] HYBRID_EXTRACT-005B: Unify options - use CoreOptions in message_extractor
 - [x] HYBRID_EXTRACT-006: Implement JSON output format (aggregated and per-file)
+- [x] HYBRID_EXTRACT-006B: Fix include_export_name - use AST span position
 - [ ] HYBRID_EXTRACT-007: Add source location extraction option
 - [ ] HYBRID_EXTRACT-008: Create JS API with napi-rs bindings
 - [ ] HYBRID_EXTRACT-009: Update package.json with CLI bin entry and JS API exports
@@ -979,6 +980,99 @@ let state = CoreState::new(filename, options.to_core_options()); // Потеря
 - `2026-02-15 21:35` Готово к review
 - `2026-02-15 21:35` Review: одобрено USER
 - `2026-02-15 21:35` Задача завершена, статус изменен на `ready`
+
+---
+
+## [x] HYBRID_EXTRACT-006B: Fix include_export_name - use AST span position
+
+### 📋 Metadata
+
+- **status:** `ready`
+- **depends:** `HYBRID_EXTRACT-006`
+- **priority:** `P0`
+- **files:** `crates/react-intl-core/src/ast_analysis.rs`, `crates/react-intl-core/src/message_extractor.rs`, `crates/swc-plugin/src/visitors.rs`
+
+### 📝 Details
+
+Опция `include_export_name` (`bool`) должна добавлять уникальный идентификатор для каждого вызова `defineMessages` в файле, чтобы различать сообщения из разных вызовов.
+
+**Проблема:**
+
+Использование имени переменной невозможно в случаях:
+
+```js
+// Spread оператор - нет прямого присваивания
+export const messagesOne = { ...defineMessages({ hello: 'Hello!' }) };
+
+// Export default - нет переменной
+export default defineMessages({ hello: 'Hello!' });
+
+// Вложенные вызовы
+const config = { messages: defineMessages({ hello: 'Hello!' }) };
+```
+
+**Решение:**
+
+Вместо имени переменной использовать байтовую позицию вызова `defineMessages` в файле (`call.span.lo.0`):
+
+```js
+// Вызов на позиции 100
+export const messagesOne = defineMessages({ hello: 'Hello!' });
+// ID с include_export_name=true: file.100.hello
+
+// Вызов на позиции 250
+export const messagesTwo = defineMessages({ world: 'World!' });
+// ID: file.250.world
+
+// Вызов на позиции 400 (через spread)
+export const messagesThree = { ...defineMessages({ foo: 'Foo!' }) };
+// ID: file.400.foo
+```
+
+**Преимущества позиции над счётчиком:**
+
+- Позиция в файле стабильна (не зависит от порядка обхода AST)
+- Позиция уникальна для каждого вызова
+- Не требуется поддерживать глобальный счётчик
+- Детерминировано - один и тот же код всегда даёт одинаковые ID
+
+**Изменения:**
+
+1. **`crates/react-intl-core/src/message_extractor.rs`:**
+    - Получать байтовую позицию вызова: `call.span.lo.0`
+    - Передавать позицию как `export_name` в `analyze_define_messages`
+
+2. **`crates/react-intl-core/src/ast_analysis.rs`:**
+    - Обновить `analyze_define_messages` для работы с позицией
+    - Формат ID: `{prefix}.{position}.{message_key}`
+
+3. **`crates/swc-plugin/src/visitors.rs`:**
+    - Использовать `call_expr.span.lo.0` вместо хардкода "messages"
+    - Убрать логику определения имени переменной
+
+**Пример работы:**
+
+```typescript
+// Входной код (позиции условные)
+const messages1 = defineMessages({ greeting: 'Hello' }); // поз. 50
+const messages2 = defineMessages({ farewell: 'Goodbye' }); // поз. 120
+
+// С include_export_name=false
+// ID: file.greeting, file.farewell
+
+// С include_export_name=true
+// ID: file.50.greeting, file.120.farewell
+```
+
+### 📊 ActionLog:
+
+- `2026-02-15 23:52` План задачи создан с учётом ограничений (spread, export default)
+- `2026-02-15 23:55` **Реализация выполнена USER:**
+    - Используется `call.span.lo.0` для получения байтовой позиции
+    - Позиция передаётся как `export_name` в `analyze_define_messages`
+    - Убрана логика определения имени переменной
+    - Все тесты проходят
+- `2026-02-15 23:55` Задача завершена, статус изменен на `ready`
 
 ---
 

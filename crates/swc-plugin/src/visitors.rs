@@ -269,13 +269,6 @@ impl CallExpressionVisitor {
             return;
         }
 
-        // Get export name for ID generation
-        let export_name = if self.state.opts.include_export_name {
-            Some("messages".to_string()) // Default export name
-        } else {
-            None
-        };
-
         let first_arg = &mut call_expr.args[0];
         let ExprOrSpread { expr, .. } = first_arg;
         match expr.as_mut() {
@@ -310,11 +303,7 @@ impl CallExpressionVisitor {
                     type_args: call_expr.type_args.clone(),
                     ctxt: call_expr.ctxt,
                 };
-                self.process_define_messages_object_with_analysis(
-                    obj,
-                    &call_expr_for_analysis,
-                    export_name.as_deref(),
-                );
+                self.process_define_messages_object_with_analysis(obj, &call_expr_for_analysis);
             }
             Expr::Ident(ident) => {
                 // Handle variable reference
@@ -335,7 +324,6 @@ impl CallExpressionVisitor {
                     self.process_define_messages_object_with_analysis(
                         &mut obj,
                         &call_expr_for_analysis,
-                        export_name.as_deref(),
                     );
                     *expr = Box::new(Expr::Object(obj));
                 }
@@ -388,11 +376,10 @@ impl CallExpressionVisitor {
         &self,
         obj: &mut ObjectLit,
         call_expr: &CallExpr,
-        export_name: Option<&str>,
     ) {
         // Use the shared core function to analyze defineMessages
         // This returns (key_name, MessageData, TransformedMessageData) for each message
-        let messages = analyze_define_messages(call_expr, &self.state, export_name);
+        let messages = analyze_define_messages(call_expr, &self.state);
 
         if messages.is_empty() {
             return;

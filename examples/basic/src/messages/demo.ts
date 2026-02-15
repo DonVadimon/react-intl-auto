@@ -1,6 +1,6 @@
 import { defineMessages } from 'react-intl';
 
-const messages = {
+export const messagesOne = {
     ...defineMessages({
         hello: 'Hello {name}!',
         welcome: 'Welcome to our app',
@@ -9,4 +9,9 @@ const messages = {
     }),
 };
 
-export default messages;
+export const messagesTwo = defineMessages({
+    hello: 'Hello {name}!',
+    welcome: 'Welcome to our app',
+    goodbye: 'Goodbye {name}',
+    createOrSaveAlert: 'createOrSaveAlert {id}',
+});

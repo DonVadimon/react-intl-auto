@@ -246,9 +246,13 @@ fn extract_expr_string(expr: &Expr) -> Option<String> {
 pub fn analyze_define_messages(
     call: &CallExpr,
     state: &CoreState,
-    export_name: Option<&str>,
 ) -> Vec<(String, MessageData, TransformedMessageData)> {
     let mut messages = Vec::new();
+    let call_pos = if state.opts.include_export_name {
+        Some(&call.span.lo.0.to_string())
+    } else {
+        None
+    };
 
     // Get the first argument (the object literal)
     if let Some(first_arg) = call.args.first() {
@@ -256,7 +260,7 @@ pub fn analyze_define_messages(
             for prop in &obj_lit.props {
                 if let PropOrSpread::Prop(prop) = prop {
                     if let Some((key_name, message_data, transformed)) =
-                        analyze_object_property_with_key(prop, state, export_name)
+                        analyze_object_property_with_key(prop, state, call_pos)
                     {
                         messages.push((key_name, message_data, transformed));
                     }
@@ -272,14 +276,14 @@ pub fn analyze_define_messages(
 fn analyze_object_property_with_key(
     prop: &Prop,
     state: &CoreState,
-    export_name: Option<&str>,
+    call_pos: Option<&String>,
 ) -> Option<(String, MessageData, TransformedMessageData)> {
     match prop {
         Prop::KeyValue(KeyValueProp { key, value }) => {
             let key_name = extract_prop_name(key)?;
 
             // Build the full key with export_name prefix if provided
-            let full_key = export_name
+            let full_key = call_pos
                 .map(|exp| format!("{}.{}", exp, key_name))
                 .unwrap_or_else(|| key_name.clone());
 
@@ -606,7 +610,7 @@ mod tests {
         let call = parse_call_expr(code);
         let state = create_test_state();
 
-        let result = analyze_define_messages(&call, &state, None);
+        let result = analyze_define_messages(&call, &state);
 
         assert_eq!(result.len(), 2);
         assert_eq!(result[0].0, "hello");
@@ -627,7 +631,7 @@ mod tests {
         let call = parse_call_expr(code);
         let state = create_test_state();
 
-        let result = analyze_define_messages(&call, &state, None);
+        let result = analyze_define_messages(&call, &state);
 
         assert_eq!(result.len(), 1);
         assert_eq!(result[0].0, "hello");
@@ -645,7 +649,7 @@ mod tests {
         let call = parse_call_expr(code);
         let state = create_test_state();
 
-        let result = analyze_define_messages(&call, &state, None);
+        let result = analyze_define_messages(&call, &state);
 
         assert_eq!(result.len(), 1);
         assert_eq!(result[0].0, "hello");

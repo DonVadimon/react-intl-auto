@@ -6,7 +6,6 @@ const { transform } = require('@swc/core');
  * @param {string|boolean|RegExp} [options.removePrefix] - Remove prefix from file path
  * @param {boolean} [options.filebase=false] - Include filename in ID
  * @param {boolean|'all'} [options.includeExportName=false] - Include export name in ID
- * @param {boolean} [options.extractComments=true] - Extract comments as descriptions
  * @param {boolean} [options.useKey=false] - Use key property instead of hash
  * @param {string} [options.moduleSourceName='react-intl'] - Module source name
  * @param {string} [options.separator='.'] - ID separator

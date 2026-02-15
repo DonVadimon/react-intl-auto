@@ -14,8 +14,6 @@ type PluginOptions = {
     filebase?: boolean;
     /** Include export name in ID */
     includeExportName?: boolean | 'all';
-    /** Extract comments as descriptions */
-    extractComments?: boolean;
     /** Use key property instead of hash */
     useKey?: boolean;
     /** Module source name */
@@ -141,12 +139,6 @@ export const createConfigurationSuites = (title: string, tests: TestCase[]) => {
         },
 
         {
-            title: 'extractComments = false',
-            tests,
-            pluginOptions: { extractComments: false },
-        },
-
-        {
             title: 'removePrefix = /__fixtures__/',
             tests,
             pluginOptions: {
@@ -226,14 +218,6 @@ export const createConfigurationSuites = (title: string, tests: TestCase[]) => {
             tests,
             pluginOptions: {
                 useKey: true,
-            },
-        },
-
-        {
-            title: 'extractComments = true',
-            tests,
-            pluginOptions: {
-                extractComments: true,
             },
         },
 

@@ -18,8 +18,7 @@
           {
             "removePrefix": "src/messages",
             "separator": ".",
-            "filebase": false,
-            "extractComments": true
+            "filebase": false
           }
         ]
       ]

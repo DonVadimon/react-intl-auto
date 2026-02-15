@@ -312,7 +312,6 @@ mod tests {
             remove_prefix: None,
             include_export_name: None,
             use_key: false,
-            extract_comments: false,
             relative_to: None,
             hash_id: false,
             hash_algorithm: "murmur3".to_string(),

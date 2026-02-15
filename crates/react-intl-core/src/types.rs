@@ -14,8 +14,6 @@ pub struct CoreOptions {
     pub filebase: bool,
     #[serde(default, alias = "includeExportName")]
     pub include_export_name: Option<IncludeExportName>,
-    #[serde(default, alias = "extractComments")]
-    pub extract_comments: bool,
     #[serde(default, alias = "useKey")]
     pub use_key: bool,
     #[serde(default = "default_module_source_name", alias = "moduleSourceName")]
@@ -50,7 +48,6 @@ impl Default for CoreOptions {
             remove_prefix: None,
             filebase: false,
             include_export_name: None,
-            extract_comments: true,
             use_key: false,
             module_source_name: "react-intl".to_string(),
             separator: ".".to_string(),

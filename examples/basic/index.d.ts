@@ -5,8 +5,6 @@ export interface PluginOptions {
     filebase?: boolean;
     /** Include export name in ID */
     includeExportName?: boolean | 'all';
-    /** Extract comments as descriptions */
-    extractComments?: boolean;
     /** Use key property instead of hash */
     useKey?: boolean;
     /** Module source name */

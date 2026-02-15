@@ -57,7 +57,6 @@ The plugin is configured in `swc.config.js` with the following options:
 - `removePrefix: 'src/'` - Removes 'src/' from the file path when generating IDs
 - `separator: '.'` - Uses '.' as the separator in generated IDs
 - `filebase: false` - Doesn't include the filename in the ID
-- `extractComments: true` - Extracts comments as descriptions
 
 ## Development
 

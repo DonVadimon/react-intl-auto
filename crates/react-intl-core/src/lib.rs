@@ -16,7 +16,7 @@ pub use id_generator::{hash_string, murmur32_hash};
 
 pub use path_utils::{dot_path, dot_path_replace, find_project_root, get_prefix};
 
-pub use message_extractor::{extract_messages, ExtractedMessage, ExtractionOptions};
+pub use message_extractor::{extract_messages, ExtractedMessage};
 
 pub use ast_analysis::{
     analyze_define_messages, analyze_format_message, analyze_jsx_element, generate_message_id,

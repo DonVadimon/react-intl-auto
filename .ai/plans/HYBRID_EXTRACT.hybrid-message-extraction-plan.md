@@ -56,6 +56,7 @@
     - [x] HYBRID_EXTRACT-003C: Extract formatMessage analysis
 - [x] HYBRID_EXTRACT-004: Create CLI tool crate with message extraction [DEPENDS: 003B, 003C]
 - [x] HYBRID_EXTRACT-005: Implement CLI argument parsing and file globbing
+- [x] HYBRID_EXTRACT-005B: Unify options - use CoreOptions in message_extractor
 - [ ] HYBRID_EXTRACT-006: Implement JSON output format (aggregated and per-file)
 - [ ] HYBRID_EXTRACT-007: Add source location extraction option
 - [ ] HYBRID_EXTRACT-008: Create JS API with napi-rs bindings
@@ -807,6 +808,84 @@ pub fn analyze_format_message(
 - `2026-02-15 14:45` Готово к review
 - `2026-02-15 14:45` Review: одобрено USER
 - `2026-02-15 14:45` Задача завершена, статус изменен на `ready`
+
+---
+
+## [x] HYBRID_EXTRACT-005B: Unify options - use CoreOptions in message_extractor
+
+### 📋 Metadata
+
+- **status:** `ready`
+- **depends:** `HYBRID_EXTRACT-005`
+- **priority:** `P0`
+- **files:** `crates/react-intl-core/src/message_extractor.rs`, `crates/react-intl-core/src/lib.rs`, `crates/cli/src/main.rs`
+
+### 📝 Details
+
+Сейчас в CLI происходит цепочка конвертаций опций: `Args -> CoreOptions -> ExtractionOptions -> CoreOptions`. Из-за этого теряются поля при конвертации `CoreOptions -> ExtractionOptions` (например, `filebase`, `include_export_name`, `use_key`, `module_source_name`, `relative_to`).
+
+**Проблема:**
+
+```rust
+// В CLI: Args::to_core_options() создает полный CoreOptions
+let core_opts = args.to_core_options(); // Все поля заполнены
+
+// Затем конвертируется в ExtractionOptions - теряются поля
+let extraction_opts = args.to_extraction_options(); // Только: hash_id, hash_algorithm, include_source_location, separator, remove_prefix
+
+// В message_extractor.rs: ExtractionOptions -> CoreOptions с дефолтами
+let state = CoreState::new(filename, options.to_core_options()); // Потерянные поля становятся дефолтными
+```
+
+**Требования:**
+
+- Заменить `ExtractionOptions` на `CoreOptions` в `message_extractor.rs`
+- Удалить структуру `ExtractionOptions` полностью
+- Обновить `extract_messages()` для принятия `CoreOptions`
+- Обновить `MessageExtractorVisitor` для использования `CoreOptions`
+- Обновить CLI для прямой передачи `CoreOptions` в `extract_messages()`
+- Сохранить дополнительное поле `include_source_location` (его нет в `CoreOptions`)
+
+**Изменения:**
+
+1. **В `crates/react-intl-core/src/message_extractor.rs`:**
+    - Удалить структуру `ExtractionOptions`
+    - Добавить структуру `ExtractionConfig` с `CoreOptions` + `include_source_location`
+    - Обновить `extract_messages(code, filename, core_options, include_source_location)`
+    - Обновить `MessageExtractorVisitor` для использования `CoreOptions`
+
+2. **В `crates/react-intl-core/src/lib.rs`:**
+    - Обновить экспорты (удалить `ExtractionOptions`, добавить `ExtractionConfig` если нужно)
+
+3. **В `crates/cli/src/main.rs`:**
+    - Удалить метод `Args::to_extraction_options()`
+    - Передавать `CoreOptions` напрямую в `extract_messages()`
+    - Передавать `include_source_location` отдельным параметром
+
+**Критерии приёмки:**
+
+- ✅ Все поля `CoreOptions` передаются в функции `analyze_*`
+- ✅ CLI работает корректно со всеми опциями
+- ✅ Тесты проходят без изменений
+- ✅ Нет дублирования кода конвертации опций
+
+### 📊 ActionLog:
+
+- `2026-02-15 20:44` План задачи создан
+- `2026-02-15 20:45` Статус изменен на `in-progress`
+- `2026-02-15 20:46` Выполнен шаг 1: Удалена структура `ExtractionOptions` из `message_extractor.rs`
+- `2026-02-15 20:47` Выполнен шаг 2: Обновлена функция `extract_messages()` для принятия `CoreOptions` и `include_source_location`
+- `2026-02-15 20:48` Выполнен шаг 3: Обновлен `MessageExtractorVisitor` для использования `CoreOptions`
+- `2026-02-15 20:49` Выполнен шаг 4: Обновлены экспорты в `lib.rs` (удален `ExtractionOptions`)
+- `2026-02-15 20:50` Выполнен шаг 5: Обновлен CLI - удален метод `to_extraction_options()`, прямая передача `CoreOptions`
+- `2026-02-15 20:51` Определены критерии приёмки:
+    - Все поля `CoreOptions` передаются в функции `analyze_*` ✓
+    - CLI работает корректно со всеми опциями (`--filebase`, `--use-key`, `--hash-id`) ✓
+    - Тесты проходят (24 Rust + 7 CLI + 7 doc + 1404 Jest) ✓
+    - Нет дублирования кода конвертации опций ✓
+- `2026-02-15 20:51` Готово к review
+- `2026-02-15 20:52` Review: одобрено USER
+- `2026-02-15 20:52` Задача завершена, статус изменен на `ready`
 
 ---
 

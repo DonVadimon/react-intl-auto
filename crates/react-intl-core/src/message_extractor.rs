@@ -28,66 +28,24 @@ pub struct ExtractedMessage {
     pub line: Option<usize>,
 }
 
-/// Options for message extraction
-#[derive(Debug, Clone)]
-pub struct ExtractionOptions {
-    pub hash_id: bool,
-    pub hash_algorithm: String,
-    pub include_source_location: bool,
-    pub separator: String,
-    pub remove_prefix: Option<String>,
-}
-
-impl Default for ExtractionOptions {
-    fn default() -> Self {
-        Self {
-            hash_id: false,
-            hash_algorithm: "murmur3".to_string(),
-            include_source_location: false,
-            separator: ".".to_string(),
-            remove_prefix: None,
-        }
-    }
-}
-
-impl ExtractionOptions {
-    /// Converts ExtractionOptions to CoreOptions
-    fn to_core_options(&self) -> CoreOptions {
-        CoreOptions {
-            remove_prefix: self
-                .remove_prefix
-                .as_ref()
-                .map(|s| crate::types::RemovePrefix::String(s.clone())),
-            separator: self.separator.clone(),
-            hash_id: self.hash_id,
-            hash_algorithm: self.hash_algorithm.clone(),
-            ..Default::default()
-        }
-    }
-}
-
 /// Converts (MessageData, TransformedMessageData) to ExtractedMessage
 fn to_extracted_message(
     _message_data: MessageData,
     transformed: TransformedMessageData,
     filename: &PathBuf,
-    options: &ExtractionOptions,
+    include_source_location: bool,
     line: Option<usize>,
 ) -> ExtractedMessage {
     ExtractedMessage {
         id: transformed.id,
         default_message: transformed.default_message,
         description: transformed.description,
-        file: if options.include_source_location {
+        file: if include_source_location {
             Some(filename.to_string_lossy().to_string())
         } else {
             None
         },
-        line: if options.include_source_location {
-            line
-        } else {
-            None
-        },
+        line: if include_source_location { line } else { None },
     }
 }
 
@@ -96,14 +54,15 @@ fn to_extracted_message(
 /// # Arguments
 /// * `code` - The source code to analyze
 /// * `filename` - The filename (used for ID generation)
-/// * `options` - Extraction options
+/// * `options` - Core options for extraction
+/// * `include_source_location` - Whether to include file path and line number
 ///
 /// # Returns
 /// Vector of extracted messages
 ///
 /// # Example
 /// ```
-/// use react_intl_core::{extract_messages, ExtractionOptions};
+/// use react_intl_core::{extract_messages, CoreOptions};
 ///
 /// let code = r#"
 /// import { defineMessages } from 'react-intl';
@@ -112,13 +71,14 @@ fn to_extracted_message(
 /// });
 /// "#;
 ///
-/// let options = ExtractionOptions::default();
-/// let messages = extract_messages(code, "test.js", &options);
+/// let options = CoreOptions::default();
+/// let messages = extract_messages(code, "test.js", &options, false);
 /// ```
 pub fn extract_messages(
     code: &str,
     filename: &str,
-    options: &ExtractionOptions,
+    options: &CoreOptions,
+    include_source_location: bool,
 ) -> Vec<ExtractedMessage> {
     // Determine syntax based on file extension
     let is_ts = filename.ends_with(".ts") || filename.ends_with(".tsx");
@@ -152,7 +112,11 @@ pub fn extract_messages(
     };
 
     // Create visitor and extract messages
-    let mut visitor = MessageExtractorVisitor::new(PathBuf::from(filename), options.clone());
+    let mut visitor = MessageExtractorVisitor::new(
+        PathBuf::from(filename),
+        options.clone(),
+        include_source_location,
+    );
     module.visit_with(&mut visitor);
 
     visitor.into_messages()
@@ -164,20 +128,20 @@ pub fn extract_messages(
 pub struct MessageExtractorVisitor {
     messages: Vec<ExtractedMessage>,
     filename: PathBuf,
-    options: ExtractionOptions,
+    include_source_location: bool,
     imported_names: std::collections::HashSet<String>,
     alias_map: std::collections::HashMap<String, String>,
     state: CoreState,
 }
 
 impl MessageExtractorVisitor {
-    pub fn new(filename: PathBuf, options: ExtractionOptions) -> Self {
-        let state = CoreState::new(filename.clone(), options.to_core_options());
+    pub fn new(filename: PathBuf, options: CoreOptions, include_source_location: bool) -> Self {
+        let state = CoreState::new(filename.clone(), options);
 
         Self {
             messages: Vec::new(),
             filename,
-            options,
+            include_source_location,
             imported_names: std::collections::HashSet::new(),
             alias_map: std::collections::HashMap::new(),
             state,
@@ -198,7 +162,7 @@ impl MessageExtractorVisitor {
             message_data,
             transformed,
             &self.filename,
-            &self.options,
+            self.include_source_location,
             line,
         );
         self.messages.push(extracted);
@@ -288,15 +252,6 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_extraction_options_default() {
-        let opts = ExtractionOptions::default();
-        assert!(!opts.hash_id);
-        assert_eq!(opts.hash_algorithm, "murmur3");
-        assert!(!opts.include_source_location);
-        assert_eq!(opts.separator, ".");
-    }
-
-    #[test]
     fn test_to_extracted_message() {
         let message_data = MessageData {
             id: None,
@@ -309,9 +264,8 @@ mod tests {
             description: Some("A greeting".to_string()),
         };
         let filename = PathBuf::from("test.js");
-        let opts = ExtractionOptions::default();
 
-        let extracted = to_extracted_message(message_data, transformed, &filename, &opts, Some(42));
+        let extracted = to_extracted_message(message_data, transformed, &filename, false, Some(42));
 
         assert_eq!(extracted.id, "test.hello");
         assert_eq!(extracted.default_message, "Hello World");
@@ -333,12 +287,8 @@ mod tests {
             description: None,
         };
         let filename = PathBuf::from("test.js");
-        let opts = ExtractionOptions {
-            include_source_location: true,
-            ..Default::default()
-        };
 
-        let extracted = to_extracted_message(message_data, transformed, &filename, &opts, Some(42));
+        let extracted = to_extracted_message(message_data, transformed, &filename, true, Some(42));
 
         assert_eq!(extracted.line, Some(42));
         assert!(extracted.file.is_some());

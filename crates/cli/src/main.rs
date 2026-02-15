@@ -4,9 +4,7 @@ use walkdir::WalkDir;
 
 use anyhow::{Context, Result};
 use clap::Parser;
-use react_intl_core::{
-    extract_messages, CoreOptions, ExtractionOptions, IncludeExportName, RemovePrefix,
-};
+use react_intl_core::{extract_messages, CoreOptions, IncludeExportName, RemovePrefix};
 use std::collections::HashSet;
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -120,23 +118,6 @@ impl Args {
             hash_algorithm: self.hash_algorithm.clone(),
         }
     }
-
-    /// Convert CLI arguments to ExtractionOptions
-    fn to_extraction_options(&self) -> ExtractionOptions {
-        let core_opts = self.to_core_options();
-
-        ExtractionOptions {
-            hash_id: core_opts.hash_id,
-            hash_algorithm: core_opts.hash_algorithm.clone(),
-            include_source_location: self.extract_source_location,
-            separator: core_opts.separator.clone(),
-            remove_prefix: core_opts.remove_prefix.as_ref().and_then(|rp| match rp {
-                RemovePrefix::Boolean(true) => Some("".to_string()),
-                RemovePrefix::Boolean(false) => None,
-                RemovePrefix::String(s) => Some(s.clone()),
-            }),
-        }
-    }
 }
 
 /// Check if file has supported extension
@@ -152,7 +133,10 @@ fn is_supported_file(path: &Path) -> bool {
 }
 
 /// Find files matching the glob patterns, excluding ignored patterns
-fn find_files(include_patterns: &[PathBuf], ignore_patterns: &[PathBuf]) -> Result<HashSet<PathBuf>> {
+fn find_files(
+    include_patterns: &[PathBuf],
+    ignore_patterns: &[PathBuf],
+) -> Result<HashSet<PathBuf>> {
     let mut files = HashSet::new();
 
     // Build glob matcher for include patterns
@@ -232,12 +216,18 @@ fn find_base_dir(pattern: &str) -> PathBuf {
 /// Extract messages from a single file
 fn extract_from_file(
     file_path: &Path,
-    options: &ExtractionOptions,
+    options: &CoreOptions,
+    include_source_location: bool,
 ) -> Result<Vec<react_intl_core::ExtractedMessage>> {
     let content = fs::read_to_string(file_path)
         .with_context(|| format!("Failed to read file: {}", file_path.display()))?;
 
-    let messages = extract_messages(&content, file_path.to_string_lossy().as_ref(), options);
+    let messages = extract_messages(
+        &content,
+        file_path.to_string_lossy().as_ref(),
+        options,
+        include_source_location,
+    );
 
     Ok(messages)
 }
@@ -382,11 +372,12 @@ fn main() -> Result<()> {
     }
 
     // Extract messages from all files
-    let extraction_options = args.to_extraction_options();
+    let core_options = args.to_core_options();
+    let include_source_location = args.extract_source_location;
     let mut all_messages: Vec<(PathBuf, Vec<react_intl_core::ExtractedMessage>)> = Vec::new();
 
     for file in files {
-        match extract_from_file(&file, &extraction_options) {
+        match extract_from_file(&file, &core_options, include_source_location) {
             Ok(messages) => {
                 if !messages.is_empty() {
                     println!("  {} - {} messages", file.display(), messages.len());

@@ -7,6 +7,7 @@ export const messages1 = defineMessages({
     hello: 'Hello {name}!',
     welcome: 'Welcome to our app',
     goodbye: 'Goodbye {name}',
+    spreadMe: 'spreadMe',
 });
 
 // This will also be transformed
@@ -30,14 +31,15 @@ export const App: React.FC = () => {
             </h1>
 
             <p>
+                <FormattedMessage {...messages1.spreadMe} />
                 <FormattedMessage
                     defaultMessage="Hello {name}"
                     values={{ name: 'World' }}
                 />
-                {/* <FormattedMessage 
-          defaultMessage="createOrSaveAlert" 
-          values={{ id: '123' }}
-        /> */}
+                {/* <FormattedMessage
+                    defaultMessage="commentedMessage"
+                    values={{ id: '123' }}
+                /> */}
                 {intl.formatMessage(messages.createOrSaveAlert, { id: '123' })}
             </p>
             {intl.formatMessage(messages.hello, { name: 'World' })}

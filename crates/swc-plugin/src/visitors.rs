@@ -3,12 +3,12 @@ use swc_core::ecma::ast::*;
 use swc_core::ecma::visit::{VisitMut, VisitMutWith};
 
 use react_intl_core::IncludeExportName;
-use react_intl_core::{analyze_define_messages, analyze_format_message, analyze_jsx_element};
+use react_intl_core::{
+    analyze_define_messages, analyze_format_message, analyze_jsx_element, REACT_COMPONENTS,
+};
 
 use crate::types::PluginState;
 use crate::utils::*;
-
-const REACT_COMPONENTS: &[&str] = &["FormattedMessage", "FormattedHTMLMessage"];
 
 pub struct JSXVisitor {
     pub state: PluginState,

@@ -6,13 +6,14 @@
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 use swc_core::ecma::ast::*;
+use swc_core::ecma::parser::{lexer::Lexer, Parser, StringInput, Syntax};
 use swc_core::ecma::visit::{Visit, VisitWith};
 
 use crate::ast_analysis::{
     analyze_define_messages, analyze_format_message, analyze_jsx_element, MessageData,
     TransformedMessageData,
 };
-use crate::types::{CoreOptions, CoreState};
+use crate::types::{CoreOptions, CoreState, REACT_COMPONENTS};
 
 /// Extracted message structure
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -115,14 +116,46 @@ fn to_extracted_message(
 /// let messages = extract_messages(code, "test.js", &options);
 /// ```
 pub fn extract_messages(
-    _code: &str,
-    _filename: &str,
-    _options: &ExtractionOptions,
+    code: &str,
+    filename: &str,
+    options: &ExtractionOptions,
 ) -> Vec<ExtractedMessage> {
-    // TODO: Implement full parsing with swc_core
-    // This requires proper setup of the parser with the correct swc_core version
-    // For now, return empty vector - will be implemented with proper parser setup
-    vec![]
+    // Determine syntax based on file extension
+    let is_ts = filename.ends_with(".ts") || filename.ends_with(".tsx");
+    let is_tsx = filename.ends_with(".tsx");
+
+    let syntax = if is_ts {
+        Syntax::Typescript(swc_core::ecma::parser::TsSyntax {
+            tsx: is_tsx,
+            ..Default::default()
+        })
+    } else {
+        Syntax::Es(Default::default())
+    };
+
+    // Create lexer and parser
+    let input = StringInput::new(
+        code,
+        swc_core::common::BytePos(0),
+        swc_core::common::BytePos(code.len() as u32),
+    );
+    let lexer = Lexer::new(syntax, Default::default(), input, None);
+    let mut parser = Parser::new_from(lexer);
+
+    // Parse the source code
+    let module = match parser.parse_module() {
+        Ok(module) => module,
+        Err(err) => {
+            eprintln!("Failed to parse {}: {:?}", filename, err);
+            return vec![];
+        }
+    };
+
+    // Create visitor and extract messages
+    let mut visitor = MessageExtractorVisitor::new(PathBuf::from(filename), options.clone());
+    module.visit_with(&mut visitor);
+
+    visitor.into_messages()
 }
 
 /// Visitor for extracting messages from AST
@@ -213,7 +246,7 @@ impl Visit for MessageExtractorVisitor {
             let name_str = name.sym.as_str().to_string();
             let component_name = self.alias_map.get(&name_str).unwrap_or(&name_str);
 
-            if ["FormattedMessage", "FormattedHTMLMessage"].contains(&component_name.as_str()) {
+            if REACT_COMPONENTS.contains(&component_name.as_str()) {
                 if let Some((message_data, transformed, _needs_insertion)) =
                     analyze_jsx_element(element, &self.state)
                 {

@@ -10,7 +10,7 @@ pub mod path_utils;
 pub mod types;
 
 // Re-export main types and functions for convenience
-pub use types::{CoreOptions, CoreState, IncludeExportName, RemovePrefix};
+pub use types::{CoreOptions, CoreState, IncludeExportName, RemovePrefix, REACT_COMPONENTS};
 
 pub use id_generator::{hash_string, murmur32_hash};
 

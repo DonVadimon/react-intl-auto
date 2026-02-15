@@ -19,7 +19,8 @@ serde_json = { workspace = true }
 # Shared core library
 react-intl-core = { path = "../react-intl-core" }
 
-# CLI-specific dependencies (to be added later)
-# clap = { version = "4", features = ["derive"] }
-# glob = "0.3"
-# anyhow = "1"
+# CLI-specific dependencies
+clap = { version = "4", features = ["derive"] }
+globset = "0.4"
+walkdir = "2"
+anyhow = "1"

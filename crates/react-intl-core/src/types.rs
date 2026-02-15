@@ -82,3 +82,5 @@ impl CoreState {
         Self { filename, opts }
     }
 }
+
+pub const REACT_COMPONENTS: &[&str] = &["FormattedMessage", "FormattedHTMLMessage"];

@@ -8,12 +8,12 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:full": "npm run build && cargo test && npm test",
-    "example:basic": "npx swc ./examples/basic/src --config-file ./examples/basic/.swcrc --out-dir ./examples/basic/.build",
+    "sandbox:basic": "rm -rf ./sandbox/basic/.build && npx swc ./sandbox/basic/src --config-file ./sandbox/basic/.swcrc --out-dir ./sandbox/basic/.build",
     "release": "node scripts/release.js",
     "check-token": "node scripts/check-npm-token.js",
     "create-labels": "node scripts/create-labels.js",
     "test-release": "node scripts/test-release.js",
-    "format": "prettier --write \"{src,tests,examples,scripts}/**/*.{ts,tsx,js,jsx}\""
+    "format": "prettier --write \"{src,tests,sandbox,scripts}/**/*.{ts,tsx,js,jsx}\""
   },
   "repository": {
     "type": "git",

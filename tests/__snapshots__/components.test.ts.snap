@@ -174,7 +174,7 @@ exports[`components | default | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.with-value-in-message.1206126460",
+    id: "tests.__fixtures__.components.with-value-in-message.1498654704",
     defaultMessage: "hello world ".concat(1 + 1)
 });
 "
@@ -185,7 +185,7 @@ exports[`components | default | with a variable as the defaultMessage 1`] = `
 import { FormattedMessage } from 'react-intl';
 var message = 'variable message';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.with-variable-message.4021823192",
+    id: "tests.__fixtures__.components.with-variable-message.419531563",
     defaultMessage: message
 });
 "
@@ -365,7 +365,7 @@ exports[`components | filebase = true | with a value interpolated in the message
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "with-value-in-message.1206126460",
+    id: "with-value-in-message.1498654704",
     defaultMessage: "hello world ".concat(1 + 1)
 });
 "
@@ -376,7 +376,7 @@ exports[`components | filebase = true | with a variable as the defaultMessage 1`
 import { FormattedMessage } from 'react-intl';
 var message = 'variable message';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "with-variable-message.4021823192",
+    id: "with-variable-message.419531563",
     defaultMessage: message
 });
 "
@@ -556,7 +556,7 @@ exports[`components | hash + filebase = true | with a value interpolated in the 
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "d2l0aC12YWx1ZS1pbi1tZXNzYWdlLjEyMDYxMjY0NjA=",
+    id: "d2l0aC12YWx1ZS1pbi1tZXNzYWdlLjE0OTg2NTQ3MDQ=",
     defaultMessage: "hello world ".concat(1 + 1)
 });
 "
@@ -567,7 +567,7 @@ exports[`components | hash + filebase = true | with a variable as the defaultMes
 import { FormattedMessage } from 'react-intl';
 var message = 'variable message';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "d2l0aC12YXJpYWJsZS1tZXNzYWdlLjQwMjE4MjMxOTI=",
+    id: "d2l0aC12YXJpYWJsZS1tZXNzYWdlLjQxOTUzMTU2Mw==",
     defaultMessage: message
 });
 "
@@ -747,7 +747,7 @@ exports[`components | hash + relativeTo = "src" | with a value interpolated in t
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "dGVzdHMuX19maXh0dXJlc19fLmNvbXBvbmVudHMud2l0aC12YWx1ZS1pbi1tZXNzYWdlLjEyMDYxMjY0NjA=",
+    id: "dGVzdHMuX19maXh0dXJlc19fLmNvbXBvbmVudHMud2l0aC12YWx1ZS1pbi1tZXNzYWdlLjE0OTg2NTQ3MDQ=",
     defaultMessage: "hello world ".concat(1 + 1)
 });
 "
@@ -758,7 +758,7 @@ exports[`components | hash + relativeTo = "src" | with a variable as the default
 import { FormattedMessage } from 'react-intl';
 var message = 'variable message';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "dGVzdHMuX19maXh0dXJlc19fLmNvbXBvbmVudHMud2l0aC12YXJpYWJsZS1tZXNzYWdlLjQwMjE4MjMxOTI=",
+    id: "dGVzdHMuX19maXh0dXJlc19fLmNvbXBvbmVudHMud2l0aC12YXJpYWJsZS1tZXNzYWdlLjQxOTUzMTU2Mw==",
     defaultMessage: message
 });
 "
@@ -938,7 +938,7 @@ exports[`components | hash + removePrefix = "src/" | with a value interpolated i
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "dGVzdHMuX19maXh0dXJlc19fLmNvbXBvbmVudHMud2l0aC12YWx1ZS1pbi1tZXNzYWdlLjEyMDYxMjY0NjA=",
+    id: "dGVzdHMuX19maXh0dXJlc19fLmNvbXBvbmVudHMud2l0aC12YWx1ZS1pbi1tZXNzYWdlLjE0OTg2NTQ3MDQ=",
     defaultMessage: "hello world ".concat(1 + 1)
 });
 "
@@ -949,7 +949,7 @@ exports[`components | hash + removePrefix = "src/" | with a variable as the defa
 import { FormattedMessage } from 'react-intl';
 var message = 'variable message';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "dGVzdHMuX19maXh0dXJlc19fLmNvbXBvbmVudHMud2l0aC12YXJpYWJsZS1tZXNzYWdlLjQwMjE4MjMxOTI=",
+    id: "dGVzdHMuX19maXh0dXJlc19fLmNvbXBvbmVudHMud2l0aC12YXJpYWJsZS1tZXNzYWdlLjQxOTUzMTU2Mw==",
     defaultMessage: message
 });
 "
@@ -1129,7 +1129,7 @@ exports[`components | hash base64 | with a value interpolated in the message 1`]
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "dGVzdHMuX19maXh0dXJlc19fLmNvbXBvbmVudHMud2l0aC12YWx1ZS1pbi1tZXNzYWdlLjEyMDYxMjY0NjA=",
+    id: "dGVzdHMuX19maXh0dXJlc19fLmNvbXBvbmVudHMud2l0aC12YWx1ZS1pbi1tZXNzYWdlLjE0OTg2NTQ3MDQ=",
     defaultMessage: "hello world ".concat(1 + 1)
 });
 "
@@ -1140,7 +1140,7 @@ exports[`components | hash base64 | with a variable as the defaultMessage 1`] = 
 import { FormattedMessage } from 'react-intl';
 var message = 'variable message';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "dGVzdHMuX19maXh0dXJlc19fLmNvbXBvbmVudHMud2l0aC12YXJpYWJsZS1tZXNzYWdlLjQwMjE4MjMxOTI=",
+    id: "dGVzdHMuX19maXh0dXJlc19fLmNvbXBvbmVudHMud2l0aC12YXJpYWJsZS1tZXNzYWdlLjQxOTUzMTU2Mw==",
     defaultMessage: message
 });
 "
@@ -1320,7 +1320,7 @@ exports[`components | hash murmur3 | with a value interpolated in the message 1`
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "4258977665",
+    id: "2177931579",
     defaultMessage: "hello world ".concat(1 + 1)
 });
 "
@@ -1331,7 +1331,7 @@ exports[`components | hash murmur3 | with a variable as the defaultMessage 1`] =
 import { FormattedMessage } from 'react-intl';
 var message = 'variable message';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "1593846630",
+    id: "3359619743",
     defaultMessage: message
 });
 "
@@ -1511,7 +1511,7 @@ exports[`components | hash unknown fallback to murmur3 | with a value interpolat
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "4258977665",
+    id: "2177931579",
     defaultMessage: "hello world ".concat(1 + 1)
 });
 "
@@ -1522,7 +1522,7 @@ exports[`components | hash unknown fallback to murmur3 | with a variable as the 
 import { FormattedMessage } from 'react-intl';
 var message = 'variable message';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "1593846630",
+    id: "3359619743",
     defaultMessage: message
 });
 "
@@ -1701,7 +1701,7 @@ exports[`components | moduleSourceNameTest | with a value interpolated in the me
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.with-value-in-message.1206126460",
+    id: "tests.__fixtures__.components.with-value-in-message.1498654704",
     defaultMessage: "hello world ".concat(1 + 1)
 });
 "
@@ -1712,7 +1712,7 @@ exports[`components | moduleSourceNameTest | with a variable as the defaultMessa
 import { FormattedMessage } from 'react-intl';
 var message = 'variable message';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.with-variable-message.4021823192",
+    id: "tests.__fixtures__.components.with-variable-message.419531563",
     defaultMessage: message
 });
 "
@@ -1892,7 +1892,7 @@ exports[`components | relativeTo = "" | with a value interpolated in the message
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.with-value-in-message.1206126460",
+    id: "tests.__fixtures__.components.with-value-in-message.1498654704",
     defaultMessage: "hello world ".concat(1 + 1)
 });
 "
@@ -1903,7 +1903,7 @@ exports[`components | relativeTo = "" | with a variable as the defaultMessage 1`
 import { FormattedMessage } from 'react-intl';
 var message = 'variable message';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.with-variable-message.4021823192",
+    id: "tests.__fixtures__.components.with-variable-message.419531563",
     defaultMessage: message
 });
 "
@@ -2083,7 +2083,7 @@ exports[`components | relativeTo = "../" | with a value interpolated in the mess
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.with-value-in-message.1206126460",
+    id: "tests.__fixtures__.components.with-value-in-message.1498654704",
     defaultMessage: "hello world ".concat(1 + 1)
 });
 "
@@ -2094,7 +2094,7 @@ exports[`components | relativeTo = "../" | with a variable as the defaultMessage
 import { FormattedMessage } from 'react-intl';
 var message = 'variable message';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.with-variable-message.4021823192",
+    id: "tests.__fixtures__.components.with-variable-message.419531563",
     defaultMessage: message
 });
 "
@@ -2274,7 +2274,7 @@ exports[`components | removePrefix = "src" | with a value interpolated in the me
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.with-value-in-message.1206126460",
+    id: "tests.__fixtures__.components.with-value-in-message.1498654704",
     defaultMessage: "hello world ".concat(1 + 1)
 });
 "
@@ -2285,7 +2285,7 @@ exports[`components | removePrefix = "src" | with a variable as the defaultMessa
 import { FormattedMessage } from 'react-intl';
 var message = 'variable message';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.with-variable-message.4021823192",
+    id: "tests.__fixtures__.components.with-variable-message.419531563",
     defaultMessage: message
 });
 "
@@ -2635,7 +2635,7 @@ exports[`components | removePrefix = "src.__fixtures__" | with a value interpola
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.with-value-in-message.1206126460",
+    id: "tests.__fixtures__.components.with-value-in-message.1498654704",
     defaultMessage: "hello world ".concat(1 + 1)
 });
 "
@@ -2645,7 +2645,7 @@ exports[`components | removePrefix = "src.__fixtures__" | with a value interpola
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.with-value-in-message.1206126460",
+    id: "tests.__fixtures__.components.with-value-in-message.1498654704",
     defaultMessage: "hello world ".concat(1 + 1)
 });
 "
@@ -2656,7 +2656,7 @@ exports[`components | removePrefix = "src.__fixtures__" | with a variable as the
 import { FormattedMessage } from 'react-intl';
 var message = 'variable message';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.with-variable-message.4021823192",
+    id: "tests.__fixtures__.components.with-variable-message.419531563",
     defaultMessage: message
 });
 "
@@ -2667,7 +2667,7 @@ exports[`components | removePrefix = "src.__fixtures__" | with a variable as the
 import { FormattedMessage } from 'react-intl';
 var message = 'variable message';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.with-variable-message.4021823192",
+    id: "tests.__fixtures__.components.with-variable-message.419531563",
     defaultMessage: message
 });
 "
@@ -2847,7 +2847,7 @@ exports[`components | removePrefix = "src/" -- with slash | with a value interpo
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.with-value-in-message.1206126460",
+    id: "tests.__fixtures__.components.with-value-in-message.1498654704",
     defaultMessage: "hello world ".concat(1 + 1)
 });
 "
@@ -2858,7 +2858,7 @@ exports[`components | removePrefix = "src/" -- with slash | with a variable as t
 import { FormattedMessage } from 'react-intl';
 var message = 'variable message';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.with-variable-message.4021823192",
+    id: "tests.__fixtures__.components.with-variable-message.419531563",
     defaultMessage: message
 });
 "
@@ -3038,7 +3038,7 @@ exports[`components | removePrefix = /__fixtures__/ | with a value interpolated 
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.with-value-in-message.1206126460",
+    id: "tests.__fixtures__.components.with-value-in-message.1498654704",
     defaultMessage: "hello world ".concat(1 + 1)
 });
 "
@@ -3049,7 +3049,7 @@ exports[`components | removePrefix = /__fixtures__/ | with a variable as the def
 import { FormattedMessage } from 'react-intl';
 var message = 'variable message';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.with-variable-message.4021823192",
+    id: "tests.__fixtures__.components.with-variable-message.419531563",
     defaultMessage: message
 });
 "
@@ -3229,7 +3229,7 @@ exports[`components | removePrefix = true | with a value interpolated in the mes
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "1206126460",
+    id: "1498654704",
     defaultMessage: "hello world ".concat(1 + 1)
 });
 "
@@ -3240,7 +3240,7 @@ exports[`components | removePrefix = true | with a variable as the defaultMessag
 import { FormattedMessage } from 'react-intl';
 var message = 'variable message';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "4021823192",
+    id: "419531563",
     defaultMessage: message
 });
 "
@@ -3420,7 +3420,7 @@ exports[`components | separator = "_" | with a value interpolated in the message
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests___fixtures___components_with-value-in-message_1206126460",
+    id: "tests___fixtures___components_with-value-in-message_1498654704",
     defaultMessage: "hello world ".concat(1 + 1)
 });
 "
@@ -3431,7 +3431,7 @@ exports[`components | separator = "_" | with a variable as the defaultMessage 1`
 import { FormattedMessage } from 'react-intl';
 var message = 'variable message';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests___fixtures___components_with-variable-message_4021823192",
+    id: "tests___fixtures___components_with-variable-message_419531563",
     defaultMessage: message
 });
 "
@@ -3611,7 +3611,7 @@ exports[`components | useKey = true | with a value interpolated in the message 1
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.with-value-in-message.1206126460",
+    id: "tests.__fixtures__.components.with-value-in-message.1498654704",
     defaultMessage: "hello world ".concat(1 + 1)
 });
 "
@@ -3622,7 +3622,7 @@ exports[`components | useKey = true | with a variable as the defaultMessage 1`] 
 import { FormattedMessage } from 'react-intl';
 var message = 'variable message';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.with-variable-message.4021823192",
+    id: "tests.__fixtures__.components.with-variable-message.419531563",
     defaultMessage: message
 });
 "

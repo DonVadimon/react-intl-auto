@@ -1,30 +1,20 @@
 {
-  "jsc": {
-    "parser": {
-      "syntax": "typescript",
-      "tsx": true,
-      "decorators": true
+    "jsc": {
+        "parser": {
+            "syntax": "typescript",
+            "tsx": true,
+            "decorators": true
+        },
+        "transform": {
+            "react": {
+                "runtime": "automatic"
+            }
+        },
+        "experimental": {
+            "plugins": [["./swc-plugin-react-intl-auto-fs.wasm", {}]]
+        }
     },
-    "transform": {
-      "react": {
-        "runtime": "automatic"
-      }
-    },
-    "experimental": {
-      "plugins": [
-        [
-          "/Users/admin/mine/swc-plugin-react-intl-auto/swc-plugin-react-intl-auto.wasm",
-          // "swc-plugin-react-intl-auto",
-          {
-            "removePrefix": "src/messages",
-            "separator": ".",
-            "filebase": false
-          }
-        ]
-      ]
+    "module": {
+        "type": "es6"
     }
-  },
-  "module": {
-    "type": "es6"
-  }
 }

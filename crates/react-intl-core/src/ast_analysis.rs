@@ -60,6 +60,7 @@ pub fn generate_message_id(
 /// # Arguments
 /// * `element` - The JSX element to analyze
 /// * `state` - The core state containing filename and options
+/// * `sequence_index` - The sequence index for this JSX element (0, 1, 2, ...)
 ///
 /// # Returns
 /// Some((MessageData, TransformedMessageData, bool)) if the element contains a translatable message.
@@ -68,6 +69,7 @@ pub fn generate_message_id(
 pub fn analyze_jsx_element(
     element: &JSXElement,
     state: &CoreState,
+    sequence_index: usize,
 ) -> Option<(MessageData, TransformedMessageData, bool)> {
     let (id_attr, default_message_attr, description_attr) = extract_jsx_attributes(element);
 
@@ -112,8 +114,8 @@ pub fn analyze_jsx_element(
         let generated_id = generate_message_id(&msg, key.as_deref(), state, false);
         (generated_id, msg.clone(), Some(msg))
     } else {
-        // defaultMessage is a variable/expression - generate fallback ID based on position
-        let fallback_id = generate_fallback_jsx_id(element, key.as_deref(), state);
+        // defaultMessage is a variable/expression - generate fallback ID based on sequence index
+        let fallback_id = generate_fallback_jsx_id(key.as_deref(), state, sequence_index);
         (fallback_id, String::new(), None)
     };
 
@@ -134,8 +136,8 @@ pub fn analyze_jsx_element(
 }
 
 /// Generates a fallback ID for JSX element when defaultMessage is a variable/expression
-/// Uses position-based hash for consistency
-fn generate_fallback_jsx_id(element: &JSXElement, key: Option<&str>, state: &CoreState) -> String {
+/// Uses sequence index for consistency
+fn generate_fallback_jsx_id(key: Option<&str>, state: &CoreState, sequence_index: usize) -> String {
     // Use key if available and use_key option is enabled
     let suffix = if state.opts.use_key {
         key.map(|k| k.to_string())
@@ -143,10 +145,10 @@ fn generate_fallback_jsx_id(element: &JSXElement, key: Option<&str>, state: &Cor
         None
     };
 
-    // Generate suffix based on position hash
+    // Generate suffix based on sequence index
     let suffix = suffix.unwrap_or_else(|| {
         let file_path = state.filename.to_string_lossy().to_string();
-        murmur32_hash(&format!("{}{}", file_path, element.span.lo.0))
+        murmur32_hash(&format!("{}{}", file_path, sequence_index))
     });
 
     let prefix = get_prefix(state, Some(&suffix));
@@ -239,24 +241,25 @@ fn extract_expr_string(expr: &Expr) -> Option<String> {
 /// # Arguments
 /// * `call` - The CallExpr for defineMessages
 /// * `state` - The core state containing filename and options
-/// * `export_name` - Optional export name to include in ID (e.g., "messages" for `export default defineMessages({...})`)
+/// * `call_index` - The index of this defineMessages call in the file (0, 1, 2, ...)
 ///
 /// # Returns
 /// Vector of (key_name, MessageData, TransformedMessageData) for each message that needs transformation
 pub fn analyze_define_messages(
     call: &CallExpr,
     state: &CoreState,
+    call_index: usize,
 ) -> Vec<(String, MessageData, TransformedMessageData)> {
     let mut messages = Vec::new();
-    let call_pos = &call.span.lo.0.to_string();
 
     // Get the first argument (the object literal)
     if let Some(first_arg) = call.args.first() {
         if let Expr::Object(obj_lit) = first_arg.expr.as_ref() {
+            // Use call_index instead of span position for deterministic IDs
             for prop in &obj_lit.props {
                 if let PropOrSpread::Prop(prop) = prop {
                     if let Some((key_name, message_data, transformed)) =
-                        analyze_object_property_with_key(prop, state, call_pos)
+                        analyze_object_property_with_key(prop, state, call_index)
                     {
                         messages.push((key_name, message_data, transformed));
                     }
@@ -272,14 +275,14 @@ pub fn analyze_define_messages(
 fn analyze_object_property_with_key(
     prop: &Prop,
     state: &CoreState,
-    call_pos: &String,
+    call_index: usize,
 ) -> Option<(String, MessageData, TransformedMessageData)> {
     match prop {
         Prop::KeyValue(KeyValueProp { key, value }) => {
             let key_name = extract_prop_name(key)?;
 
-            // Build the full key with call_pos prefix
-            let full_key = format!("{}.{}", call_pos, key_name);
+            // Build the full key with call_index prefix for deterministic IDs
+            let full_key = format!("{}.{}", call_index, key_name);
 
             match value.as_ref() {
                 // String value: hello: 'Hello World'
@@ -347,14 +350,14 @@ fn analyze_message_object(
     state: &CoreState,
     force_use_key: bool,
 ) -> Option<(MessageData, TransformedMessageData)> {
-    analyze_message_object_with_span(obj_lit, key_name, state, obj_lit.span.lo.0, force_use_key)
+    analyze_message_object_with_sequence(obj_lit, key_name, state, 0, force_use_key)
 }
 
-fn analyze_message_object_with_span(
+fn analyze_message_object_with_sequence(
     obj_lit: &ObjectLit,
     key_name: Option<&str>,
     state: &CoreState,
-    _span_lo: u32,
+    _sequence_index: usize,
     force_use_key: bool,
 ) -> Option<(MessageData, TransformedMessageData)> {
     let mut id = None;
@@ -464,6 +467,7 @@ fn analyze_message_object_with_span(
 /// # Arguments
 /// * `call` - The CallExpr for formatMessage
 /// * `state` - The core state containing filename and options
+/// * `sequence_index` - The sequence index for this formatMessage call (0, 1, 2, ...)
 ///
 /// # Returns
 /// Some((MessageData, TransformedMessageData)) if the call contains a translatable message
@@ -471,17 +475,18 @@ fn analyze_message_object_with_span(
 pub fn analyze_format_message(
     call: &CallExpr,
     state: &CoreState,
+    sequence_index: usize,
 ) -> Option<(MessageData, TransformedMessageData)> {
     // Get the first argument (the message descriptor object)
     if let Some(first_arg) = call.args.first() {
         if let Expr::Object(obj_lit) = first_arg.expr.as_ref() {
             // For formatMessage, try to extract key from the object for use_key option
             let key = extract_key_from_object(obj_lit);
-            return analyze_message_object_with_span(
+            return analyze_message_object_with_sequence(
                 obj_lit,
                 key.as_deref(),
                 state,
-                call.span.lo.0,
+                sequence_index,
                 false, // formatMessage respects use_key option
             );
         }
@@ -549,7 +554,7 @@ mod tests {
         let element = parse_jsx(code);
         let state = create_test_state();
 
-        let result = analyze_jsx_element(&element, &state);
+        let result = analyze_jsx_element(&element, &state, 0);
 
         assert!(result.is_some());
         let (message_data, transformed, needs_insertion) = result.unwrap();
@@ -569,7 +574,7 @@ mod tests {
         let element = parse_jsx(code);
         let state = create_test_state();
 
-        let result = analyze_jsx_element(&element, &state);
+        let result = analyze_jsx_element(&element, &state, 0);
 
         // Should return result with existing ID and needs_insertion=false
         assert!(result.is_some());
@@ -585,9 +590,9 @@ mod tests {
         let element = parse_jsx(code);
         let state = create_test_state();
 
-        let result = analyze_jsx_element(&element, &state);
+        let result = analyze_jsx_element(&element, &state, 0);
 
-        // Should return result with fallback ID generated from position
+        // Should return result with fallback ID generated from sequence index
         assert!(result.is_some());
         let (message_data, transformed, needs_insertion) = result.unwrap();
         assert!(message_data.default_message.is_none()); // Variable has no static default_message
@@ -604,7 +609,7 @@ mod tests {
         let call = parse_call_expr(code);
         let state = create_test_state();
 
-        let result = analyze_define_messages(&call, &state);
+        let result = analyze_define_messages(&call, &state, 0);
 
         assert_eq!(result.len(), 2);
         assert_eq!(result[0].0, "hello");
@@ -625,7 +630,7 @@ mod tests {
         let call = parse_call_expr(code);
         let state = create_test_state();
 
-        let result = analyze_define_messages(&call, &state);
+        let result = analyze_define_messages(&call, &state, 0);
 
         assert_eq!(result.len(), 1);
         assert_eq!(result[0].0, "hello");
@@ -643,7 +648,7 @@ mod tests {
         let call = parse_call_expr(code);
         let state = create_test_state();
 
-        let result = analyze_define_messages(&call, &state);
+        let result = analyze_define_messages(&call, &state, 0);
 
         assert_eq!(result.len(), 1);
         assert_eq!(result[0].0, "hello");
@@ -661,7 +666,7 @@ mod tests {
         let call = parse_call_expr(code);
         let state = create_test_state();
 
-        let result = analyze_format_message(&call, &state);
+        let result = analyze_format_message(&call, &state, 0);
 
         assert!(result.is_some());
         let (message_data, transformed) = result.unwrap();

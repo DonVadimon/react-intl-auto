@@ -8,6 +8,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:full": "npm run build && cargo test && npm test",
+    "example:basic": "npx swc ./examples/basic/src --config-file ./examples/basic/.swcrc --out-dir ./examples/basic/.build",
     "release": "node scripts/release.js",
     "check-token": "node scripts/check-npm-token.js",
     "create-labels": "node scripts/create-labels.js",

@@ -128,6 +128,9 @@ pub struct MessageExtractorVisitor {
     imported_names: std::collections::HashSet<String>,
     alias_map: std::collections::HashMap<String, String>,
     state: CoreState,
+    define_messages_counter: usize,
+    jsx_element_counter: usize,
+    format_message_counter: usize,
 }
 
 impl MessageExtractorVisitor {
@@ -140,6 +143,9 @@ impl MessageExtractorVisitor {
             imported_names: std::collections::HashSet::new(),
             alias_map: std::collections::HashMap::new(),
             state,
+            define_messages_counter: 0,
+            jsx_element_counter: 0,
+            format_message_counter: 0,
         }
     }
 
@@ -200,10 +206,12 @@ impl Visit for MessageExtractorVisitor {
             let component_name = self.alias_map.get(&name_str).unwrap_or(&name_str);
 
             if REACT_COMPONENTS.contains(&component_name.as_str()) {
+                let current_index = self.jsx_element_counter;
                 if let Some((message_data, transformed, _needs_insertion)) =
-                    analyze_jsx_element(element, &self.state)
+                    analyze_jsx_element(element, &self.state, current_index)
                 {
                     self.add_message(message_data, transformed);
+                    self.jsx_element_counter += 1;
                 }
             }
         }
@@ -217,15 +225,21 @@ impl Visit for MessageExtractorVisitor {
                 let fn_name = ident.sym.as_str();
 
                 if fn_name == "defineMessages" && self.imported_names.contains("defineMessages") {
-                    let results = analyze_define_messages(call, &self.state);
-                    for (_key_name, message_data, transformed) in results {
-                        self.add_message(message_data, transformed);
+                    let current_index = self.define_messages_counter;
+                    let results = analyze_define_messages(call, &self.state, current_index);
+                    if !results.is_empty() {
+                        for (_key_name, message_data, transformed) in results {
+                            self.add_message(message_data, transformed);
+                        }
+                        self.define_messages_counter += 1;
                     }
                 } else if fn_name == "formatMessage" {
+                    let current_index = self.format_message_counter;
                     if let Some((message_data, transformed)) =
-                        analyze_format_message(call, &self.state)
+                        analyze_format_message(call, &self.state, current_index)
                     {
                         self.add_message(message_data, transformed);
+                        self.format_message_counter += 1;
                     }
                 }
             }

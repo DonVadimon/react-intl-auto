@@ -14,4 +14,7 @@ export const messagesTwo = defineMessages({
     welcome: 'Welcome to our app',
     goodbye: 'Goodbye {name}',
     createOrSaveAlert: 'createOrSaveAlert {id}',
+    obj: {
+        defaultMessage: 'Test object',
+    },
 });

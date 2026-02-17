@@ -61,6 +61,7 @@
 - [x] HYBRID_EXTRACT-006B: Fix include_export_name - use AST span position
 - [x] HYBRID_EXTRACT-007: Add source location extraction option
 - [x] HYBRID_EXTRACT-007B: Migrate Jest tests to use fixture files
+- [x] HYBRID_EXTRACT-007B-2: Fix ID generation to use sequence numbers instead of span positions
 - [ ] HYBRID_EXTRACT-007C: Create CLI and Plugin ID consistency tests
 - [ ] HYBRID_EXTRACT-008: Create JS API with napi-rs bindings
 - [ ] HYBRID_EXTRACT-009: Update package.json with CLI bin entry and JS API exports
@@ -1295,12 +1296,195 @@ const defaultTest = {
 
 ---
 
+## [x] HYBRID_EXTRACT-007B-2: Fix ID generation to use sequence numbers instead of span positions
+
+### 📋 Metadata
+
+- **status:** `ready`
+- **depends:** `HYBRID_EXTRACT-007B`
+- **priority:** `P1`
+- **files:** `crates/react-intl-core/src/ast_analysis.rs`, `crates/react-intl-core/src/message_extractor.rs`, `crates/swc-plugin/src/visitors.rs`
+
+### 📝 Details
+
+Исправить генерацию ID для JSX элементов и вызовов функций, чтобы обеспечить консистентность между CLI и плагином.
+
+**Проблема:**
+
+Сейчас для генерации ID используется `span.lo.0`, который представляет абсолютную позицию от начала source_map. Это приводит к различиям в ID между CLI и плагином:
+
+```bash
+# CLI генерирует:
+"id": "tests.__fixtures__.definition.default.61.hello"
+
+# Плагин генерирует:
+"id": "tests.__fixtures__.definition.default.62.hello"
+```
+
+Разница в 1 байт из-за особенностей работы source_map в разных контекстах.
+
+**Решение:**
+
+Заменить `span.lo.0` на порядковый номер вызова/элемента (sequence number), который инкрементируется для каждого обрабатываемого **вызова функции или JSX элемента** в файле:
+
+**Важно:** Счетчики сбрасываются на 0 для каждого нового файла. SWC создает новый instance visitor для каждого файла, поэтому счетчики в структуре visitor автоматически начинаются с 0.
+
+1. **Для `defineMessages`:** использовать порядковый номер вызова defineMessages в файле (0, 1, 2, ...)
+
+    ```javascript
+    // Пример: components/messages.js
+    defineMessages({ hello: 'Hi' }); // call #0 → id: "components.messages.0.hello"
+    defineMessages({ world: 'World' }); // call #1 → id: "components.messages.1.world"
+    ```
+
+2. **Для JSX элементов:** использовать порядковый номер JSX элемента в файле (0, 1, 2, ...)
+
+    ```javascript
+    // Пример: components/App.tsx
+    <FormattedMessage defaultMessage="Hi" />     // element #0 → id: "components.App.0"
+    <FormattedMessage defaultMessage="World" />  // element #1 → id: "components.App.1"
+    ```
+
+3. **Для `formatMessage`:** использовать порядковый номер вызова formatMessage в файле (0, 1, 2, ...)
+
+    ```javascript
+    // Пример: utils/messages.js
+    intl.formatMessage({ defaultMessage: 'Hi' }); // call #0 → id: "utils.messages.0"
+    intl.formatMessage({ defaultMessage: 'World' }); // call #1 → id: "utils.messages.1"
+    ```
+
+**Изменения:**
+
+1. **В `ast_analysis.rs`:**
+    - `analyze_define_messages` - принимает `call_index: usize` (порядковый номер вызова defineMessages)
+    - `analyze_jsx_element` - принимает `element_index: usize` (порядковый номер JSX элемента)
+    - `analyze_format_message` - принимает `call_index: usize` (порядковый номер вызова formatMessage)
+    - Удалить использование `span.lo.0` во всех функциях генерации ID
+
+2. **В `message_extractor.rs`:**
+    - Добавить счетчики в `MessageExtractorVisitor`:
+        - `define_messages_counter: usize` - для вызовов defineMessages
+        - `jsx_element_counter: usize` - для JSX элементов
+        - `format_message_counter: usize` - для вызовов formatMessage
+    - Инкрементировать соответствующий счетчик после каждого успешного анализа
+
+3. **В `visitors.rs` (plugin):**
+    - Добавить те же счетчики в `JSXVisitor` и `CallExpressionVisitor`
+    - **Важно:** Счетчики в структурах visitor автоматически сбрасываются для каждого файла, т.к. SWC создает новый instance visitor для каждого модуля
+    - Инкрементировать счетчики после успешного преобразования
+
+**Архитектура счетчиков:**
+
+```rust
+// Пример для MessageExtractorVisitor
+pub struct MessageExtractorVisitor {
+    // ... другие поля
+    define_messages_counter: usize,
+    jsx_element_counter: usize,
+    format_message_counter: usize,
+}
+
+impl Visit for MessageExtractorVisitor {
+    fn visit_call_expr(&mut self, call: &CallExpr) {
+        if is_define_messages_call(call) {
+            let call_index = self.define_messages_counter;
+            if let Some(messages) = analyze_define_messages(call, &self.state, call_index) {
+                // обработать сообщения
+                self.define_messages_counter += 1;  // инкремент после успеха
+            }
+        }
+        // аналогично для formatMessage
+    }
+
+    fn visit_jsx_element(&mut self, element: &JSXElement) {
+        let element_index = self.jsx_element_counter;
+        if let Some(result) = analyze_jsx_element(element, &self.state, element_index) {
+            // обработать элемент
+            self.jsx_element_counter += 1;  // инкремент после успеха
+        }
+    }
+}
+```
+
+**Пример работы:**
+
+```javascript
+// Файл: components/messages.js
+// Первый вызов defineMessages (call #0)
+export const messagesOne = defineMessages({
+    hello: 'Hello!', // id: "components.messages.0.hello"
+    world: 'World', // id: "components.messages.0.world"
+});
+
+// Второй вызов defineMessages (call #1)
+export const messagesTwo = defineMessages({
+    hello: 'Hello!', // id: "components.messages.1.hello"
+});
+```
+
+```javascript
+// Файл: components/App.tsx (новый файл - счетчики сбросились)
+<FormattedMessage defaultMessage="Hello" />  // element #0 → id: "components.App.0"
+<FormattedMessage defaultMessage="World" />  // element #1 → id: "components.App.1"
+```
+
+**Критерии приёмки:**
+
+- ✅ CLI и плагин генерируют идентичные ID для одного и того же файла
+- ✅ Для каждого типа (defineMessages, JSX, formatMessage) используется отдельный счетчик
+- ✅ Счетчики сбрасываются на 0 для каждого нового файла
+- ✅ Все существующие тесты проходят после обновления снапшотов
+- ✅ Убрано использование `span.lo.0` для генерации ID
+- ✅ Добавлены sequence counters в `MessageExtractorVisitor`, `JSXVisitor`, `CallExpressionVisitor`
+
+**Влияние:**
+
+- Гарантия консистентности ID между CLI и плагином
+- Упрощение тестирования (ожидаемые ID становятся детерминированными)
+- Подготовка к HYBRID_EXTRACT-007C (тесты консистентности)
+
+### 📊 ActionLog:
+
+- `2026-02-16 02:24` План задачи создан
+- `2026-02-16 02:30` Уточнена логика работы счетчиков:
+    - Счетчики работают на уровне вызовов функций/JSX элементов, а не свойств
+    - Отдельные счетчики для defineMessages, JSX элементов и formatMessage
+    - Счетчики сбрасываются на 0 для каждого нового файла
+- `2026-02-16 11:35` Начало выполнения
+- `2026-02-16 11:38` Обновлен `ast_analysis.rs`:
+    - `analyze_jsx_element` - принимает `sequence_index`
+    - `analyze_define_messages` - принимает `call_index`
+    - `analyze_format_message` - принимает `call_index`
+    - Удалено использование `span.lo.0`
+- `2026-02-16 11:40` Обновлен `message_extractor.rs`:
+    - Добавлены счетчики: `define_messages_counter`, `jsx_element_counter`, `format_message_counter`
+    - Счетчики передаются в функции анализа
+- `2026-02-16 11:42` Обновлен `visitors.rs` (plugin):
+    - Добавлены счетчики в `JSXVisitor` и `CallExpressionVisitor`
+    - Счетчики инициализируются в `lib.rs`
+- `2026-02-16 11:45` Сборка проекта прошла успешно
+- `2026-02-16 11:47` Обновлены Jest снапшоты (1026 штук)
+- `2026-02-16 11:48` Проверка консистентности:
+    - CLI: `tests.__fixtures__.definition.default.0.hello`
+    - Plugin: `tests.__fixtures__.definition.default.0.hello`
+    - ✅ CLI и плагин генерируют идентичные ID
+- `2026-02-16 11:48` Готово к review
+- `2026-02-16 12:01` Исправлены cargo тесты - добавлены недостающие аргументы в вызовы функций
+- `2026-02-16 12:01` Все тесты проходят:
+    - ✅ 38 Rust unit тестов
+    - ✅ 7 doc-тестов
+    - ✅ 1026 Jest тестов
+- `2026-02-16 12:02` Review: одобрено USER
+- `2026-02-16 12:02` Задача завершена, статус изменен на `ready`
+
+---
+
 ## [ ] HYBRID_EXTRACT-007C: Create CLI and Plugin ID consistency tests
 
 ### 📋 Metadata
 
 - **status:** `todo`
-- **depends:** `HYBRID_EXTRACT-007B`
+- **depends:** `HYBRID_EXTRACT-007B-2`
 - **priority:** `P1`
 - **files:** `tests/cli-consistency.test.ts`
 
@@ -1344,7 +1528,7 @@ describe('CLI vs Plugin ID consistency', () => {
                 fixturePath,
                 '--output',
                 OUTPUT_FILE,
-                '--extract-source-location',
+                /* ... cli options ... */
             ]);
             proc.on('close', (code) => {
                 if (code === 0) resolve(null);
@@ -1903,25 +2087,26 @@ npm run test:watch      # Jest в watch mode
 
 ## 📊 Сводка по задачам
 
-| Task ID             | Название                                | Приоритет | Зависимости | Статус |
-| ------------------- | --------------------------------------- | --------- | ----------- | ------ |
-| HYBRID_EXTRACT-001  | Create Cargo workspace structure        | P0        | -           | ✅     |
-| HYBRID_EXTRACT-002  | Extract ID generation to shared core    | P0        | 001         | ✅     |
-| HYBRID_EXTRACT-003  | Extract AST traversal to shared core    | P0        | 002         | ✅     |
-| HYBRID_EXTRACT-003A | Extract JSX element analysis            | P0        | 003         | ✅     |
-| HYBRID_EXTRACT-003B | Extract defineMessages analysis         | P0        | 003A        | ✅     |
-| HYBRID_EXTRACT-003C | Extract formatMessage analysis          | P0        | 003A        | ✅     |
-| HYBRID_EXTRACT-004  | Create CLI tool crate                   | P0        | 003B, 003C  | ⏳     |
-| HYBRID_EXTRACT-005  | CLI argument parsing and globbing       | P1        | 004         | ⏳     |
-| HYBRID_EXTRACT-006  | JSON output format                      | P1        | 005         | ⏳     |
-| HYBRID_EXTRACT-007  | Source location extraction              | P1        | 006         | ✅     |
-| HYBRID_EXTRACT-007B | Migrate Jest tests to fixture files     | P1        | 007         | ✅     |
-| HYBRID_EXTRACT-007C | CLI and Plugin ID consistency tests     | P1        | 007B        | ⏳     |
-| HYBRID_EXTRACT-008  | Create JS API with napi-rs              | P1        | 003         | ⏳     |
-| HYBRID_EXTRACT-009  | Update package.json with CLI and JS API | P1        | 004, 008    | ⏳     |
-| HYBRID_EXTRACT-010  | Integration tests for ID consistency    | P2        | 007, 009    | ⏳     |
-| HYBRID_EXTRACT-011  | Create example projects                 | P2        | 010         | ⏳     |
-| HYBRID_EXTRACT-012  | Update documentation                    | P2        | 011         | ⏳     |
+| Task ID               | Название                                | Приоритет | Зависимости | Статус |
+| --------------------- | --------------------------------------- | --------- | ----------- | ------ |
+| HYBRID_EXTRACT-001    | Create Cargo workspace structure        | P0        | -           | ✅     |
+| HYBRID_EXTRACT-002    | Extract ID generation to shared core    | P0        | 001         | ✅     |
+| HYBRID_EXTRACT-003    | Extract AST traversal to shared core    | P0        | 002         | ✅     |
+| HYBRID_EXTRACT-003A   | Extract JSX element analysis            | P0        | 003         | ✅     |
+| HYBRID_EXTRACT-003B   | Extract defineMessages analysis         | P0        | 003A        | ✅     |
+| HYBRID_EXTRACT-003C   | Extract formatMessage analysis          | P0        | 003A        | ✅     |
+| HYBRID_EXTRACT-004    | Create CLI tool crate                   | P0        | 003B, 003C  | ✅     |
+| HYBRID_EXTRACT-005    | CLI argument parsing and globbing       | P1        | 004         | ✅     |
+| HYBRID_EXTRACT-006    | JSON output format                      | P1        | 005         | ✅     |
+| HYBRID_EXTRACT-007    | Source location extraction              | P1        | 006         | ✅     |
+| HYBRID_EXTRACT-007B   | Migrate Jest tests to fixture files     | P1        | 007         | ✅     |
+| HYBRID_EXTRACT-007B-2 | Fix ID generation with sequence numbers | P1        | 007B        | ✅     |
+| HYBRID_EXTRACT-007C   | CLI and Plugin ID consistency tests     | P1        | 007B-2      | ⏳     |
+| HYBRID_EXTRACT-008    | Create JS API with napi-rs              | P1        | 003         | ⏳     |
+| HYBRID_EXTRACT-009    | Update package.json with CLI and JS API | P1        | 004, 008    | ⏳     |
+| HYBRID_EXTRACT-010    | Integration tests for ID consistency    | P2        | 007, 009    | ⏳     |
+| HYBRID_EXTRACT-011    | Create example projects                 | P2        | 010         | ⏳     |
+| HYBRID_EXTRACT-012    | Update documentation                    | P2        | 011         | ⏳     |
 
 ---
 

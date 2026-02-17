@@ -2,8 +2,8 @@ mod types;
 mod utils;
 mod visitors;
 
-use std::path::PathBuf;
 use std::collections::HashSet;
+use std::path::PathBuf;
 use swc_core::ecma::{
     ast::Program,
     visit::{VisitMut, VisitMutWith},
@@ -38,11 +38,14 @@ impl VisitMut for TransformVisitor {
             state: self.state.clone(),
             imported_names: import_visitor.imported_names.clone(),
             alias_map: import_visitor.alias_map.clone(),
+            element_counter: 0,
         };
         let mut call_visitor = CallExpressionVisitor {
             state: self.state.clone(),
             imported_names: import_visitor.imported_names,
             variable_declarations: std::collections::HashMap::new(),
+            define_messages_counter: 0,
+            format_message_counter: 0,
         };
 
         program.visit_mut_with(&mut jsx_visitor);

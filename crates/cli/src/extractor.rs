@@ -9,10 +9,7 @@ use swc_core::ecma::ast::*;
 use swc_core::ecma::parser::{lexer::Lexer, Parser, StringInput, Syntax};
 use swc_core::ecma::visit::{Visit, VisitWith};
 
-use crate::ast_analysis::{
-    analyze_define_messages, analyze_format_message, analyze_jsx_element, TransformedMessageData,
-};
-use crate::types::{CoreOptions, CoreState, REACT_COMPONENTS};
+use react_intl_core::*;
 
 /// Extracted message structure
 #[derive(Debug, Clone, Serialize, Deserialize)]

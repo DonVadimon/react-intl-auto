@@ -1,13 +1,18 @@
 //! CLI tool for extracting React Intl messages from source files
-use globset::{Glob, GlobSetBuilder};
-use walkdir::WalkDir;
+
+pub mod extractor;
 
 use anyhow::{Context, Result};
 use clap::Parser;
-use react_intl_core::{extract_messages, CoreOptions, OutputMode, RemovePrefix};
+use globset::{Glob, GlobSetBuilder};
 use std::collections::HashSet;
 use std::fs;
 use std::path::{Path, PathBuf};
+use walkdir::WalkDir;
+
+use react_intl_core::{CoreOptions, OutputMode, RemovePrefix};
+
+use crate::extractor::{extract_messages, ExtractedMessage};
 
 /// React Intl Message Extractor CLI
 #[derive(Parser, Debug)]
@@ -204,10 +209,7 @@ fn find_base_dir(pattern: &str) -> PathBuf {
 }
 
 /// Extract messages from a single file
-fn extract_from_file(
-    file_path: &Path,
-    options: &CoreOptions,
-) -> Result<Vec<react_intl_core::ExtractedMessage>> {
+fn extract_from_file(file_path: &Path, options: &CoreOptions) -> Result<Vec<ExtractedMessage>> {
     let content = fs::read_to_string(file_path)
         .with_context(|| format!("Failed to read file: {}", file_path.display()))?;
 
@@ -219,7 +221,7 @@ fn extract_from_file(
 /// Write messages for a single file (streaming mode for perfile)
 fn write_per_file_messages(
     file_path: &Path,
-    messages: &[react_intl_core::ExtractedMessage],
+    messages: &[ExtractedMessage],
     output_dir: &Path,
 ) -> Result<()> {
     if messages.is_empty() {
@@ -314,8 +316,7 @@ fn main() -> Result<()> {
         }
         OutputMode::Aggregated => {
             // Batch mode: collect all messages then write
-            let mut all_messages: Vec<(PathBuf, Vec<react_intl_core::ExtractedMessage>)> =
-                Vec::new();
+            let mut all_messages: Vec<(PathBuf, Vec<ExtractedMessage>)> = Vec::new();
 
             for file in files {
                 match extract_from_file(&file, &core_options) {

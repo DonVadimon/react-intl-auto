@@ -5,7 +5,6 @@
 
 pub mod ast_analysis;
 pub mod id_generator;
-pub mod message_extractor;
 pub mod path_utils;
 pub mod types;
 
@@ -13,8 +12,6 @@ pub mod types;
 pub use types::{CoreOptions, CoreState, OutputMode, RemovePrefix, REACT_COMPONENTS};
 
 pub use id_generator::{hash_string, murmur32_hash};
-
-pub use message_extractor::{extract_messages, ExtractedMessage};
 
 pub use ast_analysis::{
     analyze_define_messages, analyze_format_message, analyze_jsx_element, extract_prop_name,

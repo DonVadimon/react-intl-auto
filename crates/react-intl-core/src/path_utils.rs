@@ -2,9 +2,10 @@
 //!
 //! Provides functions for working with file paths and generating prefixes for message IDs.
 
-use crate::types::{CoreState, RemovePrefix};
 use regex::Regex;
 use std::path::{Path, PathBuf};
+
+use crate::types::{CoreState, RemovePrefix};
 
 /// Converts path separators to the specified separator (e.g., dots)
 ///

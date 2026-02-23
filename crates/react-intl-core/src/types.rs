@@ -1,6 +1,4 @@
 //! Core types for React Intl message extraction
-//!
-//! This module will be implemented in HYBRID_EXTRACT-002
 
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;

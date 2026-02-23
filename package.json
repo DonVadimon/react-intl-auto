@@ -5,15 +5,17 @@
   "main": "swc-plugin-react-intl-auto-fs.wasm",
   "scripts": {
     "build": "node build.js",
+    "format": "cargo fmt && prettier --write \"{src,tests,sandbox,scripts}/**/*.{ts,tsx,js,jsx}\"",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:full": "npm run build && cargo test && npm test",
     "sandbox:basic": "rm -rf ./sandbox/basic/.build && npx swc ./sandbox/basic/src --config-file ./sandbox/basic/.swcrc --out-dir ./sandbox/basic/.build",
+    "cli:build": "cargo build --release",
+    "cli:run": "./target/release/react-intl-extract",
     "release": "node scripts/release.js",
     "check-token": "node scripts/check-npm-token.js",
     "create-labels": "node scripts/create-labels.js",
-    "test-release": "node scripts/test-release.js",
-    "format": "cargo fmt && prettier --write \"{src,tests,sandbox,scripts}/**/*.{ts,tsx,js,jsx}\""
+    "test-release": "node scripts/test-release.js"
   },
   "repository": {
     "type": "git",

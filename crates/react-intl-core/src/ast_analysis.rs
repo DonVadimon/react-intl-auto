@@ -13,7 +13,7 @@ use crate::types::CoreState;
 #[derive(Debug, Clone)]
 pub struct TransformedMessageData {
     pub id: String,
-    pub default_message: String,
+    pub default_message: Option<String>,
     pub description: Option<String>,
 }
 
@@ -30,9 +30,9 @@ pub struct TransformedMessageData {
 /// <FormattedMessage defaultMessage="hello" /> // hash default message
 /// ```
 #[derive(Debug, Clone)]
-struct GenIdFromDescriptorPayload {
-    pub default_message: String,
-    pub description: Option<String>,
+struct GenIdFromDescriptorPayload<'a> {
+    pub default_message: &'a String,
+    pub description: &'a Option<String>,
 }
 
 /// payload to generate id from key + part of message description
@@ -55,15 +55,15 @@ struct GenIdFromDescriptorPayload {
 /// });
 /// ```
 #[derive(Debug, Clone)]
-struct GenIdFromKeyPayload {
-    pub key: String,
-    pub description: Option<String>,
+struct GenIdFromKeyPayload<'a> {
+    pub key: &'a String,
+    pub description: &'a Option<String>,
 }
 
 #[derive(Debug, Clone)]
-enum GenIdPayload {
-    Key(GenIdFromKeyPayload),
-    Descriptor(GenIdFromDescriptorPayload),
+enum GenIdPayload<'a> {
+    Key(GenIdFromKeyPayload<'a>),
+    Descriptor(GenIdFromDescriptorPayload<'a>),
 }
 
 /// Generates an ID for a message based on the configuration
@@ -119,7 +119,7 @@ pub fn analyze_jsx_element(
     if let Some(existing_id) = id_attr {
         let transformed = TransformedMessageData {
             id: existing_id,
-            default_message: default_message_attr.unwrap_or_default(),
+            default_message: default_message_attr,
             description: description_attr,
         };
 
@@ -129,25 +129,23 @@ pub fn analyze_jsx_element(
 
     // If there's no defaultMessage attribute at all or it is not statically
     // evaluated as a string, this is not a translatable message
-    let default_message = if let Some(default_message) = default_message_attr {
+    let default_message = if let Some(default_message) = &default_message_attr {
         default_message
     } else {
         return None;
     };
 
-    let default_message_copy = default_message.clone();
-    let description_attr_copy = description_attr.clone();
     // generate ID based on attrs
     let payload = GenIdPayload::Descriptor(GenIdFromDescriptorPayload {
-        default_message,
-        description: description_attr,
+        default_message: &default_message,
+        description: &description_attr,
     });
     let generated_id = generate_message_id(state, &payload);
 
     let transformed = TransformedMessageData {
         id: generated_id,
-        default_message: default_message_copy.clone(),
-        description: description_attr_copy,
+        default_message: default_message_attr,
+        description: description_attr,
     };
 
     // true = ID needs to be inserted
@@ -297,19 +295,17 @@ fn analyze_define_messages_object_property(
                 _ => {
                     // For template literals, we can try to extract the value statically
                     // But we have some limitations
-                    let maybe_string = extract_expr_string(value);
+                    let default_message_prop = extract_expr_string(value);
 
-                    if let Some(default_message) = maybe_string {
-                        let default_message_copy = default_message.clone();
-
+                    if default_message_prop.is_some() {
                         let payload = GenIdPayload::Key(GenIdFromKeyPayload {
-                            key: key_name.clone(),
-                            description: None,
+                            key: &key_name,
+                            description: &None,
                         });
 
                         let transformed = TransformedMessageData {
                             id: generate_message_id(state, &payload),
-                            default_message: default_message_copy,
+                            default_message: default_message_prop,
                             description: None,
                         };
 
@@ -388,7 +384,7 @@ fn analyze_message_object(
     if let Some(existing_id) = id_prop {
         let transformed = TransformedMessageData {
             id: existing_id,
-            default_message: default_message_prop.unwrap_or_default(),
+            default_message: default_message_prop,
             description: description_prop,
         };
 
@@ -398,32 +394,30 @@ fn analyze_message_object(
 
     // If there's no defaultMessage attribute at all or it is not statically
     // evaluated as a string, this is not a translatable message
-    let default_message = if let Some(default_message) = default_message_prop {
+    let default_message = if let Some(default_message) = &default_message_prop {
         default_message
     } else {
         return None;
     };
 
-    let default_message_copy = default_message.clone();
-    let description_attr_copy = description_prop.clone();
     // if key provided - use key based id generation
     // else - use object props based id generation
     let payload = match key {
         Some(key) => GenIdPayload::Key(GenIdFromKeyPayload {
-            key: key.to_string(),
-            description: description_prop,
+            key: &key.to_string(),
+            description: &description_prop,
         }),
         None => GenIdPayload::Descriptor(GenIdFromDescriptorPayload {
-            default_message,
-            description: description_prop,
+            default_message: &default_message,
+            description: &description_prop,
         }),
     };
     let generated_id = generate_message_id(state, &payload);
 
     let transformed = TransformedMessageData {
         id: generated_id,
-        default_message: default_message_copy.clone(),
-        description: description_attr_copy,
+        default_message: default_message_prop,
+        description: description_prop,
     };
 
     // true = ID needs to be inserted
@@ -503,7 +497,7 @@ mod tests {
         assert!(result.is_some());
         let (transformed, needs_insertion) = result.unwrap();
         assert!(!transformed.id.is_empty());
-        assert_eq!(transformed.default_message, "Hello World");
+        assert_eq!(transformed.default_message.unwrap(), "Hello World");
         assert!(needs_insertion); // ID needs to be inserted
     }
 
@@ -582,8 +576,8 @@ mod tests {
         assert_eq!(hello_msg.0, "hello");
         assert_eq!(goodbye_msg.0, "goodbye");
 
-        assert_eq!(hello_msg.1.default_message, "Hello World".to_string());
-        assert_eq!(goodbye_msg.1.default_message, "Goodbye".to_string());
+        assert_eq!(hello_msg.1.default_message, Some("Hello World".to_string()));
+        assert_eq!(goodbye_msg.1.default_message, Some("Goodbye".to_string()));
 
         assert!(!hello_msg.1.id.is_empty());
         assert!(!goodbye_msg.1.id.is_empty());
@@ -607,7 +601,7 @@ mod tests {
 
         assert_eq!(hello_msg.0, "hello");
 
-        assert_eq!(hello_msg.1.default_message, "Hello World".to_string());
+        assert_eq!(hello_msg.1.default_message, Some("Hello World".to_string()));
         assert_eq!(hello_msg.1.description, Some("A greeting".to_string()));
 
         assert!(hello_msg.2);
@@ -628,7 +622,8 @@ mod tests {
 
         assert_eq!(hello_msg.0, "hello");
         assert!(hello_msg.1.id.contains("hello"));
-        assert!(!hello_msg.1.default_message.is_empty());
+        assert!(hello_msg.1.default_message.is_some());
+        assert!(!hello_msg.1.default_message.as_ref().unwrap().is_empty());
     }
 
     #[test]
@@ -654,7 +649,7 @@ mod tests {
         assert!(result.is_some());
         let (transformed, need_id_insert) = result.unwrap();
         assert!(!transformed.id.is_empty());
-        assert_eq!(transformed.default_message, "Hello World");
+        assert_eq!(transformed.default_message, Some("Hello World".to_string()));
         assert!(need_id_insert);
     }
 

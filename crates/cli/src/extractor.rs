@@ -16,7 +16,8 @@ use react_intl_core::*;
 #[serde(rename_all = "camelCase")]
 pub struct ExtractedMessage {
     pub id: String,
-    pub default_message: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub default_message: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -257,7 +258,7 @@ mod tests {
     fn test_to_extracted_message() {
         let transformed = TransformedMessageData {
             id: "test.hello".to_string(),
-            default_message: "Hello World".to_string(),
+            default_message: Some("Hello World".to_string()),
             description: Some("A greeting".to_string()),
         };
         let filename = PathBuf::from("test.js");
@@ -265,7 +266,7 @@ mod tests {
         let extracted = to_extracted_message(transformed, &filename, false);
 
         assert_eq!(extracted.id, "test.hello");
-        assert_eq!(extracted.default_message, "Hello World");
+        assert_eq!(extracted.default_message, Some("Hello World".to_string()));
         assert_eq!(extracted.description, Some("A greeting".to_string()));
         assert!(extracted.file.is_none()); // Not included by default
     }
@@ -274,7 +275,7 @@ mod tests {
     fn test_to_extracted_message_with_source_location() {
         let transformed = TransformedMessageData {
             id: "test.hello".to_string(),
-            default_message: "Hello".to_string(),
+            default_message: Some("Hello".to_string()),
             description: None,
         };
         let filename = PathBuf::from("test.js");

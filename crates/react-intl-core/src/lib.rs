@@ -14,11 +14,9 @@ pub use types::{CoreOptions, CoreState, OutputMode, RemovePrefix, REACT_COMPONEN
 
 pub use id_generator::{hash_string, murmur32_hash};
 
-pub use path_utils::{dot_path, dot_path_replace, find_project_root, get_prefix};
-
 pub use message_extractor::{extract_messages, ExtractedMessage};
 
 pub use ast_analysis::{
-    analyze_define_messages, analyze_format_message, analyze_jsx_element, generate_message_id,
-    MessageData, TransformedMessageData,
+    analyze_define_messages, analyze_format_message, analyze_jsx_element, extract_prop_name,
+    TransformedMessageData,
 };

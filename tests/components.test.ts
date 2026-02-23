@@ -55,11 +55,6 @@ const notTransformIfSpreadAttribute = {
     fixture: 'components/spread-attribute.tsx',
 };
 
-const keyProp = {
-    title: 'using key',
-    fixture: 'components/using-key.tsx',
-};
-
 const userId = {
     title: 'user id',
     fixture: 'components/user-id.tsx',
@@ -82,7 +77,6 @@ const tests = [
     nestedJSXTest,
     notTransformIfNotImported,
     notTransformIfSpreadAttribute,
-    keyProp,
     userId,
     differentModuleSource,
 ];

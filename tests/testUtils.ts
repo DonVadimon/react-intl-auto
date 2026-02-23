@@ -13,10 +13,6 @@ type TestCase = {
 type PluginOptions = {
     /** Remove prefix from file path */
     removePrefix?: boolean | string | RegExp;
-    /** Include filename in ID */
-    filebase?: boolean;
-    /** Use key property instead of hash */
-    useKey?: boolean;
     /** Module source name */
     moduleSourceName?: string;
     /** ID separator */
@@ -98,7 +94,7 @@ export async function cases(suites: TestSuite[]) {
 }
 
 export const createConfigurationSuites = (title: string, tests: TestCase[]) => {
-    const withPrefix = (t: string) => `${title} | ${t} |`;
+    const withPrefix = (t: string) => `${title} | CONFIGURATION: ${t} |`;
 
     const suites: TestSuite[] = [
         { title: 'default', tests },
@@ -112,12 +108,6 @@ export const createConfigurationSuites = (title: string, tests: TestCase[]) => {
             title: 'removePrefix = "src/" -- with slash',
             tests,
             pluginOptions: { removePrefix: 'src/' },
-        },
-
-        {
-            title: 'filebase = true',
-            tests,
-            pluginOptions: { filebase: true },
         },
 
         {
@@ -151,7 +141,7 @@ export const createConfigurationSuites = (title: string, tests: TestCase[]) => {
         },
 
         {
-            title: 'moduleSourceNameTest',
+            title: 'moduleSourceName = "gatsby-plugin-intl"',
             tests,
             pluginOptions: {
                 moduleSourceName: 'gatsby-plugin-intl',
@@ -184,14 +174,6 @@ export const createConfigurationSuites = (title: string, tests: TestCase[]) => {
         },
 
         {
-            title: 'useKey = true',
-            tests,
-            pluginOptions: {
-                useKey: true,
-            },
-        },
-
-        {
             title: 'hash murmur3',
             tests,
             pluginOptions: { hashId: true, hashAlgorithm: 'murmur3' },
@@ -216,16 +198,6 @@ export const createConfigurationSuites = (title: string, tests: TestCase[]) => {
                 hashId: true,
                 hashAlgorithm: 'base64',
                 removePrefix: 'src/',
-            },
-        },
-
-        {
-            title: 'hash + filebase = true',
-            tests,
-            pluginOptions: {
-                hashId: true,
-                hashAlgorithm: 'base64',
-                filebase: true,
             },
         },
 

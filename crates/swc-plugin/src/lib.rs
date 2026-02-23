@@ -1,4 +1,3 @@
-mod types;
 mod utils;
 mod visitors;
 
@@ -10,15 +9,16 @@ use swc_core::ecma::{
 };
 use swc_core::plugin::{plugin_transform, proxies::TransformPluginProgramMetadata};
 
-use crate::types::{PluginOptions, PluginState};
+use react_intl_core::{CoreOptions, CoreState};
+
 use crate::visitors::{CallExpressionVisitor, ImportVisitor, JSXVisitor};
 
 pub struct TransformVisitor {
-    state: PluginState,
+    state: CoreState,
 }
 
 impl TransformVisitor {
-    pub fn new(state: PluginState) -> Self {
+    pub fn new(state: CoreState) -> Self {
         Self { state }
     }
 }
@@ -38,14 +38,12 @@ impl VisitMut for TransformVisitor {
             state: self.state.clone(),
             imported_names: import_visitor.imported_names.clone(),
             alias_map: import_visitor.alias_map.clone(),
-            element_counter: 0,
         };
         let mut call_visitor = CallExpressionVisitor {
             state: self.state.clone(),
             imported_names: import_visitor.imported_names,
+            alias_map: import_visitor.alias_map,
             variable_declarations: std::collections::HashMap::new(),
-            define_messages_counter: 0,
-            format_message_counter: 0,
         };
 
         program.visit_mut_with(&mut jsx_visitor);
@@ -63,14 +61,14 @@ pub fn process_transform(
     let raw_config = metadata
         .get_transform_plugin_config()
         .unwrap_or_else(|| "{}".to_string());
-    let opts: PluginOptions = serde_json::from_str(&raw_config).unwrap_or_default();
+    let opts: CoreOptions = serde_json::from_str(&raw_config).unwrap_or_default();
 
     // Get filename from metadata
     let filename = metadata
         .get_context(&swc_core::plugin::metadata::TransformPluginMetadataContextKind::Filename)
         .unwrap_or_else(|| "unknown.js".to_string());
 
-    let state = PluginState::new(PathBuf::from(filename), opts);
+    let state = CoreState::new(PathBuf::from(filename), opts);
     let mut visitor = TransformVisitor::new(state);
 
     program.visit_mut_with(&mut visitor);

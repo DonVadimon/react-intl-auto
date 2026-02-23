@@ -3,17 +3,18 @@ use swc_core::ecma::ast::*;
 use swc_core::ecma::visit::{VisitMut, VisitMutWith};
 
 use react_intl_core::{
-    analyze_define_messages, analyze_format_message, analyze_jsx_element, REACT_COMPONENTS,
+    analyze_define_messages, analyze_format_message, analyze_jsx_element, extract_prop_name,
+    TransformedMessageData, REACT_COMPONENTS,
 };
 
-use crate::types::PluginState;
+use react_intl_core::CoreState;
+
 use crate::utils::*;
 
 pub struct JSXVisitor {
-    pub state: PluginState,
+    pub state: CoreState,
     pub imported_names: HashSet<String>,
     pub alias_map: std::collections::HashMap<String, String>,
-    pub element_counter: usize,
 }
 
 impl VisitMut for JSXVisitor {
@@ -25,22 +26,20 @@ impl VisitMut for JSXVisitor {
             let name_str = name.sym.as_str().to_string();
             let component_name = self.alias_map.get(&name_str).unwrap_or(&name_str);
 
-            if REACT_COMPONENTS.contains(&component_name.as_str()) {
-                // Clone imported_names to avoid borrowing issues
-                let imported_names = self.imported_names.clone();
-                self.process_jsx_element(element, &imported_names);
+            // Check if this is a React Intl component and it was imported
+            if REACT_COMPONENTS.contains(&component_name.as_str())
+                && self.imported_names.contains(&name_str)
+            {
+                self.process_jsx_element(element);
             }
         }
     }
 }
 
 impl JSXVisitor {
-    fn process_jsx_element(&mut self, element: &mut JSXElement, _imported_names: &HashSet<String>) {
+    fn process_jsx_element(&mut self, element: &mut JSXElement) {
         // Analyze the JSX element using shared core function
-        let current_index = self.element_counter;
-        if let Some((_, transformed, needs_insertion)) =
-            analyze_jsx_element(element, &self.state, current_index)
-        {
+        if let Some((transformed, needs_insertion)) = analyze_jsx_element(element, &self.state) {
             if needs_insertion {
                 // ID needs to be inserted - find defaultMessage index and insert ID
                 if let Some(default_message_idx) =
@@ -50,7 +49,6 @@ impl JSXVisitor {
                 }
             }
             // If needs_insertion is false, ID already exists - do nothing
-            self.element_counter += 1;
         }
         // If analyze_jsx_element returns None, this is not a translatable message - do nothing
     }
@@ -82,11 +80,10 @@ impl JSXVisitor {
 }
 
 pub struct CallExpressionVisitor {
-    pub state: PluginState,
+    pub state: CoreState,
     pub imported_names: HashSet<String>,
+    pub alias_map: std::collections::HashMap<String, String>,
     pub variable_declarations: std::collections::HashMap<String, ObjectLit>,
-    pub define_messages_counter: usize,
-    pub format_message_counter: usize,
 }
 
 pub struct ImportVisitor {
@@ -97,12 +94,7 @@ pub struct ImportVisitor {
 
 impl VisitMut for ImportVisitor {
     fn visit_mut_import_decl(&mut self, import_decl: &mut ImportDecl) {
-        if import_decl
-            .src
-            .value
-            .to_string_lossy()
-            .contains(&self.module_source_name)
-        {
+        if import_decl.src.value.to_string_lossy() == self.module_source_name {
             for specifier in &import_decl.specifiers {
                 match specifier {
                     ImportSpecifier::Named(named_spec) => {
@@ -195,9 +187,15 @@ impl CallExpressionVisitor {
         if let Callee::Expr(expr) = &call_expr.callee {
             if let Expr::Ident(ident) = expr.as_ref() {
                 let name = ident.sym.to_string();
-                // Only return true if it's specifically "formatMessage", not other imports like "defineMessages"
-                if name == "formatMessage" && self.imported_names.contains(&name) {
-                    return true;
+                // Check if this function was imported and is formatMessage (or its alias)
+                if self.imported_names.contains(&name) {
+                    // Check if it's formatMessage directly or via alias
+                    let original_name = self
+                        .alias_map
+                        .get(&name)
+                        .map(|s| s.as_str())
+                        .unwrap_or(name.as_str());
+                    return original_name == "formatMessage";
                 }
             }
         }
@@ -208,8 +206,17 @@ impl CallExpressionVisitor {
     fn is_define_messages_call(&self, call_expr: &CallExpr) -> bool {
         if let Callee::Expr(expr) = &call_expr.callee {
             if let Expr::Ident(ident) = expr.as_ref() {
-                // Check if this is defineMessages by name
-                return ident.sym == "defineMessages";
+                let name = ident.sym.to_string();
+                // Check if this function was imported and is defineMessages (or its alias)
+                if self.imported_names.contains(&name) {
+                    // Check if it's defineMessages directly or via alias
+                    let original_name = self
+                        .alias_map
+                        .get(&name)
+                        .map(|s| s.as_str())
+                        .unwrap_or(name.as_str());
+                    return original_name == "defineMessages";
+                }
             }
         }
         false
@@ -346,30 +353,9 @@ impl CallExpressionVisitor {
         obj: &mut ObjectLit,
         call_expr: &CallExpr,
     ) {
-        // Use the shared core function to analyze formatMessage
-        let current_index = self.format_message_counter;
-        if let Some((_, transformed)) =
-            analyze_format_message(call_expr, &self.state, current_index)
+        if let Some((transformed, need_id_insert)) = analyze_format_message(call_expr, &self.state)
         {
-            self.format_message_counter += 1;
-            // Check if id already exists
-            let has_id = obj.props.iter().any(|prop| {
-                if let PropOrSpread::Prop(prop) = prop {
-                    if let Prop::KeyValue(KeyValueProp { key, .. }) = prop.as_ref() {
-                        match key {
-                            PropName::Ident(ident) => ident.sym == "id",
-                            PropName::Str(str_lit) => str_lit.value == "id",
-                            _ => false,
-                        }
-                    } else {
-                        false
-                    }
-                } else {
-                    false
-                }
-            });
-
-            if !has_id {
+            if need_id_insert {
                 // Add id property using the ID generated by core crate
                 let id_prop = object_property(
                     "id",
@@ -391,67 +377,48 @@ impl CallExpressionVisitor {
         call_expr: &CallExpr,
     ) {
         // Use the shared core function to analyze defineMessages
-        // This returns (key_name, MessageData, TransformedMessageData) for each message
-        let current_index = self.define_messages_counter;
-        let messages = analyze_define_messages(call_expr, &self.state, current_index);
+        let messages = analyze_define_messages(call_expr, &self.state);
 
         if messages.is_empty() {
+            // no messages - do nothing
             return;
         }
 
-        self.define_messages_counter += 1;
-
         // Build a map from key name to the transformed ID
         // This uses the ID generated by the shared core crate
-        let message_id_map: std::collections::HashMap<String, String> = messages
-            .into_iter()
-            .map(|(key_name, _message_data, transformed)| (key_name, transformed.id))
-            .collect();
+        let message_id_map: std::collections::HashMap<String, (TransformedMessageData, bool)> =
+            messages
+                .into_iter()
+                .map(|(key_name, transformed, need_id_insert)| {
+                    (key_name, (transformed, need_id_insert))
+                })
+                .collect();
 
         // Update object properties based on analysis
         for prop in &mut obj.props {
             if let PropOrSpread::Prop(prop) = prop {
                 if let Prop::KeyValue(KeyValueProp { key, value }) = prop.as_mut() {
                     // Extract the key name from the property
-                    let key_name = match key {
-                        PropName::Ident(ident) => ident.sym.to_string(),
-                        PropName::Str(str_lit) => str_lit.value.to_string_lossy().to_string(),
-                        PropName::Num(num_lit) => num_lit.value.to_string(),
-                        _ => continue,
+                    let key_name = extract_prop_name(key);
+
+                    let Some(key_name) = key_name else {
+                        continue;
                     };
 
                     // Get the pre-generated ID from the shared core analysis
-                    let Some(final_id) = message_id_map.get(&key_name) else {
+                    let Some((transformed, need_id_insert)) = message_id_map.get(&key_name) else {
                         continue;
                     };
 
                     match value.as_ref() {
-                        Expr::Object(inner_obj) => {
-                            // Check if id already exists in the inner object
-                            let has_id = inner_obj.props.iter().any(|inner_prop| {
-                                if let PropOrSpread::Prop(inner_prop) = inner_prop {
-                                    if let Prop::KeyValue(KeyValueProp { key: inner_key, .. }) =
-                                        inner_prop.as_ref()
-                                    {
-                                        match inner_key {
-                                            PropName::Ident(ident) => ident.sym == "id",
-                                            PropName::Str(str_lit) => str_lit.value == "id",
-                                            _ => false,
-                                        }
-                                    } else {
-                                        false
-                                    }
-                                } else {
-                                    false
-                                }
-                            });
-
-                            if !has_id {
+                        // Add id prop to existing object
+                        Expr::Object(_) => {
+                            if *need_id_insert {
                                 let id_prop = object_property(
                                     "id",
                                     Expr::Lit(Lit::Str(Str {
                                         span: swc_core::common::DUMMY_SP,
-                                        value: final_id.clone().into(),
+                                        value: transformed.id.clone().into(),
                                         raw: None,
                                     })),
                                 );
@@ -461,13 +428,13 @@ impl CallExpressionVisitor {
                                 }
                             }
                         }
+                        // Convert string to object with id and defaultMessage
                         Expr::Lit(Lit::Str(str_lit)) => {
-                            // Convert string to object with id and defaultMessage
                             let id_prop = object_property(
                                 "id",
                                 Expr::Lit(Lit::Str(Str {
                                     span: swc_core::common::DUMMY_SP,
-                                    value: final_id.clone().into(),
+                                    value: transformed.id.clone().into(),
                                     raw: None,
                                 })),
                             );
@@ -489,13 +456,13 @@ impl CallExpressionVisitor {
                                 ],
                             }));
                         }
+                        // Convert template literal to object with id and preserved template
                         Expr::Tpl(template) => {
-                            // Convert template literal to object with id and preserved template
                             let id_prop = object_property(
                                 "id",
                                 Expr::Lit(Lit::Str(Str {
                                     span: swc_core::common::DUMMY_SP,
-                                    value: final_id.clone().into(),
+                                    value: transformed.id.clone().into(),
                                     raw: None,
                                 })),
                             );

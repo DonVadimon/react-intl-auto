@@ -10,8 +10,7 @@ use swc_core::ecma::parser::{lexer::Lexer, Parser, StringInput, Syntax};
 use swc_core::ecma::visit::{Visit, VisitWith};
 
 use crate::ast_analysis::{
-    analyze_define_messages, analyze_format_message, analyze_jsx_element, MessageData,
-    TransformedMessageData,
+    analyze_define_messages, analyze_format_message, analyze_jsx_element, TransformedMessageData,
 };
 use crate::types::{CoreOptions, CoreState, REACT_COMPONENTS};
 
@@ -29,7 +28,6 @@ pub struct ExtractedMessage {
 
 /// Converts (MessageData, TransformedMessageData) to ExtractedMessage
 fn to_extracted_message(
-    _message_data: MessageData,
     transformed: TransformedMessageData,
     filename: &PathBuf,
     include_source_location: bool,
@@ -129,8 +127,6 @@ pub struct MessageExtractorVisitor {
     alias_map: std::collections::HashMap<String, String>,
     state: CoreState,
     define_messages_counter: usize,
-    jsx_element_counter: usize,
-    format_message_counter: usize,
 }
 
 impl MessageExtractorVisitor {
@@ -144,8 +140,6 @@ impl MessageExtractorVisitor {
             alias_map: std::collections::HashMap::new(),
             state,
             define_messages_counter: 0,
-            jsx_element_counter: 0,
-            format_message_counter: 0,
         }
     }
 
@@ -153,9 +147,8 @@ impl MessageExtractorVisitor {
         self.messages
     }
 
-    fn add_message(&mut self, message_data: MessageData, transformed: TransformedMessageData) {
+    fn add_message(&mut self, transformed: TransformedMessageData) {
         let extracted = to_extracted_message(
-            message_data,
             transformed,
             &self.filename,
             self.state.opts.extract_source_location,
@@ -168,7 +161,10 @@ impl Visit for MessageExtractorVisitor {
     fn visit_import_decl(&mut self, import: &ImportDecl) {
         // Track React Intl imports
         let source = import.src.value.to_string_lossy();
-        if source == "react-intl" || source.starts_with("react-intl/") {
+        let module_source_name = &self.state.opts.module_source_name;
+        if source == module_source_name.as_str()
+            || source.starts_with(&format!("{}/", module_source_name))
+        {
             for specifier in &import.specifiers {
                 match specifier {
                     ImportSpecifier::Named(named) => {
@@ -205,13 +201,12 @@ impl Visit for MessageExtractorVisitor {
             let name_str = name.sym.as_str().to_string();
             let component_name = self.alias_map.get(&name_str).unwrap_or(&name_str);
 
-            if REACT_COMPONENTS.contains(&component_name.as_str()) {
-                let current_index = self.jsx_element_counter;
-                if let Some((message_data, transformed, _needs_insertion)) =
-                    analyze_jsx_element(element, &self.state, current_index)
-                {
-                    self.add_message(message_data, transformed);
-                    self.jsx_element_counter += 1;
+            // Check if this is a React Intl component and it was imported
+            if REACT_COMPONENTS.contains(&component_name.as_str())
+                && self.imported_names.contains(&name_str)
+            {
+                if let Some((transformed, _)) = analyze_jsx_element(element, &self.state) {
+                    self.add_message(transformed);
                 }
             }
         }
@@ -222,24 +217,29 @@ impl Visit for MessageExtractorVisitor {
 
         if let Callee::Expr(expr) = &call.callee {
             if let Expr::Ident(ident) = expr.as_ref() {
-                let fn_name = ident.sym.as_str();
+                let fn_name = ident.sym.to_string();
 
-                if fn_name == "defineMessages" && self.imported_names.contains("defineMessages") {
-                    let current_index = self.define_messages_counter;
-                    let results = analyze_define_messages(call, &self.state, current_index);
-                    if !results.is_empty() {
-                        for (_key_name, message_data, transformed) in results {
-                            self.add_message(message_data, transformed);
+                // Check if this function was imported
+                if self.imported_names.contains(&fn_name) {
+                    // Check if it's defineMessages directly or via alias
+                    let original_name = self
+                        .alias_map
+                        .get(&fn_name)
+                        .map(|s| s.as_str())
+                        .unwrap_or(fn_name.as_str());
+
+                    if original_name == "defineMessages" {
+                        let results = analyze_define_messages(call, &self.state);
+                        if !results.is_empty() {
+                            for (_, transformed, __) in results {
+                                self.add_message(transformed);
+                            }
+                            self.define_messages_counter += 1;
                         }
-                        self.define_messages_counter += 1;
-                    }
-                } else if fn_name == "formatMessage" {
-                    let current_index = self.format_message_counter;
-                    if let Some((message_data, transformed)) =
-                        analyze_format_message(call, &self.state, current_index)
-                    {
-                        self.add_message(message_data, transformed);
-                        self.format_message_counter += 1;
+                    } else if original_name == "formatMessage" {
+                        if let Some((transformed, _)) = analyze_format_message(call, &self.state) {
+                            self.add_message(transformed);
+                        }
                     }
                 }
             }
@@ -253,11 +253,6 @@ mod tests {
 
     #[test]
     fn test_to_extracted_message() {
-        let message_data = MessageData {
-            id: None,
-            default_message: Some("Hello World".to_string()),
-            description: Some("A greeting".to_string()),
-        };
         let transformed = TransformedMessageData {
             id: "test.hello".to_string(),
             default_message: "Hello World".to_string(),
@@ -265,7 +260,7 @@ mod tests {
         };
         let filename = PathBuf::from("test.js");
 
-        let extracted = to_extracted_message(message_data, transformed, &filename, false);
+        let extracted = to_extracted_message(transformed, &filename, false);
 
         assert_eq!(extracted.id, "test.hello");
         assert_eq!(extracted.default_message, "Hello World");
@@ -275,11 +270,6 @@ mod tests {
 
     #[test]
     fn test_to_extracted_message_with_source_location() {
-        let message_data = MessageData {
-            id: None,
-            default_message: Some("Hello".to_string()),
-            description: None,
-        };
         let transformed = TransformedMessageData {
             id: "test.hello".to_string(),
             default_message: "Hello".to_string(),
@@ -287,7 +277,7 @@ mod tests {
         };
         let filename = PathBuf::from("test.js");
 
-        let extracted = to_extracted_message(message_data, transformed, &filename, true);
+        let extracted = to_extracted_message(transformed, &filename, true);
 
         assert!(extracted.file.is_some());
     }

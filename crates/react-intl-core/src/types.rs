@@ -11,12 +11,6 @@ pub struct CoreOptions {
     /// Remove prefix from file path
     #[serde(default, alias = "removePrefix")]
     pub remove_prefix: Option<RemovePrefix>,
-    /// Include filename in ID
-    #[serde(default)]
-    pub filebase: bool,
-    /// Use key property instead of hash
-    #[serde(default, alias = "useKey")]
-    pub use_key: bool,
     /// react-intl module source name
     #[serde(default = "default_module_source_name", alias = "moduleSourceName")]
     pub module_source_name: String,
@@ -69,8 +63,6 @@ impl Default for CoreOptions {
     fn default() -> Self {
         Self {
             remove_prefix: None,
-            filebase: false,
-            use_key: false,
             module_source_name: "react-intl".to_string(),
             separator: ".".to_string(),
             relative_to: None,

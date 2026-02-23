@@ -45,14 +45,6 @@ struct Args {
     )]
     remove_prefix: Option<String>,
 
-    /// Use file basename for ID generation
-    #[arg(long, help = "Use file basename for ID generation")]
-    filebase: bool,
-
-    /// Use object key for ID generation in defineMessages
-    #[arg(long, help = "Use object key for ID generation in defineMessages")]
-    use_key: bool,
-
     /// Module source name for react-intl imports
     #[arg(
         long,
@@ -107,8 +99,6 @@ impl Args {
 
         CoreOptions {
             remove_prefix,
-            filebase: self.filebase,
-            use_key: self.use_key,
             module_source_name: self.module_source_name.clone(),
             separator: self.separator.clone(),
             relative_to: self.relative_to.clone(),

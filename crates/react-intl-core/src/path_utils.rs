@@ -14,14 +14,7 @@ use std::path::{Path, PathBuf};
 ///
 /// # Returns
 /// The path with separators replaced
-///
-/// # Example
-/// ```
-/// use react_intl_core::path_utils::dot_path;
-/// let result = dot_path("src/components/App", ".");
-/// assert_eq!(result, "src.components.App");
-/// ```
-pub fn dot_path(path: &str, separator: &str) -> String {
+fn dot_path(path: &str, separator: &str) -> String {
     path.replace(std::path::MAIN_SEPARATOR, separator)
 }
 
@@ -34,7 +27,7 @@ pub fn dot_path(path: &str, separator: &str) -> String {
 ///
 /// # Returns
 /// The path with the prefix removed
-pub fn dot_path_replace(formatted: &str, remove_prefix: &str, separator: &str) -> String {
+fn dot_path_replace(formatted: &str, remove_prefix: &str, separator: &str) -> String {
     let formatted_path = dot_path(formatted, separator);
 
     // Convert remove_prefix to use the same separator as the formatted path
@@ -68,15 +61,7 @@ pub fn dot_path_replace(formatted: &str, remove_prefix: &str, separator: &str) -
 ///
 /// # Returns
 /// The project root directory, or None if not found
-///
-/// # Example
-/// ```
-/// use react_intl_core::path_utils::find_project_root;
-/// use std::path::Path;
-///
-/// let root = find_project_root(Path::new("/project/src/file.ts"));
-/// ```
-pub fn find_project_root(file_path: &Path) -> Option<PathBuf> {
+fn find_project_root(file_path: &Path) -> Option<PathBuf> {
     let mut current = file_path.parent()?;
 
     // Look for common project root indicators
@@ -108,33 +93,34 @@ pub fn find_project_root(file_path: &Path) -> Option<PathBuf> {
     None
 }
 
-/// Generates a prefix for message IDs based on file path and options
+/// Adds a prefix for message IDs based on file path and options
 ///
 /// # Arguments
 /// * `state` - The core state containing filename and options
-/// * `export_name` - Optional export name to append to the prefix
+/// * `suffix` - Optional suffix to append to the prefix
 ///
 /// # Returns
-/// The generated prefix string
+/// The generated prefixed string
 ///
 /// # Example
 /// ```
 /// use react_intl_core::{CoreState, CoreOptions};
-/// use react_intl_core::path_utils::get_prefix;
+/// use react_intl_core::path_utils::add_prefix;
 /// use std::path::PathBuf;
 ///
 /// let state = CoreState::new(
 ///     PathBuf::from("src/components/App.tsx"),
 ///     CoreOptions::default()
 /// );
-/// let prefix = get_prefix(&state, Some("hello"));
+/// let path_id = add_prefix(&state, "hello");
+/// assert!(path_id.contains("src.components.App.hello"));
 /// ```
-pub fn get_prefix(state: &CoreState, export_name: Option<&str>) -> String {
+pub fn add_prefix(state: &CoreState, suffix: &str) -> String {
     let CoreState { filename, opts } = state;
 
     // Handle removePrefix boolean true case
     if let Some(RemovePrefix::Boolean(true)) = opts.remove_prefix {
-        return export_name.unwrap_or("").to_string();
+        return suffix.to_string();
     }
 
     // Get the base path from filename
@@ -243,7 +229,7 @@ pub fn get_prefix(state: &CoreState, export_name: Option<&str>) -> String {
                 let original_path = filename.to_string_lossy().to_string();
                 let regex = match Regex::new(s) {
                     Ok(r) => r,
-                    Err(_) => return export_name.unwrap_or("").to_string(),
+                    Err(_) => return suffix.to_string(),
                 };
                 let mut result = regex.replace_all(&original_path, "").to_string();
 
@@ -254,7 +240,7 @@ pub fn get_prefix(state: &CoreState, export_name: Option<&str>) -> String {
 
                 // If result is empty or just contains separators, return empty string
                 if result.trim().is_empty() || result.chars().all(|c| c == '/' || c == '\\') {
-                    return export_name.unwrap_or("").to_string();
+                    return suffix.to_string();
                 }
 
                 // Convert the result to dot-separated format
@@ -265,30 +251,10 @@ pub fn get_prefix(state: &CoreState, export_name: Option<&str>) -> String {
         }
     };
 
-    // Apply filebase option after relative_to and remove_prefix processing
-    let prefix = if opts.filebase {
-        // Extract just the filename without path
-        if let Some(file_name) = filename.file_stem() {
-            file_name.to_string_lossy().to_string()
-        } else {
-            prefix
-        }
+    if prefix.is_empty() {
+        suffix.to_string()
     } else {
-        // Keep the full path including filename (without extension)
-        // This ensures unique IDs even when multiple files in the same directory
-        // have messages with the same key
-        prefix
-    };
-
-    match export_name {
-        None => prefix,
-        Some(name) => {
-            if prefix.is_empty() {
-                name.to_string()
-            } else {
-                format!("{}{}{}", prefix, opts.separator, name)
-            }
-        }
+        format!("{}{}{}", prefix, opts.separator, suffix)
     }
 }
 
@@ -309,9 +275,7 @@ mod tests {
         CoreOptions {
             module_source_name: "react-intl".to_string(),
             separator: ".".to_string(),
-            filebase: false,
             remove_prefix: None,
-            use_key: false,
             relative_to: None,
             hash_id: false,
             hash_algorithm: "murmur3".to_string(),
@@ -334,34 +298,24 @@ mod tests {
     }
 
     #[test]
-    fn test_get_prefix_remove_prefix_true() {
+    fn test_add_prefix_remove_prefix_true() {
         let mut opts = create_default_options();
         opts.remove_prefix = Some(RemovePrefix::Boolean(true));
         let state = create_test_state("src/components/App.js", opts);
 
-        let result = get_prefix(&state, Some("hello"));
+        let result = add_prefix(&state, "hello");
         assert_eq!(result, "hello");
     }
 
     #[test]
-    fn test_get_prefix_filebase() {
-        let mut opts = create_default_options();
-        opts.filebase = true;
-        let state = create_test_state("src/components/App.js", opts);
-
-        let result = get_prefix(&state, Some("hello"));
-        assert_eq!(result, "App.hello");
-    }
-
-    #[test]
-    fn test_get_prefix_custom_separator() {
+    fn test_add_prefix_custom_separator() {
         let mut opts = create_default_options();
         opts.separator = "_".to_string();
         let state = create_test_state("src/components/App.js", opts);
 
-        let result = get_prefix(&state, Some("hello"));
+        let result = add_prefix(&state, "hello");
         // With custom separator, we still get the full path
-        assert!(result.contains("hello"));
+        assert!(result.contains("src_components_App_hello"),);
     }
 }
 

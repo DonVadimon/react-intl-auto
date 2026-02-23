@@ -6,16 +6,8 @@
 use swc_core::ecma::ast::*;
 
 use crate::id_generator::{hash_string, murmur32_hash};
-use crate::path_utils::get_prefix;
+use crate::path_utils::add_prefix;
 use crate::types::CoreState;
-
-/// Data structure representing an extracted message from source code
-#[derive(Debug, Clone)]
-pub struct MessageData {
-    pub id: Option<String>,
-    pub default_message: Option<String>,
-    pub description: Option<String>,
-}
 
 /// Data structure representing a transformed message with generated ID
 #[derive(Debug, Clone)]
@@ -25,33 +17,85 @@ pub struct TransformedMessageData {
     pub description: Option<String>,
 }
 
+/// payload to generate id from message description
+/// object
+/// ```js
+/// const messages = intl.formatMessage({
+///     defaultMessage: "defaultMessage", // hash default message
+///     description: "description", // + hash description
+/// });
+/// ```
+/// jsx
+/// ```js
+/// <FormattedMessage defaultMessage="hello" /> // hash default message
+/// ```
+#[derive(Debug, Clone)]
+struct GenIdFromDescriptorPayload {
+    pub default_message: String,
+    pub description: Option<String>,
+}
+
+/// payload to generate id from key + part of message description
+/// only key
+/// ```js
+/// const messages = defineMessages({
+///     hello: { // key = "hello"
+///         defaultMessage: "defaultMessage",
+///         description: "description", // + hash description
+///     }
+/// });
+/// ```
+/// key + descriptor path
+/// ```js
+/// const messages = defineMessages({
+///     hello: { // key = "hello"
+///         defaultMessage: "defaultMessage",
+///         description: "description", // + hash description
+///     }
+/// });
+/// ```
+#[derive(Debug, Clone)]
+struct GenIdFromKeyPayload {
+    pub key: String,
+    pub description: Option<String>,
+}
+
+#[derive(Debug, Clone)]
+enum GenIdPayload {
+    Key(GenIdFromKeyPayload),
+    Descriptor(GenIdFromDescriptorPayload),
+}
+
 /// Generates an ID for a message based on the configuration
 ///
 /// # Arguments
-/// * `default_message` - The default message text (used for hash if key is not provided)
-/// * `key` - Optional key to use as suffix (e.g., message key in defineMessages)
 /// * `state` - The core state
-/// * `force_use_key` - If true, always use key as suffix regardless of use_key option
-pub fn generate_message_id(
-    default_message: &str,
-    key: Option<&str>,
-    state: &CoreState,
-    force_use_key: bool,
-) -> String {
-    let suffix = if force_use_key || state.opts.use_key {
-        key.map(|k| k.to_string())
-            .unwrap_or_else(|| murmur32_hash(default_message))
-    } else {
-        murmur32_hash(default_message)
+/// * `payload` - Payload for id generation
+fn generate_message_id(state: &CoreState, payload: &GenIdPayload) -> String {
+    let raw_id = match payload {
+        GenIdPayload::Key(key_payload) => {
+            let mut parts = vec![key_payload.key.to_owned()];
+            if let Some(description) = &key_payload.description {
+                parts.push(murmur32_hash(description.as_str()));
+            }
+            parts.join(state.opts.separator.as_str())
+        }
+        GenIdPayload::Descriptor(descriptor) => {
+            let mut parts = vec![descriptor.default_message.to_owned()];
+            if let Some(description) = &descriptor.description {
+                parts.push(description.to_owned());
+            }
+            murmur32_hash(parts.join(state.opts.separator.as_str()).as_str())
+        }
     };
 
-    let prefix = get_prefix(state, Some(&suffix));
+    let path_id = add_prefix(state, &raw_id);
 
     // Apply hash_id option if enabled
     if state.opts.hash_id {
-        hash_string(&prefix, &state.opts.hash_algorithm)
+        hash_string(&path_id, &state.opts.hash_algorithm)
     } else {
-        prefix
+        path_id
     }
 }
 
@@ -60,42 +104,19 @@ pub fn generate_message_id(
 /// # Arguments
 /// * `element` - The JSX element to analyze
 /// * `state` - The core state containing filename and options
-/// * `sequence_index` - The sequence index for this JSX element (0, 1, 2, ...)
 ///
 /// # Returns
-/// Some((MessageData, TransformedMessageData, bool)) if the element contains a translatable message.
+/// Some((TransformedMessageData, bool)) if the element contains a translatable message.
 /// The bool indicates whether the ID needs to be inserted (false = ID already exists, true = needs insertion).
-/// Returns None if the element doesn't have defaultMessage attribute.
+/// Returns None if the element can't be translated.
 pub fn analyze_jsx_element(
     element: &JSXElement,
     state: &CoreState,
-    sequence_index: usize,
-) -> Option<(MessageData, TransformedMessageData, bool)> {
+) -> Option<(TransformedMessageData, bool)> {
     let (id_attr, default_message_attr, description_attr) = extract_jsx_attributes(element);
-
-    // Check if defaultMessage attribute exists at all (even if value is not a static string)
-    let has_default_message_attr = element.opening.attrs.iter().any(|attr| {
-        if let JSXAttrOrSpread::JSXAttr(jsx_attr) = attr {
-            if let JSXAttrName::Ident(name) = &jsx_attr.name {
-                return name.sym.as_ref() == "defaultMessage";
-            }
-        }
-        false
-    });
-
-    // If there's no defaultMessage attribute at all, this is not a translatable message
-    if !has_default_message_attr {
-        return None;
-    }
 
     // If there's already an ID, return it as-is without transformation
     if let Some(existing_id) = id_attr {
-        let message_data = MessageData {
-            id: Some(existing_id.clone()),
-            default_message: default_message_attr.clone(),
-            description: description_attr.clone(),
-        };
-
         let transformed = TransformedMessageData {
             id: existing_id,
             default_message: default_message_attr.unwrap_or_default(),
@@ -103,76 +124,34 @@ pub fn analyze_jsx_element(
         };
 
         // false = ID already exists, no need to insert
-        return Some((message_data, transformed, false));
+        return Some((transformed, false));
     }
 
-    // Extract key attribute for use_key option and fallback ID generation
-    let key = extract_jsx_key(element);
-
-    // If defaultMessage is a static string, generate ID based on it
-    let (id, default_message, message_default_message) = if let Some(msg) = default_message_attr {
-        let generated_id = generate_message_id(&msg, key.as_deref(), state, false);
-        (generated_id, msg.clone(), Some(msg))
+    // If there's no defaultMessage attribute at all or it is not statically
+    // evaluated as a string, this is not a translatable message
+    let default_message = if let Some(default_message) = default_message_attr {
+        default_message
     } else {
-        // defaultMessage is a variable/expression - generate fallback ID based on sequence index
-        let fallback_id = generate_fallback_jsx_id(key.as_deref(), state, sequence_index);
-        (fallback_id, String::new(), None)
+        return None;
     };
 
-    let message_data = MessageData {
-        id: None,
-        default_message: message_default_message,
-        description: description_attr.clone(),
-    };
-
-    let transformed = TransformedMessageData {
-        id,
+    let default_message_copy = default_message.clone();
+    let description_attr_copy = description_attr.clone();
+    // generate ID based on attrs
+    let payload = GenIdPayload::Descriptor(GenIdFromDescriptorPayload {
         default_message,
         description: description_attr,
+    });
+    let generated_id = generate_message_id(state, &payload);
+
+    let transformed = TransformedMessageData {
+        id: generated_id,
+        default_message: default_message_copy.clone(),
+        description: description_attr_copy,
     };
 
     // true = ID needs to be inserted
-    Some((message_data, transformed, true))
-}
-
-/// Generates a fallback ID for JSX element when defaultMessage is a variable/expression
-/// Uses sequence index for consistency
-fn generate_fallback_jsx_id(key: Option<&str>, state: &CoreState, sequence_index: usize) -> String {
-    // Use key if available and use_key option is enabled
-    let suffix = if state.opts.use_key {
-        key.map(|k| k.to_string())
-    } else {
-        None
-    };
-
-    // Generate suffix based on sequence index
-    let suffix = suffix.unwrap_or_else(|| {
-        let file_path = state.filename.to_string_lossy().to_string();
-        murmur32_hash(&format!("{}{}", file_path, sequence_index))
-    });
-
-    let prefix = get_prefix(state, Some(&suffix));
-
-    // Apply hash_id option if enabled
-    if state.opts.hash_id {
-        hash_string(&prefix, &state.opts.hash_algorithm)
-    } else {
-        prefix
-    }
-}
-
-/// Extracts key attribute from a JSX element
-fn extract_jsx_key(element: &JSXElement) -> Option<String> {
-    for attr in &element.opening.attrs {
-        if let JSXAttrOrSpread::JSXAttr(jsx_attr) = attr {
-            if let JSXAttrName::Ident(name) = &jsx_attr.name {
-                if name.sym.as_ref() == "key" {
-                    return extract_jsx_attr_value(jsx_attr);
-                }
-            }
-        }
-    }
-    None
+    Some((transformed, true))
 }
 
 /// Extracts attributes from a JSX element
@@ -220,11 +199,23 @@ fn extract_jsx_attr_value(jsx_attr: &JSXAttr) -> Option<String> {
 }
 
 /// Tries to extract a string value from an expression
+///
+/// Supports:
+/// * string literals
+/// ```js
+/// 'hello' // "hello"
+/// ```
+/// * template strings
+/// ```js
+/// `hello world` // ok
+/// `hello ${world}` // no support
+/// ```
 fn extract_expr_string(expr: &Expr) -> Option<String> {
     match expr {
         Expr::Lit(Lit::Str(str_lit)) => Some(str_lit.value.to_string_lossy().to_string()),
         Expr::Tpl(tpl) if tpl.exprs.is_empty() && tpl.quasis.len() == 1 => {
             // Template literal with no expressions: `text`
+            // TODO: use evaluator maybe https://rustdoc.swc.rs/swc_ecma_minifier/eval/struct.Evaluator.html
             let raw = &tpl.quasis[0].raw;
             if raw.is_empty() {
                 None
@@ -241,15 +232,13 @@ fn extract_expr_string(expr: &Expr) -> Option<String> {
 /// # Arguments
 /// * `call` - The CallExpr for defineMessages
 /// * `state` - The core state containing filename and options
-/// * `call_index` - The index of this defineMessages call in the file (0, 1, 2, ...)
 ///
 /// # Returns
-/// Vector of (key_name, MessageData, TransformedMessageData) for each message that needs transformation
+/// Vector of (key_name, TransformedMessageData, need_id_insert) for each message that needs transformation
 pub fn analyze_define_messages(
     call: &CallExpr,
     state: &CoreState,
-    call_index: usize,
-) -> Vec<(String, MessageData, TransformedMessageData)> {
+) -> Vec<(String, TransformedMessageData, bool)> {
     let mut messages = Vec::new();
 
     // Get the first argument (the object literal)
@@ -259,7 +248,7 @@ pub fn analyze_define_messages(
             for prop in &obj_lit.props {
                 if let PropOrSpread::Prop(prop) = prop {
                     if let Some((key_name, message_data, transformed)) =
-                        analyze_object_property_with_key(prop, state, call_index)
+                        analyze_define_messages_object_property(prop, state)
                     {
                         messages.push((key_name, message_data, transformed));
                     }
@@ -272,62 +261,64 @@ pub fn analyze_define_messages(
 }
 
 /// Analyzes an object property and extracts message data with key
-fn analyze_object_property_with_key(
+/// ```js
+/// defineMessages({
+///     hello: { // <- this object
+///         defaultMessage: 'defaultMessage',
+///         description: 'description',
+///     }
+/// })
+/// ```
+/// or
+/// ```js
+/// defineMessages({
+///     hello: 'world' // <- this string
+/// })
+/// ```
+///
+/// # Returns
+/// `Some((String, TransformedMessageData, bool))` if the prop contains a translatable message
+/// The bool indicates whether the ID needs to be inserted (false = ID already exists, true = needs insertion).
+/// Returns None if the property can't be translated.
+fn analyze_define_messages_object_property(
     prop: &Prop,
     state: &CoreState,
-    call_index: usize,
-) -> Option<(String, MessageData, TransformedMessageData)> {
+) -> Option<(String, TransformedMessageData, bool)> {
     match prop {
         Prop::KeyValue(KeyValueProp { key, value }) => {
             let key_name = extract_prop_name(key)?;
 
-            // Build the full key with call_index prefix for deterministic IDs
-            let full_key = format!("{}.{}", call_index, key_name);
-
             match value.as_ref() {
-                // String value: hello: 'Hello World'
-                Expr::Lit(Lit::Str(str_lit)) => {
-                    let default_message = str_lit.value.to_string_lossy().to_string();
-
-                    let message_data = MessageData {
-                        id: None,
-                        default_message: Some(default_message.clone()),
-                        description: None,
-                    };
-
-                    let transformed = TransformedMessageData {
-                        id: generate_message_id(&default_message, Some(&full_key), state, true),
-                        default_message,
-                        description: None,
-                    };
-
-                    Some((key_name, message_data, transformed))
-                }
                 // Object value: hello: { defaultMessage: 'Hello', description: '...' }
-                Expr::Object(obj_lit) => {
-                    analyze_message_object(obj_lit, Some(&full_key), state, true)
-                        .map(|(md, td)| (key_name, md, td))
-                }
+                Expr::Object(obj_lit) => analyze_message_object(obj_lit, state, Some(&key_name))
+                    .map(|(md, td)| (key_name, md, td)),
+                // String value: hello: 'Hello World'
                 // Template literal value: hello: `Hello ${name}`
-                Expr::Tpl(_) => {
-                    // For template literals, we can't extract the value statically
-                    // Generate ID using key_name but with empty default_message
-                    // The ID will include the full path prefix via generate_message_id
-                    let message_data = MessageData {
-                        id: None,
-                        default_message: None,
-                        description: None,
-                    };
+                _ => {
+                    // For template literals, we can try to extract the value statically
+                    // But we have some limitations
+                    let maybe_string = extract_expr_string(value);
 
-                    let transformed = TransformedMessageData {
-                        id: generate_message_id("", Some(&full_key), state, true),
-                        default_message: String::new(),
-                        description: None,
-                    };
+                    if let Some(default_message) = maybe_string {
+                        let default_message_copy = default_message.clone();
 
-                    Some((key_name, message_data, transformed))
+                        let payload = GenIdPayload::Key(GenIdFromKeyPayload {
+                            key: key_name.clone(),
+                            description: None,
+                        });
+
+                        let transformed = TransformedMessageData {
+                            id: generate_message_id(state, &payload),
+                            default_message: default_message_copy,
+                            description: None,
+                        };
+
+                        // true = ID needs to be inserted
+                        return Some((key_name, transformed, true));
+                    }
+
+                    None
                 }
-                _ => None,
             }
         }
         _ => None,
@@ -335,35 +326,42 @@ fn analyze_object_property_with_key(
 }
 
 /// Extracts property name from PropName
-fn extract_prop_name(key: &PropName) -> Option<String> {
+pub fn extract_prop_name(key: &PropName) -> Option<String> {
     match key {
         PropName::Ident(ident) => Some(ident.sym.to_string()),
         PropName::Str(str_lit) => Some(str_lit.value.to_string_lossy().to_string()),
+        PropName::Num(num_lit) => Some(num_lit.value.to_string()),
         _ => None,
     }
 }
 
 /// Analyzes a message object (used in defineMessages and formatMessage)
+/// ```js
+/// defineMessages({
+///     hello: { // <- this object
+///         defaultMessage: 'defaultMessage',
+///         description: 'description',
+///     }
+/// })
+/// ```
+///
+/// # Arguments
+/// * `obj_lit` - The ObjectLit with id?, defaultMessage?, description?
+/// * `state` - The core state containing filename and options
+/// * `key` - Optional key of parent object where `obj_lit` is located (in example - "hello")
+///
+/// # Returns
+/// `Some((TransformedMessageData, bool))` if the obj_lit contains a translatable message
+/// The bool indicates whether the ID needs to be inserted (false = ID already exists, true = needs insertion).
+/// Returns None if the obj_lit can't be translated.
 fn analyze_message_object(
     obj_lit: &ObjectLit,
-    key_name: Option<&str>,
     state: &CoreState,
-    force_use_key: bool,
-) -> Option<(MessageData, TransformedMessageData)> {
-    analyze_message_object_with_sequence(obj_lit, key_name, state, 0, force_use_key)
-}
-
-fn analyze_message_object_with_sequence(
-    obj_lit: &ObjectLit,
-    key_name: Option<&str>,
-    state: &CoreState,
-    _sequence_index: usize,
-    force_use_key: bool,
-) -> Option<(MessageData, TransformedMessageData)> {
-    let mut id = None;
-    let mut default_message = None;
-    let mut description = None;
-    let mut has_default_message_attr = false;
+    key: Option<&str>,
+) -> Option<(TransformedMessageData, bool)> {
+    let mut id_prop = None;
+    let mut default_message_prop = None;
+    let mut description_prop = None;
 
     for prop in &obj_lit.props {
         if let PropOrSpread::Prop(prop) = prop {
@@ -372,26 +370,13 @@ fn analyze_message_object_with_sequence(
 
                 match key_str.as_str() {
                     "id" => {
-                        if let Expr::Lit(Lit::Str(str_lit)) = value.as_ref() {
-                            id = Some(str_lit.value.to_string_lossy().to_string());
-                        }
+                        id_prop = extract_expr_string(value);
                     }
                     "defaultMessage" => {
-                        has_default_message_attr = true;
-                        if let Some(msg) = extract_expr_string(value) {
-                            default_message = Some(msg);
-                        }
+                        default_message_prop = extract_expr_string(value);
                     }
                     "description" => {
-                        if let Some(desc) = extract_expr_string(value) {
-                            description = Some(desc);
-                        }
-                    }
-                    "key" => {
-                        // key can be used for ID generation
-                        if let Some(_k) = extract_expr_string(value) {
-                            // If use_key is enabled, we might use this later
-                        }
+                        description_prop = extract_expr_string(value);
                     }
                     _ => {}
                 }
@@ -399,67 +384,50 @@ fn analyze_message_object_with_sequence(
         }
     }
 
-    // If there's already an ID, don't transform (preserve user-defined IDs)
-    if id.is_some() {
-        return None;
+    // If there's already an ID, return it as-is without transformation
+    if let Some(existing_id) = id_prop {
+        let transformed = TransformedMessageData {
+            id: existing_id,
+            default_message: default_message_prop.unwrap_or_default(),
+            description: description_prop,
+        };
+
+        // false = ID already exists, no need to insert
+        return Some((transformed, false));
     }
 
-    // If there's no defaultMessage attribute at all, skip
-    if !has_default_message_attr {
-        return None;
-    }
-
-    // Generate ID based on defaultMessage
-    // If defaultMessage is not a static string, use the debug representation of the expression
-    // This matches the original behavior where format!("{:?}", value) was used
-    let (generated_id, transformed_default_message) = if let Some(ref msg) = default_message {
-        (
-            generate_message_id(msg, key_name, state, force_use_key),
-            msg.clone(),
-        )
+    // If there's no defaultMessage attribute at all or it is not statically
+    // evaluated as a string, this is not a translatable message
+    let default_message = if let Some(default_message) = default_message_prop {
+        default_message
     } else {
-        // For non-static defaultMessage (variables, expressions), extract the expression
-        // and use its debug representation for ID generation (matching original behavior)
-        let debug_str = obj_lit
-            .props
-            .iter()
-            .find_map(|prop| {
-                if let PropOrSpread::Prop(prop) = prop {
-                    if let Prop::KeyValue(KeyValueProp { key, value }) = prop.as_ref() {
-                        let key_str = extract_prop_name(key)?;
-                        if key_str == "defaultMessage" {
-                            // Use debug representation like the original code did
-                            return Some(format!("{:?}", value.as_ref()));
-                        }
-                    }
-                }
-                None
-            })
-            .unwrap_or_default();
-
-        if debug_str.is_empty() {
-            return None;
-        }
-
-        (
-            generate_message_id(&debug_str, key_name, state, force_use_key),
-            String::new(),
-        )
+        return None;
     };
 
-    let message_data = MessageData {
-        id: None,
-        default_message: default_message.clone(),
-        description: description.clone(),
+    let default_message_copy = default_message.clone();
+    let description_attr_copy = description_prop.clone();
+    // if key provided - use key based id generation
+    // else - use object props based id generation
+    let payload = match key {
+        Some(key) => GenIdPayload::Key(GenIdFromKeyPayload {
+            key: key.to_string(),
+            description: description_prop,
+        }),
+        None => GenIdPayload::Descriptor(GenIdFromDescriptorPayload {
+            default_message,
+            description: description_prop,
+        }),
     };
+    let generated_id = generate_message_id(state, &payload);
 
     let transformed = TransformedMessageData {
         id: generated_id,
-        default_message: transformed_default_message,
-        description,
+        default_message: default_message_copy.clone(),
+        description: description_attr_copy,
     };
 
-    Some((message_data, transformed))
+    // true = ID needs to be inserted
+    Some((transformed, true))
 }
 
 /// Analyzes a formatMessage call and extracts message data
@@ -467,46 +435,22 @@ fn analyze_message_object_with_sequence(
 /// # Arguments
 /// * `call` - The CallExpr for formatMessage
 /// * `state` - The core state containing filename and options
-/// * `sequence_index` - The sequence index for this formatMessage call (0, 1, 2, ...)
 ///
 /// # Returns
-/// Some((MessageData, TransformedMessageData)) if the call contains a translatable message
-/// that needs transformation, None otherwise
+/// `Some((TransformedMessageData, bool))` if the call contains a translatable message
+/// The bool indicates whether the ID needs to be inserted (false = ID already exists, true = needs insertion).
+/// Returns None if the call can't be translated.
 pub fn analyze_format_message(
     call: &CallExpr,
     state: &CoreState,
-    sequence_index: usize,
-) -> Option<(MessageData, TransformedMessageData)> {
+) -> Option<(TransformedMessageData, bool)> {
     // Get the first argument (the message descriptor object)
     if let Some(first_arg) = call.args.first() {
         if let Expr::Object(obj_lit) = first_arg.expr.as_ref() {
-            // For formatMessage, try to extract key from the object for use_key option
-            let key = extract_key_from_object(obj_lit);
-            return analyze_message_object_with_sequence(
-                obj_lit,
-                key.as_deref(),
-                state,
-                sequence_index,
-                false, // formatMessage respects use_key option
-            );
+            return analyze_message_object(obj_lit, state, None);
         }
     }
 
-    None
-}
-
-/// Extracts key property from an object literal
-fn extract_key_from_object(obj_lit: &ObjectLit) -> Option<String> {
-    for prop in &obj_lit.props {
-        if let PropOrSpread::Prop(prop) = prop {
-            if let Prop::KeyValue(KeyValueProp { key, value }) = prop.as_ref() {
-                let key_str = extract_prop_name(key)?;
-                if key_str == "key" {
-                    return extract_expr_string(value);
-                }
-            }
-        }
-    }
     None
 }
 
@@ -554,15 +498,10 @@ mod tests {
         let element = parse_jsx(code);
         let state = create_test_state();
 
-        let result = analyze_jsx_element(&element, &state, 0);
+        let result = analyze_jsx_element(&element, &state);
 
         assert!(result.is_some());
-        let (message_data, transformed, needs_insertion) = result.unwrap();
-        assert_eq!(
-            message_data.default_message,
-            Some("Hello World".to_string())
-        );
-        assert!(message_data.id.is_none());
+        let (transformed, needs_insertion) = result.unwrap();
         assert!(!transformed.id.is_empty());
         assert_eq!(transformed.default_message, "Hello World");
         assert!(needs_insertion); // ID needs to be inserted
@@ -574,12 +513,11 @@ mod tests {
         let element = parse_jsx(code);
         let state = create_test_state();
 
-        let result = analyze_jsx_element(&element, &state, 0);
+        let result = analyze_jsx_element(&element, &state);
 
         // Should return result with existing ID and needs_insertion=false
         assert!(result.is_some());
-        let (message_data, transformed, needs_insertion) = result.unwrap();
-        assert_eq!(message_data.id, Some("my-id".to_string()));
+        let (transformed, needs_insertion) = result.unwrap();
         assert_eq!(transformed.id, "my-id");
         assert!(!needs_insertion); // ID already exists, no need to insert
     }
@@ -590,13 +528,39 @@ mod tests {
         let element = parse_jsx(code);
         let state = create_test_state();
 
-        let result = analyze_jsx_element(&element, &state, 0);
+        let result = analyze_jsx_element(&element, &state);
 
-        // Should return result with fallback ID generated from sequence index
+        // Should return None for id that is not statically evaluated
+        assert!(result.is_none());
+    }
+
+    #[test]
+    fn test_analyze_jsx_element_with_jsx_expr() {
+        let code = r#"<FormattedMessage defaultMessage={'message'} />"#;
+        let element = parse_jsx(code);
+        let state = create_test_state();
+
+        let result = analyze_jsx_element(&element, &state);
+
+        // Should return some for attrs that wrapped in jsx expr
         assert!(result.is_some());
-        let (message_data, transformed, needs_insertion) = result.unwrap();
-        assert!(message_data.default_message.is_none()); // Variable has no static default_message
-        assert!(!transformed.id.is_empty()); // Fallback ID generated
+        let (transformed, needs_insertion) = result.unwrap();
+        assert!(transformed.id.contains(murmur32_hash("message").as_str()));
+        assert!(needs_insertion); // ID needs to be inserted
+    }
+
+    #[test]
+    fn test_analyze_jsx_element_with_string_literals() {
+        let code = r#"<FormattedMessage defaultMessage={`message`} />"#;
+        let element = parse_jsx(code);
+        let state = create_test_state();
+
+        let result = analyze_jsx_element(&element, &state);
+
+        // Should return some for attrs that wrapped in string literals
+        assert!(result.is_some());
+        let (transformed, needs_insertion) = result.unwrap();
+        assert!(transformed.id.contains(murmur32_hash("message").as_str()));
         assert!(needs_insertion); // ID needs to be inserted
     }
 
@@ -609,17 +573,23 @@ mod tests {
         let call = parse_call_expr(code);
         let state = create_test_state();
 
-        let result = analyze_define_messages(&call, &state, 0);
-
+        let result = analyze_define_messages(&call, &state);
         assert_eq!(result.len(), 2);
-        assert_eq!(result[0].0, "hello");
-        assert_eq!(result[1].0, "goodbye");
-        assert_eq!(result[0].1.default_message, Some("Hello World".to_string()));
-        assert_eq!(result[1].1.default_message, Some("Goodbye".to_string()));
-        println!("ID 0: {}", result[0].2.id);
-        println!("ID 1: {}", result[1].2.id);
-        assert!(!result[0].2.id.is_empty());
-        assert!(!result[1].2.id.is_empty());
+
+        let hello_msg = &result[0];
+        let goodbye_msg = &result[1];
+
+        assert_eq!(hello_msg.0, "hello");
+        assert_eq!(goodbye_msg.0, "goodbye");
+
+        assert_eq!(hello_msg.1.default_message, "Hello World".to_string());
+        assert_eq!(goodbye_msg.1.default_message, "Goodbye".to_string());
+
+        assert!(!hello_msg.1.id.is_empty());
+        assert!(!goodbye_msg.1.id.is_empty());
+
+        assert!(hello_msg.2);
+        assert!(goodbye_msg.2);
     }
 
     #[test]
@@ -630,34 +600,47 @@ mod tests {
         let call = parse_call_expr(code);
         let state = create_test_state();
 
-        let result = analyze_define_messages(&call, &state, 0);
-
+        let result = analyze_define_messages(&call, &state);
         assert_eq!(result.len(), 1);
-        assert_eq!(result[0].0, "hello");
-        assert_eq!(result[0].1.default_message, Some("Hello World".to_string()));
-        assert_eq!(result[0].1.description, Some("A greeting".to_string()));
-        assert_eq!(result[0].2.default_message, "Hello World");
-        assert_eq!(result[0].2.description, Some("A greeting".to_string()));
+
+        let hello_msg = &result[0];
+
+        assert_eq!(hello_msg.0, "hello");
+
+        assert_eq!(hello_msg.1.default_message, "Hello World".to_string());
+        assert_eq!(hello_msg.1.description, Some("A greeting".to_string()));
+
+        assert!(hello_msg.2);
     }
 
     #[test]
     fn test_analyze_define_messages_with_template_literal() {
         let code = r#"defineMessages({
-            hello: `hello world ${1}`
+            hello: `hello world`
         })"#;
         let call = parse_call_expr(code);
         let state = create_test_state();
 
-        let result = analyze_define_messages(&call, &state, 0);
-
+        let result = analyze_define_messages(&call, &state);
         assert_eq!(result.len(), 1);
-        assert_eq!(result[0].0, "hello");
-        assert!(result[0].1.default_message.is_none()); // Template literal has no static default_message
-        assert!(result[0].2.default_message.is_empty());
-        // ID should include the path prefix and key
-        println!("Generated ID: {}", result[0].2.id);
-        assert!(result[0].2.id.contains("hello"));
-        assert!(result[0].2.id.contains("test")); // Should contain path
+
+        let hello_msg = &result[0];
+
+        assert_eq!(hello_msg.0, "hello");
+        assert!(hello_msg.1.id.contains("hello"));
+        assert!(!hello_msg.1.default_message.is_empty());
+    }
+
+    #[test]
+    fn test_analyze_define_messages_with_non_evaluatable_template_literal() {
+        let code = r#"defineMessages({
+            hello: `hello ${world}`
+        })"#;
+        let call = parse_call_expr(code);
+        let state = create_test_state();
+
+        let result = analyze_define_messages(&call, &state);
+        assert_eq!(result.len(), 0);
     }
 
     #[test]
@@ -666,16 +649,13 @@ mod tests {
         let call = parse_call_expr(code);
         let state = create_test_state();
 
-        let result = analyze_format_message(&call, &state, 0);
+        let result = analyze_format_message(&call, &state);
 
         assert!(result.is_some());
-        let (message_data, transformed) = result.unwrap();
-        assert_eq!(
-            message_data.default_message,
-            Some("Hello World".to_string())
-        );
+        let (transformed, need_id_insert) = result.unwrap();
         assert!(!transformed.id.is_empty());
         assert_eq!(transformed.default_message, "Hello World");
+        assert!(need_id_insert);
     }
 
     fn parse_call_expr(code: &str) -> CallExpr {

@@ -13,7 +13,7 @@
     "check-token": "node scripts/check-npm-token.js",
     "create-labels": "node scripts/create-labels.js",
     "test-release": "node scripts/test-release.js",
-    "format": "prettier --write \"{src,tests,sandbox,scripts}/**/*.{ts,tsx,js,jsx}\""
+    "format": "cargo fmt && prettier --write \"{src,tests,sandbox,scripts}/**/*.{ts,tsx,js,jsx}\""
   },
   "repository": {
     "type": "git",

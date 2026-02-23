@@ -1,7 +1,5 @@
-mod utils;
 mod visitors;
 
-use std::collections::HashSet;
 use std::path::PathBuf;
 use swc_core::ecma::{
     ast::Program,
@@ -11,7 +9,9 @@ use swc_core::plugin::{plugin_transform, proxies::TransformPluginProgramMetadata
 
 use react_intl_core::{CoreOptions, CoreState};
 
-use crate::visitors::{CallExpressionVisitor, ImportVisitor, JSXVisitor};
+use crate::visitors::call::CallExpressionVisitor;
+use crate::visitors::import::ImportVisitor;
+use crate::visitors::jsx::JSXVisitor;
 
 pub struct TransformVisitor {
     state: CoreState,
@@ -26,25 +26,12 @@ impl TransformVisitor {
 impl VisitMut for TransformVisitor {
     fn visit_mut_program(&mut self, program: &mut Program) {
         // First pass: collect imported names and aliases
-        let mut import_visitor = ImportVisitor {
-            imported_names: HashSet::new(),
-            module_source_name: self.state.opts.module_source_name.clone(),
-            alias_map: std::collections::HashMap::new(),
-        };
+        let mut import_visitor = ImportVisitor::new(&self.state);
         program.visit_mut_with(&mut import_visitor);
 
         // Second pass: transform with knowledge of imports and aliases
-        let mut jsx_visitor = JSXVisitor {
-            state: self.state.clone(),
-            imported_names: import_visitor.imported_names.clone(),
-            alias_map: import_visitor.alias_map.clone(),
-        };
-        let mut call_visitor = CallExpressionVisitor {
-            state: self.state.clone(),
-            imported_names: import_visitor.imported_names,
-            alias_map: import_visitor.alias_map,
-            variable_declarations: std::collections::HashMap::new(),
-        };
+        let mut jsx_visitor = JSXVisitor::new(&self.state, &import_visitor);
+        let mut call_visitor = CallExpressionVisitor::new(&self.state, &import_visitor);
 
         program.visit_mut_with(&mut jsx_visitor);
         program.visit_mut_with(&mut call_visitor);

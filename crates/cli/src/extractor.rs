@@ -23,7 +23,7 @@ pub struct ExtractedMessage {
     pub file: Option<String>,
 }
 
-/// Converts (MessageData, TransformedMessageData) to ExtractedMessage
+/// Converts TransformedMessageData to ExtractedMessage
 fn to_extracted_message(
     transformed: TransformedMessageData,
     filename: &PathBuf,
@@ -156,39 +156,44 @@ impl MessageExtractorVisitor {
 
 impl Visit for MessageExtractorVisitor {
     fn visit_import_decl(&mut self, import: &ImportDecl) {
-        // Track React Intl imports
-        let source = import.src.value.to_string_lossy();
-        let module_source_name = &self.state.opts.module_source_name;
-        if source == module_source_name.as_str()
-            || source.starts_with(&format!("{}/", module_source_name))
-        {
-            for specifier in &import.specifiers {
-                match specifier {
-                    ImportSpecifier::Named(named) => {
-                        let local = named.local.sym.to_string();
-                        let imported = named
-                            .imported
-                            .as_ref()
-                            .map(|i| match i {
-                                ModuleExportName::Ident(ident) => ident.sym.to_string(),
-                                _ => local.clone(),
-                            })
-                            .unwrap_or_else(|| local.clone());
+        let (imported_names, alias_map) = process_import_decl(import, &self.state);
 
-                        self.imported_names.insert(local.clone());
-                        if local != imported {
-                            self.alias_map.insert(local, imported);
-                        }
-                    }
-                    ImportSpecifier::Default(def) => {
-                        self.imported_names.insert(def.local.sym.to_string());
-                    }
-                    ImportSpecifier::Namespace(ns) => {
-                        self.imported_names.insert(ns.local.sym.to_string());
-                    }
-                }
-            }
-        }
+        self.imported_names = imported_names;
+        self.alias_map = alias_map;
+
+        // // Track React Intl imports
+        // let source = import.src.value.to_string_lossy();
+        // let module_source_name = &self.state.opts.module_source_name;
+        // if source == module_source_name.as_str()
+        //     || source.starts_with(&format!("{}/", module_source_name))
+        // {
+        //     for specifier in &import.specifiers {
+        //         match specifier {
+        //             ImportSpecifier::Named(named) => {
+        //                 let local = named.local.sym.to_string();
+        //                 let imported = named
+        //                     .imported
+        //                     .as_ref()
+        //                     .map(|i| match i {
+        //                         ModuleExportName::Ident(ident) => ident.sym.to_string(),
+        //                         _ => local.clone(),
+        //                     })
+        //                     .unwrap_or_else(|| local.clone());
+
+        //                 self.imported_names.insert(local.clone());
+        //                 if local != imported {
+        //                     self.alias_map.insert(local, imported);
+        //                 }
+        //             }
+        //             ImportSpecifier::Default(def) => {
+        //                 self.imported_names.insert(def.local.sym.to_string());
+        //             }
+        //             ImportSpecifier::Namespace(ns) => {
+        //                 self.imported_names.insert(ns.local.sym.to_string());
+        //             }
+        //         }
+        //     }
+        // }
     }
 
     fn visit_jsx_element(&mut self, element: &JSXElement) {

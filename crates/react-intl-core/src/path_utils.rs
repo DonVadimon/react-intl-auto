@@ -67,12 +67,9 @@ fn find_project_root(file_path: &Path) -> Option<PathBuf> {
 
     // Look for common project root indicators
     let project_indicators = [
-        "yarn.lock",    // Main project indicator (more specific than package.json)
-        "package.json", // Main project indicator
-        "package-lock.json",
-        "tsconfig.json",
-        "babel.config.js",
-        "webpack.config.js",
+        "package.json",      // Main project indicator
+        "package-lock.json", // Main project indicator (more specific than package.json)
+        "yarn.lock",
         ".git",
     ];
 

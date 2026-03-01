@@ -200,7 +200,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash + relativeTo = "src" | Object 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | Object 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     new: {
@@ -220,7 +220,7 @@ defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash + relativeTo = "src" | default 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
@@ -231,7 +231,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash + relativeTo = "src" | eval string 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | eval string 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: 'hello' + 'world'
@@ -239,7 +239,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash + relativeTo = "src" | import as 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | import as 1`] = `
 "import { defineMessages as m } from 'react-intl';
 m({
     hello: {
@@ -250,7 +250,7 @@ m({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash + relativeTo = "src" | leading comment 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | leading comment 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     // The main Hello of our app.
@@ -268,7 +268,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash + relativeTo = "src" | leading comment with description 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | leading comment with description 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     // This comment should not be used
@@ -281,7 +281,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash + relativeTo = "src" | moduleSourceName 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | moduleSourceName 1`] = `
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
     hello: 'hello'
@@ -289,7 +289,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash + relativeTo = "src" | multi export 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
@@ -306,7 +306,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash + relativeTo = "src" | not transform if callee is not identifier 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | not transform if callee is not identifier 1`] = `
 "import { defineMessages } from 'react-intl';
 var m = [
     defineMessages
@@ -317,32 +317,32 @@ export default m[0]({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash + relativeTo = "src" | not transform if defineMessages is not imported 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | not transform if defineMessages is not imported 1`] = `
 "export default defineMessages({
     hello: 'hello'
 });
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash + relativeTo = "src" | not transform when defineMessages argumens is empty 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | not transform when defineMessages argumens is empty 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages();
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash + relativeTo = "src" | not transform when defineMessages argumens is not object 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | not transform when defineMessages argumens is not object 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages(1);
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash + relativeTo = "src" | not transfrom when the variable can not be found 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | not transfrom when the variable can not be found 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages(messages);
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash + relativeTo = "src" | string literal 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
@@ -353,7 +353,7 @@ defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash + relativeTo = "src" | when using the variable 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | when using the variable 1`] = `
 "import { defineMessages } from 'react-intl';
 var messages = {
     hello: 'hello'
@@ -367,7 +367,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash + relativeTo = "src" | with include value 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | with include value 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: "hello world ".concat(1)
@@ -375,7 +375,7 @@ defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash + relativeTo = "src" | with other func 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | with other func 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
@@ -389,7 +389,7 @@ hello({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash + relativeTo = "src" | with other specifier 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | with other specifier 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
@@ -400,407 +400,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash + removePrefix = "src/" | Object 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    new: {
-        id: 'this is id',
-        defaultMessage: 'id'
-    },
-    world: {
-        defaultMessage: 'world',
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ub2JqZWN0LWFyZy53b3JsZA=="
-    },
-    headerTitle: {
-        defaultMessage: 'Welcome to dashboard {name}!',
-        description: 'Message to greet the user.',
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ub2JqZWN0LWFyZy5oZWFkZXJUaXRsZS4xMjAzMjg0NTU0"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash + removePrefix = "src/" | default 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24uZGVmYXVsdC5oZWxsbw==",
-        "defaultMessage": "hello"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash + removePrefix = "src/" | eval string 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    hello: 'hello' + 'world'
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash + removePrefix = "src/" | import as 1`] = `
-"import { defineMessages as m } from 'react-intl';
-m({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24uaW1wb3J0LWFzLmhlbGxv",
-        "defaultMessage": "hello"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash + removePrefix = "src/" | leading comment 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    // The main Hello of our app.
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubGVhZGluZy1jb21tZW50LmhlbGxv",
-        "defaultMessage": "hello"
-    },
-    // Another Hello,
-    // multiline this time
-    world: {
-        id: 'hello.world',
-        defaultMessage: 'hello world'
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash + removePrefix = "src/" | leading comment with description 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    // This comment should not be used
-    world: {
-        defaultMessage: 'hello world',
-        description: 'The hello world',
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubGVhZGluZy1jb21tZW50LXdpdGgtZGVzY3JpcHRpb24ud29ybGQuNjEyNzMwOTM3"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash + removePrefix = "src/" | moduleSourceName 1`] = `
-"import { defineMessages } from 'gatsby-plugin-intl';
-export default defineMessages({
-    hello: 'hello'
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash + removePrefix = "src/" | multi export 1`] = `
-"import { defineMessages } from 'react-intl';
-export var extra = defineMessages({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubXVsdGktZXhwb3J0LmhlbGxv",
-        "defaultMessage": "hello world extra"
-    }
-});
-export default defineMessages({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubXVsdGktZXhwb3J0LmhlbGxv",
-        "defaultMessage": "hello world"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash + removePrefix = "src/" | not transform if callee is not identifier 1`] = `
-"import { defineMessages } from 'react-intl';
-var m = [
-    defineMessages
-];
-export default m[0]({
-    hello: 'hello world'
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash + removePrefix = "src/" | not transform if defineMessages is not imported 1`] = `
-"export default defineMessages({
-    hello: 'hello'
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash + removePrefix = "src/" | not transform when defineMessages argumens is empty 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages();
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash + removePrefix = "src/" | not transform when defineMessages argumens is not object 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages(1);
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash + removePrefix = "src/" | not transfrom when the variable can not be found 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages(messages);
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash + removePrefix = "src/" | string literal 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24uc3RyaW5nLWxpdGVyYWwuaGVsbG8=",
-        "defaultMessage": "hello world"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash + removePrefix = "src/" | when using the variable 1`] = `
-"import { defineMessages } from 'react-intl';
-var messages = {
-    hello: 'hello'
-};
-export default defineMessages({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24udXNlLXZhcmlhYmxlLmhlbGxv",
-        "defaultMessage": "hello"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash + removePrefix = "src/" | with include value 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: "hello world ".concat(1)
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash + removePrefix = "src/" | with other func 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ud2l0aC1vdGhlci1mdW5jLmhlbGxv",
-        "defaultMessage": "hello"
-    }
-});
-hello({
-    id: 'hoge'
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash + removePrefix = "src/" | with other specifier 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ud2l0aC1vdGhlci1zcGVjaWZpZXIuaGVsbG8=",
-        "defaultMessage": "hello world"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash base64 | Object 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    new: {
-        id: 'this is id',
-        defaultMessage: 'id'
-    },
-    world: {
-        defaultMessage: 'world',
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ub2JqZWN0LWFyZy53b3JsZA=="
-    },
-    headerTitle: {
-        defaultMessage: 'Welcome to dashboard {name}!',
-        description: 'Message to greet the user.',
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ub2JqZWN0LWFyZy5oZWFkZXJUaXRsZS4xMjAzMjg0NTU0"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash base64 | default 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24uZGVmYXVsdC5oZWxsbw==",
-        "defaultMessage": "hello"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash base64 | eval string 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    hello: 'hello' + 'world'
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash base64 | import as 1`] = `
-"import { defineMessages as m } from 'react-intl';
-m({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24uaW1wb3J0LWFzLmhlbGxv",
-        "defaultMessage": "hello"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash base64 | leading comment 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    // The main Hello of our app.
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubGVhZGluZy1jb21tZW50LmhlbGxv",
-        "defaultMessage": "hello"
-    },
-    // Another Hello,
-    // multiline this time
-    world: {
-        id: 'hello.world',
-        defaultMessage: 'hello world'
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash base64 | leading comment with description 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    // This comment should not be used
-    world: {
-        defaultMessage: 'hello world',
-        description: 'The hello world',
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubGVhZGluZy1jb21tZW50LXdpdGgtZGVzY3JpcHRpb24ud29ybGQuNjEyNzMwOTM3"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash base64 | moduleSourceName 1`] = `
-"import { defineMessages } from 'gatsby-plugin-intl';
-export default defineMessages({
-    hello: 'hello'
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash base64 | multi export 1`] = `
-"import { defineMessages } from 'react-intl';
-export var extra = defineMessages({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubXVsdGktZXhwb3J0LmhlbGxv",
-        "defaultMessage": "hello world extra"
-    }
-});
-export default defineMessages({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubXVsdGktZXhwb3J0LmhlbGxv",
-        "defaultMessage": "hello world"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash base64 | not transform if callee is not identifier 1`] = `
-"import { defineMessages } from 'react-intl';
-var m = [
-    defineMessages
-];
-export default m[0]({
-    hello: 'hello world'
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash base64 | not transform if defineMessages is not imported 1`] = `
-"export default defineMessages({
-    hello: 'hello'
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash base64 | not transform when defineMessages argumens is empty 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages();
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash base64 | not transform when defineMessages argumens is not object 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages(1);
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash base64 | not transfrom when the variable can not be found 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages(messages);
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash base64 | string literal 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24uc3RyaW5nLWxpdGVyYWwuaGVsbG8=",
-        "defaultMessage": "hello world"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash base64 | when using the variable 1`] = `
-"import { defineMessages } from 'react-intl';
-var messages = {
-    hello: 'hello'
-};
-export default defineMessages({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24udXNlLXZhcmlhYmxlLmhlbGxv",
-        "defaultMessage": "hello"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash base64 | with include value 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: "hello world ".concat(1)
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash base64 | with other func 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ud2l0aC1vdGhlci1mdW5jLmhlbGxv",
-        "defaultMessage": "hello"
-    }
-});
-hello({
-    id: 'hoge'
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash base64 | with other specifier 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ud2l0aC1vdGhlci1zcGVjaWZpZXIuaGVsbG8=",
-        "defaultMessage": "hello world"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hash murmur3 | Object 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | Object 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     new: {
@@ -820,7 +420,7 @@ defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash murmur3 | default 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
@@ -831,7 +431,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash murmur3 | eval string 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | eval string 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: 'hello' + 'world'
@@ -839,7 +439,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash murmur3 | import as 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | import as 1`] = `
 "import { defineMessages as m } from 'react-intl';
 m({
     hello: {
@@ -850,7 +450,7 @@ m({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash murmur3 | leading comment 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | leading comment 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     // The main Hello of our app.
@@ -868,7 +468,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash murmur3 | leading comment with description 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | leading comment with description 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     // This comment should not be used
@@ -881,7 +481,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash murmur3 | moduleSourceName 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | moduleSourceName 1`] = `
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
     hello: 'hello'
@@ -889,7 +489,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash murmur3 | multi export 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
@@ -906,7 +506,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash murmur3 | not transform if callee is not identifier 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | not transform if callee is not identifier 1`] = `
 "import { defineMessages } from 'react-intl';
 var m = [
     defineMessages
@@ -917,32 +517,32 @@ export default m[0]({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash murmur3 | not transform if defineMessages is not imported 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | not transform if defineMessages is not imported 1`] = `
 "export default defineMessages({
     hello: 'hello'
 });
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash murmur3 | not transform when defineMessages argumens is empty 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | not transform when defineMessages argumens is empty 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages();
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash murmur3 | not transform when defineMessages argumens is not object 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | not transform when defineMessages argumens is not object 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages(1);
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash murmur3 | not transfrom when the variable can not be found 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | not transfrom when the variable can not be found 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages(messages);
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash murmur3 | string literal 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
@@ -953,7 +553,7 @@ defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash murmur3 | when using the variable 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | when using the variable 1`] = `
 "import { defineMessages } from 'react-intl';
 var messages = {
     hello: 'hello'
@@ -967,7 +567,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash murmur3 | with include value 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | with include value 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: "hello world ".concat(1)
@@ -975,7 +575,7 @@ defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash murmur3 | with other func 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | with other func 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
@@ -989,7 +589,7 @@ hello({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash murmur3 | with other specifier 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | with other specifier 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
@@ -1000,7 +600,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash unknown fallback to murmur3 | Object 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | Object 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     new: {
@@ -1020,7 +620,7 @@ defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash unknown fallback to murmur3 | default 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
@@ -1031,7 +631,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash unknown fallback to murmur3 | eval string 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | eval string 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: 'hello' + 'world'
@@ -1039,7 +639,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash unknown fallback to murmur3 | import as 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | import as 1`] = `
 "import { defineMessages as m } from 'react-intl';
 m({
     hello: {
@@ -1050,7 +650,7 @@ m({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash unknown fallback to murmur3 | leading comment 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | leading comment 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     // The main Hello of our app.
@@ -1068,7 +668,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash unknown fallback to murmur3 | leading comment with description 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | leading comment with description 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     // This comment should not be used
@@ -1081,7 +681,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash unknown fallback to murmur3 | moduleSourceName 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | moduleSourceName 1`] = `
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
     hello: 'hello'
@@ -1089,7 +689,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash unknown fallback to murmur3 | multi export 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
@@ -1106,7 +706,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash unknown fallback to murmur3 | not transform if callee is not identifier 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | not transform if callee is not identifier 1`] = `
 "import { defineMessages } from 'react-intl';
 var m = [
     defineMessages
@@ -1117,32 +717,32 @@ export default m[0]({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash unknown fallback to murmur3 | not transform if defineMessages is not imported 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | not transform if defineMessages is not imported 1`] = `
 "export default defineMessages({
     hello: 'hello'
 });
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash unknown fallback to murmur3 | not transform when defineMessages argumens is empty 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | not transform when defineMessages argumens is empty 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages();
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash unknown fallback to murmur3 | not transform when defineMessages argumens is not object 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | not transform when defineMessages argumens is not object 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages(1);
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash unknown fallback to murmur3 | not transfrom when the variable can not be found 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | not transfrom when the variable can not be found 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages(messages);
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash unknown fallback to murmur3 | string literal 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
@@ -1153,7 +753,7 @@ defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash unknown fallback to murmur3 | when using the variable 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | when using the variable 1`] = `
 "import { defineMessages } from 'react-intl';
 var messages = {
     hello: 'hello'
@@ -1167,7 +767,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash unknown fallback to murmur3 | with include value 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | with include value 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: "hello world ".concat(1)
@@ -1175,7 +775,7 @@ defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash unknown fallback to murmur3 | with other func 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | with other func 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
@@ -1189,7 +789,7 @@ hello({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hash unknown fallback to murmur3 | with other specifier 1`] = `
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | with other specifier 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
@@ -1991,38 +1591,7 @@ defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | Object 2`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    new: {
-        id: 'this is id',
-        defaultMessage: 'id'
-    },
-    world: {
-        defaultMessage: 'world',
-        "id": "tests.__fixtures__.definition.object-arg.world"
-    },
-    headerTitle: {
-        defaultMessage: 'Welcome to dashboard {name}!',
-        description: 'Message to greet the user.',
-        "id": "tests.__fixtures__.definition.object-arg.headerTitle.1203284554"
-    }
-});
-"
-`;
-
 exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | default 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    hello: {
-        "id": "tests.__fixtures__.definition.default.hello",
-        "defaultMessage": "hello"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | default 2`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
@@ -2041,14 +1610,6 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | eval string 2`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    hello: 'hello' + 'world'
-});
-"
-`;
-
 exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | import as 1`] = `
 "import { defineMessages as m } from 'react-intl';
 m({
@@ -2060,36 +1621,7 @@ m({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | import as 2`] = `
-"import { defineMessages as m } from 'react-intl';
-m({
-    hello: {
-        "id": "tests.__fixtures__.definition.import-as.hello",
-        "defaultMessage": "hello"
-    }
-});
-"
-`;
-
 exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | leading comment 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    // The main Hello of our app.
-    hello: {
-        "id": "tests.__fixtures__.definition.leading-comment.hello",
-        "defaultMessage": "hello"
-    },
-    // Another Hello,
-    // multiline this time
-    world: {
-        id: 'hello.world',
-        defaultMessage: 'hello world'
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | leading comment 2`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     // The main Hello of our app.
@@ -2120,19 +1652,6 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | leading comment with description 2`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    // This comment should not be used
-    world: {
-        defaultMessage: 'hello world',
-        description: 'The hello world',
-        "id": "tests.__fixtures__.definition.leading-comment-with-description.world.612730937"
-    }
-});
-"
-`;
-
 exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | moduleSourceName 1`] = `
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
@@ -2141,32 +1660,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | moduleSourceName 2`] = `
-"import { defineMessages } from 'gatsby-plugin-intl';
-export default defineMessages({
-    hello: 'hello'
-});
-"
-`;
-
 exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | multi export 1`] = `
-"import { defineMessages } from 'react-intl';
-export var extra = defineMessages({
-    hello: {
-        "id": "tests.__fixtures__.definition.multi-export.hello",
-        "defaultMessage": "hello world extra"
-    }
-});
-export default defineMessages({
-    hello: {
-        "id": "tests.__fixtures__.definition.multi-export.hello",
-        "defaultMessage": "hello world"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | multi export 2`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
@@ -2194,25 +1688,7 @@ export default m[0]({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | not transform if callee is not identifier 2`] = `
-"import { defineMessages } from 'react-intl';
-var m = [
-    defineMessages
-];
-export default m[0]({
-    hello: 'hello world'
-});
-"
-`;
-
 exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | not transform if defineMessages is not imported 1`] = `
-"export default defineMessages({
-    hello: 'hello'
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | not transform if defineMessages is not imported 2`] = `
 "export default defineMessages({
     hello: 'hello'
 });
@@ -2225,19 +1701,7 @@ export default defineMessages();
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | not transform when defineMessages argumens is empty 2`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages();
-"
-`;
-
 exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | not transform when defineMessages argumens is not object 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages(1);
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | not transform when defineMessages argumens is not object 2`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages(1);
 "
@@ -2249,24 +1713,7 @@ export default defineMessages(messages);
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | not transfrom when the variable can not be found 2`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages(messages);
-"
-`;
-
 exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | string literal 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: {
-        "id": "tests.__fixtures__.definition.string-literal.hello",
-        "defaultMessage": "hello world"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | string literal 2`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
@@ -2291,20 +1738,6 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | when using the variable 2`] = `
-"import { defineMessages } from 'react-intl';
-var messages = {
-    hello: 'hello'
-};
-export default defineMessages({
-    hello: {
-        "id": "tests.__fixtures__.definition.use-variable.hello",
-        "defaultMessage": "hello"
-    }
-});
-"
-`;
-
 exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | with include value 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
@@ -2313,29 +1746,7 @@ defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | with include value 2`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: "hello world ".concat(1)
-});
-"
-`;
-
 exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | with other func 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: {
-        "id": "tests.__fixtures__.definition.with-other-func.hello",
-        "defaultMessage": "hello"
-    }
-});
-hello({
-    id: 'hoge'
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | with other func 2`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
@@ -2360,18 +1771,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src.__fixtures__" | with other specifier 2`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    hello: {
-        "id": "tests.__fixtures__.definition.with-other-specifier.hello",
-        "defaultMessage": "hello world"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: removePrefix = "src/" -- with slash | Object 1`] = `
+exports[`snap - definition | CONFIGURATION: removePrefix = "src/" | Object 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     new: {
@@ -2391,7 +1791,7 @@ defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src/" -- with slash | default 1`] = `
+exports[`snap - definition | CONFIGURATION: removePrefix = "src/" | default 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
@@ -2402,7 +1802,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src/" -- with slash | eval string 1`] = `
+exports[`snap - definition | CONFIGURATION: removePrefix = "src/" | eval string 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: 'hello' + 'world'
@@ -2410,7 +1810,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src/" -- with slash | import as 1`] = `
+exports[`snap - definition | CONFIGURATION: removePrefix = "src/" | import as 1`] = `
 "import { defineMessages as m } from 'react-intl';
 m({
     hello: {
@@ -2421,7 +1821,7 @@ m({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src/" -- with slash | leading comment 1`] = `
+exports[`snap - definition | CONFIGURATION: removePrefix = "src/" | leading comment 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     // The main Hello of our app.
@@ -2439,7 +1839,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src/" -- with slash | leading comment with description 1`] = `
+exports[`snap - definition | CONFIGURATION: removePrefix = "src/" | leading comment with description 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     // This comment should not be used
@@ -2452,7 +1852,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src/" -- with slash | moduleSourceName 1`] = `
+exports[`snap - definition | CONFIGURATION: removePrefix = "src/" | moduleSourceName 1`] = `
 "import { defineMessages } from 'gatsby-plugin-intl';
 export default defineMessages({
     hello: 'hello'
@@ -2460,7 +1860,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src/" -- with slash | multi export 1`] = `
+exports[`snap - definition | CONFIGURATION: removePrefix = "src/" | multi export 1`] = `
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
@@ -2477,7 +1877,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src/" -- with slash | not transform if callee is not identifier 1`] = `
+exports[`snap - definition | CONFIGURATION: removePrefix = "src/" | not transform if callee is not identifier 1`] = `
 "import { defineMessages } from 'react-intl';
 var m = [
     defineMessages
@@ -2488,32 +1888,32 @@ export default m[0]({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src/" -- with slash | not transform if defineMessages is not imported 1`] = `
+exports[`snap - definition | CONFIGURATION: removePrefix = "src/" | not transform if defineMessages is not imported 1`] = `
 "export default defineMessages({
     hello: 'hello'
 });
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src/" -- with slash | not transform when defineMessages argumens is empty 1`] = `
+exports[`snap - definition | CONFIGURATION: removePrefix = "src/" | not transform when defineMessages argumens is empty 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages();
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src/" -- with slash | not transform when defineMessages argumens is not object 1`] = `
+exports[`snap - definition | CONFIGURATION: removePrefix = "src/" | not transform when defineMessages argumens is not object 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages(1);
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src/" -- with slash | not transfrom when the variable can not be found 1`] = `
+exports[`snap - definition | CONFIGURATION: removePrefix = "src/" | not transfrom when the variable can not be found 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages(messages);
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src/" -- with slash | string literal 1`] = `
+exports[`snap - definition | CONFIGURATION: removePrefix = "src/" | string literal 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
@@ -2524,7 +1924,7 @@ defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src/" -- with slash | when using the variable 1`] = `
+exports[`snap - definition | CONFIGURATION: removePrefix = "src/" | when using the variable 1`] = `
 "import { defineMessages } from 'react-intl';
 var messages = {
     hello: 'hello'
@@ -2538,7 +1938,7 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src/" -- with slash | with include value 1`] = `
+exports[`snap - definition | CONFIGURATION: removePrefix = "src/" | with include value 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: "hello world ".concat(1)
@@ -2546,7 +1946,7 @@ defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src/" -- with slash | with other func 1`] = `
+exports[`snap - definition | CONFIGURATION: removePrefix = "src/" | with other func 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
@@ -2560,7 +1960,7 @@ hello({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: removePrefix = "src/" -- with slash | with other specifier 1`] = `
+exports[`snap - definition | CONFIGURATION: removePrefix = "src/" | with other specifier 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {

@@ -3,6 +3,7 @@
 //! This module provides functionality to extract React Intl messages from source code.
 //! It uses read-only visitors for CLI message extraction.
 
+use pathdiff::diff_paths;
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 use swc_core::ecma::ast::*;
@@ -24,6 +25,12 @@ pub struct ExtractedMessage {
     pub file: Option<String>,
 }
 
+fn relative_to_cwd(absolute_path: &PathBuf) -> PathBuf {
+    let cwd = std::env::current_dir().expect("Failed to get current working directory");
+
+    diff_paths(absolute_path, cwd).unwrap_or(absolute_path.clone())
+}
+
 /// Converts TransformedMessageData to ExtractedMessage
 fn to_extracted_message(
     transformed: TransformedMessageData,
@@ -35,7 +42,7 @@ fn to_extracted_message(
         default_message: transformed.default_message,
         description: transformed.description,
         file: if include_source_location {
-            Some(filename.to_string_lossy().to_string())
+            Some(relative_to_cwd(filename).to_string_lossy().to_string())
         } else {
             None
         },
@@ -68,7 +75,7 @@ fn to_extracted_message(
 /// ```
 pub fn extract_messages(
     code: &str,
-    filename: &str,
+    filename: &PathBuf,
     options: &CoreOptions,
 ) -> Vec<ExtractedMessage> {
     // Determine syntax based on file extension
@@ -76,7 +83,8 @@ pub fn extract_messages(
         .iter()
         .any(|ext| filename.ends_with(ext));
     let is_tsx = filename.ends_with(".tsx");
-    let is_jsx = filename.ends_with(".jsx");
+    // Enable JSX for both .jsx and .js files (many projects use JSX in .js files)
+    let is_jsx = filename.ends_with(".jsx") || filename.ends_with(".js");
 
     let syntax = if is_ts {
         Syntax::Typescript(swc_core::ecma::parser::TsSyntax {
@@ -103,13 +111,17 @@ pub fn extract_messages(
     let module = match parser.parse_module() {
         Ok(module) => module,
         Err(err) => {
-            eprintln!("Failed to parse {}: {:?}", filename, err);
+            eprintln!("Failed to parse {}: {:?}", filename.to_string_lossy(), err);
             return vec![];
         }
     };
 
     // Create visitor and extract messages
-    let mut visitor = MessageExtractorVisitor::new(PathBuf::from(filename), options.clone());
+    let mut visitor = MessageExtractorVisitor::new(
+        // relative_filepath,
+        PathBuf::from(filename),
+        options.clone(),
+    );
     module.visit_with(&mut visitor);
 
     visitor.into_messages()
@@ -161,40 +173,6 @@ impl Visit for MessageExtractorVisitor {
 
         self.imported_names = imported_names;
         self.alias_map = alias_map;
-
-        // // Track React Intl imports
-        // let source = import.src.value.to_string_lossy();
-        // let module_source_name = &self.state.opts.module_source_name;
-        // if source == module_source_name.as_str()
-        //     || source.starts_with(&format!("{}/", module_source_name))
-        // {
-        //     for specifier in &import.specifiers {
-        //         match specifier {
-        //             ImportSpecifier::Named(named) => {
-        //                 let local = named.local.sym.to_string();
-        //                 let imported = named
-        //                     .imported
-        //                     .as_ref()
-        //                     .map(|i| match i {
-        //                         ModuleExportName::Ident(ident) => ident.sym.to_string(),
-        //                         _ => local.clone(),
-        //                     })
-        //                     .unwrap_or_else(|| local.clone());
-
-        //                 self.imported_names.insert(local.clone());
-        //                 if local != imported {
-        //                     self.alias_map.insert(local, imported);
-        //                 }
-        //             }
-        //             ImportSpecifier::Default(def) => {
-        //                 self.imported_names.insert(def.local.sym.to_string());
-        //             }
-        //             ImportSpecifier::Namespace(ns) => {
-        //                 self.imported_names.insert(ns.local.sym.to_string());
-        //             }
-        //         }
-        //     }
-        // }
     }
 
     fn visit_jsx_element(&mut self, element: &JSXElement) {

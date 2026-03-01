@@ -213,7 +213,7 @@ fn extract_from_file(file_path: &Path, options: &CoreOptions) -> Result<Vec<Extr
     let content = fs::read_to_string(file_path)
         .with_context(|| format!("Failed to read file: {}", file_path.display()))?;
 
-    let messages = extract_messages(&content, file_path.to_string_lossy().as_ref(), options);
+    let messages = extract_messages(&content, &file_path.to_path_buf(), options);
 
     Ok(messages)
 }

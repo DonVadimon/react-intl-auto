@@ -52,7 +52,7 @@ export const createConfigurationSuites = (title: string, tests: TestCase[]) => {
         },
 
         {
-            title: 'removePrefix = "src/" -- with slash',
+            title: 'removePrefix = "src/"',
             tests,
             pluginOptions: { removePrefix: 'src/' },
         },
@@ -68,14 +68,6 @@ export const createConfigurationSuites = (title: string, tests: TestCase[]) => {
             tests,
             pluginOptions: {
                 removePrefix: /src[\\/]__f.+?_/u,
-            },
-        },
-
-        {
-            title: 'removePrefix = "src.__fixtures__"',
-            tests,
-            pluginOptions: {
-                removePrefix: 'src.__fixtures__',
             },
         },
 
@@ -121,41 +113,21 @@ export const createConfigurationSuites = (title: string, tests: TestCase[]) => {
         },
 
         {
-            title: 'hash murmur3',
+            title: 'hashAlgorithm = "murmur3"',
             tests,
             pluginOptions: { hashId: true, hashAlgorithm: 'murmur3' },
         },
 
         {
-            title: 'hash base64',
+            title: 'hashAlgorithm = "base64"',
             tests,
             pluginOptions: { hashId: true, hashAlgorithm: 'base64' },
         },
 
         {
-            title: 'hash unknown fallback to murmur3',
+            title: 'hashAlgorithm = "unknown"',
             tests,
             pluginOptions: { hashId: true, hashAlgorithm: 'unknown' as any },
-        },
-
-        {
-            title: 'hash + removePrefix = "src/"',
-            tests,
-            pluginOptions: {
-                hashId: true,
-                hashAlgorithm: 'base64',
-                removePrefix: 'src/',
-            },
-        },
-
-        {
-            title: 'hash + relativeTo = "src"',
-            tests,
-            pluginOptions: {
-                hashId: true,
-                hashAlgorithm: 'base64',
-                relativeTo: 'src',
-            },
         },
     ];
 

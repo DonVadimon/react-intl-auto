@@ -1231,6 +1231,7 @@ dependencies = [
  "anyhow",
  "clap",
  "globset",
+ "pathdiff",
  "react-intl-core",
  "serde",
  "serde_json",

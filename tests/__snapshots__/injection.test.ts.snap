@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`injection | CONFIGURATION: default | does nothing if id is already provided 1`] = `
+exports[`snap - injection | CONFIGURATION: default | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -16,7 +16,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: default | does nothing if react-intl is not imported 1`] = `
+exports[`snap - injection | CONFIGURATION: default | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -31,7 +31,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: default | multiple uses 1`] = `
+exports[`snap - injection | CONFIGURATION: default | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -57,7 +57,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: default | some supported use cases 1`] = `
+exports[`snap - injection | CONFIGURATION: default | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -81,7 +81,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection | CONFIGURATION: default | with FormattedMessage imported as something else 1`] = `
+exports[`snap - injection | CONFIGURATION: default | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -97,7 +97,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: default | with Injection API HOC imported 1`] = `
+exports[`snap - injection | CONFIGURATION: default | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -113,7 +113,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: default | with a value interpolated in the message 1`] = `
+exports[`snap - injection | CONFIGURATION: default | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -128,7 +128,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: default | with a variable as the defaultMessage 1`] = `
+exports[`snap - injection | CONFIGURATION: default | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = 'variable message';
@@ -144,7 +144,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: default | with a variable as the defaultMessage 2`] = `
+exports[`snap - injection | CONFIGURATION: default | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -158,7 +158,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: default | with custom properties in formatMessage call 1`] = `
+exports[`snap - injection | CONFIGURATION: default | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -175,7 +175,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: default | with injectIntl 1`] = `
+exports[`snap - injection | CONFIGURATION: default | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -191,7 +191,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash + relativeTo = "src" | does nothing if id is already provided 1`] = `
+exports[`snap - injection | CONFIGURATION: hash + relativeTo = "src" | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -207,7 +207,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash + relativeTo = "src" | does nothing if react-intl is not imported 1`] = `
+exports[`snap - injection | CONFIGURATION: hash + relativeTo = "src" | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -222,7 +222,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash + relativeTo = "src" | multiple uses 1`] = `
+exports[`snap - injection | CONFIGURATION: hash + relativeTo = "src" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -248,7 +248,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash + relativeTo = "src" | some supported use cases 1`] = `
+exports[`snap - injection | CONFIGURATION: hash + relativeTo = "src" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -272,7 +272,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash + relativeTo = "src" | with FormattedMessage imported as something else 1`] = `
+exports[`snap - injection | CONFIGURATION: hash + relativeTo = "src" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -288,7 +288,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash + relativeTo = "src" | with Injection API HOC imported 1`] = `
+exports[`snap - injection | CONFIGURATION: hash + relativeTo = "src" | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -304,7 +304,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash + relativeTo = "src" | with a value interpolated in the message 1`] = `
+exports[`snap - injection | CONFIGURATION: hash + relativeTo = "src" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -319,7 +319,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash + relativeTo = "src" | with a variable as the defaultMessage 1`] = `
+exports[`snap - injection | CONFIGURATION: hash + relativeTo = "src" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = 'variable message';
@@ -335,7 +335,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash + relativeTo = "src" | with a variable as the defaultMessage 2`] = `
+exports[`snap - injection | CONFIGURATION: hash + relativeTo = "src" | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -349,7 +349,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash + relativeTo = "src" | with custom properties in formatMessage call 1`] = `
+exports[`snap - injection | CONFIGURATION: hash + relativeTo = "src" | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -366,7 +366,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash + relativeTo = "src" | with injectIntl 1`] = `
+exports[`snap - injection | CONFIGURATION: hash + relativeTo = "src" | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -382,7 +382,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash + removePrefix = "src/" | does nothing if id is already provided 1`] = `
+exports[`snap - injection | CONFIGURATION: hash + removePrefix = "src/" | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -398,7 +398,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash + removePrefix = "src/" | does nothing if react-intl is not imported 1`] = `
+exports[`snap - injection | CONFIGURATION: hash + removePrefix = "src/" | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -413,7 +413,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash + removePrefix = "src/" | multiple uses 1`] = `
+exports[`snap - injection | CONFIGURATION: hash + removePrefix = "src/" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -439,7 +439,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash + removePrefix = "src/" | some supported use cases 1`] = `
+exports[`snap - injection | CONFIGURATION: hash + removePrefix = "src/" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -463,7 +463,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash + removePrefix = "src/" | with FormattedMessage imported as something else 1`] = `
+exports[`snap - injection | CONFIGURATION: hash + removePrefix = "src/" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -479,7 +479,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash + removePrefix = "src/" | with Injection API HOC imported 1`] = `
+exports[`snap - injection | CONFIGURATION: hash + removePrefix = "src/" | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -495,7 +495,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash + removePrefix = "src/" | with a value interpolated in the message 1`] = `
+exports[`snap - injection | CONFIGURATION: hash + removePrefix = "src/" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -510,7 +510,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash + removePrefix = "src/" | with a variable as the defaultMessage 1`] = `
+exports[`snap - injection | CONFIGURATION: hash + removePrefix = "src/" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = 'variable message';
@@ -526,7 +526,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash + removePrefix = "src/" | with a variable as the defaultMessage 2`] = `
+exports[`snap - injection | CONFIGURATION: hash + removePrefix = "src/" | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -540,7 +540,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash + removePrefix = "src/" | with custom properties in formatMessage call 1`] = `
+exports[`snap - injection | CONFIGURATION: hash + removePrefix = "src/" | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -557,7 +557,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash + removePrefix = "src/" | with injectIntl 1`] = `
+exports[`snap - injection | CONFIGURATION: hash + removePrefix = "src/" | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -573,7 +573,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash base64 | does nothing if id is already provided 1`] = `
+exports[`snap - injection | CONFIGURATION: hash base64 | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -589,7 +589,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash base64 | does nothing if react-intl is not imported 1`] = `
+exports[`snap - injection | CONFIGURATION: hash base64 | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -604,7 +604,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash base64 | multiple uses 1`] = `
+exports[`snap - injection | CONFIGURATION: hash base64 | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -630,7 +630,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash base64 | some supported use cases 1`] = `
+exports[`snap - injection | CONFIGURATION: hash base64 | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -654,7 +654,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash base64 | with FormattedMessage imported as something else 1`] = `
+exports[`snap - injection | CONFIGURATION: hash base64 | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -670,7 +670,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash base64 | with Injection API HOC imported 1`] = `
+exports[`snap - injection | CONFIGURATION: hash base64 | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -686,7 +686,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash base64 | with a value interpolated in the message 1`] = `
+exports[`snap - injection | CONFIGURATION: hash base64 | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -701,7 +701,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash base64 | with a variable as the defaultMessage 1`] = `
+exports[`snap - injection | CONFIGURATION: hash base64 | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = 'variable message';
@@ -717,7 +717,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash base64 | with a variable as the defaultMessage 2`] = `
+exports[`snap - injection | CONFIGURATION: hash base64 | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -731,7 +731,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash base64 | with custom properties in formatMessage call 1`] = `
+exports[`snap - injection | CONFIGURATION: hash base64 | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -748,7 +748,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash base64 | with injectIntl 1`] = `
+exports[`snap - injection | CONFIGURATION: hash base64 | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -764,7 +764,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash murmur3 | does nothing if id is already provided 1`] = `
+exports[`snap - injection | CONFIGURATION: hash murmur3 | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -780,7 +780,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash murmur3 | does nothing if react-intl is not imported 1`] = `
+exports[`snap - injection | CONFIGURATION: hash murmur3 | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -795,7 +795,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash murmur3 | multiple uses 1`] = `
+exports[`snap - injection | CONFIGURATION: hash murmur3 | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -821,7 +821,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash murmur3 | some supported use cases 1`] = `
+exports[`snap - injection | CONFIGURATION: hash murmur3 | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -845,7 +845,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash murmur3 | with FormattedMessage imported as something else 1`] = `
+exports[`snap - injection | CONFIGURATION: hash murmur3 | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -861,7 +861,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash murmur3 | with Injection API HOC imported 1`] = `
+exports[`snap - injection | CONFIGURATION: hash murmur3 | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -877,7 +877,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash murmur3 | with a value interpolated in the message 1`] = `
+exports[`snap - injection | CONFIGURATION: hash murmur3 | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -892,7 +892,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash murmur3 | with a variable as the defaultMessage 1`] = `
+exports[`snap - injection | CONFIGURATION: hash murmur3 | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = 'variable message';
@@ -908,7 +908,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash murmur3 | with a variable as the defaultMessage 2`] = `
+exports[`snap - injection | CONFIGURATION: hash murmur3 | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -922,7 +922,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash murmur3 | with custom properties in formatMessage call 1`] = `
+exports[`snap - injection | CONFIGURATION: hash murmur3 | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -939,7 +939,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash murmur3 | with injectIntl 1`] = `
+exports[`snap - injection | CONFIGURATION: hash murmur3 | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -955,7 +955,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash unknown fallback to murmur3 | does nothing if id is already provided 1`] = `
+exports[`snap - injection | CONFIGURATION: hash unknown fallback to murmur3 | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -971,7 +971,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash unknown fallback to murmur3 | does nothing if react-intl is not imported 1`] = `
+exports[`snap - injection | CONFIGURATION: hash unknown fallback to murmur3 | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -986,7 +986,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash unknown fallback to murmur3 | multiple uses 1`] = `
+exports[`snap - injection | CONFIGURATION: hash unknown fallback to murmur3 | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1012,7 +1012,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash unknown fallback to murmur3 | some supported use cases 1`] = `
+exports[`snap - injection | CONFIGURATION: hash unknown fallback to murmur3 | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -1036,7 +1036,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash unknown fallback to murmur3 | with FormattedMessage imported as something else 1`] = `
+exports[`snap - injection | CONFIGURATION: hash unknown fallback to murmur3 | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -1052,7 +1052,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash unknown fallback to murmur3 | with Injection API HOC imported 1`] = `
+exports[`snap - injection | CONFIGURATION: hash unknown fallback to murmur3 | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1068,7 +1068,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash unknown fallback to murmur3 | with a value interpolated in the message 1`] = `
+exports[`snap - injection | CONFIGURATION: hash unknown fallback to murmur3 | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1083,7 +1083,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash unknown fallback to murmur3 | with a variable as the defaultMessage 1`] = `
+exports[`snap - injection | CONFIGURATION: hash unknown fallback to murmur3 | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = 'variable message';
@@ -1099,7 +1099,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash unknown fallback to murmur3 | with a variable as the defaultMessage 2`] = `
+exports[`snap - injection | CONFIGURATION: hash unknown fallback to murmur3 | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -1113,7 +1113,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash unknown fallback to murmur3 | with custom properties in formatMessage call 1`] = `
+exports[`snap - injection | CONFIGURATION: hash unknown fallback to murmur3 | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1130,7 +1130,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: hash unknown fallback to murmur3 | with injectIntl 1`] = `
+exports[`snap - injection | CONFIGURATION: hash unknown fallback to murmur3 | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1146,7 +1146,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | does nothing if id is already provided 1`] = `
+exports[`snap - injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1162,7 +1162,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | does nothing if react-intl is not imported 1`] = `
+exports[`snap - injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -1177,7 +1177,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | multiple uses 1`] = `
+exports[`snap - injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1203,7 +1203,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | some supported use cases 1`] = `
+exports[`snap - injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -1227,7 +1227,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with FormattedMessage imported as something else 1`] = `
+exports[`snap - injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -1243,7 +1243,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with Injection API HOC imported 1`] = `
+exports[`snap - injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1259,7 +1259,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with a value interpolated in the message 1`] = `
+exports[`snap - injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1274,7 +1274,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with a variable as the defaultMessage 1`] = `
+exports[`snap - injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = 'variable message';
@@ -1290,7 +1290,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with a variable as the defaultMessage 2`] = `
+exports[`snap - injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -1304,7 +1304,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with custom properties in formatMessage call 1`] = `
+exports[`snap - injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1321,7 +1321,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with injectIntl 1`] = `
+exports[`snap - injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1337,7 +1337,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: relativeTo = "" | does nothing if id is already provided 1`] = `
+exports[`snap - injection | CONFIGURATION: relativeTo = "" | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1353,7 +1353,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: relativeTo = "" | does nothing if react-intl is not imported 1`] = `
+exports[`snap - injection | CONFIGURATION: relativeTo = "" | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -1368,7 +1368,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: relativeTo = "" | multiple uses 1`] = `
+exports[`snap - injection | CONFIGURATION: relativeTo = "" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1394,7 +1394,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: relativeTo = "" | some supported use cases 1`] = `
+exports[`snap - injection | CONFIGURATION: relativeTo = "" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -1418,7 +1418,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection | CONFIGURATION: relativeTo = "" | with FormattedMessage imported as something else 1`] = `
+exports[`snap - injection | CONFIGURATION: relativeTo = "" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -1434,7 +1434,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: relativeTo = "" | with Injection API HOC imported 1`] = `
+exports[`snap - injection | CONFIGURATION: relativeTo = "" | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1450,7 +1450,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: relativeTo = "" | with a value interpolated in the message 1`] = `
+exports[`snap - injection | CONFIGURATION: relativeTo = "" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1465,7 +1465,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: relativeTo = "" | with a variable as the defaultMessage 1`] = `
+exports[`snap - injection | CONFIGURATION: relativeTo = "" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = 'variable message';
@@ -1481,7 +1481,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: relativeTo = "" | with a variable as the defaultMessage 2`] = `
+exports[`snap - injection | CONFIGURATION: relativeTo = "" | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -1495,7 +1495,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: relativeTo = "" | with custom properties in formatMessage call 1`] = `
+exports[`snap - injection | CONFIGURATION: relativeTo = "" | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1512,7 +1512,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: relativeTo = "" | with injectIntl 1`] = `
+exports[`snap - injection | CONFIGURATION: relativeTo = "" | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1528,7 +1528,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: relativeTo = "../" | does nothing if id is already provided 1`] = `
+exports[`snap - injection | CONFIGURATION: relativeTo = "../" | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1544,7 +1544,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: relativeTo = "../" | does nothing if react-intl is not imported 1`] = `
+exports[`snap - injection | CONFIGURATION: relativeTo = "../" | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -1559,7 +1559,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: relativeTo = "../" | multiple uses 1`] = `
+exports[`snap - injection | CONFIGURATION: relativeTo = "../" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1585,7 +1585,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: relativeTo = "../" | some supported use cases 1`] = `
+exports[`snap - injection | CONFIGURATION: relativeTo = "../" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -1609,7 +1609,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection | CONFIGURATION: relativeTo = "../" | with FormattedMessage imported as something else 1`] = `
+exports[`snap - injection | CONFIGURATION: relativeTo = "../" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -1625,7 +1625,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: relativeTo = "../" | with Injection API HOC imported 1`] = `
+exports[`snap - injection | CONFIGURATION: relativeTo = "../" | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1641,7 +1641,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: relativeTo = "../" | with a value interpolated in the message 1`] = `
+exports[`snap - injection | CONFIGURATION: relativeTo = "../" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1656,7 +1656,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: relativeTo = "../" | with a variable as the defaultMessage 1`] = `
+exports[`snap - injection | CONFIGURATION: relativeTo = "../" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = 'variable message';
@@ -1672,7 +1672,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: relativeTo = "../" | with a variable as the defaultMessage 2`] = `
+exports[`snap - injection | CONFIGURATION: relativeTo = "../" | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -1686,7 +1686,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: relativeTo = "../" | with custom properties in formatMessage call 1`] = `
+exports[`snap - injection | CONFIGURATION: relativeTo = "../" | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1703,7 +1703,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: relativeTo = "../" | with injectIntl 1`] = `
+exports[`snap - injection | CONFIGURATION: relativeTo = "../" | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1719,7 +1719,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src" | does nothing if id is already provided 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src" | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1735,7 +1735,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src" | does nothing if react-intl is not imported 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src" | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -1750,7 +1750,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src" | multiple uses 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1776,7 +1776,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src" | some supported use cases 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -1800,7 +1800,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src" | with FormattedMessage imported as something else 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -1816,7 +1816,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src" | with Injection API HOC imported 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src" | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1832,7 +1832,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src" | with a value interpolated in the message 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1847,7 +1847,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src" | with a variable as the defaultMessage 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = 'variable message';
@@ -1863,7 +1863,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src" | with a variable as the defaultMessage 2`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src" | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -1877,7 +1877,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src" | with custom properties in formatMessage call 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src" | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1894,7 +1894,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src" | with injectIntl 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src" | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1910,7 +1910,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src.__fixtures__" | does nothing if id is already provided 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src.__fixtures__" | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1926,7 +1926,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src.__fixtures__" | does nothing if id is already provided 2`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src.__fixtures__" | does nothing if id is already provided 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1942,7 +1942,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src.__fixtures__" | does nothing if react-intl is not imported 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src.__fixtures__" | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -1957,7 +1957,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src.__fixtures__" | does nothing if react-intl is not imported 2`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src.__fixtures__" | does nothing if react-intl is not imported 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -1972,7 +1972,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src.__fixtures__" | multiple uses 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src.__fixtures__" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -1998,7 +1998,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src.__fixtures__" | multiple uses 2`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src.__fixtures__" | multiple uses 2`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2024,7 +2024,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src.__fixtures__" | some supported use cases 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src.__fixtures__" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -2048,7 +2048,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src.__fixtures__" | some supported use cases 2`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src.__fixtures__" | some supported use cases 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -2072,7 +2072,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with FormattedMessage imported as something else 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -2088,7 +2088,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with FormattedMessage imported as something else 2`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with FormattedMessage imported as something else 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -2104,7 +2104,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with Injection API HOC imported 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2120,7 +2120,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with Injection API HOC imported 2`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with Injection API HOC imported 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2136,7 +2136,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with a value interpolated in the message 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2151,7 +2151,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with a value interpolated in the message 2`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with a value interpolated in the message 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2166,7 +2166,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = 'variable message';
@@ -2182,7 +2182,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 2`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -2196,7 +2196,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 3`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 3`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = 'variable message';
@@ -2212,7 +2212,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 4`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 4`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -2226,7 +2226,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with custom properties in formatMessage call 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2243,7 +2243,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with custom properties in formatMessage call 2`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with custom properties in formatMessage call 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2260,7 +2260,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with injectIntl 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2276,7 +2276,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with injectIntl 2`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src.__fixtures__" | with injectIntl 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2292,7 +2292,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src/" -- with slash | does nothing if id is already provided 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src/" -- with slash | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2308,7 +2308,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src/" -- with slash | does nothing if react-intl is not imported 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src/" -- with slash | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -2323,7 +2323,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src/" -- with slash | multiple uses 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src/" -- with slash | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2349,7 +2349,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src/" -- with slash | some supported use cases 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src/" -- with slash | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -2373,7 +2373,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src/" -- with slash | with FormattedMessage imported as something else 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src/" -- with slash | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -2389,7 +2389,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src/" -- with slash | with Injection API HOC imported 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src/" -- with slash | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2405,7 +2405,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src/" -- with slash | with a value interpolated in the message 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src/" -- with slash | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2420,7 +2420,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src/" -- with slash | with a variable as the defaultMessage 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src/" -- with slash | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = 'variable message';
@@ -2436,7 +2436,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src/" -- with slash | with a variable as the defaultMessage 2`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src/" -- with slash | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -2450,7 +2450,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src/" -- with slash | with custom properties in formatMessage call 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src/" -- with slash | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2467,7 +2467,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = "src/" -- with slash | with injectIntl 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = "src/" -- with slash | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2483,7 +2483,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = /__fixtures__/ | does nothing if id is already provided 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = /__fixtures__/ | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2499,7 +2499,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = /__fixtures__/ | does nothing if react-intl is not imported 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = /__fixtures__/ | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -2514,7 +2514,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = /__fixtures__/ | multiple uses 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = /__fixtures__/ | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2540,7 +2540,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = /__fixtures__/ | some supported use cases 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = /__fixtures__/ | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -2564,7 +2564,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = /__fixtures__/ | with FormattedMessage imported as something else 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = /__fixtures__/ | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -2580,7 +2580,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = /__fixtures__/ | with Injection API HOC imported 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = /__fixtures__/ | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2596,7 +2596,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = /__fixtures__/ | with a value interpolated in the message 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = /__fixtures__/ | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2611,7 +2611,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = /__fixtures__/ | with a variable as the defaultMessage 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = /__fixtures__/ | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = 'variable message';
@@ -2627,7 +2627,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = /__fixtures__/ | with a variable as the defaultMessage 2`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = /__fixtures__/ | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -2641,7 +2641,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = /__fixtures__/ | with custom properties in formatMessage call 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = /__fixtures__/ | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2658,7 +2658,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = /__fixtures__/ | with injectIntl 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = /__fixtures__/ | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2674,7 +2674,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = true | does nothing if id is already provided 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = true | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2690,7 +2690,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = true | does nothing if react-intl is not imported 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = true | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -2705,7 +2705,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = true | multiple uses 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = true | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2731,7 +2731,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = true | some supported use cases 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = true | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -2755,7 +2755,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = true | with FormattedMessage imported as something else 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = true | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -2771,7 +2771,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = true | with Injection API HOC imported 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = true | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2787,7 +2787,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = true | with a value interpolated in the message 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = true | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2802,7 +2802,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = true | with a variable as the defaultMessage 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = true | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = 'variable message';
@@ -2818,7 +2818,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = true | with a variable as the defaultMessage 2`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = true | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -2832,7 +2832,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = true | with custom properties in formatMessage call 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = true | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2849,7 +2849,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: removePrefix = true | with injectIntl 1`] = `
+exports[`snap - injection | CONFIGURATION: removePrefix = true | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2865,7 +2865,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: separator = "_" | does nothing if id is already provided 1`] = `
+exports[`snap - injection | CONFIGURATION: separator = "_" | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2881,7 +2881,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: separator = "_" | does nothing if react-intl is not imported 1`] = `
+exports[`snap - injection | CONFIGURATION: separator = "_" | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 function App(param) {
     var intl = param.intl;
@@ -2896,7 +2896,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: separator = "_" | multiple uses 1`] = `
+exports[`snap - injection | CONFIGURATION: separator = "_" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2922,7 +2922,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: separator = "_" | some supported use cases 1`] = `
+exports[`snap - injection | CONFIGURATION: separator = "_" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var Component2 = function Component2(param) {
@@ -2946,7 +2946,7 @@ injectIntl(Components2);
 "
 `;
 
-exports[`injection | CONFIGURATION: separator = "_" | with FormattedMessage imported as something else 1`] = `
+exports[`snap - injection | CONFIGURATION: separator = "_" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl as i18n } from 'react-intl';
 function App(param) {
@@ -2962,7 +2962,7 @@ export default i18n(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: separator = "_" | with Injection API HOC imported 1`] = `
+exports[`snap - injection | CONFIGURATION: separator = "_" | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2978,7 +2978,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: separator = "_" | with a value interpolated in the message 1`] = `
+exports[`snap - injection | CONFIGURATION: separator = "_" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -2993,7 +2993,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: separator = "_" | with a variable as the defaultMessage 1`] = `
+exports[`snap - injection | CONFIGURATION: separator = "_" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 var message = 'variable message';
@@ -3009,7 +3009,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: separator = "_" | with a variable as the defaultMessage 2`] = `
+exports[`snap - injection | CONFIGURATION: separator = "_" | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 import { message } from './messages';
@@ -3023,7 +3023,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: separator = "_" | with custom properties in formatMessage call 1`] = `
+exports[`snap - injection | CONFIGURATION: separator = "_" | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {
@@ -3040,7 +3040,7 @@ export default injectIntl(App);
 "
 `;
 
-exports[`injection | CONFIGURATION: separator = "_" | with injectIntl 1`] = `
+exports[`snap - injection | CONFIGURATION: separator = "_" | with injectIntl 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
 function App(param) {

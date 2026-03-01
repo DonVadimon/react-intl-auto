@@ -13,3 +13,4 @@ dist
 .react-intl
 .swc
 .build
+.tmp

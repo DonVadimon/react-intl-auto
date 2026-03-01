@@ -8,7 +8,7 @@
     "format": "cargo fmt && prettier --write \"{src,tests,sandbox,scripts}/**/*.{ts,tsx,js,jsx}\"",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:full": "npm run build && cargo test && npm test",
+    "test:full": "cargo test && npm run build && npm run cli:build && npm test",
     "sandbox:basic": "rm -rf ./sandbox/basic/.build && npx swc ./sandbox/basic/src --config-file ./sandbox/basic/.swcrc --out-dir ./sandbox/basic/.build",
     "cli:build": "cargo build --release",
     "cli:run": "./target/release/react-intl-extract",

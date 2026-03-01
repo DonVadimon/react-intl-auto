@@ -5,8 +5,9 @@
 
 use swc_core::ecma::ast::*;
 
-use crate::id_generator::{hash_string, murmur32_hash};
-use crate::path_utils::add_prefix;
+use crate::id_generator::{
+    generate_message_id, GenIdFromDescriptorPayload, GenIdFromKeyPayload, GenIdPayload,
+};
 use crate::types::CoreState;
 
 /// Data structure representing a transformed message with generated ID
@@ -15,88 +16,6 @@ pub struct TransformedMessageData {
     pub id: String,
     pub default_message: Option<String>,
     pub description: Option<String>,
-}
-
-/// payload to generate id from message description
-/// object
-/// ```js
-/// const messages = intl.formatMessage({
-///     defaultMessage: "defaultMessage", // hash default message
-///     description: "description", // + hash description
-/// });
-/// ```
-/// jsx
-/// ```js
-/// <FormattedMessage defaultMessage="hello" /> // hash default message
-/// ```
-#[derive(Debug, Clone)]
-struct GenIdFromDescriptorPayload<'a> {
-    pub default_message: &'a String,
-    pub description: &'a Option<String>,
-}
-
-/// payload to generate id from key + part of message description
-/// only key
-/// ```js
-/// const messages = defineMessages({
-///     hello: { // key = "hello"
-///         defaultMessage: "defaultMessage",
-///         description: "description", // + hash description
-///     }
-/// });
-/// ```
-/// key + descriptor path
-/// ```js
-/// const messages = defineMessages({
-///     hello: { // key = "hello"
-///         defaultMessage: "defaultMessage",
-///         description: "description", // + hash description
-///     }
-/// });
-/// ```
-#[derive(Debug, Clone)]
-struct GenIdFromKeyPayload<'a> {
-    pub key: &'a String,
-    pub description: &'a Option<String>,
-}
-
-#[derive(Debug, Clone)]
-enum GenIdPayload<'a> {
-    Key(GenIdFromKeyPayload<'a>),
-    Descriptor(GenIdFromDescriptorPayload<'a>),
-}
-
-/// Generates an ID for a message based on the configuration
-///
-/// # Arguments
-/// * `state` - The core state
-/// * `payload` - Payload for id generation
-fn generate_message_id(state: &CoreState, payload: &GenIdPayload) -> String {
-    let raw_id = match payload {
-        GenIdPayload::Key(key_payload) => {
-            let mut parts = vec![key_payload.key.to_owned()];
-            if let Some(description) = &key_payload.description {
-                parts.push(murmur32_hash(description.as_str()));
-            }
-            parts.join(state.opts.separator.as_str())
-        }
-        GenIdPayload::Descriptor(descriptor) => {
-            let mut parts = vec![descriptor.default_message.to_owned()];
-            if let Some(description) = &descriptor.description {
-                parts.push(description.to_owned());
-            }
-            murmur32_hash(parts.join(state.opts.separator.as_str()).as_str())
-        }
-    };
-
-    let path_id = add_prefix(state, &raw_id);
-
-    // Apply hash_id option if enabled
-    if state.opts.hash_id {
-        hash_string(&path_id, &state.opts.hash_algorithm)
-    } else {
-        path_id
-    }
 }
 
 /// Analyzes a JSX element and extracts message data if it's a React Intl component
@@ -451,6 +370,7 @@ pub fn analyze_format_message(
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::id_generator::hash_string;
     use crate::types::CoreOptions;
     use swc_core::common::BytePos;
     use swc_core::ecma::parser::{lexer::Lexer, Parser, StringInput, Syntax, TsSyntax};
@@ -539,7 +459,9 @@ mod tests {
         // Should return some for attrs that wrapped in jsx expr
         assert!(result.is_some());
         let (transformed, needs_insertion) = result.unwrap();
-        assert!(transformed.id.contains(murmur32_hash("message").as_str()));
+        assert!(transformed
+            .id
+            .contains(hash_string("message", "murmur3").as_str()));
         assert!(needs_insertion); // ID needs to be inserted
     }
 
@@ -554,7 +476,9 @@ mod tests {
         // Should return some for attrs that wrapped in string literals
         assert!(result.is_some());
         let (transformed, needs_insertion) = result.unwrap();
-        assert!(transformed.id.contains(murmur32_hash("message").as_str()));
+        assert!(transformed
+            .id
+            .contains(hash_string("message", "murmur3").as_str()));
         assert!(needs_insertion); // ID needs to be inserted
     }
 

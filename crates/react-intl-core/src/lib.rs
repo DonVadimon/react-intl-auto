@@ -12,8 +12,6 @@ pub mod types;
 // Re-export main types and functions for convenience
 pub use types::{CoreOptions, CoreState, OutputMode, RemovePrefix, REACT_COMPONENTS};
 
-pub use id_generator::{hash_string, murmur32_hash};
-
 pub use import_check::process_import_decl;
 
 pub use ast_analysis::{

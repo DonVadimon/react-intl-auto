@@ -1,4 +1,3 @@
-
 const normal = {
     title: 'with Injection API HOC imported',
     fixture: 'injection/default.js',

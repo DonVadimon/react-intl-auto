@@ -1,4 +1,3 @@
-
 const normal = {
     title: 'default',
     fixture: 'components/default.tsx',

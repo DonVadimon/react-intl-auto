@@ -1,4 +1,3 @@
-
 const normal = {
     title: 'with useIntl hook imported',
     fixture: 'hook/default.js',

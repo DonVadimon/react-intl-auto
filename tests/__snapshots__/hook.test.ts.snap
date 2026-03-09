@@ -2,7 +2,9 @@
 
 exports[`snap - hooks | CONFIGURATION: default | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -10,7 +12,6 @@ var Component = function Component() {
         })
     });
 };
-export { };
 "
 `;
 
@@ -30,7 +31,9 @@ export { };
 
 exports[`snap - hooks | CONFIGURATION: default | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsxs("div", {
         children: [
             intl.formatMessage({
@@ -48,7 +51,6 @@ var Component = function Component() {
         ]
     });
 };
-export { };
 "
 `;
 
@@ -77,7 +79,9 @@ var Component = function Component() {
 
 exports[`snap - hooks | CONFIGURATION: default | useIntl with different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'gatsby-plugin-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -85,21 +89,6 @@ var Component = function Component() {
         })
     });
 };
-export { };
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: default | with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-var Component = function Component() {
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'i18n',
-            "id": "tests.__fixtures__.hook.import-as.94348014"
-        })
-    });
-};
-export { };
 "
 `;
 
@@ -175,9 +164,26 @@ var Component = function Component() {
 "
 `;
 
+exports[`snap - hooks | CONFIGURATION: default | with useIntl imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl as useI18n } from 'react-intl';
+var Component = function Component() {
+    var intl = useI18n();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "tests.__fixtures__.hook.import-as.94348014"
+        })
+    });
+};
+"
+`;
+
 exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "base64" | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -185,7 +191,6 @@ var Component = function Component() {
         })
     });
 };
-export { };
 "
 `;
 
@@ -205,7 +210,9 @@ export { };
 
 exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "base64" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsxs("div", {
         children: [
             intl.formatMessage({
@@ -223,7 +230,6 @@ var Component = function Component() {
         ]
     });
 };
-export { };
 "
 `;
 
@@ -252,7 +258,9 @@ var Component = function Component() {
 
 exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "base64" | useIntl with different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'gatsby-plugin-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -260,21 +268,6 @@ var Component = function Component() {
         })
     });
 };
-export { };
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "base64" | with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-var Component = function Component() {
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'i18n',
-            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2suaW1wb3J0LWFzLjk0MzQ4MDE0"
-        })
-    });
-};
-export { };
 "
 `;
 
@@ -350,9 +343,26 @@ var Component = function Component() {
 "
 `;
 
+exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "base64" | with useIntl imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl as useI18n } from 'react-intl';
+var Component = function Component() {
+    var intl = useI18n();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2suaW1wb3J0LWFzLjk0MzQ4MDE0"
+        })
+    });
+};
+"
+`;
+
 exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "murmur3" | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -360,7 +370,6 @@ var Component = function Component() {
         })
     });
 };
-export { };
 "
 `;
 
@@ -380,7 +389,9 @@ export { };
 
 exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "murmur3" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsxs("div", {
         children: [
             intl.formatMessage({
@@ -398,7 +409,6 @@ var Component = function Component() {
         ]
     });
 };
-export { };
 "
 `;
 
@@ -427,7 +437,9 @@ var Component = function Component() {
 
 exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "murmur3" | useIntl with different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'gatsby-plugin-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -435,21 +447,6 @@ var Component = function Component() {
         })
     });
 };
-export { };
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "murmur3" | with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-var Component = function Component() {
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'i18n',
-            "id": "1318926594"
-        })
-    });
-};
-export { };
 "
 `;
 
@@ -525,9 +522,26 @@ var Component = function Component() {
 "
 `;
 
+exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "murmur3" | with useIntl imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl as useI18n } from 'react-intl';
+var Component = function Component() {
+    var intl = useI18n();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "1318926594"
+        })
+    });
+};
+"
+`;
+
 exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "unknown" | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -535,7 +549,6 @@ var Component = function Component() {
         })
     });
 };
-export { };
 "
 `;
 
@@ -555,7 +568,9 @@ export { };
 
 exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "unknown" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsxs("div", {
         children: [
             intl.formatMessage({
@@ -573,7 +588,6 @@ var Component = function Component() {
         ]
     });
 };
-export { };
 "
 `;
 
@@ -602,7 +616,9 @@ var Component = function Component() {
 
 exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "unknown" | useIntl with different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'gatsby-plugin-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -610,21 +626,6 @@ var Component = function Component() {
         })
     });
 };
-export { };
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "unknown" | with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-var Component = function Component() {
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'i18n',
-            "id": "1318926594"
-        })
-    });
-};
-export { };
 "
 `;
 
@@ -700,9 +701,26 @@ var Component = function Component() {
 "
 `;
 
+exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "unknown" | with useIntl imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl as useI18n } from 'react-intl';
+var Component = function Component() {
+    var intl = useI18n();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "1318926594"
+        })
+    });
+};
+"
+`;
+
 exports[`snap - hooks | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -710,7 +728,6 @@ var Component = function Component() {
         })
     });
 };
-export { };
 "
 `;
 
@@ -730,7 +747,9 @@ export { };
 
 exports[`snap - hooks | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsxs("div", {
         children: [
             intl.formatMessage({
@@ -748,7 +767,6 @@ var Component = function Component() {
         ]
     });
 };
-export { };
 "
 `;
 
@@ -777,7 +795,9 @@ var Component = function Component() {
 
 exports[`snap - hooks | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | useIntl with different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'gatsby-plugin-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -785,21 +805,6 @@ var Component = function Component() {
         })
     });
 };
-export { };
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-var Component = function Component() {
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'i18n',
-            "id": "tests.__fixtures__.hook.import-as.94348014"
-        })
-    });
-};
-export { };
 "
 `;
 
@@ -875,9 +880,26 @@ var Component = function Component() {
 "
 `;
 
+exports[`snap - hooks | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with useIntl imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl as useI18n } from 'react-intl';
+var Component = function Component() {
+    var intl = useI18n();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "tests.__fixtures__.hook.import-as.94348014"
+        })
+    });
+};
+"
+`;
+
 exports[`snap - hooks | CONFIGURATION: relativeTo = "" | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -885,7 +907,6 @@ var Component = function Component() {
         })
     });
 };
-export { };
 "
 `;
 
@@ -905,7 +926,9 @@ export { };
 
 exports[`snap - hooks | CONFIGURATION: relativeTo = "" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsxs("div", {
         children: [
             intl.formatMessage({
@@ -923,7 +946,6 @@ var Component = function Component() {
         ]
     });
 };
-export { };
 "
 `;
 
@@ -952,7 +974,9 @@ var Component = function Component() {
 
 exports[`snap - hooks | CONFIGURATION: relativeTo = "" | useIntl with different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'gatsby-plugin-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -960,21 +984,6 @@ var Component = function Component() {
         })
     });
 };
-export { };
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: relativeTo = "" | with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-var Component = function Component() {
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'i18n',
-            "id": "tests.__fixtures__.hook.import-as.94348014"
-        })
-    });
-};
-export { };
 "
 `;
 
@@ -1050,9 +1059,26 @@ var Component = function Component() {
 "
 `;
 
+exports[`snap - hooks | CONFIGURATION: relativeTo = "" | with useIntl imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl as useI18n } from 'react-intl';
+var Component = function Component() {
+    var intl = useI18n();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "tests.__fixtures__.hook.import-as.94348014"
+        })
+    });
+};
+"
+`;
+
 exports[`snap - hooks | CONFIGURATION: relativeTo = "../" | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -1060,7 +1086,6 @@ var Component = function Component() {
         })
     });
 };
-export { };
 "
 `;
 
@@ -1080,7 +1105,9 @@ export { };
 
 exports[`snap - hooks | CONFIGURATION: relativeTo = "../" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsxs("div", {
         children: [
             intl.formatMessage({
@@ -1098,7 +1125,6 @@ var Component = function Component() {
         ]
     });
 };
-export { };
 "
 `;
 
@@ -1127,7 +1153,9 @@ var Component = function Component() {
 
 exports[`snap - hooks | CONFIGURATION: relativeTo = "../" | useIntl with different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'gatsby-plugin-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -1135,21 +1163,6 @@ var Component = function Component() {
         })
     });
 };
-export { };
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: relativeTo = "../" | with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-var Component = function Component() {
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'i18n',
-            "id": "tests.__fixtures__.hook.import-as.94348014"
-        })
-    });
-};
-export { };
 "
 `;
 
@@ -1225,98 +1238,11 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src" | does nothing if id is already provided 1`] = `
+exports[`snap - hooks | CONFIGURATION: relativeTo = "../" | with useIntl imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl as useI18n } from 'react-intl';
 var Component = function Component() {
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            id: 'my.custom.id',
-            defaultMessage: 'hello'
-        })
-    });
-};
-export { };
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src" | does nothing if react-intl is not imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-var Component = function Component() {
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.not-imported.613153351"
-        })
-    });
-};
-export { };
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src" | multiple uses 1`] = `
-"import { jsxs as _jsxs } from "react/jsx-runtime";
-var Component = function Component() {
-    return /*#__PURE__*/ _jsxs("div", {
-        children: [
-            intl.formatMessage({
-                defaultMessage: 'hello',
-                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
-            }),
-            intl.formatMessage({
-                defaultMessage: 'hello',
-                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
-            }),
-            intl.formatMessage({
-                defaultMessage: 'some other message',
-                "id": "tests.__fixtures__.hook.multiple-uses.831373691"
-            })
-        ]
-    });
-};
-export { };
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src" | some supported use cases 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    var label = intl.formatMessage({
-        defaultMessage: 'hello',
-        "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
-    });
-    return /*#__PURE__*/ _jsx("div", {
-        "aria-label": intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
-        }),
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src" | useIntl with different module source 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-var Component = function Component() {
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            id: 'my.custom.id',
-            defaultMessage: 'hello'
-        })
-    });
-};
-export { };
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src" | with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-var Component = function Component() {
+    var intl = useI18n();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
@@ -1324,11 +1250,102 @@ var Component = function Component() {
         })
     });
 };
+"
+`;
+
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests" | does nothing if id is already provided 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
+"
+`;
+
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests" | does nothing if react-intl is not imported 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+var Component = function Component() {
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "__fixtures__.hook.not-imported.613153351"
+        })
+    });
+};
 export { };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src" | with a value interpolated in the message 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests" | multiple uses 1`] = `
+"import { jsxs as _jsxs } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsxs("div", {
+        children: [
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "__fixtures__.hook.multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'hello',
+                "id": "__fixtures__.hook.multiple-uses.613153351"
+            }),
+            intl.formatMessage({
+                defaultMessage: 'some other message',
+                "id": "__fixtures__.hook.multiple-uses.831373691"
+            })
+        ]
+    });
+};
+"
+`;
+
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests" | some supported use cases 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    var label = intl.formatMessage({
+        defaultMessage: 'hello',
+        "id": "__fixtures__.hook.some-supported-use-cases.613153351"
+    });
+    return /*#__PURE__*/ _jsx("div", {
+        "aria-label": intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "__fixtures__.hook.some-supported-use-cases.613153351"
+        }),
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            "id": "__fixtures__.hook.some-supported-use-cases.613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests" | useIntl with different module source 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'gatsby-plugin-intl';
+var Component = function Component() {
+    var intl = useIntl();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            id: 'my.custom.id',
+            defaultMessage: 'hello'
+        })
+    });
+};
+"
+`;
+
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -1342,7 +1359,7 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src" | with a variable as the defaultMessage 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var message = 'variable message';
@@ -1357,7 +1374,7 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src" | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests" | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -1369,7 +1386,7 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src" | with custom properties in formatMessage call 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests" | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -1378,14 +1395,14 @@ var Component = function Component() {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "tests.__fixtures__.hook.with-custom-properties.2983810267"
+            "id": "__fixtures__.hook.with-custom-properties.2983810267"
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src" | with useIntl hook imported 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests" | with useIntl hook imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -1393,16 +1410,33 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.default.613153351"
+            "id": "__fixtures__.hook.default.613153351"
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src.__fixtures__" | does nothing if id is already provided 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests" | with useIntl imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl as useI18n } from 'react-intl';
 var Component = function Component() {
+    var intl = useI18n();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "__fixtures__.hook.import-as.94348014"
+        })
+    });
+};
+"
+`;
+
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests.__fixtures__" | does nothing if id is already provided 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -1410,17 +1444,16 @@ var Component = function Component() {
         })
     });
 };
-export { };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src.__fixtures__" | does nothing if react-intl is not imported 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests.__fixtures__" | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.not-imported.613153351"
+            "id": "hook.not-imported.613153351"
         })
     });
 };
@@ -1428,56 +1461,59 @@ export { };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src.__fixtures__" | multiple uses 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests.__fixtures__" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsxs("div", {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+                "id": "hook.multiple-uses.613153351"
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+                "id": "hook.multiple-uses.613153351"
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "tests.__fixtures__.hook.multiple-uses.831373691"
+                "id": "hook.multiple-uses.831373691"
             })
         ]
     });
 };
-export { };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src.__fixtures__" | some supported use cases 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests.__fixtures__" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
+        "id": "hook.some-supported-use-cases.613153351"
     });
     return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
+            "id": "hook.some-supported-use-cases.613153351"
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
+            "id": "hook.some-supported-use-cases.613153351"
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src.__fixtures__" | useIntl with different module source 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests.__fixtures__" | useIntl with different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'gatsby-plugin-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -1485,25 +1521,10 @@ var Component = function Component() {
         })
     });
 };
-export { };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src.__fixtures__" | with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-var Component = function Component() {
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'i18n',
-            "id": "tests.__fixtures__.hook.import-as.94348014"
-        })
-    });
-};
-export { };
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src.__fixtures__" | with a value interpolated in the message 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests.__fixtures__" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -1517,7 +1538,7 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests.__fixtures__" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var message = 'variable message';
@@ -1532,7 +1553,7 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src.__fixtures__" | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests.__fixtures__" | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -1544,7 +1565,7 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src.__fixtures__" | with custom properties in formatMessage call 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests.__fixtures__" | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -1553,14 +1574,14 @@ var Component = function Component() {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "tests.__fixtures__.hook.with-custom-properties.2983810267"
+            "id": "hook.with-custom-properties.2983810267"
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src.__fixtures__" | with useIntl hook imported 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests.__fixtures__" | with useIntl hook imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -1568,16 +1589,33 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.default.613153351"
+            "id": "hook.default.613153351"
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src/" | does nothing if id is already provided 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests.__fixtures__" | with useIntl imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl as useI18n } from 'react-intl';
 var Component = function Component() {
+    var intl = useI18n();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "hook.import-as.94348014"
+        })
+    });
+};
+"
+`;
+
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests/" | does nothing if id is already provided 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
+var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -1585,17 +1623,16 @@ var Component = function Component() {
         })
     });
 };
-export { };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src/" | does nothing if react-intl is not imported 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests/" | does nothing if react-intl is not imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.not-imported.613153351"
+            "id": "__fixtures__.hook.not-imported.613153351"
         })
     });
 };
@@ -1603,56 +1640,59 @@ export { };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src/" | multiple uses 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests/" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsxs("div", {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+                "id": "__fixtures__.hook.multiple-uses.613153351"
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+                "id": "__fixtures__.hook.multiple-uses.613153351"
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "tests.__fixtures__.hook.multiple-uses.831373691"
+                "id": "__fixtures__.hook.multiple-uses.831373691"
             })
         ]
     });
 };
-export { };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src/" | some supported use cases 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests/" | some supported use cases 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
+        "id": "__fixtures__.hook.some-supported-use-cases.613153351"
     });
     return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
+            "id": "__fixtures__.hook.some-supported-use-cases.613153351"
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
+            "id": "__fixtures__.hook.some-supported-use-cases.613153351"
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src/" | useIntl with different module source 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests/" | useIntl with different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'gatsby-plugin-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -1660,25 +1700,10 @@ var Component = function Component() {
         })
     });
 };
-export { };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src/" | with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-var Component = function Component() {
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'i18n',
-            "id": "tests.__fixtures__.hook.import-as.94348014"
-        })
-    });
-};
-export { };
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src/" | with a value interpolated in the message 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests/" | with a value interpolated in the message 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -1692,7 +1717,7 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src/" | with a variable as the defaultMessage 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests/" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var message = 'variable message';
@@ -1707,7 +1732,7 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src/" | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests/" | with a variable as the defaultMessage 2`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -1719,7 +1744,7 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src/" | with custom properties in formatMessage call 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests/" | with custom properties in formatMessage call 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -1728,14 +1753,14 @@ var Component = function Component() {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "tests.__fixtures__.hook.with-custom-properties.2983810267"
+            "id": "__fixtures__.hook.with-custom-properties.2983810267"
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "src/" | with useIntl hook imported 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests/" | with useIntl hook imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -1743,7 +1768,22 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.default.613153351"
+            "id": "__fixtures__.hook.default.613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests/" | with useIntl imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl as useI18n } from 'react-intl';
+var Component = function Component() {
+    var intl = useI18n();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "__fixtures__.hook.import-as.94348014"
         })
     });
 };
@@ -1752,7 +1792,9 @@ var Component = function Component() {
 
 exports[`snap - hooks | CONFIGURATION: removePrefix = /__fixtures__/ | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -1760,7 +1802,6 @@ var Component = function Component() {
         })
     });
 };
-export { };
 "
 `;
 
@@ -1780,7 +1821,9 @@ export { };
 
 exports[`snap - hooks | CONFIGURATION: removePrefix = /__fixtures__/ | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsxs("div", {
         children: [
             intl.formatMessage({
@@ -1798,7 +1841,6 @@ var Component = function Component() {
         ]
     });
 };
-export { };
 "
 `;
 
@@ -1827,7 +1869,9 @@ var Component = function Component() {
 
 exports[`snap - hooks | CONFIGURATION: removePrefix = /__fixtures__/ | useIntl with different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'gatsby-plugin-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -1835,21 +1879,6 @@ var Component = function Component() {
         })
     });
 };
-export { };
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: removePrefix = /__fixtures__/ | with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-var Component = function Component() {
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'i18n',
-            "id": "tests.__fixtures__.hook.import-as.94348014"
-        })
-    });
-};
-export { };
 "
 `;
 
@@ -1925,9 +1954,26 @@ var Component = function Component() {
 "
 `;
 
+exports[`snap - hooks | CONFIGURATION: removePrefix = /__fixtures__/ | with useIntl imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl as useI18n } from 'react-intl';
+var Component = function Component() {
+    var intl = useI18n();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "tests.__fixtures__.hook.import-as.94348014"
+        })
+    });
+};
+"
+`;
+
 exports[`snap - hooks | CONFIGURATION: removePrefix = true | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -1935,7 +1981,6 @@ var Component = function Component() {
         })
     });
 };
-export { };
 "
 `;
 
@@ -1955,7 +2000,9 @@ export { };
 
 exports[`snap - hooks | CONFIGURATION: removePrefix = true | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsxs("div", {
         children: [
             intl.formatMessage({
@@ -1973,7 +2020,6 @@ var Component = function Component() {
         ]
     });
 };
-export { };
 "
 `;
 
@@ -2002,7 +2048,9 @@ var Component = function Component() {
 
 exports[`snap - hooks | CONFIGURATION: removePrefix = true | useIntl with different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'gatsby-plugin-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -2010,21 +2058,6 @@ var Component = function Component() {
         })
     });
 };
-export { };
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: removePrefix = true | with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-var Component = function Component() {
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'i18n',
-            "id": "94348014"
-        })
-    });
-};
-export { };
 "
 `;
 
@@ -2100,9 +2133,26 @@ var Component = function Component() {
 "
 `;
 
+exports[`snap - hooks | CONFIGURATION: removePrefix = true | with useIntl imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl as useI18n } from 'react-intl';
+var Component = function Component() {
+    var intl = useI18n();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "94348014"
+        })
+    });
+};
+"
+`;
+
 exports[`snap - hooks | CONFIGURATION: separator = "_" | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -2110,7 +2160,6 @@ var Component = function Component() {
         })
     });
 };
-export { };
 "
 `;
 
@@ -2130,7 +2179,9 @@ export { };
 
 exports[`snap - hooks | CONFIGURATION: separator = "_" | multiple uses 1`] = `
 "import { jsxs as _jsxs } from "react/jsx-runtime";
+import { useIntl } from 'react-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsxs("div", {
         children: [
             intl.formatMessage({
@@ -2148,7 +2199,6 @@ var Component = function Component() {
         ]
     });
 };
-export { };
 "
 `;
 
@@ -2177,7 +2227,9 @@ var Component = function Component() {
 
 exports[`snap - hooks | CONFIGURATION: separator = "_" | useIntl with different module source 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl } from 'gatsby-plugin-intl';
 var Component = function Component() {
+    var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             id: 'my.custom.id',
@@ -2185,21 +2237,6 @@ var Component = function Component() {
         })
     });
 };
-export { };
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: separator = "_" | with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-var Component = function Component() {
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'i18n',
-            "id": "tests___fixtures___hook_import-as_94348014"
-        })
-    });
-};
-export { };
 "
 `;
 
@@ -2269,6 +2306,21 @@ var Component = function Component() {
         children: intl.formatMessage({
             defaultMessage: 'hello',
             "id": "tests___fixtures___hook_default_613153351"
+        })
+    });
+};
+"
+`;
+
+exports[`snap - hooks | CONFIGURATION: separator = "_" | with useIntl imported as something else 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { useIntl as useI18n } from 'react-intl';
+var Component = function Component() {
+    var intl = useI18n();
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'i18n',
+            "id": "tests___fixtures___hook_import-as_94348014"
         })
     });
 };

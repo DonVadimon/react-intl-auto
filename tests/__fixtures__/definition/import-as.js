@@ -1,5 +1,5 @@
-import { defineMessages as m } from 'react-intl';
+import { defineMessages as testDefineMessages } from 'react-intl';
 
-m({
+testDefineMessages({
     hello: 'hello',
 });

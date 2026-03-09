@@ -16,7 +16,7 @@ export default defineMessages({
     description: 'A sample application',
 });
 
-export const App: React.FC = () => {
+export const App = () => {
     const intl = useIntl();
 
     // This will be transformed to include ID

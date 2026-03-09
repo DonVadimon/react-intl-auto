@@ -1,6 +1,7 @@
 //! CLI tool for extracting React Intl messages from source files
 
 pub mod extractor;
+mod visitors;
 
 use anyhow::{Context, Result};
 use clap::Parser;
@@ -297,9 +298,10 @@ fn main() -> Result<()> {
                 match extract_from_file(&file, &core_options) {
                     Ok(messages) => {
                         if !messages.is_empty() {
-                            println!("  {} - {} messages", file.display(), messages.len());
+                            let count = messages.len();
+                            println!("  {} - {} messages", file.display(), count);
                             write_per_file_messages(&file, &messages, &output_dir)?;
-                            total_messages += 1;
+                            total_messages += count;
                         }
                     }
                     Err(e) => {

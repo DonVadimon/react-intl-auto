@@ -46,15 +46,15 @@ export const createConfigurationSuites = (title: string, tests: TestCase[]) => {
     const suites: TestSuite[] = [
         { title: 'default', tests, pluginOptions: {} },
         {
-            title: 'removePrefix = "src"',
+            title: 'removePrefix = "tests"',
             tests,
-            pluginOptions: { removePrefix: 'src' },
+            pluginOptions: { removePrefix: 'tests' },
         },
 
         {
-            title: 'removePrefix = "src/"',
+            title: 'removePrefix = "tests/"',
             tests,
-            pluginOptions: { removePrefix: 'src/' },
+            pluginOptions: { removePrefix: 'tests/' },
         },
 
         {
@@ -67,15 +67,15 @@ export const createConfigurationSuites = (title: string, tests: TestCase[]) => {
             title: 'removePrefix = /__fixtures__/',
             tests,
             pluginOptions: {
-                removePrefix: /src[\\/]__f.+?_/u,
+                removePrefix: /tests[\\/]__f.+?_/u,
             },
         },
 
         {
-            title: 'removePrefix = "src.__fixtures__"',
+            title: 'removePrefix = "tests.__fixtures__"',
             tests,
             pluginOptions: {
-                removePrefix: 'src.__fixtures__',
+                removePrefix: 'tests.__fixtures__',
             },
         },
 
@@ -213,7 +213,10 @@ const runCli = async (
     Object.entries(suite.pluginOptions).forEach((entry) => {
         const [key, value] = entry as [keyof PluginOptions, any];
         const arg = CLI_OPTIONS_MAP[key];
-        const patch = value === true ? [arg] : [arg, `${value}`];
+        const patch =
+            value === true && key !== 'removePrefix'
+                ? [arg]
+                : [arg, `${value}`];
         args.push(...patch);
     });
 
@@ -248,23 +251,78 @@ const runCli = async (
     });
 };
 
-/**
- * Extract IDs from transformed code
- * Handles both quoted and unquoted property names:
- * - "id": "value" (quoted)
- * - id: "value" (unquoted, like in JSX output)
- */
-function extractIdsFromCode(code: string): string[] {
-    const ids: string[] = [];
-    // Match both "id": "value" and id: "value"
-    const regex = /(?:"id"|\bid)\s*:\s*"([^"]+)"/g;
+function extractDefineMessagesCalls(code: string) {
+    const calls = [] as string[];
+    const regex =
+        /(defineMessages|formatMessage|testDefineMessages)\s*\(([^)]*)\)/g;
     let match;
-
     while ((match = regex.exec(code)) !== null) {
-        ids.push(match[1]!);
+        if (match[2]) {
+            calls.push(match[2]);
+        }
+    }
+
+    return calls;
+}
+
+function extractDefineMessagesIds(code: string) {
+    const ids: string[] = [];
+    const calls = extractDefineMessagesCalls(code);
+
+    for (const call of calls) {
+        // Match both "id": "value" and id: "value"
+        const regex = /(?:"id"|\bid|'id')\s*:\s*("|')([^"']+)("|')/g;
+        let match;
+
+        while ((match = regex.exec(call)) !== null) {
+            if (match[2]) {
+                ids.push(match[2]);
+            }
+        }
     }
 
     return ids;
+}
+
+function extractJsxMessagesCalls(code: string) {
+    const calls = [] as string[];
+    const regex =
+        /_jsxs?\s*\((FormattedMessage|FormattedHTMLMessage|TestFormattedMessage)([^)]*)\)/g;
+
+    let match;
+    while ((match = regex.exec(code)) !== null) {
+        if (match[2]) {
+            calls.push(match[2]);
+        }
+    }
+
+    return calls;
+}
+
+function extractJsxMessagesIds(code: string) {
+    const ids: string[] = [];
+    const calls = extractJsxMessagesCalls(code);
+
+    for (const call of calls) {
+        // Match both "id": "value" and id: "value"
+        const regex = /(?:"id"|\bid|'id')\s*:\s*("|')([^"']+)("|')/g;
+        let match;
+
+        while ((match = regex.exec(call)) !== null) {
+            if (match[2]) {
+                ids.push(match[2]);
+            }
+        }
+    }
+
+    return ids;
+}
+
+/**
+ * Extract IDs from transformed code
+ */
+export function extractIdsFromCode(code: string): string[] {
+    return [...extractDefineMessagesIds(code), ...extractJsxMessagesIds(code)];
 }
 
 export const snapCases = async (suites: TestSuite[]) => {
@@ -280,26 +338,60 @@ export const snapCases = async (suites: TestSuite[]) => {
     }
 };
 
+const CLI_CONSISTENCY_SKIP = [
+    /**
+     * extractIdsFromCode вытягивает айди, тк он не проверяет, что функции
+     * импортнуты не из gatsby-plugin-intl, а cli не вытягивает
+     */
+    {
+        suite: /cli consistency - components | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl"/,
+        tests: [/user id/],
+    },
+    /**
+     * extractIdsFromCode вытягивает айди, тк он не проверяет, что функции
+     * импортнуты не из gatsby-plugin-intl, а cli не вытягивает
+     */
+    {
+        suite: /cli consistency - definition | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl"/,
+        tests: [/leading comment/, /Object/],
+    },
+] as const;
+
+const isSkipped = (suite: TestSuite, test: TestCase) => {
+    return CLI_CONSISTENCY_SKIP.some(
+        (skip) =>
+            skip.suite.test(suite.title) &&
+            skip.tests.some((regexp) => regexp.test(test.title)),
+    );
+};
+
 export const cliConsistencyCases = async (suites: TestSuite[]) => {
     for (const suite of suites) {
         describe(`cli consistency - ${suite.title}`, () => {
             for (const test of suite.tests) {
-                it(test.title, async () => {
-                    // Run CLI and Plugin
-                    const [cliMessages, transformResult] = await Promise.all([
-                        runCli(test, suite),
-                        runPlugin(test, suite),
-                    ]);
+                if (isSkipped(suite, test)) {
+                    it.skip(test.title, () => {});
+                } else {
+                    it(test.title, async () => {
+                        // Run CLI and Plugin
+                        const [cliMessages, transformResult] =
+                            await Promise.all([
+                                runCli(test, suite),
+                                runPlugin(test, suite),
+                            ]);
 
-                    // Extract IDs from transformed code
-                    const pluginIds = extractIdsFromCode(transformResult.code);
+                        // Extract IDs from transformed code
+                        const pluginIds = extractIdsFromCode(
+                            transformResult.code,
+                        ).sort();
 
-                    // Extract IDs from cli messages
-                    const cliIds = cliMessages.map(({ id }) => id);
+                        // Extract IDs from cli messages
+                        const cliIds = cliMessages.map(({ id }) => id).sort();
 
-                    // Verify equality
-                    expect(pluginIds).toEqual(cliIds);
-                });
+                        // Verify equality
+                        expect(pluginIds).toEqual(cliIds);
+                    });
+                }
             }
         });
     }

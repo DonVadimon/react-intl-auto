@@ -34,7 +34,7 @@ const someSupportedUseCases = {
 };
 
 const importAs = {
-    title: 'with FormattedMessage imported as something else',
+    title: 'with injectIntl imported as something else',
     fixture: 'injection/import-as.js',
 };
 

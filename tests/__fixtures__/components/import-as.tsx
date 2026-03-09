@@ -1,3 +1,3 @@
-import { FormattedMessage as T } from 'react-intl';
+import { FormattedMessage as TestFormattedMessage } from 'react-intl';
 
-<T defaultMessage="hello" />;
+<TestFormattedMessage defaultMessage="hello" />;

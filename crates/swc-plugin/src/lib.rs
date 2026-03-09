@@ -3,7 +3,7 @@ mod visitors;
 use std::path::PathBuf;
 use swc_core::ecma::{
     ast::Program,
-    visit::{VisitMut, VisitMutWith},
+    visit::{VisitMut, VisitMutWith, VisitWith},
 };
 use swc_core::plugin::{plugin_transform, proxies::TransformPluginProgramMetadata};
 
@@ -27,7 +27,7 @@ impl VisitMut for TransformVisitor {
     fn visit_mut_program(&mut self, program: &mut Program) {
         // First pass: collect imported names and aliases
         let mut import_visitor = ImportVisitor::new(&self.state);
-        program.visit_mut_with(&mut import_visitor);
+        program.visit_with(&mut import_visitor);
 
         // Second pass: transform with knowledge of imports and aliases
         let mut jsx_visitor = JSXVisitor::new(&self.state, &import_visitor);

@@ -34,7 +34,7 @@ const someSupportedUseCases = {
 };
 
 const importAs = {
-    title: 'with FormattedMessage imported as something else',
+    title: 'with useIntl imported as something else',
     fixture: 'hook/import-as.js',
 };
 

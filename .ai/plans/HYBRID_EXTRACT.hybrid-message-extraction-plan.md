@@ -1713,11 +1713,11 @@ describe('CLI vs Plugin ID consistency', () => {
 
 ---
 
-## [ ] HYBRID_EXTRACT-007E: Fix CLI and Plugin ID generation consistency issues
+## [x] HYBRID_EXTRACT-007E: Fix CLI and Plugin ID generation consistency issues
 
 ### 📋 Metadata
 
-- **status:** `todo`
+- **status:** `ready`
 - **depends:** `HYBRID_EXTRACT-007C`
 - **priority:** `P0`
 - **files:** `crates/cli/src/extractor.rs`, `tests/testUtils.ts`
@@ -1804,6 +1804,37 @@ Received: "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ud2l0aC1vdGhlci1zcGVjaWZpZXIua
 - `2026-02-24 05:45` Задача создана на основе результатов HYBRID_EXTRACT-007C
 - `2026-02-24 05:45` Проанализированы 300 упавших тестов
 - `2026-02-24 05:45` Выделены 3 основные категории проблем
+- `2026-03-09 21:08` Данные актуализированы: проверен файл path_utils.rs, проблема в обработке абсолютных/относительных путей
+- `2026-03-09 21:08` Статус изменен на `in-progress`
+- `2026-03-09 21:08` Составлен план выполнения:
+    - Шаг 1: Исправить add_prefix для нормализации путей относительно project root
+    - Шаг 2: Добавить тесты для различных комбинаций путей
+    - Шаг 3: Проверить прохождение всех тестов
+- `2026-03-09 21:09` Выполнен шаг 1: Исправлена функция `add_prefix` в path_utils.rs
+    - Нормализация путей: все пути приводятся к абсолютным относительно cwd
+    - Использование `diff_paths` для корректного вычисления относительных путей
+    - Улучшенная обработка `relative_to` опции с fallback на project root
+    - Исправлена обработка regex `removePrefix` для работы с нормализованными путями
+- `2026-03-09 21:10` Выполнен шаг 2: Добавлены тесты на Rust для различных сценариев
+    - `test_add_prefix_relative_filename_without_relative_to` - относительный путь без relative_to
+    - `test_add_prefix_relative_filename_with_relative_relative_to` - относительный путь с относительным relative_to
+    - `test_add_prefix_absolute_filename_relative_to_src` - абсолютный путь с ./src relative_to
+    - `test_add_prefix_absolute_filename_with_absolute_relative_to` - абсолютный путь с абсолютным relative_to
+    - `test_add_prefix_consistency_absolute_vs_relative` - консистентность абсолютных/относительных путей
+    - `test_add_prefix_relative_filename_with_dot_slash_relative_to` - относительный путь с ./relative_to
+    - `test_add_prefix_with_hash_id_relative_paths` - консистентность hash_id с разными путями
+- `2026-03-09 21:11` Выполнен шаг 3: Все тесты проходят
+    - Rust тесты: 33 passed + 1 doc test passed
+    - Jest тесты: 1376 passed, 4 skipped, 0 failed
+    - CLI consistency тесты: все проходят
+- `2026-03-09 21:12` Определены критерии приёмки:
+    - ✅ ID генерируется одинаково для абсолютных и относительных путей
+    - ✅ Опция `relative_to` работает корректно со всеми типами путей
+    - ✅ Опция `removePrefix` с regex работает корректно
+    - ✅ Все тесты CLI consistency проходят (0 failures)
+    - ✅ Все Rust тесты проходят (33 tests + 1 doc test)
+    - ✅ Все Jest тесты проходят (1376 tests)
+- `2026-03-09 21:12` Готово к review
 
 ---
 

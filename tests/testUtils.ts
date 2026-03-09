@@ -224,7 +224,7 @@ const runCli = async (
     args.push('--extract-source-location');
 
     return new Promise((resolve, reject) => {
-        const proc = spawn(CLI_PATH, args);
+        const proc = spawn(CLI_PATH, args, { cwd: process.cwd() });
         let stderr = '';
 
         proc.stderr?.on('data', (data) => {

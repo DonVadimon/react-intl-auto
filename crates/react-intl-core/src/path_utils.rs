@@ -2,6 +2,7 @@
 //!
 //! Provides functions for working with file paths and generating prefixes for message IDs.
 
+use pathdiff::diff_paths;
 use regex::Regex;
 use std::path::{Path, PathBuf};
 
@@ -121,95 +122,114 @@ pub fn add_prefix(state: &CoreState, suffix: &str) -> String {
         return suffix.to_string();
     }
 
-    // Get the base path from filename
-    let mut base_path = filename.to_string_lossy().to_string();
+    // Get the base path from filename (remove extension)
+    let base_path = filename.to_string_lossy().to_string();
+    let base_path = if let Some(ext_pos) = base_path.rfind('.') {
+        base_path[..ext_pos].to_string()
+    } else {
+        base_path
+    };
 
-    // Remove file extension
-    if let Some(ext_pos) = base_path.rfind('.') {
-        base_path = base_path[..ext_pos].to_string();
-    }
+    // Normalize filename to be absolute for consistent processing
+    let cwd = std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."));
+    let absolute_filename = if Path::new(filename).is_absolute() {
+        PathBuf::from(filename)
+    } else {
+        cwd.join(filename)
+    };
 
-    // Convert path separators to dots
-    let base_path = dot_path(&base_path, &opts.separator);
+    // Helper closure to process relative path
+    let process_relative_path = |relative_path: PathBuf| -> String {
+        let relative_str = relative_path.to_string_lossy().to_string();
+        // Remove file extension if it exists
+        let relative_str = if let Some(ext_pos) = relative_str.rfind('.') {
+            relative_str[..ext_pos].to_string()
+        } else {
+            relative_str
+        };
+        // Remove leading separator if it exists
+        let relative_str = if relative_str.starts_with('/') || relative_str.starts_with('\\') {
+            &relative_str[1..]
+        } else {
+            &relative_str
+        };
+        dot_path(relative_str, &opts.separator)
+    };
 
-    // Handle relative_to option first (convert absolute path to relative path)
+    // Determine the base prefix from filename
+    // Priority: relative_to option > project root > cwd
     let prefix = if let Some(relative_to) = &opts.relative_to {
         // Convert relative_to to absolute path if it's relative
         let relative_to_path = if Path::new(relative_to).is_absolute() {
             PathBuf::from(relative_to)
         } else {
-            // For relative paths, always use current directory as base
-            // This matches babel plugin behavior where relative_to is relative to cwd
-            std::env::current_dir()
-                .unwrap_or_else(|_| PathBuf::from("."))
-                .join(relative_to)
+            cwd.join(relative_to)
         };
 
-        // Calculate the relative path from relative_to to filename
-        let filename_path = if Path::new(filename).is_absolute() {
-            PathBuf::from(filename)
-        } else {
-            std::env::current_dir()
-                .unwrap_or_else(|_| PathBuf::from("."))
-                .join(filename)
-        };
-
-        if let Ok(relative_path) = filename_path.strip_prefix(&relative_to_path) {
-            // Convert the relative path to dot-separated format
+        // Calculate the relative path from relative_to to filename using diff_paths
+        if let Some(relative_path) = diff_paths(&absolute_filename, &relative_to_path) {
+            // Check if the relative path starts with ".." - if so, the file is NOT under relative_to
             let relative_str = relative_path.to_string_lossy().to_string();
-            // Remove file extension if it exists
-            let relative_str = if let Some(ext_pos) = relative_str.rfind('.') {
-                relative_str[..ext_pos].to_string()
+            if relative_str.starts_with("..") {
+                // File is not under relative_to, try project root instead
+                if let Some(project_root) = find_project_root(&absolute_filename) {
+                    if let Ok(relative_path) = absolute_filename.strip_prefix(&project_root) {
+                        process_relative_path(relative_path.to_path_buf())
+                    } else {
+                        // Fallback: use path relative to cwd
+                        if let Some(relative_path) = diff_paths(&absolute_filename, &cwd) {
+                            process_relative_path(relative_path)
+                        } else {
+                            dot_path(&base_path, &opts.separator)
+                        }
+                    }
+                } else {
+                    // Fallback: use path relative to cwd
+                    if let Some(relative_path) = diff_paths(&absolute_filename, &cwd) {
+                        process_relative_path(relative_path)
+                    } else {
+                        dot_path(&base_path, &opts.separator)
+                    }
+                }
             } else {
-                relative_str
-            };
-            dot_path(&relative_str, &opts.separator)
+                process_relative_path(relative_path)
+            }
         } else {
-            // If we can't calculate relative path, use the original base_path
-            base_path
+            // If we can't calculate relative path, try project root
+            if let Some(project_root) = find_project_root(&absolute_filename) {
+                if let Ok(relative_path) = absolute_filename.strip_prefix(&project_root) {
+                    process_relative_path(relative_path.to_path_buf())
+                } else {
+                    dot_path(&base_path, &opts.separator)
+                }
+            } else {
+                dot_path(&base_path, &opts.separator)
+            }
         }
     } else {
         // Auto-detect project root if relative_to is not specified
-        // Try to find project root from the filename path
-        let project_root = if Path::new(filename).is_absolute() {
-            find_project_root(filename)
-        } else {
-            // For relative paths, try to find project root from current directory
-            let cwd = std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."));
-            find_project_root(&cwd)
-        };
+        // Try to find project root from the absolute filename
+        let project_root = find_project_root(&absolute_filename);
 
         if let Some(project_root) = project_root {
             // Calculate the relative path from project root to the file
-            let absolute_filename = if Path::new(filename).is_absolute() {
-                PathBuf::from(filename)
-            } else {
-                let cwd = std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."));
-                cwd.join(filename)
-            };
-
             if let Ok(relative_path) = absolute_filename.strip_prefix(&project_root) {
-                // Convert the relative path to dot-separated format
-                let relative_str = relative_path.to_string_lossy().to_string();
-                // Remove file extension if it exists
-                let relative_str = if let Some(ext_pos) = relative_str.rfind('.') {
-                    relative_str[..ext_pos].to_string()
-                } else {
-                    relative_str
-                };
-                // Remove leading separator if it exists
-                let relative_str =
-                    if relative_str.starts_with('/') || relative_str.starts_with('\\') {
-                        &relative_str[1..]
-                    } else {
-                        &relative_str
-                    };
-                dot_path(relative_str, &opts.separator)
+                process_relative_path(relative_path.to_path_buf())
             } else {
-                base_path
+                // Fallback: use path relative to cwd
+                if let Some(relative_path) = diff_paths(&absolute_filename, &cwd) {
+                    process_relative_path(relative_path)
+                } else {
+                    dot_path(&base_path, &opts.separator)
+                }
             }
         } else {
-            base_path
+            // Fallback: use path relative to cwd if no project root found
+            if let Some(relative_path) = diff_paths(&absolute_filename, &cwd) {
+                process_relative_path(relative_path)
+            } else {
+                dot_path(&base_path, &opts.separator)
+            }
         }
     };
 
@@ -223,25 +243,33 @@ pub fn add_prefix(state: &CoreState, suffix: &str) -> String {
         Some(RemovePrefix::String(s)) => {
             // Check if the string contains regex patterns (like .* or .+)
             if s.contains(".*") || s.contains(".+") || s.contains('[') || s.contains('(') {
-                // For regex, we need to work with the original path format, not the dot-separated format
-                let original_path = filename.to_string_lossy().to_string();
+                // For regex, we need to work with the normalized path format (relative to cwd/project root)
+                // Use the already computed relative path (stored in `prefix`) for regex matching
+                // The `prefix` variable already contains the dot-separated relative path
+                let dot_separated_path = &prefix;
+
+                // Convert the dot-separated path back to slashes for regex matching
+                let path_with_slashes = dot_separated_path.replace(&opts.separator, "/");
+
                 let regex = match Regex::new(s) {
                     Ok(r) => r,
                     Err(_) => return suffix.to_string(),
                 };
-                let mut result = regex.replace_all(&original_path, "").to_string();
 
-                // Remove file extension if it exists
-                if let Some(ext_pos) = result.rfind('.') {
-                    result = result[..ext_pos].to_string();
-                }
+                let mut result = regex.replace_all(&path_with_slashes, "").to_string();
 
-                // If result is empty or just contains separators, return empty string
-                if result.trim().is_empty() || result.chars().all(|c| c == '/' || c == '\\') {
+                // Remove leading/trailing separators
+                result = result
+                    .trim_start_matches('/')
+                    .trim_end_matches('/')
+                    .to_string();
+
+                // If result is empty, return just the suffix
+                if result.is_empty() {
                     return suffix.to_string();
                 }
 
-                // Convert the result to dot-separated format
+                // Convert back to dot-separated format
                 dot_path(&result, &opts.separator)
             } else {
                 dot_path_replace(&prefix, s, &opts.separator)
@@ -313,7 +341,141 @@ mod tests {
 
         let result = add_prefix(&state, "hello");
         // With custom separator, we still get the full path
-        assert!(result.contains("src_components_App_hello"),);
+        assert_eq!(result, "crates_react-intl-core_src_components_App_hello");
+    }
+
+    #[test]
+    fn test_add_prefix_relative_filename() {
+        let opts = create_default_options();
+        // Relative path from cwd should produce same result as absolute
+        let state = create_test_state("src/components/App.js", opts);
+
+        let result = add_prefix(&state, "hello");
+        // Should be relative to project root
+        assert_eq!(result, "crates.react-intl-core.src.components.App.hello");
+    }
+
+    #[test]
+    fn test_add_prefix_absolute_filename() {
+        let cwd = std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."));
+        let opts = create_default_options();
+        // Use the actual src directory in the current project
+        let test_file = cwd.join("src/components/App.js");
+        let state = create_test_state(&test_file.to_string_lossy(), opts);
+
+        let result = add_prefix(&state, "hello");
+        // We get the full path relative to cwd
+        assert_eq!(result, "crates.react-intl-core.src.components.App.hello");
+    }
+
+    #[test]
+    fn test_add_prefix_relative_to_src() {
+        let mut opts = create_default_options();
+        opts.relative_to = Some("src".to_string());
+        let state = create_test_state("src/components/App.js", opts);
+
+        let result = add_prefix(&state, "hello");
+        // With custom separator, we still get the full path
+        assert_eq!(result, "components.App.hello");
+    }
+
+    #[test]
+    fn test_add_prefix_absolute_filename_relative_to_src() {
+        let cwd = std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."));
+        let mut opts = create_default_options();
+        opts.relative_to = Some("./src".to_string());
+        // Use the actual src directory in the current project
+        let test_file = cwd.join("src/components/App.js");
+        let state = create_test_state(&test_file.to_string_lossy(), opts);
+
+        let result = add_prefix(&state, "hello");
+        // With relative_to="./src", path should be relative to src directory
+        assert_eq!(result, "components.App.hello");
+    }
+
+    #[test]
+    fn test_add_prefix_relative_filename_with_relative_relative_to() {
+        let mut opts = create_default_options();
+        opts.relative_to = Some("src".to_string());
+        let state = create_test_state("src/components/App.js", opts);
+
+        let result = add_prefix(&state, "hello");
+        // With relative_to="src", should strip src prefix
+        assert_eq!(result, "components.App.hello");
+    }
+
+    #[test]
+    fn test_add_prefix_absolute_filename_with_absolute_relative_to() {
+        let cwd = std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."));
+        let mut opts = create_default_options();
+        let absolute_src = cwd.join("src").to_string_lossy().to_string();
+        opts.relative_to = Some(absolute_src);
+        // Use the actual src directory in the current project
+        let test_file = cwd.join("src/components/App.js");
+        let state = create_test_state(&test_file.to_string_lossy(), opts);
+
+        let result = add_prefix(&state, "hello");
+        // With absolute relative_to pointing to src, should produce same result
+        assert_eq!(result, "components.App.hello");
+    }
+
+    #[test]
+    fn test_add_prefix_consistency_absolute_vs_relative() {
+        // This test ensures that ID is the same regardless of whether
+        // absolute or relative path is used in state.filename
+        let opts = create_default_options();
+
+        // Get the absolute path
+        let cwd = std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."));
+        let absolute_path = cwd.join("src/components/App.js");
+        let relative_path = PathBuf::from("src/components/App.js");
+
+        let state_absolute = create_test_state(&absolute_path.to_string_lossy(), opts.clone());
+        let state_relative = create_test_state(&relative_path.to_string_lossy(), opts);
+
+        let result_absolute = add_prefix(&state_absolute, "hello");
+        let result_relative = add_prefix(&state_relative, "hello");
+
+        // Both should produce the same result
+        assert_eq!(
+            result_absolute, result_relative,
+            "Absolute and relative paths should produce same ID. Absolute: {}, Relative: {}",
+            result_absolute, result_relative
+        );
+    }
+
+    #[test]
+    fn test_add_prefix_relative_filename_with_dot_slash_relative_to() {
+        let mut opts = create_default_options();
+        opts.relative_to = Some("./src".to_string());
+        let state = create_test_state("src/components/App.js", opts);
+
+        let result = add_prefix(&state, "hello");
+        // With relative_to="./src", should strip src prefix
+        assert_eq!(result, "components.App.hello");
+    }
+
+    #[test]
+    fn test_add_prefix_with_hash_id_relative_paths() {
+        // Test that hash is consistent with relative paths
+        let mut opts = create_default_options();
+        opts.hash_id = true;
+        opts.hash_algorithm = "murmur3".to_string();
+
+        let cwd = std::env::current_dir().unwrap_or_else(|_| PathBuf::from("."));
+        let absolute_path = cwd.join("src/components/App.js");
+        let relative_path = PathBuf::from("src/components/App.js");
+
+        let state_absolute = create_test_state(&absolute_path.to_string_lossy(), opts.clone());
+        let state_relative = create_test_state(&relative_path.to_string_lossy(), opts);
+
+        let result_absolute = add_prefix(&state_absolute, "hello");
+        let result_relative = add_prefix(&state_relative, "hello");
+
+        // Both should produce the same hash
+        assert_eq!(result_absolute, result_relative,
+            "Hash IDs should be identical for absolute and relative paths. Absolute: {}, Relative: {}",
+            result_absolute, result_relative);
     }
 }
 

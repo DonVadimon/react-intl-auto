@@ -123,8 +123,8 @@ pub fn extract_messages(
     };
 
     // Create visitor and extract messages
-    let mut visitor =
-        MessageExtractorVisitor::new(PathBuf::from(relative_to_cwd(filename)), options.clone());
+    let mut visitor = MessageExtractorVisitor::new(PathBuf::from(filename), options.clone());
+
     module.visit_with(&mut visitor);
 
     visitor.into_messages()

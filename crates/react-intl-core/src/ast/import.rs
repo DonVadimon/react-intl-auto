@@ -9,19 +9,34 @@ use swc_core::ecma::{
 
 use crate::types::CoreState;
 
+pub trait ImportCollector {
+    fn get_imported_names(&self) -> &HashSet<String>;
+    fn get_alias_map(&self) -> &HashMap<String, String>;
+}
+
 /// ### Common visitor for cli and plugin
 /// Collects imported names and aliases map
 pub struct ImportVisitor<'a> {
     pub state: &'a CoreState,
     pub imported_names: HashSet<String>,
-    pub alias_map: std::collections::HashMap<String, String>,
+    pub alias_map: HashMap<String, String>,
+}
+
+impl<'a> ImportCollector for &ImportVisitor<'a> {
+    fn get_imported_names(&self) -> &std::collections::HashSet<String> {
+        &self.imported_names
+    }
+
+    fn get_alias_map(&self) -> &std::collections::HashMap<String, String> {
+        &self.alias_map
+    }
 }
 
 impl<'a> ImportVisitor<'a> {
     pub fn new(state: &'a CoreState) -> Self {
         Self {
             state,
-            alias_map: std::collections::HashMap::new(),
+            alias_map: HashMap::new(),
             imported_names: std::collections::HashSet::new(),
         }
     }

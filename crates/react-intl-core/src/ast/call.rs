@@ -2,11 +2,66 @@
 
 use swc_core::ecma::ast::*;
 
+use crate::ast::import::ImportCollector;
 use crate::ast::utils::{extract_expr_string, extract_prop_name};
 use crate::gen::id::{
     generate_message_id, GenIdFromDescriptorPayload, GenIdFromKeyPayload, GenIdPayload,
 };
 use crate::types::{CoreState, TransformedMessageData};
+
+/// Check call expression is defineMessages call
+pub fn is_define_messages_call<T: ImportCollector>(collector: &T, call_expr: &CallExpr) -> bool {
+    if let Callee::Expr(expr) = &call_expr.callee {
+        if let Expr::Ident(ident) = expr.as_ref() {
+            let name = ident.sym.to_string();
+            // Check if this function was imported and is defineMessages (or its alias)
+            if collector.get_imported_names().contains(&name) {
+                // Check if it's defineMessages directly or via alias
+                let original_name = collector
+                    .get_alias_map()
+                    .get(&name)
+                    .map(|s| s.as_str())
+                    .unwrap_or(name.as_str());
+                return original_name == "defineMessages";
+            }
+        }
+    }
+    false
+}
+
+/// Check call expression is formatMessage call
+pub fn is_format_message_call<T: ImportCollector>(collector: &T, call_expr: &CallExpr) -> bool {
+    // Check if this is intl.formatMessage call
+    if let Callee::Expr(expr) = &call_expr.callee {
+        if let Expr::Member(member_expr) = expr.as_ref() {
+            if let MemberProp::Ident(prop) = &member_expr.prop {
+                // Check if this is formatMessage call
+                if prop.sym == "formatMessage" {
+                    return true;
+                }
+            }
+        }
+    }
+
+    // Check if this is a direct call to formatMessage (not defineMessages)
+    if let Callee::Expr(expr) = &call_expr.callee {
+        if let Expr::Ident(ident) = expr.as_ref() {
+            let name = ident.sym.to_string();
+            // Check if this function was imported and is formatMessage (or its alias)
+            if collector.get_imported_names().contains(&name) {
+                // Check if it's formatMessage directly or via alias
+                let original_name = collector
+                    .get_alias_map()
+                    .get(&name)
+                    .map(|s| s.as_str())
+                    .unwrap_or(name.as_str());
+                return original_name == "formatMessage";
+            }
+        }
+    }
+
+    false
+}
 
 /// Analyzes a defineMessages call and extracts all messages
 ///

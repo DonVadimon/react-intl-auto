@@ -1,4 +1,8 @@
-use react_intl_core::ast::call::{analyze_define_messages, analyze_format_message};
+use react_intl_core::ast::call::{
+    analyze_define_messages, analyze_format_message, is_define_messages_call,
+    is_format_message_call,
+};
+
 use react_intl_core::types::{CoreState, TransformedMessageData};
 use swc_core::ecma::ast::*;
 use swc_core::ecma::visit::{Visit, VisitWith};
@@ -7,10 +11,9 @@ use crate::visitors::import::ImportVisitor;
 
 pub struct CallExpressionVisitor<'a> {
     pub state: &'a CoreState,
-    pub imported_names: &'a std::collections::HashSet<String>,
-    pub alias_map: &'a std::collections::HashMap<String, String>,
-    pub variable_declarations: std::collections::HashMap<String, ObjectLit>,
     pub messages: Vec<TransformedMessageData>,
+    import_visitor: &'a ImportVisitor<'a>,
+    variable_declarations: std::collections::HashMap<String, ObjectLit>,
 }
 
 impl<'a> Visit for CallExpressionVisitor<'a> {
@@ -40,67 +43,14 @@ impl<'a> CallExpressionVisitor<'a> {
     pub fn new(state: &'a CoreState, import_visitor: &'a ImportVisitor) -> Self {
         Self {
             state,
-            imported_names: &import_visitor.imported_names,
-            alias_map: &import_visitor.alias_map,
+            import_visitor,
             variable_declarations: std::collections::HashMap::new(),
             messages: Vec::new(),
         }
     }
 
-    fn is_format_message_call(&self, call_expr: &CallExpr) -> bool {
-        // Check if this is intl.formatMessage call
-        if let Callee::Expr(expr) = &call_expr.callee {
-            if let Expr::Member(member_expr) = expr.as_ref() {
-                if let MemberProp::Ident(prop) = &member_expr.prop {
-                    // Check if this is formatMessage call
-                    if prop.sym == "formatMessage" {
-                        return true;
-                    }
-                }
-            }
-        }
-
-        // Check if this is a direct call to formatMessage (not defineMessages)
-        if let Callee::Expr(expr) = &call_expr.callee {
-            if let Expr::Ident(ident) = expr.as_ref() {
-                let name = ident.sym.to_string();
-                // Check if this function was imported and is formatMessage (or its alias)
-                if self.imported_names.contains(&name) {
-                    // Check if it's formatMessage directly or via alias
-                    let original_name = self
-                        .alias_map
-                        .get(&name)
-                        .map(|s| s.as_str())
-                        .unwrap_or(name.as_str());
-                    return original_name == "formatMessage";
-                }
-            }
-        }
-
-        false
-    }
-
-    fn is_define_messages_call(&self, call_expr: &CallExpr) -> bool {
-        if let Callee::Expr(expr) = &call_expr.callee {
-            if let Expr::Ident(ident) = expr.as_ref() {
-                let name = ident.sym.to_string();
-                // Check if this function was imported and is defineMessages (or its alias)
-                if self.imported_names.contains(&name) {
-                    // Check if it's defineMessages directly or via alias
-                    let original_name = self
-                        .alias_map
-                        .get(&name)
-                        .map(|s| s.as_str())
-                        .unwrap_or(name.as_str());
-                    return original_name == "defineMessages";
-                }
-            }
-        }
-        false
-    }
-
     fn add_id_to_format_message(&mut self, call_expr: &CallExpr) {
-        if !self.is_format_message_call(call_expr) {
+        if !is_format_message_call(&self.import_visitor, call_expr) {
             return;
         }
 
@@ -149,7 +99,7 @@ impl<'a> CallExpressionVisitor<'a> {
     }
 
     fn add_id_to_define_message(&mut self, call_expr: &CallExpr) {
-        if !self.is_define_messages_call(call_expr) {
+        if !is_define_messages_call(&self.import_visitor, call_expr) {
             return;
         }
 

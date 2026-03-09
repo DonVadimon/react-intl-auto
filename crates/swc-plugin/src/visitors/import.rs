@@ -23,7 +23,8 @@ impl<'a> Visit for ImportVisitor<'a> {
     fn visit_import_decl(&mut self, import_decl: &ImportDecl) {
         let (imported_names, alias_map) = process_import_decl(import_decl, self.state);
 
-        self.imported_names = imported_names;
-        self.alias_map = alias_map;
+        // Extend instead of replace to accumulate imports from all import declarations
+        self.imported_names.extend(imported_names);
+        self.alias_map.extend(alias_map);
     }
 }

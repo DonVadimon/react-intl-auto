@@ -6,12 +6,11 @@ mod visitors;
 use anyhow::{Context, Result};
 use clap::Parser;
 use globset::{Glob, GlobSetBuilder};
+use react_intl_core::types::{CoreOptions, OutputMode, RemovePrefix};
 use std::collections::HashSet;
 use std::fs;
 use std::path::{Path, PathBuf};
 use walkdir::WalkDir;
-
-use react_intl_core::{CoreOptions, OutputMode, RemovePrefix};
 
 use crate::extractor::{extract_messages, ExtractedMessage};
 

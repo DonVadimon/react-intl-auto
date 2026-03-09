@@ -98,3 +98,11 @@ impl CoreState {
 }
 
 pub const REACT_COMPONENTS: &[&str] = &["FormattedMessage", "FormattedHTMLMessage"];
+
+/// Data structure representing a transformed message with generated ID
+#[derive(Debug, Clone)]
+pub struct TransformedMessageData {
+    pub id: String,
+    pub default_message: Option<String>,
+    pub description: Option<String>,
+}

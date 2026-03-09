@@ -4,13 +4,12 @@
 //! It uses read-only visitors for CLI message extraction.
 
 use pathdiff::diff_paths;
+use react_intl_core::types::{CoreOptions, CoreState, TransformedMessageData};
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 use swc_core::ecma::ast::*;
 use swc_core::ecma::parser::{lexer::Lexer, Parser, StringInput, Syntax};
 use swc_core::ecma::visit::{Visit, VisitWith};
-
-use react_intl_core::*;
 
 use crate::visitors::call::CallExpressionVisitor;
 use crate::visitors::import::ImportVisitor;

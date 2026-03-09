@@ -1,9 +1,7 @@
+use react_intl_core::ast::jsx::analyze_jsx_element;
+use react_intl_core::types::{CoreState, TransformedMessageData, REACT_COMPONENTS};
 use swc_core::ecma::ast::*;
 use swc_core::ecma::visit::{Visit, VisitWith};
-
-use react_intl_core::{analyze_jsx_element, TransformedMessageData, REACT_COMPONENTS};
-
-use react_intl_core::CoreState;
 
 use crate::visitors::import::ImportVisitor;
 

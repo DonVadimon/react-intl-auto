@@ -1,148 +1,12 @@
-//! AST analysis functions for React Intl message extraction
-//!
-//! This module provides functions to analyze AST nodes and extract message data.
-//! These functions are shared between the SWC plugin (for transformation) and CLI (for extraction).
+//! AST analysis functions for React Intl message extraction from defineMessages and formatMessage calls
 
 use swc_core::ecma::ast::*;
 
-use crate::id_generator::{
+use crate::ast::utils::{extract_expr_string, extract_prop_name};
+use crate::gen::id::{
     generate_message_id, GenIdFromDescriptorPayload, GenIdFromKeyPayload, GenIdPayload,
 };
-use crate::types::CoreState;
-
-/// Data structure representing a transformed message with generated ID
-#[derive(Debug, Clone)]
-pub struct TransformedMessageData {
-    pub id: String,
-    pub default_message: Option<String>,
-    pub description: Option<String>,
-}
-
-/// Analyzes a JSX element and extracts message data if it's a React Intl component
-///
-/// # Arguments
-/// * `element` - The JSX element to analyze
-/// * `state` - The core state containing filename and options
-///
-/// # Returns
-/// Some((TransformedMessageData, bool)) if the element contains a translatable message.
-/// The bool indicates whether the ID needs to be inserted (false = ID already exists, true = needs insertion).
-/// Returns None if the element can't be translated.
-pub fn analyze_jsx_element(
-    element: &JSXElement,
-    state: &CoreState,
-) -> Option<(TransformedMessageData, bool)> {
-    let (id_attr, default_message_attr, description_attr) = extract_jsx_attributes(element);
-
-    // If there's already an ID, return it as-is without transformation
-    if let Some(existing_id) = id_attr {
-        let transformed = TransformedMessageData {
-            id: existing_id,
-            default_message: default_message_attr,
-            description: description_attr,
-        };
-
-        // false = ID already exists, no need to insert
-        return Some((transformed, false));
-    }
-
-    // If there's no defaultMessage attribute at all or it is not statically
-    // evaluated as a string, this is not a translatable message
-    let default_message = if let Some(default_message) = &default_message_attr {
-        default_message
-    } else {
-        return None;
-    };
-
-    // generate ID based on attrs
-    let payload = GenIdPayload::Descriptor(GenIdFromDescriptorPayload {
-        default_message: &default_message,
-        description: &description_attr,
-    });
-    let generated_id = generate_message_id(state, &payload);
-
-    let transformed = TransformedMessageData {
-        id: generated_id,
-        default_message: default_message_attr,
-        description: description_attr,
-    };
-
-    // true = ID needs to be inserted
-    Some((transformed, true))
-}
-
-/// Extracts attributes from a JSX element
-///
-/// Returns tuple of (id, defaultMessage, description)
-fn extract_jsx_attributes(
-    element: &JSXElement,
-) -> (Option<String>, Option<String>, Option<String>) {
-    let mut id = None;
-    let mut default_message = None;
-    let mut description = None;
-
-    for attr in &element.opening.attrs {
-        if let JSXAttrOrSpread::JSXAttr(jsx_attr) = attr {
-            if let JSXAttrName::Ident(name) = &jsx_attr.name {
-                match name.sym.as_ref() {
-                    "id" => {
-                        id = extract_jsx_attr_value(jsx_attr);
-                    }
-                    "defaultMessage" => {
-                        default_message = extract_jsx_attr_value(jsx_attr);
-                    }
-                    "description" => {
-                        description = extract_jsx_attr_value(jsx_attr);
-                    }
-                    _ => {}
-                }
-            }
-        }
-    }
-
-    (id, default_message, description)
-}
-
-/// Extracts string value from a JSX attribute
-fn extract_jsx_attr_value(jsx_attr: &JSXAttr) -> Option<String> {
-    match &jsx_attr.value {
-        Some(JSXAttrValue::Str(str_lit)) => Some(str_lit.value.to_string_lossy().to_string()),
-        Some(JSXAttrValue::JSXExprContainer(JSXExprContainer { expr, .. })) => match expr {
-            JSXExpr::Expr(expr) => extract_expr_string(expr),
-            _ => None,
-        },
-        _ => None,
-    }
-}
-
-/// Tries to extract a string value from an expression
-///
-/// Supports:
-/// * string literals
-/// ```js
-/// 'hello' // "hello"
-/// ```
-/// * template strings
-/// ```js
-/// `hello world` // ok
-/// `hello ${world}` // no support
-/// ```
-fn extract_expr_string(expr: &Expr) -> Option<String> {
-    match expr {
-        Expr::Lit(Lit::Str(str_lit)) => Some(str_lit.value.to_string_lossy().to_string()),
-        Expr::Tpl(tpl) if tpl.exprs.is_empty() && tpl.quasis.len() == 1 => {
-            // Template literal with no expressions: `text`
-            // TODO: use evaluator maybe https://rustdoc.swc.rs/swc_ecma_minifier/eval/struct.Evaluator.html
-            let raw = &tpl.quasis[0].raw;
-            if raw.is_empty() {
-                None
-            } else {
-                Some(raw.to_string())
-            }
-        }
-        _ => None,
-    }
-}
+use crate::types::{CoreState, TransformedMessageData};
 
 /// Analyzes a defineMessages call and extracts all messages
 ///
@@ -175,6 +39,30 @@ pub fn analyze_define_messages(
     }
 
     messages
+}
+
+/// Analyzes a formatMessage call and extracts message data
+///
+/// # Arguments
+/// * `call` - The CallExpr for formatMessage
+/// * `state` - The core state containing filename and options
+///
+/// # Returns
+/// `Some((TransformedMessageData, bool))` if the call contains a translatable message
+/// The bool indicates whether the ID needs to be inserted (false = ID already exists, true = needs insertion).
+/// Returns None if the call can't be translated.
+pub fn analyze_format_message(
+    call: &CallExpr,
+    state: &CoreState,
+) -> Option<(TransformedMessageData, bool)> {
+    // Get the first argument (the message descriptor object)
+    if let Some(first_arg) = call.args.first() {
+        if let Expr::Object(obj_lit) = first_arg.expr.as_ref() {
+            return analyze_message_object(obj_lit, state, None);
+        }
+    }
+
+    None
 }
 
 /// Analyzes an object property and extracts message data with key
@@ -236,16 +124,6 @@ fn analyze_define_messages_object_property(
                 }
             }
         }
-        _ => None,
-    }
-}
-
-/// Extracts property name from PropName
-pub fn extract_prop_name(key: &PropName) -> Option<String> {
-    match key {
-        PropName::Ident(ident) => Some(ident.sym.to_string()),
-        PropName::Str(str_lit) => Some(str_lit.value.to_string_lossy().to_string()),
-        PropName::Num(num_lit) => Some(num_lit.value.to_string()),
         _ => None,
     }
 }
@@ -343,37 +221,10 @@ fn analyze_message_object(
     Some((transformed, true))
 }
 
-/// Analyzes a formatMessage call and extracts message data
-///
-/// # Arguments
-/// * `call` - The CallExpr for formatMessage
-/// * `state` - The core state containing filename and options
-///
-/// # Returns
-/// `Some((TransformedMessageData, bool))` if the call contains a translatable message
-/// The bool indicates whether the ID needs to be inserted (false = ID already exists, true = needs insertion).
-/// Returns None if the call can't be translated.
-pub fn analyze_format_message(
-    call: &CallExpr,
-    state: &CoreState,
-) -> Option<(TransformedMessageData, bool)> {
-    // Get the first argument (the message descriptor object)
-    if let Some(first_arg) = call.args.first() {
-        if let Expr::Object(obj_lit) = first_arg.expr.as_ref() {
-            return analyze_message_object(obj_lit, state, None);
-        }
-    }
-
-    None
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::id_generator::hash_string;
     use crate::types::CoreOptions;
-    use swc_core::common::BytePos;
-    use swc_core::ecma::parser::{lexer::Lexer, Parser, StringInput, Syntax, TsSyntax};
 
     fn create_test_state() -> CoreState {
         CoreState::new(
@@ -384,102 +235,6 @@ mod tests {
                 ..Default::default()
             },
         )
-    }
-
-    fn parse_jsx(code: &str) -> Box<JSXElement> {
-        let lexer = Lexer::new(
-            Syntax::Typescript(TsSyntax {
-                tsx: true,
-                ..Default::default()
-            }),
-            Default::default(),
-            StringInput::new(code, BytePos(0), BytePos(code.len() as u32)),
-            None,
-        );
-
-        let mut parser = Parser::new_from(lexer);
-        let expr = parser.parse_expr().expect("Failed to parse");
-
-        match *expr {
-            Expr::JSXElement(element) => element,
-            _ => panic!("Expected JSX element"),
-        }
-    }
-
-    #[test]
-    fn test_analyze_jsx_element_with_default_message() {
-        let code = r#"<FormattedMessage defaultMessage="Hello World" />"#;
-        let element = parse_jsx(code);
-        let state = create_test_state();
-
-        let result = analyze_jsx_element(&element, &state);
-
-        assert!(result.is_some());
-        let (transformed, needs_insertion) = result.unwrap();
-        assert!(!transformed.id.is_empty());
-        assert_eq!(transformed.default_message.unwrap(), "Hello World");
-        assert!(needs_insertion); // ID needs to be inserted
-    }
-
-    #[test]
-    fn test_analyze_jsx_element_with_existing_id() {
-        let code = r#"<FormattedMessage id="my-id" defaultMessage="Hello" />"#;
-        let element = parse_jsx(code);
-        let state = create_test_state();
-
-        let result = analyze_jsx_element(&element, &state);
-
-        // Should return result with existing ID and needs_insertion=false
-        assert!(result.is_some());
-        let (transformed, needs_insertion) = result.unwrap();
-        assert_eq!(transformed.id, "my-id");
-        assert!(!needs_insertion); // ID already exists, no need to insert
-    }
-
-    #[test]
-    fn test_analyze_jsx_element_with_variable() {
-        let code = r#"<FormattedMessage defaultMessage={message} />"#;
-        let element = parse_jsx(code);
-        let state = create_test_state();
-
-        let result = analyze_jsx_element(&element, &state);
-
-        // Should return None for id that is not statically evaluated
-        assert!(result.is_none());
-    }
-
-    #[test]
-    fn test_analyze_jsx_element_with_jsx_expr() {
-        let code = r#"<FormattedMessage defaultMessage={'message'} />"#;
-        let element = parse_jsx(code);
-        let state = create_test_state();
-
-        let result = analyze_jsx_element(&element, &state);
-
-        // Should return some for attrs that wrapped in jsx expr
-        assert!(result.is_some());
-        let (transformed, needs_insertion) = result.unwrap();
-        assert!(transformed
-            .id
-            .contains(hash_string("message", "murmur3").as_str()));
-        assert!(needs_insertion); // ID needs to be inserted
-    }
-
-    #[test]
-    fn test_analyze_jsx_element_with_string_literals() {
-        let code = r#"<FormattedMessage defaultMessage={`message`} />"#;
-        let element = parse_jsx(code);
-        let state = create_test_state();
-
-        let result = analyze_jsx_element(&element, &state);
-
-        // Should return some for attrs that wrapped in string literals
-        assert!(result.is_some());
-        let (transformed, needs_insertion) = result.unwrap();
-        assert!(transformed
-            .id
-            .contains(hash_string("message", "murmur3").as_str()));
-        assert!(needs_insertion); // ID needs to be inserted
     }
 
     #[test]

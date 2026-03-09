@@ -1,9 +1,7 @@
+use react_intl_core::ast::call::{analyze_define_messages, analyze_format_message};
+use react_intl_core::types::{CoreState, TransformedMessageData};
 use swc_core::ecma::ast::*;
 use swc_core::ecma::visit::{Visit, VisitWith};
-
-use react_intl_core::{analyze_define_messages, analyze_format_message, TransformedMessageData};
-
-use react_intl_core::CoreState;
 
 use crate::visitors::import::ImportVisitor;
 

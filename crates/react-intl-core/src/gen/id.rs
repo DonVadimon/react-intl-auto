@@ -5,7 +5,7 @@
 use murmur3::murmur3_32;
 use std::io::Cursor;
 
-use crate::path_utils::add_prefix;
+use crate::gen::path::add_prefix;
 use crate::types::CoreState;
 
 /// Generates a murmur3 hash with seed=0 to match babel-plugin-react-intl behavior.

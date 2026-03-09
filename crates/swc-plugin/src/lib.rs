@@ -1,13 +1,12 @@
 mod visitors;
 
+use react_intl_core::types::{CoreOptions, CoreState};
 use std::path::PathBuf;
 use swc_core::ecma::{
     ast::Program,
     visit::{VisitMut, VisitMutWith, VisitWith},
 };
 use swc_core::plugin::{plugin_transform, proxies::TransformPluginProgramMetadata};
-
-use react_intl_core::{CoreOptions, CoreState};
 
 use crate::visitors::call::CallExpressionVisitor;
 use crate::visitors::import::ImportVisitor;

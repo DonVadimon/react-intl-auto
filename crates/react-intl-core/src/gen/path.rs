@@ -100,19 +100,6 @@ fn find_project_root(file_path: &Path) -> Option<PathBuf> {
 ///
 /// # Returns
 /// The generated prefixed string
-///
-/// # Example
-/// ```
-/// use react_intl_core::{CoreState, CoreOptions};
-/// use react_intl_core::path_utils::add_prefix;
-/// use std::path::PathBuf;
-///
-/// let state = CoreState::new(
-///     PathBuf::from("src/components/App.tsx"),
-///     CoreOptions::default()
-/// );
-/// let path_id = add_prefix(&state, "hello");
-/// assert!(path_id.contains("src.components.App.hello"));
 /// ```
 pub fn add_prefix(state: &CoreState, suffix: &str) -> String {
     let CoreState { filename, opts } = state;

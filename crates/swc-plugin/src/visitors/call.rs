@@ -56,8 +56,7 @@ impl<'a> CallExpressionVisitor<'a> {
             return;
         }
 
-        let first_arg = &mut call_expr.args[0];
-        let ExprOrSpread { expr, .. } = first_arg;
+        let expr = &mut call_expr.args[0].expr;
 
         match expr.as_mut() {
             Expr::Object(obj) => {
@@ -110,29 +109,10 @@ impl<'a> CallExpressionVisitor<'a> {
             return;
         }
 
-        let first_arg = &mut call_expr.args[0];
-        let ExprOrSpread { expr, .. } = first_arg;
+        let expr = &mut call_expr.args[0].expr;
+
         match expr.as_mut() {
             Expr::Object(obj) => {
-                // Check if object has "id" property at the top level (indicates already processed)
-                let has_id_at_top_level = obj.props.iter().any(|prop| {
-                    if let PropOrSpread::Prop(prop) = prop {
-                        if let Prop::KeyValue(KeyValueProp { key, .. }) = prop.as_ref() {
-                            match key {
-                                PropName::Ident(ident) => return ident.sym == "id",
-                                PropName::Str(str_lit) => return str_lit.value == "id",
-                                _ => {}
-                            }
-                        }
-                    }
-                    false
-                });
-
-                if has_id_at_top_level {
-                    // Already processed, skip
-                    return;
-                }
-
                 // Pass the actual call_expr to analyze_define_messages
                 let call_expr_for_analysis = CallExpr {
                     span: call_expr.span,

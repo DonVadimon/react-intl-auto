@@ -5,7 +5,7 @@
 
 use std::collections::HashMap;
 use swc_core::ecma::ast::{Expr, ObjectLit, Pat, VarDeclarator};
-use swc_core::ecma::visit::Visit;
+use swc_core::ecma::visit::{Visit, VisitWith};
 
 use crate::types::CoreState;
 
@@ -65,66 +65,8 @@ impl<'a> VarCollector for VarVisitor<'a> {
 impl<'a> Visit for VarVisitor<'a> {
     fn visit_var_declarator(&mut self, declarator: &VarDeclarator) {
         // Track variable declarations with object literals
-        if let Pat::Ident(ident) = &declarator.name {
-            if let Some(init) = &declarator.init {
-                if let Expr::Object(obj) = init.as_ref() {
-                    self.declarations.insert(ident.sym.to_string(), obj.clone());
-                }
-            }
-        }
-    }
-}
+        self.track_declarator(declarator);
 
-/// Legacy VariableTracker for backward compatibility during migration
-///
-/// @deprecated Use VarVisitor instead
-#[derive(Debug, Default)]
-pub struct VariableTracker {
-    declarations: HashMap<String, ObjectLit>,
-}
-
-impl VariableTracker {
-    pub fn new() -> Self {
-        Self {
-            declarations: HashMap::new(),
-        }
-    }
-
-    /// Track a variable declaration if it has an object literal initializer
-    pub fn track_declarator(&mut self, declarator: &VarDeclarator) {
-        if let Pat::Ident(ident) = &declarator.name {
-            if let Some(init) = &declarator.init {
-                if let Expr::Object(obj) = init.as_ref() {
-                    self.declarations.insert(ident.sym.to_string(), obj.clone());
-                }
-            }
-        }
-    }
-
-    /// Get a tracked object literal by variable name
-    pub fn get(&self, name: &str) -> Option<&ObjectLit> {
-        self.declarations.get(name)
-    }
-
-    /// Get a cloned object literal by variable name
-    pub fn get_cloned(&self, name: &str) -> Option<ObjectLit> {
-        self.declarations.get(name).cloned()
-    }
-
-    /// Get internal declarations map (for use in core analysis functions)
-    pub fn declarations(&self) -> &HashMap<String, ObjectLit> {
-        &self.declarations
-    }
-}
-
-impl VarCollector for VariableTracker {
-    fn get_object(&self, name: &str) -> Option<&ObjectLit> {
-        self.declarations.get(name)
-    }
-}
-
-impl VarCollector for &VariableTracker {
-    fn get_object(&self, name: &str) -> Option<&ObjectLit> {
-        self.declarations.get(name)
+        declarator.visit_children_with(self);
     }
 }

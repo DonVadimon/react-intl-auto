@@ -11,6 +11,7 @@ use swc_core::plugin::{plugin_transform, proxies::TransformPluginProgramMetadata
 use crate::visitors::call::CallExpressionVisitor;
 use crate::visitors::import::ImportVisitor;
 use crate::visitors::jsx::JSXVisitor;
+use crate::visitors::vars::VarVisitor;
 
 pub struct TransformVisitor {
     state: CoreState,
@@ -26,11 +27,14 @@ impl VisitMut for TransformVisitor {
     fn visit_mut_program(&mut self, program: &mut Program) {
         // First pass: collect imported names and aliases
         let mut import_visitor = ImportVisitor::new(&self.state);
+        let mut var_visitor = VarVisitor::new(&self.state);
         program.visit_with(&mut import_visitor);
+        program.visit_with(&mut var_visitor);
 
         // Second pass: transform with knowledge of imports and aliases
         let mut jsx_visitor = JSXVisitor::new(&self.state, &import_visitor);
-        let mut call_visitor = CallExpressionVisitor::new(&self.state, &import_visitor);
+        let mut call_visitor =
+            CallExpressionVisitor::new(&self.state, &import_visitor, &var_visitor);
 
         program.visit_mut_with(&mut jsx_visitor);
         program.visit_mut_with(&mut call_visitor);

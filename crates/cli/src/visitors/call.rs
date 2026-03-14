@@ -18,15 +18,19 @@ pub struct CallExpressionVisitor<'a> {
     state: &'a CoreState,
     pub messages: Vec<TransformedMessageData>,
     import_visitor: &'a ImportVisitor<'a>,
-    var_visitor: VarVisitor<'a>,
+    var_visitor: &'a VarVisitor<'a>,
 }
 
 impl<'a> CallExpressionVisitor<'a> {
-    pub fn new(state: &'a CoreState, import_visitor: &'a ImportVisitor) -> Self {
+    pub fn new(
+        state: &'a CoreState,
+        import_visitor: &'a ImportVisitor,
+        var_visitor: &'a VarVisitor,
+    ) -> Self {
         Self {
             state,
             import_visitor,
-            var_visitor: VarVisitor::new(state),
+            var_visitor,
             messages: Vec::new(),
         }
     }
@@ -94,13 +98,6 @@ impl<'a> CallExpressionVisitor<'a> {
 }
 
 impl<'a> Visit for CallExpressionVisitor<'a> {
-    fn visit_var_declarator(&mut self, declarator: &VarDeclarator) {
-        // Track variable declarations using VarVisitor
-        // This allows us to resolve variables in function calls
-        self.var_visitor.track_declarator(declarator);
-        declarator.visit_children_with(self);
-    }
-
     fn visit_call_expr(&mut self, call_expr: &CallExpr) {
         call_expr.visit_children_with(self);
 

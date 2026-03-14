@@ -3,12 +3,13 @@ use react_intl_core::ast::call::{
     is_format_message_call,
 };
 use react_intl_core::ast::utils::extract_prop_name;
-use react_intl_core::ast::vars::{VarCollector, VarVisitor};
+use react_intl_core::ast::vars::VarCollector;
 use react_intl_core::types::{CoreState, TransformedMessageData};
 use swc_core::ecma::ast::*;
 use swc_core::ecma::visit::{VisitMut, VisitMutWith};
 
 use crate::visitors::import::ImportVisitor;
+use crate::visitors::vars::VarVisitor;
 
 /// Visitor for transforming call expressions (formatMessage, defineMessages)
 ///
@@ -18,27 +19,24 @@ use crate::visitors::import::ImportVisitor;
 pub struct CallExpressionVisitor<'a> {
     state: &'a CoreState,
     import_visitor: &'a ImportVisitor<'a>,
-    var_visitor: VarVisitor<'a>,
+    var_visitor: &'a VarVisitor<'a>,
 }
 
 impl<'a> CallExpressionVisitor<'a> {
-    pub fn new(state: &'a CoreState, import_visitor: &'a ImportVisitor) -> Self {
+    pub fn new(
+        state: &'a CoreState,
+        import_visitor: &'a ImportVisitor,
+        var_visitor: &'a VarVisitor,
+    ) -> Self {
         Self {
             state,
             import_visitor,
-            var_visitor: VarVisitor::new(state),
+            var_visitor,
         }
     }
 }
 
 impl<'a> VisitMut for CallExpressionVisitor<'a> {
-    fn visit_mut_var_declarator(&mut self, declarator: &mut VarDeclarator) {
-        // Track variable declarations using VarVisitor
-        // This allows us to resolve variables in function calls
-        self.var_visitor.track_declarator(declarator);
-        declarator.visit_mut_children_with(self);
-    }
-
     fn visit_mut_call_expr(&mut self, call_expr: &mut CallExpr) {
         call_expr.visit_mut_children_with(self);
 

@@ -14,6 +14,7 @@ use swc_core::ecma::visit::{Visit, VisitWith};
 use crate::visitors::call::CallExpressionVisitor;
 use crate::visitors::import::ImportVisitor;
 use crate::visitors::jsx::JSXVisitor;
+use crate::visitors::vars::VarVisitor;
 
 /// Extracted message structure
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -167,10 +168,13 @@ impl Visit for MessageExtractorVisitor {
     fn visit_module(&mut self, module: &Module) {
         // First pass: collect imported names and aliases
         let mut import_visitor = ImportVisitor::new(&self.state);
+        let mut var_visitor = VarVisitor::new(&self.state);
         module.visit_with(&mut import_visitor);
+        module.visit_with(&mut var_visitor);
 
         let mut jsx_visitor = JSXVisitor::new(&self.state, &import_visitor);
-        let mut call_visitor = CallExpressionVisitor::new(&self.state, &import_visitor);
+        let mut call_visitor =
+            CallExpressionVisitor::new(&self.state, &import_visitor, &var_visitor);
 
         module.visit_with(&mut jsx_visitor);
         module.visit_with(&mut call_visitor);

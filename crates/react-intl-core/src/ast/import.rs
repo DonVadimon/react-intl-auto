@@ -32,6 +32,16 @@ impl<'a> ImportCollector for &ImportVisitor<'a> {
     }
 }
 
+impl<'a> ImportCollector for ImportVisitor<'a> {
+    fn get_imported_names(&self) -> &std::collections::HashSet<String> {
+        &self.imported_names
+    }
+
+    fn get_alias_map(&self) -> &std::collections::HashMap<String, String> {
+        &self.alias_map
+    }
+}
+
 impl<'a> ImportVisitor<'a> {
     pub fn new(state: &'a CoreState) -> Self {
         Self {

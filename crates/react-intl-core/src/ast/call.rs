@@ -4,6 +4,7 @@ use swc_core::ecma::ast::*;
 
 use crate::ast::import::ImportCollector;
 use crate::ast::utils::{extract_expr_string, extract_prop_name};
+use crate::ast::vars::VarCollector;
 use crate::gen::id::{
     generate_message_id, GenIdFromDescriptorPayload, GenIdFromKeyPayload, GenIdPayload,
 };
@@ -68,28 +69,54 @@ pub fn is_format_message_call<T: ImportCollector>(collector: &T, call_expr: &Cal
 /// # Arguments
 /// * `call` - The CallExpr for defineMessages
 /// * `state` - The core state containing filename and options
+/// * `var_collector` - Optional variable collector for resolving identifiers (e.g., `defineMessages(someVar)`)
 ///
 /// # Returns
 /// Vector of (key_name, TransformedMessageData, need_id_insert) for each message that needs transformation
-pub fn analyze_define_messages(
+pub fn analyze_define_messages<C: VarCollector>(
     call: &CallExpr,
     state: &CoreState,
+    var_collector: Option<&C>,
 ) -> Vec<(String, TransformedMessageData, bool)> {
     let mut messages = Vec::new();
 
     // Get the first argument (the object literal)
     if let Some(first_arg) = call.args.first() {
-        if let Expr::Object(obj_lit) = first_arg.expr.as_ref() {
-            // Use call_index instead of span position for deterministic IDs
-            for prop in &obj_lit.props {
-                if let PropOrSpread::Prop(prop) = prop {
-                    if let Some((key_name, message_data, transformed)) =
-                        analyze_define_messages_object_property(prop, state)
-                    {
-                        messages.push((key_name, message_data, transformed));
+        match first_arg.expr.as_ref() {
+            Expr::Object(obj_lit) => {
+                // Use call_index instead of span position for deterministic IDs
+                for prop in &obj_lit.props {
+                    if let PropOrSpread::Prop(prop) = prop {
+                        if let Some((key_name, message_data, transformed)) =
+                            analyze_define_messages_object_property(prop, state, var_collector)
+                        {
+                            messages.push((key_name, message_data, transformed));
+                        }
                     }
                 }
             }
+            Expr::Ident(ident) => {
+                // Handle variable reference: defineMessages(someVar)
+                if let Some(collector) = var_collector {
+                    let var_name = ident.sym.to_string();
+                    if let Some(obj_lit) = collector.get_object(&var_name) {
+                        for prop in &obj_lit.props {
+                            if let PropOrSpread::Prop(prop) = prop {
+                                if let Some((key_name, message_data, transformed)) =
+                                    analyze_define_messages_object_property(
+                                        prop,
+                                        state,
+                                        var_collector,
+                                    )
+                                {
+                                    messages.push((key_name, message_data, transformed));
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            _ => {}
         }
     }
 
@@ -140,9 +167,10 @@ pub fn analyze_format_message(
 /// `Some((String, TransformedMessageData, bool))` if the prop contains a translatable message
 /// The bool indicates whether the ID needs to be inserted (false = ID already exists, true = needs insertion).
 /// Returns None if the property can't be translated.
-fn analyze_define_messages_object_property(
+fn analyze_define_messages_object_property<C: VarCollector>(
     prop: &Prop,
     state: &CoreState,
+    var_collector: Option<&C>,
 ) -> Option<(String, TransformedMessageData, bool)> {
     match prop {
         Prop::KeyValue(KeyValueProp { key, value }) => {
@@ -154,7 +182,7 @@ fn analyze_define_messages_object_property(
                     .map(|(md, td)| (key_name, md, td)),
                 // String value: hello: 'Hello World'
                 // Template literal value: hello: `Hello ${name}`
-                _ => {
+                Expr::Lit(_) | Expr::Tpl(_) => {
                     // For template literals, we can try to extract the value statically
                     // But we have some limitations
                     let default_message_prop = extract_expr_string(value);
@@ -177,6 +205,19 @@ fn analyze_define_messages_object_property(
 
                     None
                 }
+                // Variable reference: hello: someVar
+                Expr::Ident(ident) => {
+                    if let Some(collector) = var_collector {
+                        let var_name = ident.sym.to_string();
+                        if let Some(obj_lit) = collector.get_object(&var_name) {
+                            // Treat the variable's object literal as the value
+                            return analyze_message_object(obj_lit, state, Some(&key_name))
+                                .map(|(md, td)| (key_name, md, td));
+                        }
+                    }
+                    None
+                }
+                _ => None,
             }
         }
         _ => None,
@@ -279,6 +320,7 @@ fn analyze_message_object(
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::ast::vars;
     use crate::types::CoreOptions;
 
     fn create_test_state() -> CoreState {
@@ -301,7 +343,7 @@ mod tests {
         let call = parse_call_expr(code);
         let state = create_test_state();
 
-        let result = analyze_define_messages(&call, &state);
+        let result = analyze_define_messages::<vars::VarVisitor>(&call, &state, None);
         assert_eq!(result.len(), 2);
 
         let hello_msg = &result[0];
@@ -328,7 +370,7 @@ mod tests {
         let call = parse_call_expr(code);
         let state = create_test_state();
 
-        let result = analyze_define_messages(&call, &state);
+        let result = analyze_define_messages::<vars::VarVisitor>(&call, &state, None);
         assert_eq!(result.len(), 1);
 
         let hello_msg = &result[0];
@@ -349,7 +391,7 @@ mod tests {
         let call = parse_call_expr(code);
         let state = create_test_state();
 
-        let result = analyze_define_messages(&call, &state);
+        let result = analyze_define_messages::<vars::VarVisitor>(&call, &state, None);
         assert_eq!(result.len(), 1);
 
         let hello_msg = &result[0];
@@ -368,7 +410,7 @@ mod tests {
         let call = parse_call_expr(code);
         let state = create_test_state();
 
-        let result = analyze_define_messages(&call, &state);
+        let result = analyze_define_messages::<vars::VarVisitor>(&call, &state, None);
         assert_eq!(result.len(), 0);
     }
 

@@ -64,7 +64,8 @@
 - [x] HYBRID_EXTRACT-007B: Migrate Jest tests to use fixture files
 - [x] HYBRID_EXTRACT-007B-2: Fix ID generation to use sequence numbers instead of span positions
 - [x] HYBRID_EXTRACT-007C: Create CLI and Plugin ID consistency tests
-- [ ] HYBRID_EXTRACT-007E: Fix CLI and Plugin ID generation consistency issues
+- [x] HYBRID_EXTRACT-007E: Fix CLI and Plugin ID generation consistency issues
+- [x] HYBRID_EXTRACT-007F: Extract common visitor code to core crate
 - [ ] HYBRID_EXTRACT-008: Create JS API with napi-rs bindings
 - [ ] HYBRID_EXTRACT-009: Update package.json with CLI bin entry and JS API exports
 - [ ] HYBRID_EXTRACT-010: Create additional integration tests and examples
@@ -1835,6 +1836,316 @@ Received: "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ud2l0aC1vdGhlci1zcGVjaWZpZXIua
     - ✅ Все Rust тесты проходят (33 tests + 1 doc test)
     - ✅ Все Jest тесты проходят (1376 tests)
 - `2026-03-09 21:12` Готово к review
+
+---
+
+## [x] HYBRID_EXTRACT-007F: Extract common visitor code to core crate
+
+### 📋 Metadata
+
+- **status:** `in-progress`
+- **depends:** `HYBRID_EXTRACT-007E`
+- **priority:** `P1`
+- **files:** `crates/react-intl-core/src/visitors/`, `crates/cli/src/visitors/`, `crates/swc-plugin/src/visitors/`
+
+### 📝 Details
+
+Вынести общий код между визиторами CLI и плагина в react-intl-core crate для устранения дублирования и облегчения поддержки.
+
+**Текущая ситуация:**
+
+Сейчас существует значительное дублирование кода между CLI и плагином:
+
+#### 1. **ImportVisitor** (уже вынесен ✅)
+
+- Уже находится в `react-intl-core/src/ast/import.rs`
+- Используется обоими крейтами через `pub use`
+
+#### 2. **CallExpressionVisitor** - дублирование (~80% кода)
+
+**CLI** (`crates/cli/src/visitors/call.rs`):
+
+- Структура с `state`, `messages`, `import_visitor`, `variable_declarations`
+- Логика `visit_var_declarator` - отслеживание объявлений переменных
+- Логика `add_id_to_format_message` - обработка formatMessage
+- Логика `add_id_to_define_message` - обработка defineMessages
+- Создание `call_expr_for_analysis` (клонирование для анализа)
+
+**Plugin** (`crates/swc-plugin/src/visitors/call.rs`):
+
+- Те же поля + логика мутации AST
+- Те же методы анализа, но с дополнительным кодом для модификации объектов
+- `process_format_message_object_with_analysis` - добавляет ID в объект
+- `process_define_messages_object_with_analysis` - обновляет свойства объекта
+
+**Что нужно вынести:**
+
+- Общую структуру `CallExpressionVisitor` с полями: `state`, `import_visitor`, `variable_declarations`
+- Общие методы анализа без мутации:
+    - `visit_var_declarator` - отслеживание переменных
+    - `add_id_to_format_message` / `add_id_to_define_message` - анализ вызовов
+    - Создание `call_expr_for_analysis`
+- Трейт `CallVisitor` в core с методами:
+    - `on_format_message_found(call_expr, transformed_data, need_id_insert)`
+    - `on_define_messages_found(call_expr, messages_map)`
+- Реализации трейта в CLI (только сбор данных) и плагине (мутация AST)
+
+#### 3. **JSXVisitor** - дублирование (~60% кода)
+
+**CLI** (`crates/cli/src/visitors/jsx.rs`):
+
+- Проверка компонента через `REACT_COMPONENTS.contains()` и `imported_names.contains()`
+- Вызов `analyze_jsx_element` из core
+- Сохранение `TransformedMessageData` в `messages`
+
+**Plugin** (`crates/swc-plugin/src/visitors/jsx.rs`):
+
+- Та же проверка компонента
+- Вызов `analyze_jsx_element` из core
+- Мутация: вставка ID атрибута перед defaultMessage
+
+**Что нужно вынести:**
+
+- Общую структуру `JSXVisitor` с полями: `state`, `import_visitor`
+- Метод проверки компонента: `is_react_intl_component(name)`
+- Трейт `JSXVisitorHandler` в core с методом:
+    - `on_jsx_element_found(element, transformed_data, need_id_insert)`
+- Реализации трейта в CLI и плагине
+
+#### 4. **Общие вспомогательные функции**
+
+Вынести в `react-intl-core/src/ast/utils.rs`:
+
+- `object_property(key, value)` - создание AST свойства объекта (сейчас только в плагине)
+- `find_attribute_index(attrs, name)` - поиск индекса атрибута JSX
+- `insert_id_attribute(element, idx, id)` - вставка ID атрибута
+
+### 🏗️ Целевая структура
+
+```
+crates/react-intl-core/src/
+├── visitors/
+│   ├── mod.rs              # Экспорт всех visitor-related типов
+│   ├── call.rs             # CallVisitor трейт и базовая реализация
+│   ├── jsx.rs              # JSXVisitor трейт и базовая реализация
+│   └── common.rs           # Общие структуры и поля
+└── ast/
+    ├── mod.rs
+    ├── call.rs             # analyze_* функции (уже есть)
+    ├── jsx.rs              # analyze_jsx_element (уже есть)
+    ├── import.rs           # ImportVisitor (уже есть)
+    └── utils.rs            # Вспомогательные функции
+
+crates/cli/src/visitors/
+├── call.rs                 # Реализация CallVisitor для CLI
+├── jsx.rs                  # Реализация JSXVisitor для CLI
+└── mod.rs
+
+crates/swc-plugin/src/visitors/
+├── call.rs                 # Реализация CallVisitor для плагина с мутациями
+├── jsx.rs                  # Реализация JSXVisitor для плагина с мутациями
+└── mod.rs
+```
+
+### 🔧 План реализации
+
+#### Шаг 1: Создать базовые структуры в core
+
+Создать `crates/react-intl-core/src/visitors/common.rs`:
+
+```rust
+pub struct VisitorState<'a> {
+    pub core_state: &'a CoreState,
+    pub import_visitor: &'a ImportVisitor,
+    pub variable_declarations: HashMap<String, ObjectLit>,
+}
+```
+
+#### Шаг 2: Создать трейты для visitor'ов
+
+`crates/react-intl-core/src/visitors/call.rs`:
+
+```rust
+pub trait CallVisitorHandler {
+    fn handle_format_message(
+        &mut self,
+        call_expr: &CallExpr,
+        transformed: TransformedMessageData,
+        need_id_insert: bool,
+    );
+
+    fn handle_define_messages(
+        &mut self,
+        call_expr: &CallExpr,
+        messages: Vec<(String, TransformedMessageData, bool)>,
+    );
+}
+
+pub struct BaseCallVisitor<'a, H: CallVisitorHandler> {
+    state: &'a VisitorState<'a>,
+    handler: H,
+}
+```
+
+#### Шаг 3: Вынести JSX visitor
+
+`crates/react-intl-core/src/visitors/jsx.rs`:
+
+```rust
+pub trait JSXVisitorHandler {
+    fn handle_jsx_element(
+        &mut self,
+        element: &JSXElement,
+        transformed: TransformedMessageData,
+        need_id_insert: bool,
+    );
+}
+
+pub fn visit_jsx_element<H: JSXVisitorHandler>(
+    element: &JSXElement,
+    state: &VisitorState,
+    handler: &mut H,
+) {
+    // Общая логика проверки и анализа
+}
+```
+
+#### Шаг 4: Обновить CLI visitors
+
+Упростить `crates/cli/src/visitors/call.rs` до ~30 строк:
+
+```rust
+pub struct CallMessageCollector {
+    pub messages: Vec<TransformedMessageData>,
+}
+
+impl CallVisitorHandler for CallMessageCollector {
+    fn handle_format_message(&mut self, _, transformed, _) {
+        self.messages.push(transformed);
+    }
+    // ...
+}
+```
+
+#### Шаг 5: Обновить Plugin visitors
+
+Упростить `crates/swc-plugin/src/visitors/call.rs` до ~50 строк:
+
+```rust
+pub struct CallTransformer;
+
+impl CallVisitorHandler for CallTransformer {
+    fn handle_format_message(&mut self, call_expr, transformed, need_id_insert) {
+        // Мутация AST
+    }
+    // ...
+}
+```
+
+### ✅ Критерии приёмки:
+
+- [x] Создан модуль `crates/react-intl-core/src/visitors/`
+- [x] Вынесены общие структуры `VisitorState`, `VariableTracker`
+- [x] Созданы helper-функции `process_format_message_call`, `process_define_messages_call`, `is_react_intl_component`
+- [x] CLI visitors используют общий код из core (код сокращён на ~43-58%)
+- [x] Plugin visitors используют общий код из core (код сокращён на ~23-39%)
+- [x] Все тесты проходят (`npm run test:full`)
+- [x] Нет регрессий в функциональности
+
+### 📊 ActionLog:
+
+- `2025-01-15 18:45` Задача создана на основе анализа дублирования кода
+- `2025-01-15 18:45` Проанализированы текущие visitors в CLI и плагине
+- `2025-01-15 18:45` Выделены общие части для вынесения в core
+- `2026-03-10 17:36` Данные актуализированы: проверены файлы visitors/cli/call.rs (171 строк), visitors/plugin/call.rs (307 строк), visitors/cli/jsx.rs (50 строк), visitors/plugin/jsx.rs (82 строк)
+- `2026-03-10 17:36` Статус изменен на `in-progress`
+- `2026-03-10 17:36` Составлен план выполнения
+- `2026-03-10 17:36` Выполнен шаг 1: Создан модуль `crates/react-intl-core/src/visitors/` с файлами `mod.rs`, `common.rs`, `call.rs`, `jsx.rs`
+- `2026-03-10 17:40` Выполнен шаг 2: Вынесены структуры `VisitorState` и `VariableTracker` в `common.rs`
+- `2026-03-10 17:45` Выполнен шаг 3: Созданы helper-функции в `call.rs` для обработки вызовов
+- `2026-03-10 17:50` Выполнен шаг 4: Созданы helper-функции в `jsx.rs` для проверки JSX компонентов
+- `2026-03-10 18:00` Выполнен шаг 5: Рефакторинг CLI visitors - использование общих структур
+- `2026-03-10 18:30` Выполнен шаг 6: Рефакторинг Plugin visitors - использование общих структур
+- `2026-03-10 18:45` Выполнен шаг 7: Исправлена обработка переменных в `analyze_define_messages` для поддержки `defineMessages({ hello: someVar })`
+- `2026-03-10 19:41` Все тесты проходят: 1376 passed, 4 skipped, 0 failed
+- `2026-03-10 19:41` Задача завершена, статус изменен на `ready`
+
+---
+
+## [ ] HYBRID_EXTRACT-007G: Refactor VariableTracker to match ImportCollector pattern
+
+### 📋 Metadata
+
+- **status:** `todo`
+- **depends:** `HYBRID_EXTRACT-007F`
+- **priority:** `P2`
+- **files:** `crates/react-intl-core/src/ast/vars.rs`, `crates/react-intl-core/src/ast/call.rs`
+
+### 📝 Details
+
+Улучшить архитектуру работы с переменными, сделав её консистентной с ImportCollector/ImportVisitor.
+
+**Текущая реализация:**
+
+```rust
+// ast/vars.rs
+pub struct VariableTracker {
+    declarations: HashMap<String, ObjectLit>,
+}
+
+// ast/call.rs
+pub fn analyze_define_messages(
+    call: &CallExpr,
+    state: &CoreState,
+    variable_declarations: Option<&HashMap<String, ObjectLit>>,
+) -> Vec<...>
+```
+
+**Целевая реализация:**
+
+```rust
+// ast/vars.rs
+pub trait VarCollector {
+    fn get_object(&self, name: &str) -> Option<&ObjectLit>;
+}
+
+pub struct VarVisitor<'a> {
+    state: &'a CoreState,
+    declarations: HashMap<String, ObjectLit>,
+}
+
+impl<'a> VarCollector for &VarVisitor<'a> {
+    fn get_object(&self, name: &str) -> Option<&ObjectLit> {
+        self.declarations.get(name)
+    }
+}
+
+impl<'a> VarCollector for VarVisitor<'a> {
+    fn get_object(&self, name: &str) -> Option<&ObjectLit> {
+        self.declarations.get(name)
+    }
+}
+
+// ast/call.rs
+pub fn analyze_define_messages<C: VarCollector>(
+    call: &CallExpr,
+    state: &CoreState,
+    var_collector: Option<&C>,
+) -> Vec<...>
+```
+
+### ✅ Критерии приёмки:
+
+- [ ] Создан трейт `VarCollector` с методом `get_object(&self, name: &str) -> Option<&ObjectLit>`
+- [ ] Создана структура `VarVisitor<'a>` (аналог ImportVisitor)
+- [ ] Реализован `VarCollector` для `&VarVisitor<'a>` и `VarVisitor<'a>`
+- [ ] Функции анализа (analyze_define_messages, etc.) принимают `Option<&C>` где `C: VarCollector`
+- [ ] CLI и Plugin используют VarVisitor вместо прямого HashMap
+- [ ] Все тесты проходят (`npm run test:full`)
+
+### 📊 ActionLog:
+
+- `2025-01-15 19:00` Задача создана на основе замечаний по консистентности архитектуры
 
 ---
 

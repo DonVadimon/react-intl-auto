@@ -2,9 +2,29 @@
 
 use swc_core::ecma::ast::*;
 
+use crate::ast::import::ImportVisitor;
 use crate::ast::utils::extract_expr_string;
 use crate::gen::id::{generate_message_id, GenIdFromDescriptorPayload, GenIdPayload};
-use crate::types::{CoreState, TransformedMessageData};
+use crate::types::{CoreState, TransformedMessageData, REACT_COMPONENTS};
+
+/// Check if a JSX element is a React Intl component
+///
+/// This function checks if the element name is in the list of React Intl components
+/// and if it was imported from the react-intl module.
+///
+/// # Arguments
+/// * `import_visitor` - The import visitor containing imported names and aliases
+/// * `name` - The identifier of the JSX element
+///
+/// # Returns
+/// `true` if the element is a React Intl component, `false` otherwise
+pub fn is_react_intl_component(import_visitor: &ImportVisitor, name: &Ident) -> bool {
+    let name_str = name.sym.as_str().to_string();
+    let component_name = import_visitor.alias_map.get(&name_str).unwrap_or(&name_str);
+
+    REACT_COMPONENTS.contains(&component_name.as_str())
+        && import_visitor.imported_names.contains(&name_str)
+}
 
 /// Analyzes a JSX element and extracts message data if it's a React Intl component
 ///

@@ -175,8 +175,8 @@ impl Visit for MessageExtractorVisitor {
         module.visit_with(&mut jsx_visitor);
         module.visit_with(&mut call_visitor);
 
-        self.messages.append(&mut jsx_visitor.messages);
-        self.messages.append(&mut call_visitor.messages);
+        self.messages.append(&mut jsx_visitor.into_messages());
+        self.messages.append(&mut call_visitor.into_messages());
     }
 }
 

@@ -2,41 +2,23 @@ use react_intl_core::ast::call::{
     analyze_define_messages, analyze_format_message, is_define_messages_call,
     is_format_message_call,
 };
-
+use react_intl_core::ast::vars::{VarCollector, VarVisitor};
 use react_intl_core::types::{CoreState, TransformedMessageData};
 use swc_core::ecma::ast::*;
 use swc_core::ecma::visit::{Visit, VisitWith};
 
 use crate::visitors::import::ImportVisitor;
 
+/// Visitor for extracting messages from call expressions
+///
+/// Uses VarVisitor to track variable declarations, similar to how
+/// ImportVisitor tracks imports. This allows resolution of variable
+/// references in calls like `defineMessages(someVar)`.
 pub struct CallExpressionVisitor<'a> {
-    pub state: &'a CoreState,
+    state: &'a CoreState,
     pub messages: Vec<TransformedMessageData>,
     import_visitor: &'a ImportVisitor<'a>,
-    variable_declarations: std::collections::HashMap<String, ObjectLit>,
-}
-
-impl<'a> Visit for CallExpressionVisitor<'a> {
-    fn visit_var_declarator(&mut self, declarator: &VarDeclarator) {
-        // Track variable declarations with object literals
-        if let Pat::Ident(ident) = &declarator.name {
-            if let Some(init) = &declarator.init {
-                if let Expr::Object(obj) = init.as_ref() {
-                    self.variable_declarations
-                        .insert(ident.sym.to_string(), obj.clone());
-                }
-            }
-        }
-
-        declarator.visit_children_with(self);
-    }
-
-    fn visit_call_expr(&mut self, call_expr: &CallExpr) {
-        call_expr.visit_children_with(self);
-
-        self.add_id_to_format_message(call_expr);
-        self.add_id_to_define_message(call_expr);
-    }
+    var_visitor: VarVisitor<'a>,
 }
 
 impl<'a> CallExpressionVisitor<'a> {
@@ -44,13 +26,17 @@ impl<'a> CallExpressionVisitor<'a> {
         Self {
             state,
             import_visitor,
-            variable_declarations: std::collections::HashMap::new(),
+            var_visitor: VarVisitor::new(state),
             messages: Vec::new(),
         }
     }
 
-    fn add_id_to_format_message(&mut self, call_expr: &CallExpr) {
-        if !is_format_message_call(&self.import_visitor, call_expr) {
+    pub fn into_messages(self) -> Vec<TransformedMessageData> {
+        self.messages
+    }
+
+    fn process_format_message(&mut self, call_expr: &CallExpr) {
+        if !is_format_message_call(self.import_visitor, call_expr) {
             return;
         }
 
@@ -61,25 +47,14 @@ impl<'a> CallExpressionVisitor<'a> {
         let expr = &call_expr.args[0].expr;
 
         match expr.as_ref() {
-            Expr::Object(obj) => {
-                // Create a call_expr for analysis
-                let call_expr_for_analysis = CallExpr {
-                    span: call_expr.span,
-                    callee: call_expr.callee.clone(),
-                    args: vec![ExprOrSpread {
-                        expr: Box::new(Expr::Object(obj.clone())),
-                        spread: None,
-                    }],
-                    type_args: call_expr.type_args.clone(),
-                    ctxt: call_expr.ctxt,
-                };
-                self.process_format_message_object_with_analysis(&call_expr_for_analysis);
+            Expr::Object(_) => {
+                if let Some((transformed, _)) = analyze_format_message(call_expr, self.state) {
+                    self.messages.push(transformed);
+                }
             }
             Expr::Ident(ident) => {
-                // Handle variable reference
                 let var_name = ident.sym.to_string();
-                if let Some(obj_lit) = self.variable_declarations.get(&var_name).cloned() {
-                    // Create a call_expr for analysis
+                if let Some(obj_lit) = self.var_visitor.get_object(&var_name) {
                     let call_expr_for_analysis = CallExpr {
                         span: call_expr.span,
                         callee: call_expr.callee.clone(),
@@ -90,15 +65,19 @@ impl<'a> CallExpressionVisitor<'a> {
                         type_args: call_expr.type_args.clone(),
                         ctxt: call_expr.ctxt,
                     };
-                    self.process_format_message_object_with_analysis(&call_expr_for_analysis);
+                    if let Some((transformed, _)) =
+                        analyze_format_message(&call_expr_for_analysis, self.state)
+                    {
+                        self.messages.push(transformed);
+                    }
                 }
             }
             _ => {}
         }
     }
 
-    fn add_id_to_define_message(&mut self, call_expr: &CallExpr) {
-        if !is_define_messages_call(&self.import_visitor, call_expr) {
+    fn process_define_message(&mut self, call_expr: &CallExpr) {
+        if !is_define_messages_call(self.import_visitor, call_expr) {
             return;
         }
 
@@ -106,66 +85,26 @@ impl<'a> CallExpressionVisitor<'a> {
             return;
         }
 
-        let expr = &call_expr.args[0].expr;
+        let messages = analyze_define_messages(call_expr, self.state, Some(&self.var_visitor));
 
-        match expr.as_ref() {
-            Expr::Object(obj) => {
-                // Pass the actual call_expr to analyze_define_messages
-                let call_expr_for_analysis = CallExpr {
-                    span: call_expr.span,
-                    callee: call_expr.callee.clone(),
-                    args: vec![ExprOrSpread {
-                        expr: Box::new(Expr::Object(obj.clone())),
-                        spread: None,
-                    }],
-                    type_args: call_expr.type_args.clone(),
-                    ctxt: call_expr.ctxt,
-                };
-                self.process_define_messages_object_with_analysis(&call_expr_for_analysis);
-            }
-            Expr::Ident(ident) => {
-                // Handle variable reference
-                let var_name = ident.sym.to_string();
-                if let Some(obj_lit) = self.variable_declarations.get(&var_name).cloned() {
-                    // Pass the actual call_expr to analyze_define_messages
-                    let call_expr_for_analysis = CallExpr {
-                        span: call_expr.span,
-                        callee: call_expr.callee.clone(),
-                        args: vec![ExprOrSpread {
-                            expr: Box::new(Expr::Object(obj_lit.clone())),
-                            spread: None,
-                        }],
-                        type_args: call_expr.type_args.clone(),
-                        ctxt: call_expr.ctxt,
-                    };
-                    self.process_define_messages_object_with_analysis(&call_expr_for_analysis);
-                }
-            }
-            _ => {}
-        }
-    }
-
-    fn process_format_message_object_with_analysis(&mut self, call_expr: &CallExpr) {
-        if let Some((transformed, _need_id_insert)) = analyze_format_message(call_expr, &self.state)
-        {
+        for (_, transformed, _) in messages {
             self.messages.push(transformed);
         }
     }
+}
 
-    fn process_define_messages_object_with_analysis(&mut self, call_expr: &CallExpr) {
-        // Use the shared core function to analyze defineMessages
-        let messages = analyze_define_messages(call_expr, &self.state);
+impl<'a> Visit for CallExpressionVisitor<'a> {
+    fn visit_var_declarator(&mut self, declarator: &VarDeclarator) {
+        // Track variable declarations using VarVisitor
+        // This allows us to resolve variables in function calls
+        self.var_visitor.track_declarator(declarator);
+        declarator.visit_children_with(self);
+    }
 
-        if messages.is_empty() {
-            // no messages - do nothing
-            return;
-        }
+    fn visit_call_expr(&mut self, call_expr: &CallExpr) {
+        call_expr.visit_children_with(self);
 
-        let mut transformed: Vec<_> = messages
-            .into_iter()
-            .map(|(_key_name, transformed, _need_id_insert)| transformed)
-            .collect();
-
-        self.messages.append(&mut transformed);
+        self.process_format_message(call_expr);
+        self.process_define_message(call_expr);
     }
 }

@@ -11,6 +11,9 @@ description = "CLI tool for extracting React Intl messages"
 name = "react-intl-extract"
 path = "src/main.rs"
 
+[lib]
+crate-type = ["cdylib", "rlib"]
+
 [dependencies]
 # Workspace dependencies
 serde = { workspace = true }
@@ -26,3 +29,7 @@ clap = { version = "4", features = ["derive"] }
 globset = "0.4"
 walkdir = "2"
 anyhow = "1"
+
+# napi-rs dependencies for JS bindings
+napi = { version = "2", features = ["napi6", "tokio_rt"] }
+napi-derive = "2"

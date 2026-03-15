@@ -67,7 +67,7 @@
 - [x] HYBRID_EXTRACT-007E: Fix CLI and Plugin ID generation consistency issues
 - [x] HYBRID_EXTRACT-007F: Extract common visitor code to core crate
 - [x] HYBRID_EXTRACT-008-001: Rename package to @donvadimon/react-intl-auto
-- [ ] HYBRID_EXTRACT-008-002: Add napi-rs to Rust CLI as napi-module
+- [x] HYBRID_EXTRACT-008-002: Add napi-rs to Rust CLI as napi-module
 - [ ] HYBRID_EXTRACT-008-003: Create JS API via napi-rs (extract.js)
 - [ ] HYBRID_EXTRACT-008-004: Create CLI entry point (cli.js)
 - [ ] HYBRID_EXTRACT-008-005: Configure napi-rs build and platform packages
@@ -2214,11 +2214,11 @@ pub fn analyze_define_messages<C: VarCollector>(
 
 ---
 
-## [ ] HYBRID_EXTRACT-008-002: Добавить napi-rs в Rust CLI как napi-модуль
+## [x] HYBRID_EXTRACT-008-002: Добавить napi-rs в Rust CLI как napi-модуль
 
 ### 📋 Metadata
 
-- **status:** `todo`
+- **status:** `ready`
 - **depends:** `HYBRID_EXTRACT-008-001`
 - **priority:** `P0`
 - **files:** `crates/cli/Cargo.toml`, `crates/cli/src/lib.rs`
@@ -2267,6 +2267,21 @@ pub fn extract_messages(...) -> Result<String, napi::Error> {
 ### 📊 ActionLog:
 
 - `2026-03-15 02:15` План задачи создан
+- `2026-03-15 13:00` Данные актуализированы: проверены crates/cli/Cargo.toml и main.rs
+- `2026-03-15 13:00` Статус изменен на `in-progress`
+- `2026-03-15 13:00` Составлен план выполнения: добавление napi-rs зависимостей и создание lib.rs
+- `2026-03-15 13:01` План скорректирован: добавлен @napi-rs/cli для управления сборкой
+- `2026-03-15 13:01` План согласован с USER
+- `2026-03-15 13:02` Выполнен шаг 1: Обновлен crates/cli/Cargo.toml (napi зависимости, lib секция)
+- `2026-03-15 13:02` Выполнен шаг 2: Установлен @napi-rs/cli (v3.5.1)
+- `2026-03-15 13:02` Выполнен шаг 3: Создан crates/cli/src/lib.rs с napi exports
+- `2026-03-15 13:02` Выполнен шаг 4: Обновлен package.json (napi конфиг, скрипты build:napi)
+- `2026-03-15 13:02` Определены критерии приёмки: napi-rs интегрирован, зависимости добавлены, lib.rs создан
+- `2026-03-15 13:02` Выполнена тестовая сборка: добавлен tokio_rt feature для async support
+- `2026-03-15 13:02` Обновлена конфигурация napi (binaryName, targets вместо deprecated name/triples)
+- `2026-03-15 13:02` Готово к review
+- `2026-03-15 13:02` Review: одобрено USER
+- `2026-03-15 13:02` Задача завершена, статус изменен на `ready`
 
 ---
 
@@ -3189,7 +3204,7 @@ npm run test:watch      # Jest в watch mode
 | HYBRID_EXTRACT-007D    | Fix import checking consistency               | P0        | 007B-2                    | ✅     |
 | HYBRID_EXTRACT-007E    | Fix CLI/Plugin ID generation issues           | P0        | 007C                      | ⏳     |
 | HYBRID_EXTRACT-008-001 | Rename package to @donvadimon/react-intl-auto | P0        | -                         | ✅     |
-| HYBRID_EXTRACT-008-002 | Add napi-rs to Rust CLI                       | P0        | 008-001                   | ⏳     |
+| HYBRID_EXTRACT-008-002 | Add napi-rs to Rust CLI                       | P0        | 008-001                   | ✅     |
 | HYBRID_EXTRACT-008-003 | Create JS API via napi-rs (extract.js)        | P0        | 008-002                   | ⏳     |
 | HYBRID_EXTRACT-008-004 | Create CLI entry point (cli.js)               | P0        | 008-003                   | ⏳     |
 | HYBRID_EXTRACT-008-005 | Configure napi-rs build & platform pkgs       | P0        | 008-004                   | ⏳     |

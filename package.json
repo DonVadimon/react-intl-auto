@@ -31,6 +31,8 @@
         "test:full": "cargo test && npm run build:plugin && npm run build:cli && npm test",
         "build:plugin": "node scripts/build-plugin.js",
         "build:cli": "cargo build --release",
+        "build:napi": "napi build --platform --release -p react-intl-extract-cli",
+        "build:napi:debug": "napi build --platform -p react-intl-extract-cli",
         "run:cli": "./target/release/react-intl-extract",
         "sandbox:basic:plugin": "rm -rf ./sandbox/basic/.build && npx swc ./sandbox/basic/src --config-file ./sandbox/basic/.swcrc --out-dir ./sandbox/basic/.build",
         "sandbox:basic:cli": "rm -rf ./sandbox/basic/.react-intl && npm run run:cli -- 'sandbox/basic/src/**/*.{ts,tsx}' --output-mode='perfile' --output='./sandbox/basic/.react-intl' --extract-source-location",
@@ -40,6 +42,7 @@
         "test-release": "node scripts/test-release.js"
     },
     "devDependencies": {
+        "@napi-rs/cli": "3.5.1",
         "@swc/cli": "^0.8.0",
         "@swc/core": "^1.15.11",
         "@types/jest": "^29.0.0",
@@ -53,5 +56,14 @@
     },
     "peerDependencies": {
         "@swc/core": "^1.15.0"
+    },
+    "napi": {
+        "binaryName": "react-intl-auto",
+        "packageName": "@donvadimon/react-intl-auto",
+        "targets": [
+            "x86_64-unknown-linux-gnu",
+            "x86_64-apple-darwin",
+            "aarch64-apple-darwin"
+        ]
     }
 }

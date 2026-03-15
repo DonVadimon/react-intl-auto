@@ -13,7 +13,7 @@ This plugin automatically adds `id` attributes/properties to:
 ## Installation
 
 ```bash
-npm install swc-plugin-react-intl-auto-fs
+npm install -D @donvadimon/react-intl-auto
 ```
 
 ## Usage
@@ -22,13 +22,11 @@ npm install swc-plugin-react-intl-auto-fs
 
 ```javascript
 const { transform } = require('@swc/core');
-const plugin = require('swc-plugin-react-intl-auto-fs');
+const plugin = require('@donvadimon/react-intl-auto/swc-plugin');
 
 const result = await transform(code, {
-  filename: 'example.js',
-  plugins: [
-    [plugin.getPluginPath(), plugin.getDefaultOptions()]
-  ]
+    filename: 'example.js',
+    plugins: [[plugin.getPluginPath(), plugin.getDefaultOptions()]],
 });
 ```
 
@@ -36,46 +34,51 @@ const result = await transform(code, {
 
 ```javascript
 const { transform } = require('@swc/core');
-const plugin = require('swc-plugin-react-intl-auto-fs');
+const plugin = require('@donvadimon/react-intl-auto/swc-plugin');
 
 const result = await transform(code, {
-  filename: 'example.js',
-  plugins: [
-    [plugin.getPluginPath(), {
-      removePrefix: false,
-      filebase: false,
-      useKey: false,
-      moduleSourceName: 'react-intl',
-      separator: '.',
-      relativeTo: process.cwd()
-    }]
-  ]
+    filename: 'example.js',
+    plugins: [
+        [
+            plugin.getPluginPath(),
+            {
+                removePrefix: false,
+                filebase: false,
+                useKey: false,
+                moduleSourceName: 'react-intl',
+                separator: '.',
+                relativeTo: process.cwd(),
+            },
+        ],
+    ],
 });
 ```
 
 ## Options
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `removePrefix` | `boolean \| string \| RegExp` | `false` | Remove prefix from generated IDs |
-| `filebase` | `boolean` | `false` | Use file basename instead of directory path |
-| `useKey` | `boolean` | `false` | Use key attribute instead of message hash |
-| `moduleSourceName` | `string` | `'react-intl'` | Module name to detect imports |
-| `separator` | `string` | `'.'` | Separator for ID parts |
-| `relativeTo` | `string` | `undefined` | Base path for relative file paths |
-| `hashId` | `boolean` | `undefined` | Apply hash fn to id |
-| `hashAlgorithm` | `murmur3 / base64` | `murmur3` | Hash fn for id |
+| Option             | Type                          | Default        | Description                                 |
+| ------------------ | ----------------------------- | -------------- | ------------------------------------------- |
+| `removePrefix`     | `boolean \| string \| RegExp` | `false`        | Remove prefix from generated IDs            |
+| `filebase`         | `boolean`                     | `false`        | Use file basename instead of directory path |
+| `useKey`           | `boolean`                     | `false`        | Use key attribute instead of message hash   |
+| `moduleSourceName` | `string`                      | `'react-intl'` | Module name to detect imports               |
+| `separator`        | `string`                      | `'.'`          | Separator for ID parts                      |
+| `relativeTo`       | `string`                      | `undefined`    | Base path for relative file paths           |
+| `hashId`           | `boolean`                     | `undefined`    | Apply hash fn to id                         |
+| `hashAlgorithm`    | `murmur3 / base64`            | `murmur3`      | Hash fn for id                              |
 
 ## Examples
 
 ### JSX Elements
 
 **Input:**
+
 ```jsx
 <FormattedMessage defaultMessage="Hello World" />
 ```
 
 **Output:**
+
 ```jsx
 <FormattedMessage id="components.Hello World" defaultMessage="Hello World" />
 ```
@@ -83,36 +86,40 @@ const result = await transform(code, {
 ### defineMessages
 
 **Input:**
+
 ```javascript
 defineMessages({
-  hello: 'Hello World',
-  goodbye: 'Goodbye World'
-})
+    hello: 'Hello World',
+    goodbye: 'Goodbye World',
+});
 ```
 
 **Output:**
+
 ```javascript
 defineMessages({
-  hello: { id: 'components.hello', defaultMessage: 'Hello World' },
-  goodbye: { id: 'components.goodbye', defaultMessage: 'Goodbye World' }
-})
+    hello: { id: 'components.hello', defaultMessage: 'Hello World' },
+    goodbye: { id: 'components.goodbye', defaultMessage: 'Goodbye World' },
+});
 ```
 
 ### formatMessage
 
 **Input:**
+
 ```javascript
 intl.formatMessage({
-  defaultMessage: 'Hello World'
-})
+    defaultMessage: 'Hello World',
+});
 ```
 
 **Output:**
+
 ```javascript
 intl.formatMessage({
-  id: 'components.Hello World',
-  defaultMessage: 'Hello World'
-})
+    id: 'components.Hello World',
+    defaultMessage: 'Hello World',
+});
 ```
 
 ## Building from Source
@@ -172,30 +179,34 @@ npm run test:watch      # Jest in watch mode
 The typical development workflow:
 
 1. **Install all dependencies:**
-   ```bash
-   npm install
-   ```
+
+    ```bash
+    npm install
+    ```
 
 2. **Build the plugin:**
-   ```bash
-   npm run build
-   ```
+
+    ```bash
+    npm run build
+    ```
 
 3. **Run all tests:**
-   ```bash
-   npm run test:full
-   ```
+
+    ```bash
+    npm run test:full
+    ```
 
 4. **For active development with auto-rebuild:**
-   ```bash
-   npm run test:watch
-   ```
+    ```bash
+    npm run test:watch
+    ```
 
 ### Version Compatibility
 
 This plugin is tested and compatible with:
+
 - **@swc/core:** ^1.15.0
-- **swc_core (Rust):** 47.0.* - 51.0.*
+- **swc_core (Rust):** 47.0._ - 51.0._
 - **Node.js:** 16, 18, 20
 
 ## CI/CD and Release Process
@@ -212,21 +223,23 @@ This project uses GitHub Actions for continuous integration and automated publis
 ### Releasing a New Version
 
 1. **Using the release script** (recommended):
-   ```bash
-   npm run release 1.0.1
-   git push origin main
-   git push origin v1.0.1
-   ```
+
+    ```bash
+    npm run release 1.0.1
+    git push origin main
+    git push origin v1.0.1
+    ```
 
 2. **Manual process**:
-   ```bash
-   npm version 1.0.1
-   git tag -a v1.0.1 -m "Release 1.0.1"
-   git push origin main
-   git push origin v1.0.1
-   ```
+    ```bash
+    npm version 1.0.1
+    git tag -a v1.0.1 -m "Release 1.0.1"
+    git push origin main
+    git push origin v1.0.1
+    ```
 
 The GitHub Actions workflow will automatically:
+
 - Build the plugin for wasm32-wasip1 target
 - Run all tests
 - Publish to npm
@@ -253,15 +266,17 @@ NPM_TOKEN=your_token npm run check-token
 ```
 
 **Token Renewal Process**:
+
 1. Create new token at [npmjs.com/settings/tokens](https://www.npmjs.com/settings/tokens)
 2. Update `NPM_TOKEN` secret in GitHub repository settings
 3. Test with: `npm run check-token`
 4. Set calendar reminder for next renewal (80 days)
 
 **Alternative**: Use GitHub Packages instead of npm (no token expiration):
+
 - Enable the `publish-github-packages.yml` workflow
 - Disable the regular `publish.yml` workflow
-- Packages will be published to `@lcl9288/swc-plugin-react-intl-auto-fs`
+- Packages will be published to `@donvadimon/react-intl-auto`
 
 ### Repository Setup
 
@@ -273,6 +288,7 @@ GITHUB_TOKEN=your_token npm run create-labels
 ```
 
 Or manually create these labels in your GitHub repository:
+
 - `dependencies` (blue)
 - `enhancement` (light blue)
 - `javascript` (yellow) - optional

@@ -1,55 +1,57 @@
 {
-  "name": "swc-plugin-react-intl-auto-fs",
-  "version": "1.0.8",
-  "description": "SWC plugin for React Intl Auto - automatically adds IDs to FormattedMessage, defineMessages, and formatMessage calls",
-  "main": "swc-plugin-react-intl-auto-fs.wasm",
-  "files": [
-    "swc-plugin-react-intl-auto-fs.wasm",
-    "index.js",
-    "README.md"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lcl9288/swc-plugin-react-intl-auto.git"
-  },
-  "keywords": [
-    "swc",
-    "plugin",
-    "react-intl",
-    "swc-plugin",
-    "i18n",
-    "internationalization"
-  ],
-  "author": "Vadim Khizhnyakov",
-  "license": "UNLICENSED",
-  "scripts": {
-    "format": "cargo fmt && prettier --write \"{src,tests,sandbox,scripts}/**/*.{ts,tsx,js,jsx}\"",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:full": "cargo test && npm run build:plugin && npm run build:cli && npm test",
-    "build:plugin": "node scripts/build-plugin.js",
-    "build:cli": "cargo build --release",
-    "run:cli": "./target/release/react-intl-extract",
-    "sandbox:basic:plugin": "rm -rf ./sandbox/basic/.build && npx swc ./sandbox/basic/src --config-file ./sandbox/basic/.swcrc --out-dir ./sandbox/basic/.build",
-    "sandbox:basic:cli": "rm -rf ./sandbox/basic/.react-intl && npm run run:cli -- 'sandbox/basic/src/**/*.{ts,tsx}' --output-mode='perfile' --output='./sandbox/basic/.react-intl' --extract-source-location",
-    "release": "node scripts/release.js",
-    "check-token": "node scripts/check-npm-token.js",
-    "create-labels": "node scripts/create-labels.js",
-    "test-release": "node scripts/test-release.js"
-  },
-  "devDependencies": {
-    "@swc/cli": "^0.8.0",
-    "@swc/core": "^1.15.11",
-    "@types/jest": "^29.0.0",
-    "jest": "^29.0.0",
-    "prettier": "^3.8.1",
-    "react": "19.2.4",
-    "react-intl": "8.1.3",
-    "string-snapshot-serializer": "1.0.1",
-    "ts-jest": "^29.0.0",
-    "typescript": "^5.0.0"
-  },
-  "peerDependencies": {
-    "@swc/core": "^1.15.0"
-  }
+    "name": "@donvadimon/react-intl-auto",
+    "version": "1.0.0",
+    "description": "SWC plugin for React Intl Auto - automatically adds IDs to FormattedMessage, defineMessages, and formatMessage calls",
+    "main": "swc-plugin.wasm",
+    "files": [
+        "swc-plugin.wasm",
+        "cli.js",
+        "extract.js",
+        "index.js",
+        "README.md"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DonVadimon/react-intl-auto.git"
+    },
+    "keywords": [
+        "swc",
+        "plugin",
+        "react-intl",
+        "swc-plugin",
+        "i18n",
+        "internationalization"
+    ],
+    "author": "Vadim Khizhnyakov",
+    "license": "UNLICENSED",
+    "scripts": {
+        "format": "cargo fmt && prettier --write \"{src,tests,sandbox,scripts}/**/*.{ts,tsx,js,jsx}\"",
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "test:full": "cargo test && npm run build:plugin && npm run build:cli && npm test",
+        "build:plugin": "node scripts/build-plugin.js",
+        "build:cli": "cargo build --release",
+        "run:cli": "./target/release/react-intl-extract",
+        "sandbox:basic:plugin": "rm -rf ./sandbox/basic/.build && npx swc ./sandbox/basic/src --config-file ./sandbox/basic/.swcrc --out-dir ./sandbox/basic/.build",
+        "sandbox:basic:cli": "rm -rf ./sandbox/basic/.react-intl && npm run run:cli -- 'sandbox/basic/src/**/*.{ts,tsx}' --output-mode='perfile' --output='./sandbox/basic/.react-intl' --extract-source-location",
+        "release": "node scripts/release.js",
+        "check-token": "node scripts/check-npm-token.js",
+        "create-labels": "node scripts/create-labels.js",
+        "test-release": "node scripts/test-release.js"
+    },
+    "devDependencies": {
+        "@swc/cli": "^0.8.0",
+        "@swc/core": "^1.15.11",
+        "@types/jest": "^29.0.0",
+        "jest": "^29.0.0",
+        "prettier": "^3.8.1",
+        "react": "19.2.4",
+        "react-intl": "8.1.3",
+        "string-snapshot-serializer": "1.0.1",
+        "ts-jest": "^29.0.0",
+        "typescript": "^5.0.0"
+    },
+    "peerDependencies": {
+        "@swc/core": "^1.15.0"
+    }
 }

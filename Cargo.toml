@@ -7,7 +7,7 @@ version = "1.0.8"
 edition = "2021"
 authors = ["Your Name"]
 license = "MIT"
-repository = "https://github.com/lcl9288/swc-plugin-react-intl-auto.git"
+repository = "https://github.com/DonVadimon/react-intl-auto.git"
 
 [workspace.dependencies]
 # Shared dependencies

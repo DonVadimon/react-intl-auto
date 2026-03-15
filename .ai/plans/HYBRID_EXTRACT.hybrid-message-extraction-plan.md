@@ -66,8 +66,18 @@
 - [x] HYBRID_EXTRACT-007C: Create CLI and Plugin ID consistency tests
 - [x] HYBRID_EXTRACT-007E: Fix CLI and Plugin ID generation consistency issues
 - [x] HYBRID_EXTRACT-007F: Extract common visitor code to core crate
-- [ ] HYBRID_EXTRACT-008: Create JS API with napi-rs bindings
-- [ ] HYBRID_EXTRACT-009: Update package.json with CLI bin entry and JS API exports
+- [x] HYBRID_EXTRACT-008-001: Rename package to @donvadimon/react-intl-auto
+- [ ] HYBRID_EXTRACT-008-002: Add napi-rs to Rust CLI as napi-module
+- [ ] HYBRID_EXTRACT-008-003: Create JS API via napi-rs (extract.js)
+- [ ] HYBRID_EXTRACT-008-004: Create CLI entry point (cli.js)
+- [ ] HYBRID_EXTRACT-008-005: Configure napi-rs build and platform packages
+- [ ] HYBRID_EXTRACT-008-006: Copy WASM plugin to package
+- [ ] HYBRID_EXTRACT-008-007: Setup GitHub Actions napi-rs workflow
+- [ ] HYBRID_EXTRACT-008-008: Update package.json exports
+- [ ] HYBRID_EXTRACT-009-001: Implement napi-rs exports for extract functions
+- [ ] HYBRID_EXTRACT-009-002: Implement napi-rs exports for CLI functions
+- [ ] HYBRID_EXTRACT-009-003: Test cross-platform builds
+- [ ] HYBRID_EXTRACT-009-004: Update documentation with examples
 - [ ] HYBRID_EXTRACT-010: Create additional integration tests and examples
 - [ ] HYBRID_EXTRACT-011: Create example projects (webpack, CLI-only, JS API)
 - [ ] HYBRID_EXTRACT-012: Update documentation and README
@@ -2149,211 +2159,626 @@ pub fn analyze_define_messages<C: VarCollector>(
 
 ---
 
-## [ ] HYBRID_EXTRACT-008: Create JS API with napi-rs bindings
+## [x] HYBRID_EXTRACT-008-001: Переименовать пакет в `@donvadimon/react-intl-auto`
 
 ### 📋 Metadata
 
-- **status:** `todo`
-- **depends:** `HYBRID_EXTRACT-003`
-- **priority:** `P1`
-- **files:** `src-node/lib.rs`, `index.js`, `package.json`
+- **status:** `ready`
+- **depends:** `-`
+- **priority:** `P0`
+- **files:** `package.json`, `Cargo.toml`, `crates/*/Cargo.toml`
 
 ### 📝 Details
 
-Создать Node.js API для программного доступа к функционалу извлечения сообщений через Rust bindings (napi-rs).
-
-**Требования:**
-
-- Асинхронная функция `extractMessages()` для извлечения из строки кода
-- Поддержка всех опций из CLI
-- TypeScript definitions для автодополнения
-- Производительность через native bindings
-
-**Поддерживаемые опции:**
-
-- `removePrefix` (Boolean | String) - Удаление префикса из пути
-- `moduleSourceName` (String) - Имя модуля для импортов react-intl
-- `separator` (String) - Разделитель для генерации ID
-- `relativeTo` (String) - Базовый путь для относительных путей
-- `hashId` (Boolean) - Хэшировать ID сообщений
-- `hashAlgorithm` (String) - Алгоритм хэширования (murmur3, base64)
-- `extractSourceLocation` (Boolean) - Включать путь к файлу в JSON
-- `outputMode` (String) - Режим вывода (aggregated | perfile)
-
-**Удаленные опции (больше не поддерживаются):**
-
-- ~~`filebase` (Boolean)~~ - Использовать только имя файла в ID
-- ~~`useKey` (Boolean)~~ - Использовать ключ вместо хэша для defineMessages
-
-**Проблемные места:**
-
-- Настройка napi-rs требует дополнительных зависимостей
-- Кросс-компиляция для разных платформ (Windows, macOS, Linux)
-- Интеграция с существующей сборкой WASM
+Переименовать пакет из `swc-plugin-react-intl-auto-fs` в `@donvadimon/react-intl-auto`.
 
 **Изменения:**
 
-1. Добавить napi-rs зависимости:
+1. Обновить `name` в `package.json`
+2. Обновить `repository.url` во всех `Cargo.toml`
+3. Удалить или обновить старые npm скрипты публикации
+4. Обновить `AGENTS.md` если есть упоминания старого имени
 
-    ```toml
-    [dependencies]
-    napi = { version = "2", features = ["async"] }
-    napi-derive = "2"
-    react-intl-core = { path = "../react-intl-core" }
+**Пример:**
 
-    [build-dependencies]
-    napi-build = "2"
-    ```
-
-2. Создать `src-node/lib.rs`:
-
-    ```rust
-    use napi::bindgen_prelude::*;
-    use napi_derive::napi;
-    use react_intl_core::{extract_messages, CoreOptions};
-
-    #[napi(object)]
-    pub struct JsExtractedMessage {
-        pub id: String,
-        pub default_message: String,
-        pub description: Option<String>,
-        pub file: Option<String>,
+```json
+// package.json
+{
+    "name": "@donvadimon/react-intl-auto",
+    "version": "1.0.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/donvadimon/react-intl-auto.git"
     }
-
-    #[napi]
-    pub async fn extract_messages(
-        code: String,
-        filename: String,
-        options: Option<JsCoreOptions>,
-    ) -> Result<Vec<JsExtractedMessage>> {
-        // Implementation
-    }
-    ```
-
-3. Обновить `index.js`:
-
-    ```javascript
-    const { extractMessages } = require('./index.node');
-
-    module.exports = {
-        extractMessages,
-        // ... existing WASM plugin exports
-    };
-    ```
+}
+```
 
 **Влияние:**
 
-- Возможность использования в кастомных скриптах сборки
-- Интеграция с CI/CD пайплайнами
-- Требует обновление CI для сборки native bindings
+- Все ссылки на старое имя пакета станут неактивными
+- Нужно будет опубликовать новый пакет в npm
 
 ### 📊 ActionLog:
 
-- `2026-02-08 18:48` План задачи создан
-- `2026-02-24` Обновлены поддерживаемые опции: удалены `filebase` и `useKey`
+- `2026-03-15 02:15` План задачи создан
+- `2026-03-15 12:50` Данные актуализированы: проверены файлы package.json, Cargo.toml, crates/\*/Cargo.toml
+- `2026-03-15 12:50` Статус изменен на `in-progress`
+- `2026-03-15 12:50` Составлен план выполнения: обновление package.json и Cargo.toml
+- `2026-03-15 12:51` Выполнен шаг 1: Обновлен package.json (name, version, main, files, repository)
+- `2026-03-15 12:51` Выполнен шаг 2: Обновлен Cargo.toml (repository URL)
+- `2026-03-15 12:51` Выполнен шаг 3: Обновлен README.md (npm install, require statements)
+- `2026-03-15 12:51` Определены критерии приёмки: все файлы обновлены, старое имя пакета заменено
+- `2026-03-15 12:51` Готово к review
+- `2026-03-15 12:52` Review: одобрено USER
+- `2026-03-15 12:52` Задача завершена, статус изменен на `ready`
 
 ---
 
-## [ ] HYBRID_EXTRACT-009: Update package.json with CLI bin entry and JS API exports
+## [ ] HYBRID_EXTRACT-008-002: Добавить napi-rs в Rust CLI как napi-модуль
 
 ### 📋 Metadata
 
 - **status:** `todo`
-- **depends:** `HYBRID_EXTRACT-004`, `HYBRID_EXTRACT-008`
-- **priority:** `P1`
-- **files:** `package.json`, `index.js`
+- **depends:** `HYBRID_EXTRACT-008-001`
+- **priority:** `P0`
+- **files:** `crates/cli/Cargo.toml`, `crates/cli/src/lib.rs`
 
 ### 📝 Details
 
-Обновить npm пакет для поддержки CLI и JS API экспортов.
+Добавить поддержку napi-rs в существующий CLI crate. CLI должен оставаться работать как бинарник + добавляться возможность собирать как napi-модуль.
 
 **Требования:**
 
-- CLI доступен как `npx swc-plugin-react-intl-auto-fs extract`
-- JS API экспортирует `extractMessages`
-- Обратная совместимость с существующими импортами WASM плагина
-- TypeScript definitions для JS API
-
-**Проблемные места:**
-
-- Нужно скопировать CLI бинарник в npm пакет
-- Настройка bin entry в package.json
-- Поддержка разных платформ (postinstall scripts)
+- Добавить `napi` и `napi-derive` зависимости
+- Создать `#[napi]` функции для JS вызовов
+- CLI бинарник остается без изменений
 
 **Изменения:**
 
-1. Обновить `package.json`:
+1. В `crates/cli/Cargo.toml`:
 
-    ```json
-    {
-        "name": "swc-plugin-react-intl-auto-fs",
-        "main": "index.js",
-        "types": "index.d.ts",
-        "bin": {
-            "react-intl-extract": "./bin/react-intl-extract"
-        },
-        "scripts": {
-            "build": "node build.js && npm run build:native",
-            "build:native": "napi build --platform",
-            "install": "napi install"
-        },
-        "napi": {
-            "name": "swc-plugin-react-intl-auto-fs",
-            "triples": {
-                "defaults": true,
-                "additional": ["x86_64-pc-windows-msvc", "aarch64-apple-darwin"]
-            }
-        }
-    }
-    ```
+```toml
+[dependencies]
+# ... existing deps ...
+napi = { version = "2", features = ["napi6"] }
+napi-derive = "2"
 
-2. Обновить `index.js`:
+[lib]
+crate-type = ["cdylib", "rlib"]  # cdylib для napi, rlib для CLI
+```
 
-    ```javascript
-    const { existsSync } = require('fs');
-    const { join } = require('path');
+2. Создать `crates/cli/src/lib.rs` с napi exports:
 
-    // Try to load native bindings (napi-rs)
-    let native;
-    try {
-        native = require('./index.node');
-    } catch (e) {
-        // Native bindings not available on this platform
-    }
+```rust
+use napi_derive::napi;
 
-    module.exports = {
-        // WASM plugin exports (existing)
-        getPluginPath: () =>
-            join(__dirname, 'swc-plugin-react-intl-auto-fs.wasm'),
-        getDefaultOptions: () => ({
-            removePrefix: undefined,
-            moduleSourceName: 'react-intl',
-            separator: '.',
-            relativeTo: undefined,
-            hashId: false,
-            hashAlgorithm: 'murmur3',
-        }),
-
-        // JS API exports (new)
-        extractMessages:
-            native?.extractMessages ||
-            (async () => {
-                throw new Error(
-                    'Native bindings not available. Please install from npm.',
-                );
-            }),
-    };
-    ```
+#[napi]
+pub fn extract_messages(...) -> Result<String, napi::Error> {
+    // Вызывает существующую логику из main.rs
+}
+```
 
 **Влияние:**
 
-- Пакет становится более функциональным
-- Требует обновление CI для сборки native binaries
-- Возможны проблемы с совместимостью на разных платформах
+- Добавляются зависимости napi-rs
+- Увеличивается время сборки
+- Нужно настроить cargo для сборки cdylib
 
 ### 📊 ActionLog:
 
-- `2026-02-08 18:48` План задачи создан
+- `2026-03-15 02:15` План задачи создан
+
+---
+
+## [ ] HYBRID_EXTRACT-008-003: Создать JS API через napi-rs (extract.js)
+
+### 📋 Metadata
+
+- **status:** `todo`
+- **depends:** `HYBRID_EXTRACT-008-002`
+- **priority:** `P0`
+- **files:** `extract.js`, `extract.d.ts`
+
+### 📝 Details
+
+Создать JS entry point который загружает платформенный napi-модуль и экспортирует функции.
+
+**Требования:**
+
+- Загружать `.node` файл в зависимости от платформы
+- Экспортировать функции: `extract`, `extractSync`, `parseFile` и т.д.
+- Типизация через TypeScript declarations
+
+**Структура:**
+
+```javascript
+// extract.js
+const { platform, arch } = process;
+const native = require(`@donvadimon/react-intl-auto-${platform}-${arch}`);
+
+module.exports = {
+    extract: native.extract,
+    extractSync: native.extractSync,
+    parseFile: native.parseFile,
+};
+```
+
+**Изменения:**
+
+1. Создать `extract.js` с логикой загрузки нативного модуля
+2. Создать `extract.d.ts` с типизацией
+3. napi-rs сгенерирует TypeScript definitions автоматически
+
+**Влияние:**
+
+- Пользователи смогут импортировать: `import { extract } from '@donvadimon/react-intl-auto/extract'`
+
+### 📊 ActionLog:
+
+- `2026-03-15 02:15` План задачи создан
+
+---
+
+## [ ] HYBRID_EXTRACT-008-004: Создать CLI entry point (cli.js)
+
+### 📋 Metadata
+
+- **status:** `todo`
+- **depends:** `HYBRID_EXTRACT-008-003`
+- **priority:** `P0`
+- **files:** `cli.js`
+
+### 📝 Details
+
+Создать CLI entry point который загружает нативный модуль и запускает CLI функцию.
+
+**Требования:**
+
+- Работать как `npx @donvadimon/react-intl-auto extract`
+- Передавать аргументы командной строки в Rust CLI
+- Возвращать exit code от Rust
+
+**Структура:**
+
+```javascript
+// cli.js
+#!/usr/bin/env node
+const { platform, arch } = process;
+const native = require(`@donvadimon/react-intl-auto-${platform}-${arch}`);
+
+// Вызываем CLI функцию из нативного модуля
+const exitCode = native.runCli(process.argv.slice(2));
+process.exit(exitCode);
+```
+
+**Изменения:**
+
+1. Создать `cli.js` с shebang
+2. Добавить в `package.json`:
+
+```json
+{
+    "bin": {
+        "react-intl-auto": "./cli.js"
+    }
+}
+```
+
+**Влияние:**
+
+- CLI становится доступен через npx
+- Работает на всех поддерживаемых платформах
+
+### 📊 ActionLog:
+
+- `2026-03-15 02:15` План задачи создан
+
+---
+
+## [ ] HYBRID_EXTRACT-008-005: Настроить napi-rs build и platform packages
+
+### 📋 Metadata
+
+- **status:** `todo`
+- **depends:** `HYBRID_EXTRACT-008-004`
+- **priority:** `P0`
+- **files:** `package.json`, `napi.json`
+
+### 📝 Details
+
+Настроить napi-rs для сборки платформенных пакетов.
+
+**Требования:**
+
+- Поддерживаемые платформы: Linux x64 (gnu), macOS x64, macOS arm64
+- Windows - опционально, низкий приоритет
+- Автоматическая генерация TypeScript definitions
+
+**Изменения:**
+
+1. Добавить в `package.json`:
+
+```json
+{
+    "napi": {
+        "name": "react-intl-auto",
+        "triples": {
+            "additional": [
+                "x86_64-unknown-linux-gnu",
+                "x86_64-apple-darwin",
+                "aarch64-apple-darwin"
+            ]
+        }
+    },
+    "scripts": {
+        "build:napi": "napi build --platform --release",
+        "build:napi:debug": "napi build --platform"
+    }
+}
+```
+
+2. Установить `@napi-rs/cli` как dev dependency
+
+3. Добавить `optionalDependencies` для платформенных пакетов
+
+**Влияние:**
+
+- Сборка станет сложнее (нужен napi-rs CLI)
+- Появятся platform-specific пакеты в npm
+
+### 📊 ActionLog:
+
+- `2026-03-15 02:15` План задачи создан
+
+---
+
+## [ ] HYBRID_EXTRACT-008-006: Скопировать WASM плагин в пакет
+
+### 📋 Metadata
+
+- **status:** `todo`
+- **depends:** `HYBRID_EXTRACT-008-001`
+- **priority:** `P1`
+- **files:** `swc-plugin.js`, `package.json`
+
+### 📝 Details
+
+Настроить копирование WASM плагина в npm пакет и создание entry point.
+
+**Требования:**
+
+- WASM файл должен быть включен в файлы пакета
+- `swc-plugin.js` экспортирует путь к WASM
+- SWC plugin API остается без изменений
+
+**Изменения:**
+
+1. Обновить `files` в `package.json`:
+
+```json
+{
+    "files": [
+        "cli.js",
+        "extract.js",
+        "extract.d.ts",
+        "swc-plugin.js",
+        "swc-plugin.wasm",
+        "index.js"
+    ]
+}
+```
+
+2. Создать `swc-plugin.js`:
+
+```javascript
+const path = require('path');
+module.exports = path.join(__dirname, 'swc-plugin.wasm');
+```
+
+3. Скрипт сборки должен копировать WASM
+
+**Влияние:**
+
+- Пользователи используют: `plugins: ['@donvadimon/react-intl-auto/swc-plugin']` в .swcrc
+
+### 📊 ActionLog:
+
+- `2026-03-15 02:15` План задачи создан
+
+---
+
+## [ ] HYBRID_EXTRACT-008-007: Настроить GitHub Actions workflow napi-rs
+
+### 📋 Metadata
+
+- **status:** `todo`
+- **depends:** `HYBRID_EXTRACT-008-005`, `HYBRID_EXTRACT-008-006`
+- **priority:** `P1`
+- **files:** `.github/workflows/napi-rs.yml`
+
+### 📝 Details
+
+Создать GitHub Actions workflow для автоматической сборки и публикации всех платформенных пакетов.
+
+**Требования:**
+
+- Использовать официальный workflow от napi-rs
+- Сборка на Linux (x64), macOS (x64 + arm64)
+- Публикация в npm при создании GitHub release
+- NPM токен из GitHub secrets (`NPM_TOKEN`)
+
+**⚠️ Требования перед началом:**
+
+- Создать ветку `master`
+- Добавить `NPM_TOKEN` в GitHub secrets
+
+**Влияние:**
+
+- Автоматическая публикация при создании тега
+- Все платформы собираются в CI
+
+### 📊 ActionLog:
+
+- `2026-03-15 02:15` План задачи создан
+
+---
+
+## [ ] HYBRID_EXTRACT-008-008: Обновить package.json exports
+
+### 📋 Metadata
+
+- **status:** `todo`
+- **depends:** `HYBRID_EXTRACT-008-003`, `HYBRID_EXTRACT-008-004`, `HYBRID_EXTRACT-008-006`
+- **priority:** `P0`
+- **files:** `package.json`
+
+### 📝 Details
+
+Настроить поле `exports` в package.json для правильной работы подпутей.
+
+**Требования:**
+
+- `@donvadimon/react-intl-auto` -> CLI (bin)
+- `@donvadimon/react-intl-auto/swc-plugin` -> WASM плагин
+- `@donvadimon/react-intl-auto/extract` -> JS API
+
+**Изменения:**
+
+```json
+{
+    "main": "index.js",
+    "exports": {
+        ".": {
+            "require": "./index.js",
+            "import": "./index.mjs"
+        },
+        "./swc-plugin": {
+            "require": "./swc-plugin.js",
+            "import": "./swc-plugin.mjs"
+        },
+        "./extract": {
+            "require": "./extract.js",
+            "import": "./extract.mjs",
+            "types": "./extract.d.ts"
+        },
+        "./package.json": "./package.json"
+    },
+    "bin": {
+        "react-intl-auto": "./cli.js"
+    }
+}
+```
+
+**Влияние:**
+
+- Пользователи могут использовать разные entry points
+- TypeScript может резолвить типы
+
+### 📊 ActionLog:
+
+- `2026-03-15 02:15` План задачи создан
+
+---
+
+## [ ] HYBRID_EXTRACT-009-001: Реализовать napi-rs exports для extract функций
+
+### 📋 Metadata
+
+- **status:** `todo`
+- **depends:** `HYBRID_EXTRACT-008-002`
+- **priority:** `P0`
+- **files:** `crates/cli/src/lib.rs`
+
+### 📝 Details
+
+Реализовать конкретные napi функции для извлечения сообщений.
+
+**Требования:**
+
+- `extract(globPattern: string, options: ExtractOptions): Promise<ExtractResult>`
+- `extractSync(globPattern: string, options: ExtractOptions): ExtractResult`
+- `parseFile(filePath: string): Message[]`
+
+**Пример:**
+
+```rust
+use napi_derive::napi;
+use napi::{JsObject, Result};
+use react_intl_core::{extract_messages, ExtractOptions, ExtractResult};
+
+#[napi(object)]
+pub struct JsExtractOptions {
+    pub output_mode: Option<String>,
+    pub output: Option<String>,
+    pub extract_source_location: Option<bool>,
+}
+
+#[napi(object)]
+pub struct JsExtractResult {
+    pub messages: Vec<JsMessage>,
+    pub files_processed: u32,
+}
+
+#[napi]
+pub async fn extract(glob_pattern: String, options: Option<JsExtractOptions>) -> Result<JsExtractResult> {
+    // Вызов существующей логики
+}
+
+#[napi]
+pub fn extract_sync(glob_pattern: String, options: Option<JsExtractOptions>) -> Result<JsExtractResult> {
+    // Синхронная версия
+}
+```
+
+**Влияние:**
+
+- JS API становится функциональным
+- Нужно протестировать все функции
+
+### 📊 ActionLog:
+
+- `2026-03-15 02:15` План задачи создан
+
+---
+
+## [ ] HYBRID_EXTRACT-009-002: Реализовать napi-rs exports для CLI функций
+
+### 📋 Metadata
+
+- **status:** `todo`
+- **depends:** `HYBRID_EXTRACT-008-002`
+- **priority:** `P0`
+- **files:** `crates/cli/src/lib.rs`
+
+### 📝 Details
+
+Реализовать функцию для запуска CLI из JS.
+
+**Требования:**
+
+- `runCli(args: string[]): number` - возвращает exit code
+- Обрабатывает аргументы как обычный CLI
+
+**Пример:**
+
+```rust
+#[napi]
+pub fn run_cli(args: Vec<String>) -> i32 {
+    match run_cli_internal(args) {
+        Ok(_) => 0,
+        Err(e) => {
+            eprintln!("Error: {}", e);
+            1
+        }
+    }
+}
+```
+
+**Влияние:**
+
+- CLI.js может вызывать Rust CLI
+
+### 📊 ActionLog:
+
+- `2026-03-15 02:15` План задачи создан
+
+---
+
+## [ ] HYBRID_EXTRACT-009-003: Протестировать кроссплатформенную сборку
+
+### 📋 Metadata
+
+- **status:** `todo`
+- **depends:** `HYBRID_EXTRACT-009-001`, `HYBRID_EXTRACT-009-002`
+- **priority:** `P1`
+- **files:** `tests/`
+
+### 📝 Details
+
+Протестировать работу на всех целевых платформах.
+
+**Требования:**
+
+- Linux: протестировать в CI
+- macOS (x64): протестировать локально или в CI
+- macOS (arm64): протестировать на Apple Silicon
+
+**Тесты:**
+
+1. `npm run build:napi` собирается без ошибок
+2. `node -e "require('./extract')"` загружает модуль
+3. `npx . extract --help` работает
+4. SWC плагин применяется корректно
+
+**Влияние:**
+
+- Уверенность в работе на всех платформах
+
+### 📊 ActionLog:
+
+- `2026-03-15 02:15` План задачи создан
+
+---
+
+## [ ] HYBRID_EXTRACT-009-004: Обновить документацию с примерами использования
+
+### 📋 Metadata
+
+- **status:** `todo`
+- **depends:** `HYBRID_EXTRACT-009-003`
+- **priority:** `P2`
+- **files:** `README.md`
+
+### 📝 Details
+
+Обновить README с новой структурой использования.
+
+**Требования:**
+
+- Примеры использования CLI
+- Примеры использования SWC плагина
+- Примеры использования JS API
+- Таблица поддерживаемых платформ
+
+**Пример структуры README:**
+
+```markdown
+## Installation
+
+npm install -D @donvadimon/react-intl-auto
+
+## CLI Usage
+
+npx @donvadimon/react-intl-auto extract 'src/\*_/_.{ts,tsx}'
+
+## SWC Plugin
+
+{
+"jsc": {
+"experimental": {
+"plugins": [
+["@donvadimon/react-intl-auto/swc-plugin", {}]
+]
+}
+}
+}
+
+## JS API
+
+import { extract } from '@donvadimon/react-intl-auto/extract';
+const result = await extract('src/\*_/_.{ts,tsx}', {
+outputMode: 'single',
+extractSourceLocation: true
+});
+```
+
+**Влияние:**
+
+- Пользователи смогут легко начать использовать пакет
+
+### 📊 ActionLog:
+
+- `2026-03-15 02:15` План задачи создан
 
 ---
 
@@ -2746,28 +3171,38 @@ npm run test:watch      # Jest в watch mode
 
 ## 📊 Сводка по задачам
 
-| Task ID               | Название                                | Приоритет | Зависимости  | Статус |
-| --------------------- | --------------------------------------- | --------- | ------------ | ------ |
-| HYBRID_EXTRACT-001    | Create Cargo workspace structure        | P0        | -            | ✅     |
-| HYBRID_EXTRACT-002    | Extract ID generation to shared core    | P0        | 001          | ✅     |
-| HYBRID_EXTRACT-003    | Extract AST traversal to shared core    | P0        | 002          | ✅     |
-| HYBRID_EXTRACT-003A   | Extract JSX element analysis            | P0        | 003          | ✅     |
-| HYBRID_EXTRACT-003B   | Extract defineMessages analysis         | P0        | 003A         | ✅     |
-| HYBRID_EXTRACT-003C   | Extract formatMessage analysis          | P0        | 003A         | ✅     |
-| HYBRID_EXTRACT-004    | Create CLI tool crate                   | P0        | 003B, 003C   | ✅     |
-| HYBRID_EXTRACT-005    | CLI argument parsing and globbing       | P1        | 004          | ✅     |
-| HYBRID_EXTRACT-006    | JSON output format                      | P1        | 005          | ✅     |
-| HYBRID_EXTRACT-007    | Source location extraction              | P1        | 006          | ✅     |
-| HYBRID_EXTRACT-007B   | Migrate Jest tests to fixture files     | P1        | 007          | ✅     |
-| HYBRID_EXTRACT-007B-2 | Fix ID generation with sequence numbers | P1        | 007B         | ✅     |
-| HYBRID_EXTRACT-007C   | CLI and Plugin ID consistency tests     | P1        | 007B-2, 007D | ✅     |
-| HYBRID_EXTRACT-007D   | Fix import checking consistency         | P0        | 007B-2       | ✅     |
-| HYBRID_EXTRACT-007E   | Fix CLI/Plugin ID generation issues     | P0        | 007C         | ⏳     |
-| HYBRID_EXTRACT-008    | Create JS API with napi-rs              | P1        | 003          | ⏳     |
-| HYBRID_EXTRACT-009    | Update package.json with CLI and JS API | P1        | 004, 008     | ⏳     |
-| HYBRID_EXTRACT-010    | Integration tests for ID consistency    | P2        | 007, 009     | ⏳     |
-| HYBRID_EXTRACT-011    | Create example projects                 | P2        | 010          | ⏳     |
-| HYBRID_EXTRACT-012    | Update documentation                    | P2        | 011          | ⏳     |
+| Task ID                | Название                                      | Приоритет | Зависимости               | Статус |
+| ---------------------- | --------------------------------------------- | --------- | ------------------------- | ------ |
+| HYBRID_EXTRACT-001     | Create Cargo workspace structure              | P0        | -                         | ✅     |
+| HYBRID_EXTRACT-002     | Extract ID generation to shared core          | P0        | 001                       | ✅     |
+| HYBRID_EXTRACT-003     | Extract AST traversal to shared core          | P0        | 002                       | ✅     |
+| HYBRID_EXTRACT-003A    | Extract JSX element analysis                  | P0        | 003                       | ✅     |
+| HYBRID_EXTRACT-003B    | Extract defineMessages analysis               | P0        | 003A                      | ✅     |
+| HYBRID_EXTRACT-003C    | Extract formatMessage analysis                | P0        | 003A                      | ✅     |
+| HYBRID_EXTRACT-004     | Create CLI tool crate                         | P0        | 003B, 003C                | ✅     |
+| HYBRID_EXTRACT-005     | CLI argument parsing and globbing             | P1        | 004                       | ✅     |
+| HYBRID_EXTRACT-006     | JSON output format                            | P1        | 005                       | ✅     |
+| HYBRID_EXTRACT-007     | Source location extraction                    | P1        | 006                       | ✅     |
+| HYBRID_EXTRACT-007B    | Migrate Jest tests to fixture files           | P1        | 007                       | ✅     |
+| HYBRID_EXTRACT-007B-2  | Fix ID generation with sequence numbers       | P1        | 007B                      | ✅     |
+| HYBRID_EXTRACT-007C    | CLI and Plugin ID consistency tests           | P1        | 007B-2, 007D              | ✅     |
+| HYBRID_EXTRACT-007D    | Fix import checking consistency               | P0        | 007B-2                    | ✅     |
+| HYBRID_EXTRACT-007E    | Fix CLI/Plugin ID generation issues           | P0        | 007C                      | ⏳     |
+| HYBRID_EXTRACT-008-001 | Rename package to @donvadimon/react-intl-auto | P0        | -                         | ✅     |
+| HYBRID_EXTRACT-008-002 | Add napi-rs to Rust CLI                       | P0        | 008-001                   | ⏳     |
+| HYBRID_EXTRACT-008-003 | Create JS API via napi-rs (extract.js)        | P0        | 008-002                   | ⏳     |
+| HYBRID_EXTRACT-008-004 | Create CLI entry point (cli.js)               | P0        | 008-003                   | ⏳     |
+| HYBRID_EXTRACT-008-005 | Configure napi-rs build & platform pkgs       | P0        | 008-004                   | ⏳     |
+| HYBRID_EXTRACT-008-006 | Copy WASM plugin to package                   | P1        | 008-001                   | ⏳     |
+| HYBRID_EXTRACT-008-007 | Setup GitHub Actions napi-rs workflow         | P1        | 008-005, 008-006          | ⏳     |
+| HYBRID_EXTRACT-008-008 | Update package.json exports                   | P0        | 008-003, 008-004, 008-006 | ⏳     |
+| HYBRID_EXTRACT-009-001 | Implement napi-rs exports for extract         | P0        | 008-002                   | ⏳     |
+| HYBRID_EXTRACT-009-002 | Implement napi-rs exports for CLI             | P0        | 008-002                   | ⏳     |
+| HYBRID_EXTRACT-009-003 | Test cross-platform builds                    | P1        | 009-001, 009-002          | ⏳     |
+| HYBRID_EXTRACT-009-004 | Update documentation                          | P2        | 009-003                   | ⏳     |
+| HYBRID_EXTRACT-010     | Integration tests for ID consistency          | P2        | 007, 008                  | ⏳     |
+| HYBRID_EXTRACT-011     | Create example projects                       | P2        | 010                       | ⏳     |
+| HYBRID_EXTRACT-012     | Update documentation                          | P2        | 011                       | ⏳     |
 
 ---
 

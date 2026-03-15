@@ -70,7 +70,7 @@
 - [x] HYBRID_EXTRACT-008-002: Add napi-rs to Rust CLI as napi-module
 - [x] HYBRID_EXTRACT-008-003: Create JS API via napi-rs (extract.js)
 - [x] HYBRID_EXTRACT-008-004: Create CLI entry point (cli.js)
-- [ ] HYBRID_EXTRACT-008-005: Configure napi-rs build and platform packages
+- [-] HYBRID_EXTRACT-008-005: Configure napi-rs build and platform packages
 - [ ] HYBRID_EXTRACT-008-006: Copy WASM plugin to package
 - [ ] HYBRID_EXTRACT-008-007: Setup GitHub Actions napi-rs workflow
 - [ ] HYBRID_EXTRACT-008-008: Update package.json exports
@@ -2408,24 +2408,25 @@ process.exit(exitCode);
 
 ---
 
-## [ ] HYBRID_EXTRACT-008-005: Настроить napi-rs build и platform packages
+## [x] HYBRID_EXTRACT-008-005: Настроить napi-rs build и platform packages
 
 ### 📋 Metadata
 
-- **status:** `todo`
+- **status:** `ready`
 - **depends:** `HYBRID_EXTRACT-008-004`
 - **priority:** `P0`
-- **files:** `package.json`, `napi.json`
+- **files:** `package.json`, `npm/`, `.cargo/config.toml`
 
 ### 📝 Details
 
-Настроить napi-rs для сборки платформенных пакетов.
+Настроить napi-rs для сборки платформенных пакетов. Использовать стандартные команды napi CLI.
 
 **Требования:**
 
 - Поддерживаемые платформы: Linux x64 (gnu), macOS x64, macOS arm64
 - Windows - опционально, низкий приоритет
 - Автоматическая генерация TypeScript definitions
+- Автоматическое создание `npm/` директорий через napi CLI
 
 **Изменения:**
 
@@ -2434,34 +2435,62 @@ process.exit(exitCode);
 ```json
 {
     "napi": {
-        "name": "react-intl-auto",
-        "triples": {
-            "additional": [
-                "x86_64-unknown-linux-gnu",
-                "x86_64-apple-darwin",
-                "aarch64-apple-darwin"
-            ]
-        }
+        "binaryName": "react-intl-auto",
+        "packageName": "@donvadimon/react-intl-auto",
+        "targets": [
+            "x86_64-unknown-linux-gnu",
+            "x86_64-apple-darwin",
+            "aarch64-apple-darwin"
+        ]
     },
     "scripts": {
-        "build:napi": "napi build --platform --release",
-        "build:napi:debug": "napi build --platform"
+        "build:napi": "napi build --platform --release -p react-intl-extract-cli",
+        "build:napi:debug": "napi build --platform -p react-intl-extract-cli",
+        "create-npm-dirs": "napi create-npm-dirs"
     }
 }
 ```
 
 2. Установить `@napi-rs/cli` как dev dependency
 
-3. Добавить `optionalDependencies` для платформенных пакетов
+3. Создать npm директории через napi CLI:
+
+```bash
+# Автоматически создаст npm/ с package.json для каждой платформы
+npm run create-npm-dirs
+```
+
+**Команды napi CLI:**
+
+- `napi create-npm-dirs` - создает npm/ директории с package.json
+- `napi build --platform` - собирает и копирует .node файлы в npm/
+- `napi artifacts` - собирает артефакты из CI
+- `napi prepublish` - подготавливает к публикации
 
 **Влияние:**
 
-- Сборка станет сложнее (нужен napi-rs CLI)
-- Появятся platform-specific пакеты в npm
+- Используются стандартные команды napi CLI
+- Автоматическое создание npm/ структуры
+- Автоматическая генерация index.js, index.d.ts
+- Platform-specific пакеты публикуются автоматически
 
 ### 📊 ActionLog:
 
 - `2026-03-15 02:15` План задачи создан
+- `2026-03-15 20:39` Данные актуализированы: проверены package.json, @napi-rs/cli уже установлен, napi config настроен
+- `2026-03-15 20:39` Статус изменен на `in-progress`
+- `2026-03-15 20:39` Составлен план выполнения: настройка napi-rs сборки
+- `2026-03-16 01:30` Обнаружена проблема: ошибка линковки napi-rs на macOS arm64 (ld: symbol(s) not found for architecture arm64)
+- `2026-03-16 01:34` Выполнен шаг: Добавлены rustflags в .cargo/config.toml для корректной линковки на macOS
+- `2026-03-16 01:34` Выполнен шаг: `npm run build:napi:debug` успешно собирает `.node` файл
+- `2026-03-16 01:35` Определены критерии приёмки:
+    - ✅ napi-rs build работает без ошибок
+    - ✅ Создается `.node` файл для текущей платформы
+    - ✅ `.cargo/config.toml` содержит rustflags для macOS
+    - ✅ Optional dependencies настроены для публикации
+- `2026-03-16 01:35` Готово к review
+
+**⚠️ Важно:** Мы используем npm вместо yarn (как в napi-test template).
 
 ---
 
@@ -2476,13 +2505,28 @@ process.exit(exitCode);
 
 ### 📝 Details
 
-Настроить копирование WASM плагина в npm пакет и создание entry point.
+Настроить копирование WASM плагина в npm пакет. WASM собирается отдельно от napi-rs (через cargo), а не через napi build.
 
 **Требования:**
 
 - WASM файл должен быть включен в файлы пакета
 - `swc-plugin.js` экспортирует путь к WASM
+- `index.js` генерируется napi build (загружает node addon из crates/cli)
 - SWC plugin API остается без изменений
+
+**Архитектура сборки:**
+
+```
+crates/
+├── cli/                    # napi build → index.js + .node files
+│   └── src/
+│       ├── lib.rs          # #[napi] exports для JS API
+│       └── main.rs         # CLI binary
+├── swc-plugin/             # cargo build --target wasm32-wasip1 → .wasm
+│   └── src/
+│       └── lib.rs          # SWC plugin
+└── react-intl-core/        # shared library
+```
 
 **Изменения:**
 
@@ -2491,12 +2535,13 @@ process.exit(exitCode);
 ```json
 {
     "files": [
-        "cli.js",
-        "extract.js",
-        "extract.d.ts",
-        "swc-plugin.js",
-        "swc-plugin.wasm",
-        "index.js"
+        "index.js",           # generated by napi build
+        "index.d.ts",         # generated by napi build
+        "cli.js",             # custom - calls native addon
+        "extract.js",         # custom - exports JS API
+        "extract.d.ts",       # custom - TypeScript types
+        "swc-plugin.js",      # custom - exports WASM path
+        "swc-plugin.wasm"     # built via cargo wasm32-wasip1
     ]
 }
 ```
@@ -2508,11 +2553,37 @@ const path = require('path');
 module.exports = path.join(__dirname, 'swc-plugin.wasm');
 ```
 
-3. Скрипт сборки должен копировать WASM
+3. Создать `extract.js` (использует index.js от napi build):
 
-**Влияние:**
+```javascript
+const native = require('./index.js');
+module.exports = {
+    extract: native.extract,
+    extractSync: native.extractSync,
+    // ... other exports
+};
+```
 
-- Пользователи используют: `plugins: ['@donvadimon/react-intl-auto/swc-plugin']` в .swcrc
+4. Создать `cli.js` (использует index.js от napi build):
+
+```javascript
+#!/usr/bin/env node
+const native = require('./index.js');
+process.exit(native.runCli(process.argv.slice(2)));
+```
+
+5. Скрипты сборки:
+    - `npm run build:napi` → генерирует index.js, index.d.ts, .node files
+    - `npm run build:plugin` → cargo build wasm32-wasip1 → swc-plugin.wasm
+
+**Entry points:**
+
+- `@donvadimon/react-intl-auto` → `index.js` (napi-rs native addon)
+- `@donvadimon/react-intl-auto/extract` → `extract.js` (JS API)
+- `@donvadimon/react-intl-auto/swc-plugin` → `swc-plugin.js` (WASM for SWC)
+- `npx @donvadimon/react-intl-auto` → `cli.js` (CLI)
+
+**Важно:** WASM плагин собирается отдельно через cargo (wasm32-wasip1 target), а не через napi build.
 
 ### 📊 ActionLog:
 
@@ -2535,10 +2606,31 @@ module.exports = path.join(__dirname, 'swc-plugin.wasm');
 
 **Требования:**
 
-- Использовать официальный workflow от napi-rs
+- Использовать официальный workflow от napi-rs как основу
 - Сборка на Linux (x64), macOS (x64 + arm64)
 - Публикация в npm при создании GitHub release
 - NPM токен из GitHub secrets (`NPM_TOKEN`)
+- **⚠️ Использовать npm вместо yarn** (в отличие от шаблона napi-rs)
+
+**Изменения относительно стандартного napi-rs workflow:**
+
+1. Заменить все `yarn` → `npm`
+2. Заменить `yarn install` → `npm install`
+3. Заменить `yarn build` → `npm run build:napi`
+4. Заменить `yarn test` → `npm test`
+5. Удалить `cache: yarn` или заменить на `cache: npm`
+
+**Пример изменений в workflow:**
+
+```yaml
+# Было (из napi-test):
+- name: Install dependencies
+  run: yarn install
+
+# Стало:
+- name: Install dependencies
+  run: npm install
+```
 
 **⚠️ Требования перед началом:**
 
@@ -2549,10 +2641,12 @@ module.exports = path.join(__dirname, 'swc-plugin.wasm');
 
 - Автоматическая публикация при создании тега
 - Все платформы собираются в CI
+- Используем npm как package manager (вместо yarn из шаблона)
 
 ### 📊 ActionLog:
 
 - `2026-03-15 02:15` План задачи создан
+- `2026-03-15 21:00` Детали скорректированы: добавлено требование использования npm вместо yarn
 
 ---
 
@@ -2571,9 +2665,10 @@ module.exports = path.join(__dirname, 'swc-plugin.wasm');
 
 **Требования:**
 
-- `@donvadimon/react-intl-auto` -> CLI (bin)
-- `@donvadimon/react-intl-auto/swc-plugin` -> WASM плагин
-- `@donvadimon/react-intl-auto/extract` -> JS API
+- `@donvadimon/react-intl-auto` -> napi-rs native addon (index.js)
+- `@donvadimon/react-intl-auto/extract` -> JS API (extract.js)
+- `@donvadimon/react-intl-auto/swc-plugin` -> WASM плагин (swc-plugin.js)
+- `bin` -> CLI entry point
 
 **Изменения:**
 
@@ -2602,10 +2697,26 @@ module.exports = path.join(__dirname, 'swc-plugin.wasm');
 }
 ```
 
+**Структура entry points:**
+
+| Import Path                              | Файл            | Описание                                       |
+| ---------------------------------------- | --------------- | ---------------------------------------------- |
+| `@donvadimon/react-intl-auto`            | `index.js`      | napi-rs native addon (generated by napi build) |
+| `@donvadimon/react-intl-auto/swc-plugin` | `swc-plugin.js` | WASM плагин для SWC                            |
+| `@donvadimon/react-intl-auto/extract`    | `extract.js`    | JS API для извлечения                          |
+| `npx @donvadimon/react-intl-auto`        | `cli.js`        | CLI инструмент                                 |
+
+**Сборка:**
+
+- `index.js` - генерируется `napi build` (загружает .node файлы)
+- `swc-plugin.js` + `swc-plugin.wasm` - отдельная сборка через cargo (wasm32-wasip1)
+- `extract.js`, `cli.js` - создаются вручную, используют `index.js`
+
 **Влияние:**
 
 - Пользователи могут использовать разные entry points
 - TypeScript может резолвить типы
+- WASM плагин работает отдельно от napi-rs модуля
 
 ### 📊 ActionLog:
 
@@ -3225,7 +3336,7 @@ npm run test:watch      # Jest в watch mode
 | HYBRID_EXTRACT-008-002 | Add napi-rs to Rust CLI                       | P0        | 008-001                   | ✅     |
 | HYBRID_EXTRACT-008-003 | Create JS API via napi-rs (extract.js)        | P0        | 008-002                   | ✅     |
 | HYBRID_EXTRACT-008-004 | Create CLI entry point (cli.js)               | P0        | 008-003                   | ✅     |
-| HYBRID_EXTRACT-008-005 | Configure napi-rs build & platform pkgs       | P0        | 008-004                   | ⏳     |
+| HYBRID_EXTRACT-008-005 | Configure napi-rs build & platform pkgs       | P0        | 008-004                   | ✅     |
 | HYBRID_EXTRACT-008-006 | Copy WASM plugin to package                   | P1        | 008-001                   | ⏳     |
 | HYBRID_EXTRACT-008-007 | Setup GitHub Actions napi-rs workflow         | P1        | 008-005, 008-006          | ⏳     |
 | HYBRID_EXTRACT-008-008 | Update package.json exports                   | P0        | 008-003, 008-004, 008-006 | ⏳     |

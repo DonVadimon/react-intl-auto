@@ -68,8 +68,8 @@
 - [x] HYBRID_EXTRACT-007F: Extract common visitor code to core crate
 - [x] HYBRID_EXTRACT-008-001: Rename package to @donvadimon/react-intl-auto
 - [x] HYBRID_EXTRACT-008-002: Add napi-rs to Rust CLI as napi-module
-- [ ] HYBRID_EXTRACT-008-003: Create JS API via napi-rs (extract.js)
-- [ ] HYBRID_EXTRACT-008-004: Create CLI entry point (cli.js)
+- [x] HYBRID_EXTRACT-008-003: Create JS API via napi-rs (extract.js)
+- [x] HYBRID_EXTRACT-008-004: Create CLI entry point (cli.js)
 - [ ] HYBRID_EXTRACT-008-005: Configure napi-rs build and platform packages
 - [ ] HYBRID_EXTRACT-008-006: Copy WASM plugin to package
 - [ ] HYBRID_EXTRACT-008-007: Setup GitHub Actions napi-rs workflow
@@ -2285,11 +2285,11 @@ pub fn extract_messages(...) -> Result<String, napi::Error> {
 
 ---
 
-## [ ] HYBRID_EXTRACT-008-003: Создать JS API через napi-rs (extract.js)
+## [x] HYBRID_EXTRACT-008-003: Создать JS API через napi-rs (extract.js)
 
 ### 📋 Metadata
 
-- **status:** `todo`
+- **status:** `ready`
 - **depends:** `HYBRID_EXTRACT-008-002`
 - **priority:** `P0`
 - **files:** `extract.js`, `extract.d.ts`
@@ -2331,14 +2331,23 @@ module.exports = {
 ### 📊 ActionLog:
 
 - `2026-03-15 02:15` План задачи создан
+- `2026-03-15 13:41` Данные актуализированы: зависимость 008-002 выполнена, lib.rs создан
+- `2026-03-15 13:41` Статус изменен на `in-progress`
+- `2026-03-15 13:41` Составлен план выполнения: создание extract.js и extract.d.ts
+- `2026-03-15 13:42` Выполнен шаг 1: Создан extract.js с загрузкой платформенного модуля
+- `2026-03-15 13:42` Выполнен шаг 2: Создан extract.d.ts с TypeScript definitions
+- `2026-03-15 13:42` Определены критерии приёмки: оба файла созданы, экспорты корректны
+- `2026-03-15 13:42` Готово к review
+- `2026-03-15 13:42` Review: одобрено USER
+- `2026-03-15 13:42` Задача завершена, статус изменен на `ready`
 
 ---
 
-## [ ] HYBRID_EXTRACT-008-004: Создать CLI entry point (cli.js)
+## [x] HYBRID_EXTRACT-008-004: Создать CLI entry point (cli.js)
 
 ### 📋 Metadata
 
-- **status:** `todo`
+- **status:** `ready`
 - **depends:** `HYBRID_EXTRACT-008-003`
 - **priority:** `P0`
 - **files:** `cli.js`
@@ -2387,6 +2396,15 @@ process.exit(exitCode);
 ### 📊 ActionLog:
 
 - `2026-03-15 02:15` План задачи создан
+- `2026-03-15 14:25` Данные актуализированы: зависимость 008-003 выполнена, extract.js создан
+- `2026-03-15 14:25` Статус изменен на `in-progress`
+- `2026-03-15 14:25` Составлен план выполнения: создание cli.js и обновление package.json
+- `2026-03-15 14:26` Выполнен шаг 1: Создан cli.js с shebang и загрузкой нативного модуля
+- `2026-03-15 14:26` Выполнен шаг 2: Обновлен package.json (добавлен bin секция, extract.d.ts в files)
+- `2026-03-15 14:26` Определены критерии приёмки: cli.js создан, bin настроен, файлы в порядке
+- `2026-03-15 14:26` Готово к review
+- `2026-03-15 14:26` Review: одобрено USER
+- `2026-03-15 14:26` Задача завершена, статус изменен на `ready`
 
 ---
 
@@ -3205,8 +3223,8 @@ npm run test:watch      # Jest в watch mode
 | HYBRID_EXTRACT-007E    | Fix CLI/Plugin ID generation issues           | P0        | 007C                      | ⏳     |
 | HYBRID_EXTRACT-008-001 | Rename package to @donvadimon/react-intl-auto | P0        | -                         | ✅     |
 | HYBRID_EXTRACT-008-002 | Add napi-rs to Rust CLI                       | P0        | 008-001                   | ✅     |
-| HYBRID_EXTRACT-008-003 | Create JS API via napi-rs (extract.js)        | P0        | 008-002                   | ⏳     |
-| HYBRID_EXTRACT-008-004 | Create CLI entry point (cli.js)               | P0        | 008-003                   | ⏳     |
+| HYBRID_EXTRACT-008-003 | Create JS API via napi-rs (extract.js)        | P0        | 008-002                   | ✅     |
+| HYBRID_EXTRACT-008-004 | Create CLI entry point (cli.js)               | P0        | 008-003                   | ✅     |
 | HYBRID_EXTRACT-008-005 | Configure napi-rs build & platform pkgs       | P0        | 008-004                   | ⏳     |
 | HYBRID_EXTRACT-008-006 | Copy WASM plugin to package                   | P1        | 008-001                   | ⏳     |
 | HYBRID_EXTRACT-008-007 | Setup GitHub Actions napi-rs workflow         | P1        | 008-005, 008-006          | ⏳     |

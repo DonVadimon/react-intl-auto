@@ -7,9 +7,13 @@
         "swc-plugin.wasm",
         "cli.js",
         "extract.js",
+        "extract.d.ts",
         "index.js",
         "README.md"
     ],
+    "bin": {
+        "react-intl-auto": "./cli.js"
+    },
     "repository": {
         "type": "git",
         "url": "https://github.com/DonVadimon/react-intl-auto.git"

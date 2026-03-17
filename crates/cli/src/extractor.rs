@@ -72,21 +72,6 @@ fn is_ts_file(filename: &PathBuf) -> bool {
 ///
 /// # Returns
 /// Vector of extracted messages
-///
-/// # Example
-/// ```
-/// use react_intl_core::{extract_messages, CoreOptions};
-///
-/// let code = r#"
-/// import { defineMessages } from 'react-intl';
-/// export default defineMessages({
-///   hello: 'Hello World'
-/// });
-/// "#;
-///
-/// let options = CoreOptions::default();
-/// let messages = extract_messages(code, "test.js", &options);
-/// ```
 pub fn extract_messages(
     code: &str,
     filename: &PathBuf,

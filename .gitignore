@@ -16,3 +16,4 @@ dist
 .tmp
 *.node
 /npm
+crates/**/*.d.ts

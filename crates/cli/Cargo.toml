@@ -31,5 +31,5 @@ walkdir = "2"
 anyhow = "1"
 
 # napi-rs dependencies for JS bindings
-napi = { version = "2", features = ["napi6", "tokio_rt"] }
-napi-derive = "2"
+napi = { version = "3", features = ["napi6", "tokio_rt"] }
+napi-derive = "3"

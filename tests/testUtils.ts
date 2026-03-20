@@ -33,12 +33,12 @@ export type TestSuite = {
 
 export type CliMessage = {
     id: string;
-    defaultMessage: string;
+    defaultMessage?: string;
     description?: string;
     file?: string;
 };
 
-const plugin = require('../index.js');
+const plugin = require('../swc-plugin.js');
 
 export const createConfigurationSuites = (title: string, tests: TestCase[]) => {
     const withPrefix = (t: string) => `${title} | CONFIGURATION: ${t} |`;
@@ -188,10 +188,7 @@ const CLI_OPTIONS_MAP: Record<keyof PluginOptions, string> = {
     separator: '--separator',
 };
 
-const CLI_PATH = path.resolve(
-    __dirname,
-    '../target/release/react-intl-extract',
-);
+const CLI_PATH = path.resolve(__dirname, '../cli.js');
 
 /**
  * Run CLI with given options and return extracted messages
@@ -224,7 +221,7 @@ const runCli = async (
     args.push('--extract-source-location');
 
     return new Promise((resolve, reject) => {
-        const proc = spawn(CLI_PATH, args, { cwd: process.cwd() });
+        const proc = spawn('node', [CLI_PATH, ...args], { cwd: process.cwd() });
         let stderr = '';
 
         proc.stderr?.on('data', (data) => {

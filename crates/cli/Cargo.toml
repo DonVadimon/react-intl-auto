@@ -7,10 +7,6 @@ license.workspace = true
 repository.workspace = true
 description = "CLI tool for extracting React Intl messages"
 
-[[bin]]
-name = "react-intl-extract"
-path = "src/main.rs"
-
 [lib]
 crate-type = ["cdylib", "rlib"]
 

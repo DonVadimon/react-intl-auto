@@ -1,6 +1,10 @@
 # @donvadimon/react-intl-auto
 
-Hybrid Rust/JavaScript solution for React Intl - SWC plugin and CLI tool for automatic ID management. Ported from the popular Babel plugin [babel-plugin-react-intl-auto](https://github.com/akameco/babel-plugin-react-intl-auto).
+Hybrid Rust/JavaScript solution for React Intl - SWC plugin and CLI tool for automatic ID management.
+
+Ported from the popular Babel plugin [babel-plugin-react-intl-auto](https://github.com/akameco/babel-plugin-react-intl-auto).
+
+Based on [swc-plugin-react-intl-auto](https://github.com/lcl9288/swc-plugin-react-intl-auto) by lcl9288.
 
 ## Features
 

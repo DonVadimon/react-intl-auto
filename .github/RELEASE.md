@@ -1,237 +1,281 @@
 # Release Process
 
-This document explains how to release new versions of the SWC React Intl Auto plugin.
+This document explains how to release new versions of @donvadimon/react-intl-auto.
 
-## GitHub Actions Workflows
+## Overview
 
-### CI Workflow (`.github/workflows/ci.yml`)
-- **Triggers**: Push to `main`/`develop` branches, Pull Requests
-- **Purpose**: Run tests and build verification
-- **Actions**:
-  - Sets up Node.js 18 and Rust toolchain
-  - Installs dependencies and caches Rust dependencies
-  - Builds the plugin for wasm32-wasip1 target
-  - Runs both JavaScript and Rust tests
+The project uses **GitHub Actions** with **napi-rs** for cross-platform builds and publishing.
 
-### Publish Workflow (`.github/workflows/publish.yml`)
-- **Triggers**: Git tags starting with `v*`, Manual dispatch
-- **Purpose**: Publish to npm and create GitHub releases
-- **Actions**:
-  - Builds the plugin
-  - Extracts version from git tag
-  - Updates both `package.json` and `Cargo.toml` versions
-  - Publishes to npm using `NPM_TOKEN` secret
-  - Creates GitHub release
+### What Gets Published
+
+1. **Main package** (`@donvadimon/react-intl-auto`) - Contains:
+    - SWC plugin WASM file
+    - CLI entry point
+    - JavaScript API
+
+2. **Platform-specific packages** (optional dependencies):
+    - `@donvadimon/react-intl-auto-darwin-arm64`
+    - `@donvadimon/react-intl-auto-darwin-x64`
+    - `@donvadimon/react-intl-auto-linux-x64-gnu`
 
 ## Prerequisites
 
 ### 1. NPM Token
-You need to create an npm access token and add it as a GitHub secret:
 
-1. Go to [npmjs.com](https://www.npmjs.com) and log in
-2. Go to Access Tokens in your account settings
-3. Generate a new "Automation" token
-4. In your GitHub repository, go to Settings → Secrets and variables → Actions
-5. Add a new secret named `NPM_TOKEN` with your npm token value
+Create an npm access token and add it as a GitHub secret:
 
-**⚠️ Important**: NPM tokens expire after 90 days. See the [Token Management](#token-management) section below for solutions.
+1. Go to [npmjs.com](https://www.npmjs.com) → Access Tokens
+2. Generate an **Automation** token
+3. In GitHub repository: Settings → Secrets and variables → Actions
+4. Add secret named `NPM_TOKEN`
 
-### 2. Repository Permissions
-Ensure the GitHub Actions have permission to:
-- Read repository contents
-- Write packages (if using GitHub Packages)
-- Create releases
+### 2. Git Repository Setup
 
-## Release Process
+Ensure you have:
 
-### Method 1: Using the Release Script (Recommended)
+- Push access to the repository
+- Permission to create tags
 
-1. **Prepare for release**:
-   ```bash
-   # Ensure you're on the main branch and up to date
-   git checkout main
-   git pull origin main
-   
-   # Make sure working directory is clean
-   git status
-   ```
+## Release Steps
 
-2. **Run the release script**:
-   ```bash
-   # For patch version (1.0.0 → 1.0.1)
-   npm run release 1.0.1
-   
-   # For minor version (1.0.0 → 1.1.0)
-   npm run release 1.1.0
-   
-   # For major version (1.0.0 → 2.0.0)
-   npm run release 2.0.0
-   ```
+### Step 1: Prepare Release
 
-3. **Push the changes**:
-   ```bash
-   git push origin main
-   git push origin v1.0.1  # Replace with your version
-   ```
+```bash
+# Ensure you're on master branch
+git checkout master
+git pull origin master
 
-### Method 2: Manual Process
+# Check working directory is clean
+git status
+```
 
-1. **Update versions**:
-   ```bash
-   # Update package.json
-   npm version 1.0.1
-   
-   # Update Cargo.toml manually
-   # Change: version = "0.1.0" to version = "1.0.1"
-   ```
+### Step 2: Update Version
 
-2. **Create and push tag**:
-   ```bash
-   git add package.json Cargo.toml
-   git commit -m "chore: bump version to 1.0.1"
-   git tag -a v1.0.1 -m "Release 1.0.1"
-   git push origin main
-   git push origin v1.0.1
-   ```
+Update version in both files:
 
-## What Happens During Release
+**package.json:**
 
-1. **GitHub Actions triggers** on the new tag
-2. **Build process**:
-   - Sets up Rust toolchain with wasm32-wasip1 target
-   - Builds the plugin using `cargo build --release --target wasm32-wasip1`
-   - Copies the built `.wasm` file to the root directory
-3. **Version synchronization**:
-   - Extracts version from git tag
-   - Updates both `package.json` and `Cargo.toml` to match
-4. **Testing**:
-   - Runs the test suite to ensure everything works
-5. **Publishing**:
-   - Publishes to npm using the `NPM_TOKEN` secret
-   - Creates a GitHub release with the tag
+```json
+{
+    "version": "1.1.0"
+}
+```
+
+**Cargo.toml** (root workspace):
+
+```toml
+[workspace.package]
+version = "1.1.0"
+```
+
+### Step 3: Commit Version Bump
+
+```bash
+git add package.json Cargo.toml
+git commit -m "chore: bump version to 1.1.0"
+git push origin master
+```
+
+### Step 4: Create and Push Tag
+
+```bash
+# Create annotated tag
+git tag -a v1.1.0 -m "Release v1.1.0"
+
+# Push tag
+git push origin v1.1.0
+```
+
+### Step 5: Monitor CI/CD
+
+GitHub Actions will automatically:
+
+1. **Build stage:**
+    - Build WASM plugin (one time)
+    - Build napi-rs addons for all platforms (Linux, macOS x64, macOS arm64)
+
+2. **Test stage:**
+    - Run Rust unit tests
+    - Run Jest integration tests
+    - Test native bindings on all platforms
+
+3. **Publish stage:**
+    - Create platform-specific npm packages
+    - Publish all packages to npm
+
+Monitor progress at: `https://github.com/DonVadimon/react-intl-auto/actions`
+
+### Step 6: Verify Release
+
+Check that packages are published:
+
+```bash
+# Main package
+npm view @donvadimon/react-intl-auto
+
+# Platform packages
+npm view @donvadimon/react-intl-auto-darwin-arm64
+npm view @donvadimon/react-intl-auto-linux-x64-gnu
+```
 
 ## Troubleshooting
 
 ### Build Failures
-- Check that Rust toolchain is properly installed
-- Verify wasm32-wasip1 target is available
-- Ensure all dependencies are correctly specified
 
-### NPM Publishing Failures
-- Verify `NPM_TOKEN` secret is correctly set
-- Check that the package name is available on npm
-- Ensure version number is higher than the current published version
-
-### Version Mismatch
-- The workflow automatically syncs versions between `package.json` and `Cargo.toml`
-- If there are conflicts, the workflow will fail and you'll need to fix them manually
-
-## Rollback Process
-
-If a release has issues:
-
-1. **Unpublish from npm** (if within 24 hours):
-   ```bash
-   npm unpublish swc-plugin-react-intl-auto@1.0.1
-   ```
-
-2. **Delete the git tag**:
-   ```bash
-   git tag -d v1.0.1
-   git push origin :refs/tags/v1.0.1
-   ```
-
-3. **Revert version changes**:
-   ```bash
-   git revert <commit-hash>
-   git push origin main
-   ```
-
-## Token Management
-
-### NPM Token 90-Day Expiration
-
-NPM tokens expire after 90 days, which can cause publishing failures. Here are several solutions:
-
-#### Solution 1: Manual Token Renewal (Recommended)
-1. **Set up a calendar reminder** for every 80 days
-2. **Create a new token** before the current one expires:
-   - Go to [npmjs.com](https://www.npmjs.com) → Access Tokens
-   - Generate a new "Automation" token
-   - Update the `NPM_TOKEN` secret in GitHub repository settings
-3. **Test the new token** by triggering a manual release
-
-#### Solution 2: Use GitHub Packages (Alternative)
-Instead of publishing to npm, you can publish to GitHub Packages:
-
-1. **Update the publish workflow** to use GitHub Packages:
-   ```yaml
-   - name: Publish to GitHub Packages
-     run: npm publish
-     env:
-       NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-   ```
-
-2. **Update package.json** to include GitHub Packages registry:
-   ```json
-   {
-     "publishConfig": {
-       "registry": "https://npm.pkg.github.com"
-     }
-   }
-   ```
-
-#### Solution 3: Automated Token Renewal Script
-Create a script to check token expiration and send notifications:
+**Rust compilation errors:**
 
 ```bash
-#!/bin/bash
-# scripts/check-npm-token.sh
-# Add this to a cron job or GitHub Actions scheduled workflow
-
-TOKEN_EXPIRY=$(curl -s -H "Authorization: Bearer $NPM_TOKEN" \
-  https://registry.npmjs.org/-/whoami | jq -r '.expires')
-
-if [ "$TOKEN_EXPIRY" != "null" ]; then
-  EXPIRY_DATE=$(date -d "$TOKEN_EXPIRY" +%s)
-  CURRENT_DATE=$(date +%s)
-  DAYS_LEFT=$(( (EXPIRY_DATE - CURRENT_DATE) / 86400 ))
-  
-  if [ $DAYS_LEFT -lt 30 ]; then
-    echo "⚠️ NPM token expires in $DAYS_LEFT days"
-    # Send notification (email, Slack, etc.)
-  fi
-fi
+# Test locally before pushing
+cargo build --release --target wasm32-wasip1
+cargo test --workspace
 ```
 
-#### Solution 4: Use NPM Automation Tokens with Longer Expiry
-- Use "Publish" tokens instead of "Automation" tokens when possible
-- Publish tokens can have longer expiration periods
-- Consider using organization-level tokens if you have an npm organization
+**napi-rs build fails:**
 
-### Token Renewal Checklist
+```bash
+# Test napi build locally
+npm run build:napi
+```
 
-When renewing your NPM token:
+### NPM Publishing Failures
 
-1. ✅ Create new token in npm dashboard
-2. ✅ Update `NPM_TOKEN` secret in GitHub repository
-3. ✅ Test with a patch release (e.g., `npm run release 1.0.1`)
-4. ✅ Verify the package appears on npmjs.com
-5. ✅ Update your calendar reminder for the next renewal
+**"You do not have permission to publish"**
+
+- Check `NPM_TOKEN` is valid and not expired
+- Verify you have publish rights on npm
+
+**"Version already exists"**
+
+- Cannot publish same version twice
+- Must bump version before releasing
+
+### Platform-specific Failures
+
+**macOS ARM64 build fails:**
+
+- Check `.cargo/config.toml` has correct rustflags
+- May need to update MACOSX_DEPLOYMENT_TARGET
+
+**Linux build fails:**
+
+- Ensure `napi-cross` is available in CI
+- Check glibc compatibility
+
+## Rollback
+
+If a release has critical issues:
+
+### 1. Deprecate on NPM (recommended)
+
+```bash
+npm deprecate @donvadimon/react-intl-auto@1.1.0 "Critical bug in v1.1.0, use v1.1.1 instead"
+```
+
+### 2. Delete Git Tag (optional)
+
+```bash
+git tag -d v1.1.0
+git push origin :refs/tags/v1.1.0
+```
+
+### 3. Prepare Hotfix
+
+```bash
+# Create hotfix branch
+git checkout -b hotfix/v1.1.1
+
+# Fix the issue, bump version to 1.1.1
+git add .
+git commit -m "fix: resolve critical issue"
+git push origin hotfix/v1.1.1
+
+# Merge to master and tag
+git checkout master
+git merge hotfix/v1.1.1
+git tag -a v1.1.1 -m "Release v1.1.1"
+git push origin master
+git push origin v1.1.1
+```
+
+## CI/CD Workflow Details
+
+The workflow (`.github/workflows/napi-rs.yml`) has these jobs:
+
+### Job: lint
+
+- Runs on: Ubuntu
+- Checks: `cargo fmt`, `cargo clippy`
+
+### Job: build-wasm
+
+- Runs on: Ubuntu
+- Builds: `swc-plugin.wasm`
+- Uploads artifact: `wasm-plugin`
+
+### Job: build-napi
+
+- Matrix: 3 platforms
+- Builds: `.node` files for each platform
+- Uploads artifacts: `bindings-{target}`
+
+### Job: test-rust
+
+- Depends on: `build-wasm`
+- Runs: `cargo test --workspace`
+
+### Job: test-node
+
+- Depends on: `build-wasm`, `build-napi`
+- Downloads: WASM + Linux addon
+- Runs: `npm test` (Jest)
+
+### Job: test-native-bindings
+
+- Depends on: `build-napi`
+- Matrix: 3 platforms × 3 Node versions
+- Tests: Native addon loading
+
+### Job: publish
+
+- Depends on: All test jobs
+- Runs on: Ubuntu
+- Steps:
+    1. Create npm directories (`npx napi create-npm-dirs`)
+    2. Download all artifacts
+    3. Move artifacts to npm dirs (`npx napi artifacts`)
+    4. Copy WASM to packages
+    5. Publish to npm
 
 ## Best Practices
 
-1. **Always test locally** before releasing
-2. **Use semantic versioning** (semver)
-3. **Write meaningful commit messages**
-4. **Update CHANGELOG.md** if you maintain one
-5. **Test the published package** after release
-6. **Monitor the GitHub Actions logs** for any issues
-7. **Set up token expiration reminders** to avoid publishing failures
+1. **Always test locally before releasing:**
+
+    ```bash
+    npm run test:full
+    ```
+
+2. **Use semantic versioning:**
+    - Patch (1.0.1): Bug fixes
+    - Minor (1.1.0): New features, backward compatible
+    - Major (2.0.0): Breaking changes
+
+3. **Write good commit messages:**
+    - They appear in GitHub releases
+    - Help users understand changes
+
+4. **Test the published package:**
+
+    ```bash
+    npm install @donvadimon/react-intl-auto@latest
+    # Test in a fresh project
+    ```
+
+5. **Update documentation:**
+    - README.md with new features
+    - CHANGELOG.md if maintained
 
 ## Monitoring
 
-- Check the Actions tab in your GitHub repository to monitor workflow runs
-- Monitor npm package downloads and any issues reported by users
-- Keep an eye on the GitHub releases page for successful releases
-- Set up notifications for token expiration warnings
+- **GitHub Actions:** https://github.com/DonVadimon/react-intl-auto/actions
+- **NPM Package:** https://www.npmjs.com/package/@donvadimon/react-intl-auto
+- **Releases:** https://github.com/DonVadimon/react-intl-auto/releases

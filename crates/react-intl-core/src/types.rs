@@ -44,18 +44,15 @@ pub enum RemovePrefix {
 /// Output mode for CLI extraction
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "lowercase")]
+#[derive(Default)]
 pub enum OutputMode {
     /// Single aggregated JSON file
+    #[default]
     Aggregated,
     /// Separate JSON files per source file
     PerFile,
 }
 
-impl Default for OutputMode {
-    fn default() -> Self {
-        OutputMode::Aggregated
-    }
-}
 
 impl Default for CoreOptions {
     fn default() -> Self {

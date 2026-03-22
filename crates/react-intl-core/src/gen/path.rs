@@ -43,8 +43,7 @@ fn dot_path_replace(formatted: &str, remove_prefix: &str, separator: &str) -> St
     };
 
     // If the formatted path starts with the normalized prefix, remove it
-    if formatted_path.starts_with(normalized_prefix) {
-        let remaining = &formatted_path[normalized_prefix.len()..];
+    if let Some(remaining) = formatted_path.strip_prefix(normalized_prefix) {
         // Remove leading separator if it exists
         if remaining.starts_with(separator) {
             remaining[separator.len()..].to_string()

@@ -301,7 +301,7 @@ fn analyze_message_object(
             description: &description_prop,
         }),
         None => GenIdPayload::Descriptor(GenIdFromDescriptorPayload {
-            default_message: &default_message,
+            default_message,
             description: &description_prop,
         }),
     };

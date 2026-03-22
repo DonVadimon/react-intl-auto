@@ -64,7 +64,7 @@ pub fn analyze_jsx_element(
 
     // generate ID based on attrs
     let payload = GenIdPayload::Descriptor(GenIdFromDescriptorPayload {
-        default_message: &default_message,
+        default_message,
         description: &description_attr,
     });
     let generated_id = generate_message_id(state, &payload);

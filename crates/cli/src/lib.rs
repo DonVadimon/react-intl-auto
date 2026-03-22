@@ -12,7 +12,7 @@ pub mod core;
 pub mod extractor;
 mod visitors;
 
-use crate::core::{run_cli as core_run_cli, Args, extract_from_file, find_files};
+use crate::core::{extract_from_file, find_files, run_cli as core_run_cli, Args};
 
 /// JavaScript-compatible options for extraction
 #[napi(object)]
@@ -121,25 +121,25 @@ pub fn extract_sync(
     options: Option<JsExtractOptions>,
 ) -> napi::Result<JsExtractResult> {
     use std::path::PathBuf;
-    
+
     let opts = options.map(|o| o.to_core_options()).unwrap_or_default();
-    
+
     // Convert string patterns to PathBuf
-    let path_patterns: Vec<PathBuf> = patterns.iter().map(|p| PathBuf::from(p)).collect();
-    
+    let path_patterns: Vec<PathBuf> = patterns.iter().map(PathBuf::from).collect();
+
     // Default ignore patterns
     let ignore_patterns: Vec<PathBuf> = vec![
         PathBuf::from("**/node_modules/**"),
         PathBuf::from("**/.git/**"),
     ];
-    
+
     // Find files matching patterns
     let files = find_files(&path_patterns, &ignore_patterns)
         .map_err(|e| napi::Error::from_reason(format!("Failed to find files: {}", e)))?;
-    
+
     let mut messages = Vec::new();
     let files_processed = files.len() as u32;
-    
+
     for file in files {
         match extract_from_file(&file, &opts) {
             Ok(msgs) => {
@@ -152,7 +152,7 @@ pub fn extract_sync(
             }
         }
     }
-    
+
     Ok(JsExtractResult {
         messages,
         files_processed,
@@ -177,13 +177,13 @@ pub fn parse_file(
     options: Option<JsExtractOptions>,
 ) -> napi::Result<Vec<JsExtractedMessage>> {
     use std::path::PathBuf;
-    
+
     let opts = options.map(|o| o.to_core_options()).unwrap_or_default();
     let path = PathBuf::from(&file_path);
-    
+
     let messages = extract_from_file(&path, &opts)
         .map_err(|e| napi::Error::from_reason(format!("Failed to parse file: {}", e)))?;
-    
+
     Ok(messages.into_iter().map(|m| m.into()).collect())
 }
 

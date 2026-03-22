@@ -1,11 +1,11 @@
-# SWC Plugin React Intl Auto - Example
+# React Intl Auto - Basic Example
 
 This example demonstrates how to use the SWC plugin for automatic react-intl ID management.
 
 ## Setup
 
 ```bash
-cd examples/basic
+cd sandbox/basic
 npm install
 ```
 
@@ -15,48 +15,62 @@ npm install
 npm run build
 ```
 
-This will transform the TypeScript files in `src/` and output the transformed JavaScript to `dist/`.
+This will transform the TypeScript files in `src/` and output the transformed JavaScript to `.build/`.
 
 ## What gets transformed
 
 ### Before transformation:
 
 ```tsx
+import { defineMessages, FormattedMessage } from 'react-intl';
+
 export const messages = defineMessages({
-  hello: 'Hello {name}!',
-  welcome: 'Welcome to our app',
+    hello: 'Hello {name}!',
+    welcome: 'Welcome to our app',
 });
 
-<FormattedMessage defaultMessage="Welcome to React Intl Auto" />
+<FormattedMessage defaultMessage="Welcome to React Intl Auto" />;
 ```
 
 ### After transformation:
 
 ```tsx
 export const messages = defineMessages({
-  hello: {
-    id: 'components.App.hello',
-    defaultMessage: 'Hello {name}!',
-  },
-  welcome: {
-    id: 'components.App.welcome',
-    defaultMessage: 'Welcome to our app',
-  },
+    hello: {
+        id: 'sandbox.basic.src.components.App.hello',
+        defaultMessage: 'Hello {name}!',
+    },
+    welcome: {
+        id: 'sandbox.basic.src.components.App.welcome',
+        defaultMessage: 'Welcome to our app',
+    },
 });
 
-<FormattedMessage 
-  id="components.App.189751785"
-  defaultMessage="Welcome to React Intl Auto" 
-/>
+<FormattedMessage
+    id="sandbox.basic.src.components.App.189751785"
+    defaultMessage="Welcome to React Intl Auto"
+/>;
 ```
 
 ## Configuration
 
-The plugin is configured in `swc.config.js` with the following options:
+The plugin is configured in `.swcrc` with the following options:
 
-- `removePrefix: 'src/'` - Removes 'src/' from the file path when generating IDs
+- `removePrefix: 'sandbox/basic/src/'` - Removes prefix from the file path when generating IDs
 - `separator: '.'` - Uses '.' as the separator in generated IDs
-- `filebase: false` - Doesn't include the filename in the ID
+
+## CLI Usage
+
+Extract messages from this example:
+
+```bash
+# From repo root
+npx react-intl-auto extract 'sandbox/basic/src/**/*.{ts,tsx}' \
+  --remove-prefix='sandbox/basic/src/' \
+  --output-mode=perfile \
+  --output='./sandbox/basic/.react-intl' \
+  --extract-source-location
+```
 
 ## Development
 

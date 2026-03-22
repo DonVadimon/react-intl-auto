@@ -1,0 +1,264 @@
+name: CI
+
+env:
+    DEBUG: napi:*
+    APP_NAME: react-intl-auto
+    MACOSX_DEPLOYMENT_TARGET: '10.13'
+    CARGO_INCREMENTAL: '1'
+
+on:
+    push:
+        branches:
+            - master
+        tags-ignore:
+            - '**'
+        paths-ignore:
+            - '**/*.md'
+            - LICENSE
+            - '**/*.gitignore'
+            - .editorconfig
+            - docs/**
+    pull_request:
+        branches:
+            - master
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    lint:
+        name: Lint
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: npm
+
+            - name: Install Rust
+              uses: dtolnay/rust-toolchain@stable
+              with:
+                  components: clippy, rustfmt
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Cargo fmt
+              run: cargo fmt -- --check
+
+            - name: Clippy
+              run: cargo clippy --workspace --all-targets --all-features
+
+    build:
+        strategy:
+            fail-fast: false
+            matrix:
+                settings:
+                    - host: macos-latest
+                      target: x86_64-apple-darwin
+                      build: npm run build:napi -- --target x86_64-apple-darwin
+                    - host: macos-latest
+                      target: aarch64-apple-darwin
+                      build: npm run build:napi -- --target aarch64-apple-darwin
+                    - host: ubuntu-latest
+                      target: x86_64-unknown-linux-gnu
+                      build: npm run build:napi -- --target x86_64-unknown-linux-gnu --use-napi-cross
+
+        name: stable - ${{ matrix.settings.target }} - node@20
+        runs-on: ${{ matrix.settings.host }}
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: npm
+
+            - name: Install Rust
+              uses: dtolnay/rust-toolchain@stable
+              with:
+                  toolchain: stable
+                  targets: ${{ matrix.settings.target }},wasm32-wasip1
+
+            - name: Cache cargo
+              uses: actions/cache@v4
+              with:
+                  path: |
+                      ~/.cargo/registry/index/
+                      ~/.cargo/registry/cache/
+                      ~/.cargo/git/db/
+                      ~/.napi-rs
+                      .cargo-cache
+                      target/
+                  key: ${{ matrix.settings.target }}-cargo-${{ matrix.settings.host }}-${{ hashFiles('**/Cargo.lock') }}
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Build napi-rs addon
+              run: ${{ matrix.settings.build }}
+              shell: bash
+
+            - name: Build WASM plugin
+              if: matrix.settings.target == 'aarch64-apple-darwin'
+              run: npm run build:plugin
+
+            - name: Upload napi artifacts
+              uses: actions/upload-artifact@v4
+              with:
+                  name: bindings-${{ matrix.settings.target }}
+                  path: |
+                      *.node
+                  if-no-files-found: error
+
+            - name: Upload WASM artifact
+              if: matrix.settings.target == 'aarch64-apple-darwin'
+              uses: actions/upload-artifact@v4
+              with:
+                  name: wasm-plugin
+                  path: |
+                      swc-plugin.wasm
+                  if-no-files-found: error
+
+    test-native:
+        name: Test native bindings on ${{ matrix.settings.target }} - node@${{ matrix.node }}
+        needs:
+            - build
+        strategy:
+            fail-fast: false
+            matrix:
+                settings:
+                    - host: macos-latest
+                      target: aarch64-apple-darwin
+                      architecture: arm64
+                    - host: macos-latest
+                      target: x86_64-apple-darwin
+                      architecture: x64
+                    - host: ubuntu-latest
+                      target: x86_64-unknown-linux-gnu
+                      architecture: x64
+                node:
+                    - '18'
+                    - '20'
+                    - '22'
+
+        runs-on: ${{ matrix.settings.host }}
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ matrix.node }}
+                  cache: npm
+                  architecture: ${{ matrix.settings.architecture }}
+
+            - name: Install Rust
+              uses: dtolnay/rust-toolchain@stable
+              with:
+                  targets: wasm32-wasip1
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Download napi artifacts
+              uses: actions/download-artifact@v4
+              with:
+                  name: bindings-${{ matrix.settings.target }}
+                  path: .
+
+            - name: Download WASM artifact
+              uses: actions/download-artifact@v4
+              with:
+                  name: wasm-plugin
+                  path: .
+
+            - name: List files
+              run: ls -la
+              shell: bash
+
+            - name: Run Rust tests
+              run: cargo test --workspace
+
+            - name: Run Node.js tests
+              run: npm test
+
+    publish:
+        name: Publish
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+            id-token: write
+        needs:
+            - lint
+            - test-native
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: npm
+                  registry-url: 'https://registry.npmjs.org'
+
+            - name: Install Rust
+              uses: dtolnay/rust-toolchain@stable
+              with:
+                  targets: wasm32-wasip1
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Create npm dirs
+              run: npx napi create-npm-dirs
+
+            - name: Download all napi artifacts
+              uses: actions/download-artifact@v4
+              with:
+                  path: artifacts
+                  pattern: bindings-*
+
+            - name: Download WASM artifact
+              uses: actions/download-artifact@v4
+              with:
+                  name: wasm-plugin
+                  path: .
+
+            - name: Move artifacts to npm dirs
+              run: npx napi artifacts
+
+            - name: Copy WASM to package
+              run: cp swc-plugin.wasm npm/swc-plugin.wasm 2>/dev/null || true
+
+            - name: List npm packages
+              run: ls -R ./npm
+              shell: bash
+
+            - name: Publish to npm
+              run: |
+                  npm config set provenance true
+                  if git log -1 --pretty=%B | grep "^v\?[0-9]\+\.[0-9]\+\.[0-9]\+$";
+                  then
+                    echo "Publishing release version"
+                    echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+                    npm publish --access public
+                  elif git log -1 --pretty=%B | grep "^v\?[0-9]\+\.[0-9]\+\.[0-9]\+";
+                  then
+                    echo "Publishing prerelease version"
+                    echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+                    npm publish --tag next --access public
+                  else
+                    echo "Not a release commit, skipping publish"
+                  fi
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

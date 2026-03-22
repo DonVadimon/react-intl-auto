@@ -20,12 +20,12 @@ try {
         'release',
         'swc_plugin.wasm',
     );
-    const destPath = path.join(ROOT, 'swc-plugin-react-intl-auto-fs.wasm');
+    const destPath = path.join(ROOT, 'swc-plugin.wasm');
 
     if (fs.existsSync(sourcePath)) {
         fs.copyFileSync(sourcePath, destPath);
         console.log(
-            '✅ Plugin built successfully and copied to swc-plugin-react-intl-auto-fs.wasm',
+            '✅ Plugin built successfully and copied to swc-plugin.wasm',
         );
     } else {
         console.error('❌ Plugin file not found at expected location');

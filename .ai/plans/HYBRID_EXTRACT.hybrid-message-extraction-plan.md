@@ -2494,11 +2494,11 @@ npm run create-npm-dirs
 
 ---
 
-## [ ] HYBRID_EXTRACT-008-006: Скопировать WASM плагин в пакет
+## [x] HYBRID_EXTRACT-008-006: Скопировать WASM плагин в пакет
 
 ### 📋 Metadata
 
-- **status:** `todo`
+- **status:** `ready`
 - **depends:** `HYBRID_EXTRACT-008-001`
 - **priority:** `P1`
 - **files:** `swc-plugin.js`, `package.json`
@@ -2588,6 +2588,23 @@ process.exit(native.runCli(process.argv.slice(2)));
 ### 📊 ActionLog:
 
 - `2026-03-15 02:15` План задачи создан
+- `2026-03-22 13:26` Данные актуализированы: проверены scripts/build-plugin.js, package.json
+- `2026-03-22 13:26` Статус изменен на `in-progress`
+- `2026-03-22 13:26` Составлен план выполнения: обновление build-plugin.js, создание swc-plugin.js, обновление package.json
+- `2026-03-22 13:26` Выполнен шаг 1: Обновлен scripts/build-plugin.js - выходной файл переименован в swc-plugin.wasm
+- `2026-03-22 13:27` Выполнен шаг 2: Обновлен swc-plugin.js - экспортирует путь к swc-plugin.wasm
+- `2026-03-22 13:27` Выполнен шаг 3: Обновлен package.json - добавлен swc-plugin.js в files, добавлены exports для ./swc-plugin
+- `2026-03-22 13:28` Выполнен шаг 4: Протестирована сборка - npm run build:plugin создает swc-plugin.wasm
+- `2026-03-22 13:28` Выполнен шаг 5: Протестирован импорт - require('./swc-plugin.js') возвращает корректный путь
+- `2026-03-22 13:28` Определены критерии приёмки:
+    - ✅ npm run build:plugin создает swc-plugin.wasm (3.1MB)
+    - ✅ swc-plugin.js экспортирует абсолютный путь к WASM
+    - ✅ package.json содержит swc-plugin.js и swc-plugin.wasm в files
+    - ✅ exports настроены для @donvadimon/react-intl-auto/swc-plugin
+    - ✅ Импорт работает корректно
+- `2026-03-22 13:28` Готово к review
+- `2026-03-22 13:28` Review: одобрено USER
+- `2026-03-22 13:28` Задача завершена, статус изменен на `ready`
 
 ---
 

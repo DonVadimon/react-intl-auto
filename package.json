@@ -5,11 +5,21 @@
     "main": "swc-plugin.wasm",
     "files": [
         "swc-plugin.wasm",
+        "swc-plugin.js",
         "cli.js",
         "extract.js",
         "extract.d.ts",
         "README.md"
     ],
+    "exports": {
+        "./swc-plugin": {
+            "require": "./swc-plugin.js"
+        },
+        "./extract": {
+            "require": "./extract.js",
+            "types": "./extract.d.ts"
+        }
+    },
     "bin": {
         "react-intl-auto": "./cli.js"
     },
@@ -29,9 +39,8 @@
     "license": "UNLICENSED",
     "scripts": {
         "format": "cargo fmt && prettier --write \"{src,tests,sandbox,scripts}/**/*.{ts,tsx,js,jsx}\"",
-        "test": "jest",
-        "test:watch": "jest --watch",
-        "test:full": "cargo test && npm run build:plugin && npm run build:cli && npm test",
+        "jest": "jest",
+        "test": "cargo test && npm run build:plugin && npm run build:cli && npm run jest",
         "build:plugin": "node scripts/build-plugin.js",
         "build:cli": "npm run build:napi",
         "build:napi": "napi build --platform --release --manifest-path crates/cli/Cargo.toml --output-dir . --js extract.js --dts extract.d.ts",
@@ -66,6 +75,7 @@
         "binaryName": "react-intl-auto",
         "packageName": "@donvadimon/react-intl-auto",
         "targets": [
+            "x86_64-pc-windows-msvc",
             "x86_64-unknown-linux-gnu",
             "x86_64-apple-darwin",
             "aarch64-apple-darwin"

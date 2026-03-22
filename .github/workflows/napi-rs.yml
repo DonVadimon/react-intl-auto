@@ -21,6 +21,18 @@ on:
     pull_request:
         branches:
             - master
+    workflow_dispatch:
+        inputs:
+            version_type:
+                description: 'Version type to publish'
+                required: true
+                default: 'patch'
+                type: choice
+                options:
+                    - patch
+                    - minor
+                    - major
+                    - prerelease
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.ref }}
@@ -36,7 +48,7 @@ jobs:
             - name: Setup node
               uses: actions/setup-node@v4
               with:
-                  node-version: 22
+                  node-version: 24
 
             - name: Install Rust
               uses: dtolnay/rust-toolchain@stable
@@ -127,7 +139,7 @@ jobs:
             - name: Setup node
               uses: actions/setup-node@v4
               with:
-                  node-version: 22
+                  node-version: 24
 
             - name: Install Rust
               uses: dtolnay/rust-toolchain@stable
@@ -204,7 +216,7 @@ jobs:
             - name: Setup node
               uses: actions/setup-node@v4
               with:
-                  node-version: 22
+                  node-version: 24
 
             - name: Cache npm dependencies
               uses: actions/cache@v4
@@ -303,6 +315,7 @@ jobs:
     publish:
         name: Publish
         runs-on: ubuntu-latest
+        if: github.event_name == 'workflow_dispatch'
         permissions:
             contents: write
             id-token: write
@@ -319,7 +332,7 @@ jobs:
             - name: Setup node
               uses: actions/setup-node@v4
               with:
-                  node-version: 22
+                  node-version: 24
                   registry-url: 'https://registry.npmjs.org'
 
             - name: Cache npm dependencies
@@ -368,18 +381,13 @@ jobs:
             - name: Publish to npm
               run: |
                   npm config set provenance true
-                  if git log -1 --pretty=%B | grep "^v\?[0-9]\+\.[0-9]\+\.[0-9]\+$";
-                  then
-                    echo "Publishing release version"
-                    echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-                    npm publish --access public
-                  elif git log -1 --pretty=%B | grep "^v\?[0-9]\+\.[0-9]\+\.[0-9]\+";
-                  then
+                  echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+                  if [ "${{ github.event.inputs.version_type }}" = "prerelease" ]; then
                     echo "Publishing prerelease version"
-                    echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
                     npm publish --tag next --access public
                   else
-                    echo "Not a release commit, skipping publish"
+                    echo "Publishing ${{ github.event.inputs.version_type }} version"
+                    npm publish --access public
                   fi
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

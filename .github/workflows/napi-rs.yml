@@ -103,9 +103,7 @@ jobs:
               run: npm ci --cache=.npm --prefer-offline
 
             - name: Build WASM plugin
-              run: |
-                  cargo build --release --target wasm32-wasip1
-                  node scripts/build-plugin.js
+              run: npm run build:plugin
 
             - name: Upload WASM artifact
               uses: actions/upload-artifact@v4

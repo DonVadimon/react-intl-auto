@@ -4,7 +4,7 @@ This document explains how to release new versions of @donvadimon/react-intl-aut
 
 ## Overview
 
-The project uses **GitHub Actions** with **napi-rs** for cross-platform builds and publishing.
+The project uses **GitHub Actions** with **napi-rs** for cross-platform builds and **manual publishing**.
 
 ### What Gets Published
 
@@ -34,7 +34,7 @@ Create an npm access token and add it as a GitHub secret:
 Ensure you have:
 
 - Push access to the repository
-- Permission to create tags
+- Permission to push to master branch
 
 ## Release Steps
 
@@ -76,15 +76,21 @@ git commit -m "chore: bump version to 1.1.0"
 git push origin master
 ```
 
-### Step 4: Create and Push Tag
+### Step 4: Trigger Manual Publish
 
-```bash
-# Create annotated tag
-git tag -a v1.1.0 -m "Release v1.1.0"
+Go to GitHub Actions and run the workflow manually:
 
-# Push tag
-git push origin v1.1.0
-```
+1. Navigate to: `https://github.com/DonVadimon/react-intl-auto/actions`
+2. Click on **"CI"** workflow
+3. Click **"Run workflow"** button
+4. Select:
+    - **Branch**: `master`
+    - **version_type**: Choose one:
+        - `patch` - for bug fixes (1.0.0 → 1.0.1)
+        - `minor` - for new features (1.0.0 → 1.1.0)
+        - `major` - for breaking changes (1.0.0 → 2.0.0)
+        - `prerelease` - for beta/alpha versions
+5. Click **"Run workflow"**
 
 ### Step 5: Monitor CI/CD
 
@@ -99,9 +105,11 @@ GitHub Actions will automatically:
     - Run Jest integration tests
     - Test native bindings on all platforms
 
-3. **Publish stage:**
+3. **Publish stage:** (manual trigger only)
     - Create platform-specific npm packages
     - Publish all packages to npm
+
+**Note:** The publish job only runs when manually triggered via "Run workflow". All other jobs (lint, build, test) run automatically on every push to master.
 
 Monitor progress at: `https://github.com/DonVadimon/react-intl-auto/actions`
 
@@ -237,14 +245,15 @@ The workflow (`.github/workflows/napi-rs.yml`) has these jobs:
 
 ### Job: publish
 
-- Depends on: All test jobs
+- **Trigger**: Manual only (`workflow_dispatch`)
+- Depends on: All test jobs (lint, build-wasm, build-napi, test-rust, test-node)
 - Runs on: Ubuntu
 - Steps:
     1. Create npm directories (`npx napi create-npm-dirs`)
     2. Download all artifacts
     3. Move artifacts to npm dirs (`npx napi artifacts`)
     4. Copy WASM to packages
-    5. Publish to npm
+    5. Publish to npm with selected version type
 
 ## Best Practices
 

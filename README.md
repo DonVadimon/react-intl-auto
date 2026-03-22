@@ -207,7 +207,7 @@ crates/
 
 - Rust toolchain
 - `wasm32-wasip1` target: `rustup target add wasm32-wasip1`
-- Node.js 18+
+- Node.js 24+
 
 ### Building
 
@@ -254,15 +254,24 @@ GitHub Actions workflow (`.github/workflows/napi-rs.yml`) handles:
 
 ### Releasing
 
+Publishing is done manually through GitHub Actions:
+
 1. Update version in `package.json` and `Cargo.toml`
-2. Create and push a tag:
+2. Commit and push changes:
 
 ```bash
-git tag -a v1.0.0 -m "Release v1.0.0"
-git push origin v1.0.0
+git add package.json Cargo.toml
+git commit -m "chore: bump version to 1.0.1"
+git push origin master
 ```
 
-GitHub Actions will automatically:
+3. Go to GitHub → Actions → CI → Run workflow
+4. Select:
+    - Branch: `master`
+    - version_type: `patch` / `minor` / `major` / `prerelease`
+5. Click "Run workflow"
+
+GitHub Actions will:
 
 - Build for all platforms
 - Run all tests
@@ -271,6 +280,8 @@ GitHub Actions will automatically:
 **Requirements:**
 
 - `NPM_TOKEN` secret configured in GitHub repository settings
+
+**Note:** All jobs except publish run automatically on push to master. Publish job is manual only.
 
 ## Breaking Changes
 

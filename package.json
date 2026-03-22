@@ -13,7 +13,7 @@
     ],
     "exports": {
         "./swc-plugin": {
-            "require": "./swc-plugin.js"
+            "*": "./swc-plugin.wasm"
         },
         "./extract": {
             "require": "./extract.js",
@@ -49,11 +49,7 @@
         "artifacts": "napi artifacts",
         "run:cli": "node cli.js",
         "sandbox:basic:plugin": "rm -rf ./sandbox/basic/.build && npx swc ./sandbox/basic/src --config-file ./sandbox/basic/.swcrc --out-dir ./sandbox/basic/.build",
-        "sandbox:basic:cli": "rm -rf ./sandbox/basic/.react-intl && npm run run:cli -- 'sandbox/basic/src/**/*.{ts,tsx}' --output-mode='perfile' --output='./sandbox/basic/.react-intl' --extract-source-location",
-        "release": "node scripts/release.js",
-        "check-token": "node scripts/check-npm-token.js",
-        "create-labels": "node scripts/create-labels.js",
-        "test-release": "node scripts/test-release.js"
+        "sandbox:basic:cli": "rm -rf ./sandbox/basic/.react-intl && npm run run:cli -- 'sandbox/basic/src/**/*.{ts,tsx}' --output-mode='perfile' --output='./sandbox/basic/.react-intl' --extract-source-location"
     },
     "devDependencies": {
         "@napi-rs/cli": "3.5.1",

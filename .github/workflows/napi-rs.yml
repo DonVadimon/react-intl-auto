@@ -64,7 +64,7 @@ jobs:
                       npm-deps-${{ runner.os }}-
 
             - name: Install dependencies
-              run: npm install
+              run: npm ci --cache=.npm --prefer-offline
 
             - name: Run lint
               run: npm run lint
@@ -100,7 +100,7 @@ jobs:
                       npm-deps-${{ runner.os }}-
 
             - name: Install dependencies
-              run: npm install
+              run: npm ci --cache=.npm --prefer-offline
 
             - name: Build WASM plugin
               run: |
@@ -168,7 +168,7 @@ jobs:
                       npm-deps-${{ matrix.settings.host }}-
 
             - name: Install dependencies
-              run: npm install
+              run: npm ci --cache=.npm --prefer-offline
 
             - name: Build napi-rs addon
               run: ${{ matrix.settings.build }}
@@ -232,7 +232,7 @@ jobs:
                   targets: wasm32-wasip1
 
             - name: Install dependencies
-              run: npm install
+              run: npm ci --cache=.npm --prefer-offline
 
             - name: Download WASM artifact
               uses: actions/download-artifact@v4
@@ -295,7 +295,7 @@ jobs:
                       npm-deps-${{ matrix.settings.host }}-
 
             - name: Install dependencies
-              run: npm install
+              run: npm ci --cache=.npm --prefer-offline
 
             - name: Download napi artifacts
               uses: actions/download-artifact@v4
@@ -349,7 +349,7 @@ jobs:
                   targets: wasm32-wasip1
 
             - name: Install dependencies
-              run: npm install
+              run: npm ci --cache=.npm --prefer-offline
 
             - name: Create npm dirs
               run: npx napi create-npm-dirs

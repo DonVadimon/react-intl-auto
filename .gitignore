@@ -17,3 +17,5 @@ dist
 *.node
 /npm
 crates/**/*.d.ts
+.ai
+.prompts

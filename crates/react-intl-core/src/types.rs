@@ -53,7 +53,6 @@ pub enum OutputMode {
     PerFile,
 }
 
-
 impl Default for CoreOptions {
     fn default() -> Self {
         Self {

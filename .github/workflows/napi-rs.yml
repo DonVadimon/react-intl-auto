@@ -43,14 +43,19 @@ jobs:
               with:
                   components: clippy, rustfmt
 
+            - name: Cache npm dependencies
+              uses: actions/cache@v4
+              with:
+                  path: ~/.npm
+                  key: npm-deps-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+                  restore-keys: |
+                      npm-deps-${{ runner.os }}-
+
             - name: Install dependencies
-              run: npm ci
+              run: npm install
 
-            - name: Cargo fmt
-              run: cargo fmt -- --check
-
-            - name: Clippy
-              run: cargo clippy --workspace --all-targets --all-features
+            - name: Run lint
+              run: npm run lint
 
     build-wasm:
         name: Build WASM Plugin
@@ -74,10 +79,21 @@ jobs:
                       target/
                   key: wasm-cargo-${{ hashFiles('**/Cargo.lock') }}
 
+            - name: Cache npm dependencies
+              uses: actions/cache@v4
+              with:
+                  path: ~/.npm
+                  key: npm-deps-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+                  restore-keys: |
+                      npm-deps-${{ runner.os }}-
+
+            - name: Install dependencies
+              run: npm install
+
             - name: Build WASM plugin
               run: |
                   cargo build --release --target wasm32-wasip1
-                  npm run build:plugin
+                  node scripts/build-plugin.js
 
             - name: Upload WASM artifact
               uses: actions/upload-artifact@v4
@@ -101,7 +117,7 @@ jobs:
                       build: npm run build:napi -- --target aarch64-apple-darwin
                     - host: ubuntu-latest
                       target: x86_64-unknown-linux-gnu
-                      build: npm run build:napi -- --target x86_64-unknown-linux-gnu --use-napi-cross
+                      build: npm run build:napi -- --target x86_64-unknown-linux-gnu
 
         runs-on: ${{ matrix.settings.host }}
 
@@ -112,7 +128,6 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: 20
-                  cache: npm
 
             - name: Install Rust
               uses: dtolnay/rust-toolchain@stable
@@ -132,8 +147,16 @@ jobs:
                       target/
                   key: ${{ matrix.settings.target }}-cargo-${{ matrix.settings.host }}-${{ hashFiles('**/Cargo.lock') }}
 
+            - name: Cache npm dependencies
+              uses: actions/cache@v4
+              with:
+                  path: ~/.npm
+                  key: npm-deps-${{ matrix.settings.host }}-${{ hashFiles('package-lock.json') }}
+                  restore-keys: |
+                      npm-deps-${{ matrix.settings.host }}-
+
             - name: Install dependencies
-              run: npm ci
+              run: npm install
 
             - name: Build napi-rs addon
               run: ${{ matrix.settings.build }}
@@ -182,7 +205,14 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: 20
-                  cache: npm
+
+            - name: Cache npm dependencies
+              uses: actions/cache@v4
+              with:
+                  path: ~/.npm
+                  key: npm-deps-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+                  restore-keys: |
+                      npm-deps-${{ runner.os }}-
 
             - name: Install Rust
               uses: dtolnay/rust-toolchain@stable
@@ -190,7 +220,7 @@ jobs:
                   targets: wasm32-wasip1
 
             - name: Install dependencies
-              run: npm ci
+              run: npm install
 
             - name: Download WASM artifact
               uses: actions/download-artifact@v4
@@ -209,7 +239,7 @@ jobs:
               shell: bash
 
             - name: Run Jest tests
-              run: npm test
+              run: npx jest
 
     test-native-bindings:
         name: Test napi bindings on ${{ matrix.settings.target }} - node@${{ matrix.node }}
@@ -242,11 +272,18 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: ${{ matrix.node }}
-                  cache: npm
                   architecture: ${{ matrix.settings.architecture }}
 
+            - name: Cache npm dependencies
+              uses: actions/cache@v4
+              with:
+                  path: ~/.npm
+                  key: npm-deps-${{ matrix.settings.host }}-${{ hashFiles('package-lock.json') }}
+                  restore-keys: |
+                      npm-deps-${{ matrix.settings.host }}-
+
             - name: Install dependencies
-              run: npm ci
+              run: npm install
 
             - name: Download napi artifacts
               uses: actions/download-artifact@v4
@@ -260,7 +297,7 @@ jobs:
 
             - name: Test napi bindings load
               run: |
-                  node -e "const native = require('./index.js'); console.log('napi addon loaded successfully');"
+                  node -e "const native = require('./extract.js'); console.log('napi addon loaded successfully');"
               shell: bash
 
     publish:
@@ -283,8 +320,15 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: 20
-                  cache: npm
                   registry-url: 'https://registry.npmjs.org'
+
+            - name: Cache npm dependencies
+              uses: actions/cache@v4
+              with:
+                  path: ~/.npm
+                  key: npm-deps-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+                  restore-keys: |
+                      npm-deps-${{ runner.os }}-
 
             - name: Install Rust
               uses: dtolnay/rust-toolchain@stable
@@ -292,7 +336,7 @@ jobs:
                   targets: wasm32-wasip1
 
             - name: Install dependencies
-              run: npm ci
+              run: npm install
 
             - name: Create npm dirs
               run: npx napi create-npm-dirs

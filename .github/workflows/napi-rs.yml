@@ -36,7 +36,7 @@ jobs:
             - name: Setup node
               uses: actions/setup-node@v4
               with:
-                  node-version: 20
+                  node-version: 22
 
             - name: Install Rust
               uses: dtolnay/rust-toolchain@stable
@@ -127,7 +127,7 @@ jobs:
             - name: Setup node
               uses: actions/setup-node@v4
               with:
-                  node-version: 20
+                  node-version: 22
 
             - name: Install Rust
               uses: dtolnay/rust-toolchain@stable
@@ -204,7 +204,7 @@ jobs:
             - name: Setup node
               uses: actions/setup-node@v4
               with:
-                  node-version: 20
+                  node-version: 22
 
             - name: Cache npm dependencies
               uses: actions/cache@v4
@@ -319,7 +319,7 @@ jobs:
             - name: Setup node
               uses: actions/setup-node@v4
               with:
-                  node-version: 20
+                  node-version: 22
                   registry-url: 'https://registry.npmjs.org'
 
             - name: Cache npm dependencies

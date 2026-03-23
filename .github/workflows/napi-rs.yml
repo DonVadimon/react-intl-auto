@@ -381,7 +381,8 @@ jobs:
             - name: List npm packages
               run: |
                 ls -R ./npm
-                la -la .
+                ls -la .
+                cat ./npm/darwin-arm64/package.json
               shell: bash
 
             - name: Publish to npm

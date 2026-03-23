@@ -128,6 +128,8 @@ jobs:
                     - host: ubuntu-latest
                       target: x86_64-unknown-linux-gnu
                       build: npm run build:napi -- --target x86_64-unknown-linux-gnu
+                    - host: windows-latest
+                      build: npm run build:napi -- --target x86_64-pc-windows-msvc
 
         runs-on: ${{ matrix.settings.host }}
 
@@ -267,6 +269,9 @@ jobs:
                       architecture: x64
                     - host: ubuntu-latest
                       target: x86_64-unknown-linux-gnu
+                      architecture: x64
+                    - host: windows-latest
+                      target: x86_64-pc-windows-msvc
                       architecture: x64
                 node:
                     - '18'

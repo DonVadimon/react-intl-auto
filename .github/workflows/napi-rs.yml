@@ -378,20 +378,23 @@ jobs:
                   cp swc-plugin.js npm/swc-plugin.js
 
             - name: List npm packages
-              run: ls -R ./npm
+              run: |
+                ls -R ./npm
+                la -la .
               shell: bash
 
             - name: Publish to npm
-              run: |
-                  npm config set provenance true
-                  echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-                  if [ "${{ github.event.inputs.version_type }}" = "prerelease" ]; then
-                    echo "Publishing prerelease version"
-                    npm publish --tag next --access public
-                  else
-                    echo "Publishing ${{ github.event.inputs.version_type }} version"
-                    npm publish --access public
-                  fi
+              # run: |
+              #     npm config set provenance true
+              #     echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+              #     if [ "${{ github.event.inputs.version_type }}" = "prerelease" ]; then
+              #       echo "Publishing prerelease version"
+              #       npm publish --tag next --access public
+              #     else
+              #       echo "Publishing ${{ github.event.inputs.version_type }} version"
+              #       npm publish --access public
+              #     fi
+              run: echo "publish mock"
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

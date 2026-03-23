@@ -251,7 +251,7 @@ jobs:
               shell: bash
 
             - name: Run Jest tests
-              run: npx jest
+              run: npm run test:jest
 
     test-native-bindings:
         name: Test napi bindings on ${{ matrix.settings.target }} - node@${{ matrix.node }}

@@ -40,8 +40,8 @@
     "scripts": {
         "format": "cargo fmt && prettier --write \"{src,tests,sandbox}/**/*.{ts,tsx,js,jsx}\"",
         "lint": "cargo fmt --check && cargo clippy --workspace --all-targets --all-features && prettier --check \"{src,tests,sandbox}/**/*.{ts,tsx,js,jsx}\"",
-        "jest": "jest",
-        "test": "cargo test && npm run build:plugin && npm run build:cli && npm run jest",
+        "test:jest": "jest",
+        "test:all": "cargo test && npm run build:plugin && npm run build:cli && npm run jest",
         "build:plugin": "cargo build --release --target wasm32-wasip1 && cp target/wasm32-wasip1/release/swc_plugin.wasm swc-plugin.wasm",
         "build:cli": "npm run build:napi",
         "build:napi": "napi build --platform --release --manifest-path crates/cli/Cargo.toml --output-dir . --js extract.js --dts extract.d.ts",

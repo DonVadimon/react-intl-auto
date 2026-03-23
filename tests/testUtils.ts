@@ -176,7 +176,7 @@ const runPlugin = async (test: TestCase, suite: TestSuite) => {
 
 const CLI_OUT = path.resolve(__dirname, '.tmp', 'cli-out');
 if (fs.existsSync(CLI_OUT)) {
-    fs.rmdirSync(CLI_OUT, { recursive: true });
+    fs.rmSync(CLI_OUT, { recursive: true });
 }
 
 const CLI_OPTIONS_MAP: Record<keyof PluginOptions, string> = {

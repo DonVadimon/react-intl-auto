@@ -208,3 +208,9 @@ crates/**/*.d.ts
 # agents
 .ai
 .prompts
+
+# IDE Folders and Files
+.idea/
+.vscode/
+*.iml
+*.iws

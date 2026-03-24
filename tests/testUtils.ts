@@ -175,7 +175,7 @@ const runPlugin = async (test: TestCase, suite: TestSuite) => {
 };
 
 const CLI_OUT = path.resolve(__dirname, '.tmp', 'cli-out');
-if (fs.existsSync(CLI_OUT)) {
+if (!process.env.CI && fs.existsSync(CLI_OUT)) {
     fs.rmSync(CLI_OUT, { recursive: true, force: true });
 }
 

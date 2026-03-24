@@ -44,7 +44,8 @@
     "scripts": {
         "format": "cargo fmt && prettier --write \"{src,tests,sandbox}/**/*.{ts,tsx,js,jsx}\"",
         "lint": "cargo fmt --check && cargo clippy --workspace --all-targets --all-features && prettier --check \"{src,tests,sandbox}/**/*.{ts,tsx,js,jsx}\"",
-        "test:jest": "jest",
+        "test:jest": "jest --colors",
+        "test:jest:ci": "npm run test:jest -- --ci",
         "test:all": "cargo test && npm run build:plugin && npm run build:cli && npm run test:jest",
         "build:plugin": "cargo build --release --target wasm32-wasip1 && cp target/wasm32-wasip1/release/swc_plugin.wasm swc-plugin.wasm",
         "build:cli": "npm run build:napi",

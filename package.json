@@ -21,7 +21,7 @@
         }
     },
     "bin": {
-        "react-intl-auto": "./cli.js"
+        "extract": "./cli.js"
     },
     "repository": {
         "type": "git",

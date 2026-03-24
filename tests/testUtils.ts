@@ -176,7 +176,7 @@ const runPlugin = async (test: TestCase, suite: TestSuite) => {
 
 const CLI_OUT = path.resolve(__dirname, '.tmp', 'cli-out');
 if (fs.existsSync(CLI_OUT)) {
-    fs.rmSync(CLI_OUT, { recursive: true });
+    fs.rmSync(CLI_OUT, { recursive: true, force: true });
 }
 
 const CLI_OPTIONS_MAP: Record<keyof PluginOptions, string> = {
@@ -203,6 +203,7 @@ const runCli = async (
         .replace(path.extname(absolute), '.json');
     const filename = `${suite.title}_${jsonName}`
         .replace(/\W/gi, '_')
+        .replace(/_json$/, '.json')
         .toLowerCase();
     const outputFile = path.resolve(CLI_OUT, filename);
     const args: string[] = [absolute, '--output', outputFile];

@@ -1,6 +1,6 @@
 {
     "name": "@donvadimon/react-intl-auto",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "SWC plugin for React Intl Auto - automatically adds IDs to FormattedMessage, defineMessages, and formatMessage calls",
     "main": "swc-plugin.wasm",
     "files": [
@@ -25,7 +25,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/DonVadimon/react-intl-auto.git"
+        "url": "git+https://github.com/DonVadimon/react-intl-auto.git"
     },
     "keywords": [
         "swc",
@@ -37,19 +37,26 @@
     ],
     "author": "Vadim Khizhnyakov",
     "license": "UNLICENSED",
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/",
+        "access": "public"
+    },
     "scripts": {
         "format": "cargo fmt && prettier --write \"{src,tests,sandbox}/**/*.{ts,tsx,js,jsx}\"",
         "lint": "cargo fmt --check && cargo clippy --workspace --all-targets --all-features && prettier --check \"{src,tests,sandbox}/**/*.{ts,tsx,js,jsx}\"",
         "test:jest": "jest",
-        "test:all": "cargo test && npm run build:plugin && npm run build:cli && npm run jest",
+        "test:all": "cargo test && npm run build:plugin && npm run build:cli && npm run test:jest",
         "build:plugin": "cargo build --release --target wasm32-wasip1 && cp target/wasm32-wasip1/release/swc_plugin.wasm swc-plugin.wasm",
         "build:cli": "npm run build:napi",
         "build:napi": "napi build --platform --release --manifest-path crates/cli/Cargo.toml --output-dir . --js extract.js --dts extract.d.ts",
         "build:napi:debug": "napi build --platform --manifest-path crates/cli/Cargo.toml --output-dir . --js extract.js --dts extract.d.ts",
-        "artifacts": "napi artifacts",
         "run:cli": "node cli.js",
         "sandbox:basic:plugin": "rm -rf ./sandbox/basic/.build && npx swc ./sandbox/basic/src --config-file ./sandbox/basic/.swcrc --out-dir ./sandbox/basic/.build",
-        "sandbox:basic:cli": "rm -rf ./sandbox/basic/.react-intl && npm run run:cli -- 'sandbox/basic/src/**/*.{ts,tsx}' --output-mode='perfile' --output='./sandbox/basic/.react-intl' --extract-source-location"
+        "sandbox:basic:cli": "rm -rf ./sandbox/basic/.react-intl && npm run run:cli -- 'sandbox/basic/src/**/*.{ts,tsx}' --output-mode='perfile' --output='./sandbox/basic/.react-intl' --extract-source-location",
+        "create-npm-dirs": "napi create-npm-dirs",
+        "artifacts": "napi artifacts",
+        "prepublishOnly": "napi prepublish -t npm",
+        "version": "napi version"
     },
     "devDependencies": {
         "@napi-rs/cli": "3.5.1",

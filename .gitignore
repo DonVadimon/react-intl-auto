@@ -19,3 +19,5 @@ dist
 crates/**/*.d.ts
 .ai
 .prompts
+extract.js
+extract.d.ts

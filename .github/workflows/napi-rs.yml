@@ -356,7 +356,7 @@ jobs:
               run: npm ci --cache=.npm --prefer-offline
 
             - name: Create npm dirs
-              run: npx napi create-npm-dirs
+              run: npm run create-npm-dirs
 
             - name: Download all napi artifacts
               uses: actions/download-artifact@v4
@@ -371,7 +371,7 @@ jobs:
                   path: .
 
             - name: Move artifacts to npm dirs
-              run: npx napi artifacts
+              run: npm run artifacts
 
             # - name: Copy WASM to npm packages
             #   run: |
@@ -386,17 +386,19 @@ jobs:
               shell: bash
 
             - name: Publish to npm
+              # run: |
+              #     npm config set provenance true
+              #     echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+              #     if [ "${{ github.event.inputs.version_type }}" = "prerelease" ]; then
+              #       echo "Publishing prerelease version"
+              #       npm publish --tag next --access public
+              #     else
+              #       echo "Publishing ${{ github.event.inputs.version_type }} version"
+              #       npm publish --access public
+              #     fi
               run: |
-                  npm config set provenance true
-                  echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-                  if [ "${{ github.event.inputs.version_type }}" = "prerelease" ]; then
-                    echo "Publishing prerelease version"
-                    npm publish --tag next --access public
-                  else
-                    echo "Publishing ${{ github.event.inputs.version_type }} version"
-                    npm publish --access public
-                  fi
-              # run: echo "publish mock"
+                echo "Publish mock ${{ github.event.inputs.version_type }} version"
+                cat package.json
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

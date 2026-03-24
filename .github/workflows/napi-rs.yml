@@ -380,6 +380,10 @@ jobs:
 
             - name: Publish to npm
               run: |
+                  # delete registry definition from local .npmrc
+                  if [ -f .npmrc ]; then
+                      grep -v '^registry=' .npmrc > .npmrc.tmp && mv .npmrc.tmp .npmrc
+                  fi
                   npm config set provenance true
                   echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" >> ~/.npmrc
                   if [ "${{ github.event.inputs.version_type }}" = "prerelease" ]; then

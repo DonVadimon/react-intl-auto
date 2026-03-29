@@ -1,11 +1,11 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`snap - components | CONFIGURATION: default | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "tests.__fixtures__.components.all-props.1139410552",
+        id: "tests.__fixtures__.components.all-props.Q+oGeA==",
         defaultMessage: "Hello {name}",
         description: "A greeting message",
         values: {
@@ -24,7 +24,7 @@ function App(param) {
     var showMessage = param.showMessage;
     return /*#__PURE__*/ _jsx("div", {
         children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
-            id: "tests.__fixtures__.components.conditional-rendering.3541072352",
+            id: "tests.__fixtures__.components.conditional-rendering.0xB54A==",
             defaultMessage: "Conditional message"
         })
     });
@@ -36,7 +36,7 @@ exports[`snap - components | CONFIGURATION: default | default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.default.613153351",
+    id: "tests.__fixtures__.components.default.JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -102,11 +102,11 @@ exports[`snap - components | CONFIGURATION: default | import all supported compo
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
-    id: "tests.__fixtures__.components.all-supported-components.205247277",
+    id: "tests.__fixtures__.components.all-supported-components.DDvTLQ==",
     defaultMessage: "<span>hello</span>"
 });
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.all-supported-components.613153351",
+    id: "tests.__fixtures__.components.all-supported-components.JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -116,11 +116,11 @@ exports[`snap - components | CONFIGURATION: default | multiple uses 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.multiple-uses.613153351",
+    id: "tests.__fixtures__.components.multiple-uses.JIv6Rw==",
     defaultMessage: "hello"
 });
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.multiple-uses.1418522856",
+    id: "tests.__fixtures__.components.multiple-uses.VIzw6A==",
     defaultMessage: "another"
 });
 "
@@ -140,7 +140,7 @@ exports[`snap - components | CONFIGURATION: default | with FormattedMessage impo
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as TestFormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(TestFormattedMessage, {
-    id: "tests.__fixtures__.components.import-as.613153351",
+    id: "tests.__fixtures__.components.import-as.JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -151,7 +151,7 @@ exports[`snap - components | CONFIGURATION: default | with FormattedMessage nest
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
     children: /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "tests.__fixtures__.components.nested-jsx.613153351",
+        id: "tests.__fixtures__.components.nested-jsx.JIv6Rw==",
         defaultMessage: "hello"
     })
 });
@@ -177,189 +177,12 @@ var message = 'variable message';
 "
 `;
 
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "base64" | all props 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-function App() {
-    return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "dGVzdHMuX19maXh0dXJlc19fLmNvbXBvbmVudHMuYWxsLXByb3BzLjExMzk0MTA1NTI=",
-        defaultMessage: "Hello {name}",
-        description: "A greeting message",
-        values: {
-            name: 'World'
-        },
-        tagName: "span"
-    });
-}
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "base64" | conditional rendering 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-function App(param) {
-    var showMessage = param.showMessage;
-    return /*#__PURE__*/ _jsx("div", {
-        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
-            id: "dGVzdHMuX19maXh0dXJlc19fLmNvbXBvbmVudHMuY29uZGl0aW9uYWwtcmVuZGVyaW5nLjM1NDEwNzIzNTI=",
-            defaultMessage: "Conditional message"
-        })
-    });
-}
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "base64" | default 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "dGVzdHMuX19maXh0dXJlc19fLmNvbXBvbmVudHMuZGVmYXVsdC42MTMxNTMzNTE=",
-    defaultMessage: "hello"
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "base64" | different module source 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'gatsby-plugin-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: "hello"
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "base64" | does nothing if component props are spread 1`] = `
-"function _define_property(obj, key, value) {
-    if (key in obj) {
-        Object.defineProperty(obj, key, {
-            value: value,
-            enumerable: true,
-            configurable: true,
-            writable: true
-        });
-    } else {
-        obj[key] = value;
-    }
-    return obj;
-}
-function _object_spread(target) {
-    for(var i = 1; i < arguments.length; i++){
-        var source = arguments[i] != null ? arguments[i] : {};
-        var ownKeys = Object.keys(source);
-        if (typeof Object.getOwnPropertySymbols === "function") {
-            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-            }));
-        }
-        ownKeys.forEach(function(key) {
-            _define_property(target, key, source[key]);
-        });
-    }
-    return target;
-}
-import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-var props = {
-    defaultMessage: 'hello'
-};
-/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "base64" | does nothing if components not imported from react-intl 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: "hello"
-});
-export { };
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "base64" | import all supported components 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
-    id: "dGVzdHMuX19maXh0dXJlc19fLmNvbXBvbmVudHMuYWxsLXN1cHBvcnRlZC1jb21wb25lbnRzLjIwNTI0NzI3Nw==",
-    defaultMessage: "<span>hello</span>"
-});
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "dGVzdHMuX19maXh0dXJlc19fLmNvbXBvbmVudHMuYWxsLXN1cHBvcnRlZC1jb21wb25lbnRzLjYxMzE1MzM1MQ==",
-    defaultMessage: "hello"
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "base64" | multiple uses 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "dGVzdHMuX19maXh0dXJlc19fLmNvbXBvbmVudHMubXVsdGlwbGUtdXNlcy42MTMxNTMzNTE=",
-    defaultMessage: "hello"
-});
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "dGVzdHMuX19maXh0dXJlc19fLmNvbXBvbmVudHMubXVsdGlwbGUtdXNlcy4xNDE4NTIyODU2",
-    defaultMessage: "another"
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "base64" | user id 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "foobar",
-    defaultMessage: "hello"
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "base64" | with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage as TestFormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(TestFormattedMessage, {
-    id: "dGVzdHMuX19maXh0dXJlc19fLmNvbXBvbmVudHMuaW1wb3J0LWFzLjYxMzE1MzM1MQ==",
-    defaultMessage: "hello"
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "base64" | with FormattedMessage nested in other JSX 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx("div", {
-    children: /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "dGVzdHMuX19maXh0dXJlc19fLmNvbXBvbmVudHMubmVzdGVkLWpzeC42MTMxNTMzNTE=",
-        defaultMessage: "hello"
-    })
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "base64" | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: "hello world ".concat(1 + 1)
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "base64" | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-var message = 'variable message';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: message
-});
-"
-`;
-
 exports[`snap - components | CONFIGURATION: hashAlgorithm = "murmur3" | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "4119831092",
+        id: "IkK47Q==",
         defaultMessage: "Hello {name}",
         description: "A greeting message",
         values: {
@@ -378,7 +201,7 @@ function App(param) {
     var showMessage = param.showMessage;
     return /*#__PURE__*/ _jsx("div", {
         children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
-            id: "532008876",
+            id: "nqx1ag==",
             defaultMessage: "Conditional message"
         })
     });
@@ -390,7 +213,7 @@ exports[`snap - components | CONFIGURATION: hashAlgorithm = "murmur3" | default 
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "2177338247",
+    id: "Hjvdvg==",
     defaultMessage: "hello"
 });
 "
@@ -456,11 +279,11 @@ exports[`snap - components | CONFIGURATION: hashAlgorithm = "murmur3" | import a
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
-    id: "2726788119",
+    id: "pFOdsA==",
     defaultMessage: "<span>hello</span>"
 });
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "867830427",
+    id: "Osoh0A==",
     defaultMessage: "hello"
 });
 "
@@ -470,11 +293,11 @@ exports[`snap - components | CONFIGURATION: hashAlgorithm = "murmur3" | multiple
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "1593070696",
+    id: "jPnGkA==",
     defaultMessage: "hello"
 });
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "1581423416",
+    id: "NpTm0A==",
     defaultMessage: "another"
 });
 "
@@ -494,7 +317,7 @@ exports[`snap - components | CONFIGURATION: hashAlgorithm = "murmur3" | with For
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as TestFormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(TestFormattedMessage, {
-    id: "504187125",
+    id: "PYx5aQ==",
     defaultMessage: "hello"
 });
 "
@@ -505,7 +328,7 @@ exports[`snap - components | CONFIGURATION: hashAlgorithm = "murmur3" | with For
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
     children: /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "4229331028",
+        id: "EEWZhg==",
         defaultMessage: "hello"
     })
 });
@@ -522,183 +345,6 @@ import { FormattedMessage } from 'react-intl';
 `;
 
 exports[`snap - components | CONFIGURATION: hashAlgorithm = "murmur3" | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-var message = 'variable message';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: message
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "unknown" | all props 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-function App() {
-    return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "4119831092",
-        defaultMessage: "Hello {name}",
-        description: "A greeting message",
-        values: {
-            name: 'World'
-        },
-        tagName: "span"
-    });
-}
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "unknown" | conditional rendering 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-function App(param) {
-    var showMessage = param.showMessage;
-    return /*#__PURE__*/ _jsx("div", {
-        children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
-            id: "532008876",
-            defaultMessage: "Conditional message"
-        })
-    });
-}
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "unknown" | default 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "2177338247",
-    defaultMessage: "hello"
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "unknown" | different module source 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'gatsby-plugin-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: "hello"
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "unknown" | does nothing if component props are spread 1`] = `
-"function _define_property(obj, key, value) {
-    if (key in obj) {
-        Object.defineProperty(obj, key, {
-            value: value,
-            enumerable: true,
-            configurable: true,
-            writable: true
-        });
-    } else {
-        obj[key] = value;
-    }
-    return obj;
-}
-function _object_spread(target) {
-    for(var i = 1; i < arguments.length; i++){
-        var source = arguments[i] != null ? arguments[i] : {};
-        var ownKeys = Object.keys(source);
-        if (typeof Object.getOwnPropertySymbols === "function") {
-            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
-                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-            }));
-        }
-        ownKeys.forEach(function(key) {
-            _define_property(target, key, source[key]);
-        });
-    }
-    return target;
-}
-import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-var props = {
-    defaultMessage: 'hello'
-};
-/*#__PURE__*/ _jsx(FormattedMessage, _object_spread({}, props));
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "unknown" | does nothing if components not imported from react-intl 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: "hello"
-});
-export { };
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "unknown" | import all supported components 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedHTMLMessage, {
-    id: "2726788119",
-    defaultMessage: "<span>hello</span>"
-});
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "867830427",
-    defaultMessage: "hello"
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "unknown" | multiple uses 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "1593070696",
-    defaultMessage: "hello"
-});
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "1581423416",
-    defaultMessage: "another"
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "unknown" | user id 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "foobar",
-    defaultMessage: "hello"
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "unknown" | with FormattedMessage imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage as TestFormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(TestFormattedMessage, {
-    id: "504187125",
-    defaultMessage: "hello"
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "unknown" | with FormattedMessage nested in other JSX 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx("div", {
-    children: /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "4229331028",
-        defaultMessage: "hello"
-    })
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "unknown" | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: "hello world ".concat(1 + 1)
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "unknown" | with a variable as the defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 var message = 'variable message';
@@ -751,7 +397,7 @@ exports[`snap - components | CONFIGURATION: moduleSourceName = "gatsby-plugin-in
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'gatsby-plugin-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.different-module-source.613153351",
+    id: "tests.__fixtures__.components.different-module-source.JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -882,7 +528,7 @@ exports[`snap - components | CONFIGURATION: relativeTo = "" | all props 1`] = `
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "tests.__fixtures__.components.all-props.1139410552",
+        id: "tests.__fixtures__.components.all-props.Q+oGeA==",
         defaultMessage: "Hello {name}",
         description: "A greeting message",
         values: {
@@ -901,7 +547,7 @@ function App(param) {
     var showMessage = param.showMessage;
     return /*#__PURE__*/ _jsx("div", {
         children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
-            id: "tests.__fixtures__.components.conditional-rendering.3541072352",
+            id: "tests.__fixtures__.components.conditional-rendering.0xB54A==",
             defaultMessage: "Conditional message"
         })
     });
@@ -913,7 +559,7 @@ exports[`snap - components | CONFIGURATION: relativeTo = "" | default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.default.613153351",
+    id: "tests.__fixtures__.components.default.JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -979,11 +625,11 @@ exports[`snap - components | CONFIGURATION: relativeTo = "" | import all support
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
-    id: "tests.__fixtures__.components.all-supported-components.205247277",
+    id: "tests.__fixtures__.components.all-supported-components.DDvTLQ==",
     defaultMessage: "<span>hello</span>"
 });
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.all-supported-components.613153351",
+    id: "tests.__fixtures__.components.all-supported-components.JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -993,11 +639,11 @@ exports[`snap - components | CONFIGURATION: relativeTo = "" | multiple uses 1`] 
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.multiple-uses.613153351",
+    id: "tests.__fixtures__.components.multiple-uses.JIv6Rw==",
     defaultMessage: "hello"
 });
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.multiple-uses.1418522856",
+    id: "tests.__fixtures__.components.multiple-uses.VIzw6A==",
     defaultMessage: "another"
 });
 "
@@ -1017,7 +663,7 @@ exports[`snap - components | CONFIGURATION: relativeTo = "" | with FormattedMess
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as TestFormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(TestFormattedMessage, {
-    id: "tests.__fixtures__.components.import-as.613153351",
+    id: "tests.__fixtures__.components.import-as.JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -1028,7 +674,7 @@ exports[`snap - components | CONFIGURATION: relativeTo = "" | with FormattedMess
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
     children: /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "tests.__fixtures__.components.nested-jsx.613153351",
+        id: "tests.__fixtures__.components.nested-jsx.JIv6Rw==",
         defaultMessage: "hello"
     })
 });
@@ -1059,7 +705,7 @@ exports[`snap - components | CONFIGURATION: relativeTo = "../" | all props 1`] =
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "tests.__fixtures__.components.all-props.1139410552",
+        id: "tests.__fixtures__.components.all-props.Q+oGeA==",
         defaultMessage: "Hello {name}",
         description: "A greeting message",
         values: {
@@ -1078,7 +724,7 @@ function App(param) {
     var showMessage = param.showMessage;
     return /*#__PURE__*/ _jsx("div", {
         children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
-            id: "tests.__fixtures__.components.conditional-rendering.3541072352",
+            id: "tests.__fixtures__.components.conditional-rendering.0xB54A==",
             defaultMessage: "Conditional message"
         })
     });
@@ -1090,7 +736,7 @@ exports[`snap - components | CONFIGURATION: relativeTo = "../" | default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.default.613153351",
+    id: "tests.__fixtures__.components.default.JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -1156,11 +802,11 @@ exports[`snap - components | CONFIGURATION: relativeTo = "../" | import all supp
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
-    id: "tests.__fixtures__.components.all-supported-components.205247277",
+    id: "tests.__fixtures__.components.all-supported-components.DDvTLQ==",
     defaultMessage: "<span>hello</span>"
 });
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.all-supported-components.613153351",
+    id: "tests.__fixtures__.components.all-supported-components.JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -1170,11 +816,11 @@ exports[`snap - components | CONFIGURATION: relativeTo = "../" | multiple uses 1
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.multiple-uses.613153351",
+    id: "tests.__fixtures__.components.multiple-uses.JIv6Rw==",
     defaultMessage: "hello"
 });
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.multiple-uses.1418522856",
+    id: "tests.__fixtures__.components.multiple-uses.VIzw6A==",
     defaultMessage: "another"
 });
 "
@@ -1194,7 +840,7 @@ exports[`snap - components | CONFIGURATION: relativeTo = "../" | with FormattedM
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as TestFormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(TestFormattedMessage, {
-    id: "tests.__fixtures__.components.import-as.613153351",
+    id: "tests.__fixtures__.components.import-as.JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -1205,7 +851,7 @@ exports[`snap - components | CONFIGURATION: relativeTo = "../" | with FormattedM
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
     children: /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "tests.__fixtures__.components.nested-jsx.613153351",
+        id: "tests.__fixtures__.components.nested-jsx.JIv6Rw==",
         defaultMessage: "hello"
     })
 });
@@ -1236,7 +882,7 @@ exports[`snap - components | CONFIGURATION: removePrefix = "tests" | all props 1
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "__fixtures__.components.all-props.1139410552",
+        id: "__fixtures__.components.all-props.Q+oGeA==",
         defaultMessage: "Hello {name}",
         description: "A greeting message",
         values: {
@@ -1255,7 +901,7 @@ function App(param) {
     var showMessage = param.showMessage;
     return /*#__PURE__*/ _jsx("div", {
         children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
-            id: "__fixtures__.components.conditional-rendering.3541072352",
+            id: "__fixtures__.components.conditional-rendering.0xB54A==",
             defaultMessage: "Conditional message"
         })
     });
@@ -1267,7 +913,7 @@ exports[`snap - components | CONFIGURATION: removePrefix = "tests" | default 1`]
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "__fixtures__.components.default.613153351",
+    id: "__fixtures__.components.default.JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -1333,11 +979,11 @@ exports[`snap - components | CONFIGURATION: removePrefix = "tests" | import all 
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
-    id: "__fixtures__.components.all-supported-components.205247277",
+    id: "__fixtures__.components.all-supported-components.DDvTLQ==",
     defaultMessage: "<span>hello</span>"
 });
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "__fixtures__.components.all-supported-components.613153351",
+    id: "__fixtures__.components.all-supported-components.JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -1347,11 +993,11 @@ exports[`snap - components | CONFIGURATION: removePrefix = "tests" | multiple us
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "__fixtures__.components.multiple-uses.613153351",
+    id: "__fixtures__.components.multiple-uses.JIv6Rw==",
     defaultMessage: "hello"
 });
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "__fixtures__.components.multiple-uses.1418522856",
+    id: "__fixtures__.components.multiple-uses.VIzw6A==",
     defaultMessage: "another"
 });
 "
@@ -1371,7 +1017,7 @@ exports[`snap - components | CONFIGURATION: removePrefix = "tests" | with Format
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as TestFormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(TestFormattedMessage, {
-    id: "__fixtures__.components.import-as.613153351",
+    id: "__fixtures__.components.import-as.JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -1382,7 +1028,7 @@ exports[`snap - components | CONFIGURATION: removePrefix = "tests" | with Format
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
     children: /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "__fixtures__.components.nested-jsx.613153351",
+        id: "__fixtures__.components.nested-jsx.JIv6Rw==",
         defaultMessage: "hello"
     })
 });
@@ -1413,7 +1059,7 @@ exports[`snap - components | CONFIGURATION: removePrefix = "tests.__fixtures__" 
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "components.all-props.1139410552",
+        id: "components.all-props.Q+oGeA==",
         defaultMessage: "Hello {name}",
         description: "A greeting message",
         values: {
@@ -1432,7 +1078,7 @@ function App(param) {
     var showMessage = param.showMessage;
     return /*#__PURE__*/ _jsx("div", {
         children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
-            id: "components.conditional-rendering.3541072352",
+            id: "components.conditional-rendering.0xB54A==",
             defaultMessage: "Conditional message"
         })
     });
@@ -1444,7 +1090,7 @@ exports[`snap - components | CONFIGURATION: removePrefix = "tests.__fixtures__" 
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "components.default.613153351",
+    id: "components.default.JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -1510,11 +1156,11 @@ exports[`snap - components | CONFIGURATION: removePrefix = "tests.__fixtures__" 
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
-    id: "components.all-supported-components.205247277",
+    id: "components.all-supported-components.DDvTLQ==",
     defaultMessage: "<span>hello</span>"
 });
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "components.all-supported-components.613153351",
+    id: "components.all-supported-components.JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -1524,11 +1170,11 @@ exports[`snap - components | CONFIGURATION: removePrefix = "tests.__fixtures__" 
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "components.multiple-uses.613153351",
+    id: "components.multiple-uses.JIv6Rw==",
     defaultMessage: "hello"
 });
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "components.multiple-uses.1418522856",
+    id: "components.multiple-uses.VIzw6A==",
     defaultMessage: "another"
 });
 "
@@ -1548,7 +1194,7 @@ exports[`snap - components | CONFIGURATION: removePrefix = "tests.__fixtures__" 
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as TestFormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(TestFormattedMessage, {
-    id: "components.import-as.613153351",
+    id: "components.import-as.JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -1559,7 +1205,7 @@ exports[`snap - components | CONFIGURATION: removePrefix = "tests.__fixtures__" 
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
     children: /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "components.nested-jsx.613153351",
+        id: "components.nested-jsx.JIv6Rw==",
         defaultMessage: "hello"
     })
 });
@@ -1590,7 +1236,7 @@ exports[`snap - components | CONFIGURATION: removePrefix = "tests/" | all props 
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "__fixtures__.components.all-props.1139410552",
+        id: "__fixtures__.components.all-props.Q+oGeA==",
         defaultMessage: "Hello {name}",
         description: "A greeting message",
         values: {
@@ -1609,7 +1255,7 @@ function App(param) {
     var showMessage = param.showMessage;
     return /*#__PURE__*/ _jsx("div", {
         children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
-            id: "__fixtures__.components.conditional-rendering.3541072352",
+            id: "__fixtures__.components.conditional-rendering.0xB54A==",
             defaultMessage: "Conditional message"
         })
     });
@@ -1621,7 +1267,7 @@ exports[`snap - components | CONFIGURATION: removePrefix = "tests/" | default 1`
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "__fixtures__.components.default.613153351",
+    id: "__fixtures__.components.default.JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -1687,11 +1333,11 @@ exports[`snap - components | CONFIGURATION: removePrefix = "tests/" | import all
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
-    id: "__fixtures__.components.all-supported-components.205247277",
+    id: "__fixtures__.components.all-supported-components.DDvTLQ==",
     defaultMessage: "<span>hello</span>"
 });
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "__fixtures__.components.all-supported-components.613153351",
+    id: "__fixtures__.components.all-supported-components.JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -1701,11 +1347,11 @@ exports[`snap - components | CONFIGURATION: removePrefix = "tests/" | multiple u
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "__fixtures__.components.multiple-uses.613153351",
+    id: "__fixtures__.components.multiple-uses.JIv6Rw==",
     defaultMessage: "hello"
 });
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "__fixtures__.components.multiple-uses.1418522856",
+    id: "__fixtures__.components.multiple-uses.VIzw6A==",
     defaultMessage: "another"
 });
 "
@@ -1725,7 +1371,7 @@ exports[`snap - components | CONFIGURATION: removePrefix = "tests/" | with Forma
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as TestFormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(TestFormattedMessage, {
-    id: "__fixtures__.components.import-as.613153351",
+    id: "__fixtures__.components.import-as.JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -1736,7 +1382,7 @@ exports[`snap - components | CONFIGURATION: removePrefix = "tests/" | with Forma
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
     children: /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "__fixtures__.components.nested-jsx.613153351",
+        id: "__fixtures__.components.nested-jsx.JIv6Rw==",
         defaultMessage: "hello"
     })
 });
@@ -1767,7 +1413,7 @@ exports[`snap - components | CONFIGURATION: removePrefix = /__fixtures__/ | all 
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "tests.__fixtures__.components.all-props.1139410552",
+        id: "tests.__fixtures__.components.all-props.Q+oGeA==",
         defaultMessage: "Hello {name}",
         description: "A greeting message",
         values: {
@@ -1786,7 +1432,7 @@ function App(param) {
     var showMessage = param.showMessage;
     return /*#__PURE__*/ _jsx("div", {
         children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
-            id: "tests.__fixtures__.components.conditional-rendering.3541072352",
+            id: "tests.__fixtures__.components.conditional-rendering.0xB54A==",
             defaultMessage: "Conditional message"
         })
     });
@@ -1798,7 +1444,7 @@ exports[`snap - components | CONFIGURATION: removePrefix = /__fixtures__/ | defa
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.default.613153351",
+    id: "tests.__fixtures__.components.default.JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -1864,11 +1510,11 @@ exports[`snap - components | CONFIGURATION: removePrefix = /__fixtures__/ | impo
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
-    id: "tests.__fixtures__.components.all-supported-components.205247277",
+    id: "tests.__fixtures__.components.all-supported-components.DDvTLQ==",
     defaultMessage: "<span>hello</span>"
 });
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.all-supported-components.613153351",
+    id: "tests.__fixtures__.components.all-supported-components.JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -1878,11 +1524,11 @@ exports[`snap - components | CONFIGURATION: removePrefix = /__fixtures__/ | mult
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.multiple-uses.613153351",
+    id: "tests.__fixtures__.components.multiple-uses.JIv6Rw==",
     defaultMessage: "hello"
 });
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests.__fixtures__.components.multiple-uses.1418522856",
+    id: "tests.__fixtures__.components.multiple-uses.VIzw6A==",
     defaultMessage: "another"
 });
 "
@@ -1902,7 +1548,7 @@ exports[`snap - components | CONFIGURATION: removePrefix = /__fixtures__/ | with
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as TestFormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(TestFormattedMessage, {
-    id: "tests.__fixtures__.components.import-as.613153351",
+    id: "tests.__fixtures__.components.import-as.JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -1913,7 +1559,7 @@ exports[`snap - components | CONFIGURATION: removePrefix = /__fixtures__/ | with
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
     children: /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "tests.__fixtures__.components.nested-jsx.613153351",
+        id: "tests.__fixtures__.components.nested-jsx.JIv6Rw==",
         defaultMessage: "hello"
     })
 });
@@ -1944,7 +1590,7 @@ exports[`snap - components | CONFIGURATION: removePrefix = true | all props 1`] 
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "1139410552",
+        id: "Q+oGeA==",
         defaultMessage: "Hello {name}",
         description: "A greeting message",
         values: {
@@ -1963,7 +1609,7 @@ function App(param) {
     var showMessage = param.showMessage;
     return /*#__PURE__*/ _jsx("div", {
         children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
-            id: "3541072352",
+            id: "0xB54A==",
             defaultMessage: "Conditional message"
         })
     });
@@ -1975,7 +1621,7 @@ exports[`snap - components | CONFIGURATION: removePrefix = true | default 1`] = 
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "613153351",
+    id: "JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -2041,11 +1687,11 @@ exports[`snap - components | CONFIGURATION: removePrefix = true | import all sup
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
-    id: "205247277",
+    id: "DDvTLQ==",
     defaultMessage: "<span>hello</span>"
 });
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "613153351",
+    id: "JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -2055,11 +1701,11 @@ exports[`snap - components | CONFIGURATION: removePrefix = true | multiple uses 
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "613153351",
+    id: "JIv6Rw==",
     defaultMessage: "hello"
 });
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "1418522856",
+    id: "VIzw6A==",
     defaultMessage: "another"
 });
 "
@@ -2079,7 +1725,7 @@ exports[`snap - components | CONFIGURATION: removePrefix = true | with Formatted
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as TestFormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(TestFormattedMessage, {
-    id: "613153351",
+    id: "JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -2090,7 +1736,7 @@ exports[`snap - components | CONFIGURATION: removePrefix = true | with Formatted
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
     children: /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "613153351",
+        id: "JIv6Rw==",
         defaultMessage: "hello"
     })
 });
@@ -2121,7 +1767,7 @@ exports[`snap - components | CONFIGURATION: separator = "_" | all props 1`] = `
 import { FormattedMessage } from 'react-intl';
 function App() {
     return /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "tests___fixtures___components_all-props_2080361687",
+        id: "tests___fixtures___components_all-props_e//M1w==",
         defaultMessage: "Hello {name}",
         description: "A greeting message",
         values: {
@@ -2140,7 +1786,7 @@ function App(param) {
     var showMessage = param.showMessage;
     return /*#__PURE__*/ _jsx("div", {
         children: showMessage && /*#__PURE__*/ _jsx(FormattedMessage, {
-            id: "tests___fixtures___components_conditional-rendering_3541072352",
+            id: "tests___fixtures___components_conditional-rendering_0xB54A==",
             defaultMessage: "Conditional message"
         })
     });
@@ -2152,7 +1798,7 @@ exports[`snap - components | CONFIGURATION: separator = "_" | default 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests___fixtures___components_default_613153351",
+    id: "tests___fixtures___components_default_JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -2218,11 +1864,11 @@ exports[`snap - components | CONFIGURATION: separator = "_" | import all support
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedHTMLMessage, FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedHTMLMessage, {
-    id: "tests___fixtures___components_all-supported-components_205247277",
+    id: "tests___fixtures___components_all-supported-components_DDvTLQ==",
     defaultMessage: "<span>hello</span>"
 });
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests___fixtures___components_all-supported-components_613153351",
+    id: "tests___fixtures___components_all-supported-components_JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -2232,11 +1878,11 @@ exports[`snap - components | CONFIGURATION: separator = "_" | multiple uses 1`] 
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests___fixtures___components_multiple-uses_613153351",
+    id: "tests___fixtures___components_multiple-uses_JIv6Rw==",
     defaultMessage: "hello"
 });
 /*#__PURE__*/ _jsx(FormattedMessage, {
-    id: "tests___fixtures___components_multiple-uses_1418522856",
+    id: "tests___fixtures___components_multiple-uses_VIzw6A==",
     defaultMessage: "another"
 });
 "
@@ -2256,7 +1902,7 @@ exports[`snap - components | CONFIGURATION: separator = "_" | with FormattedMess
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as TestFormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(TestFormattedMessage, {
-    id: "tests___fixtures___components_import-as_613153351",
+    id: "tests___fixtures___components_import-as_JIv6Rw==",
     defaultMessage: "hello"
 });
 "
@@ -2267,7 +1913,7 @@ exports[`snap - components | CONFIGURATION: separator = "_" | with FormattedMess
 import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx("div", {
     children: /*#__PURE__*/ _jsx(FormattedMessage, {
-        id: "tests___fixtures___components_nested-jsx_613153351",
+        id: "tests___fixtures___components_nested-jsx_JIv6Rw==",
         defaultMessage: "hello"
     })
 });

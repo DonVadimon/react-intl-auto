@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`snap - injection | CONFIGURATION: default | does nothing if id is already provided 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
@@ -23,7 +23,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.not-imported.613153351"
+            "id": "tests.__fixtures__.injection.not-imported.JIv6Rw=="
         })
     });
 }
@@ -40,15 +40,15 @@ function App(param) {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.injection.multiple-uses.613153351"
+                "id": "tests.__fixtures__.injection.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.injection.multiple-uses.613153351"
+                "id": "tests.__fixtures__.injection.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "tests.__fixtures__.injection.multiple-uses.831373691"
+                "id": "tests.__fixtures__.injection.multiple-uses.MY3Bew=="
             })
         ]
     });
@@ -64,16 +64,16 @@ var Component2 = function Component2(param) {
     var intl = param.intl;
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "tests.__fixtures__.injection.some-supported-use-cases.613153351"
+        "id": "tests.__fixtures__.injection.some-supported-use-cases.JIv6Rw=="
     });
     return /*#__PURE__*/ _jsx("button", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.some-supported-use-cases.613153351"
+            "id": "tests.__fixtures__.injection.some-supported-use-cases.JIv6Rw=="
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.some-supported-use-cases.613153351"
+            "id": "tests.__fixtures__.injection.some-supported-use-cases.JIv6Rw=="
         })
     });
 };
@@ -89,7 +89,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.default.613153351"
+            "id": "tests.__fixtures__.injection.default.JIv6Rw=="
         })
     });
 }
@@ -151,7 +151,7 @@ function App(param) {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "tests.__fixtures__.injection.with-custom-properties.2983810267"
+            "id": "tests.__fixtures__.injection.with-custom-properties.sdlU2w=="
         })
     });
 }
@@ -167,7 +167,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.with-injectIntl.613153351"
+            "id": "tests.__fixtures__.injection.with-injectIntl.JIv6Rw=="
         })
     });
 }
@@ -183,198 +183,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
-            "id": "tests.__fixtures__.injection.import-as.94348014"
-        })
-    });
-}
-export default i18n(App);
-"
-`;
-
-exports[`snap - injection | CONFIGURATION: hashAlgorithm = "base64" | does nothing if id is already provided 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            id: 'my.custom.id',
-            defaultMessage: 'hello'
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`snap - injection | CONFIGURATION: hashAlgorithm = "base64" | does nothing if react-intl is not imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "dGVzdHMuX19maXh0dXJlc19fLmluamVjdGlvbi5ub3QtaW1wb3J0ZWQuNjEzMTUzMzUx"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`snap - injection | CONFIGURATION: hashAlgorithm = "base64" | multiple uses 1`] = `
-"import { jsxs as _jsxs } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsxs("div", {
-        children: [
-            intl.formatMessage({
-                defaultMessage: 'hello',
-                "id": "dGVzdHMuX19maXh0dXJlc19fLmluamVjdGlvbi5tdWx0aXBsZS11c2VzLjYxMzE1MzM1MQ=="
-            }),
-            intl.formatMessage({
-                defaultMessage: 'hello',
-                "id": "dGVzdHMuX19maXh0dXJlc19fLmluamVjdGlvbi5tdWx0aXBsZS11c2VzLjYxMzE1MzM1MQ=="
-            }),
-            intl.formatMessage({
-                defaultMessage: 'some other message',
-                "id": "dGVzdHMuX19maXh0dXJlc19fLmluamVjdGlvbi5tdWx0aXBsZS11c2VzLjgzMTM3MzY5MQ=="
-            })
-        ]
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`snap - injection | CONFIGURATION: hashAlgorithm = "base64" | some supported use cases 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-var Component2 = function Component2(param) {
-    var intl = param.intl;
-    var label = intl.formatMessage({
-        defaultMessage: 'hello',
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmluamVjdGlvbi5zb21lLXN1cHBvcnRlZC11c2UtY2FzZXMuNjEzMTUzMzUx"
-    });
-    return /*#__PURE__*/ _jsx("button", {
-        "aria-label": intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "dGVzdHMuX19maXh0dXJlc19fLmluamVjdGlvbi5zb21lLXN1cHBvcnRlZC11c2UtY2FzZXMuNjEzMTUzMzUx"
-        }),
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "dGVzdHMuX19maXh0dXJlc19fLmluamVjdGlvbi5zb21lLXN1cHBvcnRlZC11c2UtY2FzZXMuNjEzMTUzMzUx"
-        })
-    });
-};
-injectIntl(Components2);
-"
-`;
-
-exports[`snap - injection | CONFIGURATION: hashAlgorithm = "base64" | with Injection API HOC imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "dGVzdHMuX19maXh0dXJlc19fLmluamVjdGlvbi5kZWZhdWx0LjYxMzE1MzM1MQ=="
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`snap - injection | CONFIGURATION: hashAlgorithm = "base64" | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`snap - injection | CONFIGURATION: hashAlgorithm = "base64" | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-var message = 'variable message';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`snap - injection | CONFIGURATION: hashAlgorithm = "base64" | with a variable as the defaultMessage 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-import { message } from './messages';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage(message)
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`snap - injection | CONFIGURATION: hashAlgorithm = "base64" | with custom properties in formatMessage call 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'custom prop',
-            other: 123,
-            "id": "dGVzdHMuX19maXh0dXJlc19fLmluamVjdGlvbi53aXRoLWN1c3RvbS1wcm9wZXJ0aWVzLjI5ODM4MTAyNjc="
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`snap - injection | CONFIGURATION: hashAlgorithm = "base64" | with injectIntl 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "dGVzdHMuX19maXh0dXJlc19fLmluamVjdGlvbi53aXRoLWluamVjdEludGwuNjEzMTUzMzUx"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`snap - injection | CONFIGURATION: hashAlgorithm = "base64" | with injectIntl imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl as i18n } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'i18n',
-            "id": "dGVzdHMuX19maXh0dXJlc19fLmluamVjdGlvbi5pbXBvcnQtYXMuOTQzNDgwMTQ="
+            "id": "tests.__fixtures__.injection.import-as.BZ+i7g=="
         })
     });
 }
@@ -405,7 +214,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "1331782201"
+            "id": "u0vAeQ=="
         })
     });
 }
@@ -422,15 +231,15 @@ function App(param) {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "1006251254"
+                "id": "f0X2OA=="
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "1006251254"
+                "id": "f0X2OA=="
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "1313112260"
+                "id": "c1xCfg=="
             })
         ]
     });
@@ -446,16 +255,16 @@ var Component2 = function Component2(param) {
     var intl = param.intl;
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "3211349632"
+        "id": "t5jxcw=="
     });
     return /*#__PURE__*/ _jsx("button", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "3211349632"
+            "id": "t5jxcw=="
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "3211349632"
+            "id": "t5jxcw=="
         })
     });
 };
@@ -471,7 +280,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "3801867233"
+            "id": "A1ShEg=="
         })
     });
 }
@@ -533,7 +342,7 @@ function App(param) {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "4087248873"
+            "id": "M3Zuog=="
         })
     });
 }
@@ -549,7 +358,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "1882509071"
+            "id": "FDGvJg=="
         })
     });
 }
@@ -565,198 +374,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
-            "id": "2767586989"
-        })
-    });
-}
-export default i18n(App);
-"
-`;
-
-exports[`snap - injection | CONFIGURATION: hashAlgorithm = "unknown" | does nothing if id is already provided 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            id: 'my.custom.id',
-            defaultMessage: 'hello'
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`snap - injection | CONFIGURATION: hashAlgorithm = "unknown" | does nothing if react-intl is not imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "1331782201"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`snap - injection | CONFIGURATION: hashAlgorithm = "unknown" | multiple uses 1`] = `
-"import { jsxs as _jsxs } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsxs("div", {
-        children: [
-            intl.formatMessage({
-                defaultMessage: 'hello',
-                "id": "1006251254"
-            }),
-            intl.formatMessage({
-                defaultMessage: 'hello',
-                "id": "1006251254"
-            }),
-            intl.formatMessage({
-                defaultMessage: 'some other message',
-                "id": "1313112260"
-            })
-        ]
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`snap - injection | CONFIGURATION: hashAlgorithm = "unknown" | some supported use cases 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-var Component2 = function Component2(param) {
-    var intl = param.intl;
-    var label = intl.formatMessage({
-        defaultMessage: 'hello',
-        "id": "3211349632"
-    });
-    return /*#__PURE__*/ _jsx("button", {
-        "aria-label": intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "3211349632"
-        }),
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "3211349632"
-        })
-    });
-};
-injectIntl(Components2);
-"
-`;
-
-exports[`snap - injection | CONFIGURATION: hashAlgorithm = "unknown" | with Injection API HOC imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "3801867233"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`snap - injection | CONFIGURATION: hashAlgorithm = "unknown" | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`snap - injection | CONFIGURATION: hashAlgorithm = "unknown" | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-var message = 'variable message';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`snap - injection | CONFIGURATION: hashAlgorithm = "unknown" | with a variable as the defaultMessage 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-import { message } from './messages';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage(message)
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`snap - injection | CONFIGURATION: hashAlgorithm = "unknown" | with custom properties in formatMessage call 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'custom prop',
-            other: 123,
-            "id": "4087248873"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`snap - injection | CONFIGURATION: hashAlgorithm = "unknown" | with injectIntl 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "1882509071"
-        })
-    });
-}
-export default injectIntl(App);
-"
-`;
-
-exports[`snap - injection | CONFIGURATION: hashAlgorithm = "unknown" | with injectIntl imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { injectIntl as i18n } from 'react-intl';
-function App(param) {
-    var intl = param.intl;
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'i18n',
-            "id": "2767586989"
+            "id": "kE4QPg=="
         })
     });
 }
@@ -787,7 +405,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.not-imported.613153351"
+            "id": "tests.__fixtures__.injection.not-imported.JIv6Rw=="
         })
     });
 }
@@ -804,15 +422,15 @@ function App(param) {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.injection.multiple-uses.613153351"
+                "id": "tests.__fixtures__.injection.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.injection.multiple-uses.613153351"
+                "id": "tests.__fixtures__.injection.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "tests.__fixtures__.injection.multiple-uses.831373691"
+                "id": "tests.__fixtures__.injection.multiple-uses.MY3Bew=="
             })
         ]
     });
@@ -828,16 +446,16 @@ var Component2 = function Component2(param) {
     var intl = param.intl;
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "tests.__fixtures__.injection.some-supported-use-cases.613153351"
+        "id": "tests.__fixtures__.injection.some-supported-use-cases.JIv6Rw=="
     });
     return /*#__PURE__*/ _jsx("button", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.some-supported-use-cases.613153351"
+            "id": "tests.__fixtures__.injection.some-supported-use-cases.JIv6Rw=="
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.some-supported-use-cases.613153351"
+            "id": "tests.__fixtures__.injection.some-supported-use-cases.JIv6Rw=="
         })
     });
 };
@@ -853,7 +471,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.default.613153351"
+            "id": "tests.__fixtures__.injection.default.JIv6Rw=="
         })
     });
 }
@@ -915,7 +533,7 @@ function App(param) {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "tests.__fixtures__.injection.with-custom-properties.2983810267"
+            "id": "tests.__fixtures__.injection.with-custom-properties.sdlU2w=="
         })
     });
 }
@@ -931,7 +549,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.with-injectIntl.613153351"
+            "id": "tests.__fixtures__.injection.with-injectIntl.JIv6Rw=="
         })
     });
 }
@@ -947,7 +565,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
-            "id": "tests.__fixtures__.injection.import-as.94348014"
+            "id": "tests.__fixtures__.injection.import-as.BZ+i7g=="
         })
     });
 }
@@ -978,7 +596,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.not-imported.613153351"
+            "id": "tests.__fixtures__.injection.not-imported.JIv6Rw=="
         })
     });
 }
@@ -995,15 +613,15 @@ function App(param) {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.injection.multiple-uses.613153351"
+                "id": "tests.__fixtures__.injection.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.injection.multiple-uses.613153351"
+                "id": "tests.__fixtures__.injection.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "tests.__fixtures__.injection.multiple-uses.831373691"
+                "id": "tests.__fixtures__.injection.multiple-uses.MY3Bew=="
             })
         ]
     });
@@ -1019,16 +637,16 @@ var Component2 = function Component2(param) {
     var intl = param.intl;
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "tests.__fixtures__.injection.some-supported-use-cases.613153351"
+        "id": "tests.__fixtures__.injection.some-supported-use-cases.JIv6Rw=="
     });
     return /*#__PURE__*/ _jsx("button", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.some-supported-use-cases.613153351"
+            "id": "tests.__fixtures__.injection.some-supported-use-cases.JIv6Rw=="
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.some-supported-use-cases.613153351"
+            "id": "tests.__fixtures__.injection.some-supported-use-cases.JIv6Rw=="
         })
     });
 };
@@ -1044,7 +662,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.default.613153351"
+            "id": "tests.__fixtures__.injection.default.JIv6Rw=="
         })
     });
 }
@@ -1106,7 +724,7 @@ function App(param) {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "tests.__fixtures__.injection.with-custom-properties.2983810267"
+            "id": "tests.__fixtures__.injection.with-custom-properties.sdlU2w=="
         })
     });
 }
@@ -1122,7 +740,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.with-injectIntl.613153351"
+            "id": "tests.__fixtures__.injection.with-injectIntl.JIv6Rw=="
         })
     });
 }
@@ -1138,7 +756,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
-            "id": "tests.__fixtures__.injection.import-as.94348014"
+            "id": "tests.__fixtures__.injection.import-as.BZ+i7g=="
         })
     });
 }
@@ -1169,7 +787,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.not-imported.613153351"
+            "id": "tests.__fixtures__.injection.not-imported.JIv6Rw=="
         })
     });
 }
@@ -1186,15 +804,15 @@ function App(param) {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.injection.multiple-uses.613153351"
+                "id": "tests.__fixtures__.injection.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.injection.multiple-uses.613153351"
+                "id": "tests.__fixtures__.injection.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "tests.__fixtures__.injection.multiple-uses.831373691"
+                "id": "tests.__fixtures__.injection.multiple-uses.MY3Bew=="
             })
         ]
     });
@@ -1210,16 +828,16 @@ var Component2 = function Component2(param) {
     var intl = param.intl;
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "tests.__fixtures__.injection.some-supported-use-cases.613153351"
+        "id": "tests.__fixtures__.injection.some-supported-use-cases.JIv6Rw=="
     });
     return /*#__PURE__*/ _jsx("button", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.some-supported-use-cases.613153351"
+            "id": "tests.__fixtures__.injection.some-supported-use-cases.JIv6Rw=="
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.some-supported-use-cases.613153351"
+            "id": "tests.__fixtures__.injection.some-supported-use-cases.JIv6Rw=="
         })
     });
 };
@@ -1235,7 +853,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.default.613153351"
+            "id": "tests.__fixtures__.injection.default.JIv6Rw=="
         })
     });
 }
@@ -1297,7 +915,7 @@ function App(param) {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "tests.__fixtures__.injection.with-custom-properties.2983810267"
+            "id": "tests.__fixtures__.injection.with-custom-properties.sdlU2w=="
         })
     });
 }
@@ -1313,7 +931,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.with-injectIntl.613153351"
+            "id": "tests.__fixtures__.injection.with-injectIntl.JIv6Rw=="
         })
     });
 }
@@ -1329,7 +947,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
-            "id": "tests.__fixtures__.injection.import-as.94348014"
+            "id": "tests.__fixtures__.injection.import-as.BZ+i7g=="
         })
     });
 }
@@ -1360,7 +978,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "__fixtures__.injection.not-imported.613153351"
+            "id": "__fixtures__.injection.not-imported.JIv6Rw=="
         })
     });
 }
@@ -1377,15 +995,15 @@ function App(param) {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "__fixtures__.injection.multiple-uses.613153351"
+                "id": "__fixtures__.injection.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "__fixtures__.injection.multiple-uses.613153351"
+                "id": "__fixtures__.injection.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "__fixtures__.injection.multiple-uses.831373691"
+                "id": "__fixtures__.injection.multiple-uses.MY3Bew=="
             })
         ]
     });
@@ -1401,16 +1019,16 @@ var Component2 = function Component2(param) {
     var intl = param.intl;
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "__fixtures__.injection.some-supported-use-cases.613153351"
+        "id": "__fixtures__.injection.some-supported-use-cases.JIv6Rw=="
     });
     return /*#__PURE__*/ _jsx("button", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "__fixtures__.injection.some-supported-use-cases.613153351"
+            "id": "__fixtures__.injection.some-supported-use-cases.JIv6Rw=="
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "__fixtures__.injection.some-supported-use-cases.613153351"
+            "id": "__fixtures__.injection.some-supported-use-cases.JIv6Rw=="
         })
     });
 };
@@ -1426,7 +1044,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "__fixtures__.injection.default.613153351"
+            "id": "__fixtures__.injection.default.JIv6Rw=="
         })
     });
 }
@@ -1488,7 +1106,7 @@ function App(param) {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "__fixtures__.injection.with-custom-properties.2983810267"
+            "id": "__fixtures__.injection.with-custom-properties.sdlU2w=="
         })
     });
 }
@@ -1504,7 +1122,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "__fixtures__.injection.with-injectIntl.613153351"
+            "id": "__fixtures__.injection.with-injectIntl.JIv6Rw=="
         })
     });
 }
@@ -1520,7 +1138,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
-            "id": "__fixtures__.injection.import-as.94348014"
+            "id": "__fixtures__.injection.import-as.BZ+i7g=="
         })
     });
 }
@@ -1551,7 +1169,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "injection.not-imported.613153351"
+            "id": "injection.not-imported.JIv6Rw=="
         })
     });
 }
@@ -1568,15 +1186,15 @@ function App(param) {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "injection.multiple-uses.613153351"
+                "id": "injection.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "injection.multiple-uses.613153351"
+                "id": "injection.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "injection.multiple-uses.831373691"
+                "id": "injection.multiple-uses.MY3Bew=="
             })
         ]
     });
@@ -1592,16 +1210,16 @@ var Component2 = function Component2(param) {
     var intl = param.intl;
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "injection.some-supported-use-cases.613153351"
+        "id": "injection.some-supported-use-cases.JIv6Rw=="
     });
     return /*#__PURE__*/ _jsx("button", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "injection.some-supported-use-cases.613153351"
+            "id": "injection.some-supported-use-cases.JIv6Rw=="
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "injection.some-supported-use-cases.613153351"
+            "id": "injection.some-supported-use-cases.JIv6Rw=="
         })
     });
 };
@@ -1617,7 +1235,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "injection.default.613153351"
+            "id": "injection.default.JIv6Rw=="
         })
     });
 }
@@ -1679,7 +1297,7 @@ function App(param) {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "injection.with-custom-properties.2983810267"
+            "id": "injection.with-custom-properties.sdlU2w=="
         })
     });
 }
@@ -1695,7 +1313,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "injection.with-injectIntl.613153351"
+            "id": "injection.with-injectIntl.JIv6Rw=="
         })
     });
 }
@@ -1711,7 +1329,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
-            "id": "injection.import-as.94348014"
+            "id": "injection.import-as.BZ+i7g=="
         })
     });
 }
@@ -1742,7 +1360,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "__fixtures__.injection.not-imported.613153351"
+            "id": "__fixtures__.injection.not-imported.JIv6Rw=="
         })
     });
 }
@@ -1759,15 +1377,15 @@ function App(param) {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "__fixtures__.injection.multiple-uses.613153351"
+                "id": "__fixtures__.injection.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "__fixtures__.injection.multiple-uses.613153351"
+                "id": "__fixtures__.injection.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "__fixtures__.injection.multiple-uses.831373691"
+                "id": "__fixtures__.injection.multiple-uses.MY3Bew=="
             })
         ]
     });
@@ -1783,16 +1401,16 @@ var Component2 = function Component2(param) {
     var intl = param.intl;
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "__fixtures__.injection.some-supported-use-cases.613153351"
+        "id": "__fixtures__.injection.some-supported-use-cases.JIv6Rw=="
     });
     return /*#__PURE__*/ _jsx("button", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "__fixtures__.injection.some-supported-use-cases.613153351"
+            "id": "__fixtures__.injection.some-supported-use-cases.JIv6Rw=="
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "__fixtures__.injection.some-supported-use-cases.613153351"
+            "id": "__fixtures__.injection.some-supported-use-cases.JIv6Rw=="
         })
     });
 };
@@ -1808,7 +1426,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "__fixtures__.injection.default.613153351"
+            "id": "__fixtures__.injection.default.JIv6Rw=="
         })
     });
 }
@@ -1870,7 +1488,7 @@ function App(param) {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "__fixtures__.injection.with-custom-properties.2983810267"
+            "id": "__fixtures__.injection.with-custom-properties.sdlU2w=="
         })
     });
 }
@@ -1886,7 +1504,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "__fixtures__.injection.with-injectIntl.613153351"
+            "id": "__fixtures__.injection.with-injectIntl.JIv6Rw=="
         })
     });
 }
@@ -1902,7 +1520,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
-            "id": "__fixtures__.injection.import-as.94348014"
+            "id": "__fixtures__.injection.import-as.BZ+i7g=="
         })
     });
 }
@@ -1933,7 +1551,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.not-imported.613153351"
+            "id": "tests.__fixtures__.injection.not-imported.JIv6Rw=="
         })
     });
 }
@@ -1950,15 +1568,15 @@ function App(param) {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.injection.multiple-uses.613153351"
+                "id": "tests.__fixtures__.injection.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.injection.multiple-uses.613153351"
+                "id": "tests.__fixtures__.injection.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "tests.__fixtures__.injection.multiple-uses.831373691"
+                "id": "tests.__fixtures__.injection.multiple-uses.MY3Bew=="
             })
         ]
     });
@@ -1974,16 +1592,16 @@ var Component2 = function Component2(param) {
     var intl = param.intl;
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "tests.__fixtures__.injection.some-supported-use-cases.613153351"
+        "id": "tests.__fixtures__.injection.some-supported-use-cases.JIv6Rw=="
     });
     return /*#__PURE__*/ _jsx("button", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.some-supported-use-cases.613153351"
+            "id": "tests.__fixtures__.injection.some-supported-use-cases.JIv6Rw=="
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.some-supported-use-cases.613153351"
+            "id": "tests.__fixtures__.injection.some-supported-use-cases.JIv6Rw=="
         })
     });
 };
@@ -1999,7 +1617,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.default.613153351"
+            "id": "tests.__fixtures__.injection.default.JIv6Rw=="
         })
     });
 }
@@ -2061,7 +1679,7 @@ function App(param) {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "tests.__fixtures__.injection.with-custom-properties.2983810267"
+            "id": "tests.__fixtures__.injection.with-custom-properties.sdlU2w=="
         })
     });
 }
@@ -2077,7 +1695,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.injection.with-injectIntl.613153351"
+            "id": "tests.__fixtures__.injection.with-injectIntl.JIv6Rw=="
         })
     });
 }
@@ -2093,7 +1711,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
-            "id": "tests.__fixtures__.injection.import-as.94348014"
+            "id": "tests.__fixtures__.injection.import-as.BZ+i7g=="
         })
     });
 }
@@ -2124,7 +1742,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "613153351"
+            "id": "JIv6Rw=="
         })
     });
 }
@@ -2141,15 +1759,15 @@ function App(param) {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "613153351"
+                "id": "JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "613153351"
+                "id": "JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "831373691"
+                "id": "MY3Bew=="
             })
         ]
     });
@@ -2165,16 +1783,16 @@ var Component2 = function Component2(param) {
     var intl = param.intl;
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "613153351"
+        "id": "JIv6Rw=="
     });
     return /*#__PURE__*/ _jsx("button", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "613153351"
+            "id": "JIv6Rw=="
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "613153351"
+            "id": "JIv6Rw=="
         })
     });
 };
@@ -2190,7 +1808,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "613153351"
+            "id": "JIv6Rw=="
         })
     });
 }
@@ -2252,7 +1870,7 @@ function App(param) {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "2983810267"
+            "id": "sdlU2w=="
         })
     });
 }
@@ -2268,7 +1886,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "613153351"
+            "id": "JIv6Rw=="
         })
     });
 }
@@ -2284,7 +1902,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
-            "id": "94348014"
+            "id": "BZ+i7g=="
         })
     });
 }
@@ -2315,7 +1933,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests___fixtures___injection_not-imported_613153351"
+            "id": "tests___fixtures___injection_not-imported_JIv6Rw=="
         })
     });
 }
@@ -2332,15 +1950,15 @@ function App(param) {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests___fixtures___injection_multiple-uses_613153351"
+                "id": "tests___fixtures___injection_multiple-uses_JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests___fixtures___injection_multiple-uses_613153351"
+                "id": "tests___fixtures___injection_multiple-uses_JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "tests___fixtures___injection_multiple-uses_831373691"
+                "id": "tests___fixtures___injection_multiple-uses_MY3Bew=="
             })
         ]
     });
@@ -2356,16 +1974,16 @@ var Component2 = function Component2(param) {
     var intl = param.intl;
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "tests___fixtures___injection_some-supported-use-cases_613153351"
+        "id": "tests___fixtures___injection_some-supported-use-cases_JIv6Rw=="
     });
     return /*#__PURE__*/ _jsx("button", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests___fixtures___injection_some-supported-use-cases_613153351"
+            "id": "tests___fixtures___injection_some-supported-use-cases_JIv6Rw=="
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests___fixtures___injection_some-supported-use-cases_613153351"
+            "id": "tests___fixtures___injection_some-supported-use-cases_JIv6Rw=="
         })
     });
 };
@@ -2381,7 +1999,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests___fixtures___injection_default_613153351"
+            "id": "tests___fixtures___injection_default_JIv6Rw=="
         })
     });
 }
@@ -2443,7 +2061,7 @@ function App(param) {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "tests___fixtures___injection_with-custom-properties_2983810267"
+            "id": "tests___fixtures___injection_with-custom-properties_sdlU2w=="
         })
     });
 }
@@ -2459,7 +2077,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests___fixtures___injection_with-injectIntl_613153351"
+            "id": "tests___fixtures___injection_with-injectIntl_JIv6Rw=="
         })
     });
 }
@@ -2475,7 +2093,7 @@ function App(param) {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
-            "id": "tests___fixtures___injection_import-as_94348014"
+            "id": "tests___fixtures___injection_import-as_BZ+i7g=="
         })
     });
 }

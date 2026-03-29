@@ -8,43 +8,33 @@ use std::io::Cursor;
 use crate::gen::path::add_prefix;
 use crate::types::CoreState;
 
-/// Generates a murmur3 hash with seed=0 to match babel-plugin-react-intl behavior.
+/// Generates a murmur3 hash with seed=0 and encodes it as base64.
+/// Matches the behavior of the JS implementation.
 ///
 /// # Arguments
 /// * `input` - The input string to hash
 ///
 /// # Returns
-/// The hash value as a decimal string
+/// The hash value as a base64 encoded string
 fn murmur32_hash(input: &str) -> String {
     let mut cursor = Cursor::new(input.as_bytes());
-    murmur3_32(&mut cursor, 0).unwrap_or(0).to_string()
-}
-
-/// Generates a base64 encoded string.
-///
-/// # Arguments
-/// * `message` - The input string to hash
-///
-/// # Returns
-/// The encoded value as a string
-fn base64_hash(input: &str) -> String {
+    let hash = murmur3_32(&mut cursor, 0).unwrap_or(0);
+    // Convert u32 to big-endian bytes and encode as base64
+    let bytes = hash.to_be_bytes();
     use base64::{engine::general_purpose::STANDARD, Engine as _};
-    STANDARD.encode(input.as_bytes())
+    STANDARD.encode(bytes)
 }
 
-/// Hashes a string using the specified algorithm.
+/// Hashes a string using murmur3 algorithm.
 ///
 /// # Arguments
 /// * `input` - The input string to hash
-/// * `algorithm` - The hash algorithm: "murmur3" or "base64"
 ///
 /// # Returns
-/// The hashed string
-pub fn hash_string(input: &str, algorithm: &str) -> String {
-    match algorithm {
-        "base64" => base64_hash(input),
-        "murmur3" | _ => murmur32_hash(input),
-    }
+/// The hashed string as base64 encoded murmur3 hash
+pub fn hash_string(input: &str, _algorithm: &str) -> String {
+    // Always use murmur3, algorithm parameter kept for API extensibility
+    murmur32_hash(input)
 }
 
 /// payload to generate id from message description
@@ -135,10 +125,25 @@ mod tests {
 
     #[test]
     fn test_murmur32_hash() {
+        // Test with known values (base64 encoded murmur3 hash)
+        let hello_hash = murmur32_hash("hello");
+        let test_msg_hash = murmur32_hash("test message");
+        let default_msg_hash = murmur32_hash("defaultMessage");
+
+        // Verify hashes are valid base64 strings
+        assert!(!hello_hash.is_empty());
+        assert!(!test_msg_hash.is_empty());
+        assert!(!default_msg_hash.is_empty());
+
+        // Verify exact values
+        assert_eq!(hello_hash, "JIv6Rw==");
+
+        // Test consistency
         let hash1 = murmur32_hash("test message");
         let hash2 = murmur32_hash("test message");
         assert_eq!(hash1, hash2, "Same input should produce same hash");
 
+        // Test different inputs produce different hashes
         let hash3 = murmur32_hash("different message");
         assert_ne!(
             hash1, hash3,
@@ -147,34 +152,12 @@ mod tests {
     }
 
     #[test]
-    fn test_base64_hash() {
-        let hash1 = base64_hash("hello");
-        let hash2 = base64_hash("hello");
-        assert_eq!(hash1, hash2, "Same input should produce same hash");
-
-        let hash3 = base64_hash("different message");
-        assert_ne!(
-            hash1, hash3,
-            "Different inputs should produce different hashes"
-        );
-    }
-
-    #[test]
-    fn test_hash_string_murmur3() {
+    fn test_hash_string() {
         let result = hash_string("hello", "murmur3");
         assert_eq!(result, murmur32_hash("hello"));
-    }
 
-    #[test]
-    fn test_hash_string_base64() {
-        let result = hash_string("hello", "base64");
-        assert_eq!(result, base64_hash("hello"));
-    }
-
-    #[test]
-    fn test_hash_string_default() {
-        // Unknown algorithm defaults to murmur3
-        let result = hash_string("hello", "unknown");
-        assert_eq!(result, murmur32_hash("hello"));
+        // Algorithm parameter is now ignored, should still return murmur3 hash
+        let result2 = hash_string("hello", "ignored");
+        assert_eq!(result2, murmur32_hash("hello"));
     }
 }

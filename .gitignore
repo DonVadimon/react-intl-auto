@@ -151,6 +151,10 @@ dist
 *.node
 *.wasm
 
+# napi-rs generated files
+extract.js
+extract.d.ts
+
 ### Node Patch ###
 # Serverless Webpack directories
 .webpack/

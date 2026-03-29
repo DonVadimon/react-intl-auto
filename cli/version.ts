@@ -16,13 +16,15 @@ function getCurrentBranch(): string {
 }
 
 function bumpVersion(versionType: string): void {
-    console.log(`Bumping version with: npm version ${versionType}`);
-    execSync(`npm version ${versionType}`, { stdio: 'inherit' });
+    const cmd = `npm version ${versionType}`;
+    console.log('Bumping version with:', cmd);
+    execSync(cmd, { stdio: 'inherit' });
 }
 
 function bumpPreRelease(): void {
-    console.log('Bumping pre-release version: npm version prepatch --preid=rc');
-    execSync('npm version prepatch --preid=rc', { stdio: 'inherit' });
+    const cmd = 'npm version prerelease --preid=rc';
+    console.log('Bumping pre-release version:', cmd);
+    execSync(cmd, { stdio: 'inherit' });
 }
 
 function showHelp(): void {

@@ -392,20 +392,19 @@ jobs:
 
             - name: Publish to npm
               run: |
-                  # # delete registry definition from local .npmrc
-                  # if [ -f .npmrc ]; then
-                  #     grep -v '^registry=' .npmrc > .npmrc.tmp && mv .npmrc.tmp .npmrc
-                  # fi
-                  # npm config set provenance true
-                  # echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" >> ~/.npmrc
-                  # if [ "${{ github.event.inputs.version_type }}" = "prerelease" ]; then
-                  #   echo "Publishing prerelease version"
-                  #   npm publish --tag draft --access public
-                  # else
-                  #   echo "Publishing release version"
-                  #   npm publish --access public
-                  # fi
-                  echo "skip"
+                  # delete registry definition from local .npmrc
+                  if [ -f .npmrc ]; then
+                      grep -v '^registry=' .npmrc > .npmrc.tmp && mv .npmrc.tmp .npmrc
+                  fi
+                  npm config set provenance true
+                  echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" >> ~/.npmrc
+                  if [ "${{ github.event.inputs.version_type }}" = "prerelease" ]; then
+                    echo "Publishing prerelease version"
+                    npm publish --tag draft --access public
+                  else
+                    echo "Publishing release version"
+                    npm publish --access public
+                  fi
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

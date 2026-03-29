@@ -281,13 +281,23 @@ GitHub Actions workflow (`.github/workflows/napi-rs.yml`) handles:
 
 Publishing is done manually through GitHub Actions:
 
-1. Update version in `package.json` and `Cargo.toml`
-2. Commit and push changes:
+1. **Bump version** using the version CLI:
 
 ```bash
-git add package.json Cargo.toml
-git commit -m "chore: bump version to 1.0.1"
+# On master branch - specify version type
+npm run version:bump patch    # 0.0.1 -> 0.0.2
+npm run version:bump minor    # 0.0.1 -> 0.1.0
+npm run version:bump major    # 0.0.1 -> 1.0.0
+
+# On other branches - creates pre-release automatically
+npm run version:bump          # 0.0.1 -> 0.0.2-rc.0
+```
+
+2. Push the version bump and tag:
+
+```bash
 git push origin master
+git push origin v0.0.2  # Push the tag created by npm version
 ```
 
 3. Go to GitHub → Actions → CI → Run workflow

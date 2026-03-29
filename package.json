@@ -52,6 +52,7 @@
         "build:napi": "napi build --platform --release --manifest-path crates/cli/Cargo.toml --output-dir . --js extract.js --dts extract.d.ts",
         "build:napi:debug": "napi build --platform --manifest-path crates/cli/Cargo.toml --output-dir . --js extract.js --dts extract.d.ts",
         "run:cli": "node cli.js",
+        "version:bump": "ts-node cli/version.ts",
         "sandbox:basic:plugin": "rm -rf ./sandbox/basic/.build && npx swc ./sandbox/basic/src --config-file ./sandbox/basic/.swcrc --out-dir ./sandbox/basic/.build",
         "sandbox:basic:cli": "rm -rf ./sandbox/basic/.react-intl && npm run run:cli -- 'sandbox/basic/src/**/*.{ts,tsx}' --output-mode='perfile' --output='./sandbox/basic/.react-intl' --extract-source-location",
         "create-npm-dirs": "napi create-npm-dirs",
@@ -70,6 +71,7 @@
         "react-intl": "8.1.3",
         "string-snapshot-serializer": "1.0.1",
         "ts-jest": "^29.0.0",
+        "ts-node": "10.9.2",
         "typescript": "^5.0.0"
     },
     "peerDependencies": {

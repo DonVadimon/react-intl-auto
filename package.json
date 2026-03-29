@@ -58,6 +58,7 @@
         "artifacts": "napi artifacts",
         "prepublishOnly": "napi prepublish -t npm",
         "version:bump": "ts-node cli/version.ts",
+        "version:rc": "npm run version:bump",
         "version:patch": "npm run version:bump -- patch",
         "version:minor": "npm run version:bump -- minor",
         "version:major": "npm run version:bump --major "

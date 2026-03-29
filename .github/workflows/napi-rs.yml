@@ -390,7 +390,7 @@ jobs:
                   echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" >> ~/.npmrc
                   if [ "${{ github.event.inputs.version_type }}" = "prerelease" ]; then
                     echo "Publishing prerelease version"
-                    npm publish --tag next --access public
+                    npm publish --tag draft --access public
                   else
                     echo "Publishing ${{ github.event.inputs.version_type }} version"
                     npm publish --access public

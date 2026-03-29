@@ -20,6 +20,12 @@ Automatically adds `id` attributes to:
 - **defineMessages**: Object literal messages
 - **formatMessage**: Function calls
 
+## Documentation
+
+- [CLI Documentation](docs/CLI.md) - Detailed CLI reference
+- [JS API Documentation](docs/JS_API.md) - JavaScript API reference
+- [Migration Guide](docs/MIGRATION.md) - Migrating from babel-plugin-react-intl-auto
+
 ## Installation
 
 ```bash
@@ -66,6 +72,16 @@ const result = await transform(code, {
 });
 ```
 
+**Plugin Options:**
+
+| Option             | Type                          | Default         | Description                                      |
+| ------------------ | ----------------------------- | --------------- | ------------------------------------------------ |
+| `removePrefix`     | `boolean \| string \| RegExp` | `false`         | Remove prefix from file path when generating IDs |
+| `moduleSourceName` | `string`                      | `'react-intl'`  | Module name to detect imports from               |
+| `separator`        | `string`                      | `'.'`           | Separator used in generated IDs                  |
+| `relativeTo`       | `string`                      | `process.cwd()` | Base path for relative file paths                |
+| `hashId`           | `boolean`                     | `false`         | Apply murmur3 hash to generated IDs              |
+
 ### 2. CLI Tool
 
 Extract messages from your source files:
@@ -84,21 +100,46 @@ npx react-intl-auto extract 'src/**/*.ts' \
   --extract-source-location
 ```
 
+**CLI Options:**
+
+| Option                      | Description                                                           |
+| --------------------------- | --------------------------------------------------------------------- |
+| `patterns`                  | Glob patterns for source files (e.g., `'src/**/*.{ts,tsx}'`)          |
+| `--ignore`                  | Glob patterns to ignore (default: `**/node_modules/**`, `**/.git/**`) |
+| `--output`                  | Output file or directory path                                         |
+| `--output-mode`             | `aggregated` (single file) or `perfile` (separate files)              |
+| `--extract-source-location` | Include source file path in output                                    |
+| `--remove-prefix`           | Remove prefix from path (boolean, string, or regex)                   |
+| `--module-source-name`      | Module name for react-intl imports (default: `react-intl`)            |
+| `--separator`               | Separator for ID generation (default: `.`)                            |
+| `--relative-to`             | Base path for relative path calculation                               |
+| `--hash-id`                 | Hash message IDs using murmur3                                        |
+
+See [CLI Documentation](docs/CLI.md) for detailed CLI documentation.
+
 ### 3. JavaScript API
 
 ```javascript
 const {
     extractSync,
+    extract,
     parseFile,
 } = require('@donvadimon/react-intl-auto/extract');
 
-// Extract from multiple files
+// Extract from multiple files (sync)
 const result = extractSync(['src/**/*.ts'], {
     removePrefix: 'src/',
     separator: '.',
     extractSourceLocation: true,
 });
-console.log(result.messages);
+console.log(result.messages); // Array of messages
+console.log(result.filesProcessed); // Number of files processed
+
+// Extract from multiple files (async)
+const result = await extract(['src/**/*.ts'], {
+    removePrefix: 'src/',
+    hashId: true,
+});
 
 // Parse single file
 const messages = parseFile('src/components/App.tsx', {
@@ -106,28 +147,7 @@ const messages = parseFile('src/components/App.tsx', {
 });
 ```
 
-## Options
-
-### Plugin Options
-
-| Option             | Type                          | Default         | Description                           |
-| ------------------ | ----------------------------- | --------------- | ------------------------------------- |
-| `removePrefix`     | `boolean \| string \| RegExp` | `false`         | Remove prefix from generated IDs      |
-| `moduleSourceName` | `string`                      | `'react-intl'`  | Module name to detect imports         |
-| `separator`        | `string`                      | `'.'`           | Separator for ID parts                |
-| `relativeTo`       | `string`                      | `process.cwd()` | Base path for relative file paths     |
-| `hashId`           | `boolean`                     | `false`         | Apply hash function to id             |
-| `hashAlgorithm`    | `string`                      | `'murmur3'`     | Hash algorithm: `murmur3` or `base64` |
-
-### CLI Options
-
-| Option                      | Description                                              |
-| --------------------------- | -------------------------------------------------------- |
-| `--output-mode`             | `aggregated` (single file) or `perfile` (separate files) |
-| `--output`                  | Output directory or file path                            |
-| `--extract-source-location` | Include file path and line number in output              |
-| `--remove-prefix`           | Remove prefix from IDs (same as plugin option)           |
-| `--separator`               | Separator for ID parts                                   |
+See [JS API Documentation](docs/JS_API.md) for detailed JS API documentation.
 
 ## Examples
 
@@ -248,13 +268,14 @@ GitHub Actions workflow (`.github/workflows/napi-rs.yml`) handles:
 1. **Lint** - Rust formatting and clippy
 2. **Build** - WASM plugin and napi-rs addons for multiple platforms
 3. **Test** - Rust tests, Jest tests, native binding tests
-4. **Publish** - Automatic npm publish on version tags
+4. **Publish** - Manual npm publish via workflow_dispatch
 
 ### Supported Platforms
 
 - Linux x64 (gnu)
 - macOS x64 (Intel)
 - macOS arm64 (Apple Silicon)
+- Windows x64 (MSVC)
 
 ### Releasing
 
@@ -286,16 +307,3 @@ GitHub Actions will:
 - `NPM_TOKEN` secret configured in GitHub repository settings
 
 **Note:** All jobs except publish run automatically on push to master. Publish job is manual only.
-
-## Breaking Changes
-
-### v1.0.0
-
-Removed options (no longer needed):
-
-- `filebase` - Use `removePrefix` instead
-- `useKey` - Keys are now used automatically in defineMessages
-
-## License
-
-MIT

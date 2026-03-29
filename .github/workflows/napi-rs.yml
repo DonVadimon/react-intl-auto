@@ -29,9 +29,7 @@ on:
                 default: 'patch'
                 type: choice
                 options:
-                    - patch
-                    - minor
-                    - major
+                    - release
                     - prerelease
 
 concurrency:
@@ -392,7 +390,7 @@ jobs:
                     echo "Publishing prerelease version"
                     npm publish --tag draft --access public
                   else
-                    echo "Publishing ${{ github.event.inputs.version_type }} version"
+                    echo "Publishing release version"
                     npm publish --access public
                   fi
               env:

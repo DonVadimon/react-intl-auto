@@ -304,6 +304,8 @@ function extractJsxMessagesIds(code: string) {
     return ids;
 }
 
+const unique = <T>(arr: T[]) => Array.from(new Set(arr));
+
 /**
  * Extract IDs from transformed code
  */
@@ -367,8 +369,9 @@ export const cliConsistencyCases = async (suites: TestSuite[]) => {
                             ]);
 
                         // Extract IDs from transformed code
-                        const pluginIds = extractIdsFromCode(
-                            transformResult.code,
+                        // unique ids. cli will dedup them itself
+                        const pluginIds = unique(
+                            extractIdsFromCode(transformResult.code),
                         ).sort();
 
                         // Extract IDs from cli messages

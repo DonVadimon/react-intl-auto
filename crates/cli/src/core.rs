@@ -170,14 +170,21 @@ fn run_perfile_mode(
     fs::create_dir_all(&output_dir)?;
 
     let mut total_messages = 0;
+    let mut seen_ids = HashSet::new();
 
     for file in files {
         match extract_from_file(&file, core_options) {
             Ok(messages) => {
-                if !messages.is_empty() {
-                    let count = messages.len();
+                // Deduplicate messages by ID on the fly using HashSet
+                let unique_messages: Vec<_> = messages
+                    .into_iter()
+                    .filter(|msg| seen_ids.insert(msg.id.clone()))
+                    .collect();
+
+                if !unique_messages.is_empty() {
+                    let count = unique_messages.len();
                     println!("  {} - {} messages", file.display(), count);
-                    write_per_file_messages(&file, &messages, &output_dir)?;
+                    write_per_file_messages(&file, &unique_messages, &output_dir)?;
                     total_messages += count;
                 }
             }
@@ -202,14 +209,20 @@ fn run_aggregated_mode(
     core_options: &CoreOptions,
     output_path: Option<PathBuf>,
 ) -> Result<()> {
-    let mut all_messages: Vec<(PathBuf, Vec<ExtractedMessage>)> = Vec::new();
+    // Use HashSet to track seen IDs and Vec to store unique messages on the fly
+    let mut seen_ids = HashSet::new();
+    let mut unique_messages: Vec<ExtractedMessage> = Vec::new();
 
     for file in files {
         match extract_from_file(&file, core_options) {
             Ok(messages) => {
                 if !messages.is_empty() {
-                    println!("  {} - {} messages", file.display(), messages.len());
-                    all_messages.push((file, messages));
+                    let file_unique_count = messages
+                        .into_iter()
+                        .filter(|msg| seen_ids.insert(msg.id.clone()))
+                        .inspect(|msg| unique_messages.push(msg.clone()))
+                        .count();
+                    println!("  {} - {} messages", file.display(), file_unique_count);
                 }
             }
             Err(e) => {
@@ -226,20 +239,15 @@ fn run_aggregated_mode(
         fs::create_dir_all(parent)?;
     }
 
-    let messages: Vec<_> = all_messages
-        .into_iter()
-        .flat_map(|(_, msgs)| msgs)
-        .collect();
-
-    let json =
-        serde_json::to_string_pretty(&messages).context("Failed to serialize messages to JSON")?;
+    let json = serde_json::to_string_pretty(&unique_messages)
+        .context("Failed to serialize messages to JSON")?;
 
     fs::write(&output_file, json)
         .with_context(|| format!("Failed to write to {}", output_file.display()))?;
 
     println!(
         "Extracted {} messages to {}",
-        messages.len(),
+        unique_messages.len(),
         output_file.display()
     );
 

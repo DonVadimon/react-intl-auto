@@ -14,7 +14,7 @@ defineMessages({
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "tests.__fixtures__.definition.object-arg.headerTitle.1203284554"
+        "id": "tests.__fixtures__.definition.object-arg.headerTitle.R7iqSg=="
     }
 });
 "
@@ -75,7 +75,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "tests.__fixtures__.definition.leading-comment-with-description.world.612730937"
+        "id": "tests.__fixtures__.definition.leading-comment-with-description.world.JIWIOQ=="
     }
 });
 "
@@ -200,206 +200,6 @@ export default defineMessages({
 "
 `;
 
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | Object 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    new: {
-        id: 'this is id',
-        defaultMessage: 'id'
-    },
-    world: {
-        defaultMessage: 'world',
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ub2JqZWN0LWFyZy53b3JsZA=="
-    },
-    headerTitle: {
-        defaultMessage: 'Welcome to dashboard {name}!',
-        description: 'Message to greet the user.',
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ub2JqZWN0LWFyZy5oZWFkZXJUaXRsZS4xMjAzMjg0NTU0"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | default 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24uZGVmYXVsdC5oZWxsbw==",
-        "defaultMessage": "hello"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | eval string 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    hello: 'hello' + 'world'
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | import as 1`] = `
-"import { defineMessages as testDefineMessages } from 'react-intl';
-testDefineMessages({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24uaW1wb3J0LWFzLmhlbGxv",
-        "defaultMessage": "hello"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | leading comment 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    // The main Hello of our app.
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubGVhZGluZy1jb21tZW50LmhlbGxv",
-        "defaultMessage": "hello"
-    },
-    // Another Hello,
-    // multiline this time
-    world: {
-        id: 'hello.world',
-        defaultMessage: 'hello world'
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | leading comment with description 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    // This comment should not be used
-    world: {
-        defaultMessage: 'hello world',
-        description: 'The hello world',
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubGVhZGluZy1jb21tZW50LXdpdGgtZGVzY3JpcHRpb24ud29ybGQuNjEyNzMwOTM3"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | moduleSourceName 1`] = `
-"import { defineMessages } from 'gatsby-plugin-intl';
-export default defineMessages({
-    hello: 'hello'
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | multi export 1`] = `
-"import { defineMessages } from 'react-intl';
-export var extra = defineMessages({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubXVsdGktZXhwb3J0LmhlbGxv",
-        "defaultMessage": "hello world extra"
-    }
-});
-export default defineMessages({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ubXVsdGktZXhwb3J0LmhlbGxv",
-        "defaultMessage": "hello world"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | not transform if callee is not identifier 1`] = `
-"import { defineMessages } from 'react-intl';
-var m = [
-    defineMessages
-];
-export default m[0]({
-    hello: 'hello world'
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | not transform if defineMessages is not imported 1`] = `
-"export default defineMessages({
-    hello: 'hello'
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | not transform when defineMessages argumens is empty 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages();
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | not transform when defineMessages argumens is not object 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages(1);
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | not transfrom when the variable can not be found 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages(messages);
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | string literal 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24uc3RyaW5nLWxpdGVyYWwuaGVsbG8=",
-        "defaultMessage": "hello world"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | when using the variable 1`] = `
-"import { defineMessages } from 'react-intl';
-var messages = {
-    hello: 'hello'
-};
-export default defineMessages({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24udXNlLXZhcmlhYmxlLmhlbGxv",
-        "defaultMessage": "hello"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | with include value 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: "hello world ".concat(1)
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | with other func 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ud2l0aC1vdGhlci1mdW5jLmhlbGxv",
-        "defaultMessage": "hello"
-    }
-});
-hello({
-    id: 'hoge'
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "base64" | with other specifier 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    hello: {
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmRlZmluaXRpb24ud2l0aC1vdGhlci1zcGVjaWZpZXIuaGVsbG8=",
-        "defaultMessage": "hello world"
-    }
-});
-"
-`;
-
 exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | Object 1`] = `
 "import { defineMessages } from 'react-intl';
 defineMessages({
@@ -409,12 +209,12 @@ defineMessages({
     },
     world: {
         defaultMessage: 'world',
-        "id": "1926670492"
+        "id": "ctaonA=="
     },
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "1820611081"
+        "id": "5DAZ2w=="
     }
 });
 "
@@ -424,7 +224,7 @@ exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | default 
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "1071257088",
+        "id": "P9oWAA==",
         "defaultMessage": "hello"
     }
 });
@@ -443,7 +243,7 @@ exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | import a
 "import { defineMessages as testDefineMessages } from 'react-intl';
 testDefineMessages({
     hello: {
-        "id": "3704159885",
+        "id": "3Mj+jQ==",
         "defaultMessage": "hello"
     }
 });
@@ -455,7 +255,7 @@ exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | leading 
 export default defineMessages({
     // The main Hello of our app.
     hello: {
-        "id": "3061481045",
+        "id": "tnp+VQ==",
         "defaultMessage": "hello"
     },
     // Another Hello,
@@ -475,7 +275,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "4160490044"
+        "id": "W1q1jg=="
     }
 });
 "
@@ -493,13 +293,13 @@ exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | multi ex
 "import { defineMessages } from 'react-intl';
 export var extra = defineMessages({
     hello: {
-        "id": "386652714",
+        "id": "FwvaKg==",
         "defaultMessage": "hello world extra"
     }
 });
 export default defineMessages({
     hello: {
-        "id": "386652714",
+        "id": "FwvaKg==",
         "defaultMessage": "hello world"
     }
 });
@@ -546,7 +346,7 @@ exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | string l
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "322375284",
+        "id": "EzcOdA==",
         "defaultMessage": "hello world"
     }
 });
@@ -560,7 +360,7 @@ var messages = {
 };
 export default defineMessages({
     hello: {
-        "id": "3342025680",
+        "id": "xzND0A==",
         "defaultMessage": "hello"
     }
 });
@@ -579,7 +379,7 @@ exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | with oth
 "import { defineMessages } from 'react-intl';
 defineMessages({
     hello: {
-        "id": "193611303",
+        "id": "C4pGJw==",
         "defaultMessage": "hello"
     }
 });
@@ -593,207 +393,7 @@ exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | with oth
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: {
-        "id": "776008494",
-        "defaultMessage": "hello world"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | Object 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    new: {
-        id: 'this is id',
-        defaultMessage: 'id'
-    },
-    world: {
-        defaultMessage: 'world',
-        "id": "1926670492"
-    },
-    headerTitle: {
-        defaultMessage: 'Welcome to dashboard {name}!',
-        description: 'Message to greet the user.',
-        "id": "1820611081"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | default 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    hello: {
-        "id": "1071257088",
-        "defaultMessage": "hello"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | eval string 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    hello: 'hello' + 'world'
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | import as 1`] = `
-"import { defineMessages as testDefineMessages } from 'react-intl';
-testDefineMessages({
-    hello: {
-        "id": "3704159885",
-        "defaultMessage": "hello"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | leading comment 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    // The main Hello of our app.
-    hello: {
-        "id": "3061481045",
-        "defaultMessage": "hello"
-    },
-    // Another Hello,
-    // multiline this time
-    world: {
-        id: 'hello.world',
-        defaultMessage: 'hello world'
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | leading comment with description 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    // This comment should not be used
-    world: {
-        defaultMessage: 'hello world',
-        description: 'The hello world',
-        "id": "4160490044"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | moduleSourceName 1`] = `
-"import { defineMessages } from 'gatsby-plugin-intl';
-export default defineMessages({
-    hello: 'hello'
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | multi export 1`] = `
-"import { defineMessages } from 'react-intl';
-export var extra = defineMessages({
-    hello: {
-        "id": "386652714",
-        "defaultMessage": "hello world extra"
-    }
-});
-export default defineMessages({
-    hello: {
-        "id": "386652714",
-        "defaultMessage": "hello world"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | not transform if callee is not identifier 1`] = `
-"import { defineMessages } from 'react-intl';
-var m = [
-    defineMessages
-];
-export default m[0]({
-    hello: 'hello world'
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | not transform if defineMessages is not imported 1`] = `
-"export default defineMessages({
-    hello: 'hello'
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | not transform when defineMessages argumens is empty 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages();
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | not transform when defineMessages argumens is not object 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages(1);
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | not transfrom when the variable can not be found 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages(messages);
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | string literal 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: {
-        "id": "322375284",
-        "defaultMessage": "hello world"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | when using the variable 1`] = `
-"import { defineMessages } from 'react-intl';
-var messages = {
-    hello: 'hello'
-};
-export default defineMessages({
-    hello: {
-        "id": "3342025680",
-        "defaultMessage": "hello"
-    }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | with include value 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: "hello world ".concat(1)
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | with other func 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: {
-        "id": "193611303",
-        "defaultMessage": "hello"
-    }
-});
-hello({
-    id: 'hoge'
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "unknown" | with other specifier 1`] = `
-"import { defineMessages } from 'react-intl';
-export default defineMessages({
-    hello: {
-        "id": "776008494",
+        "id": "LkDzLg==",
         "defaultMessage": "hello world"
     }
 });
@@ -985,7 +585,7 @@ defineMessages({
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "tests.__fixtures__.definition.object-arg.headerTitle.1203284554"
+        "id": "tests.__fixtures__.definition.object-arg.headerTitle.R7iqSg=="
     }
 });
 "
@@ -1046,7 +646,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "tests.__fixtures__.definition.leading-comment-with-description.world.612730937"
+        "id": "tests.__fixtures__.definition.leading-comment-with-description.world.JIWIOQ=="
     }
 });
 "
@@ -1185,7 +785,7 @@ defineMessages({
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "tests.__fixtures__.definition.object-arg.headerTitle.1203284554"
+        "id": "tests.__fixtures__.definition.object-arg.headerTitle.R7iqSg=="
     }
 });
 "
@@ -1246,7 +846,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "tests.__fixtures__.definition.leading-comment-with-description.world.612730937"
+        "id": "tests.__fixtures__.definition.leading-comment-with-description.world.JIWIOQ=="
     }
 });
 "
@@ -1385,7 +985,7 @@ defineMessages({
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "__fixtures__.definition.object-arg.headerTitle.1203284554"
+        "id": "__fixtures__.definition.object-arg.headerTitle.R7iqSg=="
     }
 });
 "
@@ -1446,7 +1046,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "__fixtures__.definition.leading-comment-with-description.world.612730937"
+        "id": "__fixtures__.definition.leading-comment-with-description.world.JIWIOQ=="
     }
 });
 "
@@ -1585,7 +1185,7 @@ defineMessages({
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "definition.object-arg.headerTitle.1203284554"
+        "id": "definition.object-arg.headerTitle.R7iqSg=="
     }
 });
 "
@@ -1646,7 +1246,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "definition.leading-comment-with-description.world.612730937"
+        "id": "definition.leading-comment-with-description.world.JIWIOQ=="
     }
 });
 "
@@ -1785,7 +1385,7 @@ defineMessages({
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "__fixtures__.definition.object-arg.headerTitle.1203284554"
+        "id": "__fixtures__.definition.object-arg.headerTitle.R7iqSg=="
     }
 });
 "
@@ -1846,7 +1446,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "__fixtures__.definition.leading-comment-with-description.world.612730937"
+        "id": "__fixtures__.definition.leading-comment-with-description.world.JIWIOQ=="
     }
 });
 "
@@ -1985,7 +1585,7 @@ defineMessages({
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "tests.__fixtures__.definition.object-arg.headerTitle.1203284554"
+        "id": "tests.__fixtures__.definition.object-arg.headerTitle.R7iqSg=="
     }
 });
 "
@@ -2046,7 +1646,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "tests.__fixtures__.definition.leading-comment-with-description.world.612730937"
+        "id": "tests.__fixtures__.definition.leading-comment-with-description.world.JIWIOQ=="
     }
 });
 "
@@ -2185,7 +1785,7 @@ defineMessages({
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "headerTitle.1203284554"
+        "id": "headerTitle.R7iqSg=="
     }
 });
 "
@@ -2246,7 +1846,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "world.612730937"
+        "id": "world.JIWIOQ=="
     }
 });
 "
@@ -2385,7 +1985,7 @@ defineMessages({
     headerTitle: {
         defaultMessage: 'Welcome to dashboard {name}!',
         description: 'Message to greet the user.',
-        "id": "tests___fixtures___definition_object-arg_headerTitle_1203284554"
+        "id": "tests___fixtures___definition_object-arg_headerTitle_R7iqSg=="
     }
 });
 "
@@ -2446,7 +2046,7 @@ export default defineMessages({
     world: {
         defaultMessage: 'hello world',
         description: 'The hello world',
-        "id": "tests___fixtures___definition_leading-comment-with-description_world_612730937"
+        "id": "tests___fixtures___definition_leading-comment-with-description_world_JIWIOQ=="
     }
 });
 "

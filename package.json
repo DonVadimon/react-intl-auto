@@ -56,8 +56,7 @@
         "sandbox:basic:cli": "rm -rf ./sandbox/basic/.react-intl && npm run run:cli -- 'sandbox/basic/src/**/*.{ts,tsx}' --output-mode='perfile' --output='./sandbox/basic/.react-intl' --extract-source-location",
         "create-npm-dirs": "napi create-npm-dirs",
         "artifacts": "napi artifacts",
-        "prepublishOnly": "napi prepublish -t npm",
-        "version": "napi version"
+        "prepublishOnly": "napi prepublish -t npm"
     },
     "devDependencies": {
         "@napi-rs/cli": "3.5.1",

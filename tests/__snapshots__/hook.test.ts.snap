@@ -21,7 +21,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.not-imported.613153351"
+            "id": "tests.__fixtures__.hook.not-imported.JIv6Rw=="
         })
     });
 };
@@ -38,15 +38,15 @@ var Component = function Component() {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+                "id": "tests.__fixtures__.hook.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+                "id": "tests.__fixtures__.hook.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "tests.__fixtures__.hook.multiple-uses.831373691"
+                "id": "tests.__fixtures__.hook.multiple-uses.MY3Bew=="
             })
         ]
     });
@@ -61,16 +61,16 @@ var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
+        "id": "tests.__fixtures__.hook.some-supported-use-cases.JIv6Rw=="
     });
     return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.JIv6Rw=="
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.JIv6Rw=="
         })
     });
 };
@@ -142,7 +142,7 @@ var Component = function Component() {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "tests.__fixtures__.hook.with-custom-properties.2983810267"
+            "id": "tests.__fixtures__.hook.with-custom-properties.sdlU2w=="
         })
     });
 };
@@ -157,7 +157,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.default.613153351"
+            "id": "tests.__fixtures__.hook.default.JIv6Rw=="
         })
     });
 };
@@ -172,186 +172,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
-            "id": "tests.__fixtures__.hook.import-as.94348014"
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "base64" | does nothing if id is already provided 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            id: 'my.custom.id',
-            defaultMessage: 'hello'
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "base64" | does nothing if react-intl is not imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-var Component = function Component() {
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2subm90LWltcG9ydGVkLjYxMzE1MzM1MQ=="
-        })
-    });
-};
-export { };
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "base64" | multiple uses 1`] = `
-"import { jsxs as _jsxs } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsxs("div", {
-        children: [
-            intl.formatMessage({
-                defaultMessage: 'hello',
-                "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2subXVsdGlwbGUtdXNlcy42MTMxNTMzNTE="
-            }),
-            intl.formatMessage({
-                defaultMessage: 'hello',
-                "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2subXVsdGlwbGUtdXNlcy42MTMxNTMzNTE="
-            }),
-            intl.formatMessage({
-                defaultMessage: 'some other message',
-                "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2subXVsdGlwbGUtdXNlcy44MzEzNzM2OTE="
-            })
-        ]
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "base64" | some supported use cases 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    var label = intl.formatMessage({
-        defaultMessage: 'hello',
-        "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2suc29tZS1zdXBwb3J0ZWQtdXNlLWNhc2VzLjYxMzE1MzM1MQ=="
-    });
-    return /*#__PURE__*/ _jsx("div", {
-        "aria-label": intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2suc29tZS1zdXBwb3J0ZWQtdXNlLWNhc2VzLjYxMzE1MzM1MQ=="
-        }),
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2suc29tZS1zdXBwb3J0ZWQtdXNlLWNhc2VzLjYxMzE1MzM1MQ=="
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "base64" | useIntl with different module source 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'gatsby-plugin-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            id: 'my.custom.id',
-            defaultMessage: 'hello'
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "base64" | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "base64" | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var message = 'variable message';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "base64" | with a variable as the defaultMessage 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage(messages)
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "base64" | with custom properties in formatMessage call 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'custom prop',
-            other: 123,
-            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2sud2l0aC1jdXN0b20tcHJvcGVydGllcy4yOTgzODEwMjY3"
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "base64" | with useIntl hook imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2suZGVmYXVsdC42MTMxNTMzNTE="
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "base64" | with useIntl imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl as useI18n } from 'react-intl';
-var Component = function Component() {
-    var intl = useI18n();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'i18n',
-            "id": "dGVzdHMuX19maXh0dXJlc19fLmhvb2suaW1wb3J0LWFzLjk0MzQ4MDE0"
+            "id": "tests.__fixtures__.hook.import-as.BZ+i7g=="
         })
     });
 };
@@ -379,7 +200,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "1381552078"
+            "id": "Mye2BA=="
         })
     });
 };
@@ -396,15 +217,15 @@ var Component = function Component() {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "2692672905"
+                "id": "MyPE1w=="
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "2692672905"
+                "id": "MyPE1w=="
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "2727763289"
+                "id": "1attxQ=="
             })
         ]
     });
@@ -419,16 +240,16 @@ var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "1582044257"
+        "id": "2+rnKg=="
     });
     return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "1582044257"
+            "id": "2+rnKg=="
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "1582044257"
+            "id": "2+rnKg=="
         })
     });
 };
@@ -500,7 +321,7 @@ var Component = function Component() {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "3886431347"
+            "id": "gE91xw=="
         })
     });
 };
@@ -515,7 +336,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "2567587270"
+            "id": "nik+rA=="
         })
     });
 };
@@ -530,186 +351,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
-            "id": "1318926594"
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "unknown" | does nothing if id is already provided 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            id: 'my.custom.id',
-            defaultMessage: 'hello'
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "unknown" | does nothing if react-intl is not imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-var Component = function Component() {
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "1381552078"
-        })
-    });
-};
-export { };
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "unknown" | multiple uses 1`] = `
-"import { jsxs as _jsxs } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsxs("div", {
-        children: [
-            intl.formatMessage({
-                defaultMessage: 'hello',
-                "id": "2692672905"
-            }),
-            intl.formatMessage({
-                defaultMessage: 'hello',
-                "id": "2692672905"
-            }),
-            intl.formatMessage({
-                defaultMessage: 'some other message',
-                "id": "2727763289"
-            })
-        ]
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "unknown" | some supported use cases 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    var label = intl.formatMessage({
-        defaultMessage: 'hello',
-        "id": "1582044257"
-    });
-    return /*#__PURE__*/ _jsx("div", {
-        "aria-label": intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "1582044257"
-        }),
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "1582044257"
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "unknown" | useIntl with different module source 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'gatsby-plugin-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            id: 'my.custom.id',
-            defaultMessage: 'hello'
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "unknown" | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "unknown" | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var message = 'variable message';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "unknown" | with a variable as the defaultMessage 2`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage(messages)
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "unknown" | with custom properties in formatMessage call 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'custom prop',
-            other: 123,
-            "id": "3886431347"
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "unknown" | with useIntl hook imported 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'hello',
-            "id": "2567587270"
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "unknown" | with useIntl imported as something else 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl as useI18n } from 'react-intl';
-var Component = function Component() {
-    var intl = useI18n();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: 'i18n',
-            "id": "1318926594"
+            "id": "BvA/qw=="
         })
     });
 };
@@ -737,7 +379,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.not-imported.613153351"
+            "id": "tests.__fixtures__.hook.not-imported.JIv6Rw=="
         })
     });
 };
@@ -754,15 +396,15 @@ var Component = function Component() {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+                "id": "tests.__fixtures__.hook.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+                "id": "tests.__fixtures__.hook.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "tests.__fixtures__.hook.multiple-uses.831373691"
+                "id": "tests.__fixtures__.hook.multiple-uses.MY3Bew=="
             })
         ]
     });
@@ -777,16 +419,16 @@ var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
+        "id": "tests.__fixtures__.hook.some-supported-use-cases.JIv6Rw=="
     });
     return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.JIv6Rw=="
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.JIv6Rw=="
         })
     });
 };
@@ -858,7 +500,7 @@ var Component = function Component() {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "tests.__fixtures__.hook.with-custom-properties.2983810267"
+            "id": "tests.__fixtures__.hook.with-custom-properties.sdlU2w=="
         })
     });
 };
@@ -873,7 +515,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.default.613153351"
+            "id": "tests.__fixtures__.hook.default.JIv6Rw=="
         })
     });
 };
@@ -888,7 +530,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
-            "id": "tests.__fixtures__.hook.import-as.94348014"
+            "id": "tests.__fixtures__.hook.import-as.BZ+i7g=="
         })
     });
 };
@@ -916,7 +558,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.not-imported.613153351"
+            "id": "tests.__fixtures__.hook.not-imported.JIv6Rw=="
         })
     });
 };
@@ -933,15 +575,15 @@ var Component = function Component() {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+                "id": "tests.__fixtures__.hook.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+                "id": "tests.__fixtures__.hook.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "tests.__fixtures__.hook.multiple-uses.831373691"
+                "id": "tests.__fixtures__.hook.multiple-uses.MY3Bew=="
             })
         ]
     });
@@ -956,16 +598,16 @@ var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
+        "id": "tests.__fixtures__.hook.some-supported-use-cases.JIv6Rw=="
     });
     return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.JIv6Rw=="
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.JIv6Rw=="
         })
     });
 };
@@ -1037,7 +679,7 @@ var Component = function Component() {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "tests.__fixtures__.hook.with-custom-properties.2983810267"
+            "id": "tests.__fixtures__.hook.with-custom-properties.sdlU2w=="
         })
     });
 };
@@ -1052,7 +694,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.default.613153351"
+            "id": "tests.__fixtures__.hook.default.JIv6Rw=="
         })
     });
 };
@@ -1067,7 +709,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
-            "id": "tests.__fixtures__.hook.import-as.94348014"
+            "id": "tests.__fixtures__.hook.import-as.BZ+i7g=="
         })
     });
 };
@@ -1095,7 +737,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.not-imported.613153351"
+            "id": "tests.__fixtures__.hook.not-imported.JIv6Rw=="
         })
     });
 };
@@ -1112,15 +754,15 @@ var Component = function Component() {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+                "id": "tests.__fixtures__.hook.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+                "id": "tests.__fixtures__.hook.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "tests.__fixtures__.hook.multiple-uses.831373691"
+                "id": "tests.__fixtures__.hook.multiple-uses.MY3Bew=="
             })
         ]
     });
@@ -1135,16 +777,16 @@ var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
+        "id": "tests.__fixtures__.hook.some-supported-use-cases.JIv6Rw=="
     });
     return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.JIv6Rw=="
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.JIv6Rw=="
         })
     });
 };
@@ -1216,7 +858,7 @@ var Component = function Component() {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "tests.__fixtures__.hook.with-custom-properties.2983810267"
+            "id": "tests.__fixtures__.hook.with-custom-properties.sdlU2w=="
         })
     });
 };
@@ -1231,7 +873,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.default.613153351"
+            "id": "tests.__fixtures__.hook.default.JIv6Rw=="
         })
     });
 };
@@ -1246,7 +888,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
-            "id": "tests.__fixtures__.hook.import-as.94348014"
+            "id": "tests.__fixtures__.hook.import-as.BZ+i7g=="
         })
     });
 };
@@ -1274,7 +916,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "__fixtures__.hook.not-imported.613153351"
+            "id": "__fixtures__.hook.not-imported.JIv6Rw=="
         })
     });
 };
@@ -1291,15 +933,15 @@ var Component = function Component() {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "__fixtures__.hook.multiple-uses.613153351"
+                "id": "__fixtures__.hook.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "__fixtures__.hook.multiple-uses.613153351"
+                "id": "__fixtures__.hook.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "__fixtures__.hook.multiple-uses.831373691"
+                "id": "__fixtures__.hook.multiple-uses.MY3Bew=="
             })
         ]
     });
@@ -1314,16 +956,16 @@ var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "__fixtures__.hook.some-supported-use-cases.613153351"
+        "id": "__fixtures__.hook.some-supported-use-cases.JIv6Rw=="
     });
     return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "__fixtures__.hook.some-supported-use-cases.613153351"
+            "id": "__fixtures__.hook.some-supported-use-cases.JIv6Rw=="
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "__fixtures__.hook.some-supported-use-cases.613153351"
+            "id": "__fixtures__.hook.some-supported-use-cases.JIv6Rw=="
         })
     });
 };
@@ -1395,7 +1037,7 @@ var Component = function Component() {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "__fixtures__.hook.with-custom-properties.2983810267"
+            "id": "__fixtures__.hook.with-custom-properties.sdlU2w=="
         })
     });
 };
@@ -1410,7 +1052,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "__fixtures__.hook.default.613153351"
+            "id": "__fixtures__.hook.default.JIv6Rw=="
         })
     });
 };
@@ -1425,7 +1067,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
-            "id": "__fixtures__.hook.import-as.94348014"
+            "id": "__fixtures__.hook.import-as.BZ+i7g=="
         })
     });
 };
@@ -1453,7 +1095,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "hook.not-imported.613153351"
+            "id": "hook.not-imported.JIv6Rw=="
         })
     });
 };
@@ -1470,15 +1112,15 @@ var Component = function Component() {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "hook.multiple-uses.613153351"
+                "id": "hook.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "hook.multiple-uses.613153351"
+                "id": "hook.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "hook.multiple-uses.831373691"
+                "id": "hook.multiple-uses.MY3Bew=="
             })
         ]
     });
@@ -1493,16 +1135,16 @@ var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "hook.some-supported-use-cases.613153351"
+        "id": "hook.some-supported-use-cases.JIv6Rw=="
     });
     return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "hook.some-supported-use-cases.613153351"
+            "id": "hook.some-supported-use-cases.JIv6Rw=="
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "hook.some-supported-use-cases.613153351"
+            "id": "hook.some-supported-use-cases.JIv6Rw=="
         })
     });
 };
@@ -1574,7 +1216,7 @@ var Component = function Component() {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "hook.with-custom-properties.2983810267"
+            "id": "hook.with-custom-properties.sdlU2w=="
         })
     });
 };
@@ -1589,7 +1231,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "hook.default.613153351"
+            "id": "hook.default.JIv6Rw=="
         })
     });
 };
@@ -1604,7 +1246,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
-            "id": "hook.import-as.94348014"
+            "id": "hook.import-as.BZ+i7g=="
         })
     });
 };
@@ -1632,7 +1274,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "__fixtures__.hook.not-imported.613153351"
+            "id": "__fixtures__.hook.not-imported.JIv6Rw=="
         })
     });
 };
@@ -1649,15 +1291,15 @@ var Component = function Component() {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "__fixtures__.hook.multiple-uses.613153351"
+                "id": "__fixtures__.hook.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "__fixtures__.hook.multiple-uses.613153351"
+                "id": "__fixtures__.hook.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "__fixtures__.hook.multiple-uses.831373691"
+                "id": "__fixtures__.hook.multiple-uses.MY3Bew=="
             })
         ]
     });
@@ -1672,16 +1314,16 @@ var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "__fixtures__.hook.some-supported-use-cases.613153351"
+        "id": "__fixtures__.hook.some-supported-use-cases.JIv6Rw=="
     });
     return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "__fixtures__.hook.some-supported-use-cases.613153351"
+            "id": "__fixtures__.hook.some-supported-use-cases.JIv6Rw=="
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "__fixtures__.hook.some-supported-use-cases.613153351"
+            "id": "__fixtures__.hook.some-supported-use-cases.JIv6Rw=="
         })
     });
 };
@@ -1753,7 +1395,7 @@ var Component = function Component() {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "__fixtures__.hook.with-custom-properties.2983810267"
+            "id": "__fixtures__.hook.with-custom-properties.sdlU2w=="
         })
     });
 };
@@ -1768,7 +1410,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "__fixtures__.hook.default.613153351"
+            "id": "__fixtures__.hook.default.JIv6Rw=="
         })
     });
 };
@@ -1783,7 +1425,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
-            "id": "__fixtures__.hook.import-as.94348014"
+            "id": "__fixtures__.hook.import-as.BZ+i7g=="
         })
     });
 };
@@ -1811,7 +1453,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.not-imported.613153351"
+            "id": "tests.__fixtures__.hook.not-imported.JIv6Rw=="
         })
     });
 };
@@ -1828,15 +1470,15 @@ var Component = function Component() {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+                "id": "tests.__fixtures__.hook.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests.__fixtures__.hook.multiple-uses.613153351"
+                "id": "tests.__fixtures__.hook.multiple-uses.JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "tests.__fixtures__.hook.multiple-uses.831373691"
+                "id": "tests.__fixtures__.hook.multiple-uses.MY3Bew=="
             })
         ]
     });
@@ -1851,16 +1493,16 @@ var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
+        "id": "tests.__fixtures__.hook.some-supported-use-cases.JIv6Rw=="
     });
     return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.JIv6Rw=="
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.some-supported-use-cases.613153351"
+            "id": "tests.__fixtures__.hook.some-supported-use-cases.JIv6Rw=="
         })
     });
 };
@@ -1932,7 +1574,7 @@ var Component = function Component() {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "tests.__fixtures__.hook.with-custom-properties.2983810267"
+            "id": "tests.__fixtures__.hook.with-custom-properties.sdlU2w=="
         })
     });
 };
@@ -1947,7 +1589,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests.__fixtures__.hook.default.613153351"
+            "id": "tests.__fixtures__.hook.default.JIv6Rw=="
         })
     });
 };
@@ -1962,7 +1604,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
-            "id": "tests.__fixtures__.hook.import-as.94348014"
+            "id": "tests.__fixtures__.hook.import-as.BZ+i7g=="
         })
     });
 };
@@ -1990,7 +1632,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "613153351"
+            "id": "JIv6Rw=="
         })
     });
 };
@@ -2007,15 +1649,15 @@ var Component = function Component() {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "613153351"
+                "id": "JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "613153351"
+                "id": "JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "831373691"
+                "id": "MY3Bew=="
             })
         ]
     });
@@ -2030,16 +1672,16 @@ var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "613153351"
+        "id": "JIv6Rw=="
     });
     return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "613153351"
+            "id": "JIv6Rw=="
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "613153351"
+            "id": "JIv6Rw=="
         })
     });
 };
@@ -2111,7 +1753,7 @@ var Component = function Component() {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "2983810267"
+            "id": "sdlU2w=="
         })
     });
 };
@@ -2126,7 +1768,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "613153351"
+            "id": "JIv6Rw=="
         })
     });
 };
@@ -2141,7 +1783,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
-            "id": "94348014"
+            "id": "BZ+i7g=="
         })
     });
 };
@@ -2169,7 +1811,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests___fixtures___hook_not-imported_613153351"
+            "id": "tests___fixtures___hook_not-imported_JIv6Rw=="
         })
     });
 };
@@ -2186,15 +1828,15 @@ var Component = function Component() {
         children: [
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests___fixtures___hook_multiple-uses_613153351"
+                "id": "tests___fixtures___hook_multiple-uses_JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'hello',
-                "id": "tests___fixtures___hook_multiple-uses_613153351"
+                "id": "tests___fixtures___hook_multiple-uses_JIv6Rw=="
             }),
             intl.formatMessage({
                 defaultMessage: 'some other message',
-                "id": "tests___fixtures___hook_multiple-uses_831373691"
+                "id": "tests___fixtures___hook_multiple-uses_MY3Bew=="
             })
         ]
     });
@@ -2209,16 +1851,16 @@ var Component = function Component() {
     var intl = useIntl();
     var label = intl.formatMessage({
         defaultMessage: 'hello',
-        "id": "tests___fixtures___hook_some-supported-use-cases_613153351"
+        "id": "tests___fixtures___hook_some-supported-use-cases_JIv6Rw=="
     });
     return /*#__PURE__*/ _jsx("div", {
         "aria-label": intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests___fixtures___hook_some-supported-use-cases_613153351"
+            "id": "tests___fixtures___hook_some-supported-use-cases_JIv6Rw=="
         }),
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests___fixtures___hook_some-supported-use-cases_613153351"
+            "id": "tests___fixtures___hook_some-supported-use-cases_JIv6Rw=="
         })
     });
 };
@@ -2290,7 +1932,7 @@ var Component = function Component() {
         children: intl.formatMessage({
             defaultMessage: 'custom prop',
             other: 123,
-            "id": "tests___fixtures___hook_with-custom-properties_2983810267"
+            "id": "tests___fixtures___hook_with-custom-properties_sdlU2w=="
         })
     });
 };
@@ -2305,7 +1947,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'hello',
-            "id": "tests___fixtures___hook_default_613153351"
+            "id": "tests___fixtures___hook_default_JIv6Rw=="
         })
     });
 };
@@ -2320,7 +1962,7 @@ var Component = function Component() {
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
             defaultMessage: 'i18n',
-            "id": "tests___fixtures___hook_import-as_94348014"
+            "id": "tests___fixtures___hook_import-as_BZ+i7g=="
         })
     });
 };

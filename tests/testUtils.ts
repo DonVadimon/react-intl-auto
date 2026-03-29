@@ -15,8 +15,8 @@ export type PluginOptions = {
     relativeTo?: string;
     /** Apply hash fn to id */
     hashId?: boolean;
-    /** Hash fn for id */
-    hashAlgorithm?: 'murmur3' | 'base64';
+    /** Hash fn for id (only murmur3 is supported) */
+    hashAlgorithm?: 'murmur3';
 };
 
 export type TestCase = {
@@ -116,18 +116,6 @@ export const createConfigurationSuites = (title: string, tests: TestCase[]) => {
             title: 'hashAlgorithm = "murmur3"',
             tests,
             pluginOptions: { hashId: true, hashAlgorithm: 'murmur3' },
-        },
-
-        {
-            title: 'hashAlgorithm = "base64"',
-            tests,
-            pluginOptions: { hashId: true, hashAlgorithm: 'base64' },
-        },
-
-        {
-            title: 'hashAlgorithm = "unknown"',
-            tests,
-            pluginOptions: { hashId: true, hashAlgorithm: 'unknown' as any },
         },
     ];
 

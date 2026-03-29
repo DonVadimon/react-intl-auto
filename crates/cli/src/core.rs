@@ -69,11 +69,11 @@ pub struct Args {
     #[arg(long, help = "Hash message IDs")]
     pub hash_id: bool,
 
-    /// Hash algorithm (murmur3 or base64)
+    /// Hash algorithm (murmur3 only)
     #[arg(
         long,
         default_value = "murmur3",
-        help = "Hash algorithm (murmur3 or base64)"
+        help = "Hash algorithm (only murmur3 is supported)"
     )]
     pub hash_algorithm: String,
 

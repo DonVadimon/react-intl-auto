@@ -364,17 +364,23 @@ jobs:
                   path: artifacts
                   pattern: bindings-*
 
+            - name: Download WASM artifact
+              uses: actions/download-artifact@v4
+              with:
+                  name: wasm-plugin
+                  path: .
+
             - name: List files
               run: |
                   ls -la
                   ls -R artifacts
               shell: bash
 
-            - name: Download WASM artifact
-              uses: actions/download-artifact@v4
-              with:
-                  name: wasm-plugin
-                  path: .
+            - name: Copy js entrypoint
+              run: |
+                  cp artifacts/bindings-x86_64-unknown-linux-gnu/extract.js extract.js
+                  cp artifacts/bindings-x86_64-unknown-linux-gnu/extract.d.ts extract.d.ts
+              shell: bash
 
             - name: Move artifacts to npm dirs
               run: npm run artifacts

@@ -13,7 +13,7 @@
     ],
     "exports": {
         "./swc-plugin": {
-            "*": "./swc-plugin.js"
+            "require": "./swc-plugin.js"
         },
         "./extract": {
             "require": "./extract.js",

@@ -125,7 +125,19 @@ jobs:
                       build: npm run build:napi -- --target aarch64-apple-darwin
                     - host: ubuntu-latest
                       target: x86_64-unknown-linux-gnu
-                      build: npm run build:napi -- --target x86_64-unknown-linux-gnu
+                      build: npm run build:napi -- --target x86_64-unknown-linux-gnu --use-napi-cross
+                    - host: ubuntu-latest
+                      target: x86_64-unknown-linux-musl
+                      build: npm run build:napi -- --target x86_64-unknown-linux-musl -x
+                    - host: ubuntu-latest
+                      target: aarch64-unknown-linux-gnu
+                      build: npm run build:napi -- --target aarch64-unknown-linux-gnu --use-napi-cross
+                    - host: ubuntu-latest
+                      target: aarch64-unknown-linux-musl
+                      build: npm run build:napi -- --target aarch64-unknown-linux-musl -x
+                    - host: ubuntu-latest
+                      target: armv7-unknown-linux-gnueabihf
+                      build: npm run build:napi -- --target armv7-unknown-linux-gnueabihf --use-napi-cross
                     - host: windows-latest
                       target: x86_64-pc-windows-msvc
                       build: npm run build:napi -- --target x86_64-pc-windows-msvc
@@ -145,6 +157,19 @@ jobs:
               with:
                   toolchain: stable
                   targets: ${{ matrix.settings.target }}
+
+            - uses: mlugg/setup-zig@v2
+              if: ${{ contains(matrix.settings.target, 'musl') }}
+              with:
+                  version: 0.15.2
+
+            - name: Install cargo-zigbuild
+              uses: taiki-e/install-action@v2
+              if: ${{ contains(matrix.settings.target, 'musl') }}
+              env:
+                  GITHUB_TOKEN: ${{ github.token }}
+              with:
+                  tool: cargo-zigbuild
 
             - name: Cache cargo
               uses: actions/cache@v4
@@ -271,6 +296,15 @@ jobs:
                     - host: ubuntu-latest
                       target: x86_64-unknown-linux-gnu
                       architecture: x64
+                    - host: ubuntu-latest
+                      target: x86_64-unknown-linux-musl
+                      architecture: x64
+                    - host: ubuntu-latest
+                      target: aarch64-unknown-linux-gnu
+                      architecture: arm64
+                    - host: ubuntu-latest
+                      target: aarch64-unknown-linux-musl
+                      architecture: arm64
                     - host: windows-latest
                       target: x86_64-pc-windows-msvc
                       architecture: x64

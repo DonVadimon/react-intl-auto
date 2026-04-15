@@ -279,38 +279,26 @@ jobs:
             - name: Run Jest tests
               run: npm run test:jest:ci
 
-    test-native-bindings:
-        name: Test napi bindings on ${{ matrix.settings.target }} - node@${{ matrix.node }}
+    test-macOS-windows-binding:
+        name: Test bindings on ${{ matrix.settings.target }} - node@${{ matrix.node }}
         needs:
             - build-napi
         strategy:
             fail-fast: false
             matrix:
                 settings:
-                    - host: macos-latest
-                      target: aarch64-apple-darwin
-                      architecture: arm64
-                    - host: macos-latest
-                      target: x86_64-apple-darwin
-                      architecture: x64
-                    - host: ubuntu-latest
-                      target: x86_64-unknown-linux-gnu
-                      architecture: x64
-                    - host: ubuntu-latest
-                      target: x86_64-unknown-linux-musl
-                      architecture: x64
-                    - host: ubuntu-latest
-                      target: aarch64-unknown-linux-gnu
-                      architecture: arm64
-                    - host: ubuntu-latest
-                      target: aarch64-unknown-linux-musl
-                      architecture: arm64
                     - host: windows-latest
                       target: x86_64-pc-windows-msvc
                       architecture: x64
+                    - host: macos-latest
+                      target: x86_64-apple-darwin
+                      architecture: x64
+                    - host: macos-latest
+                      target: aarch64-apple-darwin
+                      architecture: arm64
                 node:
-                    - '18'
-                    - '20'
+                    # - '18'
+                    # - '20'
                     - '22'
 
         runs-on: ${{ matrix.settings.host }}
@@ -324,20 +312,95 @@ jobs:
                   node-version: ${{ matrix.node }}
                   architecture: ${{ matrix.settings.architecture }}
 
-            - name: Download napi artifacts
+            - name: Download artifacts
               uses: actions/download-artifact@v4
               with:
                   name: bindings-${{ matrix.settings.target }}
                   path: .
 
-            - name: List files
-              run: ls -la
+            - name: List packages
+              run: ls -R .
               shell: bash
 
-            - name: Test napi bindings load
+            - name: Test bindings load
               run: |
                   node -e "const native = require('./extract.js'); console.log('napi addon loaded successfully');"
               shell: bash
+
+    test-linux-binding:
+        name: Test ${{ matrix.target }} - node@${{ matrix.node }}
+        needs:
+            - build-napi
+        strategy:
+            fail-fast: false
+            matrix:
+                target:
+                    - x86_64-unknown-linux-gnu
+                    - x86_64-unknown-linux-musl
+                    - aarch64-unknown-linux-gnu
+                    - aarch64-unknown-linux-musl
+                    - armv7-unknown-linux-gnueabihf
+                node:
+                    - '18'
+                    - '20'
+                    - '22'
+
+        runs-on: ${{ contains(matrix.target, 'aarch64') && 'ubuntu-24.04-arm' || 'ubuntu-latest' }}
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ matrix.node }}
+
+            - name: Output docker params
+              id: docker
+              run: |
+                  node -e "
+                    if ('${{ matrix.target }}'.startsWith('aarch64')) {
+                      console.log('PLATFORM=linux/arm64')
+                    } else if ('${{ matrix.target }}'.startsWith('armv7')) {
+                      console.log('PLATFORM=linux/arm/v7')
+                    } else {
+                      console.log('PLATFORM=linux/amd64')
+                    }
+                  " >> $GITHUB_OUTPUT
+                  node -e "
+                    if ('${{ matrix.target }}'.endsWith('-musl')) {
+                      console.log('IMAGE=node:${{ matrix.node }}-alpine')
+                    } else {
+                      console.log('IMAGE=node:${{ matrix.node }}-slim')
+                    }
+                  " >> $GITHUB_OUTPUT
+
+            - name: Download artifacts
+              uses: actions/download-artifact@v4
+              with:
+                  name: bindings-${{ matrix.target }}
+                  path: .
+
+            - name: List packages
+              run: ls -R .
+              shell: bash
+
+            - name: Set up QEMU
+              uses: docker/setup-qemu-action@v4
+              if: ${{ contains(matrix.target, 'armv7') }}
+              with:
+                  platforms: all
+
+            - run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+              if: ${{ contains(matrix.target, 'armv7') }}
+
+            - name: Test bindings in Docker
+              uses: tj-actions/docker-run@v2
+              with:
+                  image: ${{ steps.docker.outputs.IMAGE }}
+                  name: test-binding
+                  options: -v ${{ github.workspace }}:${{ github.workspace }} -w ${{ github.workspace }} --platform ${{ steps.docker.outputs.PLATFORM }}
+                  args: node -e "const native = require('./extract.js'); console.log('napi addon loaded successfully');"
 
     publish:
         name: Publish
@@ -352,6 +415,8 @@ jobs:
             - build-napi
             - test-rust
             - test-node
+            - test-macOS-windows-binding
+            - test-linux-binding
 
         steps:
             - uses: actions/checkout@v4

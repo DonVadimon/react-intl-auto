@@ -324,17 +324,6 @@ jobs:
                   node-version: ${{ matrix.node }}
                   architecture: ${{ matrix.settings.architecture }}
 
-            - name: Cache npm dependencies
-              uses: actions/cache@v4
-              with:
-                  path: ~/.npm
-                  key: npm-deps-${{ matrix.settings.host }}-${{ hashFiles('package-lock.json') }}
-                  restore-keys: |
-                      npm-deps-${{ matrix.settings.host }}-
-
-            - name: Install dependencies
-              run: npm ci --cache=.npm --prefer-offline
-
             - name: Download napi artifacts
               uses: actions/download-artifact@v4
               with:

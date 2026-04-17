@@ -29,9 +29,7 @@ on:
                 default: 'patch'
                 type: choice
                 options:
-                    - patch
-                    - minor
-                    - major
+                    - release
                     - prerelease
 
 concurrency:
@@ -127,7 +125,19 @@ jobs:
                       build: npm run build:napi -- --target aarch64-apple-darwin
                     - host: ubuntu-latest
                       target: x86_64-unknown-linux-gnu
-                      build: npm run build:napi -- --target x86_64-unknown-linux-gnu
+                      build: npm run build:napi -- --target x86_64-unknown-linux-gnu --use-napi-cross
+                    - host: ubuntu-latest
+                      target: x86_64-unknown-linux-musl
+                      build: npm run build:napi -- --target x86_64-unknown-linux-musl -x
+                    - host: ubuntu-latest
+                      target: aarch64-unknown-linux-gnu
+                      build: npm run build:napi -- --target aarch64-unknown-linux-gnu --use-napi-cross
+                    - host: ubuntu-latest
+                      target: aarch64-unknown-linux-musl
+                      build: npm run build:napi -- --target aarch64-unknown-linux-musl -x
+                    - host: ubuntu-latest
+                      target: armv7-unknown-linux-gnueabihf
+                      build: npm run build:napi -- --target armv7-unknown-linux-gnueabihf --use-napi-cross
                     - host: windows-latest
                       target: x86_64-pc-windows-msvc
                       build: npm run build:napi -- --target x86_64-pc-windows-msvc
@@ -147,6 +157,19 @@ jobs:
               with:
                   toolchain: stable
                   targets: ${{ matrix.settings.target }}
+
+            - uses: mlugg/setup-zig@v2
+              if: ${{ contains(matrix.settings.target, 'musl') }}
+              with:
+                  version: 0.15.2
+
+            - name: Install cargo-zigbuild
+              uses: taiki-e/install-action@v2
+              if: ${{ contains(matrix.settings.target, 'musl') }}
+              env:
+                  GITHUB_TOKEN: ${{ github.token }}
+              with:
+                  tool: cargo-zigbuild
 
             - name: Cache cargo
               uses: actions/cache@v4
@@ -181,6 +204,8 @@ jobs:
                   name: bindings-${{ matrix.settings.target }}
                   path: |
                       *.node
+                      extract.js
+                      extract.d.ts
                   if-no-files-found: error
 
     test-rust:
@@ -254,29 +279,24 @@ jobs:
             - name: Run Jest tests
               run: npm run test:jest:ci
 
-    test-native-bindings:
-        name: Test napi bindings on ${{ matrix.settings.target }} - node@${{ matrix.node }}
+    test-macOS-windows-binding:
+        name: Test bindings on ${{ matrix.settings.target }} - node@${{ matrix.node }}
         needs:
             - build-napi
         strategy:
             fail-fast: false
             matrix:
                 settings:
-                    - host: macos-latest
-                      target: aarch64-apple-darwin
-                      architecture: arm64
-                    - host: macos-latest
-                      target: x86_64-apple-darwin
-                      architecture: x64
-                    - host: ubuntu-latest
-                      target: x86_64-unknown-linux-gnu
-                      architecture: x64
                     - host: windows-latest
                       target: x86_64-pc-windows-msvc
                       architecture: x64
+                    - host: macos-latest
+                      target: x86_64-apple-darwin
+                      architecture: x64
+                    - host: macos-latest
+                      target: aarch64-apple-darwin
+                      architecture: arm64
                 node:
-                    - '18'
-                    - '20'
                     - '22'
 
         runs-on: ${{ matrix.settings.host }}
@@ -290,31 +310,95 @@ jobs:
                   node-version: ${{ matrix.node }}
                   architecture: ${{ matrix.settings.architecture }}
 
-            - name: Cache npm dependencies
-              uses: actions/cache@v4
-              with:
-                  path: ~/.npm
-                  key: npm-deps-${{ matrix.settings.host }}-${{ hashFiles('package-lock.json') }}
-                  restore-keys: |
-                      npm-deps-${{ matrix.settings.host }}-
-
-            - name: Install dependencies
-              run: npm ci --cache=.npm --prefer-offline
-
-            - name: Download napi artifacts
+            - name: Download artifacts
               uses: actions/download-artifact@v4
               with:
                   name: bindings-${{ matrix.settings.target }}
                   path: .
 
-            - name: List files
-              run: ls -la
+            - name: List packages
+              run: ls -R .
               shell: bash
 
-            - name: Test napi bindings load
+            - name: Test bindings load
               run: |
                   node -e "const native = require('./extract.js'); console.log('napi addon loaded successfully');"
               shell: bash
+
+    test-linux-binding:
+        name: Test ${{ matrix.target }} - node@${{ matrix.node }}
+        needs:
+            - build-napi
+        strategy:
+            fail-fast: false
+            matrix:
+                target:
+                    - x86_64-unknown-linux-gnu
+                    - x86_64-unknown-linux-musl
+                    - aarch64-unknown-linux-gnu
+                    - aarch64-unknown-linux-musl
+                    - armv7-unknown-linux-gnueabihf
+                node:
+                    - '18'
+                    - '20'
+                    - '22'
+
+        runs-on: ${{ contains(matrix.target, 'aarch64') && 'ubuntu-24.04-arm' || 'ubuntu-latest' }}
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ matrix.node }}
+
+            - name: Output docker params
+              id: docker
+              run: |
+                  node -e "
+                    if ('${{ matrix.target }}'.startsWith('aarch64')) {
+                      console.log('PLATFORM=linux/arm64')
+                    } else if ('${{ matrix.target }}'.startsWith('armv7')) {
+                      console.log('PLATFORM=linux/arm/v7')
+                    } else {
+                      console.log('PLATFORM=linux/amd64')
+                    }
+                  " >> $GITHUB_OUTPUT
+                  node -e "
+                    if ('${{ matrix.target }}'.endsWith('-musl')) {
+                      console.log('IMAGE=node:${{ matrix.node }}-alpine')
+                    } else {
+                      console.log('IMAGE=node:${{ matrix.node }}-slim')
+                    }
+                  " >> $GITHUB_OUTPUT
+
+            - name: Download artifacts
+              uses: actions/download-artifact@v4
+              with:
+                  name: bindings-${{ matrix.target }}
+                  path: .
+
+            - name: List packages
+              run: ls -R .
+              shell: bash
+
+            - name: Set up QEMU
+              uses: docker/setup-qemu-action@v4
+              if: ${{ contains(matrix.target, 'armv7') }}
+              with:
+                  platforms: all
+
+            - run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+              if: ${{ contains(matrix.target, 'armv7') }}
+
+            - name: Test bindings in Docker
+              uses: tj-actions/docker-run@v2
+              with:
+                  image: ${{ steps.docker.outputs.IMAGE }}
+                  name: test-binding
+                  options: -v ${{ github.workspace }}:${{ github.workspace }} -w ${{ github.workspace }} --platform ${{ steps.docker.outputs.PLATFORM }}
+                  args: node -e "const native = require('./extract.js'); console.log('napi addon loaded successfully');"
 
     publish:
         name: Publish
@@ -329,6 +413,8 @@ jobs:
             - build-napi
             - test-rust
             - test-node
+            - test-macOS-windows-binding
+            - test-linux-binding
 
         steps:
             - uses: actions/checkout@v4
@@ -370,12 +456,24 @@ jobs:
                   name: wasm-plugin
                   path: .
 
+            - name: Copy js entrypoint
+              run: |
+                  cp artifacts/bindings-x86_64-unknown-linux-gnu/extract.js extract.js
+                  cp artifacts/bindings-x86_64-unknown-linux-gnu/extract.d.ts extract.d.ts
+              shell: bash
+
+            - name: List files
+              run: |
+                  ls -la
+                  ls -R artifacts
+              shell: bash
+
             - name: Move artifacts to npm dirs
               run: npm run artifacts
 
             - name: List npm packages
               run: |
-                ls -R ./npm
+                  ls -R ./npm
               shell: bash
 
             - name: Publish to npm
@@ -388,9 +486,9 @@ jobs:
                   echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" >> ~/.npmrc
                   if [ "${{ github.event.inputs.version_type }}" = "prerelease" ]; then
                     echo "Publishing prerelease version"
-                    npm publish --tag next --access public
+                    npm publish --tag draft --access public
                   else
-                    echo "Publishing ${{ github.event.inputs.version_type }} version"
+                    echo "Publishing release version"
                     npm publish --access public
                   fi
               env:

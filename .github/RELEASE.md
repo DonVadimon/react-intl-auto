@@ -49,31 +49,45 @@ git pull origin master
 git status
 ```
 
-### Step 2: Update Version
+### Step 2: Bump Version
 
-Update version in both files:
+Use the version bump CLI to update version:
 
-**package.json:**
-
-```json
-{
-    "version": "1.1.0"
-}
-```
-
-**Cargo.toml** (root workspace):
-
-```toml
-[workspace.package]
-version = "1.1.0"
-```
-
-### Step 3: Commit Version Bump
+**On master branch:**
 
 ```bash
-git add package.json Cargo.toml
-git commit -m "chore: bump version to 1.1.0"
+# For patch release (bug fixes): 1.0.0 → 1.0.1
+npm run version:bump patch
+
+# For minor release (new features): 1.0.0 → 1.1.0
+npm run version:bump minor
+
+# For major release (breaking changes): 1.0.0 → 2.0.0
+npm run version:bump major
+```
+
+**On feature branches (creates pre-release):**
+
+```bash
+# Automatically creates: 1.0.0 → 1.0.1-rc.0
+npm run version:bump
+```
+
+The CLI automatically:
+
+- Updates `package.json` version
+- Updates `Cargo.toml` version
+- Creates a git commit
+- Creates a git tag (e.g., `v1.1.0`)
+
+### Step 3: Push Version Bump
+
+```bash
+# Push the commit
 git push origin master
+
+# Push the tag (triggers CI)
+git push origin v1.1.0  # Use the actual version tag
 ```
 
 ### Step 4: Trigger Manual Publish
@@ -192,15 +206,19 @@ git push origin :refs/tags/v1.1.0
 # Create hotfix branch
 git checkout -b hotfix/v1.1.1
 
-# Fix the issue, bump version to 1.1.1
+# Fix the issue
 git add .
 git commit -m "fix: resolve critical issue"
 git push origin hotfix/v1.1.1
 
-# Merge to master and tag
+# Merge to master
 git checkout master
 git merge hotfix/v1.1.1
-git tag -a v1.1.1 -m "Release v1.1.1"
+
+# Bump version using CLI (creates commit and tag)
+npm run version:bump patch
+
+# Push commit and tag
 git push origin master
 git push origin v1.1.1
 ```

@@ -92,36 +92,7 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: default | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: default | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var message = 'variable message';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: default | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: default | with a variable as the message descriptor 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -271,36 +242,7 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "murmur3" | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "murmur3" | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var message = 'variable message';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "murmur3" | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "murmur3" | with a variable as the message descriptor 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -450,36 +392,7 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var message = 'variable message';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with a variable as the message descriptor 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -629,36 +542,7 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: relativeTo = "" | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: relativeTo = "" | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var message = 'variable message';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: relativeTo = "" | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: relativeTo = "" | with a variable as the message descriptor 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -808,36 +692,7 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: relativeTo = "../" | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: relativeTo = "../" | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var message = 'variable message';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: relativeTo = "../" | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: relativeTo = "../" | with a variable as the message descriptor 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -987,36 +842,7 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "tests" | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: removePrefix = "tests" | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var message = 'variable message';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: removePrefix = "tests" | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests" | with a variable as the message descriptor 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -1166,36 +992,7 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "tests.__fixtures__" | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: removePrefix = "tests.__fixtures__" | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var message = 'variable message';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: removePrefix = "tests.__fixtures__" | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests.__fixtures__" | with a variable as the message descriptor 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -1345,36 +1142,7 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "tests/" | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: removePrefix = "tests/" | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var message = 'variable message';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: removePrefix = "tests/" | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests/" | with a variable as the message descriptor 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -1524,36 +1292,7 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = /__fixtures__/ | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: removePrefix = /__fixtures__/ | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var message = 'variable message';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: removePrefix = /__fixtures__/ | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = /__fixtures__/ | with a variable as the message descriptor 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -1703,36 +1442,7 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = true | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: removePrefix = true | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var message = 'variable message';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: removePrefix = true | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = true | with a variable as the message descriptor 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -1882,36 +1592,7 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: separator = "_" | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: separator = "_" | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { useIntl } from 'react-intl';
-var message = 'variable message';
-var Component = function Component() {
-    var intl = useIntl();
-    return /*#__PURE__*/ _jsx("div", {
-        children: intl.formatMessage({
-            defaultMessage: message
-        })
-    });
-};
-"
-`;
-
-exports[`snap - hooks | CONFIGURATION: separator = "_" | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: separator = "_" | with a variable as the message descriptor 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {

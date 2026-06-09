@@ -26,11 +26,13 @@ const allSupportedComponents = {
 const withValueInMessage = {
     title: 'with a value interpolated in the message',
     fixture: 'components/with-value-in-message.tsx',
+    shouldError: true,
 };
 
 const withVariableMessage = {
     title: 'with a variable as the defaultMessage',
     fixture: 'components/with-variable-message.tsx',
+    shouldError: true,
 };
 
 const importAsTest = {

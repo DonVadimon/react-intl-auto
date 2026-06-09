@@ -158,25 +158,6 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`snap - components | CONFIGURATION: default | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: "hello world ".concat(1 + 1)
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: default | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-var message = 'variable message';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: message
-});
-"
-`;
-
 exports[`snap - components | CONFIGURATION: hashAlgorithm = "murmur3" | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
@@ -331,25 +312,6 @@ import { FormattedMessage } from 'react-intl';
         id: "EEWZhg==",
         defaultMessage: "hello"
     })
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "murmur3" | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: "hello world ".concat(1 + 1)
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: hashAlgorithm = "murmur3" | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-var message = 'variable message';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: message
 });
 "
 `;
@@ -513,16 +475,6 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`snap - components | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-var message = 'variable message';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: message
-});
-"
-`;
-
 exports[`snap - components | CONFIGURATION: relativeTo = "" | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
@@ -677,25 +629,6 @@ import { FormattedMessage } from 'react-intl';
         id: "tests.__fixtures__.components.nested-jsx.JIv6Rw==",
         defaultMessage: "hello"
     })
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: relativeTo = "" | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: "hello world ".concat(1 + 1)
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: relativeTo = "" | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-var message = 'variable message';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: message
 });
 "
 `;
@@ -858,25 +791,6 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`snap - components | CONFIGURATION: relativeTo = "../" | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: "hello world ".concat(1 + 1)
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: relativeTo = "../" | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-var message = 'variable message';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: message
-});
-"
-`;
-
 exports[`snap - components | CONFIGURATION: removePrefix = "tests" | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
@@ -1031,25 +945,6 @@ import { FormattedMessage } from 'react-intl';
         id: "__fixtures__.components.nested-jsx.JIv6Rw==",
         defaultMessage: "hello"
     })
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: removePrefix = "tests" | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: "hello world ".concat(1 + 1)
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: removePrefix = "tests" | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-var message = 'variable message';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: message
 });
 "
 `;
@@ -1212,25 +1107,6 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`snap - components | CONFIGURATION: removePrefix = "tests.__fixtures__" | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: "hello world ".concat(1 + 1)
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: removePrefix = "tests.__fixtures__" | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-var message = 'variable message';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: message
-});
-"
-`;
-
 exports[`snap - components | CONFIGURATION: removePrefix = "tests/" | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
@@ -1385,25 +1261,6 @@ import { FormattedMessage } from 'react-intl';
         id: "__fixtures__.components.nested-jsx.JIv6Rw==",
         defaultMessage: "hello"
     })
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: removePrefix = "tests/" | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: "hello world ".concat(1 + 1)
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: removePrefix = "tests/" | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-var message = 'variable message';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: message
 });
 "
 `;
@@ -1566,25 +1423,6 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`snap - components | CONFIGURATION: removePrefix = /__fixtures__/ | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: "hello world ".concat(1 + 1)
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: removePrefix = /__fixtures__/ | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-var message = 'variable message';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: message
-});
-"
-`;
-
 exports[`snap - components | CONFIGURATION: removePrefix = true | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
@@ -1743,25 +1581,6 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
-exports[`snap - components | CONFIGURATION: removePrefix = true | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: "hello world ".concat(1 + 1)
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: removePrefix = true | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-var message = 'variable message';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: message
-});
-"
-`;
-
 exports[`snap - components | CONFIGURATION: separator = "_" | all props 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage } from 'react-intl';
@@ -1916,25 +1735,6 @@ import { FormattedMessage } from 'react-intl';
         id: "tests___fixtures___components_nested-jsx_JIv6Rw==",
         defaultMessage: "hello"
     })
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: separator = "_" | with a value interpolated in the message 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: "hello world ".concat(1 + 1)
-});
-"
-`;
-
-exports[`snap - components | CONFIGURATION: separator = "_" | with a variable as the defaultMessage 1`] = `
-"import { jsx as _jsx } from "react/jsx-runtime";
-import { FormattedMessage } from 'react-intl';
-var message = 'variable message';
-/*#__PURE__*/ _jsx(FormattedMessage, {
-    defaultMessage: message
 });
 "
 `;

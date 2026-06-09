@@ -11,15 +11,17 @@ const multiUse = {
 const withValueInMessage = {
     title: 'with a value interpolated in the message',
     fixture: 'hook/with-value-in-message.js',
+    shouldError: true,
 };
 
 const withVariableMessage = {
     title: 'with a variable as the defaultMessage',
     fixture: 'hook/with-variable-message.js',
+    shouldError: true,
 };
 
 const withVariableMessageDescriptor = {
-    title: 'with a variable as the defaultMessage',
+    title: 'with a variable as the message descriptor',
     fixture: 'hook/with-variable-message-descriptor.js',
 };
 

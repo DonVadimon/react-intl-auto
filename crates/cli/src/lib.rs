@@ -138,6 +138,7 @@ pub fn extract_sync(
         .map_err(|e| napi::Error::from_reason(format!("Failed to find files: {}", e)))?;
 
     let mut messages = Vec::new();
+    let mut errors = Vec::new();
     let files_processed = files.len() as u32;
 
     for file in files {
@@ -148,9 +149,16 @@ pub fn extract_sync(
                 }
             }
             Err(e) => {
-                eprintln!("Warning: Failed to process {}: {}", file.display(), e);
+                errors.push(format!("{}: {}", file.display(), e));
             }
         }
+    }
+
+    if !errors.is_empty() {
+        return Err(napi::Error::from_reason(format!(
+            "Errors found:\n{}",
+            errors.join("\n")
+        )));
     }
 
     Ok(JsExtractResult {

@@ -147,13 +147,19 @@ pub fn run_cli(args: Args) -> Result<i32> {
     let core_options = args.to_core_options();
     let output_path = args.output.map(PathBuf::from);
 
-    match core_options.output_mode {
-        OutputMode::PerFile => {
-            run_perfile_mode(files, &core_options, output_path)?;
+    let errors = match core_options.output_mode {
+        OutputMode::PerFile => run_perfile_mode(files, &core_options, output_path)?,
+        OutputMode::Aggregated => run_aggregated_mode(files, &core_options, output_path)?,
+    };
+
+    // Print all errors if any
+    if !errors.is_empty() {
+        eprintln!("\nErrors found during extraction:");
+        for error in &errors {
+            eprintln!("  × {}", error);
         }
-        OutputMode::Aggregated => {
-            run_aggregated_mode(files, &core_options, output_path)?;
-        }
+        eprintln!("\nFailed to process {} file(s)", errors.len());
+        return Ok(1);
     }
 
     println!("Done!");
@@ -165,12 +171,13 @@ fn run_perfile_mode(
     files: HashSet<PathBuf>,
     core_options: &CoreOptions,
     output_path: Option<PathBuf>,
-) -> Result<()> {
+) -> Result<Vec<String>> {
     let output_dir = output_path.unwrap_or_else(|| PathBuf::from("messages"));
     fs::create_dir_all(&output_dir)?;
 
     let mut total_messages = 0;
     let mut seen_ids = HashSet::new();
+    let mut errors = Vec::new();
 
     for file in files {
         match extract_from_file(&file, core_options) {
@@ -189,7 +196,7 @@ fn run_perfile_mode(
                 }
             }
             Err(e) => {
-                eprintln!("  Warning: Failed to process {}: {}", file.display(), e);
+                errors.push(format!("{}: {}", file.display(), e));
             }
         }
     }
@@ -200,7 +207,7 @@ fn run_perfile_mode(
         output_dir.display()
     );
 
-    Ok(())
+    Ok(errors)
 }
 
 /// Run extraction in aggregated mode (batch)
@@ -208,10 +215,11 @@ fn run_aggregated_mode(
     files: HashSet<PathBuf>,
     core_options: &CoreOptions,
     output_path: Option<PathBuf>,
-) -> Result<()> {
+) -> Result<Vec<String>> {
     // Use HashSet to track seen IDs and Vec to store unique messages on the fly
     let mut seen_ids = HashSet::new();
     let mut unique_messages: Vec<ExtractedMessage> = Vec::new();
+    let mut errors = Vec::new();
 
     for file in files {
         match extract_from_file(&file, core_options) {
@@ -226,7 +234,7 @@ fn run_aggregated_mode(
                 }
             }
             Err(e) => {
-                eprintln!("  Warning: Failed to process {}: {}", file.display(), e);
+                errors.push(format!("{}: {}", file.display(), e));
             }
         }
     }
@@ -251,7 +259,7 @@ fn run_aggregated_mode(
         output_file.display()
     );
 
-    Ok(())
+    Ok(errors)
 }
 
 /// Check if file has supported extension
@@ -352,7 +360,8 @@ pub fn extract_from_file(file_path: &Path, options: &CoreOptions) -> Result<Vec<
     let content = fs::read_to_string(file_path)
         .with_context(|| format!("Failed to read file: {}", file_path.display()))?;
 
-    let messages = extract_messages(&content, &file_path.to_path_buf(), options);
+    let messages = extract_messages(&content, &file_path.to_path_buf(), options)
+        .map_err(|e| anyhow::anyhow!("{}", e))?;
 
     Ok(messages)
 }

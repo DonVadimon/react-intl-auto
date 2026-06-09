@@ -7,6 +7,7 @@ use crate::visitors::import::ImportVisitor;
 
 pub struct JSXVisitor<'a> {
     pub messages: Vec<TransformedMessageData>,
+    pub errors: Vec<String>,
     state: &'a CoreState,
     import_visitor: &'a ImportVisitor<'a>,
 }
@@ -17,11 +18,12 @@ impl<'a> JSXVisitor<'a> {
             state,
             import_visitor,
             messages: Vec::new(),
+            errors: Vec::new(),
         }
     }
 
-    pub fn into_messages(self) -> Vec<TransformedMessageData> {
-        self.messages
+    pub fn into_result(self) -> (Vec<TransformedMessageData>, Vec<String>) {
+        (self.messages, self.errors)
     }
 }
 
@@ -32,8 +34,15 @@ impl<'a> Visit for JSXVisitor<'a> {
         // Check if this is a React Intl component and process it
         if let JSXElementName::Ident(name) = &element.opening.name {
             if is_react_intl_component(self.import_visitor, name) {
-                if let Some((transformed, _)) = analyze_jsx_element(element, self.state) {
-                    self.messages.push(transformed);
+                match analyze_jsx_element(element, self.state) {
+                    Ok(Some((transformed, _))) => {
+                        self.messages.push(transformed);
+                    }
+                    Ok(None) => {}
+                    Err(e) => {
+                        self.errors
+                            .push(format!("Error analyzing JSX element: {}", e));
+                    }
                 }
             }
         }

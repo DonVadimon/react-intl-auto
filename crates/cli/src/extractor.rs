@@ -71,12 +71,12 @@ fn is_ts_file(filename: &PathBuf) -> bool {
 /// * `options` - Core options for extraction
 ///
 /// # Returns
-/// Vector of extracted messages
+/// Result with vector of extracted messages or error string
 pub fn extract_messages(
     code: &str,
     filename: &PathBuf,
     options: &CoreOptions,
-) -> Vec<ExtractedMessage> {
+) -> Result<Vec<ExtractedMessage>, String> {
     let syntax = if is_ts_file(filename) {
         Syntax::Typescript(swc_core::ecma::parser::TsSyntax {
             tsx: true,
@@ -102,8 +102,11 @@ pub fn extract_messages(
     let module = match parser.parse_module() {
         Ok(module) => module,
         Err(err) => {
-            eprintln!("Failed to parse {}: {:#?}", filename.to_string_lossy(), err);
-            return vec![];
+            return Err(format!(
+                "Failed to parse {}: {:#?}",
+                filename.to_string_lossy(),
+                err
+            ));
         }
     };
 
@@ -112,7 +115,7 @@ pub fn extract_messages(
 
     module.visit_with(&mut visitor);
 
-    visitor.into_messages()
+    visitor.into_result()
 }
 
 /// Visitor for extracting messages from AST
@@ -122,6 +125,7 @@ pub struct MessageExtractorVisitor {
     state: CoreState,
     filename: PathBuf,
     messages: Vec<TransformedMessageData>,
+    errors: Vec<String>,
 }
 
 impl MessageExtractorVisitor {
@@ -132,11 +136,17 @@ impl MessageExtractorVisitor {
             state,
             filename,
             messages: Vec::new(),
+            errors: Vec::new(),
         }
     }
 
-    pub fn into_messages(self) -> Vec<ExtractedMessage> {
-        self.messages
+    pub fn into_result(self) -> Result<Vec<ExtractedMessage>, String> {
+        if !self.errors.is_empty() {
+            return Err(self.errors.join("\n"));
+        }
+
+        Ok(self
+            .messages
             .into_iter()
             .map(|transformed| {
                 to_extracted_message(
@@ -145,7 +155,7 @@ impl MessageExtractorVisitor {
                     self.state.opts.extract_source_location,
                 )
             })
-            .collect()
+            .collect())
     }
 }
 
@@ -164,8 +174,13 @@ impl Visit for MessageExtractorVisitor {
         module.visit_with(&mut jsx_visitor);
         module.visit_with(&mut call_visitor);
 
-        self.messages.append(&mut jsx_visitor.into_messages());
-        self.messages.append(&mut call_visitor.into_messages());
+        let (jsx_messages, jsx_errors) = jsx_visitor.into_result();
+        let (call_messages, call_errors) = call_visitor.into_result();
+
+        self.messages.extend(jsx_messages);
+        self.messages.extend(call_messages);
+        self.errors.extend(jsx_errors);
+        self.errors.extend(call_errors);
     }
 }
 

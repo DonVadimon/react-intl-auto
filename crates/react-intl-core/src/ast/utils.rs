@@ -1,5 +1,19 @@
 use swc_core::ecma::ast::{Expr, Lit, PropName};
 
+#[derive(Debug, Clone)]
+pub struct FieldExtractionError {
+    pub field_name: String,
+    pub message: String,
+}
+
+impl std::fmt::Display for FieldExtractionError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.message)
+    }
+}
+
+impl std::error::Error for FieldExtractionError {}
+
 /// Tries to extract a string value from an expression
 ///
 /// Supports:
@@ -26,6 +40,35 @@ pub fn extract_expr_string(expr: &Expr) -> Option<String> {
             }
         }
         _ => None,
+    }
+}
+
+pub fn validate_string_field(
+    expr: &Expr,
+    field_name: &str,
+) -> Result<Option<String>, FieldExtractionError> {
+    match extract_expr_string(expr) {
+        Some(value) => Ok(Some(value)),
+        None => {
+            let expr_type = match expr {
+                Expr::Ident(ident) => format!("variable '{}'", ident.sym),
+                Expr::Member(_) => "member expression".to_string(),
+                Expr::Call(_) => "function call".to_string(),
+                Expr::Bin(_) => "binary expression".to_string(),
+                Expr::Tpl(tpl) if !tpl.exprs.is_empty() => {
+                    "template literal with expressions".to_string()
+                }
+                _ => "non-string expression".to_string(),
+            };
+
+            Err(FieldExtractionError {
+                field_name: field_name.to_string(),
+                message: format!(
+                    "Field '{}' must be a string literal, but got {}",
+                    field_name, expr_type
+                ),
+            })
+        }
     }
 }
 

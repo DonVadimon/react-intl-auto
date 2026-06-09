@@ -1,10 +1,15 @@
 import { defineMessages } from 'react-intl';
 
-const defaultMessage = 'broken';
-const description = 'broken';
+const defaultMessageVar = 'broken';
+const descriptionVar = 'broken';
 
-export const messagesBroken = defineMessages({
-    broken: defaultMessage,
-    brokenObj: { defaultMessage },
-    brokenObjDesc: { defaultMessage: 'Hello', description },
+export const messagesBrokenVar = defineMessages({
+    brokenVar: defaultMessageVar,
+    brokenObjVar: {
+        defaultMessage: defaultMessageVar,
+    },
+    brokenObjDescVar: {
+        defaultMessage: 'Hello',
+        description: descriptionVar,
+    },
 });

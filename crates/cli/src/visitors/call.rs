@@ -17,6 +17,7 @@ use crate::visitors::import::ImportVisitor;
 pub struct CallExpressionVisitor<'a> {
     state: &'a CoreState,
     pub messages: Vec<TransformedMessageData>,
+    pub errors: Vec<String>,
     import_visitor: &'a ImportVisitor<'a>,
     var_visitor: &'a VarVisitor<'a>,
 }
@@ -32,11 +33,12 @@ impl<'a> CallExpressionVisitor<'a> {
             import_visitor,
             var_visitor,
             messages: Vec::new(),
+            errors: Vec::new(),
         }
     }
 
-    pub fn into_messages(self) -> Vec<TransformedMessageData> {
-        self.messages
+    pub fn into_result(self) -> (Vec<TransformedMessageData>, Vec<String>) {
+        (self.messages, self.errors)
     }
 
     fn process_format_message(&mut self, call_expr: &CallExpr) {
@@ -51,11 +53,16 @@ impl<'a> CallExpressionVisitor<'a> {
         let expr = &call_expr.args[0].expr;
 
         match expr.as_ref() {
-            Expr::Object(_) => {
-                if let Some((transformed, _)) = analyze_format_message(call_expr, self.state) {
+            Expr::Object(_) => match analyze_format_message(call_expr, self.state) {
+                Ok(Some((transformed, _))) => {
                     self.messages.push(transformed);
                 }
-            }
+                Ok(None) => {}
+                Err(e) => {
+                    self.errors
+                        .push(format!("Error analyzing formatMessage: {}", e));
+                }
+            },
             Expr::Ident(ident) => {
                 let var_name = ident.sym.to_string();
                 if let Some(obj_lit) = self.var_visitor.get_object(&var_name) {
@@ -69,10 +76,15 @@ impl<'a> CallExpressionVisitor<'a> {
                         type_args: call_expr.type_args.clone(),
                         ctxt: call_expr.ctxt,
                     };
-                    if let Some((transformed, _)) =
-                        analyze_format_message(&call_expr_for_analysis, self.state)
-                    {
-                        self.messages.push(transformed);
+                    match analyze_format_message(&call_expr_for_analysis, self.state) {
+                        Ok(Some((transformed, _))) => {
+                            self.messages.push(transformed);
+                        }
+                        Ok(None) => {}
+                        Err(e) => {
+                            self.errors
+                                .push(format!("Error analyzing formatMessage: {}", e));
+                        }
                     }
                 }
             }
@@ -89,10 +101,16 @@ impl<'a> CallExpressionVisitor<'a> {
             return;
         }
 
-        let messages = analyze_define_messages(call_expr, self.state, Some(&self.var_visitor));
-
-        for (_, transformed, _) in messages {
-            self.messages.push(transformed);
+        match analyze_define_messages(call_expr, self.state, Some(&self.var_visitor)) {
+            Ok(messages) => {
+                for (_, transformed, _) in messages {
+                    self.messages.push(transformed);
+                }
+            }
+            Err(e) => {
+                self.errors
+                    .push(format!("Error analyzing defineMessages: {}", e));
+            }
         }
     }
 }

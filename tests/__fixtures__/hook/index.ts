@@ -20,6 +20,52 @@ const withVariableMessage = {
     shouldError: true,
 };
 
+const withTemplateVarMessage = {
+    title: 'with a template literal with variable as defaultMessage',
+    fixture: 'hook/with-template-var-message.js',
+    shouldError: true,
+};
+
+const validTemplateLiteralDefaultMessage = {
+    title: 'valid template literal in defaultMessage',
+    fixture: 'hook/valid-template-literal-defaultMessage.js',
+};
+
+const validTemplateLiteralDescription = {
+    title: 'valid template literal in description',
+    fixture: 'hook/valid-template-literal-description.js',
+};
+
+const defaultMessageWithShorthand = {
+    title: 'shorthand property in defaultMessage',
+    fixture: 'hook/defaultMessage-with-shorthand.js',
+    shouldError: true,
+};
+
+const descriptionWithTemplateExpr = {
+    title: 'template literal with expression in description',
+    fixture: 'hook/description-with-template-expr.js',
+    shouldError: true,
+};
+
+const descriptionWithTemplateVar = {
+    title: 'template literal with variable in description',
+    fixture: 'hook/description-with-template-var.js',
+    shouldError: true,
+};
+
+const descriptionWithVariable = {
+    title: 'variable in description',
+    fixture: 'hook/description-with-variable.js',
+    shouldError: true,
+};
+
+const descriptionWithShorthand = {
+    title: 'shorthand property in description',
+    fixture: 'hook/description-with-shorthand.js',
+    shouldError: true,
+};
+
 const withVariableMessageDescriptor = {
     title: 'with a variable as the message descriptor',
     fixture: 'hook/with-variable-message-descriptor.js',
@@ -60,6 +106,14 @@ export const hookTests = [
     multiUse,
     withValueInMessage,
     withVariableMessage,
+    withTemplateVarMessage,
+    validTemplateLiteralDefaultMessage,
+    validTemplateLiteralDescription,
+    defaultMessageWithShorthand,
+    descriptionWithTemplateExpr,
+    descriptionWithTemplateVar,
+    descriptionWithVariable,
+    descriptionWithShorthand,
     withVariableMessageDescriptor,
     withCustomProperties,
     someSupportedUseCases,

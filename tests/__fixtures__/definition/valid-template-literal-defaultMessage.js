@@ -1,5 +1,5 @@
 import { defineMessages } from 'react-intl';
 
-defineMessages({
+export default defineMessages({
     hello: `hello world`,
 });

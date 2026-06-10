@@ -81,6 +81,39 @@ injectIntl(Components2);
 "
 `;
 
+exports[`snap - injection | CONFIGURATION: default | valid template literal in defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "hello world",
+            "id": "tests.__fixtures__.injection.valid-template-literal-defaultMessage.XpKPDw=="
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`snap - injection | CONFIGURATION: default | valid template literal in description 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            description: "greeting message",
+            "id": "tests.__fixtures__.injection.valid-template-literal-description.7uMRaw=="
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
 exports[`snap - injection | CONFIGURATION: default | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
@@ -238,6 +271,39 @@ var Component2 = function Component2(param) {
     });
 };
 injectIntl(Components2);
+"
+`;
+
+exports[`snap - injection | CONFIGURATION: hashAlgorithm = "murmur3" | valid template literal in defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "hello world",
+            "id": "71BO5Q=="
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`snap - injection | CONFIGURATION: hashAlgorithm = "murmur3" | valid template literal in description 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            description: "greeting message",
+            "id": "dYDIDw=="
+        })
+    });
+}
+export default injectIntl(App);
 "
 `;
 
@@ -401,6 +467,39 @@ injectIntl(Components2);
 "
 `;
 
+exports[`snap - injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | valid template literal in defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "hello world",
+            "id": "tests.__fixtures__.injection.valid-template-literal-defaultMessage.XpKPDw=="
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`snap - injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | valid template literal in description 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            description: "greeting message",
+            "id": "tests.__fixtures__.injection.valid-template-literal-description.7uMRaw=="
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
 exports[`snap - injection | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
@@ -558,6 +657,39 @@ var Component2 = function Component2(param) {
     });
 };
 injectIntl(Components2);
+"
+`;
+
+exports[`snap - injection | CONFIGURATION: relativeTo = "" | valid template literal in defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "hello world",
+            "id": "tests.__fixtures__.injection.valid-template-literal-defaultMessage.XpKPDw=="
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`snap - injection | CONFIGURATION: relativeTo = "" | valid template literal in description 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            description: "greeting message",
+            "id": "tests.__fixtures__.injection.valid-template-literal-description.7uMRaw=="
+        })
+    });
+}
+export default injectIntl(App);
 "
 `;
 
@@ -721,6 +853,39 @@ injectIntl(Components2);
 "
 `;
 
+exports[`snap - injection | CONFIGURATION: relativeTo = "../" | valid template literal in defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "hello world",
+            "id": "tests.__fixtures__.injection.valid-template-literal-defaultMessage.XpKPDw=="
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`snap - injection | CONFIGURATION: relativeTo = "../" | valid template literal in description 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            description: "greeting message",
+            "id": "tests.__fixtures__.injection.valid-template-literal-description.7uMRaw=="
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
 exports[`snap - injection | CONFIGURATION: relativeTo = "../" | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
@@ -878,6 +1043,39 @@ var Component2 = function Component2(param) {
     });
 };
 injectIntl(Components2);
+"
+`;
+
+exports[`snap - injection | CONFIGURATION: removePrefix = "tests" | valid template literal in defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "hello world",
+            "id": "__fixtures__.injection.valid-template-literal-defaultMessage.XpKPDw=="
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`snap - injection | CONFIGURATION: removePrefix = "tests" | valid template literal in description 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            description: "greeting message",
+            "id": "__fixtures__.injection.valid-template-literal-description.7uMRaw=="
+        })
+    });
+}
+export default injectIntl(App);
 "
 `;
 
@@ -1041,6 +1239,39 @@ injectIntl(Components2);
 "
 `;
 
+exports[`snap - injection | CONFIGURATION: removePrefix = "tests.__fixtures__" | valid template literal in defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "hello world",
+            "id": "injection.valid-template-literal-defaultMessage.XpKPDw=="
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`snap - injection | CONFIGURATION: removePrefix = "tests.__fixtures__" | valid template literal in description 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            description: "greeting message",
+            "id": "injection.valid-template-literal-description.7uMRaw=="
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
 exports[`snap - injection | CONFIGURATION: removePrefix = "tests.__fixtures__" | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
@@ -1198,6 +1429,39 @@ var Component2 = function Component2(param) {
     });
 };
 injectIntl(Components2);
+"
+`;
+
+exports[`snap - injection | CONFIGURATION: removePrefix = "tests/" | valid template literal in defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "hello world",
+            "id": "__fixtures__.injection.valid-template-literal-defaultMessage.XpKPDw=="
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`snap - injection | CONFIGURATION: removePrefix = "tests/" | valid template literal in description 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            description: "greeting message",
+            "id": "__fixtures__.injection.valid-template-literal-description.7uMRaw=="
+        })
+    });
+}
+export default injectIntl(App);
 "
 `;
 
@@ -1361,6 +1625,39 @@ injectIntl(Components2);
 "
 `;
 
+exports[`snap - injection | CONFIGURATION: removePrefix = /__fixtures__/ | valid template literal in defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "hello world",
+            "id": "tests.__fixtures__.injection.valid-template-literal-defaultMessage.XpKPDw=="
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`snap - injection | CONFIGURATION: removePrefix = /__fixtures__/ | valid template literal in description 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            description: "greeting message",
+            "id": "tests.__fixtures__.injection.valid-template-literal-description.7uMRaw=="
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
 exports[`snap - injection | CONFIGURATION: removePrefix = /__fixtures__/ | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
@@ -1521,6 +1818,39 @@ injectIntl(Components2);
 "
 `;
 
+exports[`snap - injection | CONFIGURATION: removePrefix = true | valid template literal in defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "hello world",
+            "id": "XpKPDw=="
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`snap - injection | CONFIGURATION: removePrefix = true | valid template literal in description 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            description: "greeting message",
+            "id": "7uMRaw=="
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
 exports[`snap - injection | CONFIGURATION: removePrefix = true | with Injection API HOC imported 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { injectIntl } from 'react-intl';
@@ -1678,6 +2008,39 @@ var Component2 = function Component2(param) {
     });
 };
 injectIntl(Components2);
+"
+`;
+
+exports[`snap - injection | CONFIGURATION: separator = "_" | valid template literal in defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: "hello world",
+            "id": "tests___fixtures___injection_valid-template-literal-defaultMessage_XpKPDw=="
+        })
+    });
+}
+export default injectIntl(App);
+"
+`;
+
+exports[`snap - injection | CONFIGURATION: separator = "_" | valid template literal in description 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { injectIntl } from 'react-intl';
+function App(param) {
+    var intl = param.intl;
+    return /*#__PURE__*/ _jsx("div", {
+        children: intl.formatMessage({
+            defaultMessage: 'hello',
+            description: "greeting message",
+            "id": "tests___fixtures___injection_valid-template-literal-description_vPEqqA=="
+        })
+    });
+}
+export default injectIntl(App);
 "
 `;
 

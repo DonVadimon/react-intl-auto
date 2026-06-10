@@ -14,6 +14,53 @@ impl std::fmt::Display for FieldExtractionError {
 
 impl std::error::Error for FieldExtractionError {}
 
+/// Result of analyzing a defineMessages call or similar structure
+/// Contains both successfully extracted messages and any errors encountered
+#[derive(Debug, Clone)]
+pub struct AnalysisResult<T> {
+    pub items: Vec<T>,
+    pub errors: Vec<FieldExtractionError>,
+}
+
+impl<T> Default for AnalysisResult<T> {
+    fn default() -> Self {
+        Self {
+            items: Vec::new(),
+            errors: Vec::new(),
+        }
+    }
+}
+
+impl<T> AnalysisResult<T> {
+    pub fn new() -> Self {
+        Self::default()
+    }
+
+    pub fn with_item(mut self, item: T) -> Self {
+        self.items.push(item);
+        self
+    }
+
+    pub fn with_error(mut self, error: FieldExtractionError) -> Self {
+        self.errors.push(error);
+        self
+    }
+
+    pub fn extend(mut self, other: AnalysisResult<T>) -> Self {
+        self.items.extend(other.items);
+        self.errors.extend(other.errors);
+        self
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.items.is_empty() && self.errors.is_empty()
+    }
+
+    pub fn has_errors(&self) -> bool {
+        !self.errors.is_empty()
+    }
+}
+
 /// Tries to extract a string value from an expression
 ///
 /// Supports:

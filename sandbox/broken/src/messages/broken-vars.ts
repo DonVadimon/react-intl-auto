@@ -4,11 +4,11 @@ const defaultMessageVar = 'broken';
 const descriptionVar = 'broken';
 
 export const messagesBrokenVar = defineMessages({
-    brokenVar: defaultMessageVar,
-    brokenObjVar: {
+    inline: defaultMessageVar,
+    objDefaultMessage: {
         defaultMessage: defaultMessageVar,
     },
-    brokenObjDescVar: {
+    objDescription: {
         defaultMessage: 'Hello',
         description: descriptionVar,
     },

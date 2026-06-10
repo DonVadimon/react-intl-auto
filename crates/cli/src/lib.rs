@@ -148,8 +148,14 @@ pub fn extract_sync(
                     messages.push(msg.into());
                 }
             }
-            Err(e) => {
-                errors.push(format!("{}: {}", file.display(), e));
+            Err(file_errors) => {
+                let formatted_errors: Vec<String> =
+                    file_errors.iter().map(|e| format!("  × {}", e)).collect();
+                errors.push(format!(
+                    "{}:\n{}",
+                    file.display(),
+                    formatted_errors.join("\n")
+                ));
             }
         }
     }
@@ -189,8 +195,13 @@ pub fn parse_file(
     let opts = options.map(|o| o.to_core_options()).unwrap_or_default();
     let path = PathBuf::from(&file_path);
 
-    let messages = extract_from_file(&path, &opts)
-        .map_err(|e| napi::Error::from_reason(format!("Failed to parse file: {}", e)))?;
+    let messages = extract_from_file(&path, &opts).map_err(|errors| {
+        let formatted_errors: Vec<String> = errors.iter().map(|e| format!("  × {}", e)).collect();
+        napi::Error::from_reason(format!(
+            "Failed to parse file:\n{}",
+            formatted_errors.join("\n")
+        ))
+    })?;
 
     Ok(messages.into_iter().map(|m| m.into()).collect())
 }

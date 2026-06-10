@@ -101,16 +101,15 @@ impl<'a> CallExpressionVisitor<'a> {
             return;
         }
 
-        match analyze_define_messages(call_expr, self.state, Some(&self.var_visitor)) {
-            Ok(messages) => {
-                for (_, transformed, _) in messages {
-                    self.messages.push(transformed);
-                }
-            }
-            Err(e) => {
-                self.errors
-                    .push(format!("Error analyzing defineMessages: {}", e));
-            }
+        let result = analyze_define_messages(call_expr, self.state, Some(&self.var_visitor));
+
+        for (_, transformed, _) in result.items {
+            self.messages.push(transformed);
+        }
+
+        for error in result.errors {
+            self.errors
+                .push(format!("Error analyzing defineMessages: {}", error));
         }
     }
 }

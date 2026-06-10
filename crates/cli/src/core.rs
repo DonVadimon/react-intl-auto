@@ -14,6 +14,12 @@ use walkdir::WalkDir;
 
 use crate::extractor::{extract_messages, ExtractedMessage};
 
+/// Errors for a single file
+pub struct FileErrors {
+    pub path: PathBuf,
+    pub errors: Vec<String>,
+}
+
 /// React Intl Message Extractor CLI arguments
 #[derive(Parser, Debug)]
 #[command(
@@ -155,10 +161,19 @@ pub fn run_cli(args: Args) -> Result<i32> {
     // Print all errors if any
     if !errors.is_empty() {
         eprintln!("\nErrors found during extraction:");
-        for error in &errors {
-            eprintln!("  × {}", error);
+        for file_errors in &errors {
+            eprintln!("{}", file_errors.path.display());
+            for error in &file_errors.errors {
+                eprintln!("  × {}", error);
+            }
+            eprintln!();
         }
-        eprintln!("\nFailed to process {} file(s)", errors.len());
+        let total_errors: usize = errors.iter().map(|f| f.errors.len()).sum();
+        eprintln!(
+            "Failed to process {} file(s) ({} error(s))",
+            errors.len(),
+            total_errors
+        );
         return Ok(1);
     }
 
@@ -171,13 +186,13 @@ fn run_perfile_mode(
     files: HashSet<PathBuf>,
     core_options: &CoreOptions,
     output_path: Option<PathBuf>,
-) -> Result<Vec<String>> {
+) -> Result<Vec<FileErrors>> {
     let output_dir = output_path.unwrap_or_else(|| PathBuf::from("messages"));
     fs::create_dir_all(&output_dir)?;
 
     let mut total_messages = 0;
     let mut seen_ids = HashSet::new();
-    let mut errors = Vec::new();
+    let mut all_errors = Vec::new();
 
     for file in files {
         match extract_from_file(&file, core_options) {
@@ -195,8 +210,8 @@ fn run_perfile_mode(
                     total_messages += count;
                 }
             }
-            Err(e) => {
-                errors.push(format!("{}: {}", file.display(), e));
+            Err(errors) => {
+                all_errors.push(FileErrors { path: file, errors });
             }
         }
     }
@@ -207,7 +222,7 @@ fn run_perfile_mode(
         output_dir.display()
     );
 
-    Ok(errors)
+    Ok(all_errors)
 }
 
 /// Run extraction in aggregated mode (batch)
@@ -215,11 +230,11 @@ fn run_aggregated_mode(
     files: HashSet<PathBuf>,
     core_options: &CoreOptions,
     output_path: Option<PathBuf>,
-) -> Result<Vec<String>> {
+) -> Result<Vec<FileErrors>> {
     // Use HashSet to track seen IDs and Vec to store unique messages on the fly
     let mut seen_ids = HashSet::new();
     let mut unique_messages: Vec<ExtractedMessage> = Vec::new();
-    let mut errors = Vec::new();
+    let mut all_errors = Vec::new();
 
     for file in files {
         match extract_from_file(&file, core_options) {
@@ -233,8 +248,8 @@ fn run_aggregated_mode(
                     println!("  {} - {} messages", file.display(), file_unique_count);
                 }
             }
-            Err(e) => {
-                errors.push(format!("{}: {}", file.display(), e));
+            Err(errors) => {
+                all_errors.push(FileErrors { path: file, errors });
             }
         }
     }
@@ -259,7 +274,7 @@ fn run_aggregated_mode(
         output_file.display()
     );
 
-    Ok(errors)
+    Ok(all_errors)
 }
 
 /// Check if file has supported extension
@@ -356,12 +371,16 @@ fn find_base_dir(pattern: &str) -> PathBuf {
 }
 
 /// Extract messages from a single file
-pub fn extract_from_file(file_path: &Path, options: &CoreOptions) -> Result<Vec<ExtractedMessage>> {
+pub fn extract_from_file(
+    file_path: &Path,
+    options: &CoreOptions,
+) -> Result<Vec<ExtractedMessage>, Vec<String>> {
     let content = fs::read_to_string(file_path)
-        .with_context(|| format!("Failed to read file: {}", file_path.display()))?;
+        .with_context(|| format!("Failed to read file: {}", file_path.display()))
+        .map_err(|e| vec![e.to_string()])?;
 
     let messages = extract_messages(&content, &file_path.to_path_buf(), options)
-        .map_err(|e| anyhow::anyhow!("{}", e))?;
+        .map_err(|e| e.split('\n').map(|s| s.to_string()).collect::<Vec<_>>())?;
 
     Ok(messages)
 }

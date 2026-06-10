@@ -123,16 +123,25 @@ impl<'a> CallExpressionVisitor<'a> {
     fn process_define_messages(&mut self, call_expr: &mut CallExpr) -> Result<(), String> {
         // Analyze the call expression to get all messages that need transformation
         let analysis_result =
-            analyze_define_messages(call_expr, self.state, Some(&self.var_visitor))
-                .map_err(|e| e.to_string())?;
+            analyze_define_messages(call_expr, self.state, Some(&self.var_visitor));
+
+        // Report all errors
+        for error in &analysis_result.errors {
+            HANDLER.with(|handler| {
+                handler.err(&format!("Error processing defineMessages: {}", error));
+            });
+        }
+
+        // Check if there were errors before applying transformations
+        let has_errors = analysis_result.has_errors();
 
         // Apply transformation if there are messages to process
-        if !analysis_result.is_empty() {
+        if !analysis_result.items.is_empty() {
             if let Some(first_arg) = call_expr.args.first_mut() {
                 match first_arg.expr.as_mut() {
                     // Direct object literal: defineMessages({ hello: '...' })
                     Expr::Object(obj) => {
-                        self.apply_define_messages_transformation(obj, analysis_result);
+                        self.apply_define_messages_transformation(obj, analysis_result.items);
                     }
                     // Variable reference: defineMessages(messages)
                     // Transform the variable's object literal
@@ -140,7 +149,10 @@ impl<'a> CallExpressionVisitor<'a> {
                         let var_name = ident.sym.to_string();
                         if let Some(obj_lit) = self.var_visitor.get_object(&var_name) {
                             let mut obj = obj_lit.clone();
-                            self.apply_define_messages_transformation(&mut obj, analysis_result);
+                            self.apply_define_messages_transformation(
+                                &mut obj,
+                                analysis_result.items,
+                            );
                             first_arg.expr = Box::new(Expr::Object(obj));
                         }
                     }
@@ -149,7 +161,15 @@ impl<'a> CallExpressionVisitor<'a> {
             }
         }
 
-        Ok(())
+        // Return error if there were any errors
+        if has_errors {
+            Err(format!(
+                "Found {} error(s) in defineMessages",
+                analysis_result.errors.len()
+            ))
+        } else {
+            Ok(())
+        }
     }
 
     /// Transforms the object literal in a defineMessages call by adding IDs to each message.

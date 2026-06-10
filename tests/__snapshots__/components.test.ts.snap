@@ -136,6 +136,27 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
+exports[`snap - components | CONFIGURATION: default | valid template literal in defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "tests.__fixtures__.components.valid-template-literal-defaultMessage.XpKPDw==",
+    defaultMessage: "hello world"
+});
+"
+`;
+
+exports[`snap - components | CONFIGURATION: default | valid template literal in description 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "tests.__fixtures__.components.valid-template-literal-description.7uMRaw==",
+    defaultMessage: "hello",
+    description: "greeting message"
+});
+"
+`;
+
 exports[`snap - components | CONFIGURATION: default | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as TestFormattedMessage } from 'react-intl';
@@ -294,6 +315,27 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
+exports[`snap - components | CONFIGURATION: hashAlgorithm = "murmur3" | valid template literal in defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "Y1RFuQ==",
+    defaultMessage: "hello world"
+});
+"
+`;
+
+exports[`snap - components | CONFIGURATION: hashAlgorithm = "murmur3" | valid template literal in description 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "SH9fyQ==",
+    defaultMessage: "hello",
+    description: "greeting message"
+});
+"
+`;
+
 exports[`snap - components | CONFIGURATION: hashAlgorithm = "murmur3" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as TestFormattedMessage } from 'react-intl';
@@ -442,6 +484,25 @@ import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "foobar",
     defaultMessage: "hello"
+});
+"
+`;
+
+exports[`snap - components | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | valid template literal in defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    defaultMessage: "hello world"
+});
+"
+`;
+
+exports[`snap - components | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | valid template literal in description 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    defaultMessage: "hello",
+    description: "greeting message"
 });
 "
 `;
@@ -611,6 +672,27 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
+exports[`snap - components | CONFIGURATION: relativeTo = "" | valid template literal in defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "tests.__fixtures__.components.valid-template-literal-defaultMessage.XpKPDw==",
+    defaultMessage: "hello world"
+});
+"
+`;
+
+exports[`snap - components | CONFIGURATION: relativeTo = "" | valid template literal in description 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "tests.__fixtures__.components.valid-template-literal-description.7uMRaw==",
+    defaultMessage: "hello",
+    description: "greeting message"
+});
+"
+`;
+
 exports[`snap - components | CONFIGURATION: relativeTo = "" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as TestFormattedMessage } from 'react-intl';
@@ -765,6 +847,27 @@ import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "foobar",
     defaultMessage: "hello"
+});
+"
+`;
+
+exports[`snap - components | CONFIGURATION: relativeTo = "../" | valid template literal in defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "tests.__fixtures__.components.valid-template-literal-defaultMessage.XpKPDw==",
+    defaultMessage: "hello world"
+});
+"
+`;
+
+exports[`snap - components | CONFIGURATION: relativeTo = "../" | valid template literal in description 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "tests.__fixtures__.components.valid-template-literal-description.7uMRaw==",
+    defaultMessage: "hello",
+    description: "greeting message"
 });
 "
 `;
@@ -927,6 +1030,27 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
+exports[`snap - components | CONFIGURATION: removePrefix = "tests" | valid template literal in defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "__fixtures__.components.valid-template-literal-defaultMessage.XpKPDw==",
+    defaultMessage: "hello world"
+});
+"
+`;
+
+exports[`snap - components | CONFIGURATION: removePrefix = "tests" | valid template literal in description 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "__fixtures__.components.valid-template-literal-description.7uMRaw==",
+    defaultMessage: "hello",
+    description: "greeting message"
+});
+"
+`;
+
 exports[`snap - components | CONFIGURATION: removePrefix = "tests" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as TestFormattedMessage } from 'react-intl';
@@ -1081,6 +1205,27 @@ import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "foobar",
     defaultMessage: "hello"
+});
+"
+`;
+
+exports[`snap - components | CONFIGURATION: removePrefix = "tests.__fixtures__" | valid template literal in defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "components.valid-template-literal-defaultMessage.XpKPDw==",
+    defaultMessage: "hello world"
+});
+"
+`;
+
+exports[`snap - components | CONFIGURATION: removePrefix = "tests.__fixtures__" | valid template literal in description 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "components.valid-template-literal-description.7uMRaw==",
+    defaultMessage: "hello",
+    description: "greeting message"
 });
 "
 `;
@@ -1243,6 +1388,27 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
+exports[`snap - components | CONFIGURATION: removePrefix = "tests/" | valid template literal in defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "__fixtures__.components.valid-template-literal-defaultMessage.XpKPDw==",
+    defaultMessage: "hello world"
+});
+"
+`;
+
+exports[`snap - components | CONFIGURATION: removePrefix = "tests/" | valid template literal in description 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "__fixtures__.components.valid-template-literal-description.7uMRaw==",
+    defaultMessage: "hello",
+    description: "greeting message"
+});
+"
+`;
+
 exports[`snap - components | CONFIGURATION: removePrefix = "tests/" | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as TestFormattedMessage } from 'react-intl';
@@ -1397,6 +1563,27 @@ import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "foobar",
     defaultMessage: "hello"
+});
+"
+`;
+
+exports[`snap - components | CONFIGURATION: removePrefix = /__fixtures__/ | valid template literal in defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "tests.__fixtures__.components.valid-template-literal-defaultMessage.XpKPDw==",
+    defaultMessage: "hello world"
+});
+"
+`;
+
+exports[`snap - components | CONFIGURATION: removePrefix = /__fixtures__/ | valid template literal in description 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "tests.__fixtures__.components.valid-template-literal-description.7uMRaw==",
+    defaultMessage: "hello",
+    description: "greeting message"
 });
 "
 `;
@@ -1559,6 +1746,27 @@ import { FormattedMessage } from 'react-intl';
 "
 `;
 
+exports[`snap - components | CONFIGURATION: removePrefix = true | valid template literal in defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "XpKPDw==",
+    defaultMessage: "hello world"
+});
+"
+`;
+
+exports[`snap - components | CONFIGURATION: removePrefix = true | valid template literal in description 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "7uMRaw==",
+    defaultMessage: "hello",
+    description: "greeting message"
+});
+"
+`;
+
 exports[`snap - components | CONFIGURATION: removePrefix = true | with FormattedMessage imported as something else 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { FormattedMessage as TestFormattedMessage } from 'react-intl';
@@ -1713,6 +1921,27 @@ import { FormattedMessage } from 'react-intl';
 /*#__PURE__*/ _jsx(FormattedMessage, {
     id: "foobar",
     defaultMessage: "hello"
+});
+"
+`;
+
+exports[`snap - components | CONFIGURATION: separator = "_" | valid template literal in defaultMessage 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "tests___fixtures___components_valid-template-literal-defaultMessage_XpKPDw==",
+    defaultMessage: "hello world"
+});
+"
+`;
+
+exports[`snap - components | CONFIGURATION: separator = "_" | valid template literal in description 1`] = `
+"import { jsx as _jsx } from "react/jsx-runtime";
+import { FormattedMessage } from 'react-intl';
+/*#__PURE__*/ _jsx(FormattedMessage, {
+    id: "tests___fixtures___components_valid-template-literal-description_vPEqqA==",
+    defaultMessage: "hello",
+    description: "greeting message"
 });
 "
 `;

@@ -47,7 +47,7 @@
         "test:jest": "jest --colors",
         "test:jest:ci": "npm run test:jest -- --ci",
         "test:all": "cargo test && npm run build:plugin && npm run build:cli && npm run test:jest",
-        "build:plugin": "cargo build --release --target wasm32-wasip1 && cp target/wasm32-wasip1/release/swc_plugin.wasm swc-plugin.wasm",
+        "build:plugin": "cargo build --release --target wasm32-wasip1 -p swc-plugin && cp target/wasm32-wasip1/release/swc_plugin.wasm swc-plugin.wasm",
         "build:cli": "npm run build:napi",
         "build:napi": "napi build --platform --release --manifest-path crates/cli/Cargo.toml --output-dir . --js extract.js --dts extract.d.ts",
         "build:napi:debug": "napi build --platform --manifest-path crates/cli/Cargo.toml --output-dir . --js extract.js --dts extract.d.ts",

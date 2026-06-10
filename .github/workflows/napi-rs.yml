@@ -76,7 +76,7 @@ jobs:
             - name: Install Rust
               uses: dtolnay/rust-toolchain@stable
               with:
-                  toolchain: stable
+                  toolchain: 1.95.0
                   targets: wasm32-wasip1
 
             - name: Cache cargo
@@ -86,7 +86,6 @@ jobs:
                       ~/.cargo/registry/index/
                       ~/.cargo/registry/cache/
                       ~/.cargo/git/db/
-                      target/
                   key: wasm-cargo-${{ hashFiles('**/Cargo.lock') }}
 
             - name: Cache npm dependencies
@@ -155,7 +154,7 @@ jobs:
             - name: Install Rust
               uses: dtolnay/rust-toolchain@stable
               with:
-                  toolchain: stable
+                  toolchain: 1.95.0
                   targets: ${{ matrix.settings.target }}
 
             - uses: mlugg/setup-zig@v2

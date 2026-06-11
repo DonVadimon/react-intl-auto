@@ -53,14 +53,23 @@ fn to_extracted_message(
     }
 }
 
-/// Detects typescript syntsx in file by extension
-fn is_ts_file(filename: &PathBuf) -> bool {
-    ["ts", "mts", "tsx"]
-        .iter()
-        .any(|ext| match filename.extension() {
-            Some(file_ext) => file_ext.to_os_string().into_string().unwrap() == *ext,
-            None => false,
-        })
+fn detect_syntax(filename: &PathBuf) -> Syntax {
+    let ext = filename.extension().and_then(|e| e.to_str()).unwrap_or("");
+
+    match ext {
+        "tsx" => Syntax::Typescript(swc_core::ecma::parser::TsSyntax {
+            tsx: true,
+            ..Default::default()
+        }),
+        "ts" | "mts" => Syntax::Typescript(swc_core::ecma::parser::TsSyntax {
+            tsx: false,
+            ..Default::default()
+        }),
+        _ => Syntax::Es(swc_core::ecma::parser::EsSyntax {
+            jsx: true,
+            ..Default::default()
+        }),
+    }
 }
 
 /// Extracts messages from source code
@@ -77,17 +86,7 @@ pub fn extract_messages(
     filename: &PathBuf,
     options: &CoreOptions,
 ) -> Result<Vec<ExtractedMessage>, String> {
-    let syntax = if is_ts_file(filename) {
-        Syntax::Typescript(swc_core::ecma::parser::TsSyntax {
-            tsx: true,
-            ..Default::default()
-        })
-    } else {
-        Syntax::Es(swc_core::ecma::parser::EsSyntax {
-            jsx: true,
-            ..Default::default()
-        })
-    };
+    let syntax = detect_syntax(filename);
 
     // Create lexer and parser
     let input = StringInput::new(
@@ -189,13 +188,48 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_is_ts_file() {
-        assert!(is_ts_file(&PathBuf::from("src/components/App.tsx")));
-        assert!(is_ts_file(&PathBuf::from("src/components/utils.ts")));
-        assert!(is_ts_file(&PathBuf::from("src/components/utils.mts")));
-        assert!(!is_ts_file(&PathBuf::from("src/components/utils.js")));
-        assert!(!is_ts_file(&PathBuf::from("src/components/App.css")));
-        assert!(!is_ts_file(&PathBuf::from(".eslintrc")));
+    fn test_detect_syntax_tsx() {
+        let syntax = detect_syntax(&PathBuf::from("src/components/App.tsx"));
+        match syntax {
+            Syntax::Typescript(ts) => assert!(ts.tsx),
+            _ => panic!("Expected TypeScript syntax for .tsx file"),
+        }
+    }
+
+    #[test]
+    fn test_detect_syntax_ts() {
+        let syntax = detect_syntax(&PathBuf::from("src/components/utils.ts"));
+        match syntax {
+            Syntax::Typescript(ts) => assert!(!ts.tsx),
+            _ => panic!("Expected TypeScript syntax for .ts file"),
+        }
+    }
+
+    #[test]
+    fn test_detect_syntax_mts() {
+        let syntax = detect_syntax(&PathBuf::from("src/components/utils.mts"));
+        match syntax {
+            Syntax::Typescript(ts) => assert!(!ts.tsx),
+            _ => panic!("Expected TypeScript syntax for .mts file"),
+        }
+    }
+
+    #[test]
+    fn test_detect_syntax_jsx() {
+        let syntax = detect_syntax(&PathBuf::from("src/components/App.jsx"));
+        match syntax {
+            Syntax::Es(es) => assert!(es.jsx),
+            _ => panic!("Expected ES syntax for .jsx file"),
+        }
+    }
+
+    #[test]
+    fn test_detect_syntax_js() {
+        let syntax = detect_syntax(&PathBuf::from("src/components/utils.js"));
+        match syntax {
+            Syntax::Es(es) => assert!(es.jsx),
+            _ => panic!("Expected ES syntax for .js file"),
+        }
     }
 
     #[test]

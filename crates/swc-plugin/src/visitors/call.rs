@@ -5,6 +5,7 @@ use react_intl_core::ast::call::{
 use react_intl_core::ast::utils::extract_prop_name;
 use react_intl_core::ast::vars::VarCollector;
 use react_intl_core::types::{CoreState, TransformedMessageData};
+use swc_core::common::errors::HANDLER;
 use swc_core::ecma::ast::*;
 use swc_core::ecma::visit::{VisitMut, VisitMutWith};
 
@@ -42,23 +43,33 @@ impl<'a> VisitMut for CallExpressionVisitor<'a> {
 
         // Process formatMessage calls - add ID if missing
         if is_format_message_call(&self.import_visitor, call_expr) && !call_expr.args.is_empty() {
-            self.process_format_message(call_expr);
+            if let Err(e) = self.process_format_message(call_expr) {
+                HANDLER.with(|handler| {
+                    handler.err(&format!("Error processing formatMessage: {}", e));
+                });
+            }
         }
 
         // Process defineMessages calls - transform the object literal
         if is_define_messages_call(&self.import_visitor, call_expr) && !call_expr.args.is_empty() {
-            self.process_define_messages(call_expr);
+            if let Err(e) = self.process_define_messages(call_expr) {
+                HANDLER.with(|handler| {
+                    handler.err(&format!("Error processing defineMessages: {}", e));
+                });
+            }
         }
     }
 }
 
 impl<'a> CallExpressionVisitor<'a> {
-    fn process_format_message(&mut self, call_expr: &mut CallExpr) {
+    fn process_format_message(&mut self, call_expr: &mut CallExpr) -> Result<(), String> {
         // First, analyze the call expression to determine if transformation is needed
         let analysis_result = if let Some(first_arg) = call_expr.args.first() {
             match first_arg.expr.as_ref() {
                 // Direct object literal: formatMessage({ defaultMessage: '...' })
-                Expr::Object(_) => analyze_format_message(call_expr, self.state),
+                Expr::Object(_) => {
+                    analyze_format_message(call_expr, self.state).map_err(|e| e.to_string())?
+                }
                 // Variable reference: formatMessage(someVar)
                 // Resolve the variable using our tracked declarations
                 Expr::Ident(ident) => {
@@ -75,6 +86,7 @@ impl<'a> CallExpressionVisitor<'a> {
                             ctxt: call_expr.ctxt,
                         };
                         analyze_format_message(&call_expr_for_analysis, self.state)
+                            .map_err(|e| e.to_string())?
                     } else {
                         None
                     }
@@ -104,20 +116,32 @@ impl<'a> CallExpressionVisitor<'a> {
                 }
             }
         }
+
+        Ok(())
     }
 
-    fn process_define_messages(&mut self, call_expr: &mut CallExpr) {
+    fn process_define_messages(&mut self, call_expr: &mut CallExpr) -> Result<(), String> {
         // Analyze the call expression to get all messages that need transformation
         let analysis_result =
             analyze_define_messages(call_expr, self.state, Some(&self.var_visitor));
 
+        // Report all errors
+        for error in &analysis_result.errors {
+            HANDLER.with(|handler| {
+                handler.err(&format!("Error processing defineMessages: {}", error));
+            });
+        }
+
+        // Check if there were errors before applying transformations
+        let has_errors = analysis_result.has_errors();
+
         // Apply transformation if there are messages to process
-        if !analysis_result.is_empty() {
+        if !analysis_result.items.is_empty() {
             if let Some(first_arg) = call_expr.args.first_mut() {
                 match first_arg.expr.as_mut() {
                     // Direct object literal: defineMessages({ hello: '...' })
                     Expr::Object(obj) => {
-                        self.apply_define_messages_transformation(obj, analysis_result);
+                        self.apply_define_messages_transformation(obj, analysis_result.items);
                     }
                     // Variable reference: defineMessages(messages)
                     // Transform the variable's object literal
@@ -125,13 +149,26 @@ impl<'a> CallExpressionVisitor<'a> {
                         let var_name = ident.sym.to_string();
                         if let Some(obj_lit) = self.var_visitor.get_object(&var_name) {
                             let mut obj = obj_lit.clone();
-                            self.apply_define_messages_transformation(&mut obj, analysis_result);
+                            self.apply_define_messages_transformation(
+                                &mut obj,
+                                analysis_result.items,
+                            );
                             first_arg.expr = Box::new(Expr::Object(obj));
                         }
                     }
                     _ => {}
                 }
             }
+        }
+
+        // Return error if there were any errors
+        if has_errors {
+            Err(format!(
+                "Found {} error(s) in defineMessages",
+                analysis_result.errors.len()
+            ))
+        } else {
+            Ok(())
         }
     }
 

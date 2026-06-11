@@ -11,15 +11,63 @@ const multiUse = {
 const withValueInMessage = {
     title: 'with a value interpolated in the message',
     fixture: 'injection/with-value-in-message.js',
+    shouldError: true,
 };
 
 const withVariableMessage = {
     title: 'with a variable as the defaultMessage',
     fixture: 'injection/with-variable-message.js',
+    shouldError: true,
+};
+
+const withTemplateVarMessage = {
+    title: 'with a template literal with variable as defaultMessage',
+    fixture: 'injection/with-template-var-message.js',
+    shouldError: true,
+};
+
+const validTemplateLiteralDefaultMessage = {
+    title: 'valid template literal in defaultMessage',
+    fixture: 'injection/valid-template-literal-defaultMessage.js',
+};
+
+const validTemplateLiteralDescription = {
+    title: 'valid template literal in description',
+    fixture: 'injection/valid-template-literal-description.js',
+};
+
+const defaultMessageWithShorthand = {
+    title: 'shorthand property in defaultMessage',
+    fixture: 'injection/defaultMessage-with-shorthand.js',
+    shouldError: true,
+};
+
+const descriptionWithTemplateExpr = {
+    title: 'template literal with expression in description',
+    fixture: 'injection/description-with-template-expr.js',
+    shouldError: true,
+};
+
+const descriptionWithTemplateVar = {
+    title: 'template literal with variable in description',
+    fixture: 'injection/description-with-template-var.js',
+    shouldError: true,
+};
+
+const descriptionWithVariable = {
+    title: 'variable in description',
+    fixture: 'injection/description-with-variable.js',
+    shouldError: true,
+};
+
+const descriptionWithShorthand = {
+    title: 'shorthand property in description',
+    fixture: 'injection/description-with-shorthand.js',
+    shouldError: true,
 };
 
 const withVariableMessageDescriptor = {
-    title: 'with a variable as the defaultMessage',
+    title: 'with a variable as message descriptor',
     fixture: 'injection/with-variable-message-descriptor.js',
 };
 
@@ -58,6 +106,14 @@ export const injectionTests = [
     multiUse,
     withValueInMessage,
     withVariableMessage,
+    withTemplateVarMessage,
+    validTemplateLiteralDefaultMessage,
+    validTemplateLiteralDescription,
+    defaultMessageWithShorthand,
+    descriptionWithTemplateExpr,
+    descriptionWithTemplateVar,
+    descriptionWithVariable,
+    descriptionWithShorthand,
     withVariableMessageDescriptor,
     withCustomProperties,
     someSupportedUseCases,

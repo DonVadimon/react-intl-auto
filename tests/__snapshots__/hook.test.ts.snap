@@ -92,36 +92,38 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: default | with a value interpolated in the message 1`] = `
+exports[`snap - hooks | CONFIGURATION: default | valid template literal in defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
     var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
+            defaultMessage: "hello world",
+            "id": "tests.__fixtures__.hook.valid-template-literal-defaultMessage.XpKPDw=="
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: default | with a variable as the defaultMessage 1`] = `
+exports[`snap - hooks | CONFIGURATION: default | valid template literal in description 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var message = 'variable message';
 var Component = function Component() {
     var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
-            defaultMessage: message
+            defaultMessage: 'hello',
+            description: "greeting message",
+            "id": "tests.__fixtures__.hook.valid-template-literal-description.7uMRaw=="
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: default | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: default | with a variable as the message descriptor 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -271,36 +273,38 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "murmur3" | with a value interpolated in the message 1`] = `
+exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "murmur3" | valid template literal in defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
     var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
+            defaultMessage: "hello world",
+            "id": "w/BHJw=="
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "murmur3" | with a variable as the defaultMessage 1`] = `
+exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "murmur3" | valid template literal in description 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var message = 'variable message';
 var Component = function Component() {
     var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
-            defaultMessage: message
+            defaultMessage: 'hello',
+            description: "greeting message",
+            "id": "aF1RFg=="
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "murmur3" | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: hashAlgorithm = "murmur3" | with a variable as the message descriptor 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -450,36 +454,38 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with a value interpolated in the message 1`] = `
+exports[`snap - hooks | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | valid template literal in defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
     var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
+            defaultMessage: "hello world",
+            "id": "tests.__fixtures__.hook.valid-template-literal-defaultMessage.XpKPDw=="
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with a variable as the defaultMessage 1`] = `
+exports[`snap - hooks | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | valid template literal in description 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var message = 'variable message';
 var Component = function Component() {
     var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
-            defaultMessage: message
+            defaultMessage: 'hello',
+            description: "greeting message",
+            "id": "tests.__fixtures__.hook.valid-template-literal-description.7uMRaw=="
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with a variable as the message descriptor 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -629,36 +635,38 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: relativeTo = "" | with a value interpolated in the message 1`] = `
+exports[`snap - hooks | CONFIGURATION: relativeTo = "" | valid template literal in defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
     var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
+            defaultMessage: "hello world",
+            "id": "tests.__fixtures__.hook.valid-template-literal-defaultMessage.XpKPDw=="
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: relativeTo = "" | with a variable as the defaultMessage 1`] = `
+exports[`snap - hooks | CONFIGURATION: relativeTo = "" | valid template literal in description 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var message = 'variable message';
 var Component = function Component() {
     var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
-            defaultMessage: message
+            defaultMessage: 'hello',
+            description: "greeting message",
+            "id": "tests.__fixtures__.hook.valid-template-literal-description.7uMRaw=="
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: relativeTo = "" | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: relativeTo = "" | with a variable as the message descriptor 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -808,36 +816,38 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: relativeTo = "../" | with a value interpolated in the message 1`] = `
+exports[`snap - hooks | CONFIGURATION: relativeTo = "../" | valid template literal in defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
     var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
+            defaultMessage: "hello world",
+            "id": "tests.__fixtures__.hook.valid-template-literal-defaultMessage.XpKPDw=="
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: relativeTo = "../" | with a variable as the defaultMessage 1`] = `
+exports[`snap - hooks | CONFIGURATION: relativeTo = "../" | valid template literal in description 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var message = 'variable message';
 var Component = function Component() {
     var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
-            defaultMessage: message
+            defaultMessage: 'hello',
+            description: "greeting message",
+            "id": "tests.__fixtures__.hook.valid-template-literal-description.7uMRaw=="
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: relativeTo = "../" | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: relativeTo = "../" | with a variable as the message descriptor 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -987,36 +997,38 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "tests" | with a value interpolated in the message 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests" | valid template literal in defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
     var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
+            defaultMessage: "hello world",
+            "id": "__fixtures__.hook.valid-template-literal-defaultMessage.XpKPDw=="
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "tests" | with a variable as the defaultMessage 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests" | valid template literal in description 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var message = 'variable message';
 var Component = function Component() {
     var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
-            defaultMessage: message
+            defaultMessage: 'hello',
+            description: "greeting message",
+            "id": "__fixtures__.hook.valid-template-literal-description.7uMRaw=="
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "tests" | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests" | with a variable as the message descriptor 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -1166,36 +1178,38 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "tests.__fixtures__" | with a value interpolated in the message 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests.__fixtures__" | valid template literal in defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
     var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
+            defaultMessage: "hello world",
+            "id": "hook.valid-template-literal-defaultMessage.XpKPDw=="
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "tests.__fixtures__" | with a variable as the defaultMessage 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests.__fixtures__" | valid template literal in description 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var message = 'variable message';
 var Component = function Component() {
     var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
-            defaultMessage: message
+            defaultMessage: 'hello',
+            description: "greeting message",
+            "id": "hook.valid-template-literal-description.7uMRaw=="
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "tests.__fixtures__" | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests.__fixtures__" | with a variable as the message descriptor 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -1345,36 +1359,38 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "tests/" | with a value interpolated in the message 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests/" | valid template literal in defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
     var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
+            defaultMessage: "hello world",
+            "id": "__fixtures__.hook.valid-template-literal-defaultMessage.XpKPDw=="
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "tests/" | with a variable as the defaultMessage 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests/" | valid template literal in description 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var message = 'variable message';
 var Component = function Component() {
     var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
-            defaultMessage: message
+            defaultMessage: 'hello',
+            description: "greeting message",
+            "id": "__fixtures__.hook.valid-template-literal-description.7uMRaw=="
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = "tests/" | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = "tests/" | with a variable as the message descriptor 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -1524,36 +1540,38 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = /__fixtures__/ | with a value interpolated in the message 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = /__fixtures__/ | valid template literal in defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
     var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
+            defaultMessage: "hello world",
+            "id": "tests.__fixtures__.hook.valid-template-literal-defaultMessage.XpKPDw=="
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = /__fixtures__/ | with a variable as the defaultMessage 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = /__fixtures__/ | valid template literal in description 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var message = 'variable message';
 var Component = function Component() {
     var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
-            defaultMessage: message
+            defaultMessage: 'hello',
+            description: "greeting message",
+            "id": "tests.__fixtures__.hook.valid-template-literal-description.7uMRaw=="
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = /__fixtures__/ | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = /__fixtures__/ | with a variable as the message descriptor 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -1703,36 +1721,38 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = true | with a value interpolated in the message 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = true | valid template literal in defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
     var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
+            defaultMessage: "hello world",
+            "id": "XpKPDw=="
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = true | with a variable as the defaultMessage 1`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = true | valid template literal in description 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var message = 'variable message';
 var Component = function Component() {
     var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
-            defaultMessage: message
+            defaultMessage: 'hello',
+            description: "greeting message",
+            "id": "7uMRaw=="
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: removePrefix = true | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: removePrefix = true | with a variable as the message descriptor 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
@@ -1882,36 +1902,38 @@ var Component = function Component() {
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: separator = "_" | with a value interpolated in the message 1`] = `
+exports[`snap - hooks | CONFIGURATION: separator = "_" | valid template literal in defaultMessage 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {
     var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
-            defaultMessage: "template string ".concat(1 + 1)
+            defaultMessage: "hello world",
+            "id": "tests___fixtures___hook_valid-template-literal-defaultMessage_XpKPDw=="
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: separator = "_" | with a variable as the defaultMessage 1`] = `
+exports[`snap - hooks | CONFIGURATION: separator = "_" | valid template literal in description 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
-var message = 'variable message';
 var Component = function Component() {
     var intl = useIntl();
     return /*#__PURE__*/ _jsx("div", {
         children: intl.formatMessage({
-            defaultMessage: message
+            defaultMessage: 'hello',
+            description: "greeting message",
+            "id": "tests___fixtures___hook_valid-template-literal-description_vPEqqA=="
         })
     });
 };
 "
 `;
 
-exports[`snap - hooks | CONFIGURATION: separator = "_" | with a variable as the defaultMessage 2`] = `
+exports[`snap - hooks | CONFIGURATION: separator = "_" | with a variable as the message descriptor 1`] = `
 "import { jsx as _jsx } from "react/jsx-runtime";
 import { useIntl } from 'react-intl';
 var Component = function Component() {

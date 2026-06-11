@@ -153,6 +153,29 @@ defineMessages({
 "
 `;
 
+exports[`snap - definition | CONFIGURATION: default | valid template literal in defaultMessage 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "tests.__fixtures__.definition.valid-template-literal-defaultMessage.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`snap - definition | CONFIGURATION: default | valid template literal in description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        defaultMessage: 'hello',
+        description: "greeting message",
+        "id": "tests.__fixtures__.definition.valid-template-literal-description.hello.7RmdNQ=="
+    }
+});
+"
+`;
+
 exports[`snap - definition | CONFIGURATION: default | when using the variable 1`] = `
 "import { defineMessages } from 'react-intl';
 var messages = {
@@ -163,14 +186,6 @@ export default defineMessages({
         "id": "tests.__fixtures__.definition.use-variable.hello",
         "defaultMessage": "hello"
     }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: default | with include value 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: "hello world ".concat(1)
 });
 "
 `;
@@ -194,6 +209,17 @@ exports[`snap - definition | CONFIGURATION: default | with other specifier 1`] =
 export default defineMessages({
     hello: {
         "id": "tests.__fixtures__.definition.with-other-specifier.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`snap - definition | CONFIGURATION: default | with template literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "tests.__fixtures__.definition.with-template-literal.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -353,6 +379,29 @@ defineMessages({
 "
 `;
 
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | valid template literal in defaultMessage 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "39f4Xg==",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | valid template literal in description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        defaultMessage: 'hello',
+        description: "greeting message",
+        "id": "/wtVaA=="
+    }
+});
+"
+`;
+
 exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | when using the variable 1`] = `
 "import { defineMessages } from 'react-intl';
 var messages = {
@@ -363,14 +412,6 @@ export default defineMessages({
         "id": "xzND0A==",
         "defaultMessage": "hello"
     }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | with include value 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: "hello world ".concat(1)
 });
 "
 `;
@@ -394,6 +435,17 @@ exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | with oth
 export default defineMessages({
     hello: {
         "id": "LkDzLg==",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`snap - definition | CONFIGURATION: hashAlgorithm = "murmur3" | with template literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "dmmemA==",
         "defaultMessage": "hello world"
     }
 });
@@ -535,20 +587,31 @@ defineMessages({
 "
 `;
 
+exports[`snap - definition | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | valid template literal in defaultMessage 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: "hello world"
+});
+"
+`;
+
+exports[`snap - definition | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | valid template literal in description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        defaultMessage: 'hello',
+        description: "greeting message"
+    }
+});
+"
+`;
+
 exports[`snap - definition | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | when using the variable 1`] = `
 "import { defineMessages } from 'react-intl';
 var messages = {
     hello: 'hello'
 };
 export default defineMessages(messages);
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with include value 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: "hello world ".concat(1)
-});
 "
 `;
 
@@ -567,6 +630,14 @@ exports[`snap - definition | CONFIGURATION: moduleSourceName = "gatsby-plugin-in
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
     hello: 'hello world'
+});
+"
+`;
+
+exports[`snap - definition | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl" | with template literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: "hello world"
 });
 "
 `;
@@ -724,6 +795,29 @@ defineMessages({
 "
 `;
 
+exports[`snap - definition | CONFIGURATION: relativeTo = "" | valid template literal in defaultMessage 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "tests.__fixtures__.definition.valid-template-literal-defaultMessage.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`snap - definition | CONFIGURATION: relativeTo = "" | valid template literal in description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        defaultMessage: 'hello',
+        description: "greeting message",
+        "id": "tests.__fixtures__.definition.valid-template-literal-description.hello.7RmdNQ=="
+    }
+});
+"
+`;
+
 exports[`snap - definition | CONFIGURATION: relativeTo = "" | when using the variable 1`] = `
 "import { defineMessages } from 'react-intl';
 var messages = {
@@ -734,14 +828,6 @@ export default defineMessages({
         "id": "tests.__fixtures__.definition.use-variable.hello",
         "defaultMessage": "hello"
     }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: relativeTo = "" | with include value 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: "hello world ".concat(1)
 });
 "
 `;
@@ -765,6 +851,17 @@ exports[`snap - definition | CONFIGURATION: relativeTo = "" | with other specifi
 export default defineMessages({
     hello: {
         "id": "tests.__fixtures__.definition.with-other-specifier.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`snap - definition | CONFIGURATION: relativeTo = "" | with template literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "tests.__fixtures__.definition.with-template-literal.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -924,6 +1021,29 @@ defineMessages({
 "
 `;
 
+exports[`snap - definition | CONFIGURATION: relativeTo = "../" | valid template literal in defaultMessage 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "tests.__fixtures__.definition.valid-template-literal-defaultMessage.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`snap - definition | CONFIGURATION: relativeTo = "../" | valid template literal in description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        defaultMessage: 'hello',
+        description: "greeting message",
+        "id": "tests.__fixtures__.definition.valid-template-literal-description.hello.7RmdNQ=="
+    }
+});
+"
+`;
+
 exports[`snap - definition | CONFIGURATION: relativeTo = "../" | when using the variable 1`] = `
 "import { defineMessages } from 'react-intl';
 var messages = {
@@ -934,14 +1054,6 @@ export default defineMessages({
         "id": "tests.__fixtures__.definition.use-variable.hello",
         "defaultMessage": "hello"
     }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: relativeTo = "../" | with include value 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: "hello world ".concat(1)
 });
 "
 `;
@@ -965,6 +1077,17 @@ exports[`snap - definition | CONFIGURATION: relativeTo = "../" | with other spec
 export default defineMessages({
     hello: {
         "id": "tests.__fixtures__.definition.with-other-specifier.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`snap - definition | CONFIGURATION: relativeTo = "../" | with template literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "tests.__fixtures__.definition.with-template-literal.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -1124,6 +1247,29 @@ defineMessages({
 "
 `;
 
+exports[`snap - definition | CONFIGURATION: removePrefix = "tests" | valid template literal in defaultMessage 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "__fixtures__.definition.valid-template-literal-defaultMessage.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`snap - definition | CONFIGURATION: removePrefix = "tests" | valid template literal in description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        defaultMessage: 'hello',
+        description: "greeting message",
+        "id": "__fixtures__.definition.valid-template-literal-description.hello.7RmdNQ=="
+    }
+});
+"
+`;
+
 exports[`snap - definition | CONFIGURATION: removePrefix = "tests" | when using the variable 1`] = `
 "import { defineMessages } from 'react-intl';
 var messages = {
@@ -1134,14 +1280,6 @@ export default defineMessages({
         "id": "__fixtures__.definition.use-variable.hello",
         "defaultMessage": "hello"
     }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: removePrefix = "tests" | with include value 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: "hello world ".concat(1)
 });
 "
 `;
@@ -1165,6 +1303,17 @@ exports[`snap - definition | CONFIGURATION: removePrefix = "tests" | with other 
 export default defineMessages({
     hello: {
         "id": "__fixtures__.definition.with-other-specifier.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`snap - definition | CONFIGURATION: removePrefix = "tests" | with template literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "__fixtures__.definition.with-template-literal.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -1324,6 +1473,29 @@ defineMessages({
 "
 `;
 
+exports[`snap - definition | CONFIGURATION: removePrefix = "tests.__fixtures__" | valid template literal in defaultMessage 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "definition.valid-template-literal-defaultMessage.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`snap - definition | CONFIGURATION: removePrefix = "tests.__fixtures__" | valid template literal in description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        defaultMessage: 'hello',
+        description: "greeting message",
+        "id": "definition.valid-template-literal-description.hello.7RmdNQ=="
+    }
+});
+"
+`;
+
 exports[`snap - definition | CONFIGURATION: removePrefix = "tests.__fixtures__" | when using the variable 1`] = `
 "import { defineMessages } from 'react-intl';
 var messages = {
@@ -1334,14 +1506,6 @@ export default defineMessages({
         "id": "definition.use-variable.hello",
         "defaultMessage": "hello"
     }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: removePrefix = "tests.__fixtures__" | with include value 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: "hello world ".concat(1)
 });
 "
 `;
@@ -1365,6 +1529,17 @@ exports[`snap - definition | CONFIGURATION: removePrefix = "tests.__fixtures__" 
 export default defineMessages({
     hello: {
         "id": "definition.with-other-specifier.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`snap - definition | CONFIGURATION: removePrefix = "tests.__fixtures__" | with template literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "definition.with-template-literal.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -1524,6 +1699,29 @@ defineMessages({
 "
 `;
 
+exports[`snap - definition | CONFIGURATION: removePrefix = "tests/" | valid template literal in defaultMessage 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "__fixtures__.definition.valid-template-literal-defaultMessage.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`snap - definition | CONFIGURATION: removePrefix = "tests/" | valid template literal in description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        defaultMessage: 'hello',
+        description: "greeting message",
+        "id": "__fixtures__.definition.valid-template-literal-description.hello.7RmdNQ=="
+    }
+});
+"
+`;
+
 exports[`snap - definition | CONFIGURATION: removePrefix = "tests/" | when using the variable 1`] = `
 "import { defineMessages } from 'react-intl';
 var messages = {
@@ -1534,14 +1732,6 @@ export default defineMessages({
         "id": "__fixtures__.definition.use-variable.hello",
         "defaultMessage": "hello"
     }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: removePrefix = "tests/" | with include value 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: "hello world ".concat(1)
 });
 "
 `;
@@ -1565,6 +1755,17 @@ exports[`snap - definition | CONFIGURATION: removePrefix = "tests/" | with other
 export default defineMessages({
     hello: {
         "id": "__fixtures__.definition.with-other-specifier.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`snap - definition | CONFIGURATION: removePrefix = "tests/" | with template literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "__fixtures__.definition.with-template-literal.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -1724,6 +1925,29 @@ defineMessages({
 "
 `;
 
+exports[`snap - definition | CONFIGURATION: removePrefix = /__fixtures__/ | valid template literal in defaultMessage 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "tests.__fixtures__.definition.valid-template-literal-defaultMessage.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`snap - definition | CONFIGURATION: removePrefix = /__fixtures__/ | valid template literal in description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        defaultMessage: 'hello',
+        description: "greeting message",
+        "id": "tests.__fixtures__.definition.valid-template-literal-description.hello.7RmdNQ=="
+    }
+});
+"
+`;
+
 exports[`snap - definition | CONFIGURATION: removePrefix = /__fixtures__/ | when using the variable 1`] = `
 "import { defineMessages } from 'react-intl';
 var messages = {
@@ -1734,14 +1958,6 @@ export default defineMessages({
         "id": "tests.__fixtures__.definition.use-variable.hello",
         "defaultMessage": "hello"
     }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: removePrefix = /__fixtures__/ | with include value 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: "hello world ".concat(1)
 });
 "
 `;
@@ -1765,6 +1981,17 @@ exports[`snap - definition | CONFIGURATION: removePrefix = /__fixtures__/ | with
 export default defineMessages({
     hello: {
         "id": "tests.__fixtures__.definition.with-other-specifier.hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`snap - definition | CONFIGURATION: removePrefix = /__fixtures__/ | with template literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "tests.__fixtures__.definition.with-template-literal.hello",
         "defaultMessage": "hello world"
     }
 });
@@ -1924,6 +2151,29 @@ defineMessages({
 "
 `;
 
+exports[`snap - definition | CONFIGURATION: removePrefix = true | valid template literal in defaultMessage 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`snap - definition | CONFIGURATION: removePrefix = true | valid template literal in description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        defaultMessage: 'hello',
+        description: "greeting message",
+        "id": "hello.7RmdNQ=="
+    }
+});
+"
+`;
+
 exports[`snap - definition | CONFIGURATION: removePrefix = true | when using the variable 1`] = `
 "import { defineMessages } from 'react-intl';
 var messages = {
@@ -1934,14 +2184,6 @@ export default defineMessages({
         "id": "hello",
         "defaultMessage": "hello"
     }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: removePrefix = true | with include value 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: "hello world ".concat(1)
 });
 "
 `;
@@ -1963,6 +2205,17 @@ hello({
 exports[`snap - definition | CONFIGURATION: removePrefix = true | with other specifier 1`] = `
 "import { defineMessages } from 'react-intl';
 export default defineMessages({
+    hello: {
+        "id": "hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`snap - definition | CONFIGURATION: removePrefix = true | with template literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
     hello: {
         "id": "hello",
         "defaultMessage": "hello world"
@@ -2124,6 +2377,29 @@ defineMessages({
 "
 `;
 
+exports[`snap - definition | CONFIGURATION: separator = "_" | valid template literal in defaultMessage 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        "id": "tests___fixtures___definition_valid-template-literal-defaultMessage_hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`snap - definition | CONFIGURATION: separator = "_" | valid template literal in description 1`] = `
+"import { defineMessages } from 'react-intl';
+export default defineMessages({
+    hello: {
+        defaultMessage: 'hello',
+        description: "greeting message",
+        "id": "tests___fixtures___definition_valid-template-literal-description_hello_7RmdNQ=="
+    }
+});
+"
+`;
+
 exports[`snap - definition | CONFIGURATION: separator = "_" | when using the variable 1`] = `
 "import { defineMessages } from 'react-intl';
 var messages = {
@@ -2134,14 +2410,6 @@ export default defineMessages({
         "id": "tests___fixtures___definition_use-variable_hello",
         "defaultMessage": "hello"
     }
-});
-"
-`;
-
-exports[`snap - definition | CONFIGURATION: separator = "_" | with include value 1`] = `
-"import { defineMessages } from 'react-intl';
-defineMessages({
-    hello: "hello world ".concat(1)
 });
 "
 `;
@@ -2165,6 +2433,17 @@ exports[`snap - definition | CONFIGURATION: separator = "_" | with other specifi
 export default defineMessages({
     hello: {
         "id": "tests___fixtures___definition_with-other-specifier_hello",
+        "defaultMessage": "hello world"
+    }
+});
+"
+`;
+
+exports[`snap - definition | CONFIGURATION: separator = "_" | with template literal 1`] = `
+"import { defineMessages } from 'react-intl';
+defineMessages({
+    hello: {
+        "id": "tests___fixtures___definition_with-template-literal_hello",
         "defaultMessage": "hello world"
     }
 });

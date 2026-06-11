@@ -2,6 +2,11 @@
 
 ---
 
+## [0.0.3](https://www.npmjs.com/package/@donvadimon/react-intl-auto/v/0.0.3) - 2026-06-09
+- Now source code parsing errors are propagated to the consumer code.
+
+---
+
 ## [0.0.2](https://www.npmjs.com/package/@donvadimon/react-intl-auto/v/0.0.2) - 2026-03-29
 - Dedup messages by id in cli.
 - Remove "base64" hashAlgorithm.

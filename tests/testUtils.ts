@@ -23,6 +23,8 @@ export type TestCase = {
     title: string;
     /** Path to fixture file relative to __fixtures__ directory (e.g., 'definition/default.js') */
     fixture: string;
+    /** If true, the test expects an error during transformation/extraction */
+    shouldError?: boolean;
 };
 
 export type TestSuite = {
@@ -313,20 +315,7 @@ export function extractIdsFromCode(code: string): string[] {
     return [...extractDefineMessagesIds(code), ...extractJsxMessagesIds(code)];
 }
 
-export const snapCases = async (suites: TestSuite[]) => {
-    for (const suite of suites) {
-        describe(`snap - ${suite.title}`, () => {
-            for (const test of suite.tests) {
-                it(test.title, async () => {
-                    const result = await runPlugin(test, suite);
-                    expect(result.code).toMatchSnapshot();
-                });
-            }
-        });
-    }
-};
-
-const CLI_CONSISTENCY_SKIP = [
+const TO_SKIP = [
     /**
      * extractIdsFromCode вытягивает айди, тк он не проверяет, что функции
      * импортнуты не из gatsby-plugin-intl, а cli не вытягивает
@@ -343,14 +332,67 @@ const CLI_CONSISTENCY_SKIP = [
         suite: /cli consistency - definition | CONFIGURATION: moduleSourceName = "gatsby-plugin-intl"/,
         tests: [/leading comment/, /Object/],
     },
+    /**
+     * shouldError: true предполагает, что транспиляция/cli выкинут ошибку
+     * при обработке сорс кода, однако если в фикстуре используется импорт
+     * из react-intl, а в конфигурации gatsby-plugin-intl - код не обработается
+     * и ошибки не будет - тест упадет тк ожидает ошибку
+     */
+    {
+        suite: /CONFIGURATION: moduleSourceName = "gatsby-plugin-intl"/,
+        tests: [
+            /with a variable as the defaultMessage/,
+            /with a value interpolated in the message/,
+            /with a template literal with variable as defaultMessage/,
+            /with variable as value/,
+            /with template literal with expressions as value/,
+            /with template literal with variable as value/,
+            /template literal with expression in description/,
+            /template literal with variable in description/,
+            /variable in description/,
+            /shorthand property in defaultMessage/,
+            /shorthand property in description/,
+        ],
+        shouldError: true,
+    },
 ] as const;
 
 const isSkipped = (suite: TestSuite, test: TestCase) => {
-    return CLI_CONSISTENCY_SKIP.some(
-        (skip) =>
-            skip.suite.test(suite.title) &&
-            skip.tests.some((regexp) => regexp.test(test.title)),
-    );
+    return TO_SKIP.some((skip) => {
+        const matchSuite = skip.suite.test(suite.title);
+        const matchTest = skip.tests.some((regexp) => regexp.test(test.title));
+        const matchShouldError =
+            'shouldError' in skip
+                ? skip.shouldError === test.shouldError
+                : true;
+
+        return matchSuite && matchTest && matchShouldError;
+    });
+};
+
+export const snapCases = async (suites: TestSuite[]) => {
+    for (const suite of suites) {
+        describe(`snap - ${suite.title}`, () => {
+            for (const test of suite.tests) {
+                if (isSkipped(suite, test)) {
+                    it.skip(test.title, () => {});
+                    continue;
+                }
+
+                if (test.shouldError) {
+                    it(test.title, async () => {
+                        await expect(runPlugin(test, suite)).rejects.toThrow();
+                    });
+                    continue;
+                }
+
+                it(test.title, async () => {
+                    const result = await runPlugin(test, suite);
+                    expect(result.code).toMatchSnapshot();
+                });
+            }
+        });
+    }
 };
 
 export const cliConsistencyCases = async (suites: TestSuite[]) => {
@@ -359,28 +401,37 @@ export const cliConsistencyCases = async (suites: TestSuite[]) => {
             for (const test of suite.tests) {
                 if (isSkipped(suite, test)) {
                     it.skip(test.title, () => {});
-                } else {
-                    it(test.title, async () => {
-                        // Run CLI and Plugin
-                        const [cliMessages, transformResult] =
-                            await Promise.all([
-                                runCli(test, suite),
-                                runPlugin(test, suite),
-                            ]);
-
-                        // Extract IDs from transformed code
-                        // unique ids. cli will dedup them itself
-                        const pluginIds = unique(
-                            extractIdsFromCode(transformResult.code),
-                        ).sort();
-
-                        // Extract IDs from cli messages
-                        const cliIds = cliMessages.map(({ id }) => id).sort();
-
-                        // Verify equality
-                        expect(pluginIds).toEqual(cliIds);
-                    });
+                    continue;
                 }
+
+                if (test.shouldError) {
+                    it(test.title, async () => {
+                        // Both CLI and Plugin should error
+                        await expect(runCli(test, suite)).rejects.toThrow();
+                        await expect(runPlugin(test, suite)).rejects.toThrow();
+                    });
+                    continue;
+                }
+
+                it(test.title, async () => {
+                    // Run CLI and Plugin
+                    const [cliMessages, transformResult] = await Promise.all([
+                        runCli(test, suite),
+                        runPlugin(test, suite),
+                    ]);
+
+                    // Extract IDs from transformed code
+                    // unique ids. cli will dedup them itself
+                    const pluginIds = unique(
+                        extractIdsFromCode(transformResult.code),
+                    ).sort();
+
+                    // Extract IDs from cli messages
+                    const cliIds = cliMessages.map(({ id }) => id).sort();
+
+                    // Verify equality
+                    expect(pluginIds).toEqual(cliIds);
+                });
             }
         });
     }

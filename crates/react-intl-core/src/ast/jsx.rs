@@ -3,7 +3,7 @@
 use swc_core::ecma::ast::*;
 
 use crate::ast::import::ImportVisitor;
-use crate::ast::utils::extract_expr_string;
+use crate::ast::utils::{validate_string_field, FieldExtractionError};
 use crate::gen::id::{generate_message_id, GenIdFromDescriptorPayload, GenIdPayload};
 use crate::types::{CoreState, TransformedMessageData, REACT_COMPONENTS};
 
@@ -33,14 +33,14 @@ pub fn is_react_intl_component(import_visitor: &ImportVisitor, name: &Ident) -> 
 /// * `state` - The core state containing filename and options
 ///
 /// # Returns
-/// Some((TransformedMessageData, bool)) if the element contains a translatable message.
+/// Result with Option<(TransformedMessageData, bool)> if the element contains a translatable message.
 /// The bool indicates whether the ID needs to be inserted (false = ID already exists, true = needs insertion).
-/// Returns None if the element can't be translated.
+/// Returns Ok(None) if the element can't be translated.
 pub fn analyze_jsx_element(
     element: &JSXElement,
     state: &CoreState,
-) -> Option<(TransformedMessageData, bool)> {
-    let (id_attr, default_message_attr, description_attr) = extract_jsx_attributes(element);
+) -> Result<Option<(TransformedMessageData, bool)>, FieldExtractionError> {
+    let (id_attr, default_message_attr, description_attr) = extract_jsx_attributes(element)?;
 
     // If there's already an ID, return it as-is without transformation
     if let Some(existing_id) = id_attr {
@@ -51,7 +51,7 @@ pub fn analyze_jsx_element(
         };
 
         // false = ID already exists, no need to insert
-        return Some((transformed, false));
+        return Ok(Some((transformed, false)));
     }
 
     // If there's no defaultMessage attribute at all or it is not statically
@@ -59,7 +59,7 @@ pub fn analyze_jsx_element(
     let default_message = if let Some(default_message) = &default_message_attr {
         default_message
     } else {
-        return None;
+        return Ok(None);
     };
 
     // generate ID based on attrs
@@ -76,15 +76,15 @@ pub fn analyze_jsx_element(
     };
 
     // true = ID needs to be inserted
-    Some((transformed, true))
+    Ok(Some((transformed, true)))
 }
 
 /// Extracts attributes from a JSX element
 ///
-/// Returns tuple of (id, defaultMessage, description)
+/// Returns Result with tuple of (id, defaultMessage, description)
 fn extract_jsx_attributes(
     element: &JSXElement,
-) -> (Option<String>, Option<String>, Option<String>) {
+) -> Result<(Option<String>, Option<String>, Option<String>), FieldExtractionError> {
     let mut id = None;
     let mut default_message = None;
     let mut description = None;
@@ -94,13 +94,13 @@ fn extract_jsx_attributes(
             if let JSXAttrName::Ident(name) = &jsx_attr.name {
                 match name.sym.as_ref() {
                     "id" => {
-                        id = extract_jsx_attr_value(jsx_attr);
+                        id = extract_jsx_attr_value(jsx_attr, "id")?;
                     }
                     "defaultMessage" => {
-                        default_message = extract_jsx_attr_value(jsx_attr);
+                        default_message = extract_jsx_attr_value(jsx_attr, "defaultMessage")?;
                     }
                     "description" => {
-                        description = extract_jsx_attr_value(jsx_attr);
+                        description = extract_jsx_attr_value(jsx_attr, "description")?;
                     }
                     _ => {}
                 }
@@ -108,18 +108,21 @@ fn extract_jsx_attributes(
         }
     }
 
-    (id, default_message, description)
+    Ok((id, default_message, description))
 }
 
-/// Extracts string value from a JSX attribute
-fn extract_jsx_attr_value(jsx_attr: &JSXAttr) -> Option<String> {
+/// Extracts string value from a JSX attribute with validation
+fn extract_jsx_attr_value(
+    jsx_attr: &JSXAttr,
+    field_name: &str,
+) -> Result<Option<String>, FieldExtractionError> {
     match &jsx_attr.value {
-        Some(JSXAttrValue::Str(str_lit)) => Some(str_lit.value.to_string_lossy().to_string()),
+        Some(JSXAttrValue::Str(str_lit)) => Ok(Some(str_lit.value.to_string_lossy().to_string())),
         Some(JSXAttrValue::JSXExprContainer(JSXExprContainer { expr, .. })) => match expr {
-            JSXExpr::Expr(expr) => extract_expr_string(expr),
-            _ => None,
+            JSXExpr::Expr(expr) => validate_string_field(expr, field_name),
+            _ => Ok(None),
         },
-        _ => None,
+        _ => Ok(None),
     }
 }
 
@@ -168,7 +171,7 @@ mod tests {
         let element = parse_jsx(code);
         let state = create_test_state();
 
-        let result = analyze_jsx_element(&element, &state);
+        let result = analyze_jsx_element(&element, &state).unwrap();
 
         assert!(result.is_some());
         let (transformed, needs_insertion) = result.unwrap();
@@ -183,7 +186,7 @@ mod tests {
         let element = parse_jsx(code);
         let state = create_test_state();
 
-        let result = analyze_jsx_element(&element, &state);
+        let result = analyze_jsx_element(&element, &state).unwrap();
 
         // Should return result with existing ID and needs_insertion=false
         assert!(result.is_some());
@@ -200,8 +203,8 @@ mod tests {
 
         let result = analyze_jsx_element(&element, &state);
 
-        // Should return None for id that is not statically evaluated
-        assert!(result.is_none());
+        // Should return error for id that is not statically evaluated
+        assert!(result.is_err());
     }
 
     #[test]
@@ -210,7 +213,7 @@ mod tests {
         let element = parse_jsx(code);
         let state = create_test_state();
 
-        let result = analyze_jsx_element(&element, &state);
+        let result = analyze_jsx_element(&element, &state).unwrap();
 
         // Should return some for attrs that wrapped in jsx expr
         assert!(result.is_some());
@@ -227,7 +230,7 @@ mod tests {
         let element = parse_jsx(code);
         let state = create_test_state();
 
-        let result = analyze_jsx_element(&element, &state);
+        let result = analyze_jsx_element(&element, &state).unwrap();
 
         // Should return some for attrs that wrapped in string literals
         assert!(result.is_some());

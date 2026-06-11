@@ -19,7 +19,7 @@ const leadingCommentWithDescriptionTest = {
 };
 
 const templateString = {
-    title: 'with include value',
+    title: 'with template literal',
     fixture: 'definition/with-template-literal.js',
 };
 
@@ -88,6 +88,46 @@ const differentModuleSource = {
     fixture: 'definition/module-source-name.js',
 };
 
+const withVariableAsValue = {
+    title: 'with variable as value',
+    fixture: 'definition/with-variable-as-value.js',
+    shouldError: true,
+};
+
+const withTemplateExprAsValue = {
+    title: 'with template literal with expressions as value',
+    fixture: 'definition/with-template-expr-as-value.js',
+    shouldError: true,
+};
+
+const withTemplateVarAsValue = {
+    title: 'with template literal with variable as value',
+    fixture: 'definition/with-template-var-as-value.js',
+    shouldError: true,
+};
+
+const validTemplateLiteralDefaultMessage = {
+    title: 'valid template literal in defaultMessage',
+    fixture: 'definition/valid-template-literal-defaultMessage.js',
+};
+
+const validTemplateLiteralDescription = {
+    title: 'valid template literal in description',
+    fixture: 'definition/valid-template-literal-description.js',
+};
+
+const descriptionWithTemplateExpr = {
+    title: 'template literal with expression in description',
+    fixture: 'definition/description-with-template-expr.js',
+    shouldError: true,
+};
+
+const descriptionWithTemplateVar = {
+    title: 'template literal with variable in description',
+    fixture: 'definition/description-with-template-var.js',
+    shouldError: true,
+};
+
 export const definitionTests = [
     defaultTest,
     multiExport,
@@ -107,4 +147,11 @@ export const definitionTests = [
     withOtherSpecifier,
     evalString,
     differentModuleSource,
+    withVariableAsValue,
+    withTemplateExprAsValue,
+    withTemplateVarAsValue,
+    validTemplateLiteralDefaultMessage,
+    validTemplateLiteralDescription,
+    descriptionWithTemplateExpr,
+    descriptionWithTemplateVar,
 ];

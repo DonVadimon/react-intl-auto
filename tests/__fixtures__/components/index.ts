@@ -26,11 +26,47 @@ const allSupportedComponents = {
 const withValueInMessage = {
     title: 'with a value interpolated in the message',
     fixture: 'components/with-value-in-message.tsx',
+    shouldError: true,
 };
 
 const withVariableMessage = {
     title: 'with a variable as the defaultMessage',
     fixture: 'components/with-variable-message.tsx',
+    shouldError: true,
+};
+
+const withTemplateVarMessage = {
+    title: 'with a template literal with variable as defaultMessage',
+    fixture: 'components/with-template-var-message.tsx',
+    shouldError: true,
+};
+
+const validTemplateLiteralDefaultMessage = {
+    title: 'valid template literal in defaultMessage',
+    fixture: 'components/valid-template-literal-defaultMessage.tsx',
+};
+
+const validTemplateLiteralDescription = {
+    title: 'valid template literal in description',
+    fixture: 'components/valid-template-literal-description.tsx',
+};
+
+const descriptionWithTemplateExpr = {
+    title: 'template literal with expression in description',
+    fixture: 'components/description-with-template-expr.tsx',
+    shouldError: true,
+};
+
+const descriptionWithTemplateVar = {
+    title: 'template literal with variable in description',
+    fixture: 'components/description-with-template-var.tsx',
+    shouldError: true,
+};
+
+const descriptionWithVariable = {
+    title: 'variable in description',
+    fixture: 'components/description-with-variable.tsx',
+    shouldError: true,
 };
 
 const importAsTest = {
@@ -71,6 +107,12 @@ export const componentsTests = [
     allSupportedComponents,
     withValueInMessage,
     withVariableMessage,
+    withTemplateVarMessage,
+    validTemplateLiteralDefaultMessage,
+    validTemplateLiteralDescription,
+    descriptionWithTemplateExpr,
+    descriptionWithTemplateVar,
+    descriptionWithVariable,
     importAsTest,
     nestedJSXTest,
     notTransformIfNotImported,

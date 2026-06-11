@@ -1,5 +1,6 @@
 use react_intl_core::ast::jsx::{analyze_jsx_element, is_react_intl_component};
 use react_intl_core::types::CoreState;
+use swc_core::common::errors::HANDLER;
 use swc_core::ecma::ast::*;
 use swc_core::ecma::visit::{VisitMut, VisitMutWith};
 
@@ -27,17 +28,25 @@ impl<'a> VisitMut for JSXVisitor<'a> {
         if let JSXElementName::Ident(name) = &element.opening.name {
             if is_react_intl_component(self.import_visitor, name) {
                 // Analyze the element to determine if ID needs to be inserted
-                if let Some((transformed, needs_insertion)) =
-                    analyze_jsx_element(element, self.state)
-                {
-                    if needs_insertion {
-                        // Find the position of defaultMessage attribute
-                        // and insert the ID attribute right before it
-                        if let Some(default_message_idx) =
-                            find_attribute_index(&element.opening, "defaultMessage")
-                        {
-                            insert_id_attribute(element, default_message_idx, &transformed.id);
+                match analyze_jsx_element(element, self.state) {
+                    Ok(Some((transformed, needs_insertion))) => {
+                        if needs_insertion {
+                            // Find the position of defaultMessage attribute
+                            // and insert the ID attribute right before it
+                            if let Some(default_message_idx) =
+                                find_attribute_index(&element.opening, "defaultMessage")
+                            {
+                                insert_id_attribute(element, default_message_idx, &transformed.id);
+                            }
                         }
+                    }
+                    Ok(None) => {
+                        // Element cannot be translated, skip
+                    }
+                    Err(e) => {
+                        HANDLER.with(|handler| {
+                            handler.err(&format!("Error processing JSX element: {}", e));
+                        });
                     }
                 }
             }

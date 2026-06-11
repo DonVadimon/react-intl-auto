@@ -53,14 +53,23 @@ fn to_extracted_message(
     }
 }
 
-/// Detects typescript syntsx in file by extension
-fn is_ts_file(filename: &PathBuf) -> bool {
-    ["ts", "mts", "tsx"]
-        .iter()
-        .any(|ext| match filename.extension() {
-            Some(file_ext) => file_ext.to_os_string().into_string().unwrap() == *ext,
-            None => false,
-        })
+fn detect_syntax(filename: &PathBuf) -> Syntax {
+    let ext = filename.extension().and_then(|e| e.to_str()).unwrap_or("");
+
+    match ext {
+        "tsx" => Syntax::Typescript(swc_core::ecma::parser::TsSyntax {
+            tsx: true,
+            ..Default::default()
+        }),
+        "ts" | "mts" => Syntax::Typescript(swc_core::ecma::parser::TsSyntax {
+            tsx: false,
+            ..Default::default()
+        }),
+        _ => Syntax::Es(swc_core::ecma::parser::EsSyntax {
+            jsx: true,
+            ..Default::default()
+        }),
+    }
 }
 
 /// Extracts messages from source code
@@ -71,23 +80,13 @@ fn is_ts_file(filename: &PathBuf) -> bool {
 /// * `options` - Core options for extraction
 ///
 /// # Returns
-/// Vector of extracted messages
+/// Result with vector of extracted messages or error string
 pub fn extract_messages(
     code: &str,
     filename: &PathBuf,
     options: &CoreOptions,
-) -> Vec<ExtractedMessage> {
-    let syntax = if is_ts_file(filename) {
-        Syntax::Typescript(swc_core::ecma::parser::TsSyntax {
-            tsx: true,
-            ..Default::default()
-        })
-    } else {
-        Syntax::Es(swc_core::ecma::parser::EsSyntax {
-            jsx: true,
-            ..Default::default()
-        })
-    };
+) -> Result<Vec<ExtractedMessage>, String> {
+    let syntax = detect_syntax(filename);
 
     // Create lexer and parser
     let input = StringInput::new(
@@ -102,8 +101,11 @@ pub fn extract_messages(
     let module = match parser.parse_module() {
         Ok(module) => module,
         Err(err) => {
-            eprintln!("Failed to parse {}: {:#?}", filename.to_string_lossy(), err);
-            return vec![];
+            return Err(format!(
+                "Failed to parse {}: {:#?}",
+                filename.to_string_lossy(),
+                err
+            ));
         }
     };
 
@@ -112,7 +114,7 @@ pub fn extract_messages(
 
     module.visit_with(&mut visitor);
 
-    visitor.into_messages()
+    visitor.into_result()
 }
 
 /// Visitor for extracting messages from AST
@@ -122,6 +124,7 @@ pub struct MessageExtractorVisitor {
     state: CoreState,
     filename: PathBuf,
     messages: Vec<TransformedMessageData>,
+    errors: Vec<String>,
 }
 
 impl MessageExtractorVisitor {
@@ -132,11 +135,17 @@ impl MessageExtractorVisitor {
             state,
             filename,
             messages: Vec::new(),
+            errors: Vec::new(),
         }
     }
 
-    pub fn into_messages(self) -> Vec<ExtractedMessage> {
-        self.messages
+    pub fn into_result(self) -> Result<Vec<ExtractedMessage>, String> {
+        if !self.errors.is_empty() {
+            return Err(self.errors.join("\n"));
+        }
+
+        Ok(self
+            .messages
             .into_iter()
             .map(|transformed| {
                 to_extracted_message(
@@ -145,7 +154,7 @@ impl MessageExtractorVisitor {
                     self.state.opts.extract_source_location,
                 )
             })
-            .collect()
+            .collect())
     }
 }
 
@@ -164,8 +173,13 @@ impl Visit for MessageExtractorVisitor {
         module.visit_with(&mut jsx_visitor);
         module.visit_with(&mut call_visitor);
 
-        self.messages.append(&mut jsx_visitor.into_messages());
-        self.messages.append(&mut call_visitor.into_messages());
+        let (jsx_messages, jsx_errors) = jsx_visitor.into_result();
+        let (call_messages, call_errors) = call_visitor.into_result();
+
+        self.messages.extend(jsx_messages);
+        self.messages.extend(call_messages);
+        self.errors.extend(jsx_errors);
+        self.errors.extend(call_errors);
     }
 }
 
@@ -174,13 +188,48 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_is_ts_file() {
-        assert!(is_ts_file(&PathBuf::from("src/components/App.tsx")));
-        assert!(is_ts_file(&PathBuf::from("src/components/utils.ts")));
-        assert!(is_ts_file(&PathBuf::from("src/components/utils.mts")));
-        assert!(!is_ts_file(&PathBuf::from("src/components/utils.js")));
-        assert!(!is_ts_file(&PathBuf::from("src/components/App.css")));
-        assert!(!is_ts_file(&PathBuf::from(".eslintrc")));
+    fn test_detect_syntax_tsx() {
+        let syntax = detect_syntax(&PathBuf::from("src/components/App.tsx"));
+        match syntax {
+            Syntax::Typescript(ts) => assert!(ts.tsx),
+            _ => panic!("Expected TypeScript syntax for .tsx file"),
+        }
+    }
+
+    #[test]
+    fn test_detect_syntax_ts() {
+        let syntax = detect_syntax(&PathBuf::from("src/components/utils.ts"));
+        match syntax {
+            Syntax::Typescript(ts) => assert!(!ts.tsx),
+            _ => panic!("Expected TypeScript syntax for .ts file"),
+        }
+    }
+
+    #[test]
+    fn test_detect_syntax_mts() {
+        let syntax = detect_syntax(&PathBuf::from("src/components/utils.mts"));
+        match syntax {
+            Syntax::Typescript(ts) => assert!(!ts.tsx),
+            _ => panic!("Expected TypeScript syntax for .mts file"),
+        }
+    }
+
+    #[test]
+    fn test_detect_syntax_jsx() {
+        let syntax = detect_syntax(&PathBuf::from("src/components/App.jsx"));
+        match syntax {
+            Syntax::Es(es) => assert!(es.jsx),
+            _ => panic!("Expected ES syntax for .jsx file"),
+        }
+    }
+
+    #[test]
+    fn test_detect_syntax_js() {
+        let syntax = detect_syntax(&PathBuf::from("src/components/utils.js"));
+        match syntax {
+            Syntax::Es(es) => assert!(es.jsx),
+            _ => panic!("Expected ES syntax for .js file"),
+        }
     }
 
     #[test]

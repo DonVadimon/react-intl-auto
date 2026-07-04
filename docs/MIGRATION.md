@@ -4,7 +4,7 @@
 
 This guide helps you migrate from `babel-plugin-react-intl-auto` or upgrade from earlier versions of `@donvadimon/react-intl-auto`.
 
-## Breaking Changes in v1.0.0
+## Breaking Changes in v0.0.2+
 
 ### Removed Options
 
@@ -42,7 +42,7 @@ This guide helps you migrate from `babel-plugin-react-intl-auto` or upgrade from
 }
 ```
 
-**Migration:** Remove `hashAlgorithm: 'base64'` and use the default `murmur3` algorithm. The murmur3 algorithm now produces base64-encoded output by default, which is compatible with the previous base64 behavior but uses a proper hash function.
+**Migration:** Remove `hashAlgorithm: 'base64'`. The `hashAlgorithm` option still exists but only accepts `'murmur3'`. The murmur3 algorithm now produces base64-encoded output (e.g., `aG1FCg==`), which is a shorter string compared to the previous decimal format.
 
 #### 2. `filebase` Option
 
@@ -76,7 +76,7 @@ This guide helps you migrate from `babel-plugin-react-intl-auto` or upgrade from
 }
 ```
 
-**Migration:** Use `removePrefix` instead. Set to `true` for automatic prefix removal, or provide a specific string prefix to remove.
+**Migration:** Use `removePrefix` instead. Set to `true` to strip the entire path prefix (returning only the message key), or provide a specific string prefix to remove.
 
 #### 3. `useKey` Option
 
@@ -168,7 +168,7 @@ module.exports = {
 
 ```bash
 # Extract messages with the new CLI
-npx react-intl-auto extract 'src/**/*.{ts,tsx}' --output messages.json
+npx @donvadimon/react-intl-auto 'src/**/*.{ts,tsx}' --output messages.json
 ```
 
 ### Programmatic API Migration
@@ -199,13 +199,13 @@ console.log(result.messages);
 
 The murmur3 hash algorithm now produces base64-encoded output instead of decimal strings:
 
-**Before:**
+**Before (babel-plugin-react-intl-auto):**
 
 ```
 1311768467284833366  // Decimal string
 ```
 
-**After:**
+**After (@donvadimon/react-intl-auto):**
 
 ```
 aG1FCg==  // Base64 encoded
@@ -213,9 +213,36 @@ aG1FCg==  // Base64 encoded
 
 This change ensures compatibility with systems expecting shorter, URL-safe IDs while maintaining the statistical properties of murmur3.
 
+### ID Generation Logic
+
+The ID generation differs between `defineMessages` and `FormattedMessage`/`formatMessage`:
+
+- **defineMessages**: ID = `<filepath>.<key>` (uses the object key name)
+- **FormattedMessage / formatMessage**: ID = `<filepath>.<murmur3(defaultMessage)>` (hash of the default message)
+
+This matches the behavior of babel-plugin-react-intl-auto.
+
+## Path Resolution Changes
+
+### Auto-detected Project Root
+
+If `relativeTo` is not specified, the plugin auto-detects the project root by searching upward for:
+1. `package-lock.json`
+2. `package.json`
+3. `yarn.lock`
+4. `.git` directory
+
+This is different from babel-plugin-react-intl-auto which defaulted to `process.cwd()`.
+
+### `removePrefix` Behavior
+
+- `removePrefix: true` - Strips the entire path prefix, returning only the message key/descriptor
+- `removePrefix: "src/"` - Removes the specific string prefix from the path
+- `removePrefix: "^src/components/"` - Strings containing regex metacharacters (`.*`, `.+`, `[`, `(`) are treated as regex patterns
+
 ## CLI Deduplication
 
-The CLI now automatically deduplicates messages by ID. If you have duplicate message definitions across multiple files, only the first occurrence will be included in the output.
+The CLI automatically deduplicates messages by ID. If you have duplicate message definitions across multiple files, only the first occurrence will be included in the output.
 
 **Example:**
 
@@ -231,18 +258,18 @@ const msg2 = defineMessages({ hello: 'World' });
 
 ## Option Mapping Reference
 
-| babel-plugin-react-intl-auto | @donvadimon/react-intl-auto | Notes                                |
-| ---------------------------- | --------------------------- | ------------------------------------ |
-| `removePrefix`               | `removePrefix`              | Same behavior                        |
-| `moduleSourceName`           | `moduleSourceName`          | Same behavior                        |
-| `separator`                  | `separator`                 | Same behavior                        |
-| `relativeTo`                 | `relativeTo`                | Same behavior                        |
-| `hashId`                     | `hashId`                    | Same behavior                        |
-| `hashAlgorithm`              | `hashAlgorithm`             | Only 'murmur3' supported             |
-| `filebase`                   | -                           | Removed, use `removePrefix`          |
-| `useKey`                     | -                           | Removed, automatic in defineMessages |
-| -                            | `extractSourceLocation`     | New CLI option                       |
-| -                            | `outputMode`                | New CLI option                       |
+| babel-plugin-react-intl-auto | @donvadimon/react-intl-auto  | Notes                                            |
+| ---------------------------- | ---------------------------- | ------------------------------------------------ |
+| `removePrefix`               | `removePrefix`               | Same behavior, also supports regex strings       |
+| `moduleSourceName`           | `moduleSourceName`           | Same behavior                                    |
+| `separator`                  | `separator`                  | Same behavior                                    |
+| `relativeTo`                 | `relativeTo`                 | Default changed: auto-detected project root      |
+| `hashId`                     | `hashId`                     | Same behavior                                    |
+| `hashAlgorithm`              | `hashAlgorithm`              | Only `'murmur3'` supported (was also `'base64'`) |
+| `filebase`                   | -                            | Removed, use `removePrefix: true`                |
+| `useKey`                     | -                            | Removed, automatic in defineMessages              |
+| -                            | `extractSourceLocation`      | New CLI/JS API option                            |
+| -                            | `outputMode`                 | New CLI option (`aggregated`/`perfile`)          |
 
 ## Troubleshooting
 
@@ -250,9 +277,10 @@ const msg2 = defineMessages({ hello: 'World' });
 
 If you notice different IDs being generated after migration:
 
-1. **Check path handling:** Ensure `removePrefix` and `relativeTo` options match your previous configuration
-2. **Check separator:** Verify `separator` option matches
-3. **Hash format:** Remember that murmur3 now produces base64 output
+1. **Check path handling:** The new plugin auto-detects project root instead of defaulting to `process.cwd()`. Set `relativeTo` explicitly if needed.
+2. **Check separator:** Verify `separator` option matches your previous configuration
+3. **Hash format:** Remember that murmur3 now produces base64 output instead of decimal
+4. **Check removePrefix:** Ensure `removePrefix` configuration matches. The `true` value now strips the entire path prefix.
 
 ### Missing Messages
 
@@ -261,14 +289,23 @@ If some messages are missing after extraction:
 1. **Check module source name:** Ensure `moduleSourceName` matches your import statements
 2. **Check file patterns:** Verify glob patterns include all relevant files
 3. **Deduplication:** Remember that duplicate IDs are automatically removed
+4. **Import detection:** The plugin only processes components/functions imported from `moduleSourceName`
 
 ### TypeScript Errors
 
 If you encounter TypeScript errors:
 
-1. Ensure `@swc/core` is installed as a peer dependency
+1. Ensure `@swc/core` is installed as a peer dependency (`^1.15.0`)
 2. Check that your `tsconfig.json` is compatible with SWC
 3. Verify the plugin path is correct: `@donvadimon/react-intl-auto/swc-plugin`
+
+### CLI Not Found
+
+If `npx @donvadimon/react-intl-auto` doesn't work:
+
+1. Ensure `@donvadimon/react-intl-auto` is installed
+2. Try `node node_modules/@donvadimon/react-intl-auto/cli.js 'src/**/*.ts'`
+3. Or add an npm script: `"intl:extract": "@donvadimon/react-intl-auto 'src/**/*.{ts,tsx}'"`
 
 ## Getting Help
 

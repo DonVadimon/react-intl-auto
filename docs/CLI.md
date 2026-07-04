@@ -15,18 +15,10 @@ npm install -D @donvadimon/react-intl-auto
 ## Usage
 
 ```bash
-npx react-intl-auto extract [OPTIONS] <PATTERNS...>
+npx @donvadimon/react-intl-auto [OPTIONS] <PATTERNS...>
 ```
 
-## Commands
-
-### `extract`
-
-Extract messages from source files matching the given glob patterns.
-
-```bash
-npx react-intl-auto extract 'src/**/*.{ts,tsx}'
-```
+The CLI is invoked via the package name. After installing the package, it's available as `npx @donvadimon/react-intl-auto`.
 
 ## Options
 
@@ -40,13 +32,13 @@ Glob patterns for source files to extract from.
 
 ```bash
 # Single pattern
-npx react-intl-auto extract 'src/**/*.ts'
+npx @donvadimon/react-intl-auto 'src/**/*.ts'
 
 # Multiple patterns
-npx react-intl-auto extract 'src/**/*.ts' 'lib/**/*.tsx'
+npx @donvadimon/react-intl-auto 'src/**/*.ts' 'lib/**/*.tsx'
 
 # Specific directories
-npx react-intl-auto extract 'src/components/**/*.{ts,tsx}'
+npx @donvadimon/react-intl-auto 'src/components/**/*.{ts,tsx}'
 ```
 
 ### Optional Arguments
@@ -61,13 +53,13 @@ Glob patterns to ignore. Can be specified multiple times.
 
 ```bash
 # Ignore test files
-npx react-intl-auto extract 'src/**/*.ts' --ignore '**/*.test.ts' --ignore '**/*.spec.ts'
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --ignore '**/*.test.ts' --ignore '**/*.spec.ts'
 
 # Ignore specific directories
-npx react-intl-auto extract 'src/**/*.ts' --ignore '**/generated/**' --ignore '**/legacy/**'
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --ignore '**/generated/**' --ignore '**/legacy/**'
 ```
 
-#### `--output <PATH>`
+#### `-o, --output <PATH>`
 
 Output file or directory path.
 
@@ -80,10 +72,10 @@ Output file or directory path.
 
 ```bash
 # Aggregated mode with custom file
-npx react-intl-auto extract 'src/**/*.ts' --output ./locales/en.json
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --output ./locales/en.json
 
 # Perfile mode with custom directory
-npx react-intl-auto extract 'src/**/*.ts' --output-mode=perfile --output ./translations/
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --output-mode=perfile --output ./translations/
 ```
 
 #### `--output-mode <MODE>`
@@ -101,10 +93,10 @@ Output mode for extracted messages.
 
 ```bash
 # Aggregated mode (single file)
-npx react-intl-auto extract 'src/**/*.ts' --output-mode=aggregated --output messages.json
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --output-mode=aggregated --output messages.json
 
 # Perfile mode (directory with multiple files)
-npx react-intl-auto extract 'src/**/*.ts' --output-mode=perfile --output locales/
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --output-mode=perfile --output locales/
 ```
 
 **Output structure:**
@@ -144,7 +136,7 @@ Include source file path in the extracted message data.
 **Example:**
 
 ```bash
-npx react-intl-auto extract 'src/**/*.ts' --extract-source-location
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --extract-source-location
 ```
 
 **Output:**
@@ -165,21 +157,22 @@ Remove prefix from file path when generating IDs.
 
 **Values:**
 
-- `true` - Remove common prefix automatically
-- `false` - Don't remove prefix (default behavior)
-- `<string>` - Remove specific prefix string
+- `true` - Strip the entire path prefix (return only the message key/descriptor)
+- `false` - Don't remove prefix
+- `<string>` - Remove specific prefix string (e.g., `src/`)
+- `<regex-pattern>` - String containing regex metacharacters (`.*`, `.+`, `[`, `(`) is treated as regex
 
 **Examples:**
 
 ```bash
-# Remove specific prefix
-npx react-intl-auto extract 'src/**/*.ts' --remove-prefix='src/'
+# Remove specific prefix string
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --remove-prefix='src/'
 
-# Remove prefix automatically
-npx react-intl-auto extract 'src/**/*.ts' --remove-prefix=true
+# Strip entire path prefix
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --remove-prefix=true
 
 # Use regex pattern
-npx react-intl-auto extract 'src/**/*.ts' --remove-prefix='^src/components/'
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --remove-prefix='^src/components/'
 ```
 
 #### `--module-source-name <NAME>`
@@ -192,10 +185,10 @@ Module source name for detecting react-intl imports.
 
 ```bash
 # For gatsby-plugin-intl
-npx react-intl-auto extract 'src/**/*.ts' --module-source-name='gatsby-plugin-intl'
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --module-source-name='gatsby-plugin-intl'
 
 # For custom wrapper
-npx react-intl-auto extract 'src/**/*.ts' --module-source-name='@company/react-intl'
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --module-source-name='@company/react-intl'
 ```
 
 #### `--separator <CHAR>`
@@ -208,10 +201,10 @@ Separator used in generated message IDs.
 
 ```bash
 # Use underscore as separator
-npx react-intl-auto extract 'src/**/*.ts' --separator='_'
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --separator='_'
 
 # Use slash
-npx react-intl-auto extract 'src/**/*.ts' --separator='/'
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --separator='/'
 ```
 
 **ID Examples:**
@@ -222,18 +215,18 @@ npx react-intl-auto extract 'src/**/*.ts' --separator='/'
 
 #### `--relative-to <PATH>`
 
-Base path for relative path calculation in ID generation.
+Base path for relative path calculation in ID generation. If not specified, the project root is auto-detected by searching for `package.json`, `yarn.lock`, or `.git` directory.
 
-**Default:** `process.cwd()`
+**Default:** auto-detected project root
 
 **Example:**
 
 ```bash
 # Calculate paths relative to project root
-npx react-intl-auto extract 'src/**/*.ts' --relative-to='./'
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --relative-to='.'
 
 # Use absolute path
-npx react-intl-auto extract 'src/**/*.ts' --relative-to='/home/user/project'
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --relative-to='/home/user/project'
 ```
 
 #### `--hash-id`
@@ -245,7 +238,7 @@ Apply murmur3 hash to generated message IDs.
 **Example:**
 
 ```bash
-npx react-intl-auto extract 'src/**/*.ts' --hash-id
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --hash-id
 ```
 
 **Output:**
@@ -259,37 +252,51 @@ npx react-intl-auto extract 'src/**/*.ts' --hash-id
 ]
 ```
 
+#### `--hash-algorithm <ALGORITHM>`
+
+Hash algorithm for ID generation.
+
+**Default:** `murmur3`
+
+**Only `murmur3` is supported.** This option exists for API compatibility with babel-plugin-react-intl-auto.
+
+**Example:**
+
+```bash
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --hash-id --hash-algorithm=murmur3
+```
+
 ## Complete Examples
 
 ### Basic extraction
 
 ```bash
 # Extract all TypeScript files to messages.json
-npx react-intl-auto extract 'src/**/*.{ts,tsx}'
+npx @donvadimon/react-intl-auto 'src/**/*.{ts,tsx}'
 ```
 
 ### With custom output
 
 ```bash
 # Extract to specific file
-npx react-intl-auto extract 'src/**/*.ts' --output ./locales/en.json
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --output ./locales/en.json
 
 # Extract to directory (per file mode)
-npx react-intl-auto extract 'src/**/*.ts' --output-mode=perfile --output ./translations/
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --output-mode=perfile --output ./translations/
 ```
 
 ### With source locations
 
 ```bash
 # Include file paths in output
-npx react-intl-auto extract 'src/**/*.ts' --extract-source-location --output messages.json
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --extract-source-location --output messages.json
 ```
 
 ### With path prefix removal
 
 ```bash
 # Remove 'src/' prefix from IDs
-npx react-intl-auto extract 'src/**/*.ts' --remove-prefix='src/'
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --remove-prefix='src/'
 
 # This changes ID from:
 #   src.components.App.hello
@@ -301,7 +308,7 @@ npx react-intl-auto extract 'src/**/*.ts' --remove-prefix='src/'
 
 ```bash
 # Use underscore separator
-npx react-intl-auto extract 'src/**/*.ts' --separator='_'
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --separator='_'
 
 # This changes ID from:
 #   components.App.hello
@@ -313,13 +320,13 @@ npx react-intl-auto extract 'src/**/*.ts' --separator='_'
 
 ```bash
 # Hash all IDs for shorter names
-npx react-intl-auto extract 'src/**/*.ts' --hash-id --output hashed-messages.json
+npx @donvadimon/react-intl-auto 'src/**/*.ts' --hash-id --output hashed-messages.json
 ```
 
 ### Complex example
 
 ```bash
-npx react-intl-auto extract \
+npx @donvadimon/react-intl-auto \
   'src/**/*.{ts,tsx}' \
   'lib/**/*.ts' \
   --ignore '**/*.test.ts' \
@@ -351,9 +358,10 @@ The CLI automatically detects and processes the following file types:
 
 ## Notes
 
-- Duplicate message IDs within the same file are automatically deduplicated
+- Duplicate message IDs are automatically deduplicated (first occurrence wins)
 - The CLI uses the same ID generation logic as the SWC plugin
 - Messages are extracted from:
     - `FormattedMessage` and `FormattedHTMLMessage` components
     - `defineMessages()` calls
-    - `intl.formatMessage()` calls
+    - `intl.formatMessage()` calls (via `injectIntl`)
+    - Direct `formatMessage()` calls (when imported from react-intl)

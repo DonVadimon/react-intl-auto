@@ -17,6 +17,7 @@ const {
     extractSync,
     extract,
     parseFile,
+    runCli,
 } = require('@donvadimon/react-intl-auto/extract');
 ```
 
@@ -31,9 +32,9 @@ Synchronously extracts messages from files matching the given glob patterns.
 | Parameter  | Type             | Required | Description                             |
 | ---------- | ---------------- | -------- | --------------------------------------- |
 | `patterns` | `string[]`       | Yes      | Array of glob patterns for source files |
-| `options`  | `ExtractOptions` | No       | Extraction options                      |
+| `options`  | `JsExtractOptions` | No     | Extraction options                      |
 
-**Returns:** `ExtractResult`
+**Returns:** `JsExtractResult`
 
 **Example:**
 
@@ -64,9 +65,9 @@ Asynchronously extracts messages from files matching the given glob patterns.
 | Parameter  | Type             | Required | Description                             |
 | ---------- | ---------------- | -------- | --------------------------------------- |
 | `patterns` | `string[]`       | Yes      | Array of glob patterns for source files |
-| `options`  | `ExtractOptions` | No       | Extraction options                      |
+| `options`  | `JsExtractOptions` | No     | Extraction options                      |
 
-**Returns:** `Promise<ExtractResult>`
+**Returns:** `Promise<JsExtractResult>`
 
 **Example:**
 
@@ -98,9 +99,9 @@ Parses a single file and extracts messages from it.
 | Parameter  | Type             | Required | Description             |
 | ---------- | ---------------- | -------- | ----------------------- |
 | `filePath` | `string`         | Yes      | Path to the source file |
-| `options`  | `ExtractOptions` | No       | Extraction options      |
+| `options`  | `JsExtractOptions` | No     | Extraction options      |
 
-**Returns:** `ExtractedMessage[]`
+**Returns:** `JsExtractedMessage[]`
 
 **Example:**
 
@@ -121,16 +122,45 @@ messages.forEach((msg) => {
 });
 ```
 
+### `runCli(args)`
+
+Run the CLI programmatically from JavaScript. Returns exit code.
+
+**Parameters:**
+
+| Parameter | Type       | Required | Description                              |
+| --------- | ---------- | -------- | ---------------------------------------- |
+| `args`    | `string[]` | Yes      | CLI arguments (first element is program name) |
+
+**Returns:** `number` (0 for success, 1 for error)
+
+**Example:**
+
+```javascript
+const { runCli } = require('@donvadimon/react-intl-auto/extract');
+
+const exitCode = runCli([
+    'node',                  // program name (required by clap)
+    'src/**/*.ts',           // pattern
+    '--output', 'messages.json',
+    '--remove-prefix', 'src/',
+]);
+```
+
 ## Types
 
-### `ExtractOptions`
+### `JsExtractOptions`
 
 Options for message extraction.
 
 ```typescript
-interface ExtractOptions {
-    /** Remove prefix from file path when generating IDs */
-    removePrefix?: boolean | string | RegExp;
+interface JsExtractOptions {
+    /** Remove prefix from file path when generating IDs.
+     *  - "true" = strip entire path prefix
+     *  - "false" = don't remove prefix
+     *  - "src/" = remove specific prefix string
+     *  - regex pattern string (e.g., "^src/components/") */
+    removePrefix?: string;
 
     /** Module name to detect imports from (default: 'react-intl') */
     moduleSourceName?: string;
@@ -138,47 +168,49 @@ interface ExtractOptions {
     /** Separator used in generated IDs (default: '.') */
     separator?: string;
 
-    /** Base path for relative file paths */
+    /** Base path for relative file paths (default: auto-detected project root) */
     relativeTo?: string;
 
     /** Apply murmur3 hash to generated IDs (default: false) */
     hashId?: boolean;
 
     /** Hash algorithm (only 'murmur3' is supported, default: 'murmur3') */
-    hashAlgorithm?: 'murmur3';
+    hashAlgorithm?: string;
 
     /** Include source file path in output (default: false) */
     extractSourceLocation?: boolean;
 
     /** Output mode: 'aggregated' or 'perfile' (default: 'aggregated') */
-    outputMode?: 'aggregated' | 'perfile';
+    outputMode?: string;
 }
 ```
 
-### `ExtractResult`
+> **Note:** Unlike the SWC plugin which accepts `boolean` for `removePrefix`, the JS API only accepts `string` values. Use `"true"` or `"false"` as strings to achieve the same effect.
+
+### `JsExtractResult`
 
 Result of extraction operation.
 
 ```typescript
-interface ExtractResult {
+interface JsExtractResult {
     /** Array of extracted messages */
-    messages: ExtractedMessage[];
+    messages: JsExtractedMessage[];
 
     /** Number of files processed */
     filesProcessed: number;
 }
 ```
 
-### `ExtractedMessage`
+### `JsExtractedMessage`
 
 Extracted message structure.
 
 ```typescript
-interface ExtractedMessage {
+interface JsExtractedMessage {
     /** Message ID */
     id: string;
 
-    /** Default message text */
+    /** Default message text (always present) */
     defaultMessage: string;
 
     /** Optional description */
@@ -195,11 +227,11 @@ interface ExtractedMessage {
 
 Controls prefix removal from file paths when generating IDs.
 
-**Values:**
+**Values (as strings):**
 
-- `true` - Automatically detect and remove common prefix
-- `false` or `undefined` - Don't remove prefix
-- `string` - Remove specific prefix string
+- `"true"` - Strip the entire path prefix (return only the message key/descriptor)
+- `"false"` - Don't remove prefix
+- `<prefix-string>` - Remove specific prefix string
 
 **Examples:**
 
@@ -211,14 +243,15 @@ extractSync(['src/**/*.ts'], {
 // File: src/components/App.tsx
 // ID without prefix: components.App.hello
 
-// Auto-detect prefix
+// Strip entire path prefix
 extractSync(['src/**/*.ts'], {
-    removePrefix: true,
+    removePrefix: 'true',
 });
+// ID: hello
 
 // No prefix removal
 extractSync(['src/**/*.ts'], {
-    removePrefix: false,
+    removePrefix: 'false',
 });
 // ID: src.components.App.hello
 ```
@@ -287,6 +320,12 @@ const result = extractSync(['src/**/*.ts'], {
 // Original ID: components.App.hello
 // Hashed ID: aG1FCg==
 ```
+
+### `hashAlgorithm`
+
+Hash algorithm to use. Only `'murmur3'` is supported. This option exists for API compatibility with babel-plugin-react-intl-auto.
+
+**Default:** `'murmur3'`
 
 ### `extractSourceLocation`
 
@@ -419,7 +458,7 @@ The API may throw errors in the following cases:
 
 - Invalid glob patterns
 - File not found
-- Parse errors in source files
+- Parse errors in source files (propagated from SWC parser)
 - Permission errors
 
 **Example with error handling:**
@@ -443,4 +482,5 @@ try {
 - Messages are extracted from:
     - `FormattedMessage` and `FormattedHTMLMessage` components
     - `defineMessages()` calls
-    - `intl.formatMessage()` calls
+    - `intl.formatMessage()` calls (via `injectIntl`)
+    - Direct `formatMessage()` calls (when imported from react-intl)

@@ -18,7 +18,7 @@ Automatically adds `id` attributes to:
 
 - **JSX Elements**: `FormattedMessage` and `FormattedHTMLMessage` components
 - **defineMessages**: Object literal messages
-- **formatMessage**: Function calls
+- **formatMessage**: Function calls (including `intl.formatMessage` via `injectIntl`)
 
 ## Documentation
 
@@ -74,13 +74,21 @@ const result = await transform(code, {
 
 **Plugin Options:**
 
-| Option             | Type                          | Default         | Description                                      |
-| ------------------ | ----------------------------- | --------------- | ------------------------------------------------ |
-| `removePrefix`     | `boolean \| string \| RegExp` | `false`         | Remove prefix from file path when generating IDs |
-| `moduleSourceName` | `string`                      | `'react-intl'`  | Module name to detect imports from               |
-| `separator`        | `string`                      | `'.'`           | Separator used in generated IDs                  |
-| `relativeTo`       | `string`                      | `process.cwd()` | Base path for relative file paths                |
-| `hashId`           | `boolean`                     | `false`         | Apply murmur3 hash to generated IDs              |
+| Option             | Type                  | Default                           | Description                                                                 |
+| ------------------ | --------------------- | --------------------------------- | --------------------------------------------------------------------------- |
+| `removePrefix`     | `boolean \| string`   | `undefined`                       | Remove prefix from file path when generating IDs (see below for regex)     |
+| `moduleSourceName` | `string`              | `'react-intl'`                    | Module name to detect imports from                                          |
+| `separator`        | `string`              | `'.'`                             | Separator used in generated IDs                                             |
+| `relativeTo`       | `string`              | auto-detected project root        | Base path for relative file paths                                           |
+| `hashId`           | `boolean`             | `false`                           | Apply murmur3 hash to generated IDs                                        |
+| `hashAlgorithm`    | `string`              | `'murmur3'`                       | Hash algorithm (only `'murmur3'` is supported)                              |
+
+**`removePrefix` values:**
+
+- `undefined` / not set - use full file path relative to project root
+- `true` - strip the entire path prefix, return only the message key/descriptor
+- `"src/"` - remove a specific prefix string
+- `"^src/components/"` - string containing regex patterns (`.*`, `.+`, `[`, `(`) is treated as regex
 
 ### 2. CLI Tool
 
@@ -88,13 +96,13 @@ Extract messages from your source files:
 
 ```bash
 # Extract to single file
-npx react-intl-auto extract 'src/**/*.{ts,tsx}' --output-mode=aggregated --output=./messages.json
+npx @donvadimon/react-intl-auto 'src/**/*.{ts,tsx}' --output-mode=aggregated --output=./messages.json
 
 # Extract to separate files
-npx react-intl-auto extract 'src/**/*.{ts,tsx}' --output-mode=perfile --output=./locales
+npx @donvadimon/react-intl-auto 'src/**/*.{ts,tsx}' --output-mode=perfile --output=./locales
 
 # With options
-npx react-intl-auto extract 'src/**/*.ts' \
+npx @donvadimon/react-intl-auto 'src/**/*.ts' \
   --remove-prefix='src/' \
   --separator='.' \
   --extract-source-location
@@ -106,14 +114,15 @@ npx react-intl-auto extract 'src/**/*.ts' \
 | --------------------------- | --------------------------------------------------------------------- |
 | `patterns`                  | Glob patterns for source files (e.g., `'src/**/*.{ts,tsx}'`)          |
 | `--ignore`                  | Glob patterns to ignore (default: `**/node_modules/**`, `**/.git/**`) |
-| `--output`                  | Output file or directory path                                         |
+| `-o, --output`              | Output file or directory path                                         |
 | `--output-mode`             | `aggregated` (single file) or `perfile` (separate files)              |
 | `--extract-source-location` | Include source file path in output                                    |
-| `--remove-prefix`           | Remove prefix from path (boolean, string, or regex)                   |
+| `--remove-prefix`           | Remove prefix from path (`true`, `false`, or string/regex pattern)    |
 | `--module-source-name`      | Module name for react-intl imports (default: `react-intl`)            |
 | `--separator`               | Separator for ID generation (default: `.`)                            |
 | `--relative-to`             | Base path for relative path calculation                               |
 | `--hash-id`                 | Hash message IDs using murmur3                                        |
+| `--hash-algorithm`          | Hash algorithm (only `murmur3` is supported, default: `murmur3`)      |
 
 See [CLI Documentation](docs/CLI.md) for detailed CLI documentation.
 
@@ -124,6 +133,7 @@ const {
     extractSync,
     extract,
     parseFile,
+    runCli,
 } = require('@donvadimon/react-intl-auto/extract');
 
 // Extract from multiple files (sync)
@@ -145,6 +155,9 @@ const result = await extract(['src/**/*.ts'], {
 const messages = parseFile('src/components/App.tsx', {
     removePrefix: 'src/',
 });
+
+// Run CLI programmatically
+const exitCode = runCli(['node', 'src/**/*.ts', '--output', 'messages.json']);
 ```
 
 See [JS API Documentation](docs/JS_API.md) for detailed JS API documentation.
@@ -165,7 +178,7 @@ import { FormattedMessage } from 'react-intl';
 
 ```jsx
 <FormattedMessage
-    id="components.App.Hello World"
+    id="components.App.aG1FCg=="
     defaultMessage="Hello World"
 />
 ```
@@ -195,24 +208,58 @@ export const messages = defineMessages({
 });
 ```
 
-### formatMessage
+### formatMessage (via injectIntl)
 
 **Input:**
 
 ```javascript
-intl.formatMessage({
-    defaultMessage: 'Hello World',
-});
+import { injectIntl } from 'react-intl';
+
+function App({ intl }) {
+    return intl.formatMessage({ defaultMessage: 'Hello World' });
+}
+
+export default injectIntl(App);
 ```
 
 **Output:**
 
 ```javascript
-intl.formatMessage({
-    id: 'components.App.Hello World',
+function App({ intl }) {
+    return intl.formatMessage({
+        id: 'components.App.aG1FCg==',
+        defaultMessage: 'Hello World',
+    });
+}
+```
+
+### formatMessage (direct import)
+
+**Input:**
+
+```javascript
+import { formatMessage } from 'react-intl';
+
+formatMessage({ defaultMessage: 'Hello World' });
+```
+
+**Output:**
+
+```javascript
+formatMessage({
+    id: 'components.App.aG1FCg==',
     defaultMessage: 'Hello World',
 });
 ```
+
+## ID Generation
+
+IDs are generated based on the file path and message content:
+
+- **defineMessages**: `<filepath>.<key>` (e.g., `components.App.hello`)
+- **FormattedMessage / formatMessage**: `<filepath>.<murmur3(defaultMessage)>` (e.g., `components.App.aG1FCg==`)
+
+When `hashId: true` is set, the entire ID (including path) is hashed with murmur3.
 
 ## Development
 
@@ -231,7 +278,7 @@ crates/
 
 - Rust toolchain
 - `wasm32-wasip1` target: `rustup target add wasm32-wasip1`
-- Node.js 24+
+- Node.js 20+
 
 ### Building
 
@@ -242,10 +289,10 @@ npm install
 # Build SWC plugin (WASM)
 npm run build:plugin
 
-# Build CLI (napi-rs native addon)
+# Build CLI/JS API (napi-rs native addon)
 npm run build:napi
 
-# Build both
+# Build CLI (alias for build:napi)
 npm run build:cli
 ```
 
@@ -253,67 +300,51 @@ npm run build:cli
 
 ```bash
 # Full test cycle (recommended)
-npm run test:full       # build + Rust tests + Jest tests
+npm run test:all       # build + Rust tests + Jest tests
 
 # Individual test commands
 cargo test              # Rust unit tests
 npm test                # Jest integration tests
-npm run test:watch      # Jest in watch mode
+npm run test:jest       # Jest in watch mode
 ```
 
-## CI/CD
+## Supported Platforms
 
-GitHub Actions workflow (`.github/workflows/napi-rs.yml`) handles:
+The native addon (CLI/JS API) is built for:
 
-1. **Lint** - Rust formatting and clippy
-2. **Build** - WASM plugin and napi-rs addons for multiple platforms
-3. **Test** - Rust tests, Jest tests, native binding tests
-4. **Publish** - Manual npm publish via workflow_dispatch
+| Platform              | Architecture |
+| --------------------- | ------------ |
+| Windows (MSVC)        | x64          |
+| Linux (GNU)           | x64, arm64   |
+| Linux (musl)          | x64, arm64   |
+| macOS (Intel)         | x64          |
+| macOS (Apple Silicon) | arm64        |
 
-### Supported Platforms
+Additional platforms supported via WASI fallback.
 
-- Linux x64 (gnu)
-- macOS x64 (Intel)
-- macOS arm64 (Apple Silicon)
-- Windows x64 (MSVC)
+The SWC plugin (WASM) works on any platform supported by `@swc/core`.
 
-### Releasing
+## Releasing
 
 Publishing is done manually through GitHub Actions:
 
 1. **Bump version** using the version CLI:
 
 ```bash
-# On master branch - specify version type
-npm run version:bump patch    # 0.0.1 -> 0.0.2
-npm run version:bump minor    # 0.0.1 -> 0.1.0
-npm run version:bump major    # 0.0.1 -> 1.0.0
-
-# On other branches - creates pre-release automatically
-npm run version:bump          # 0.0.1 -> 0.0.2-rc.0
+npm run version:patch    # 0.0.1 -> 0.0.2
+npm run version:minor    # 0.0.1 -> 0.1.0
+npm run version:major    # 0.0.1 -> 1.0.0
+npm run version:bump     # 0.0.1 -> 0.0.2-rc.0 (pre-release)
 ```
 
 2. Push the version bump and tag:
 
 ```bash
 git push origin master
-git push origin v0.0.2  # Push the tag created by npm version
 ```
 
 3. Go to GitHub → Actions → CI → Run workflow
-4. Select:
-    - Branch: `master`
-    - version_type: `patch` / `minor` / `major` / `prerelease`
-5. Click "Run workflow"
-
-GitHub Actions will:
-
-- Build for all platforms
-- Run all tests
-- Publish to npm
 
 **Requirements:**
 
 - `NPM_TOKEN` secret configured in GitHub repository settings
-
-**Note:** All jobs except publish run automatically on push to master. Publish job is manual only.
